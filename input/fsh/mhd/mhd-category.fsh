@@ -8,16 +8,6 @@ Id:         eehrxf-document-priority-category-cs
 Title:      "EEHRxF Document Priority Category CodeSystem"
 Description: """
 CodeSystem for priority document categories in EEHRxF as the document categories as defined in the EHDS regulation.
-
-The codes defined here are directly linked to the Priority Categories defined in the EHDS regulation. The meaning of these codes is directly linked to the meaning given to the concepts in the EHDS regulation.
-
-The EHDS Regulation initially defines six priority categories of electronic health data that all Member States must support first for cross-border primary use. These categories are explicitly listed in [Article 14](https://eur-lex.europa.eu/eli/reg/2025/327/oj#d1e2289-1-1) of Regulation (EU) 2025/327.
-
-[Article 105](https://eur-lex.europa.eu/eli/reg/2025/327/oj#d1e6862-1-1) specifies the date when support for these priority categories is required: 26 March 2029 for categories (a), (b) and (c); 28 March 2031 for (d), (e) and (f).
-
-EHDS empowers the EU Commission to make changes to the list of priority categories at any point in time by means of a Delegated Act (Article 14(2)). There will be a minimum 1-year lead time between the decision to add a new priority category and the initial date when support ahs to be implemented.
-
-The definitions of the priority categories comes from [ANNEX I](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32025R0327#annex-I) of the EHDS Regulation.
 """
 * ^experimental = false
 * ^caseSensitive = true
@@ -72,16 +62,16 @@ Instance: EEHRxFDocumentTypePatientSummaryVS
 InstanceOf: ValueSet
 Title: "EEHRxF Document Type ValueSet for Patient Summaries"
 Description: """
-ValueSet for specific document types within the Patient Summary priority category. This ValueSet contains LOINC codes for specific document types that fall under the Patient Summary category as defined in the EHDS regulation. This ValueSet is intended for informational purposes to guide implementers on which specific document types are relevant for the Patient Summary category, and it may evolve over time as clinical practice changes and new document types become relevant for cross-border exchange.
+ValueSet for specific document types within the Patient Summary priority category. 
 """
 Usage: #example
-* experimental = true // also flags them as informative
+* experimental = false // also flags them as informative
 * status = #draft
 * version = "0.1.0"
 * name = "EEHRxFDocumentTypePatientSummaryVS"
 * url = "http://hl7.eu/fhir/ValueSet/eehrxf-document-type-patient-summary-vs"
 * title = "EEHRxF Document Type ValueSet for Patient Summaries"
-* description = "ValueSet for specific document types within the Patient Summary priority category. This ValueSet contains LOINC codes for specific document types that fall under the Patient Summary category as defined in the EHDS regulation. This ValueSet is intended for informational purposes to guide implementers on which specific document types are relevant for the Patient Summary category, and it may evolve over time as clinical practice changes and new document types become relevant for cross-border exchange."
+* description = "ValueSet for specific document types within the Patient Summary priority category."
 * useContext[+].code = http://terminology.hl7.org/CodeSystem/usage-context-type#focus
 * useContext[=].valueCodeableConcept = EEHRxFDocumentPriorityCategoryCS#Patient-Summaries
 * compose.include[+].system = "http://loinc.org"
@@ -93,16 +83,16 @@ Instance: EEHRxFDocumentTypeDischargeReportVS
 InstanceOf: ValueSet
 Title: "EEHRxF Document Type ValueSet for Discharge Reports"
 Description: """
-ValueSet for specific document types within the Discharge Report priority category. This ValueSet contains LOINC codes for specific document types that fall under the Discharge Report category as defined in the EHDS regulation. This ValueSet is intended for informational purposes to guide implementers on which specific document types are relevant for the Discharge Report category, and it may evolve over time as clinical practice changes and new document types become relevant for cross-border exchange.
+ValueSet for specific document types within the Discharge Report priority category.
 """
 Usage: #example
-* experimental = true // also flags them as informative
+* experimental = false // also flags them as informative
 * status = #draft
 * version = "0.1.0"
 * name = "EEHRxFDocumentTypeDischargeReportVS"
 * url = "http://hl7.eu/fhir/ValueSet/eehrxf-document-type-discharge-report-vs"
 * title = "EEHRxF Document Type ValueSet for Discharge Reports"
-* description = "ValueSet for specific document types within the Discharge Report priority category. This ValueSet contains LOINC codes for specific document types that fall under the Discharge Report category as defined in the EHDS regulation. This ValueSet is intended for informational purposes to guide implementers on which specific document types are relevant for the Discharge Report category, and it may evolve over time as clinical practice changes and new document types become relevant for cross-border exchange."
+* description = "ValueSet for specific document types within the Discharge Report priority category."
 * useContext[+].code = http://terminology.hl7.org/CodeSystem/usage-context-type#focus
 * useContext[=].valueCodeableConcept = EEHRxFDocumentPriorityCategoryCS#Discharge-Reports
 * compose.include[+].system = "http://loinc.org"
@@ -115,16 +105,16 @@ Instance: EEHRxFDocumentTypeLaboratoryReportVS
 InstanceOf: ValueSet
 Title: "EEHRxF Document Type ValueSet for Laboratory Reports"
 Description: """
-ValueSet for specific document types within the Laboratory Report priority category. This ValueSet contains LOINC codes for specific document types that fall under the Laboratory Report category as defined in the EHDS regulation. This ValueSet is intended for informational purposes to guide implementers on which specific document types are relevant for the Laboratory Report category, and it may evolve over time as clinical practice changes and new document types become relevant for cross-border exchange.
+ValueSet for specific document types within the Laboratory Report priority category.
 """
 Usage: #example
-* experimental = true // also flags them as informative
+* experimental = false // also flags them as informative
 * status = #draft
 * version = "0.1.0"
 * name = "EEHRxFDocumentTypeLaboratoryReportVS"
 * url = "http://hl7.eu/fhir/ValueSet/eehrxf-document-type-laboratory-report-vs"
 * title = "EEHRxF Document Type ValueSet for Laboratory Reports"
-* description = "ValueSet for specific document types within the Laboratory Report priority category. This ValueSet contains LOINC codes for specific document types that fall under the Laboratory Report category as defined in the EHDS regulation. This ValueSet is intended for informational purposes to guide implementers on which specific document types are relevant for the Laboratory Report category, and it may evolve over time as clinical practice changes and new document types become relevant for cross-border exchange."
+* description = "ValueSet for specific document types within the Laboratory Report priority category."
 * useContext[+].code = http://terminology.hl7.org/CodeSystem/usage-context-type#focus
 * useContext[=].valueCodeableConcept = EEHRxFDocumentPriorityCategoryCS#Laboratory-Reports
 * compose.include[+].system = "http://loinc.org"
@@ -135,16 +125,16 @@ Instance: EEHRxFDocumentTypeMedicalImagingVS
 InstanceOf: ValueSet
 Title: "EEHRxF Document Type ValueSet for Medical Imaging"
 Description: """
-ValueSet for specific document types within the Medical Imaging priority category. This ValueSet contains LOINC codes for specific document types that fall under the Medical Imaging category as defined in the EHDS regulation. This ValueSet is intended for informational purposes to guide implementers on which specific document types are relevant for the Medical Imaging category, and it may evolve over time as clinical practice changes and new document types become relevant for cross-border exchange.
+ValueSet for specific document types within the Medical Imaging priority category.
 """
 Usage: #example
-* experimental = true // also flags them as informative
+* experimental = false // also flags them as informative
 * status = #draft
 * version = "0.1.0"
 * name = "EEHRxFDocumentTypeMedicalImagingVS"
 * url = "http://hl7.eu/fhir/ValueSet/eehrxf-document-type-medical-imaging-vs"
 * title = "EEHRxF Document Type ValueSet for Medical Imaging"
-* description = "ValueSet for specific document types within the Medical Imaging priority category. This ValueSet contains LOINC codes for specific document types that fall under the Medical Imaging category as defined in the EHDS regulation. This ValueSet is intended for informational purposes to guide implementers on which specific document types are relevant for the Medical Imaging category, and it may evolve over time as clinical practice changes and new document types become relevant for cross-border exchange."
+* description = "ValueSet for specific document types within the Medical Imaging priority category."
 * useContext[+].code = http://terminology.hl7.org/CodeSystem/usage-context-type#focus
 * useContext[=].valueCodeableConcept = EEHRxFDocumentPriorityCategoryCS#Medical-Imaging
 * compose.include[+].system = "http://loinc.org"
@@ -183,17 +173,9 @@ InstanceOf: ValueSet
 Title:      "EEHRxF Document Type ValueSet"
 Description: """
 Document type codes for clinical precision in document identification.
-
-This ValueSet groups the priority category specific ValueSets:
-- EEHRxFDocumentTypePatientSummaryVS
-- EEHRxFDocumentTypeDischargeReportVS
-- EEHRxFDocumentTypeLaboratoryReportVS
-- EEHRxFDocumentTypeMedicalImagingVS*
-
-No Document Types are assigned to #Electronic-Prescriptions or #Electronic-Dispensations; as these are not considered appropriate use-cases for Documents.
 """
 Usage: #example
-* experimental = true // also flags them as informative
+* experimental = false // also flags them as informative
 * status = #draft
 * version = "0.1.0"
 * name = "EEHRxFDocumentTypeVS"
@@ -201,14 +183,6 @@ Usage: #example
 * title = "EEHRxF Document Type ValueSet"
 * description = """
 Document type codes for clinical precision in document identification.
-
-This ValueSet groups the priority category specific ValueSets:
-- EEHRxFDocumentTypePatientSummaryVS
-- EEHRxFDocumentTypeDischargeReportVS
-- EEHRxFDocumentTypeLaboratoryReportVS
-- EEHRxFDocumentTypeMedicalImagingVS*
-
-No Document Types are assigned to #Electronic-Prescriptions or #Electronic-Dispensations; as these are not considered appropriate use-cases for Documents.
 """
 * compose.include[+].valueSet = "http://hl7.eu/fhir/ValueSet/eehrxf-document-type-discharge-report-vs"
 * compose.include[+].valueSet = "http://hl7.eu/fhir/ValueSet/eehrxf-document-type-laboratory-report-vs"
@@ -220,16 +194,16 @@ Instance: EehrxfMhdDocumentReferenceCM
 InstanceOf: ConceptMap
 Title: "EEHRxF MHD DocumentReference ConceptMap"
 Description: """
-mapping from the EHDS regulatory priority categories to the LOINC document type codes for clinical precision in document identification. This ConceptMap is intended to guide implementers in understanding how the coarse-grained priority categories defined in the EHDS regulation relate to specific document types identified by LOINC codes, and it may evolve over time as clinical practice changes and new document types become relevant for cross-border exchange.
+mapping from the EHDS regulatory priority categories to the LOINC document category codes for clinical precision in document identification. 
 """
 Usage: #example
 * url = "http://hl7.eu/fhir/ConceptMap/eehrxf-mhd-documentreference-cm"
 * name = "EehrxfMhdDocumentReferenceCM"
 * title = "EEHRxF MHD DocumentReference ConceptMap"
-* description = "mapping from the EHDS regulatory priority categories to the LOINC document type codes for clinical precision in document identification. This ConceptMap is intended to guide implementers in understanding how the coarse-grained priority categories defined in the EHDS regulation relate to specific document types identified by LOINC codes, and it may evolve over time as clinical practice changes and new document types become relevant for cross-border exchange."
-* experimental = true
+* description = "mapping from the EHDS regulatory priority categories to the LOINC document category codes for clinical precision in document identification."
+* experimental = false
 * status = #draft
-* purpose = "Guide implementers in understanding how the coarse-grained priority categories defined in the EHDS regulation relate to specific document types identified by LOINC codes, and it may evolve over time as clinical practice changes and new document types become relevant for cross-border exchange."
+* purpose = "Guide implementers in understanding how the coarse-grained priority categories defined in the EHDS regulation relate to specific document categories identified by LOINC codes, and it may evolve over time as clinical practice changes and new document categories become relevant for cross-border exchange."
 * group.source = Canonical(EEHRxFDocumentPriorityCategoryCS)
 * group.target = $loinc
 * group.element[+].code = #Patient-Summaries

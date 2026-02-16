@@ -6,12 +6,14 @@ Profile for DocumentReference resources used in the EEHRxF context, based on the
 
 **Search Strategy**:
 - `category`: Use [ValueSet EEHRxF Document Priority Category ValueSet](ValueSet-eehrxf-document-priority-category-vs.html) (EHDS Priority Categories) for coarse document filtering (Patient Summaries, Discharge Reports, etc.)
-- `type`: Use EEHRxFDocumentTypeVS (LOINC) for clinical precision (specific document types)
+- `type`: Use [ValueSet EEHRxF Document Type ValueSet](ValueSet-EEHRxFDocumentTypeVS.html) (LOINC) for clinical precision (specific document types)
 - `context.practiceSetting`: SHOULD be used to differentiate lab vs imaging reports when category=REPORTS
 
 See [Document Exchange](document-exchange.html) for query examples.
 """
 * insert SetFmmAndStatusRule( 1, draft )
+* category MS
+* type MS
 * category from EEHRxFDocumentPriorityCategoryVS (preferred)
 * type from http://hl7.eu/fhir/ValueSet/eehrxf-document-type-vs (preferred)
 * context.practiceSetting MS
