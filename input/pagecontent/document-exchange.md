@@ -82,42 +82,42 @@ See [EEHRxFDocumentTypeVS](ValueSet-eehrxf-document-type-vs.html) for the comple
 
 The examples below show queries using both `category` (EHDS priority category) and `type` (LOINC document type). Either can be used depending on your use case.
 
-All examples use `patient.identifier` (chained identifier search) rather than a direct Patient resource reference. In cross-border and national exchange, consumers typically hold a patient identifier (national health ID, MRN) rather than a server-specific Patient resource ID. See [Patient Matching](patient-match.html) for details.
+These examples assume the consumer has resolved the patient to a FHIR resource reference (e.g. `Patient/123`) via [Patient Matching](patient-match.html). As an alternative, consumers can search by patient identifier directly using [chained identifier search](patient-match.html#option-chained-identifier-search) (e.g. `patient.identifier=[system]|[value]`).
 
 ##### Patient Summary
 
 By type (LOINC):
 ```
-GET [base]/DocumentReference?patient.identifier=[system]|[value]&type=http://loinc.org|60591-5&status=current
+GET [base]/DocumentReference?patient=Patient/123&type=http://loinc.org|60591-5&status=current
 ```
 
 By category (EHDS priority):
 ```
-GET [base]/DocumentReference?patient.identifier=[system]|[value]&category=http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs|Patient-Summaries&status=current
+GET [base]/DocumentReference?patient=Patient/123&category=http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs|Patient-Summaries&status=current
 ```
 
 ##### Medical Test Results (Laboratory)
 
 By type (LOINC):
 ```
-GET [base]/DocumentReference?patient.identifier=[system]|[value]&type=http://loinc.org|11502-2&status=current
+GET [base]/DocumentReference?patient=Patient/123&type=http://loinc.org|11502-2&status=current
 ```
 
 By category (EHDS priority):
 ```
-GET [base]/DocumentReference?patient.identifier=[system]|[value]&category=http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs|Laboratory-Reports&status=current
+GET [base]/DocumentReference?patient=Patient/123&category=http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs|Laboratory-Reports&status=current
 ```
 
 ##### Imaging Reports and Manifests
 
 By type (LOINC - imaging reports only):
 ```
-GET [base]/DocumentReference?patient.identifier=[system]|[value]&type=http://loinc.org|68604-8&status=current
+GET [base]/DocumentReference?patient=Patient/123&type=http://loinc.org|68604-8&status=current
 ```
 
 By category (EHDS priority - includes both reports and manifests):
 ```
-GET [base]/DocumentReference?patient.identifier=[system]|[value]&category=http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs|Medical-Imaging&status=current
+GET [base]/DocumentReference?patient=Patient/123&category=http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs|Medical-Imaging&status=current
 ```
 
 > **Note:** The `Medical-Imaging` category includes both imaging reports and imaging manifests. To distinguish between them, use the `type` code or `formatCode`. See [Imaging Manifest](priority-area-imaging-manifest.html) for details.
@@ -126,12 +126,12 @@ GET [base]/DocumentReference?patient.identifier=[system]|[value]&category=http:/
 
 By type (LOINC):
 ```
-GET [base]/DocumentReference?patient.identifier=[system]|[value]&type=http://loinc.org|18842-5&status=current
+GET [base]/DocumentReference?patient=Patient/123&type=http://loinc.org|18842-5&status=current
 ```
 
 By category (EHDS priority):
 ```
-GET [base]/DocumentReference?patient.identifier=[system]|[value]&category=http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs|Discharge-Reports&status=current
+GET [base]/DocumentReference?patient=Patient/123&category=http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs|Discharge-Reports&status=current
 ```
 
 ---
