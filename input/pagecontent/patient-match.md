@@ -1,10 +1,10 @@
 ### Overview
 
-Patient lookup using IHE PDQm (Patient Demographics Query for Mobile). This transaction allows consumers to locate the correct Patient resource on a provider before querying for health information.
+Patient lookup is accomplished using IHE PDQm (Patient Demographics Query for Mobile), which relies on core FHIR `Patient.Search` and `Patient.$match`. This transaction allows Consumers to locate the correct Patient resource on a Provider before querying for health information.
 
 This specification inherits directly from [IHE PDQm](https://profiles.ihe.net/ITI/PDQm/index.html) with one constraint: the `identifier` search parameter is required for patient search.
 
-Patient.Search should be used when a patient identifier (e.g. National ID) is available and trusted. If an identifier is not available, Patient.$match should be used to perform a demographics search operation.
+`Patient.Search` should be used when a patient identifier (e.g. National ID) is available and trusted. If an identifier is not available, `Patient.$match` should be used to perform a demographics search operation with available demographics.
 
 ### Actor Roles
 
