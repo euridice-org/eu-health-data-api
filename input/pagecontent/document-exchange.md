@@ -2,6 +2,13 @@
 
 Document exchange using IHE MHD (Mobile Health Documents) transactions. This IG inherits MHD transactions as-is, with constraints specific to EEHRxF content.
 
+<div>
+<figure class="figure">
+<img src="docExchange_1.png" class="figure-img img-responsive img-rounded center-block" alt="Document Exchange Overview" style="width:50%">
+<figcaption class="figure-caption"><strong>Figure: Document Exchange Overview</strong></figcaption>
+</figure>
+</div>
+
 ### Actors and Transactions
 
 This IG defines three document exchange actors. See [Actors](actors.html) for detailed actor groupings.

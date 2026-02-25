@@ -1,10 +1,10 @@
 ### Overview
 
-Patient lookup is accomplished using IHE PDQm (Patient Demographics Query for Mobile), which relies on core FHIR `Patient.Search` and `Patient.$match`. This transaction allows Consumers to locate the correct Patient resource on a Provider before querying for health information.
+Patient lookup is accomplished using IHE PDQm (Patient Demographics Query for Mobile), which relies on core FHIR `Patient.Search` [ITI-78] and `Patient.$match` [ITI-119]. This transaction allows Consumers to locate the correct Patient resource on a Access Provider before querying for health information.
 
 This specification inherits directly from [IHE PDQm](https://profiles.ihe.net/ITI/PDQm/index.html) with one constraint: the `identifier` search parameter is required for patient search.
 
-`Patient.Search` should be used when a patient identifier (e.g. National ID) is available and trusted. If an identifier is not available, `Patient.$match` should be used to perform a demographics search operation with available demographics.
+`Patient.Search` [ITI-78] should be used when a patient identifier (e.g. National ID) is available and trusted. If an identifier is not available, `Patient.$match` [ITI-119] should be used to perform a demographics search operation with available demographics.
 
 ### Actor Roles
 
@@ -17,7 +17,7 @@ This specification inherits directly from [IHE PDQm](https://profiles.ihe.net/IT
 
 Providers support one or both of the following patient identification mechanisms:
 
-#### Mobile Patient Demographics Query [ITI-78] (Required)
+#### [ITI-78] Mobile Patient Demographics Query `Patient.Search` - (Required)
 
 Patient search using the [IHE PDQm ITI-78](https://profiles.ihe.net/ITI/PDQm/ITI-78.html) transaction. This specification constrains ITI-78 to require the `identifier` parameter.
 
@@ -47,7 +47,7 @@ Providers MAY support additional PDQm search parameters per [ITI-78](https://pro
 | _id | token | SHOULD | Patient logical ID |
 
 
-#### Patient Demographics Match [ITI-119] (Optional)
+#### Patient Demographics Match [ITI-119] `Patient.$match`  (Optional)
 
 The Patient Demographics $match option can be used to identify a patient when an identifier-based lookup is not possible (e.g., scenarios where the consumer does not know the patient's local identifier).
 The Patient $match operation identifies a patient record given demograpics data (Name, Birthdate, ...) using [IHE PDQm ITI-119](https://profiles.ihe.net/ITI/PDQm/ITI-119.html): 
@@ -116,7 +116,7 @@ Chained search can be used to minimize round trips, for example with national ag
 
 In most European exchanges the consumer already holds a trusted patient identifier (national health ID, MRN, or similar). Identifier-based lookup produces an unambiguous match and avoids dependence on demographic data quality, which varies in completeness and localization across member states. The [MyHealth@EU cross-border infrastructure](https://fhir.ehdsi.eu/build/ncp-api/bus-scenario-pat.html) already follows this pattern.
 
-Where an identifier is not available, $match is safer than demographics-based Patient.Search for automated resolution. $match moves resolution to the server, which has richer context (aliases, prior identifiers, phonetic matching) and returns only high-confidence matches when `onlyCertainMatches` is set to `true`. Demographics-based Patient.Search may return multiple candidates for common names, miss near-matches from spelling variation (e.g., "Schroeder" vs. "Schröder"), or produce false matches — and clients have no confidence score to guide selection.
+Where an identifier is not available, `Patient.$match` [ITI-119] is safer than demographics-based `Patient.Search` [ITI-78] for automated resolution. `Patient.$match` moves resolution to the server, which has richer context (aliases, prior identifiers, phonetic matching) and returns only high-confidence matches when `onlyCertainMatches` is set to `true`. Demographics-based `Patient.Search` may return multiple candidates for common names, miss near-matches from spelling variation (e.g., "Schroeder" vs. "Schröder"), or produce false matches — and clients have no confidence score to guide selection.
 
 ### References
 

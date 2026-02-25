@@ -120,7 +120,7 @@ chmod -R 777 ~/.fhir
 ./startDockerPublisher.sh
 
 # 9. Verify success
-ls -lh output/qa.html  # Should show ~712K file
+ls -lh output/qa.html  # Should show ~571K file
 ```
 
 **Daily workflow:**
@@ -188,14 +188,14 @@ The `./startDockerPublisher.sh` script:
 
 ✅ **Build succeeded if:**
 - Exit code is 0
-- `output/qa.html` exists (~712K)
+- `output/qa.html` exists (~571K)
 - `output/index.html` exists
 - SUSHI summary shows "0 Errors"
 
 ⚠️ **Expected warnings/errors in qa.html:**
-- ~25 broken links (external references)
-- ~19 errors (profile conformance warnings)
-- ~54 warnings (terminology bindings)
+- ~1 broken link (external references)
+- ~6 errors (profile conformance warnings)
+- ~10 warnings (terminology bindings)
 - These are normal and not build failures
 
 ### Script Options
