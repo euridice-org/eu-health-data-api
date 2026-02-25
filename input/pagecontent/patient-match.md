@@ -17,7 +17,7 @@ Patient.Search should be used when a patient identifier (e.g. National ID) is av
 
 Providers support one or both of the following patient identification mechanisms:
 
-#### 1. Mobile Patient Demographics Query [ITI-78] (Required)
+#### Mobile Patient Demographics Query [ITI-78] (Required)
 
 Patient search using the [IHE PDQm ITI-78](https://profiles.ihe.net/ITI/PDQm/ITI-78.html) transaction. This specification constrains ITI-78 to require the `identifier` parameter.
 
@@ -28,6 +28,8 @@ GET [base]/Patient?identifier=[system]|[value]
 This approach covers the majority of European use cases where patient identifiers (MRN, national ID) are available.
 
 **Required Search Parameters:**
+
+Both Provider and Consumer SHALL support the `identifier` parameter for patient search.
 
 | Parameter | Type | Expectation | Description |
 |-----------|------|-------------|-------------|
@@ -45,9 +47,10 @@ Providers MAY support additional PDQm search parameters per [ITI-78](https://pro
 | _id | token | SHOULD | Patient logical ID |
 
 
-#### 2. Patient Demographics Match [ITI-119] (Optional)
+#### Patient Demographics Match [ITI-119] (Optional)
 
-Patient $match operation for fuzzy demographic matching using [IHE PDQm ITI-119](https://profiles.ihe.net/ITI/PDQm/ITI-119.html):
+The Patient Demographics $match option can be used to identify a patient when an identifier-based lookup is not possible (e.g., scenarios where the consumer does not know the patient's local identifier).
+The Patient $match operation identifies a patient record given demograpics data (Name, Birthdate, ...) using [IHE PDQm ITI-119](https://profiles.ihe.net/ITI/PDQm/ITI-119.html): 
 
 ```
 POST [base]/Patient/$match
@@ -55,7 +58,17 @@ POST [base]/Patient/$match
 
 The request body contains a Parameters resource with demographic information. The server responds with candidate matches and confidence scores.
 
-This option is used when identifier-based lookup is not possible (e.g., cross-border scenarios where the consumer does not have the patient's local identifier).
+**Required Search Parameters:**
+
+
+| Parameter | Type | Expectation | Description |
+|-----------|------|-------------|-------------|
+| onlyCertainMatches | boolean | SHALL | This parameter SHALL be set to true |
+
+In order to support safe clinical patient matching both Provider and Consumer SHALL support the `onlyCertainMatches` parameter which SHALL be set to `true` to indicate that the Consumer would only like matches returned when they are certain to be matches for the subject of the request
+
+
+Be aware that the matching algorithm itself as well as the mechanism for determining the confidence of match vary by product and domain of integration, and not specified in this transaction, see also [further details on IHE PDQm ITI-119](https://profiles.ihe.net/ITI/PDQm/ITI-119.html#231194224-quality-of-match).
 
 ### Provider Requirements
 
