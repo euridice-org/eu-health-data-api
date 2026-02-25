@@ -14,7 +14,7 @@ This example demonstrates the recommended search strategy:
 
 **Example query to find this document:**
 ```
-GET [base]/DocumentReference?patient=Patient/example-patient&category=https://euridice.ec.europa.eu/fhir/eehrxf/CodeSystem/eehrxf-document-priority-category-cs|Patient-Summaries
+GET [base]/DocumentReference?patient.identifier=[system]|[value]&category=https://euridice.ec.europa.eu/fhir/eehrxf/CodeSystem/eehrxf-document-priority-category-cs|Patient-Summaries
 ```
 """
 Usage: #example

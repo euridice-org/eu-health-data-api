@@ -82,40 +82,42 @@ See [EEHRxFDocumentTypeVS](ValueSet-eehrxf-document-type-vs.html) for the comple
 
 The examples below show queries using both `category` (EHDS priority category) and `type` (LOINC document type). Either can be used depending on your use case.
 
+All examples use `patient.identifier` (chained identifier search) rather than a direct Patient resource reference. In cross-border and national exchange, consumers typically hold a patient identifier (national health ID, MRN) rather than a server-specific Patient resource ID. See [Patient Matching](patient-match.html) for details.
+
 ##### Patient Summary
 
 By type (LOINC):
 ```
-GET [base]/DocumentReference?patient=Patient/123&type=http://loinc.org|60591-5&status=current
+GET [base]/DocumentReference?patient.identifier=[system]|[value]&type=http://loinc.org|60591-5&status=current
 ```
 
 By category (EHDS priority):
 ```
-GET [base]/DocumentReference?patient=Patient/123&category=http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs|Patient-Summaries&status=current
+GET [base]/DocumentReference?patient.identifier=[system]|[value]&category=http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs|Patient-Summaries&status=current
 ```
 
 ##### Medical Test Results (Laboratory)
 
 By type (LOINC):
 ```
-GET [base]/DocumentReference?patient=Patient/123&type=http://loinc.org|11502-2&status=current
+GET [base]/DocumentReference?patient.identifier=[system]|[value]&type=http://loinc.org|11502-2&status=current
 ```
 
 By category (EHDS priority):
 ```
-GET [base]/DocumentReference?patient=Patient/123&category=http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs|Laboratory-Reports&status=current
+GET [base]/DocumentReference?patient.identifier=[system]|[value]&category=http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs|Laboratory-Reports&status=current
 ```
 
 ##### Imaging Reports and Manifests
 
 By type (LOINC - imaging reports only):
 ```
-GET [base]/DocumentReference?patient=Patient/123&type=http://loinc.org|68604-8&status=current
+GET [base]/DocumentReference?patient.identifier=[system]|[value]&type=http://loinc.org|68604-8&status=current
 ```
 
 By category (EHDS priority - includes both reports and manifests):
 ```
-GET [base]/DocumentReference?patient=Patient/123&category=http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs|Medical-Imaging&status=current
+GET [base]/DocumentReference?patient.identifier=[system]|[value]&category=http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs|Medical-Imaging&status=current
 ```
 
 > **Note:** The `Medical-Imaging` category includes both imaging reports and imaging manifests. To distinguish between them, use the `type` code or `formatCode`. See [Imaging Manifest](priority-area-imaging-manifest.html) for details.
@@ -124,12 +126,12 @@ GET [base]/DocumentReference?patient=Patient/123&category=http://hl7.eu/fhir/eu-
 
 By type (LOINC):
 ```
-GET [base]/DocumentReference?patient=Patient/123&type=http://loinc.org|18842-5&status=current
+GET [base]/DocumentReference?patient.identifier=[system]|[value]&type=http://loinc.org|18842-5&status=current
 ```
 
 By category (EHDS priority):
 ```
-GET [base]/DocumentReference?patient=Patient/123&category=http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs|Discharge-Reports&status=current
+GET [base]/DocumentReference?patient.identifier=[system]|[value]&category=http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs|Discharge-Reports&status=current
 ```
 
 ---
@@ -177,7 +179,13 @@ Member states or local deployments MAY additionally support:
 - **[ITI-65 Provide Document Bundle](https://profiles.ihe.net/ITI/MHD/ITI-65.html)**: For XDS-centric ecosystems requiring explicit SubmissionSet metadata or multi-document submission.
 - **[ITI-106 Generate Metadata](https://profiles.ihe.net/ITI/MHD/ITI-106.html)**: For structured document publishers wanting server-generated DocumentReference.
 
-These are not required for EEHRxF conformance.
+These are not required for conformance to the actors within the scope of this implementation guide.
+
+#### Patient Identity in Document Publication
+
+This specification does not require a patient lookup step before publication — how the publisher obtains the patient identifier is up to the implementer. Per [MHD ITI-105 §Patient Identity](https://profiles.ihe.net/ITI/MHD/ITI-105.html#231054122-patient-identity):
+
+> A Patient Reference to a commonly accessible server may be obtained through use of PDQm, PIXm, PMIR, or by some other means. A commonly accessible logical reference using Patient Identifier, instead of a literal reference, may be acceptable where there is a common Identifier, such as a national individual identifier.
 
 ---
 
