@@ -29,7 +29,7 @@ This approach covers the majority of European use cases where patient identifier
 
 **Required Search Parameters:**
 
-Both Provider and Consumer SHALL support the the `identifier` parameter for patient search.
+Both Provider and Consumer SHALL support the `identifier` parameter for patient search.
 
 | Parameter | Type | Expectation | Description |
 |-----------|------|-------------|-------------|
@@ -67,7 +67,7 @@ The request body contains a Parameters resource with demographic information. Th
 In order to support safe clinical patient matching both Provider and Consumer SHALL support the `onlyCertainMatches` parameter which SHALL be set to `true` to indicate that the Consumer would only like matches returned when they are certain to be matches for the subject of the request
 
 The Patient Demographics Match option can be used when identifier-based lookup is not possible (e.g., national scenarios where the consumer does not have the patient's local identifier).
-Mind that the matching algorithm itself as well as the mechanism for determining the confidence of match are considered a product specific feature and are not specified in this transaction, see also [further details on IHE PDQm ITI-119](https://profiles.ihe.net/ITI/PDQm/ITI-119.html#231194224-quality-of-match).
+Be aware that the matching algorithm itself as well as the mechanism for determining the confidence of match vary by product and domaine of integration, and not specified in this transaction, see also [further details on IHE PDQm ITI-119](https://profiles.ihe.net/ITI/PDQm/ITI-119.html#231194224-quality-of-match).
 
 ### Provider Requirements
 
