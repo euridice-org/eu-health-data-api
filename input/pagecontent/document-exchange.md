@@ -14,6 +14,8 @@ This IG defines three document exchange actors. See [Actors](actors.html) for de
 | [Document Access Provider](actors.html#document-access-provider) | [ITI-68](https://profiles.ihe.net/ITI/MHD/ITI-68.html) Retrieve Document | R |
 | [Document Access Provider](actors.html#document-access-provider) | [ITI-105: Simplified Publish](https://profiles.ihe.net/ITI/MHD/ITI-105.html) | O |
 | [Document Publisher](actors.html#document-publisher) | [ITI-105: Simplified Publish](https://profiles.ihe.net/ITI/MHD/ITI-105.html) | R |
+{: .grid}
+
 
 ---
 
@@ -43,12 +45,14 @@ sequenceDiagram
 
 #### Document Content
 
-ITI-68 retrieves the document from the URL specified in `DocumentReference.content.attachment.url`. The URL format depends on the document type:
+ITI-68 retrieves the document from the URL specified in `DocumentReference.content.attachment.url`. The URL format may depend on the document type:
 
 | Document Format | attachment.url | Content-Type |
 |-----------------|----------------|--------------|
 | FHIR Document (Patient Summary, etc.) | `/Bundle/[id]` | `application/fhir+json` or `application/fhir+xml` |
 | PDF and other non-FHIR | `/Binary/[id]` | `application/pdf`, etc. |
+{: .grid}
+
 
 [ITI-68](https://profiles.ihe.net/ITI/MHD/ITI-68.html) retrieves the document directly from the URL. FHIR Documents are returned as Bundle resources when `Accept: application/fhir+json` is specified.
 
@@ -58,29 +62,46 @@ ITI-68 retrieves the document from the URL specified in `DocumentReference.conte
 
 This IG follows the [IHE Document Sharing](https://profiles.ihe.net/ITI/HIE-Whitepaper/index.html) approach:
 
-1. **category** (coarse search): Broad classification based on EHDS priority categories
+1. **category** (coarse search): Broad classification based on content use
 2. **type** (clinical precision): Specific document types, typically LOINC codes
+
+These two elements are typically profiled by a clinical document content profile for the use of making that document content discoverable. Further under some network constraints these two elements can only carry one concept (cardionality of ..1).
 
 ##### Category Values (EHDS Priority Categories)
 
-The EHDS priority categories are defined by [Article 14 of the EHDS Regulation](https://eur-lex.europa.eu/eli/reg/2025/327/oj#d1e2289-1-1). We define codes specifically for EEHRxF that map directly to these regulatory categories.
+The EHDS priority categories are defined by [Article 14 of the EHDS Regulation](https://eur-lex.europa.eu/eli/reg/2025/327/oj#d1e2289-1-1). We define codes specifically for EEHRxF that map directly to these regulatory categories. These codes are specific to the EHDS Regulation and thus are driven by that definition and intention. See [EEHRxFDocumentPriorityCategoryCS](CodeSystem-eehrxf-document-priority-category-cs.html) for the complete list. These categories are provided as informative codes to guide linkage to clinical codes that are used and would be considered within that priority category.
 
-See [EEHRxFDocumentPriorityCategoryCS](CodeSystem-eehrxf-document-priority-category-cs.html) for the complete list.
+Given that the `DocumentReference.type` and `DocumentReference.category` are controlled by a clinical document content profile, we can not place the EHDS priority category into those elements. These clinical document content profiles do have well defined `type` values that we can group into the EHDS priority category. We provide both ValueSet grouping, and ConceptMap grouping for this purpose.
 
-##### Type Values (LOINC)
+We provide two methods to link between the priority category and clinical `type` codes:
 
-| LOINC Code | Priority Category |
-|------------|-------------------|
-| `60591-5` | Patient Summary |
-| `18842-5` | Hospital Discharge Report |
-| `11502-2` | Lab Result |
-| `68604-8` | Diagnostic Imaging Report |
+A set of ValueSet [`EEHRxFDocumentTypeVS`](ValueSet-EEHRxFDocumentTypeVS.html) includes all clinical `type` codes (LOINC) that are relevant to EHDS priority categories, with a `useContext` indicating the corresponding priority `category`.
+- `Patient-Summaries` codes are found in [EEHRxFDocumentTypePatientSummaryVS](ValueSet-EEHRxFDocumentTypePatientSummaryVS.html)
+- `Discharge-Reports` codes are found in [EEHRxFDocumentTypeDischargeReportVS](ValueSet-EEHRxFDocumentTypeDischargeReportVS.html)
+- `Laboratory-Reports` codes are found in [EEHRxFDocumentTypeLaboratoryReportVS](ValueSet-EEHRxFDocumentTypeLaboratoryReportVS.html)
+- `Medical-Imaging` codes are found in [EEHRxFDocumentTypeMedicalImagingVS](ValueSet-EEHRxFDocumentTypeMedicalImagingVS.html)
 
-See [EEHRxFDocumentTypeVS](ValueSet-eehrxf-document-type-vs.html) for the complete list.
+A ConceptMap [EehrxfMhdDocumentReferenceCM](ConceptMap-EehrxfMhdDocumentReferenceCM.html) maps the same set of clinical `type` codes to their corresponding priority `category`.
+
+The priority category of `Electronic-Prescriptions` and `Electronic-Dispensations` are not considered appropriate use-cases for documents, and thus have no associated document types.
+
+The above valueSets and ConceptMap are authorative. As of now, the following `type` codes are grouped into the EHDS priority categories 
+
+| priority category | types | categories | relevant IGs |
+|-------------------|--------------|-------|------------|
+| Patient-Summaries | 60591-5 | none | [Europe Patient Summary](https://build.fhir.org/ig/hl7-eu/eps/) 
+| Discharge-Reports | 34105-7 | none | [Hospital Discharge Report](https://build.fhir.org/ig/hl7-eu/hdr/) 
+| Laboratory-Reports | 11502-2 | (0..*) 11502-2, 18717-9, 18719-5, 18722-9, 18723-7, 18725-2, 18728-6, 26436-6 | [Europe Laboratory Report](https://hl7.eu/fhir/laboratory/) 
+| Medical-Imaging | 85430-7 | `Medical-Imaging` | [Europe Imaging Reports](https://build.fhir.org/ig/hl7-eu/imaging-r4/en/)
+{: .grid}
 
 #### Search Examples
 
-The examples below show queries using both `category` (EHDS priority category) and `type` (LOINC document type). Either can be used depending on your use case.
+The examples below show queries using `type` (LOINC document type), as that is the most specific and reliable way to identify document types.
+
+Searching by `type` (LOINC) is recommended for most accurate results. For a given EHDS priority category, look to the valueSet associated with that priority category code, or look to the ConceptMap, to find the relevant `type` codes to use in the search. If more than one `type` code is relevant, include them all in the search to ensure you find all relevant documents.
+
+Including the EHDS priority category code in a search against `category` may help discover new document `type`s that are available but not yet cross-referenced here.
 
 These examples assume the consumer has resolved the patient to a FHIR resource reference (e.g. `Patient/123`) via [Patient Matching](patient-match.html). As an alternative, consumers can search by patient identifier directly using [chained identifier search](patient-match.html#option-chained-identifier-search) (e.g. `patient.identifier=[system]|[value]`).
 
@@ -91,11 +112,6 @@ By type (LOINC):
 GET [base]/DocumentReference?patient=Patient/123&type=http://loinc.org|60591-5&status=current
 ```
 
-By category (EHDS priority):
-```
-GET [base]/DocumentReference?patient=Patient/123&category=http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs|Patient-Summaries&status=current
-```
-
 ##### Medical Test Results (Laboratory)
 
 By type (LOINC):
@@ -103,35 +119,18 @@ By type (LOINC):
 GET [base]/DocumentReference?patient=Patient/123&type=http://loinc.org|11502-2&status=current
 ```
 
-By category (EHDS priority):
-```
-GET [base]/DocumentReference?patient=Patient/123&category=http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs|Laboratory-Reports&status=current
-```
-
 ##### Imaging Reports and Manifests
 
 By type (LOINC - imaging reports only):
 ```
-GET [base]/DocumentReference?patient=Patient/123&type=http://loinc.org|68604-8&status=current
+GET [base]/DocumentReference?patient=Patient/123&type=http://loinc.org|85430-7&status=current
 ```
-
-By category (EHDS priority - includes both reports and manifests):
-```
-GET [base]/DocumentReference?patient=Patient/123&category=http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs|Medical-Imaging&status=current
-```
-
-> **Note:** The `Medical-Imaging` category includes both imaging reports and imaging manifests. To distinguish between them, use the `type` code or `formatCode`. See [Imaging Manifest](priority-area-imaging-manifest.html) for details.
 
 ##### Hospital Discharge Reports
 
 By type (LOINC):
 ```
-GET [base]/DocumentReference?patient=Patient/123&type=http://loinc.org|18842-5&status=current
-```
-
-By category (EHDS priority):
-```
-GET [base]/DocumentReference?patient=Patient/123&category=http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs|Discharge-Reports&status=current
+GET [base]/DocumentReference?patient=Patient/123&type=http://loinc.org|18842-5,http://loinc.org|100719-4&status=current
 ```
 
 ---

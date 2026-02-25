@@ -8,16 +8,6 @@ Id:         eehrxf-document-priority-category-cs
 Title:      "EEHRxF Document Priority Category CodeSystem"
 Description: """
 CodeSystem for priority document categories in EEHRxF as the document categories as defined in the EHDS regulation.
-
-The codes defined here are directly linked to the Priority Categories defined in the EHDS regulation. The meaning of these codes is directly linked to the meaning given to the concepts in the EHDS regulation.
-
-The EHDS Regulation initially defines six priority categories of electronic health data that all Member States must support first for cross-border primary use. These categories are explicitly listed in [Article 14](https://eur-lex.europa.eu/eli/reg/2025/327/oj#d1e2289-1-1) of Regulation (EU) 2025/327.
-
-[Article 105](https://eur-lex.europa.eu/eli/reg/2025/327/oj#d1e6862-1-1) specifies the date when support for these priority categories is required: 26 March 2029 for categories (a), (b) and (c); 28 March 2031 for (d), (e) and (f).
-
-EHDS empowers the EU Commission to make changes to the list of priority categories at any point in time by means of a Delegated Act (Article 14(2)). There will be a minimum 1-year lead time between the decision to add a new priority category and the initial date when support ahs to be implemented.
-
-The definitions of the priority categories comes from [ANNEX I](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32025R0327#annex-I) of the EHDS Regulation.
 """
 * ^experimental = false
 * ^caseSensitive = true
@@ -59,6 +49,105 @@ ValueSet for priority document categories in EEHRxF as the document categories a
 * codes from system EEHRxFDocumentPriorityCategoryCS
 
 
+// =============================================================================
+// DocumentReference Type ValueSet per priority category 
+// =============================================================================
+/*
+ Given the priority category EEHRxFDocumentPriorityCategoryCS, 
+ We define a ValueSet per priority category
+ with the clinical codes (usually LOINC codes) for specific document types
+ The ValueSets are promoted as Informational, not Normative. This because the specific document types may evolve over time, and the ValueSets may need to be updated more frequently than the profiles. The priority categories themselves are normative, but the specific document types within each category are informational and subject to change as clinical practice evolves and as new document types become relevant for cross-border exchange.
+*/
+Instance: EEHRxFDocumentTypePatientSummaryVS
+InstanceOf: ValueSet
+Title: "EEHRxF Document Type ValueSet for Patient Summaries"
+Description: """
+ValueSet for specific document types within the Patient Summary priority category. 
+"""
+Usage: #example
+* experimental = false // also flags them as informative
+* status = #draft
+* version = "0.1.0"
+* name = "EEHRxFDocumentTypePatientSummaryVS"
+* url = "http://hl7.eu/fhir/ValueSet/eehrxf-document-type-patient-summary-vs"
+* title = "EEHRxF Document Type ValueSet for Patient Summaries"
+* description = "ValueSet for specific document types within the Patient Summary priority category."
+* useContext[+].code = http://terminology.hl7.org/CodeSystem/usage-context-type#focus
+* useContext[=].valueCodeableConcept = EEHRxFDocumentPriorityCategoryCS#Patient-Summaries
+* compose.include[+].system = "http://loinc.org"
+* compose.include[=].concept[+].code = #60591-5
+* compose.include[=].concept[=].display = "Patient summary Document"
+
+
+Instance: EEHRxFDocumentTypeDischargeReportVS
+InstanceOf: ValueSet
+Title: "EEHRxF Document Type ValueSet for Discharge Reports"
+Description: """
+ValueSet for specific document types within the Discharge Report priority category.
+"""
+Usage: #example
+* experimental = false // also flags them as informative
+* status = #draft
+* version = "0.1.0"
+* name = "EEHRxFDocumentTypeDischargeReportVS"
+* url = "http://hl7.eu/fhir/ValueSet/eehrxf-document-type-discharge-report-vs"
+* title = "EEHRxF Document Type ValueSet for Discharge Reports"
+* description = "ValueSet for specific document types within the Discharge Report priority category."
+* useContext[+].code = http://terminology.hl7.org/CodeSystem/usage-context-type#focus
+* useContext[=].valueCodeableConcept = EEHRxFDocumentPriorityCategoryCS#Discharge-Reports
+* compose.include[+].system = "http://loinc.org"
+* compose.include[=].concept[+].code = #18842-5
+* compose.include[=].concept[=].display = "Discharge summary"
+* compose.include[=].concept[+].code = #100719-4
+* compose.include[=].concept[=].display = "Surgical oncology Discharge summary"
+
+Instance: EEHRxFDocumentTypeLaboratoryReportVS
+InstanceOf: ValueSet
+Title: "EEHRxF Document Type ValueSet for Laboratory Reports"
+Description: """
+ValueSet for specific document types within the Laboratory Report priority category.
+"""
+Usage: #example
+* experimental = false // also flags them as informative
+* status = #draft
+* version = "0.1.0"
+* name = "EEHRxFDocumentTypeLaboratoryReportVS"
+* url = "http://hl7.eu/fhir/ValueSet/eehrxf-document-type-laboratory-report-vs"
+* title = "EEHRxF Document Type ValueSet for Laboratory Reports"
+* description = "ValueSet for specific document types within the Laboratory Report priority category."
+* useContext[+].code = http://terminology.hl7.org/CodeSystem/usage-context-type#focus
+* useContext[=].valueCodeableConcept = EEHRxFDocumentPriorityCategoryCS#Laboratory-Reports
+* compose.include[+].system = "http://loinc.org"
+* compose.include[=].concept[+].code = #11502-2
+* compose.include[=].concept[=].display = "Laboratory report"
+// from https://hl7.eu/fhir/laboratory/StructureDefinition-Composition-eu-lab.html -- February 2026
+//* compose.include[+].valueSet = "http://hl7.eu/fhir/laboratory/ValueSet/lab-reportType-eu-lab"
+//* compose.include[+].valueSet = "http://hl7.eu/fhir/laboratory/ValueSet/lab-studyType-eu-lab"
+// hope that the above two valueSets are sufficient. Need expert to confirm.
+//* compose.include[+].valueSet = "http://hl7.eu/fhir/laboratory/ValueSet/lab-specialty-eu-lab"
+
+
+Instance: EEHRxFDocumentTypeMedicalImagingVS
+InstanceOf: ValueSet
+Title: "EEHRxF Document Type ValueSet for Medical Imaging"
+Description: """
+ValueSet for specific document types within the Medical Imaging priority category.
+"""
+Usage: #example
+* experimental = false // also flags them as informative
+* status = #draft
+* version = "0.1.0"
+* name = "EEHRxFDocumentTypeMedicalImagingVS"
+* url = "http://hl7.eu/fhir/ValueSet/eehrxf-document-type-medical-imaging-vs"
+* title = "EEHRxF Document Type ValueSet for Medical Imaging"
+* description = "ValueSet for specific document types within the Medical Imaging priority category."
+* useContext[+].code = http://terminology.hl7.org/CodeSystem/usage-context-type#focus
+* useContext[=].valueCodeableConcept = EEHRxFDocumentPriorityCategoryCS#Medical-Imaging
+* compose.include[+].system = "http://loinc.org"
+* compose.include[=].concept[+].code = #85430-7
+
+
+
 
 // =============================================================================
 // DocumentReference Type ValueSet (Clinical Precision)
@@ -66,38 +155,60 @@ ValueSet for priority document categories in EEHRxF as the document categories a
 // LOINC codes for specific document types - used for precise clinical identification
 // This is NOT intended as a primary search parameter, but for client-side filtering
 
-ValueSet:   EEHRxFDocumentTypeVS
-Id:         eehrxf-document-type-vs
+Instance:   EEHRxFDocumentTypeVS
+InstanceOf: ValueSet
 Title:      "EEHRxF Document Type ValueSet"
 Description: """
 Document type codes for clinical precision in document identification.
-
-This ValueSet contains LOINC codes for specific document types used in
-DocumentReference.type. Unlike category (coarse search), type provides
-clinical precision for identifying exact document kinds.
-
-**Usage Pattern**:
-- type is primarily used for client-side filtering after a broad category search
-- type MAY be used as a search parameter when the specific document type is known
-- Multiple type codes may apply to a single document (e.g., a discharge summary
-  that is also a patient summary)
-
-**MVP Document Types** (Priority Categories):
-- Patient Summary (IPS)
-- Discharge Summary (HDR)
-- Laboratory Report
-- Diagnostic Imaging Report
-
-Note: This list will expand as additional priority categories are implemented.
-
-JFM: This ValueSet should be made up of other ValueSets, with each of them assigned to one of the priority categories. Thus it is clear what document types are within each category. Is this the place to find all of them? https://confluence.hl7.org/spaces/HEU/pages/358255737/Implementation+Guides
 """
-* ^experimental = false
-* insert LOINCCopyrightForVS
-* $loinc#60591-5 "Patient summary Document"
-* $loinc#18842-5 "Discharge summary"
-* $loinc#11502-2 "Laboratory report"
-* $loinc#68604-8 "Radiology Diagnostic study note"
-* $loinc#18748-4 "Diagnostic imaging study"
+Usage: #example
+* experimental = false // also flags them as informative
+* status = #draft
+* version = "0.1.0"
+* name = "EEHRxFDocumentTypeVS"
+* url = "http://hl7.eu/fhir/ValueSet/eehrxf-document-type-vs"
+* title = "EEHRxF Document Type ValueSet"
+* description = """
+Document type codes for clinical precision in document identification.
+"""
+* compose.include[+].valueSet = "http://hl7.eu/fhir/ValueSet/eehrxf-document-type-discharge-report-vs"
+* compose.include[+].valueSet = "http://hl7.eu/fhir/ValueSet/eehrxf-document-type-laboratory-report-vs"
+* compose.include[+].valueSet = "http://hl7.eu/fhir/ValueSet/eehrxf-document-type-medical-imaging-vs"
+* compose.include[+].valueSet = "http://hl7.eu/fhir/ValueSet/eehrxf-document-type-patient-summary-vs"
 
+
+Instance: EehrxfMhdDocumentReferenceCM
+InstanceOf: ConceptMap
+Title: "EEHRxF MHD DocumentReference ConceptMap"
+Description: """
+mapping from the EHDS regulatory priority categories to the LOINC document category codes for clinical precision in document identification. 
+"""
+Usage: #example
+* url = "http://hl7.eu/fhir/ConceptMap/eehrxf-mhd-documentreference-cm"
+* name = "EehrxfMhdDocumentReferenceCM"
+* title = "EEHRxF MHD DocumentReference ConceptMap"
+* description = "mapping from the EHDS regulatory priority categories to the LOINC document category codes for clinical precision in document identification."
+* experimental = false
+* status = #draft
+* purpose = "Guide implementers in understanding how the coarse-grained priority categories defined in the EHDS regulation relate to specific document categories identified by LOINC codes, and it may evolve over time as clinical practice changes and new document categories become relevant for cross-border exchange."
+* group.source = Canonical(EEHRxFDocumentPriorityCategoryCS)
+* group.target = $loinc
+* group.element[+].code = #Patient-Summaries
+* group.element[=].target[+].code = #60591-5
+* group.element[=].target[=].display = "Patient summary Document"
+* group.element[=].target[=].equivalence = #specializes
+* group.element[+].code = #Discharge-Reports
+* group.element[=].target[+].code = #18842-5
+* group.element[=].target[=].display = "Discharge summary"
+* group.element[=].target[=].equivalence = #specializes
+* group.element[=].target[+].code = #100719-4
+* group.element[=].target[=].display = "Surgical oncology Discharge summary"
+* group.element[=].target[=].equivalence = #specializes
+* group.element[+].code = #Laboratory-Reports
+* group.element[=].target[+].code = #11502-2
+* group.element[=].target[=].display = "Laboratory report"
+* group.element[=].target[=].equivalence = #specializes
+* group.element[+].code = #Medical-Imaging
+* group.element[=].target[+].code = #85430-7
+* group.element[=].target[=].equivalence = #specializes
 
