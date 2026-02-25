@@ -120,6 +120,12 @@ Usage: #example
 * compose.include[+].system = "http://loinc.org"
 * compose.include[=].concept[+].code = #11502-2
 * compose.include[=].concept[=].display = "Laboratory report"
+// from https://hl7.eu/fhir/laboratory/StructureDefinition-Composition-eu-lab.html -- February 2026
+//* compose.include[+].valueSet = "http://hl7.eu/fhir/laboratory/ValueSet/lab-reportType-eu-lab"
+//* compose.include[+].valueSet = "http://hl7.eu/fhir/laboratory/ValueSet/lab-studyType-eu-lab"
+// hope that the above two valueSets are sufficient. Need expert to confirm.
+//* compose.include[+].valueSet = "http://hl7.eu/fhir/laboratory/ValueSet/lab-specialty-eu-lab"
+
 
 Instance: EEHRxFDocumentTypeMedicalImagingVS
 InstanceOf: ValueSet
@@ -138,26 +144,7 @@ Usage: #example
 * useContext[+].code = http://terminology.hl7.org/CodeSystem/usage-context-type#focus
 * useContext[=].valueCodeableConcept = EEHRxFDocumentPriorityCategoryCS#Medical-Imaging
 * compose.include[+].system = "http://loinc.org"
-* compose.include[=].concept[+].code = #68604-8
-* compose.include[=].concept[=].display = "Radiology Diagnostic study note"
-* compose.include[=].concept[+].code = #18748-4
-* compose.include[=].concept[=].display = "Diagnostic imaging study"
-* compose.include[=].concept[+].code = #103233-3
-* compose.include[=].concept[=].display = "XR Pelvis and Hip - right View AP and Views 2 or 3"
-* compose.include[=].concept[+].code = #103234-1
-* compose.include[=].concept[=].display = "XR Pelvis and Hip - right 2 or 3 Views"
-* compose.include[=].concept[+].code = #103235-8
-* compose.include[=].concept[=].display = "XR Pelvis and Hip - left 2 or 3 Views"
-* compose.include[=].concept[+].code = #103236-6
-* compose.include[=].concept[=].display = "XR Toes - right GE 2 Views"
-* compose.include[=].concept[+].code = #103237-4
-* compose.include[=].concept[=].display = "XR Toes - left GE 2 Views"
-* compose.include[=].concept[+].code = #103238-2
-* compose.include[=].concept[=].display = "XR Hip - right 2 or 3 Views"
-* compose.include[=].concept[+].code = #103239-0
-* compose.include[=].concept[=].display = "XR Humerus - right GE 2 Views"
-* compose.include[=].concept[+].code = #103240-8
-* compose.include[=].concept[=].display = "XR Humerus - left GE 2 Views"
+* compose.include[=].concept[+].code = #85430-7
 
 
 
@@ -222,34 +209,6 @@ Usage: #example
 * group.element[=].target[=].display = "Laboratory report"
 * group.element[=].target[=].equivalence = #specializes
 * group.element[+].code = #Medical-Imaging
-* group.element[=].target[+].code = #68604-8
-* group.element[=].target[=].display = "Radiology Diagnostic study note"
-* group.element[=].target[=].equivalence = #specializes
-* group.element[=].target[+].code = #18748-4
-* group.element[=].target[=].display = "Diagnostic imaging study"
-* group.element[=].target[=].equivalence = #specializes
-* group.element[=].target[+].code = #103233-3
-* group.element[=].target[=].display = "XR Pelvis and Hip - right View AP and Views 2 or 3"
-* group.element[=].target[=].equivalence = #specializes
-* group.element[=].target[+].code = #103234-1
-* group.element[=].target[=].display = "XR Pelvis and Hip - right 2 or 3 Views"
-* group.element[=].target[=].equivalence = #specializes
-* group.element[=].target[+].code = #103235-8
-* group.element[=].target[=].display = "XR Pelvis and Hip - left 2 or 3 Views"
-* group.element[=].target[=].equivalence = #specializes
-* group.element[=].target[+].code = #103236-6
-* group.element[=].target[=].display = "XR Toes - right GE 2 Views"
-* group.element[=].target[=].equivalence = #specializes
-* group.element[=].target[+].code = #103237-4
-* group.element[=].target[=].display = "XR Toes - left GE 2 Views"
-* group.element[=].target[=].equivalence = #specializes
-* group.element[=].target[+].code = #103238-2
-* group.element[=].target[=].display = "XR Hip - right 2 or 3 Views"
-* group.element[=].target[=].equivalence = #specializes
-* group.element[=].target[+].code = #103239-0
-* group.element[=].target[=].display = "XR Humerus - right GE 2 Views"
-* group.element[=].target[=].equivalence = #specializes
-* group.element[=].target[+].code = #103240-8
-* group.element[=].target[=].display = "XR Humerus - left GE 2 Views"
+* group.element[=].target[+].code = #85430-7
 * group.element[=].target[=].equivalence = #specializes
 
