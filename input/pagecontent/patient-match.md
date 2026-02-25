@@ -68,7 +68,7 @@ The request body contains a Parameters resource with demographic information. Th
 In order to support safe clinical patient matching both Provider and Consumer SHALL support the `onlyCertainMatches` parameter which SHALL be set to `true` to indicate that the Consumer would only like matches returned when they are certain to be matches for the subject of the request
 
 
-Be aware that the matching algorithm itself as well as the mechanism for determining the confidence of match vary by product and domaine of integration, and not specified in this transaction, see also [further details on IHE PDQm ITI-119](https://profiles.ihe.net/ITI/PDQm/ITI-119.html#231194224-quality-of-match).
+Be aware that the matching algorithm itself as well as the mechanism for determining the confidence of match vary by product and domain of integration, and not specified in this transaction, see also [further details on IHE PDQm ITI-119](https://profiles.ihe.net/ITI/PDQm/ITI-119.html#231194224-quality-of-match).
 
 ### Provider Requirements
 
