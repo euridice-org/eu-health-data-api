@@ -80,8 +80,6 @@ Matching algorithms are product and deployment-specific and may reflect national
 
 Providers are RECOMMENDED to implement the $match operation in addition to the patient search for scenarios where identifier is not available.
 
-> **Open Issue #2**: We are seeking input on this patient lookup approach. See [Patient Lookup Strategy](open-issues.html#issue-2-patient-lookup-strategy) for discussion.
-
 ### Authorization
 
 When grouped with IUA actors:
@@ -105,10 +103,11 @@ sequenceDiagram
 
 #### Option: Chained Identifier Search
 
-FHIR also supports querying clinical resources directly by patient identifier, avoiding a separate lookup step:
+FHIR also supports querying resources directly by patient identifier via chained search, avoiding a separate lookup step. This applies to both clinical resource queries and document searches (ITI-67):
 
 ```
 GET [base]/AllergyIntolerance?patient.identifier=[system]|[value]
+GET [base]/DocumentReference?patient.identifier=[system]|[value]&type=http://loinc.org|60591-5
 ```
 
 Chained search can be used to minimize round trips, for example with national aggregating gateways. The Access Provider must support chained search on `patient.identifier` for this to work.
