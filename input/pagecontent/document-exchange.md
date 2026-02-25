@@ -82,6 +82,8 @@ See [EEHRxFDocumentTypeVS](ValueSet-eehrxf-document-type-vs.html) for the comple
 
 The examples below show queries using both `category` (EHDS priority category) and `type` (LOINC document type). Either can be used depending on your use case.
 
+These examples assume the consumer has resolved the patient to a FHIR resource reference (e.g. `Patient/123`) via [Patient Matching](patient-match.html). As an alternative, consumers can search by patient identifier directly using [chained identifier search](patient-match.html#option-chained-identifier-search) (e.g. `patient.identifier=[system]|[value]`).
+
 ##### Patient Summary
 
 By type (LOINC):
@@ -177,7 +179,13 @@ Member states or local deployments MAY additionally support:
 - **[ITI-65 Provide Document Bundle](https://profiles.ihe.net/ITI/MHD/ITI-65.html)**: For XDS-centric ecosystems requiring explicit SubmissionSet metadata or multi-document submission.
 - **[ITI-106 Generate Metadata](https://profiles.ihe.net/ITI/MHD/ITI-106.html)**: For structured document publishers wanting server-generated DocumentReference.
 
-These are not required for EEHRxF conformance.
+These are not required for conformance to the actors within the scope of this implementation guide.
+
+#### Patient Identity in Document Publication
+
+This specification does not require a patient lookup step before publication — how the publisher obtains the patient identifier is up to the implementer. Per [MHD ITI-105 §Patient Identity](https://profiles.ihe.net/ITI/MHD/ITI-105.html#231054122-patient-identity):
+
+> A Patient Reference to a commonly accessible server may be obtained through use of PDQm, PIXm, PMIR, or by some other means. A commonly accessible logical reference using Patient Identifier, instead of a literal reference, may be acceptable where there is a common Identifier, such as a national individual identifier.
 
 ---
 

@@ -36,58 +36,6 @@ This is particularly complex for Medical Test Results and Imaging Results, which
 
 ---
 
-### Issue 2: Patient Lookup Strategy
-
-[GitHub Issue](https://github.com/euridice-org/eu-health-data-api/issues/12) | **Priority:** High
-
-How should patient lookup work in the European context? In most EU situations, we expect patient identifiers (MRN, national ID) to be available. Demographic-based matching is needed when identifiers are not available.
-
-**Current Approach**
-
-The IG inherits directly from [IHE PDQm](https://profiles.ihe.net/ITI/PDQm/) with two transaction options:
-
-1. **[ITI-78] Mobile Patient Demographics Query** (Required) - Patient search with `identifier` as a required parameter. This constrains the standard PDQm transaction to require identifier-based lookup, covering the majority of EU use cases.
-
-2. **[ITI-119] Patient Demographics Match** (Optional) - FHIR $match operation for fuzzy demographic matching when identifier is not available.
-
-This simplification removes the middle option of full demographics-based search (family + given + birthdate), which is not suitable for safe clinical patient matching.
-
-**Open Questions**
-
-- Should CapabilityStatement advertise which national ID systems are supported for lookup?
-- We should inherit Patient from EU Core. Does this change anything about the transaction definitions?
-
-**Seeking Input On**
-
-- Does the two-option approach (ITI-78 with identifier required + ITI-119 $match) cover European use cases?
-- Are there scenarios where identifier-based lookup is insufficient and $match is not appropriate?
-
----
-
-### Issue 3: MHD Publication Transaction Options
-
-[GitHub Issue](https://github.com/euridice-org/eu-health-data-api/issues/13) | **Status:** Resolved
-
-**Resolution:**
-
-Document publication uses [ITI-105 Simplified Publish](https://profiles.ihe.net/ITI/MHD/ITI-105.html) as the baseline.
-
-Key decisions:
-1. **ITI-105** is the supported publication mechanism (simpler, server handles complexity)
-2. Publication is NOT part of base Document Access Provider requirements
-3. **Document Submission Option** is available for Access Providers that accept external publication
-4. When Document Publisher and Document Access Provider are grouped, publication is internal
-
-This approach:
-- Reduces optionality (single publication transaction)
-- Avoids XDS SubmissionSet constructs
-- Aligns with FHIR-native servers
-- Moves complexity from client to server
-
-See [Actors - Document Submission Option](actors.html#document-submission-option) for conformance guidance.
-
----
-
 ### Issue 4: Resource Access and Inheritance
 
 [GitHub Issue](https://github.com/euridice-org/eu-health-data-api/issues/14) | **Priority:** Medium
@@ -128,54 +76,6 @@ Should servers declare which EHDS Priority Categories they support? How? Should 
 
 ---
 
-### Issue 6: Authorization Server Deployment
-
-[GitHub Issue](https://github.com/euridice-org/eu-health-data-api/issues/16) | **Status:** Resolved
-
-**Resolution:**
-
-The Authorization Server may be deployed internally (bundled with the EHR) or externally (at hospital, regional, or national level).
-
-Key decisions:
-1. **IUA Resource Server** is always required for Access Providers
-2. **IUA Authorization Server** is required only when authorization is handled internally
-3. When AS is external, the Resource Server is responsible for:
-   - Enabling discovery via `.well-known/smart-configuration` pointing to the external AS
-   - Validating tokens (local validation or introspection via IHE IUA ITI-102)
-
-The D5.1 requirement `api-provider-authProvideToken` applies only to EHR systems with internal Authorization Servers. This IG does not impose requirements on external authorization infrastructure.
-
-See [Authorization Server Deployment](authorization.html#authorization-server-deployment) for full details.
-
----
-
-### Issue 7: R4/R5 Harmonization
-
-[GitHub Issue](https://github.com/euridice-org/eu-health-data-api/issues/17) | **Priority:** Medium
-
-This IG targets FHIR R4, but some European specifications are R5-based. The EU Extensions package is R5, creating warnings in the R4 build. The HL7 Europe Imaging Study Manifest is also R5-based.
-
-**Seeking Input On**
-
-- How should we handle R5 dependencies in an R4 IG?
-
----
-
-### Issue 8: Imaging Manifest Coding
-
-[GitHub Issue](https://github.com/euridice-org/eu-health-data-api/issues/18) | **Priority:** Medium | **Status:** Resolved
-
-Imaging manifests (DICOM study references) are differentiated from other documents using formatCode + mimeType coding.
-
-**Resolution**
-
-The agreed approach uses:
-- `category` = `Medical-Imaging` ([EHDS Priority Category](CodeSystem-eehrxf-document-priority-category-cs.html)) for coarse classification
-- `format` = MADO-defined formatCode for specific manifest identification
-- `content.attachment.contentType` for technical format
-
-Imaging manifests cannot be reliably identified by category alone (Medical-Imaging includes both reports and manifests). The formatCode provides the needed specificity. See [Imaging Manifest](priority-area-imaging-manifest.html) for full details.
-
 ---
 
 ### Issue 9: Core Resource Set Validation
@@ -206,7 +106,7 @@ Medical Test Results
 
 Imaging Results
 - DiagnosticReport
-- ImagingStudy (note: R5 resource, linked to [Issue 7](#issue-7-r4r5-harmonization)
+- ImagingStudy
 
 Discharge Reports
 - Encounter
