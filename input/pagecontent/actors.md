@@ -174,5 +174,9 @@ sequenceDiagram
 {% include img.html img="ExGroup_Group.png" caption="Figure: Example Grouping - Group" %}
 </div>
 
+<div style="text-align: center;">
+{% include img.html img="ExGroup_DocAssembly.png" caption="Figure: Example Grouping - Document Assembly from Distributed Resources" %}
+</div>
+
 
 
