@@ -40,7 +40,7 @@ dependencies:
   ihe.iti.mhd: 4.2.x
   ihe.pcc.qedm: 3.0.x
   hl7.fhir.eu.laboratory: current
-  hl7.fhir.uv.ipa: 1.1.x
+# Removed: hl7.fhir.uv.ipa: 1.1.x - is not required but slows done processing
 # Removed: ihe.iti.pixm (Spencer S5 - not useful for this use case)
 # Removed: hl7.fhir.uv.bulkdata (bulk data out of scope v1)
 # Note: IUA is referenced conceptually but not as a package dependency
