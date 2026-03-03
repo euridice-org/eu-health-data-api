@@ -78,7 +78,6 @@ Usage: #example
 * compose.include[=].concept[+].code = #60591-5
 * compose.include[=].concept[=].display = "Patient summary Document"
 
-
 Instance: EEHRxFDocumentTypeDischargeReportVS
 InstanceOf: ValueSet
 Title: "EEHRxF Document Type ValueSet for Discharge Reports"
@@ -143,8 +142,20 @@ Usage: #example
 * description = "ValueSet for specific document types within the Medical Imaging priority category."
 * useContext[+].code = http://terminology.hl7.org/CodeSystem/usage-context-type#focus
 * useContext[=].valueCodeableConcept = EEHRxFDocumentPriorityCategoryCS#Medical-Imaging
-* compose.include[+].system = "http://loinc.org"
-* compose.include[=].concept[+].code = #85430-7
+* compose.include[+]
+  * system = $loinc
+  * concept[+]
+    * code   = #85430-7 
+    * display = "Diagnostic imaging report"
+* compose.include[+]
+  * system = $loinc
+  * concept[+]
+    * code   = #18748-4
+    * display = "Diagnostic imaging Study"
+
+
+
+
 
 
 
