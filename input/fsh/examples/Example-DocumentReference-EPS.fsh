@@ -12,14 +12,19 @@ This example demonstrates the recommended search strategy:
 - `category` = Patient-Summaries (EHDS priority category for coarse filtering)
 - `type` = 60591-5 (LOINC code for clinical precision)
 
-**Example query to find this document:**
+**Example query to find this document by priority category:**
 ```
 GET [base]/DocumentReference?patient=Patient/example-patient&category=https://euridice.ec.europa.eu/fhir/eehrxf/CodeSystem/eehrxf-document-priority-category-cs|Patient-Summaries
+```
+
+**Example query to find this document by type:**
+```
+GET [base]/DocumentReference?patient=Patient/example-patient&type=http://loinc.org|60591-5
 ```
 """
 Usage: #example
 
-* masterIdentifier.system = "urn:oid:1.2.3.4.5.6.7.8.9"
+* masterIdentifier.system = "urn:oid:2.999.3.4.5.6.7.8.9" // OID 2.999 is reserved for examples
 * masterIdentifier.value = "urn:uuid:7d5bb8ac-68ee-4926-85e7-b8aac8e1f09d"
 * status = #current
 
