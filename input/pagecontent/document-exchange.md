@@ -82,11 +82,11 @@ Given that the `DocumentReference.type` and `DocumentReference.category` are con
 
 We provide two methods to link between the priority category and clinical `type` codes:
 
-A set of ValueSet [`EEHRxFDocumentTypeVS`](ValueSet-EEHRxFDocumentTypeVS.html) includes all clinical `type` codes (LOINC) that are relevant to EHDS priority categories, with a `useContext` indicating the corresponding priority `category`.
-- `Patient-Summaries` codes are found in [EEHRxFDocumentTypePatientSummaryVS](ValueSet-EEHRxFDocumentTypePatientSummaryVS.html)
-- `Discharge-Reports` codes are found in [EEHRxFDocumentTypeDischargeReportVS](ValueSet-EEHRxFDocumentTypeDischargeReportVS.html)
-- `Laboratory-Reports` codes are found in [EEHRxFDocumentTypeLaboratoryReportVS](ValueSet-EEHRxFDocumentTypeLaboratoryReportVS.html)
-- `Medical-Imaging` codes are found in [EEHRxFDocumentTypeMedicalImagingVS](ValueSet-EEHRxFDocumentTypeMedicalImagingVS.html)
+A set of ValueSet [`EEHRxFDocumentTypeVS`](ValueSet-eehrxf-document-type-vs.html) includes all clinical `type` codes (LOINC) that are relevant to EHDS priority categories, with a `useContext` indicating the corresponding priority `category`.
+- `Patient-Summaries` codes are found in [EEHRxFDocumentTypePatientSummaryVS](ValueSet-eehrxf-document-type-patient-summary-vs.html)
+- `Discharge-Reports` codes are found in [EEHRxFDocumentTypeDischargeReportVS](ValueSet-eehrxf-document-type-discharge-report-vs.html)
+- `Laboratory-Reports` codes are found in [EEHRxFDocumentTypeLaboratoryReportVS](ValueSet-eehrxf-document-type-laboratory-report-vs.html)
+- `Medical-Imaging` codes are found in [EEHRxFDocumentTypeMedicalImagingVS](ValueSet-eehrxf-document-type-medical-imaging-vs.html)
 
 A ConceptMap [EehrxfMhdDocumentReferenceCM](ConceptMap-EehrxfMhdDocumentReferenceCM.html) maps the same set of clinical `type` codes to their corresponding priority `category`.
 
