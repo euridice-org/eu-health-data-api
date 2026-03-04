@@ -71,6 +71,8 @@ system/Condition.rs
 system/Observation.rs
 system/DiagnosticReport.rs
 system/MedicationRequest.rs
+system/MedicationDispense.rs
+system/MedicationStatement.rs
 system/Immunization.rs
 system/Encounter.rs
 ```

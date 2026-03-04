@@ -8,6 +8,7 @@ European countries, projects, initiatives, SDOs, and companies.
 | Project co-chair IHEeu |  Josh Priebe        | Epic/HL7 EU    |
 | Project co-chair HL7eu |  Bas van den Heuvel | Philips/IHE EU |
 | Contributor            |  John Moehrke       | IHE            |
+| Contributor            |  Andries Hamster    | Founda Health  |
 | Contributor            |  Andreas Klingler   | Siemens/ IHE Europe     |
 | Contributor            |  Vassil Peytchev    | Epic           |
 | Contributor            |  Katie Reynolds     | Epic           |
