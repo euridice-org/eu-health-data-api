@@ -67,21 +67,21 @@ ITI-68 retrieves the document from the URL specified in `DocumentReference.conte
 
 #### Document Search Strategy
 
-This IG follows the [IHE Document Sharing](https://profiles.ihe.net/ITI/HIE-Whitepaper/index.html) category/type distinction on DocumentReference. `type` carries specific document types (typically LOINC codes); `category` carries broad classification. This IG constrains `type` for document discovery but does not constrain `category` — how `category` is used is determined by content IGs and implementation needs.
+[IHE Document Sharing](https://profiles.ihe.net/ITI/HIE-Whitepaper/index.html) distinguishes `type` (specific document types, typically LOINC codes) from `category` (broad classification) on DocumentReference. This IG constrains `type` for document discovery but leaves `category` to content IGs and implementations.
 
 ##### EHDS Priority Categories and Type Codes
 
-The EHDS regulation defines six priority categories of electronic health data in [Article 14](https://eur-lex.europa.eu/eli/reg/2025/327/oj#d1e2289-1-1). This IG defines codes for these categories in [EEHRxFDocumentPriorityCategoryCS](CodeSystem-eehrxf-document-priority-category-cs.html) as informative vocabulary. These categories organize the LOINC `type` codes that consumers use to search for documents.
+[Article 14](https://eur-lex.europa.eu/eli/reg/2025/327/oj#d1e2289-1-1) of the EHDS regulation defines six priority categories of electronic health data. [EEHRxFDocumentPriorityCategoryCS](CodeSystem-eehrxf-document-priority-category-cs.html) provides informative codes for these categories, organizing them by the LOINC `type` codes consumers use for document search.
 
-For each priority category, a per-category ValueSet lists the known LOINC type codes:
+Each priority category has a ValueSet of known LOINC type codes:
 - `Patient-Summaries` → [EEHRxFDocumentTypePatientSummaryVS](ValueSet-eehrxf-document-type-patient-summary-vs.html)
 - `Discharge-Reports` → [EEHRxFDocumentTypeDischargeReportVS](ValueSet-eehrxf-document-type-discharge-report-vs.html)
 - `Laboratory-Reports` → [EEHRxFDocumentTypeLaboratoryReportVS](ValueSet-eehrxf-document-type-laboratory-report-vs.html)
 - `Medical-Imaging` → [EEHRxFDocumentTypeMedicalImagingVS](ValueSet-eehrxf-document-type-medical-imaging-vs.html)
 
-The aggregate [EEHRxFDocumentTypeVS](ValueSet-eehrxf-document-type-vs.html) combines all per-category type codes into a single ValueSet bound to `DocumentReference.type`. A [ConceptMap](ConceptMap-EehrxfMhdDocumentReferenceCM.html) provides the same priority-category-to-type mapping in machine-readable form.
+[EEHRxFDocumentTypeVS](ValueSet-eehrxf-document-type-vs.html) aggregates all per-category type codes into a single ValueSet bound to `DocumentReference.type`. A [ConceptMap](ConceptMap-EehrxfMhdDocumentReferenceCM.html) provides the same mapping in machine-readable form.
 
-`Electronic-Prescriptions` and `Electronic-Dispensations` are not document use-cases and have no associated type codes.
+`Electronic-Prescriptions` and `Electronic-Dispensations` fall outside the document exchange model and have no type codes.
 
 | priority category | type codes | relevant IGs |
 |-------------------|------------|--------------|
@@ -93,19 +93,17 @@ The aggregate [EEHRxFDocumentTypeVS](ValueSet-eehrxf-document-type-vs.html) comb
 
 <div markdown="1" class="stu-note">
 
-**This IG does not constrain `DocumentReference.category`.** The IHE Document Sharing model uses both `category` (coarse) and `type` (clinical precision) on DocumentReference. This IG constrains `type` with LOINC codes for document discovery but leaves `category` to content IGs and implementation needs.
+**This IG does not constrain `DocumentReference.category`.** The EHDS priority categories are a regulatory classification, not a search parameter. The per-category ValueSets and ConceptMap cross-reference priority categories to LOINC type codes for informational purposes only.
 
-The EHDS priority categories are a regulatory classification, not a search parameter. The per-category ValueSets and ConceptMap provide an informative cross-reference between priority categories and LOINC type codes. Implementer feedback is welcome on whether additional guidance on `category` usage should be defined in a future version.
+Implementers: should a future version define `category` usage guidance? Feedback is welcome.
 
 </div>
 
 #### Search Examples
 
-The examples below show queries using `type` (LOINC document type), as that is the most specific and reliable way to identify document types.
+Search by `type` (LOINC) for the most accurate results. To find the relevant `type` codes for a priority category, consult the per-category ValueSet or the ConceptMap. When multiple `type` codes apply, include all of them.
 
-Searching by `type` (LOINC) is recommended for most accurate results. For a given EHDS priority category, look to the valueSet associated with that priority category code, or look to the ConceptMap, to find the relevant `type` codes to use in the search. If more than one `type` code is relevant, include them all in the search to ensure you find all relevant documents.
-
-These examples assume the consumer has resolved the patient to a FHIR resource reference (e.g. `Patient/123`) via [Patient Matching](patient-match.html). As an alternative, consumers can search by patient identifier directly using [chained identifier search](patient-match.html#option-chained-identifier-search) (e.g. `patient.identifier=[system]|[value]`).
+These examples assume the consumer has resolved the patient to a FHIR reference (e.g., `Patient/123`) via [Patient Matching](patient-match.html). Alternatively, use [chained identifier search](patient-match.html#option-chained-identifier-search) (e.g., `patient.identifier=[system]|[value]`).
 
 ##### Patient Summary
 
