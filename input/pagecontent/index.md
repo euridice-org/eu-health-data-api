@@ -78,8 +78,10 @@ This API IG defines interoperability *behavior* - the transactions and exchange 
 | Patient Summary | [HL7 Europe Patient Summary](https://build.fhir.org/ig/hl7-eu/eps/) | [Document Exchange (MHD)](document-exchange.html) |
 | Medical Test Results | [HL7 Europe Laboratory Report](https://hl7.eu/fhir/laboratory) | [Document Exchange (MHD)](document-exchange.html) |
 | Hospital Discharge Report | [HL7 Europe Hospital Discharge Report](https://hl7.eu/fhir/hdr/) | [Document Exchange (MHD)](document-exchange.html) |
-| Medical Imaging | [HL7 Europe Imaging Study/Report](https://build.fhir.org/ig/hl7-eu/imaging-r5/) / [Imaging Manifest](https://build.fhir.org/ig/hl7-eu/imaging-manifest-r5/) | [Document Exchange (MHD)](document-exchange.html) |
+| Medical Imaging | [HL7 Europe Imaging Study/Report](https://build.fhir.org/ig/hl7-eu/imaging-r5/) / [Imaging Manifest](https://hl7.eu/fhir/imaging-manifest-r5/) | [Document Exchange (MHD)](document-exchange.html) |
 | ePrescription / eDispensation | [HL7 Europe MPD](https://hl7.eu/fhir/mpd) | [IHE MPD](https://profiles.ihe.net/PHARM/MPD/) |
+
+See the [HL7 Europe Implementation Guides registry](https://confluence.hl7.org/spaces/HEU/pages/358255737/Implementation+Guides) for the canonical list of Content IGs and their current publication URLs.
 
 ## Authors
 

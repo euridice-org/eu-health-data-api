@@ -1,5 +1,5 @@
 {% include variable-definitions.md %}
-This section defines the API requirements for EHR systems that provide diagnostic imaging reports conforming to the [EU Imaging Report IG](https://hl7.eu/fhir/imaging-r4).
+This section defines the API requirements for EHR systems that provide diagnostic imaging reports conforming to the [EU Imaging Report IG](https://build.fhir.org/ig/hl7-eu/imaging-r5/).
 
 ### Actors
 
