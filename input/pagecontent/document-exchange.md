@@ -93,9 +93,9 @@ Each priority category has a ValueSet of known LOINC type codes:
 
 <div markdown="1" class="stu-note">
 
-**This IG does not constrain `DocumentReference.category`.** The EHDS priority categories are a regulatory classification, not a search parameter. The per-category ValueSets and ConceptMap cross-reference priority categories to LOINC type codes for informational purposes only.
+**This IG does not constrain `DocumentReference.category`.** The EHDS priority categories are a regulatory classification, not a search parameter. The per-category ValueSets and ConceptMap cross-reference priority categories to LOINC type codes for informational purposes only — the [Content IGs](index.html#priority-categories) are the authoritative source of `type` codes for each priority category.
 
-Implementers: should a future version define `category` usage guidance? Feedback is welcome.
+Implementers: should a future version define `category` usage guidance? For example, do implementations use `category` to distinguish MHD DocumentReferences from other DocumentReference resources on the same endpoint, or for other local classification needs? Feedback is welcome.
 
 </div>
 
