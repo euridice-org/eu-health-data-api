@@ -248,8 +248,8 @@ indexes document metadata for queries by Document Consumers.
 * rest[=].resource[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
 * rest[=].resource[=].extension[=].valueCode = #SHALL
 * rest[=].resource[=].documentation = """
-Binary resources contain the actual document content for non-FHIR documents. They are
-served via ITI-68 Retrieve Document.
+Binary resources contain non-FHIR document content (e.g. DICOM KOS imaging manifests per IHE MADO).
+Served via ITI-68 Retrieve Document.
 """
 
 // ITI-68: Retrieve document content

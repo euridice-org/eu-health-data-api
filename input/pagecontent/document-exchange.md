@@ -49,10 +49,10 @@ sequenceDiagram
     Provider-->>Consumer: FHIR Document Bundle
     end
 
-    alt DICOM KOS (Imaging Manifest)
-    Note over Consumer,Provider: See IHE MADO
-    Consumer->>Provider: GET [attachment.url from DocumentReference]
-    Provider-->>Consumer: Binary (DICOM KOS)
+    alt Imaging Manifest (DICOM KOS)
+    Note over Consumer,Provider: See IHE MADO / Imaging Manifest
+    Consumer->>Provider: GET [attachment.url from KOS DocumentReference]
+    Provider-->>Consumer: DICOM KOS
     end
 ```
 
@@ -60,7 +60,7 @@ sequenceDiagram
 
 [ITI-68](https://profiles.ihe.net/ITI/MHD/ITI-68.html) retrieves the document from the URL in `DocumentReference.content.attachment.url`. Consumers identify the content using two DocumentReference elements:
 
-- **`type`** (LOINC code) — identifies the clinical document type and which [content IG](#ehds-priority-categories-and-type-codes) applies.
+- **`type`** (LOINC code) — identifies the clinical document type and which [content IG](priority-categories.html) applies.
 - **`attachment.contentType`** — identifies the technical format.
 
 Together, these tell the consumer what the retrieved document contains.
@@ -68,18 +68,18 @@ Together, these tell the consumer what the retrieved document contains.
 | Content Pattern | `attachment.contentType` | Retrieved Content | Example |
 |---|---|---|---|
 | FHIR Document | `application/fhir+json` or `application/fhir+xml` | FHIR Document Bundle (`Bundle.type = "document"`) | `/Bundle/[id]` |
-| Non-FHIR | `application/dicom`, etc. | Binary content | `/Binary/[id]` |
+| Non-FHIR | `application/dicom` | Binary content (DICOM KOS) | `/Binary/[id]` |
 {: .grid}
 
-Servers SHALL return content conforming to FHIR Document content profiles as a native FHIR Document Bundle, not wrapped in Binary. For non-FHIR content (e.g. DICOM KOS for [imaging manifests](priority-area-imaging-manifest.html)), standard MHD behavior applies.
+Servers SHALL return content conforming to FHIR Document content profiles as a native FHIR Document Bundle, not wrapped in Binary. For DICOM KOS imaging manifests ([IHE MADO](priority-area-imaging-manifest.html#ihe-mado)), standard MHD behavior applies.
 
 `attachment.url` is an opaque retrieval URL — its format is unconstrained. Servers host content at any endpoint they choose. The examples above (`/Bundle/[id]`, `/Binary/[id]`) illustrate common patterns, not requirements.
 
-Human-readable representations (e.g. PDF narrative) are part of the FHIR Document as defined by the relevant content IG — not exposed at metadata level as separate DocumentReferences. Each [content IG](#ehds-priority-categories-and-type-codes) specifies how its priority category handles narrative content.
+Human-readable representations (e.g. PDF narrative) are part of the FHIR Document as defined by the relevant [content IG](priority-categories.html) — not exposed at metadata level as separate DocumentReferences.
 
 #### Document Search Strategy
 
-[IHE Document Sharing](https://profiles.ihe.net/ITI/HIE-Whitepaper/index.html) distinguishes `type` (specific document types, typically LOINC codes) from `category` (broad classification) on DocumentReference. This IG constrains `type` for document discovery but leaves `category` to content IGs and implementations.
+[IHE Document Sharing](https://profiles.ihe.net/ITI/HIE-Whitepaper/index.html) distinguishes `type` (specific document types, typically LOINC codes) from `category` (broad classification) on DocumentReference. This IG constrains `type` for document discovery but leaves `category` to [content IGs](priority-categories.html) and implementations.
 
 ##### EHDS Priority Categories and Type Codes
 
@@ -133,10 +133,17 @@ GET [base]/DocumentReference?patient=Patient/123&type=http://loinc.org|11502-2&s
 
 ##### Imaging Reports and Manifests
 
-By type (LOINC - imaging reports only):
+By type (LOINC — imaging reports):
 ```
 GET [base]/DocumentReference?patient=Patient/123&type=http://loinc.org|85430-7&status=current
 ```
+
+By type (LOINC — imaging study manifests):
+```
+GET [base]/DocumentReference?patient=Patient/123&type=http://loinc.org|18748-4&status=current
+```
+
+> Imaging manifests may use the [dual-DocumentReference pattern](priority-area-imaging-manifest.html#dual-documentreference-pattern-mado): two DocumentReferences (FHIR and DICOM KOS) linked via `relatesTo.transforms`. Consumers select the representation they support based on `contentType`.
 
 ##### Hospital Discharge Reports
 
