@@ -46,24 +46,36 @@ sequenceDiagram
     rect rgb(240, 255, 240)
     Note over Consumer,Provider: Retrieve Document (ITI-68)
     Consumer->>Provider: GET [attachment.url from DocumentReference]
-    Provider-->>Consumer: Document content (FHIR Bundle or Binary)
+    Provider-->>Consumer: FHIR Document Bundle
+    end
+
+    alt DICOM KOS (Imaging Manifest)
+    Note over Consumer,Provider: See IHE MADO
+    Consumer->>Provider: GET [attachment.url from DocumentReference]
+    Provider-->>Consumer: Binary (DICOM KOS)
     end
 ```
 
 #### Document Content
 
-ITI-68 retrieves the document from the URL specified in `DocumentReference.content.attachment.url`. The URL format may depend on the document type:
+[ITI-68](https://profiles.ihe.net/ITI/MHD/ITI-68.html) retrieves the document from the URL in `DocumentReference.content.attachment.url`. Consumers identify the content using two DocumentReference elements:
 
-| Document Format | attachment.url | Content-Type |
-|-----------------|----------------|--------------|
-| FHIR Document (Patient Summary, etc.) | `/Bundle/[id]` | `application/fhir+json` or `application/fhir+xml` |
-| PDF and other non-FHIR | `/Binary/[id]` | `application/pdf`, etc. |
+- **`type`** (LOINC code) — identifies the clinical document type and which [content IG](#ehds-priority-categories-and-type-codes) applies.
+- **`attachment.contentType`** — identifies the technical format.
+
+Together, these tell the consumer what the retrieved document contains.
+
+| Content Pattern | `attachment.contentType` | Retrieved Content | Example |
+|---|---|---|---|
+| FHIR Document | `application/fhir+json` or `application/fhir+xml` | FHIR Document Bundle (`Bundle.type = "document"`) | `/Bundle/[id]` |
+| Non-FHIR | `application/dicom`, etc. | Binary content | `/Binary/[id]` |
 {: .grid}
 
+Servers SHALL return content conforming to FHIR Document content profiles as a native FHIR Document Bundle, not wrapped in Binary. For non-FHIR content (e.g. DICOM KOS for [imaging manifests](priority-area-imaging-manifest.html)), standard MHD behavior applies.
 
-[ITI-68](https://profiles.ihe.net/ITI/MHD/ITI-68.html) retrieves the document directly from the URL. FHIR Documents are returned as Bundle resources when `Accept: application/fhir+json` is specified.
+`attachment.url` is an opaque retrieval URL — its format is unconstrained. Servers host content at any endpoint they choose. The examples above (`/Bundle/[id]`, `/Binary/[id]`) illustrate common patterns, not requirements.
 
-> **Authorization Scope:** The required scope depends on the document format. For non-FHIR documents (PDF), use `system/Binary.read`. For FHIR Documents, use `system/Bundle.read`.
+Human-readable representations (e.g. PDF narrative) are part of the FHIR Document as defined by the relevant content IG — not exposed at metadata level as separate DocumentReferences. Each [content IG](#ehds-priority-categories-and-type-codes) specifies how its priority category handles narrative content.
 
 #### Document Search Strategy
 
@@ -167,11 +179,11 @@ Content-Type: application/fhir+json
 
 The server validates, extracts, and persists the document, returning the created DocumentReference with server-assigned IDs. See [IHE MHD ITI-105](https://profiles.ihe.net/ITI/MHD/ITI-105.html) for details.
 
-> **How ITI-105 handles document content:** Per [MHD ITI-105 Expected Actions](https://profiles.ihe.net/ITI/MHD/ITI-105.html), the Document Recipient extracts the document from `attachment.data` and persists it such that it is retrievable via `attachment.url`. This means consumers querying via ITI-67 receive DocumentReferences with URLs pointing to `/Bundle/[id]` (for FHIR Documents) or `/Binary/[id]` (for PDFs, DICOM), and ITI-68 retrieval returns the native document format—not base64.
+> **Document content:** Per MHD ITI-105, the server extracts the document from `attachment.data` and persists it so that consumers can retrieve it via `attachment.url`. This IG requires that servers SHALL return FHIR Documents as native FHIR Document Bundles — not wrapped in Binary. The `attachment.url` format is unconstrained; servers host documents at any endpoint they choose.
 
 #### Other Publication Transactions
 
-This IG specifies ITI-105 as the publication mechanism for Document Publishers submitting to external Access Providers. ITI-105 provides a single publication pattern that handles all EHDS content types (FHIR Documents, legacy PDFs, and DICOM manifests) while keeping publisher implementation simple—the Document Access Provider handles normalization on ingest, ensuring consumers always retrieve native document formats via ITI-67/ITI-68.
+This IG specifies ITI-105 as the publication mechanism for Document Publishers that submit to external Access Providers. ITI-105 gives publishers a single publication pattern for content conforming to EHDS priority category content profiles. The Document Access Provider handles persistence on ingest, so consumers retrieve documents in their native format via ITI-67/ITI-68.
 
 Member states or local deployments MAY additionally support:
 

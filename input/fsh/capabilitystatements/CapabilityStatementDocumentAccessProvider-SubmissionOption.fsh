@@ -97,6 +97,7 @@ The DocumentReference SHALL include:
 The server SHALL:
 - Validate against EEHRxF DocumentReference profile
 - Extract and persist the document
+- For FHIR Documents, ensure the content is retrievable as a native FHIR Document Bundle (not wrapped in Binary)
 - Assign server-generated IDs
 - Return 201 Created with the persisted DocumentReference
 """
