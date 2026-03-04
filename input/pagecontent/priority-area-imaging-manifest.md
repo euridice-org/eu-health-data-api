@@ -17,20 +17,39 @@ Imaging Manifests can be accessed via document exchange.
 For document-based access, use the [Document Exchange](document-exchange.html) transactions.
 
 The Imaging Manifest is differentiated via the following DocumentReference fields:
-- **category**: `Medical-Imaging` ([EHDS Priority Category](CodeSystem-eehrxf-document-priority-category-cs.html))
-- **type**: 19005-8
+- **type**: `18748-4` (Diagnostic imaging Study) — the LOINC code used for document search
+- **category**: Unconstrained by this IG. `Medical-Imaging` ([EHDS Priority Category](CodeSystem-eehrxf-document-priority-category-cs.html)) is an informative classification; see [Document Search Strategy](document-exchange.html#document-search-strategy).
 
-### Example Query
+### Dual-DocumentReference Pattern (MADO)
 
+The [EURIDICE MADO profile](https://hl7.eu/fhir/imaging-manifest-r4/) defines both a FHIR encoding and a DICOM KOS encoding for imaging manifests. When a system supports both representations, it publishes **two DocumentReference resources** linked via `relatesTo`:
+
+| DocumentReference | `contentType` | `type` (LOINC) | Content |
+|---|---|---|---|
+| FHIR Manifest | `application/fhir+json` | 18748-4 | FHIR ImagingStudy manifest |
+| DICOM KOS | `application/dicom` | 18748-4 | DICOM Key Object Selection |
+{: .grid}
+
+The two DocumentReferences are linked using `relatesTo.code` = **`transforms`** — each is a different technical representation of the same imaging study manifest. Document Consumers query by `type` and select the representation they can consume based on `contentType`.
+
+This pattern was chosen ([#50](https://github.com/euridice-org/eu-health-data-api/issues/50)) because it works across all Document Sharing transports (MHD, XDS, XCA) without requiring content negotiation at the server.
+
+See [Example: Imaging Study Manifest — FHIR](DocumentReference-ExampleDocumentReferenceImagingManifestFHIR.html) and [Example: Imaging Study Manifest — DICOM KOS](DocumentReference-ExampleDocumentReferenceImagingManifestKOS.html) for instances showing the dual pattern.
+
+### Example Queries
+
+Search for all imaging manifests (both representations):
 ```
-GET /DocumentReference?patient=123&category=http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs|Medical-Imaging&status=current
+GET [base]/DocumentReference?patient.identifier=http://example.org/national-id|123456789&type=http://loinc.org|18748-4&status=current
 ```
 
-> **Note:** Both imaging reports and imaging manifests use the `Medical-Imaging` category. To retrieve only manifests, filter by `type` or `formatCode`.
+Search for imaging reports:
+```
+GET [base]/DocumentReference?patient.identifier=http://example.org/national-id|123456789&type=http://loinc.org|85430-7&status=current
+```
 
-See [Example: Retrieve A European Patient Summary](example-patient-summary.html) for a complete workflow example (the pattern is similar, with different documentReference parameters).
-
+> **Note:** Both imaging reports and imaging manifests use the `Medical-Imaging` priority category. Use `type` to distinguish them: `85430-7` for reports, `18748-4` for manifests.
 
 ### IHE MADO
 
-DICOM Image access is in scope for EHDS and is covered by the EURIDICE MADO profile. It is supported by MHD-defined delivery of the imaging manifest, but the image access methods are handled within the MADO profile and not in this IG.
+DICOM image access is in scope for EHDS and is covered by the EURIDICE MADO profile. The imaging manifest (discovered via MHD) describes which studies and series are available; the actual image retrieval uses IHE RAD transactions (WADO-RS, etc.) defined within MADO and outside the scope of this IG.

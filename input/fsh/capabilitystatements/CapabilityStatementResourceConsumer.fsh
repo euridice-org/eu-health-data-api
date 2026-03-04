@@ -28,7 +28,8 @@ allows clients to implement targeted use cases without requiring support for all
 - Practitioner, Organization: Reference resolution
 - Condition, AllergyIntolerance: Patient safety data
 - Observation, DiagnosticReport: Clinical results
-- MedicationRequest, MedicationDispense: Medication data
+- MedicationRequest, MedicationDispense, MedicationStatement: Medication data
+- Immunization: Vaccination records
 - Encounter: Visit context
 
 Clients should check the server's CapabilityStatement to discover which resources are available.
@@ -86,6 +87,8 @@ Clients SHALL request scopes for the resources they need:
 - system/DiagnosticReport.read, system/DiagnosticReport.search (if DiagnosticReport needed)
 - system/MedicationRequest.read, system/MedicationRequest.search (if MedicationRequest needed)
 - system/MedicationDispense.read, system/MedicationDispense.search (if MedicationDispense needed)
+- system/Immunization.read, system/Immunization.search (if Immunization needed)
+- system/MedicationStatement.read, system/MedicationStatement.search (if MedicationStatement needed)
 - system/Encounter.read, system/Encounter.search (if Encounter needed)
 - system/Practitioner.read (if Practitioner needed)
 - system/Organization.read (if Organization needed)
@@ -472,6 +475,92 @@ Clients MAY omit this resource based on their needs.
 * rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
 * rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHOULD
 * rest[=].resource[=].searchParam[=].documentation = "When the medication was handed over"
+
+// ============================================================================
+// Immunization Resource - Vaccination Records (Optional)
+// ============================================================================
+* rest[=].resource[+].type = #Immunization
+* rest[=].resource[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].extension[=].valueCode = #SHOULD
+* rest[=].resource[=].documentation = """
+Immunization resources represent vaccination records.
+If supported, clients SHALL support search by patient.
+Clients MAY omit this resource based on their needs.
+"""
+
+* rest[=].resource[=].interaction[+].code = #read
+* rest[=].resource[=].interaction[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].interaction[=].extension[=].valueCode = #SHALL
+* rest[=].resource[=].interaction[=].documentation = "Read Immunization by logical ID"
+
+* rest[=].resource[=].interaction[+].code = #search-type
+* rest[=].resource[=].interaction[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].interaction[=].extension[=].valueCode = #SHALL
+* rest[=].resource[=].interaction[=].documentation = "Search for Immunization resources"
+
+* rest[=].resource[=].searchParam[+].name = "patient"
+* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/clinical-patient"
+* rest[=].resource[=].searchParam[=].type = #reference
+* rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHALL
+* rest[=].resource[=].searchParam[=].documentation = "The patient for the vaccination record (SHALL support)"
+
+* rest[=].resource[=].searchParam[+].name = "date"
+* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/clinical-date"
+* rest[=].resource[=].searchParam[=].type = #date
+* rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHOULD
+* rest[=].resource[=].searchParam[=].documentation = "Vaccination date"
+
+* rest[=].resource[=].searchParam[+].name = "status"
+* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/Immunization-status"
+* rest[=].resource[=].searchParam[=].type = #token
+* rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHOULD
+* rest[=].resource[=].searchParam[=].documentation = "Status of the immunization"
+
+// ============================================================================
+// MedicationStatement Resource - Medication Usage (Optional)
+// ============================================================================
+* rest[=].resource[+].type = #MedicationStatement
+* rest[=].resource[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].extension[=].valueCode = #SHOULD
+* rest[=].resource[=].documentation = """
+MedicationStatement resources represent a patient's medication usage, including
+self-reported medications. If supported, clients SHALL support search by patient.
+Clients MAY omit this resource based on their needs.
+"""
+
+* rest[=].resource[=].interaction[+].code = #read
+* rest[=].resource[=].interaction[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].interaction[=].extension[=].valueCode = #SHALL
+* rest[=].resource[=].interaction[=].documentation = "Read MedicationStatement by logical ID"
+
+* rest[=].resource[=].interaction[+].code = #search-type
+* rest[=].resource[=].interaction[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].interaction[=].extension[=].valueCode = #SHALL
+* rest[=].resource[=].interaction[=].documentation = "Search for MedicationStatement resources"
+
+* rest[=].resource[=].searchParam[+].name = "patient"
+* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/clinical-patient"
+* rest[=].resource[=].searchParam[=].type = #reference
+* rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHALL
+* rest[=].resource[=].searchParam[=].documentation = "The patient for the medication statement (SHALL support)"
+
+* rest[=].resource[=].searchParam[+].name = "status"
+* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/medications-status"
+* rest[=].resource[=].searchParam[=].type = #token
+* rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHOULD
+* rest[=].resource[=].searchParam[=].documentation = "Status of the medication statement"
+
+* rest[=].resource[=].searchParam[+].name = "effective"
+* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/MedicationStatement-effective"
+* rest[=].resource[=].searchParam[=].type = #date
+* rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHOULD
+* rest[=].resource[=].searchParam[=].documentation = "Date when patient was taking the medication"
 
 // ============================================================================
 // Encounter Resource - Patient Encounters (Optional)
