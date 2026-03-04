@@ -1,7 +1,7 @@
 {% include variable-definitions.md %}
 This section defines the API requirements for EHR systems that provide imaging study manifests (references to DICOM imaging studies).
 
-For detailed content profiles, see the [EU Imaging Study Manifest IG](https://hl7.eu/fhir/imaging-manifest-r4/).
+For detailed content profiles, see the [EU Imaging Study Manifest IG](https://hl7.eu/fhir/imaging-manifest-r5/).
 
 ### Actors
 
@@ -22,7 +22,7 @@ The Imaging Manifest is differentiated via the following DocumentReference field
 
 ### Dual-DocumentReference Pattern (MADO)
 
-The [EURIDICE MADO profile](https://hl7.eu/fhir/imaging-manifest-r4/) defines both a FHIR encoding and a DICOM KOS encoding for imaging manifests. When a system supports both representations, it publishes **two DocumentReference resources** linked via `relatesTo`:
+The [EURIDICE MADO profile](https://hl7.eu/fhir/imaging-manifest-r5/) defines both a FHIR encoding and a DICOM KOS encoding for imaging manifests. When a system supports both representations, it publishes **two DocumentReference resources** linked via `relatesTo`:
 
 | DocumentReference | `contentType` | `type` (LOINC) | Content |
 |---|---|---|---|
