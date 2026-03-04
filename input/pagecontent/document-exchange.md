@@ -78,10 +78,10 @@ Each priority category has a ValueSet of known LOINC type codes:
 - `Discharge-Reports` → [EEHRxFDocumentTypeDischargeReportVS](ValueSet-eehrxf-document-type-discharge-report-vs.html)
 - `Laboratory-Reports` → [EEHRxFDocumentTypeLaboratoryReportVS](ValueSet-eehrxf-document-type-laboratory-report-vs.html)
 - `Medical-Imaging` → [EEHRxFDocumentTypeMedicalImagingVS](ValueSet-eehrxf-document-type-medical-imaging-vs.html)
+`Electronic-Prescriptions` and `Electronic-Dispensations` fall outside the document exchange model and have no type codes.
 
 [EEHRxFDocumentTypeVS](ValueSet-eehrxf-document-type-vs.html) aggregates all per-category type codes into a single ValueSet bound to `DocumentReference.type`. A [ConceptMap](ConceptMap-EehrxfMhdDocumentReferenceCM.html) provides the same mapping in machine-readable form.
 
-`Electronic-Prescriptions` and `Electronic-Dispensations` fall outside the document exchange model and have no type codes.
 
 | priority category | type codes | relevant IGs |
 |-------------------|------------|--------------|
