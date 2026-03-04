@@ -1,5 +1,5 @@
 // =============================================================================
-// DocumentReference Category ValueSet (Coarse Search)
+// EHDS Priority Category CodeSystem
 // =============================================================================
 // EHDS Regulation defined priority document categories for cross-border primary use
 
@@ -38,15 +38,6 @@ Electronic health data that include significant clinical facts related to an ide
 * #Medical-Imaging "medical imaging studies and related imaging reports" "Electronic health data related to the use of or produced by technologies that are used to view the human body in order to prevent, diagnose, monitor or treat medical conditions."
 * #Laboratory-Reports "medical test results, including laboratory and other diagnostic results and related reports" "Electronic health data representing results of studies performed in particular through in vitro diagnostics such as clinical biochemistry, haematology, transfusion medicine, microbiology, immunology and others, and including, where relevant, reports supporting the interpretation of the results."
 * #Discharge-Reports "discharge reports" "Electronic health data related to a healthcare encounter or episode of care and including essential information about admission, treatment and discharge of a natural person."
-
-ValueSet:  EEHRxFDocumentPriorityCategoryVS
-Id:        eehrxf-document-priority-category-vs
-Title:     "EEHRxF Document Priority Category ValueSet"
-Description: """
-ValueSet for priority document categories in EEHRxF as the document categories as defined in the EHDS regulation. See [EEHRxFDocumentPriorityCategoryCS](CodeSystem-eehrxf-document-priority-category-cs.html) for the complete list and background.
-"""
-* ^experimental = false
-* codes from system EEHRxFDocumentPriorityCategoryCS
 
 
 // =============================================================================
