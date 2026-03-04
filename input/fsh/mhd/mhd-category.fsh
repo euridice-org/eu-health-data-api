@@ -133,7 +133,7 @@ Description: """
 mapping from the EHDS regulatory priority categories to the LOINC document category codes for clinical precision in document identification. 
 """
 Usage: #example
-* url = "http://hl7.eu/fhir/eu-health-data-api/ConceptMap/eehrxf-mhd-documentreference-cm"
+* url = "http://hl7.eu/fhir/eu-health-data-api/ConceptMap/EehrxfMhdDocumentReferenceCM"
 * name = "EehrxfMhdDocumentReferenceCM"
 * title = "EEHRxF MHD DocumentReference ConceptMap"
 * description = "mapping from the EHDS regulatory priority categories to the LOINC document category codes for clinical precision in document identification."
