@@ -14,4 +14,3 @@ This IG covers resource-based access to medication data via [Resource Access](re
 - MedicationDispense
 - MedicationStatement
 
-> **Open Issue #11**: This IG covers medication resource access (reading MedicationRequest, etc.), while prescription workflow orchestration is handled by IHE MPD. See [MPD Workflow vs MedicationRequest Resource Access](open-issues.html#issue-11-mpd-workflow-vs-medicationrequest-resource-access) for discussion on this scope boundary.

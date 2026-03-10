@@ -46,7 +46,7 @@ sequenceDiagram
     end
 ```
 
-*Note: This diagram assumes the Authorization Server is grouped with the Document Access Provider. See [Issue 6: Authorization Server Deployment](open-issues.html#issue-6-authorization-server-deployment) for discussion of alternative deployments.*
+*Note: This diagram assumes the Authorization Server is grouped with the Document Access Provider. See [Authorization Server Deployment](authorization.html#authorization-server-deployment) for discussion of alternative deployments.*
 
 ### Step-by-Step Flow
 

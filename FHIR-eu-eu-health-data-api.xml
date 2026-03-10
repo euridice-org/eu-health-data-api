@@ -26,7 +26,9 @@
 <artifact id="ActorDefinition/EEHRxF-ResourceConsumer-Actor" key="ActorDefinition-EEHRxF-ResourceConsumer-Actor" name="EEHRxF Resource Consumer"/>
 <artifact id="CapabilityStatement/EEHRxF-ResourceConsumer" key="CapabilityStatement-EEHRxF-ResourceConsumer" name="EEHRxF Resource Consumer CapabilityStatement"/>
 <artifact id="DocumentReference/ExampleDocumentReferenceEPS" key="DocumentReference-ExampleDocumentReferenceEPS" name="Example - European Patient Summary DocumentReference"/>
-<artifact id="StructureDefinition/SupportedIdentifier" key="StructureDefinition-SupportedIdentifier" name="Extension: SupportedIdentifier"/>
+<artifact id="DocumentReference/ExampleDocumentReferenceImagingManifestKOS" key="DocumentReference-ExampleDocumentReferenceImagingManifestKOS" name="Example - Imaging Study Manifest (DICOM KOS)"/>
+<artifact id="DocumentReference/ExampleDocumentReferenceImagingManifestFHIR" key="DocumentReference-ExampleDocumentReferenceImagingManifestFHIR" name="Example - Imaging Study Manifest (FHIR)"/>
+<artifact id="CapabilityStatement/EEHRxF-DocumentAccessProvider-Example" key="CapabilityStatement-EEHRxF-DocumentAccessProvider-Example" name="Example: Document Access Provider Supporting EPS and Laboratory"/>
 <page key="NA" name="(NA)"/>
 <page key="many" name="(many)"/>
 <page key="about" name="About"/>

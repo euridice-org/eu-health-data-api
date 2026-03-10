@@ -11,6 +11,12 @@ MSG_DEPRECATED
 # using pinning when multiple are available
 PIN_VERSION
 
+# MHD 4.2.x is the latest R4 version; 5.0.0 targets R5 which this IG does not use
+IG_DEPENDENCY_VERSION_WARNING_OLD
+
+# regulatoryAnchors references D8.1 section numbers, not FHIR conformance statements
+CONFORMANCE_STATEMENT_NOCONFWORD
+
 # useContext references draft priority category CodeSystem (expected — both are draft)
 INFORMATION: ValueSet/eehrxf-document-type-discharge-report-vs: ValueSet.useContext[0].value.ofType(CodeableConcept): Reference to draft CodeSystem http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs
 INFORMATION: ValueSet/eehrxf-document-type-laboratory-report-vs: ValueSet.useContext[0].value.ofType(CodeableConcept): Reference to draft CodeSystem http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs

@@ -35,12 +35,12 @@ license: CC0-1.0 # https://www.hl7.org/fhir/valueset-spdx-license.html
 # use cases, the value can be an object with keys for id, uri, and version.
 #
 dependencies:
-  hl7.fhir.eu.base: current
+  hl7.fhir.eu.base: 2.0.0-recon
   ihe.iti.pdqm: 3.2.x
   ihe.iti.mhd: 4.2.x
-  ihe.pcc.qedm: 3.0.x
-  hl7.fhir.eu.laboratory: current
   hl7.fhir.uv.ipa: 1.1.x
+# Removed: ihe.pcc.qedm (zero uncommented FSH references; QEDm demoted to secondary behind IPA; only narrative mentions remain)
+# Removed: hl7.fhir.eu.laboratory (zero FSH references; only markdown links to Lab IG as content profile)
 # Removed: ihe.iti.pixm (Spencer S5 - not useful for this use case)
 # Removed: hl7.fhir.uv.bulkdata (bulk data out of scope v1)
 # Note: IUA is referenced conceptually but not as a package dependency
@@ -235,8 +235,6 @@ parameters:
   #pin-canonicals: pin-all
   #pin-canonicals: pin-none
   pin-canonicals: pin-multiples
-  # GitHub issue tracker - used instead of Jira for this IG
-  feedback: https://github.com/euridice-org/eu-health-data-api/issues
 
 # ╭───────────────────────────Less Common Implementation Guide Properties──────────────────────────╮
 # │  Uncomment the properties below to configure additional properties on the ImplementationGuide  │

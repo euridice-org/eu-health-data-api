@@ -16,4 +16,3 @@ Individual FHIR Resources represent discrete pieces of health information (obser
 
 Resources can be extracted from documents, and documents can be generated from resources. This IG supports both patterns to accommodate different implementation architectures and use cases.
 
-> **Open Issue #10**: We are seeking input on when to use document exchange vs resource access. See [FHIR Documents vs Resources Guidance](open-issues.html#issue-10-fhir-documents-vs-resources-guidance) for discussion.

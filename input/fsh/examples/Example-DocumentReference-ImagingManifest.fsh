@@ -25,7 +25,7 @@ Usage: #example
 * status = #current
 
 // Category: EHDS Priority Category (informative)
-* category = EEHRxFDocumentPriorityCategoryCS#Medical-Imaging "medical imaging"
+* category = EEHRxFDocumentPriorityCategoryCS#Medical-Imaging "medical imaging studies and related imaging reports"
 
 // Type: LOINC code for imaging study manifest
 * type = $loinc#18748-4 "Diagnostic imaging study"
@@ -76,7 +76,7 @@ Usage: #example
 * status = #current
 
 // Category: EHDS Priority Category (informative)
-* category = EEHRxFDocumentPriorityCategoryCS#Medical-Imaging "medical imaging"
+* category = EEHRxFDocumentPriorityCategoryCS#Medical-Imaging "medical imaging studies and related imaging reports"
 
 // Type: LOINC code for imaging study manifest
 * type = $loinc#18748-4 "Diagnostic imaging study"

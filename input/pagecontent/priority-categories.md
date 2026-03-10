@@ -24,5 +24,5 @@ This API IG defines interoperability *behavior* - the transactions and exchange 
 
 For document search and differentiation by priority category, see [Document Exchange](document-exchange.html).
 
-**Note on MPD:** ePrescription/eDispensation uses workflow transactions defined by IHE MPD, not document exchange. See [Open Issue #11](open-issues.html#issue-11-mpd-workflow-vs-medicationrequest-resource-access).
+**Note on MPD:** ePrescription/eDispensation uses workflow transactions defined by [IHE MPD](https://profiles.ihe.net/PHARM/MPD/index.html), not document exchange.
 
