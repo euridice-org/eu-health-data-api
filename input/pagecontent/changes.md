@@ -1,4 +1,6 @@
-This page tracks significant changes to the EU Health Data API Implementation Guide. Target: wide review ballot opening March 9, 2026.
+This page tracks significant changes to the EU Health Data API Implementation Guide. Target: wide review ballot opening March 20, 2026.
+
+**March 4, 2026** — Document categorization: merged PR #65 (category-to-clinical-code ConceptMap). Category (`.category`) left unconstrained; `.type` with LOINC codes is the search parameter. Converted ValueSets to proper FSH, removed category binding and priority category ValueSet. Added STU note clarifying LOINC codes are informative and content IGs are authoritative. Content negotiation and imaging: merged PR #77 — clarified FHIR Document retrieval model (#75), added CapabilityStatement resources for Immunization and MedicationStatement (#63), implemented imaging dual-DocumentReference pattern for MADO content negotiation (#50), reworked document content table (#76), resolved PDF/presentedForm direction (#70, #71). Fixed imaging IG links (R4 → R5). Added HL7 EU Confluence registry link to index page. Added Andries to contributors. Added document exchange diagram.
 
 **February 25, 2026** — Patient lookup refinements: added design rationale, chained identifier search option, publication identity guidance. Clarified query examples (#12, #23, #67). Merged PR #69 (patient lookup clarifications from #68).
 
