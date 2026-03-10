@@ -20,7 +20,7 @@ Resource exchange is more complex than document publication, and in many cases h
 
 This IG aligns with:
 
-- [HL7 International Patient Access (IPA)](https://build.fhir.org/ig/HL7/fhir-ipa/) - Resource access patterns and CapabilityStatements
+- [HL7 International Patient Access (IPA)](https://hl7.org/fhir/uv/ipa/) - Resource access patterns and CapabilityStatements
 - [IHE QEDm](https://profiles.ihe.net/PCC/QEDm/) - Query Existing Data mobile, where compatible with IPA. QEDm has a goal of aligning with IPA.
   - [PCC-44](https://profiles.ihe.net/PCC/QEDm/PCC-44.html) - Mobile Query Existing Data transaction
 
@@ -47,7 +47,7 @@ sequenceDiagram
 
 ### Core Resources
 
-The following resources are available for read/search access. Data models inherit from [HL7 Europe Core](https://build.fhir.org/ig/hl7-eu/base/). Required search parameters are from [IPA](https://build.fhir.org/ig/HL7/fhir-ipa/).
+The following resources are available for read/search access. Data models inherit from [HL7 Europe Core](https://build.fhir.org/ig/hl7-eu/base/). Required search parameters are from [International Patient Access (IPA)](https://hl7.org/fhir/uv/ipa/).
 
 | Resource | Required Search Parameters |
 |----------|---------------------------|
@@ -106,7 +106,7 @@ The [IHE mXDE](https://profiles.ihe.net/ITI/mXDE/index.html) profile provides mo
 
 ### Supported Resources
 
-Following [IPA's approach](https://build.fhir.org/ig/HL7/fhir-ipa/CapabilityStatement-ipa-server.html), Resource Access Providers are **not required to support all clinical resources**. Servers MAY choose which resources to implement based on their capabilities, use cases, and the regulatory context.
+Following [International Patient Access (IPA)](https://hl7.org/fhir/uv/ipa/CapabilityStatement-ipa-server.html), Resource Access Providers are **not required to support all clinical resources**. Servers MAY choose which resources to implement based on their capabilities, use cases, and the regulatory context.
 
 Servers declare which resources they support in their CapabilityStatement. Clients MAY check the server's CapabilityStatement to discover available resources before making requests.
 
@@ -115,12 +115,12 @@ See the [Resource Access Provider CapabilityStatement](CapabilityStatement-EEHRx
 
 ### References
 
-- [HL7 International Patient Access (IPA)](https://build.fhir.org/ig/HL7/fhir-ipa/)
+- [HL7 International Patient Access (IPA)](https://hl7.org/fhir/uv/ipa/)
 - [IHE QEDm](https://profiles.ihe.net/PCC/QEDm/)
   - [PCC-44 Mobile Query Existing Data](https://profiles.ihe.net/PCC/QEDm/PCC-44.html)
 - [Actors and Transactions](actors.html)
 
-### IPA vs QEDm
+### International Patient Access vs QEDm
 
-This IG uses [IPA](https://build.fhir.org/ig/HL7/fhir-ipa/) as the primary reference for CapabilityStatements and search parameters. QEDm is referenced where compatible with IPA - and QEDm has a stated goal of aligning with IPA.
+This IG uses [International Patient Access (IPA)](https://hl7.org/fhir/uv/ipa/) as the primary reference for CapabilityStatements and search parameters. QEDm is referenced where compatible with International Patient Access - and QEDm has a stated goal of aligning with IPA.
 

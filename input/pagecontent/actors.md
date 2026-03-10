@@ -121,7 +121,7 @@ Resource exchange is more complex than document publication, and in many cases h
 
 
 
-These composite actors inherit existing actors from the IUA, PDQm, and IPA specifications (with QEDm alignment where compatible):
+These composite actors inherit existing actors from the IUA, PDQm, and [International Patient Access (IPA)](https://hl7.org/fhir/uv/ipa/) specifications (with QEDm alignment where compatible):
 
 <div style="text-align: center;">
 {% include img.html img="resExchange_2.png" caption="Figure: Resource Access - Actor Groupings" %}
@@ -133,7 +133,7 @@ These composite actors inherit existing actors from the IUA, PDQm, and IPA speci
 - [IUA Authorization Server](https://profiles.ihe.net/ITI/IUA/index.html#34112-authorization-server) - Required if authorization is handled internally; not required if using external authorization infrastructure. See [Authorization Server Deployment](authorization.html#authorization-server-deployment).
 - [PDQm Patient Demographics Supplier](https://profiles.ihe.net/ITI/PDQm/volume-1.html) ([CapabilityStatement](https://profiles.ihe.net/ITI/PDQm/CapabilityStatement-IHE.PDQm.PatientDemographicsSupplier.html))
 - Resource Access
-  - [HL7 International Patient Access Server](https://build.fhir.org/ig/HL7/fhir-ipa/index.html) ([CapabilityStatement](https://build.fhir.org/ig/HL7/fhir-ipa/CapabilityStatement-ipa-server.html))
+  - [HL7 International Patient Access Server](https://hl7.org/fhir/uv/ipa/) ([CapabilityStatement](https://hl7.org/fhir/uv/ipa/CapabilityStatement-ipa-server.html))
   - [QEDm Clinical Data Source](https://profiles.ihe.net/PCC/QEDm/volume-1.html#actors-and-transactions) ([CapabilityStatement](https://profiles.ihe.net/PCC/QEDm/CapabilityStatement-IHE.QEDm.Clinical-Data-Source.html)) - where compatible with IPA
 
 **Resource Consumer**
@@ -141,7 +141,7 @@ These composite actors inherit existing actors from the IUA, PDQm, and IPA speci
 - [IUA Authorization Client](https://profiles.ihe.net/ITI/IUA/index.html#34111-authorization-client)
 - [PDQm Patient Demographics Consumer](https://profiles.ihe.net/ITI/PDQm/volume-1.html) ([CapabilityStatement](https://profiles.ihe.net/ITI/PDQm/CapabilityStatement-IHE.PDQm.PatientDemographicsConsumerQuery.html))
 - Resource Access
-  - [HL7 International Patient Access Client](https://build.fhir.org/ig/HL7/fhir-ipa/index.html) ([CapabilityStatement](https://build.fhir.org/ig/HL7/fhir-ipa/CapabilityStatement-ipa-client.html))
+  - [HL7 International Patient Access Client](https://hl7.org/fhir/uv/ipa/) ([CapabilityStatement](https://hl7.org/fhir/uv/ipa/CapabilityStatement-ipa-client.html))
   - [QEDm Clinical Data Consumer](https://profiles.ihe.net/PCC/QEDm/volume-1.html#actors-and-transactions) ([CapabilityStatement](https://profiles.ihe.net/PCC/QEDm/CapabilityStatement-IHE.QEDm.Clinical-Data-Consumer.html)) - where compatible with IPA
 
 This leads to the following required transactions between these actors:

@@ -133,7 +133,7 @@ Scopes follow [SMART v2 conventions](https://build.fhir.org/ig/HL7/smart-app-lau
 - `system/Binary.read` - Read Binary
 - `system/Bundle.read` - Read Bundle (for FHIR Documents)
 
-#### Resource Consumer (IPA)
+#### Resource Consumer (International Patient Access)
 - `system/Patient.read` - Read Patient
 - `system/Patient.search` - Search Patient
 - Additional scopes per resource type: `system/Observation.read`, `system/Observation.search`, `system/Condition.read`, `system/Condition.search`, `system/DiagnosticReport.read`, `system/DiagnosticReport.search`, etc.
@@ -190,7 +190,7 @@ For example: this IG requires `private_key_jwt` client authentication (per SMART
 
 ### Potential Future Work: User-Level Authorization
 
-User-level authorization (including patient-mediated access) is out of scope for this version of the implementation Guide. For patient-mediated access patterns, readers are encouraged to consider [SMART on FHIR App Launch](https://build.fhir.org/ig/HL7/smart-app-launch/) and [International Patient Access](https://build.fhir.org/ig/HL7/fhir-ipa/). Implementors might consider UDAP for dynamic client registration (see [FHIR UDAP Security IG](https://build.fhir.org/ig/HL7/fhir-udap-security-ig/)).
+User-level authorization (including patient-mediated access) is out of scope for this version of the implementation Guide. For patient-mediated access patterns, readers are encouraged to consider [SMART on FHIR App Launch](https://build.fhir.org/ig/HL7/smart-app-launch/) and [International Patient Access](https://hl7.org/fhir/uv/ipa/). Implementors might consider UDAP for dynamic client registration (see [FHIR UDAP Security IG](https://build.fhir.org/ig/HL7/fhir-udap-security-ig/)).
 
 Integration with the EU Digital Identity Wallet and eIDAS framework may be addressed in future editions.
 

@@ -33,7 +33,7 @@ The intended audiences of this Implementation Guide are:
 - **[Authorization](authorization.html)** - SMART Backend Services (IUA actor model)
 - **[Patient Matching](patient-match.html)** - PDQm Patient Demographics Query
 - **[Document Exchange](document-exchange.html)** - MHD transactions (ITI-67, ITI-68, ITI-105)
-- **[Resource Access](resource-access.html)** - IPA resource query patterns
+- **[Resource Access](resource-access.html)** - International Patient Access (IPA) resource query patterns
 
 ### Approach
 
@@ -43,7 +43,7 @@ We define exchange patterns by inheriting and defining transactions, system acto
 - [HL7 SMART App Launch - Backend Services](https://build.fhir.org/ig/HL7/smart-app-launch/backend-services.html) - Defines authorization in FHIR. We use the SMART Backend Services profile for system-system authorization, including the FHIR scopes defined in this specification.
 - [IHE IUA](https://profiles.ihe.net/ITI/IUA/index.html) - Defines authorization and access control actors and mechanisms. Aligned with SMART. We use the actors and transactions model from this specification.
 - [IHE PDQm](https://profiles.ihe.net/ITI/PDQm/index.html) - Defines how a client can perform patient lookup against a server.
-- [HL7 International Patient Access (IPA)](https://build.fhir.org/ig/HL7/fhir-ipa/) - Defines how an application can access FHIR information using SMART authorization and resource access. IPA is the primary reference for resource access.
+- [HL7 International Patient Access (IPA)](https://hl7.org/fhir/uv/ipa/) - Defines how an application accesses patient information using SMART authorization and resource query. International Patient Access is the primary reference for resource access patterns in this IG.
 - [IHE QEDm](https://profiles.ihe.net/PCC/QEDm/index.html) - Defines how a client can query for existing FHIR resources from a FHIR server. Referenced where compatible with IPA.
 
 We define composite actors that inherit and combine actors defined in these existing specifications. See [Actors and Transactions](actors.html) for detailed actor definitions, transactions, and actor grouping.
