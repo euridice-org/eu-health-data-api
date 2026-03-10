@@ -107,6 +107,8 @@ Required scopes to accept:
 * rest[=].resource[+].type = #DocumentReference
 * rest[=].resource[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
 * rest[=].resource[=].extension[=].valueCode = #SHALL
+* rest[=].resource[=].supportedProfile[+] = Canonical(EehrxfMhdDocumentReference)
+* rest[=].resource[=].supportedProfile[+] = "https://profiles.ihe.net/ITI/MHD/StructureDefinition/IHE.MHD.Minimal.DocumentReference"
 * rest[=].resource[=].documentation = """
 DocumentReference resources are served via ITI-67 Find Document References.
 Document creation is internal; no external create operation is supported.
@@ -226,6 +228,7 @@ operation is supported.
 * rest[=].resource[+].type = #Patient
 * rest[=].resource[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
 * rest[=].resource[=].extension[=].valueCode = #SHALL
+* rest[=].resource[=].supportedProfile = "http://hl7.eu/fhir/base/StructureDefinition/patient-eu-core"
 * rest[=].resource[=].documentation = """
 Patient resources support patient context lookup per PDQm [ITI-78]. The identifier
 search parameter is required; additional demographics parameters are optional.

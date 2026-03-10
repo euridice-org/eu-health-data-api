@@ -102,8 +102,10 @@ The server SHALL:
 - Return 201 Created with the persisted DocumentReference
 """
 
-// Supported profiles - MHD Minimal DocumentReference
-* rest[=].resource[=].supportedProfile = "https://profiles.ihe.net/ITI/MHD/StructureDefinition/IHE.MHD.Minimal.DocumentReference"
+// Supported profiles - EEHRxF DocumentReference, MHD SimplifiedPublish (requires .data), and MHD Minimal
+* rest[=].resource[=].supportedProfile[+] = Canonical(EehrxfMhdDocumentReference)
+* rest[=].resource[=].supportedProfile[+] = "https://profiles.ihe.net/ITI/MHD/StructureDefinition/IHE.MHD.SimplifiedPublish.DocumentReference"
+* rest[=].resource[=].supportedProfile[+] = "https://profiles.ihe.net/ITI/MHD/StructureDefinition/IHE.MHD.Minimal.DocumentReference"
 
 // Operation outcome for validation errors
 * rest[=].resource[=].operation[+].name = "validate"

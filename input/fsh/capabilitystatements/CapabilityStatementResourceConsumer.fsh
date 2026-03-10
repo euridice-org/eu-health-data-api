@@ -100,6 +100,7 @@ Clients SHALL request scopes for the resources they need:
 * rest[=].resource[+].type = #Patient
 * rest[=].resource[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
 * rest[=].resource[=].extension[=].valueCode = #SHALL
+* rest[=].resource[=].supportedProfile = "http://hl7.eu/fhir/base/StructureDefinition/patient-eu-core"
 * rest[=].resource[=].documentation = """
 Patient resources are queried for patient lookup per PDQm [ITI-78] with identifier
 as a required search parameter. Note: Patient is used for lookup context, not as
