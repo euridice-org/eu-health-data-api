@@ -16,3 +16,12 @@ Individual FHIR Resources represent discrete pieces of health information (obser
 
 Resources can be extracted from documents, and documents can be generated from resources. This IG supports both patterns to accommodate different implementation architectures and use cases.
 
+### Exchange Patterns
+
+The choice of exchange pattern follows from the priority category:
+
+- **[Document exchange](document-exchange.html)** for priority categories structured as FHIR Documents (Patient Summary, Discharge Report, Laboratory Report, Imaging).
+- **[Resource access](resource-access.html)** for individual clinical resources under scoped conformance (allergies, conditions, immunizations, medications, observations).
+
+See [Priority Categories](priority-categories.html) for the full mapping.
+

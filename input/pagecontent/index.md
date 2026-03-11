@@ -1,12 +1,6 @@
 {% include fsh-link-references.md %}
 {% include variable-definitions.md %}
 
-<div markdown="1" class="stu-note">
-
-**This IG is under active development.** Feedback and issues are tracked on [GitHub Issues](https://github.com/euridice-org/eu-health-data-api/issues). Please join our [weekly meetings](https://confluence.hl7.org/spaces/HEU/pages/345086021/EU+Health+Data+API+Edition+1) to participate in this development.
-
-</div>
-
 ### Regulatory Basis and Scope
 
 The European Health Data Space (EHDS) regulation describes an obligation for EHR systems to include an Interoperability Component that does the following:

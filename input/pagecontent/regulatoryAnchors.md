@@ -144,4 +144,74 @@ These requirements apply regardless of which pathway is used to provide or recei
 
 ---
 
+### Xt-EHR Deliverable 8.1: Data Model and Conformance Framework
+
+The preceding sections describe how this IG implements D5.1's exchange requirements. This section describes the relationship to D8.1, which defines the data model and conformance framework for the content that flows through those exchanges.
+
+D8.1 defines what conformant health data looks like: the fields a Patient Summary must contain, the obligations on systems that create or consume that data, and the scope of conformance a system can claim. This IG implements D5.1's exchange requirements as FHIR actors and transactions. The Content IGs implement D8.1's data requirements as FHIR profiles. Together, they provide a complete interoperability specification.
+
+> Note: D8.1 is an in-progress Xt-EHR deliverable, not yet publicly released. This section summarizes the concepts this IG builds upon.
+
+```mermaid
+graph LR
+    subgraph exchange["<b>EXCHANGE</b> — this IG"]
+        direction TB
+        doc["<b>FHIR Document Exchange</b><br/>MHD: ITI-67 find, ITI-68 retrieve"]
+        res["<b>Resource Exchange</b><br/>IPA: FHIR search + read"]
+    end
+
+    subgraph content["<b>CONTENT</b> — Content IGs"]
+        direction TB
+        priority["<b>Priority Category IGs</b><br/>PS, HDR, Lab, Imaging<br/><i>D8.1 Priority Interop Profiles</i>"]
+        resource["<b>EU Core + Category IGs</b><br/>Allergy, Condition, Immunization, ...<br/><i>D8.1 Resource Interop Profiles</i>"]
+        logical["<b>Xt-EHR Logical Models</b><br/>WP6 / WP7"]
+        priority --> logical
+        resource --> logical
+    end
+
+    doc --> priority
+    res --> resource
+
+    style exchange fill:#e8f4fd,stroke:#4a86c8,stroke-width:2px,color:#333
+    style content fill:#e8f5e9,stroke:#4a8c5c,stroke-width:2px,color:#333
+    style doc fill:#fff,stroke:#4a86c8,stroke-width:1px
+    style res fill:#fff,stroke:#4a86c8,stroke-width:1px
+    style priority fill:#fff,stroke:#4a8c5c,stroke-width:1px
+    style resource fill:#fff,stroke:#4a8c5c,stroke-width:1px
+    style logical fill:#f5f5f5,stroke:#999,stroke-width:1px
+```
+
+*Figure: This IG defines exchange patterns (left); Content IGs define data profiles (right). Both trace to Xt-EHR logical models. An implementable EHR system combines both.*
+
+#### Two Conformance Paths
+
+D8.1 defines two types of Interoperability Profile that a system can claim conformance to:
+
+**Priority Interoperability Profiles** apply to systems that produce or consume a complete priority dataset — a Patient Summary, a Discharge Report, a Laboratory Report, an Imaging Report, an ePrescription, or an eDispensation. Patient Summary, Discharge Report, Laboratory Report, and Imaging Report are structured as FHIR Documents.
+
+**Resource Interoperability Profiles** apply to systems that support individual clinical resources — allergies, conditions, immunizations, medications, observations, and others — without producing or consuming complete priority datasets. D8.1 calls this *scoped conformance*: a system is assessed only for the resources it claims to support.
+
+These are separate conformance paths. A vaccination registry that serves Immunization resources claims conformance to the Immunization Resource Interoperability Profile. A hospital EHR that produces full Patient Summaries claims conformance to the Patient Summary Priority Interoperability Profile. Both are valid under D8.1.
+
+#### Data Requirements vs Exchange Requirements
+
+D8.1 defines data structure and obligations. It does not define exchange mechanisms. D8.1's Producer and Consumer roles describe content creation and consumption: a Producer can populate conformant data; a Consumer can process received data. These obligations are fulfilled by the Content IGs.
+
+The exchange mechanisms — how conformant data moves between systems via APIs — are D5.1's domain, implemented by this IG. This IG maps each D8.1 conformance path to an exchange pattern:
+
+| D8.1 Conformance Path | Exchange Pattern | This IG's Actors |
+|---|---|---|
+| Priority Interoperability Profile (FHIR Document) | [FHIR Document Exchange](document-exchange.html) (MHD) | [Document Access Provider](actors.html#document-access-provider) ↔ [Document Consumer](actors.html#document-consumer) |
+| Resource Interoperability Profile | [Resource Exchange](resource-access.html) (IPA) | [Resource Access Provider](actors.html#resource-access-provider) ↔ [Resource Consumer](actors.html#resource-consumer) |
+
+Neither D5.1 nor D8.1 states which exchange pattern serves which profile type. This IG fills that gap. See [Priority Categories](priority-categories.html) for the complete mapping from each priority category to its data specification and exchange pattern.
+
+For medication data, this IG covers reading MedicationRequest and MedicationStatement as individual resources via resource exchange. The ePrescription and eDispensation workflow transactions (prescribing, dispensing) are out of scope and handled by [IHE MPD](https://profiles.ihe.net/PHARM/MPD/index.html).
+
+#### D8.1 Profile Dependencies
+
+D8.1 specifies that when a Priority Interoperability Profile references another profile (e.g., a Patient Summary references the EHDS Patient profile), the referenced profile's data obligations also apply. This is a data model requirement: the Patient resource inside a Patient Summary must conform to the EHDS Patient profile. It does not by itself mandate independent resource-level exchange for that resource. Data model conformance is the Content IGs' domain; exchange is this IG's domain, based on the system's declared conformance path.
+
+---
+
 

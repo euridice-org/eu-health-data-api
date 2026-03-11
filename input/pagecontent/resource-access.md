@@ -1,6 +1,12 @@
 ### Overview
 
-FHIR resource query for direct access to clinical data. This capability is **optional** - not all implementations support resource access.
+Resource access provides query and read access to individual clinical FHIR resources. This is a parallel path to [FHIR Document Exchange](document-exchange.html).
+
+A vaccination registry that serves Immunization resources, or a medication system that serves MedicationStatement resources, uses resource access without necessarily producing complete priority documents. Systems declare which resources they support.
+
+Resource access for resources that also appear within FHIR Documents (e.g., Conditions referenced in a Patient Summary) is permitted but not required.
+
+Data models for resource access inherit from [HL7 Europe Core](https://build.fhir.org/ig/hl7-eu/base/). This path corresponds to [Resource Interoperability Profiles](regulatoryAnchors.html#xt-ehr-deliverable-81-data-model-and-conformance-framework) in the Xt-EHR D8.1 conformance framework, aligned with the Xt-EHR Logical Models.
 
 ### Actors
 
@@ -8,6 +14,12 @@ FHIR resource query for direct access to clinical data. This capability is **opt
 - **Resource Consumer** (client): Queries resources
 
 See [Actors and Transactions](actors.html) for detailed actor groupings.
+
+<div markdown="1" class="stu-note">
+
+This IG covers a core subset of resources: AllergyIntolerance, Condition, DiagnosticReport, Encounter, Immunization, MedicationDispense, MedicationRequest, MedicationStatement, and Observation. Ballot feedback is requested on whether this set is appropriate. See [Open Issue #9](open-issues.html#issue-9-core-resource-set-validation).
+
+</div>
 
 <details>
 <summary><i>Note: What about Resource Producer? Click for more</i></summary>

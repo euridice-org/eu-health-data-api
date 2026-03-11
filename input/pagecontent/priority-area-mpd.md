@@ -3,14 +3,11 @@ This section defines the API consideration for ePrescription and eDispensation e
 
 The content is defined by the {{hl7EuMpd}} profile.
 
-### Exchange Pattern
+### Resource Access (this IG)
 
-ePrescription/eDispensation uses workflow transactions defined by {{iheMPD}}, not document exchange. This differs from other priority categories.
+Reading medication data as individual resources — MedicationRequest, MedicationDispense, MedicationStatement — is [resource access](resource-access.html), handled by this IG. This covers queries like "what medications is this patient taking?"
 
-### Resource Access
+### ePrescription/eDispensation Workflow (out of scope)
 
-This IG covers resource-based access to medication data via [Resource Access](resource-access.html):
-- MedicationRequest
-- MedicationDispense
-- MedicationStatement
+The ePrescription and eDispensation workflow transactions (prescribing, dispensing) are out of scope for this IG. These are coordinated multi-step transactions defined by {{iheMPD}}.
 
