@@ -34,6 +34,16 @@ The two DocumentReferences are linked using `relatesTo.code` = **`transforms`** 
 
 This pattern was chosen ([#50](https://github.com/euridice-org/eu-health-data-api/issues/50)) because it works across all Document Sharing transports (MHD, XDS, XCA) without requiring content negotiation at the server.
 
+<div markdown="1" class="stu-note">
+
+**Feedback requested on the dual-DocumentReference pattern.** The [MADO profile](https://euridice.org/mado/) dual-encodes imaging manifests in both FHIR and DICOM representations. This IG uses two DocumentReferences linked via `relatesTo.transforms` so that consumers can select the encoding they support based on `contentType`. This pattern was chosen for compatibility with document sharing infrastructures (MHD, XDS, XCA), where each document entry carries exactly one format.
+
+An alternative approach — a single DocumentReference with multiple `content` entries — has been discussed in the working group.
+
+Implementers: does the dual-DocumentReference pattern work for your imaging infrastructure and content negotiation needs? Would a single-DocumentReference model be preferable? Feedback is welcome via [Issue #50](https://github.com/euridice-org/eu-health-data-api/issues/50).
+
+</div>
+
 See [Example: Imaging Study Manifest — FHIR](DocumentReference-ExampleDocumentReferenceImagingManifestFHIR.html) and [Example: Imaging Study Manifest — DICOM KOS](DocumentReference-ExampleDocumentReferenceImagingManifestKOS.html) for instances showing the dual pattern.
 
 ### Example Queries

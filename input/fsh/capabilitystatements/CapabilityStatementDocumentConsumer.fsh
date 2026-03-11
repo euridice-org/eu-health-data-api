@@ -33,7 +33,7 @@ Systems SHALL support SMART Backend Services authorization for all transactions.
 * title = "EEHRxF Document Consumer CapabilityStatement"
 * status = #active
 * experimental = false
-* date = "2026-01-14"
+* date = "2026-01-26"
 * publisher = "HL7 Europe"
 * kind = #requirements
 * fhirVersion = #4.0.1

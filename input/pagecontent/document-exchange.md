@@ -105,9 +105,11 @@ Each priority category has a ValueSet of known LOINC type codes:
 
 <div markdown="1" class="stu-note">
 
-**This IG does not constrain `DocumentReference.category`.** The EHDS priority categories are a regulatory classification, not a search parameter. The per-category ValueSets and ConceptMap cross-reference priority categories to LOINC type codes for informational purposes only — the [Content IGs](index.html#priority-categories) are the authoritative source of `type` codes for each priority category.
+**Feedback requested on `category` and document differentiation in search.** This IG uses `DocumentReference.type` with LOINC codes as the primary search parameter for distinguishing priority categories. The use of `.category` is left to the needs of the implementation.
 
-Implementers: should a future version define `category` usage guidance? For example, do implementations use `category` to distinguish MHD DocumentReferences from other DocumentReference resources on the same endpoint, or for other local classification needs? Feedback is welcome.
+The EHDS priority categories (Patient Summary, Laboratory Report, etc.) are regulatory groupings that no established code system defines today. A coarse-grained search parameter grouping documents by regulatory category — independent of their specific LOINC type — would simplify consumer logic, especially as type code sets evolve.
+
+Implementers: Does your system use or plan to use `category` for document classification? Would constraining `category` to the EHDS priority categories improve your search workflows, or conflict with existing local classification schemes?
 
 </div>
 
