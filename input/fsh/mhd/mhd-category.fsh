@@ -150,5 +150,9 @@ Usage: #example
 * group.element[=].target[=].equivalence = #specializes
 * group.element[+].code = #Medical-Imaging
 * group.element[=].target[+].code = #85430-7
+* group.element[=].target[=].display = "Diagnostic imaging report"
+* group.element[=].target[=].equivalence = #specializes
+* group.element[=].target[+].code = #18748-4
+* group.element[=].target[=].display = "Diagnostic imaging study"
 * group.element[=].target[=].equivalence = #specializes
 

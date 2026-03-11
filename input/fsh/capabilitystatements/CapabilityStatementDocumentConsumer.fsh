@@ -60,6 +60,7 @@ Systems SHALL:
 Required scopes:
 - system/DocumentReference.read, system/DocumentReference.search (read and search DocumentReference - ITI-67)
 - system/Binary.read (read Binary for document retrieval - ITI-68)
+- system/Bundle.read (read Bundle for FHIR Document retrieval - ITI-68)
 - system/Patient.read, system/Patient.search (read and search Patient for context - ITI-78)
 """
 

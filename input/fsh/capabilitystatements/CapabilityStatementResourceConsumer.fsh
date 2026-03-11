@@ -1,5 +1,5 @@
-// CapabilityStatement for EEHRxF Resource Consumer Actor (QEDm/IPA client)
-// Based on IPA Client and IHE QEDm Clinical Data Consumer with SMART Backend Services security
+// CapabilityStatement for EEHRxF Resource Consumer Actor (IPA/QEDm client)
+// Based on IPA Client (primary) and IHE QEDm Clinical Data Consumer with SMART Backend Services security
 
 Instance: EEHRxF-ResourceConsumer
 InstanceOf: CapabilityStatement

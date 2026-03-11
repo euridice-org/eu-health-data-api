@@ -8,7 +8,7 @@ The European Patient Summary document can be accessed via document exchange
 | Actor | Description | CapabilityStatement |
 |-------|-------------|---------------------|
 | Document Consumer | Retrieves EPS documents | [EEHRxF Document Consumer](CapabilityStatement-EEHRxF-DocumentConsumer.html) |
-| Document Access Provider | Serves EPS documents | [EEHRxF Document Responder](CapabilityStatement-EEHRxF-DocumentAccessProvider.html) |
+| Document Access Provider | Serves EPS documents | [EEHRxF Document Access Provider](CapabilityStatement-EEHRxF-DocumentAccessProvider.html) |
 
 ### Document Exchange
 

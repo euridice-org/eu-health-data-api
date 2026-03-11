@@ -24,7 +24,7 @@ Exchange of FHIR Documents (Patient Summaries, Lab Reports, Discharge Reports, e
 
 #### Resource Access
 
-Query individual FHIR resources (Observations, Conditions, Medications, etc.) using QEDm/IPA patterns. See [Resource Access](resource-access.html).
+Query individual FHIR resources (Observations, Conditions, Medications, etc.) using IPA/QEDm patterns. See [Resource Access](resource-access.html).
 
 ### Relationship Between Functional Areas
 

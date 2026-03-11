@@ -91,9 +91,9 @@ InstanceOf: ActorDefinition
 Title: "EEHRxF Resource Access Provider"
 Usage: #definition
 Description: """
-The Resource Access Provider actor provides access to FHIR resources following IPA and
-QEDm patterns. This enables direct resource access complementing document-based exchange.
-This composite actor groups QEDm Clinical Data Source, IPA Server, PDQm Patient Demographics
+The Resource Access Provider actor provides access to FHIR resources following IPA (primary)
+and QEDm patterns. This enables direct resource access complementing document-based exchange.
+This composite actor groups IPA Server, QEDm Clinical Data Source, PDQm Patient Demographics
 Supplier, and IUA Authorization Server/Resource Server.
 
 See [Resource Access Provider CapabilityStatement](CapabilityStatement-EEHRxF-ResourceAccessProvider.html)
@@ -112,8 +112,8 @@ Title: "EEHRxF Resource Consumer"
 Usage: #definition
 Description: """
 The Resource Consumer actor queries for clinical data resources from a Resource Access
-Provider following IPA and QEDm patterns. This composite actor groups QEDm Clinical Data
-Consumer, IPA Client, PDQm Patient Demographics Consumer, and IUA Authorization Client.
+Provider following IPA (primary) and QEDm patterns. This composite actor groups IPA Client,
+QEDm Clinical Data Consumer, PDQm Patient Demographics Consumer, and IUA Authorization Client.
 
 See [Resource Consumer CapabilityStatement](CapabilityStatement-EEHRxF-ResourceConsumer.html)
 for technical requirements.

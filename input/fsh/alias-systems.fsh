@@ -6,10 +6,9 @@ Alias: $ajcc = http://cancerstaging.org
 Alias: $atc = http://www.whocc.no/atc
 Alias: $condition-category = http://terminology.hl7.org/CodeSystem/condition-category
 Alias: $data-absent-reason = http://terminology.hl7.org/CodeSystem/data-absent-reason
-Alias: $data-absent-reason-cs =  http://terminology.hl7.org/CodeSystem/data-absent-reason
 Alias: $diagnosis-role = http://terminology.hl7.org/CodeSystem/diagnosis-role
 Alias: $diagnostic-service-sections = http://hl7.org/fhir/ValueSet/diagnostic-service-sections
-Alias: $dicomOntology = http://dicom.nema.org/resources/ontology/DCM
+// $dcm below covers DICOM ontology
 Alias: $edqm = https://standardterms.edqm.eu
 Alias: $encounter-status = http://hl7.org/fhir/encounter-status
 Alias: $iccc3 = http://terminology.hl7.org/CodeSystem/iccc-3 // FAKE URL NOT YET ASSIGNED !!

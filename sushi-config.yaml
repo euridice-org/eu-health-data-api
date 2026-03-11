@@ -35,7 +35,7 @@ license: CC0-1.0 # https://www.hl7.org/fhir/valueset-spdx-license.html
 # use cases, the value can be an object with keys for id, uri, and version.
 #
 dependencies:
-  hl7.fhir.eu.base: 2.0.0-recon
+  hl7.fhir.eu.base: 2.0.0-ballot
   ihe.iti.pdqm: 3.2.x
   ihe.iti.mhd: 4.2.x
   hl7.fhir.uv.ipa: 1.1.x
@@ -230,7 +230,7 @@ parameters:
   show-inherited-invariants: true
   usage-stats-opt-out: true
   # packages: ./package-cache
-  releaselabel: 0.1.1-build
+  releaselabel: 0.1.0-build
   shownav: 'true'
   #pin-canonicals: pin-all
   #pin-canonicals: pin-none

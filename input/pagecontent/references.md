@@ -7,7 +7,6 @@ Related activities in other Standard Development Organizations (SDO):
 * {{ihePDQm}}
 * {{iheQEDm}}
 * {{FHIR}}
-* {{FhirBulkData}}
 * {{SMARTonFHIR}}
 
   

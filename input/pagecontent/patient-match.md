@@ -73,7 +73,7 @@ Matching algorithms are product and deployment-specific and may reflect national
 
 | Actor | Transaction | Optionality |
 |-------|-------------|-------------|
-| Consumer | Mobile Patient Demographics Query [ITI-78] | O |
+| Consumer | Mobile Patient Demographics Query [ITI-78] | R |
 |  | Patient Demographics Match [ITI-119] | O |
 | Provider | Mobile Patient Demographics Query [ITI-78] | R |
 |  | Patient Demographics Match [ITI-119] | O |

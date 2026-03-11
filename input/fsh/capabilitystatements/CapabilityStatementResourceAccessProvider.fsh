@@ -1,5 +1,5 @@
-// CapabilityStatement for EEHRxF Resource Access Provider Actor (QEDm/IPA server)
-// Based on IPA Server and IHE QEDm Clinical Data Source with SMART Backend Services security
+// CapabilityStatement for EEHRxF Resource Access Provider Actor (IPA/QEDm server)
+// Based on IPA Server (primary) and IHE QEDm Clinical Data Source with SMART Backend Services security
 
 Instance: EEHRxF-ResourceAccessProvider
 InstanceOf: CapabilityStatement
