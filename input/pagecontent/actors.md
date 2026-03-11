@@ -16,7 +16,7 @@ This is similar to the approach taken in the MHDS specification, but with a more
   - [IHE QEDm](https://profiles.ihe.net/PCC/QEDm/index.html) - Defines how a client can query for existing FHIR resources from a FHIR server. Referenced where compatible with IPA.
 - Foundational
   - [IHE Consistent Time](https://profiles.ihe.net/ITI/TF/Volume1/ch-7.html) - Defines the use of Network Time Protocol (NTP) to provide consistent time across systems.
-  - [IHE ATNA](https://profiles.ihe.net/ITI/TF/Volume1/ch-8.html) - Referenced for secure transport requirements. See the [TLS 1.2 Floor Option](https://profiles.ihe.net/ITI/TF/Volume1/ch-9.html#9.3.1.2) for TLS requirements.
+  - [IHE ATNA](https://profiles.ihe.net/ITI/TF/Volume1/ch-9.html) - Referenced for secure transport requirements (TLS 1.2 Floor using BCP195 Option).
 
 ### Document Exchange
 

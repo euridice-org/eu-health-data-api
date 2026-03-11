@@ -1,7 +1,7 @@
 
 ### Overview
 
-Authorization is required for all API transactions. This IG inherits [SMART Backend Services](https://build.fhir.org/ig/HL7/smart-app-launch/backend-services.html) from [FHIR SMART App Launch](https://build.fhir.org/ig/HL7/smart-app-launch/app-launch.html) for system-to-system authorization, grouped with IHE IUA actors.
+Authorization is required for all API transactions. This IG inherits [SMART Backend Services](https://hl7.org/fhir/smart-app-launch/backend-services.html) from [FHIR SMART App Launch](https://hl7.org/fhir/smart-app-launch/app-launch.html) for system-to-system authorization, grouped with IHE IUA actors.
 
 We adopt SMART Backend Services as specified—including grant types, client authentication (`private_key_jwt`), and related JWT requirements—to align with globally recognized specifications and reduce implementation burden. As a profile on SMART, all underlying SMART requirements still apply; omitting a detail from this IG does not exempt implementations from SMART requirements.
 
@@ -68,7 +68,7 @@ Out of band, the Consumer registers identity credentials (public key, client ide
 
 #### 1. Discovery {#authorization-server-discovery}
 
-Resource Servers SHALL advertise their authorization configuration at `[base]/.well-known/smart-configuration`, per [SMART App Launch conformance](https://build.fhir.org/ig/HL7/smart-app-launch/conformance.html#using-well-known).
+Resource Servers SHALL advertise their authorization configuration at `[base]/.well-known/smart-configuration`, per [SMART App Launch conformance](https://hl7.org/fhir/smart-app-launch/conformance.html#using-well-known).
 
 For backend services, clients use:
 - `token_endpoint`
@@ -81,9 +81,9 @@ Resource Servers SHOULD advertise:
 
 If the server supports `private_key_jwt` client authentication, it SHOULD advertise:
 - `token_endpoint_auth_methods_supported` including `private_key_jwt`
-- `token_endpoint_auth_signing_alg_values_supported` including at least one of `RS384` or `ES384` (per [SMART client-confidential-asymmetric](https://build.fhir.org/ig/HL7/smart-app-launch/client-confidential-asymmetric.html))
+- `token_endpoint_auth_signing_alg_values_supported` including at least one of `RS384` or `ES384` (per [SMART client-confidential-asymmetric](https://hl7.org/fhir/smart-app-launch/client-confidential-asymmetric.html))
 
-See [SMART Backend Services Discovery](https://build.fhir.org/ig/HL7/smart-app-launch/backend-services.html#discovery) for the full specification.
+See [SMART Backend Services](https://hl7.org/fhir/smart-app-launch/backend-services.html) for the full specification.
 
 #### 2. Get Access Token (ITI-71) {#get-access-token}
 
@@ -118,7 +118,7 @@ In deployments using an external Authorization Server, token validation commonly
 
 ### Scopes
 
-Scopes follow [SMART v2 conventions](https://build.fhir.org/ig/HL7/smart-app-launch/scopes-and-launch-context.html#scopes-for-requesting-fhir-resources) and align with required MHD and IPA transactions:
+Scopes follow [SMART v2 conventions](https://hl7.org/fhir/smart-app-launch/scopes-and-launch-context.html#scopes-for-requesting-fhir-resources) and align with required MHD and IPA transactions:
 
 #### Document Publisher (MHD ITI-105)
 - `system/DocumentReference.create` - Create DocumentReference
@@ -178,7 +178,7 @@ sequenceDiagram
 
 ### Transport Security {#transport-security}
 
-All API communications SHALL use secure transport as defined by [IHE ATNA Secure Node](https://profiles.ihe.net/ITI/TF/Volume1/ch-9.html) with the [TLS 1.2 Floor Option](https://profiles.ihe.net/ITI/TF/Volume1/ch-9.html#9.3.1.2).
+All API communications SHALL use secure transport as defined by [IHE ATNA](https://profiles.ihe.net/ITI/TF/Volume1/ch-9.html) with the TLS 1.2 Floor using BCP195 Option.
 
 ### IUA and SMART Backend Services
 
@@ -190,7 +190,7 @@ For example: this IG requires `private_key_jwt` client authentication (per SMART
 
 ### Potential Future Work: User-Level Authorization
 
-User-level authorization (including patient-mediated access) is out of scope for this version of the implementation Guide. For patient-mediated access patterns, readers are encouraged to consider [SMART on FHIR App Launch](https://build.fhir.org/ig/HL7/smart-app-launch/) and [International Patient Access](https://hl7.org/fhir/uv/ipa/). Implementors might consider UDAP for dynamic client registration (see [FHIR UDAP Security IG](https://build.fhir.org/ig/HL7/fhir-udap-security-ig/)).
+User-level authorization (including patient-mediated access) is out of scope for this version of the implementation Guide. For patient-mediated access patterns, readers are encouraged to consider [SMART on FHIR App Launch](https://hl7.org/fhir/smart-app-launch/) and [International Patient Access](https://hl7.org/fhir/uv/ipa/). Implementors might consider UDAP for dynamic client registration (see [FHIR UDAP Security IG](https://hl7.org/fhir/us/udap-security/)).
 
 Integration with the EU Digital Identity Wallet and eIDAS framework may be addressed in future editions.
 
@@ -198,5 +198,5 @@ Member States MAY layer user-level authorization on top of system-to-system auth
 
 ### References
 
-- [SMART Application Launch](https://build.fhir.org/ig/HL7/smart-app-launch/index.html)
+- [SMART Application Launch](https://hl7.org/fhir/smart-app-launch/)
 - [IHE IUA](https://profiles.ihe.net/ITI/IUA/index.html)

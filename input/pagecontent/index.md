@@ -40,7 +40,7 @@ The intended audiences of this Implementation Guide are:
 We define exchange patterns by inheriting and defining transactions, system actors, and associated capability statements from existing IHE and HL7 specifications:
 
 - [IHE MHD](https://profiles.ihe.net/ITI/MHD/) - Defines exchange of Documents, which we use to exchange FHIR document content.
-- [HL7 SMART App Launch - Backend Services](https://build.fhir.org/ig/HL7/smart-app-launch/backend-services.html) - Defines authorization in FHIR. We use the SMART Backend Services profile for system-system authorization, including the FHIR scopes defined in this specification.
+- [HL7 SMART App Launch - Backend Services](https://hl7.org/fhir/smart-app-launch/backend-services.html) - Defines authorization in FHIR. We use the SMART Backend Services profile for system-system authorization, including the FHIR scopes defined in this specification.
 - [IHE IUA](https://profiles.ihe.net/ITI/IUA/index.html) - Defines authorization and access control actors and mechanisms. Aligned with SMART. We use the actors and transactions model from this specification.
 - [IHE PDQm](https://profiles.ihe.net/ITI/PDQm/index.html) - Defines how a client can perform patient lookup against a server.
 - [HL7 International Patient Access (IPA)](https://hl7.org/fhir/uv/ipa/) - Defines how an application accesses patient information using SMART authorization and resource query. International Patient Access is the primary reference for resource access patterns in this IG.

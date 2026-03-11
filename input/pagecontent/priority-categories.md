@@ -9,7 +9,8 @@ This API IG defines interoperability *behavior* - the transactions and exchange 
 | Patient Summary | [Patient Summary](priority-area-eps.html) |
 | Medical Test Results | [Laboratory](priority-area-laboratory.html) |
 | Hospital Discharge Report | [Discharge Report](priority-area-hdr.html) |
-| Medical Imaging | [Imaging Manifest](priority-area-imaging-manifest.html) |
+| Medical Imaging — Manifest | [Imaging Manifest](priority-area-imaging-manifest.html) |
+| Medical Imaging — Report | [Imaging Report](priority-area-imaging-report.html) |
 | ePrescription / eDispensation | [MPD](priority-area-mpd.html) |
 
 ### Exchange Patterns
@@ -20,6 +21,7 @@ This API IG defines interoperability *behavior* - the transactions and exchange 
 | Medical Test Results | Document ([MHD](document-exchange.html)) |
 | Hospital Discharge Report | Document ([MHD](document-exchange.html)) |
 | Imaging Manifest | Document ([MHD](document-exchange.html)) |
+| Imaging Report | Document ([MHD](document-exchange.html)) |
 | ePrescription / eDispensation | See note below |
 
 For document search and differentiation by priority category, see [Document Exchange](document-exchange.html).

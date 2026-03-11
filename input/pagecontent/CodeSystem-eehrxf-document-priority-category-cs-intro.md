@@ -5,7 +5,7 @@ The EHDS Regulation initially defines six priority categories of electronic heal
 
 [Article 105](https://eur-lex.europa.eu/eli/reg/2025/327/oj#d1e6862-1-1) specifies the date when support for these priority categories is required: 26 March 2029 for categories (a), (b) and (c); 28 March 2031 for (d), (e) and (f).
 
-EHDS empowers the EU Commission to make changes to the list of priority categories at any point in time by means of a Delegated Act (Article 14(2)). There will be a minimum 1-year lead time between the decision to add a new priority category and the initial date when support ahs to be implemented.
+EHDS empowers the EU Commission to make changes to the list of priority categories at any point in time by means of a Delegated Act (Article 14(2)). There will be a minimum 1-year lead time between the decision to add a new priority category and the initial date when support has to be implemented.
 
 The definitions of the priority categories comes from [ANNEX I](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32025R0327#annex-I) of the EHDS Regulation.
 
