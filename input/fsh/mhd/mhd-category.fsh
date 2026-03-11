@@ -93,7 +93,7 @@ Description: "ValueSet for specific document types within the Medical Imaging pr
 * ^useContext[=].valueCodeableConcept = http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
 * insert LOINCCopyrightForVS
 * $loinc#85430-7 "Diagnostic imaging report"
-* $loinc#18748-4 "Diagnostic imaging Study"
+* $loinc#18748-4 "Diagnostic imaging study"
 
 
 

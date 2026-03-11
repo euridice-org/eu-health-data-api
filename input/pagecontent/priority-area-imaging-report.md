@@ -15,13 +15,13 @@ Imaging Reports can be accessed via document exchange.
 For document-based access, use the [Document Exchange](document-exchange.html) transactions.
 
 The Imaging Report is differentiated via the following DocumentReference fields:
-- **type**: `68604-8` (Radiology Diagnostic study note)
+- **type**: `85430-7` (Diagnostic imaging report)
 - **category**: `Medical-Imaging` ([EHDS Priority Category](CodeSystem-eehrxf-document-priority-category-cs.html))
 
 ### Example Query
 
 ```
-GET /DocumentReference?patient=123&type=http://loinc.org|68604-8&status=current
+GET /DocumentReference?patient=123&type=http://loinc.org|85430-7&status=current
 ```
 
 See [Example: Retrieve A European Patient Summary](example-patient-summary.html) for a complete workflow example (the pattern is identical).
