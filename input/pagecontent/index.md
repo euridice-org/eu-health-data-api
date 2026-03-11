@@ -1,7 +1,7 @@
 {% include fsh-link-references.md %}
 {% include variable-definitions.md %}
 
-### Regulatory Basis and Scope
+### Regulatory Basis
 
 The European Health Data Space (EHDS) regulation describes an obligation for EHR systems to include an Interoperability Component that does the following:
 - §2.1: "SHALL provide an **interface enabling access** to the personal electronic health data [formatted in EEHRxF]"
@@ -11,7 +11,15 @@ This Implementation Guide:
 1. **Defines a set of EHR functionalities that meet the Interoperability Component requirements:** describes how existing IHE profiles and other specifications can be used to provide secure access and enable secure exchange of EEHRxF data between systems.
 2. **Shows how these EHR functionalities can be used in real-world data exchange for EHDS use cases:** outlines how these EHR functionalities can be used to provide patients access to their own data, to allow providers access to patient data, and to support the cross-border data exchange in the myHealth@EU network.
 
-See [Regulatory Anchors](regulatoryAnchors.html) page for more detail on the link to the EHDS regulation requirements, and the technical interpretation of those requirements used here.
+See [Regulatory Anchors](regulatoryAnchors.html) for more detail on the link to the EHDS regulation requirements, and the technical interpretation of those requirements used here.
+
+### Scope
+
+This IG defines exchange patterns — actors, transactions, and security — that systems use to find, retrieve, and publish EEHRxF health data via FHIR APIs. It covers authorization, patient matching, document exchange, resource access, and capability discovery.
+
+This IG does not define clinical data models. Separate Content IGs maintained by HL7 Europe define the structure and content of each priority category: what fields a Patient Summary contains, what codes a Laboratory Report uses (see [Priority Categories](priority-categories.html)). An implementable system combines this IG for transport with a Content IG for the data model.
+
+This IG excludes ePrescription and eDispensation workflow transactions, user-level authorization, audit logging formats, and bulk data export. See [Regulatory Anchors](regulatoryAnchors.html) for requirements traceability.
 
 ### Audience
 
@@ -63,9 +71,7 @@ These resource actors are initially scoped for search + read. See [Resource Acce
 
 ## Priority Categories
 
-EHDS defines priority categories of health data for interoperability. Each has a content profile defining the data model, maintained in separate Content IGs.
-
-This API IG defines interoperability *behavior* - the transactions and exchange patterns that systems use to share data. It does not prescribe internal system architecture or design. Systems that choose to comply with EHDS interoperability requirements implement this behavior alongside one or more Content IGs.
+EHDS defines priority categories of health data for interoperability. Each pairs a Content IG (data model) with an exchange pattern (this IG). See [Priority Categories](priority-categories.html) for details.
 
 | Priority Category | Content IG | Exchange Pattern |
 |-------------------|------------|------------------|
