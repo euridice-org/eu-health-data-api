@@ -13,7 +13,7 @@ description: >-
   and HL7 specifications — MHD for document exchange, SMART Backend Services for
   authorization, PDQm for patient matching, and IPA for resource access — into a
   unified conformance target for EHR systems across Europe.
-status: active # draft | active | retired | unknown
+status: draft # draft | active | retired | unknown
 version: 1.0.0-ballot
 fhirVersion: 4.0.1 # https://www.hl7.org/fhir/valueset-FHIR-version.html
 copyrightYear: 2025+

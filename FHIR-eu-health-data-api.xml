@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<specification xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ballotUrl="http://hl7.eu/fhir/eu-health-data-api/1.0.0-ballot" ciUrl="https://build.fhir.org/ig/euridice-org/eu-health-data-api/" defaultVersion="1.0.0-ballot" defaultWorkgroup="eu" url="http://hl7.eu/fhir/eu-health-data-api">
+<specification xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ballotUrl="http://hl7.eu/fhir/health-data-api/1.0.0-ballot" ciUrl="https://build.fhir.org/ig/euridice-org/eu-health-data-api/" defaultVersion="1.0.0-ballot" defaultWorkgroup="eu" url="http://hl7.eu/fhir/health-data-api">
 <version code="current" url="https://build.fhir.org/ig/euridice-org/eu-health-data-api/"/>
-<version code="1.0.0-ballot" url="http://hl7.eu/fhir/eu-health-data-api/1.0.0-ballot"/>
+<version code="1.0.0-ballot" url="http://hl7.eu/fhir/health-data-api/1.0.0-ballot"/>
 <artifactPageExtension value="-definitions"/>
 <artifactPageExtension value="-examples"/>
 <artifactPageExtension value="-mappings"/>
