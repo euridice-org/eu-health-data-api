@@ -57,6 +57,7 @@ Usage: #example
 * content.attachment.url = "http://example.org/fhir/ImagingStudy/ct-chest-study"
 * content.attachment.title = "CT Chest - FHIR Manifest"
 * content.attachment.creation = "2026-02-20T14:00:00+01:00"
+* content.format = urn:ietf:rfc:3986#http://hl7.eu/fhir/imaging-r5/StructureDefinition/ImagingStudyEu
 
 
 Instance: ExampleDocumentReferenceImagingManifestKOS
@@ -108,3 +109,4 @@ Usage: #example
 * content.attachment.url = "http://example.org/wado-rs/studies/1.2.840.113619.2.55.3.604688119.969.1234567890.123/series/1.2.840.113619.2.55.3.604688119.969.1234567890.124/instances/1.2.840.113619.2.55.3.604688119.969.1234567890.125"
 * content.attachment.title = "CT Chest - DICOM KOS"
 * content.attachment.creation = "2026-02-20T14:00:00+01:00"
+* content.format = http://dicom.nema.org/resources/ontology/DCMUID#1.2.840.10008.5.1.4.1.1.88.59 "Key Object Selection Document"

@@ -14,6 +14,9 @@ PIN_VERSION
 # MHD 4.2.x is the latest R4 version; 5.0.0 targets R5 which this IG does not use
 IG_DEPENDENCY_VERSION_WARNING_OLD
 
+# EU Patient Summary and Laboratory IGs are not yet published; canonical URLs cannot resolve
+TYPE_SPECIFIC_CHECKS_DT_CANONICAL_RESOLVE
+
 # regulatoryAnchors references D8.1 section numbers, not FHIR conformance statements
 CONFORMANCE_STATEMENT_NOCONFWORD
 

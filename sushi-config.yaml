@@ -82,6 +82,8 @@ pages:
         title: ePrescription / eDispensation (MPD)
       priority-area-laboratory.md:
         title: Medical Test Results (Laboratory)
+      priority-area-imaging-report.md:
+        title: Medical Imaging Report
       priority-area-imaging-manifest.md:
         title: Medical Imaging Manifest
       priority-area-hdr.md:

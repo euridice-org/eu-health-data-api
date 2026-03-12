@@ -11,7 +11,7 @@ Note that this IG does NOT create legal obligations on EHR Systems unless adopte
 
 ### Xt-EHR Joint Action
 
-This IG inherits and builds upon the work of the Xt-EHR Joint Action, which has created deliverables drafting the EHDS Implementing Acts. Specifically, we inherit the work done in Xt-EHR Work Package 5.1 which has mapped the EHDS text to more precise EHR requirements.
+This IG inherits and builds upon the work of the Xt-EHR Joint Action, which has created deliverables drafting the EHDS Implementing Acts. Two deliverables are central: D5.1 defines exchange requirements — how data flows between systems — and D8.1 defines the data model and conformance framework — what conformant data looks like. This IG implements D5.1 as FHIR actors and transactions for **exchange**, and references D8.1 **content** profiles carried by those exchanges.
 
 These requirements have also been adjusted to harmonize with Xt-EHR Work Packages 6 and 7, which define requirements for each priority category.
 
@@ -152,38 +152,11 @@ D8.1 defines what conformant health data looks like: the fields a Patient Summar
 
 > Note: D8.1 is an in-progress Xt-EHR deliverable, not yet publicly released. This section summarizes the concepts this IG builds upon.
 
-```mermaid
-graph LR
-    subgraph exchange["<b>EXCHANGE</b> — this IG"]
-        direction TB
-        doc["<b>FHIR Document Exchange</b><br/>MHD: ITI-67 find, ITI-68 retrieve"]
-        res["<b>Resource Exchange</b><br/>IPA: FHIR search + read"]
-    end
+<div style="max-width: 70%; margin: 0 auto;">
+{% include img.html img="ContentExchangeXtEhr.png" caption="Figure: Relationship between Xt-EHR deliverables and this IG. D5.1 exchange requirements are implemented by MHD (document exchange) and IPA (resource exchange) in this IG. D8.1 data content profiles are implemented by HL7 EU Priority Category IGs (FHIR Documents) and HL7 EU Core Resources. The content profiles are carried by the exchange patterns." %}
+</div>
 
-    subgraph content["<b>CONTENT</b> — Content IGs"]
-        direction TB
-        priority["<b>Priority Category IGs</b><br/>PS, HDR, Lab, Imaging<br/><i>D8.1 Priority Interop Profiles</i>"]
-        resource["<b>EU Core + Category IGs</b><br/>Allergy, Condition, Immunization, ...<br/><i>D8.1 Resource Interop Profiles</i>"]
-        logical["<b>Xt-EHR Logical Models</b><br/>WP6 / WP7"]
-        priority --> logical
-        resource --> logical
-    end
-
-    doc --> priority
-    res --> resource
-
-    style exchange fill:#e8f4fd,stroke:#4a86c8,stroke-width:2px,color:#333
-    style content fill:#e8f5e9,stroke:#4a8c5c,stroke-width:2px,color:#333
-    style doc fill:#fff,stroke:#4a86c8,stroke-width:1px
-    style res fill:#fff,stroke:#4a86c8,stroke-width:1px
-    style priority fill:#fff,stroke:#4a8c5c,stroke-width:1px
-    style resource fill:#fff,stroke:#4a8c5c,stroke-width:1px
-    style logical fill:#f5f5f5,stroke:#999,stroke-width:1px
-```
-
-*Figure: This IG defines exchange patterns (left); Content IGs define data profiles (right). Both trace to Xt-EHR logical models. An implementable EHR system combines both.*
-
-#### Two Conformance Paths
+#### D8.1 Conformance Paths
 
 D8.1 defines two types of Interoperability Profile that a system can claim conformance to:
 
@@ -193,18 +166,13 @@ D8.1 defines two types of Interoperability Profile that a system can claim confo
 
 These are separate conformance paths. A vaccination registry that serves Immunization resources claims conformance to the Immunization Resource Interoperability Profile. A hospital EHR that produces full Patient Summaries claims conformance to the Patient Summary Priority Interoperability Profile. Both are valid under D8.1.
 
-#### Data Requirements vs Exchange Requirements
+#### Content vs Exchange
 
-D8.1 defines data structure and obligations. It does not define exchange mechanisms. D8.1's Producer and Consumer roles describe content creation and consumption: a Producer can populate conformant data; a Consumer can process received data. These obligations are fulfilled by the Content IGs.
+D8.1 defines **content**: data structure and obligations. D8.1's Producer and Consumer roles describe content creation and consumption — a Producer populates conformant data; a Consumer processes received data. The Content IGs fulfill these obligations as FHIR profiles.
 
-The exchange mechanisms — how conformant data moves between systems via APIs — are D5.1's domain, implemented by this IG. This IG maps each D8.1 conformance path to an exchange pattern:
+D5.1 defines **exchange**: how conformant data moves between systems via APIs. This IG implements D5.1 as FHIR actors and transactions (see [Xt-EHR Deliverable 5.1](#xt-ehr-deliverable-51) above).
 
-| D8.1 Conformance Path | Exchange Pattern | This IG's Actors |
-|---|---|---|
-| Priority Interoperability Profile (FHIR Document) | [FHIR Document Exchange](document-exchange.html) (MHD) | [Document Access Provider](actors.html#document-access-provider) ↔ [Document Consumer](actors.html#document-consumer) |
-| Resource Interoperability Profile | [Resource Exchange](resource-access.html) (IPA) | [Resource Access Provider](actors.html#resource-access-provider) ↔ [Resource Consumer](actors.html#resource-consumer) |
-
-Neither D5.1 nor D8.1 states which exchange pattern serves which profile type. This IG fills that gap. See [Priority Categories](priority-categories.html) for the complete mapping from each priority category to its data specification and exchange pattern.
+Neither deliverable states which exchange pattern serves which content profile type. This IG bridges that gap: [Priority Categories](priority-categories.html) maps each priority category to its content specification and exchange pattern. A conformant implementation combines both — for example, the [Retrieve a Patient Summary](example-patient-summary.html) use case requires the EU Patient Summary IG for content and this IG's document exchange for transport.
 
 For medication data, this IG covers reading MedicationRequest and MedicationStatement as individual resources via resource exchange. The ePrescription and eDispensation workflow transactions (prescribing, dispensing) are out of scope and handled by [IHE MPD](https://profiles.ihe.net/PHARM/MPD/index.html).
 

@@ -58,3 +58,4 @@ Usage: #example
 * content.attachment.url = "http://example.org/fhir/Bundle/eps-jan-jansen"
 * content.attachment.title = "European Patient Summary"
 * content.attachment.creation = "2026-01-15T10:30:00+01:00"
+* content.format = urn:ietf:rfc:3986#http://hl7.org/fhir/uv/ips/StructureDefinition/Bundle-uv-ips

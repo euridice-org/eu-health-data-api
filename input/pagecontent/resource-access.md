@@ -15,16 +15,10 @@ Data models for resource access inherit from [HL7 Europe Core](https://build.fhi
 
 See [Actors and Transactions](actors.html) for detailed actor groupings.
 
-<div markdown="1" class="stu-note">
-
-This IG covers a core subset of resources: AllergyIntolerance, Condition, DiagnosticReport, Encounter, Immunization, MedicationDispense, MedicationRequest, MedicationStatement, and Observation. Ballot feedback is requested on whether this set is appropriate. See [Open Issue #9](open-issues.html#issue-9-core-resource-set-validation).
-
-</div>
-
 <details>
-<summary><i>Note: What about Resource Producer? Click for more</i></summary>
+<summary><i>Note: What about Resource Publisher? Click for more</i></summary>
 
-Resource exchange is more complex than document publication, and in many cases has resource and use-case specific considerations. Within the scope of this version of the IG, we assume a precondition that the Resource Access Provider has access to resources and focus on defining how the Resource Access Provider enables a consumer to search and read those resources. For more details and possible approaches, see the <a href="resourceExchange.html">Resource Exchange</a> page.
+Resource publication is more complex than document publication, and in many cases has resource and use-case specific considerations. Within the scope of this version of the IG, we assume a precondition that the Resource Access Provider has access to resources and focus on defining how the Resource Access Provider enables a consumer to search and read those resources. For more details and possible approaches, see the <a href="resourceExchange.html">Resource Exchange</a> page.
 
 </details>
 
@@ -52,7 +46,7 @@ sequenceDiagram
 
 ### Constraints
 
-- **Read/search only** - No create/update/delete operations. 
+- **Read/search only** - No create/update/delete operations.
 - **Patient-scoped queries** - `patient` parameter required on all searches
 - Searches without `patient` parameter are rejected
 
@@ -73,7 +67,19 @@ The following resources are available for read/search access. Data models inheri
 | Immunization | `patient` |
 | Encounter | `patient` |
 
-> **Open Issue #9**: We are seeking validation of this core resource set. See [Core Resource Set Validation](open-issues.html#issue-9-core-resource-set-validation) for discussion.
+<div markdown="1" class="stu-note">
+
+This is a core subset of resources for ballot. Ballot feedback is requested on whether this set is appropriate. See [Open Issue #9](open-issues.html#issue-9-core-resource-set-validation).
+
+</div>
+
+### Supported Resources
+
+Following [International Patient Access (IPA)](https://hl7.org/fhir/uv/ipa/CapabilityStatement-ipa-server.html), Resource Access Providers are **not required to support all clinical resources**. Servers MAY choose which resources to implement based on their capabilities, use cases, and the regulatory context.
+
+Servers declare which resources they support in their CapabilityStatement (see [Capability Discovery](capability-discovery.html)). Clients MAY check the server's CapabilityStatement to discover available resources before making requests.
+
+See the [Resource Access Provider CapabilityStatement](CapabilityStatement-EEHRxF-ResourceAccessProvider.html) and [Resource Consumer CapabilityStatement](CapabilityStatement-EEHRxF-ResourceConsumer.html) for detailed capability declarations.
 
 ### Scopes
 
@@ -114,25 +120,16 @@ If resources are derived from documents, Provenance SHOULD link to source Docume
 }
 ```
 
-The [IHE mXDE](https://profiles.ihe.net/ITI/mXDE/index.html) profile provides more detail on how to extract resources from documents while maintaining provenance.  
-
-### Supported Resources
-
-Following [International Patient Access (IPA)](https://hl7.org/fhir/uv/ipa/CapabilityStatement-ipa-server.html), Resource Access Providers are **not required to support all clinical resources**. Servers MAY choose which resources to implement based on their capabilities, use cases, and the regulatory context.
-
-Servers declare which resources they support in their CapabilityStatement. Clients MAY check the server's CapabilityStatement to discover available resources before making requests.
-
-See the [Resource Access Provider CapabilityStatement](CapabilityStatement-EEHRxF-ResourceAccessProvider.html) and [Resource Consumer CapabilityStatement](CapabilityStatement-EEHRxF-ResourceConsumer.html) for detailed capability declarations.
-
+The [IHE mXDE](https://profiles.ihe.net/ITI/mXDE/index.html) profile provides more detail on how to extract resources from documents while maintaining provenance.
 
 ### References
 
 - [HL7 International Patient Access (IPA)](https://hl7.org/fhir/uv/ipa/)
 - [IHE QEDm](https://profiles.ihe.net/PCC/QEDm/)
   - [PCC-44 Mobile Query Existing Data](https://profiles.ihe.net/PCC/QEDm/PCC-44.html)
+- [IHE mXDE](https://profiles.ihe.net/ITI/mXDE/index.html)
 - [Actors and Transactions](actors.html)
 
 ### International Patient Access vs QEDm
 
 This IG uses [International Patient Access (IPA)](https://hl7.org/fhir/uv/ipa/) as the primary reference for CapabilityStatements and search parameters. QEDm is referenced where compatible with International Patient Access - and QEDm has a stated goal of aligning with IPA.
-

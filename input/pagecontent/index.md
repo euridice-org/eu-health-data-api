@@ -52,7 +52,7 @@ We define composite actors that inherit and combine actors defined in these exis
 
 At a high level, the following actors are specified:
 
-<div style="text-align: center;">
+<div style="max-width: 80%; margin: 0 auto;">
 {% include img.html img="actors_overall.png" caption="Figure: Actor Overview" %}
 </div>
 
@@ -79,7 +79,9 @@ EHDS defines priority categories of health data for interoperability. Each pairs
 | Medical Test Results | [HL7 Europe Laboratory Report](https://hl7.eu/fhir/laboratory) | [Document Exchange (MHD)](document-exchange.html) |
 | Hospital Discharge Report | [HL7 Europe Hospital Discharge Report](https://hl7.eu/fhir/hdr/) | [Document Exchange (MHD)](document-exchange.html) |
 | Medical Imaging | [HL7 Europe Imaging Study/Report](https://build.fhir.org/ig/hl7-eu/imaging-r5/) / [Imaging Manifest](https://hl7.eu/fhir/imaging-manifest-r5/) | [Document Exchange (MHD)](document-exchange.html) |
-| ePrescription / eDispensation | [HL7 Europe MPD](https://hl7.eu/fhir/mpd) | [IHE MPD](https://profiles.ihe.net/PHARM/MPD/) |
+| Individual clinical resources | [HL7 Europe Core](https://build.fhir.org/ig/hl7-eu/base/) | [Resource Access (IPA)](resource-access.html) |
+
+For medication data, this IG covers reading medication resources (MedicationRequest, MedicationStatement) as [resource access](resource-access.html) — e.g., "what medications is this patient taking?" The ePrescription and eDispensation workflow transactions (prescribing, dispensing) are out of scope and handled by [IHE MPD](https://profiles.ihe.net/PHARM/MPD/index.html).
 
 See the [HL7 Europe Implementation Guides registry](https://confluence.hl7.org/spaces/HEU/pages/358255737/Implementation+Guides) for the canonical list of Content IGs and their current publication URLs.
 

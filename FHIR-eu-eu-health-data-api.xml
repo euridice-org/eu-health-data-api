@@ -26,8 +26,11 @@
 <artifact id="ActorDefinition/EEHRxF-ResourceConsumer-Actor" key="ActorDefinition-EEHRxF-ResourceConsumer-Actor" name="EEHRxF Resource Consumer"/>
 <artifact id="CapabilityStatement/EEHRxF-ResourceConsumer" key="CapabilityStatement-EEHRxF-ResourceConsumer" name="EEHRxF Resource Consumer CapabilityStatement"/>
 <artifact id="DocumentReference/ExampleDocumentReferenceEPS" key="DocumentReference-ExampleDocumentReferenceEPS" name="Example - European Patient Summary DocumentReference"/>
+<artifact id="DocumentReference/ExampleDocumentReferenceHDR" key="DocumentReference-ExampleDocumentReferenceHDR" name="Example - Hospital Discharge Report DocumentReference"/>
+<artifact id="DocumentReference/ExampleDocumentReferenceImagingReport" key="DocumentReference-ExampleDocumentReferenceImagingReport" name="Example - Imaging Report DocumentReference"/>
 <artifact id="DocumentReference/ExampleDocumentReferenceImagingManifestKOS" key="DocumentReference-ExampleDocumentReferenceImagingManifestKOS" name="Example - Imaging Study Manifest (DICOM KOS)"/>
 <artifact id="DocumentReference/ExampleDocumentReferenceImagingManifestFHIR" key="DocumentReference-ExampleDocumentReferenceImagingManifestFHIR" name="Example - Imaging Study Manifest (FHIR)"/>
+<artifact id="DocumentReference/ExampleDocumentReferenceLaboratory" key="DocumentReference-ExampleDocumentReferenceLaboratory" name="Example - Laboratory Report DocumentReference"/>
 <artifact id="CapabilityStatement/EEHRxF-DocumentAccessProvider-Example" key="CapabilityStatement-EEHRxF-DocumentAccessProvider-Example" name="Example: Document Access Provider Supporting EPS and Laboratory"/>
 <page key="NA" name="(NA)"/>
 <page key="many" name="(many)"/>
@@ -48,6 +51,7 @@
 <page key="priority-area-hdr" name="Hospital Discharge Report"/>
 <page key="implementation" name="Implementation"/>
 <page key="priority-area-imaging-manifest" name="Medical Imaging Manifest"/>
+<page key="priority-area-imaging-report" name="Medical Imaging Report"/>
 <page key="priority-area-laboratory" name="Medical Test Results (Laboratory)"/>
 <page key="member-state-architectures" name="Member State Architectures"/>
 <page key="open-issues" name="Open Issues"/>

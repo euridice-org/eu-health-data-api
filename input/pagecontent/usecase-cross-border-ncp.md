@@ -10,12 +10,12 @@ NCPs communicate with each other via the **MyHealth@EU network**. When a **patie
 2. NCPs exchange data over MyHealth@EU
 3. Country A's NCP queries national infrastructure to retrieve the patient's data
 
-**This IG enables the final step**: Country A's national infrastructure (or the NCP itself) acts as a **Consumer** to query EHR systems that are **Providers** of patient data.
+**This IG enables the final step**: Country A's national infrastructure (or the NCP itself) acts as a **Consumer** to query EHR systems that are **Access Providers**.
 
-### Actors
+### Actor Groupings
 
-- **NCP or National Infrastructure** acts as [Document Consumer](actors.html#document-consumer)
-- **EHR systems** act as [Document Access Provider](actors.html#document-access-provider)
+- **NCP or National Infrastructure** acts as [Document Consumer](actors.html#document-consumer) (according to [Grouping Example 1, 1b, 1c or 2](actors.html#example-groupings)) or [Resource Consumer](actors.html#resource-exchange) (according to [Grouping Example 3](actors.html#example-groupings))
+- **EHR systems** act as [Document Access Provider](actors.html#document-access-provider) or [Resource Access Provider](actors.html#resource-exchange) accordingly
 
 ### Architecture
 
