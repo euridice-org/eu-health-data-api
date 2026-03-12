@@ -28,8 +28,18 @@ This IG supports multiple deployment models by defining actors and transactions 
 
 The specification focuses on the API contract, allowing flexibility in where and how it is implemented within Member State infrastructure.
 
-### Relationship to XDS/XCA
+### Compatibility with Existing Document Sharing Infrastructure
 
-For Member States with existing XDS or XCA infrastructure, see [Relationship to XDS/XCA](xds-xca-bridge.html) for guidance on bridging between document sharing architectures.
+This specification accommodates existing document-sharing architectures (IHE XDS, XCA) without imposing those dependencies on new environments. [IHE MHD](https://profiles.ihe.net/ITI/MHD/) serves as the bridge: implementers MAY deploy it as a native FHIR document-sharing system or as a facade over XDS/XCA infrastructure. Because MHD's DocumentReference maps directly to XDS DocumentEntry, existing national investments remain valid.
 
-> **Note:** Deployment diagrams showing how this specification fits different Member State architectures are planned for a future version.
+Member States select the deployment model that fits their infrastructure:
+
+- **FHIR-native**: A RESTful API with no XDS dependencies, suitable for new deployments.
+- **MHD facade over XDS/XCA**: Existing XDS/XCA infrastructure exposes a FHIR API without replacement of underlying systems.
+- **Hybrid**: Some facilities operate FHIR-native while others connect through a facade; a national-level gateway unifies access.
+
+See [Actor Groupings](actors.html#example-groupings) for concrete combinations of these deployment models.
+
+**Example — centralized national repository:** A national repository acts as the [Document Access Provider](actors.html#document-access-provider) with the [Document Submission Option](actors.html#document-submission-option), serving queries from consumers (other Member States, patient portals, care providers). EHR systems across the country act as [Document Publishers](actors.html#document-publisher), submitting FHIR Documents (Patient Summaries, Laboratory Reports, Discharge Reports) to the repository via [ITI-105](document-exchange.html). The repository aggregates and serves documents on their behalf — EHR systems publish data but do not need to host APIs themselves.
+
+When every system in a Member State conforms to this specification, the national infrastructure presents a single API layer for health data access, whether the underlying systems are XDS-based, FHIR-native, or a mixture of both.

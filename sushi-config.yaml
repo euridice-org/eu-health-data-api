@@ -92,8 +92,6 @@ pages:
       title: Member State Architectures
       fhir-documents-vs-resources.md:
         title: FHIR Documents and Resources
-      xds-xca-bridge.md:
-        title: Relationship to XDS/XCA
     changes.md:
       title: Change Log
     open-issues.md:

@@ -20,6 +20,9 @@ TYPE_SPECIFIC_CHECKS_DT_CANONICAL_RESOLVE
 # regulatoryAnchors references D8.1 section numbers, not FHIR conformance statements
 CONFORMANCE_STATEMENT_NOCONFWORD
 
+# DICOM UID code system is not on tx.fhir.org; codes are valid DICOM SOP Class UIDs
+A definition for CodeSystem 'http://dicom.nema.org/resources/ontology/DCMUID' could not be found, so the code cannot be validated
+
 # useContext references draft priority category CodeSystem (expected — both are draft)
 INFORMATION: ValueSet/eehrxf-document-type-discharge-report-vs: ValueSet.useContext[0].value.ofType(CodeableConcept): Reference to draft CodeSystem http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs
 INFORMATION: ValueSet/eehrxf-document-type-laboratory-report-vs: ValueSet.useContext[0].value.ofType(CodeableConcept): Reference to draft CodeSystem http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs
