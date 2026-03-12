@@ -1,7 +1,7 @@
 {
-  "package-id" : "hl7.fhir.eu.eu-health-data-api",
+  "package-id" : "hl7.fhir.eu.health-data-api",
   "version" : "1.0.0-ballot",
-  "path" : "http://hl7.eu/fhir/eu-health-data-api/1.0.0-ballot",
+  "path" : "http://hl7.eu/fhir/health-data-api/1.0.0-ballot",
   "mode" : "milestone",
   "status" : "ballot",
   "sequence" : "STU1",

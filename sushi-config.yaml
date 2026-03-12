@@ -3,8 +3,8 @@
 # │  used properties are included. For a list of all supported properties and their functions,     │
 # │  see: https://fshschool.org/docs/sushi/configuration/.                                         │
 # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
-id: hl7.fhir.eu.eu-health-data-api
-canonical: http://hl7.eu/fhir/eu-health-data-api
+id: hl7.fhir.eu.health-data-api
+canonical: http://hl7.eu/fhir/health-data-api
 name: EuHealthDataApi
 title: EU Health Data API
 description: >-
