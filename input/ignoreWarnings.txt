@@ -8,9 +8,6 @@
 MSG_DEPENDS_ON_DEPRECATED
 MSG_DEPRECATED
 
-# using pinning when multiple are available
-PIN_VERSION
-
 # MHD 4.2.x is the latest R4 version; 5.0.0 targets R5 which this IG does not use
 IG_DEPENDENCY_VERSION_WARNING_OLD
 
@@ -20,12 +17,25 @@ TYPE_SPECIFIC_CHECKS_DT_CANONICAL_RESOLVE
 # regulatoryAnchors references D8.1 section numbers, not FHIR conformance statements
 CONFORMANCE_STATEMENT_NOCONFWORD
 
+
 # DICOM UID code system is not on tx.fhir.org; codes are valid DICOM SOP Class UIDs
 A definition for CodeSystem 'http://dicom.nema.org/resources/ontology/DCMUID' could not be found, so the code cannot be validated
 
-# useContext references draft priority category CodeSystem (expected — both are draft)
-INFORMATION: ValueSet/eehrxf-document-type-discharge-report-vs: ValueSet.useContext[0].value.ofType(CodeableConcept): Reference to draft CodeSystem http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs
-INFORMATION: ValueSet/eehrxf-document-type-laboratory-report-vs: ValueSet.useContext[0].value.ofType(CodeableConcept): Reference to draft CodeSystem http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs
-INFORMATION: ValueSet/eehrxf-document-type-medical-imaging-vs: ValueSet.useContext[0].value.ofType(CodeableConcept): Reference to draft CodeSystem http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs
-INFORMATION: ValueSet/eehrxf-document-type-patient-summary-vs: ValueSet.useContext[0].value.ofType(CodeableConcept): Reference to draft CodeSystem http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs
+
+The resource CapabilityStatement/EEHRxF-DocumentAccessProvider-Example could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+
+# Not validated target for performance reasons
+CONCEPTMAP_GROUP_TARGET_SERVER_SIDE
+
+# Reference to draft CodeSystem
+MSG_DRAFT
+
+# Not Assigned OID
+The resource CapabilityStatement/EEHRxF-DocumentAccessProvider-Example could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+
+The resource ConceptMap/EehrxfMhdDocumentReferenceCM could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+
+# Wrong Display Name in the Value Set
+Wrong Display Name 'Diagnostic imaging report' for http://loinc.org#85430-7. Valid display is one of 3 choices: 'Diagnostic imaging report - example sections and entries' (en-US), 'Diagnostic imaging report - example sections and entries' (en-US) or 'DIR - example sections+entries' (en-US) (for the language(s) 'en, en-US'). Note that the display in the ValueSet does not have to match; this check exists to help check that it's not accidentally the wrong code
+
 

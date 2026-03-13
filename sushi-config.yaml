@@ -3,8 +3,8 @@
 # │  used properties are included. For a list of all supported properties and their functions,     │
 # │  see: https://fshschool.org/docs/sushi/configuration/.                                         │
 # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
-id: hl7.fhir.eu.eu-health-data-api
-canonical: http://hl7.eu/fhir/eu-health-data-api
+id: hl7.fhir.eu.health-data-api
+canonical: http://hl7.eu/fhir/health-data-api
 name: EuHealthDataApi
 title: EU Health Data API
 description: >-
@@ -14,10 +14,10 @@ description: >-
   authorization, PDQm for patient matching, and IPA for resource access — into a
   unified conformance target for EHR systems across Europe.
 status: draft # draft | active | retired | unknown
-version: 0.1.0
+version: 1.0.0-ballot
 fhirVersion: 4.0.1 # https://www.hl7.org/fhir/valueset-FHIR-version.html
 copyrightYear: 2025+
-releaseLabel: ci-build
+releaseLabel: ballot
 # license: CC0-1.0 # https://www.hl7.org/fhir/valueset-spdx-license.html
 # jurisdiction: urn:iso:std:iso:3166#US "United States of America" # https://www.hl7.org/fhir/valueset-jurisdiction.html
 publisher:

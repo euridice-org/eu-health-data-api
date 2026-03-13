@@ -90,4 +90,4 @@ EHDS defines six priority categories of health data. Each uses Document Exchange
 - GitHub: https://github.com/euridice-org/eu-health-data-api
 - Publisher: HL7 Europe / IHE Europe (EURIDICE joint working group)
 - FHIR version: R4.0.1
-- Status: Draft (0.1.0)
+- Status: Draft (1.0.0-ballot)

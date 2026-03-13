@@ -56,7 +56,7 @@ Description: "ValueSet for specific document types within the Patient Summary pr
 * ^status = #draft
 * ^experimental = false
 * ^useContext[+].code = http://terminology.hl7.org/CodeSystem/usage-context-type#focus
-* ^useContext[=].valueCodeableConcept = http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Patient-Summaries
+* ^useContext[=].valueCodeableConcept = http://hl7.eu/fhir/health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Patient-Summaries
 * insert LOINCCopyrightForVS
 * $loinc#60591-5 "Patient summary Document"
 
@@ -67,7 +67,7 @@ Description: "ValueSet for specific document types within the Discharge Report p
 * ^status = #draft
 * ^experimental = false
 * ^useContext[+].code = http://terminology.hl7.org/CodeSystem/usage-context-type#focus
-* ^useContext[=].valueCodeableConcept = http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Discharge-Reports
+* ^useContext[=].valueCodeableConcept = http://hl7.eu/fhir/health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Discharge-Reports
 * insert LOINCCopyrightForVS
 * $loinc#18842-5 "Discharge summary"
 * $loinc#100719-4 "Surgical oncology Discharge summary"
@@ -79,7 +79,7 @@ Description: "ValueSet for specific document types within the Laboratory Report 
 * ^status = #draft
 * ^experimental = false
 * ^useContext[+].code = http://terminology.hl7.org/CodeSystem/usage-context-type#focus
-* ^useContext[=].valueCodeableConcept = http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Laboratory-Reports
+* ^useContext[=].valueCodeableConcept = http://hl7.eu/fhir/health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Laboratory-Reports
 * insert LOINCCopyrightForVS
 * $loinc#11502-2 "Laboratory report"
 
@@ -90,7 +90,7 @@ Description: "ValueSet for specific document types within the Medical Imaging pr
 * ^status = #draft
 * ^experimental = false
 * ^useContext[+].code = http://terminology.hl7.org/CodeSystem/usage-context-type#focus
-* ^useContext[=].valueCodeableConcept = http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
+* ^useContext[=].valueCodeableConcept = http://hl7.eu/fhir/health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
 * insert LOINCCopyrightForVS
 * $loinc#85430-7 "Diagnostic imaging report"
 * $loinc#18748-4 "Diagnostic imaging study"
@@ -124,7 +124,7 @@ Description: """
 mapping from the EHDS regulatory priority categories to the LOINC document category codes for clinical precision in document identification. 
 """
 Usage: #example
-* url = "http://hl7.eu/fhir/eu-health-data-api/ConceptMap/EehrxfMhdDocumentReferenceCM"
+* url = "http://hl7.eu/fhir/health-data-api/ConceptMap/EehrxfMhdDocumentReferenceCM"
 * name = "EehrxfMhdDocumentReferenceCM"
 * title = "EEHRxF MHD DocumentReference ConceptMap"
 * description = "mapping from the EHDS regulatory priority categories to the LOINC document category codes for clinical precision in document identification."

@@ -1,0 +1,16 @@
+{
+  "package-id" : "hl7.fhir.eu.health-data-api",
+  "version" : "1.0.0-ballot",
+  "path" : "http://hl7.eu/fhir/health-data-api/1.0.0-ballot",
+  "mode" : "milestone",
+  "status" : "ballot",
+  "sequence" : "STU1",
+  "desc" : "First Standard for Trial Use (STU) ballot of the EU Health Data API Implementation Guide.",
+  "descmd" : "First Standard for Trial Use (STU) ballot of the EU Health Data API Implementation Guide.",
+  "changes" : "changes.html",
+  "first" : true,
+  "title" : "EU Health Data API",
+  "ci-build" : "https://build.fhir.org/ig/euridice-org/eu-health-data-api/",
+  "category" : "EHDS",
+  "introduction" : "This Implementation Guide defines HL7 FHIR-based APIs for accessing and exchanging health data in the European Health Data Space (EHDS)."
+}
