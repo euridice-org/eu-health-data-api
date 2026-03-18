@@ -1,6 +1,19 @@
 {% include fsh-link-references.md %}
 {% include variable-definitions.md %}
 
+<div style="margin: 0 340px 1.25rem 0; border: 2px solid #003366; border-radius: 8px; padding: 1em; background-color: #f9f9ff; box-sizing: border-box;">
+  <div style="margin-bottom: 1em;">
+    <img src="xtehr-logo.png" alt="Xt-EHR Logo" style="max-width: 100%; height: 40px;" />
+  </div>
+  <div style="text-align: left;">
+    <strong>Acknowledgment</strong><br/>
+    The development of this Implementation Guide version has been supported by the
+    <strong>Xt-EHR Joint Action</strong>.
+    Xt-EHR provided expertise, alignment with European health policy priorities,
+    and validation of specifications to enable consistency with EHDS requirements.
+  </div>
+</div>
+
 ### Regulatory Basis
 
 The European Health Data Space (EHDS) regulation describes an obligation for EHR systems to include an Interoperability Component that does the following:
