@@ -107,9 +107,9 @@ Each priority category has a ValueSet of known LOINC type codes:
 
 **Feedback requested on `category` and document differentiation in search.** This IG uses `DocumentReference.type` with LOINC codes as the primary search parameter for distinguishing priority categories. The use of `.category` is left to the needs of the implementation.
 
-The EHDS priority categories (Patient Summary, Laboratory Report, etc.) are regulatory groupings that no established code system defines today. A coarse-grained search parameter grouping documents by regulatory category — independent of their specific LOINC type — would simplify consumer logic, especially as type code sets evolve.
+The EHDS priority categories (Patient Summary, Laboratory Report, etc.) are regulatory groupings that no established code system defines today. A coarse-grained search parameter grouping documents by `category` — independent of their specific LOINC `type` code — could simplify consumer logic, especially as code sets evolve. For example, the `category` field could represent priority categories or another classification scheme for search.
 
-Implementers: Does your system use or plan to use `category` for document classification? Would constraining `category` to the EHDS priority categories improve your search workflows, or conflict with existing local classification schemes?
+Implementers: Does your system use or plan to use `category` for document classification? Would constraining `category` to the EHDS priority categories be useful for your search workflows, or conflict with other category schemes? Are there other good code sets for differentiating, for example, laboratory reports from imaging reports?
 
 </div>
 
