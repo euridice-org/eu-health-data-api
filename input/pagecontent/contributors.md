@@ -6,11 +6,11 @@ European countries, projects, initiatives, SDOs, and companies.
 |Role                    | Name                | Affiliation        |
 |------------------------|---------------------|--------------------|
 | Project co-chair       |  Josh Priebe        | HL7 EU             |
-| Project co-chair       |  Bas van den Heuvel | IHE Europe             |
+| Project co-chair       |  Bas van den Heuvel | IHE Europe         |
 | Contributor            |  John Moehrke       | IHE                |
 | Contributor            |  Andries Hamster    | IHE                |
 | Contributor            |  Andreas Klingler   | IHE Europe         |
 | Contributor            |  Vassil Peytchev    | HL7 International  |
 | Contributor            |  Katie Reynolds     | HL7 EU             |
-| Contributor            |  Giorgio Cangioli   | HL7 Europe         |
-| Contributor            |  Kai Heitmann       | HL7 Europe         |
+| Contributor            |  Giorgio Cangioli   | HL7 EU             |
+| Contributor            |  Kai Heitmann       | HL7 EU             |
