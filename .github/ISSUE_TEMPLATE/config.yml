@@ -1,0 +1,6 @@
+blank_issues_enabled: false
+
+contact_links:
+  - name: Create a Jira ticket
+    url: https://jira.hl7.org/secure/CreateIssue!default.jspa
+    about: Use Jira for bug reports, feature requests, and work tracking.
