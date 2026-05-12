@@ -5,6 +5,8 @@ This is similar to the approach taken in the MHDS specification, but with a more
 ### Relevant Specifications:
 
 - Authorization
+  - [HL7 SMART App Launch](https://hl7.org/fhir/smart-app-launch/app-launch.html) - Defines how third-party applications (wellness apps and medical devices in the context of this specification) connect with EHR systems.
+  - [HL7 International Patient Access (IPA)](https://hl7.org/fhir/uv/ipa/) - Further defines how an application accesses patient information using SMART authorization and includes some content profiles.
   - [HL7 SMART Backend Services](https://hl7.org/fhir/smart-app-launch/) - Defines authorization in FHIR. We use the SMART Backend Services profile for system-system authorization, and FHIR scopes.
   - [IHE IUA](https://profiles.ihe.net/ITI/IUA/index.html) - Defines authorization and access control actors and mechanisms. We use the actors and transactions model.
 - Patient Identity Matching
@@ -12,7 +14,6 @@ This is similar to the approach taken in the MHDS specification, but with a more
 - Document Exchange
   - [IHE MHD](https://profiles.ihe.net/ITI/MHD/) - Defines exchange of Documents, which we use to exchange FHIR document content.
 - Resource Exchange
-  - [HL7 International Patient Access (IPA)](https://hl7.org/fhir/uv/ipa/) - Defines how an application can access FHIR information using SMART authorization and resource access. IPA is the primary reference for resource access patterns.
   - [IHE QEDm](https://profiles.ihe.net/PCC/QEDm/index.html) - Defines how a client can query for existing FHIR resources from a FHIR server. Referenced where compatible with IPA.
 - Foundational
   - [IHE Consistent Time](https://profiles.ihe.net/ITI/TF/Volume1/ch-7.html) - Defines the use of Network Time Protocol (NTP) to provide consistent time across systems.
@@ -99,7 +100,7 @@ This can be combined with content profiles define by each EHDS Priority Category
 
 ### Resource Exchange
 
-It is also useful in many cases to transact with individual FHIR resources. For this purpose, two resource-based actors are defined:
+It is also useful in many cases to transact with individual FHIR resources. For this purpose, three resource-based actors are defined:
 
 <div style="text-align: center;">
 {% include img.html img="resExchange_1.png" caption="Figure: Resource Exchange Actors" %}
@@ -112,14 +113,8 @@ It is also useful in many cases to transact with individual FHIR resources. For 
 <a name="resource-consumer"></a>
 5. **Resource Consumer (client)** - A FHIR client that consumes external FHIR resources by querying a Resource Access Provider.
 
-<details>
-<summary><i>Note: What about Resource Producer? Click for more</i></summary>
-
-Resource exchange is more complex than document publication, and in many cases has resource and use-case specific considerations. Within the scope of this version of the IG, we assume a precondition that the Resource Access Provider has access to resources and focus on defining how the Resource Access Provider enables a consumer to search and read those resources. For more details and possible approaches, see the <a href="resourceExchange.html">Resource Exchange</a> page.
-
-</details>
-
-
+<a name="resource-consumer"></a>
+6. **Resource Producer (client)** - A FHIR client that produces FHIR resources and sends them to a Resource Access Provider.
 
 These composite actors inherit existing actors from the IUA, PDQm, and [International Patient Access (IPA)](https://hl7.org/fhir/uv/ipa/) specifications (with QEDm alignment where compatible):
 
