@@ -1,8 +1,14 @@
 ### Overview
 
-Resource access provides query and read access to individual clinical FHIR resources. This is a parallel path to [FHIR Document Exchange](document-exchange.html).
+Resource access provides access to individual clinical FHIR resources and allows applications to send individual FHIR resources to an EHR. This is a parallel path to [FHIR Document Exchange](document-exchange.html).
 
-A vaccination registry that serves Immunization resources, or a medication system that serves MedicationStatement resources, uses resource access without necessarily producing complete priority documents. Systems declare which resources they support.
+A wellness application may integrate with an EHR and use fine-grained health data for informing a patient or a wellness coach of medical conditions or observations, outside healthcare setting.
+
+A remote monitoring solution may feed data from a medical device of a patient to an EHR.
+
+A vaccination registry that serves Immunization resources, or a medication system that serves MedicationStatement resources, uses resource access without necessarily producing complete priority documents.
+
+Systems declare which resources they support.
 
 Resource access for resources that also appear within FHIR Documents (e.g., Conditions referenced in a Patient Summary) is permitted but not required.
 
@@ -10,27 +16,27 @@ Data models for resource access inherit from [HL7 Europe Core](https://build.fhi
 
 ### Actors
 
-- **Resource Access Provider** (server): Provides resource query capabilities
+- **Resource Access Provider** (server): Provides resource query, read, and/or write capabilities
 - **Resource Consumer** (client): Queries resources
+- **Resource Producer** (client) - Sends individual FHIR resources or Bundles of resources to Resource Access Providers
+
 
 See [Actors and Transactions](actors.html) for detailed actor groupings.
 
-<details>
-<summary><i>Note: What about Resource Publisher? Click for more</i></summary>
-
-Resource publication is more complex than document publication, and in many cases has resource and use-case specific considerations. Within the scope of this version of the IG, we assume a precondition that the Resource Access Provider has access to resources and focus on defining how the Resource Access Provider enables a consumer to search and read those resources. For more details and possible approaches, see the <a href="resourceExchange.html">Resource Exchange</a> page.
-
-</details>
+See [Resource Exchange](resourceExchange.html) for more details on exchange patterns.
 
 ### Specifications
 
 This IG aligns with:
 
+- [HL7 SMART App Launch](https://hl7.org/fhir/smart-app-launch/app-launch.html) - Security model including authentication and authorization for wellness apps and medical devices.
 - [HL7 International Patient Access (IPA)](https://hl7.org/fhir/uv/ipa/) - Resource access patterns and CapabilityStatements
 - [IHE QEDm](https://profiles.ihe.net/PCC/QEDm/) - Query Existing Data mobile, where compatible with IPA. QEDm has a goal of aligning with IPA.
   - [PCC-44](https://profiles.ihe.net/PCC/QEDm/PCC-44.html) - Mobile Query Existing Data transaction
 
-### Sequence Diagram
+### Sequence Diagrams
+
+#### Query and Read Resources
 
 ```mermaid
 sequenceDiagram
@@ -44,9 +50,23 @@ sequenceDiagram
     Provider-->>Consumer: Bundle of Observations
 ```
 
+#### Write Resources
+
+```mermaid
+sequenceDiagram
+    participant Producer as Resource Producer
+    participant Provider as Resource Access Provider
+
+    Producer->>Provider: POST /Observation
+    Provider-->>Consumer: Response
+```
+
+Note: the Producer may also POST a Bundle of resources to the FHIR root (/).
+
+Depending on the use case, either the individual resource or the Bundle may contain Provenance resources that indicate the source of the data.
+
 ### Constraints
 
-- **Read/search only** - No create/update/delete operations.
 - **Patient-scoped queries** - `patient` parameter required on all searches
 - Searches without `patient` parameter are rejected
 

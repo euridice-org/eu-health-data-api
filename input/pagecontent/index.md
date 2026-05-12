@@ -40,25 +40,28 @@ The intended audiences of this Implementation Guide are:
 
 - **Manufacturers of EHR systems:** EHR vendors looking to develop support for APIs that meet the needs of EHDS should refer to the [Functional Requirements](functional.html) for a list of functional specifications EHRs should support.
 
+- **Manufacturers of wellness apps and medical devices:** vendors of applications and devices claiming conformance with an EHR system, looking to either use data from EHR systems or to write data into an EHR system.
+
 - **Architects of national infrastructures:** National eHealth agencies looking to understand how to use the capabilities of EHRs required by EHDS to meet the goals of EHDS in their Member States should refer to the [Implementation](implementation.html) for examples of how the EHR APIs can be used for the EHDS use cases.
 
 ### Summary of Functional Requirements ("the API")
 
 - **[Capability Discovery](capability-discovery.html)** - Discover which priority categories a server supports
-- **[Authorization](authorization.html)** - SMART Backend Services (IUA actor model)
+- **[Authorization](authorization.html)** - SMART App Launch, SMART Backend Services (IUA actor model)
 - **[Patient Matching](patient-match.html)** - PDQm Patient Demographics Query
 - **[Document Exchange](document-exchange.html)** - MHD transactions (ITI-67, ITI-68, ITI-105)
-- **[Resource Access](resource-access.html)** - International Patient Access (IPA) resource query patterns
+- **[Resource Access](resource-access.html)** - International Patient Access (IPA)
 
 ### Approach
 
 We define exchange patterns by inheriting and defining transactions, system actors, and associated capability statements from existing IHE and HL7 specifications:
 
 - [IHE MHD](https://profiles.ihe.net/ITI/MHD/) - Defines exchange of Documents, which we use to exchange FHIR document content.
+- [HL7 SMART App Launch](https://hl7.org/fhir/smart-app-launch/app-launch.html) - Defines how third-party applications (wellness apps and medical devices in the context of this specification) connect with EHR systems.
+- [HL7 International Patient Access (IPA)](https://hl7.org/fhir/uv/ipa/) - Further defines how an application accesses patient information using SMART authorization and includes some content profiles.
 - [HL7 SMART App Launch - Backend Services](https://hl7.org/fhir/smart-app-launch/backend-services.html) - Defines authorization in FHIR. We use the SMART Backend Services profile for system-system authorization, including the FHIR scopes defined in this specification.
 - [IHE IUA](https://profiles.ihe.net/ITI/IUA/index.html) - Defines authorization and access control actors and mechanisms. Aligned with SMART. We use the actors and transactions model from this specification.
 - [IHE PDQm](https://profiles.ihe.net/ITI/PDQm/index.html) - Defines how a client can perform patient lookup against a server.
-- [HL7 International Patient Access (IPA)](https://hl7.org/fhir/uv/ipa/) - Defines how an application accesses patient information using SMART authorization and resource query. International Patient Access is the primary reference for resource access patterns in this IG.
 - [IHE QEDm](https://profiles.ihe.net/PCC/QEDm/index.html) - Defines how a client can query for existing FHIR resources from a FHIR server. Referenced where compatible with IPA.
 
 We define composite actors that inherit and combine actors defined in these existing specifications. See [Actors and Transactions](actors.html) for detailed actor definitions, transactions, and actor grouping.
@@ -77,10 +80,11 @@ At a high level, the following actors are specified:
 
 ## Resource Exchange Actors
 
-- **Resource Access Provider** - Provides query access to individual FHIR resources
+- **Resource Access Provider** - Provides access to individual FHIR resources
 - **Resource Consumer** - Queries FHIR resources from Resource Access Providers
+- **Resource Producer** - Sends FHIR resources to Resource Access Providers
 
-These resource actors are initially scoped for search + read. See [Resource Access](resource-access.html) for detailed discussion and possible approaches for resource exchange patterns.
+Resource exchange is not yet as developed as document exchange patterns. See [Resource Access](resource-access.html) for detailed discussion.
 
 ## Priority Categories
 
