@@ -92,8 +92,8 @@ pages:
       title: Member State Architectures
       fhir-documents-vs-resources.md:
         title: FHIR Documents and Resources
-      background-xds-fhir.md:
-        title: Relationship to XDS and FHIR Document Sharing
+    background-xds-fhir.md:
+      title: Relationship to XDS/FHIR Document Sharing
     changes.md:
       title: Change Log
     open-issues.md:
@@ -117,17 +117,17 @@ pages:
     example-patient-summary.md:
       title: Retrieve a European Patient Summary
     usecase-ehr-internal.md:
-      title: Use Case - Organization-Internal Exchange
+      title: Organization-Internal Exchange
     usecase-cross-org.md:
-      title: Use Case - Cross-Organization via National Infrastructure
-    usecase-wellness-app.md:
-      title: Use Case - Wellness App Access
+      title: Cross-Organization via National Infrastructure
+    usecase-cross-border-ncp.md:
+      title: Cross-Border via NCP
     usecase-health-professional-portal.md:
       title: Use Case - Health Professional Access Service
     usecase-health-data-portal.md:
       title: Use Case - Health Data Access Service
-    usecase-cross-border-ncp.md:
-      title: Use Case - Cross-Border via NCP
+    usecase-wellness-app.md:
+      title: Wellness App Access
   about.md:
     title: About
     contributors.md:
@@ -176,6 +176,7 @@ menu:
     Actors and Transactions: actors.html
     Priority Categories: priority-categories.html
     Member State Architectures: member-state-architectures.html
+    Relationship to XDS/FHIR: background-xds-fhir.html
     Change Log: changes.html
     Open Issues: open-issues.html
   Functional Requirements:
@@ -188,10 +189,10 @@ menu:
     Retrieve a European Patient Summary: example-patient-summary.html
     Organization-Internal Exchange: usecase-ehr-internal.html
     Cross-Organization via National Infrastructure: usecase-cross-org.html
-    Wellness App Access: usecase-wellness-app.html
+    Cross-Border via NCP: usecase-cross-border-ncp.html
     Health Professional Access Service: usecase-health-professional-portal.html
     Health Data Access Service: usecase-health-data-portal.html
-    Cross-Border via NCP: usecase-cross-border-ncp.html
+    Wellness App Access: usecase-wellness-app.html
   Artifacts: artifacts.html
   About: about.html
 

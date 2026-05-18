@@ -44,6 +44,8 @@
 <page key="capability-discovery" name="Capability Discovery"/>
 <page key="changes" name="Change Log"/>
 <page key="copyright" name="Copyright"/>
+<page key="usecase-cross-border-ncp" name="Cross-Border via NCP"/>
+<page key="usecase-cross-org" name="Cross-Organization via National Infrastructure"/>
 <page key="document-exchange" name="Document Exchange"/>
 <page key="ehds-annex-ii" name="EHDS Annex II - Essential Requirements"/>
 <page key="fhir-documents-vs-resources" name="FHIR Documents and Resources"/>
@@ -56,21 +58,19 @@
 <page key="priority-area-laboratory" name="Medical Test Results (Laboratory)"/>
 <page key="member-state-architectures" name="Member State Architectures"/>
 <page key="open-issues" name="Open Issues"/>
+<page key="usecase-ehr-internal" name="Organization-Internal Exchange"/>
 <page key="patient-match" name="Patient Matching"/>
 <page key="priority-area-eps" name="Patient Summary (EPS)"/>
 <page key="priority-categories" name="Priority Categories"/>
 <page key="references" name="References"/>
 <page key="regulatoryAnchors" name="Regulatory Anchors"/>
-<page key="background-xds-fhir" name="Relationship to XDS and FHIR Document Sharing"/>
+<page key="background-xds-fhir" name="Relationship to XDS/FHIR Document Sharing"/>
 <page key="resource-access" name="Resource Access"/>
 <page key="resourceExchange" name="Resource Exchange Patterns"/>
 <page key="example-patient-summary" name="Retrieve a European Patient Summary"/>
 <page key="toc" name="Table of Contents"/>
-<page key="usecase-cross-border-ncp" name="Use Case - Cross-Border via NCP"/>
-<page key="usecase-cross-org" name="Use Case - Cross-Organization via National Infrastructure"/>
 <page key="usecase-health-data-portal" name="Use Case - Health Data Access Service"/>
 <page key="usecase-health-professional-portal" name="Use Case - Health Professional Access Service"/>
-<page key="usecase-ehr-internal" name="Use Case - Organization-Internal Exchange"/>
-<page key="usecase-wellness-app" name="Use Case - Wellness App Access"/>
+<page key="usecase-wellness-app" name="Wellness App Access"/>
 <page key="priority-area-mpd" name="ePrescription / eDispensation (MPD)"/>
 </specification>

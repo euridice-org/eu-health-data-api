@@ -52,4 +52,4 @@ Some Member States operate both patterns simultaneously — some EHR systems pub
 
 This IG does not require migration from existing document-sharing infrastructure. [IHE MHD](https://profiles.ihe.net/ITI/MHD/) bridges FHIR API calls to XDS/XCA backends, allowing existing national investments to remain valid.
 
-See [Relationship to XDS and FHIR Document Sharing](background-xds-fhir.html) for the technical detail on FHIR-native vs XDS-bridge deployment patterns.
+See [Relationship to XDS/FHIR Document Sharing](background-xds-fhir.html) for technical detail on FHIR server and XDS deployment patterns.

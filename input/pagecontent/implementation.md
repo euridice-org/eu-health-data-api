@@ -22,6 +22,12 @@ Each Member State operates infrastructure that connects healthcare organizations
 
 Member States must establish an Electronic Health Data Access Service ([Art. 4](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0327)) for patient access and a Health Professional Access Service ([Art. 12](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0327)) for clinician access. Access services act as consumers of this IG's API. Wellness applications and patient apps connect through access service infrastructure, not directly to EHR systems. Access service requirements are out of scope for this IG.
 
+**EHR System Implementation Approach** — *See [Relationship to XDS/FHIR Document Sharing](background-xds-fhir.html)*
+
+EHR systems may implement this IG using a FHIR server (documents assembled on demand from clinical resources) or a document-centric system (documents persisted, optionally backed by XDS/XCA). Both approaches share the same API contract. This choice is orthogonal to organizational deployment topology.
+
+---
+
 **Cross-Border Exchange (MyHealth@EU / NCP)** — *Out of scope — separate specification*
 
 National Contact Points exchange data across borders via the MyHealth@EU network ([Art. 23](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0327)). NCP-to-NCP exchange is governed by the [NCPeH API specification](https://build-fhir.ehdsi.eu/ncp-api/), not this IG. The national infrastructure layer connects EHR systems to the NCP; the EHR system API is the entry point at the bottom of that chain.
@@ -34,9 +40,11 @@ The following pages describe how this IG's API is used in specific deployment co
 
 #### EHR System Deployment
 
-- [**Organization-Internal Exchange**](usecase-ehr-internal.html) — EHR systems within a healthcare provider: internal document exchange, on-demand document patterns, and the organizational and vendor-level facade pattern.
+- [**Organization-Internal Exchange**](usecase-ehr-internal.html) — EHR systems within a healthcare provider: direct deployment, gateway, and multi-product facade patterns.
 
-- [**Cross-Organization via National Infrastructure**](usecase-cross-org.html) — EHR systems as nodes in national health data infrastructure. Covers federated and central-repository national patterns and draws the boundary between EHR API obligations and national infrastructure.
+- [**Cross-Organization via National Infrastructure**](usecase-cross-org.html) — EHR systems as nodes in national health data infrastructure; federated and central-repository patterns.
+
+- [**Cross-Border via NCP**](usecase-cross-border-ncp.html) — EU cross-border exchange via National Contact Points and MyHealth@EU.
 
 #### Access Service Contexts
 
@@ -44,11 +52,7 @@ The following pages describe how this IG's API is used in specific deployment co
 
 - [**Health Data Access Service**](usecase-health-data-portal.html) — Patients accessing their health data through a national access service.
 
-- [**Wellness App Access**](usecase-wellness-app.html) — Patient-facing applications reading health data via the same API transactions. Patient authentication is brokered by national access service infrastructure, not the EHR.
-
-#### Cross-Border
-
-- [**Cross-Border Exchange via NCP**](usecase-cross-border-ncp.html) — EU cross-border exchange via National Contact Points and MyHealth@EU.
+- [**Wellness App Access**](usecase-wellness-app.html) — Patient-facing applications reading health data; authentication brokered by access service infrastructure.
 
 #### Walkthrough
 
