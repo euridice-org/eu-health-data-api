@@ -117,7 +117,7 @@ pages:
     example-patient-summary.md:
       title: Retrieve a European Patient Summary
     usecase-ehr-internal.md:
-      title: Use Case - Organization-Internal
+      title: Use Case - Organization Internal Exchange
     usecase-cross-org.md:
       title: Use Case - Cross-Organization via National Infrastructure
     usecase-wellness-app.md:
@@ -186,7 +186,7 @@ menu:
     Resource Access: resource-access.html
   Implementation:
     Retrieve a European Patient Summary: example-patient-summary.html
-    Organization-Internal: usecase-ehr-internal.html
+    Organization Internal Exchange: usecase-ehr-internal.html
     Cross-Organization via National Infrastructure: usecase-cross-org.html
     Wellness App Access: usecase-wellness-app.html
     Health Professional Access Service: usecase-health-professional-portal.html

@@ -1,67 +1,67 @@
-This section describes how this IG is applied in practice — how EHR systems fit within the EHDS ecosystem, and how this specification relates to the different contexts in which EHR data is accessed.
+This IG defines the API contract for EHR systems under EHDS. Each layer of the EHDS data exchange chain carries distinct regulatory obligations. This page describes where the EHR system API fits, who is responsible for what, and how the use cases below map to that chain.
 
 ### The EHDS Data Exchange Chain
 
-EHDS creates a chain of obligations from EHR systems all the way to cross-border exchange. Each layer has its own regulatory obligations and its own actors. This IG defines the API at the **EHR system layer**.
+EHDS data flows through several layers, from individual EHR systems up to cross-border exchange between Member States. The layers are:
 
-```
-MyHealth@EU Network
-  │  Cross-border exchange between Member States via NCPs.
-  │  Governed by MyHealth@EU / eHDSI. Out of scope for this IG.
-  │
-National Contact Points (NCPs)
-  │  Each Member State operates an NCP that routes cross-border requests
-  │  to national infrastructure. Out of scope for this IG.
-  │
-National Infrastructure
-  │  Member State-operated: health professional access services (HPAS),
-  │  health data access services (EHDAS), national document repositories,
-  │  identity services, authorization infrastructure.
-  │  Obligations: EHDS Arts 4, 12, 23. Out of scope for this IG.
-  │  National infrastructure acts as a *consumer* of this IG's API.
-  │
-Healthcare Organization
-  │  Healthcare providers connect to national infrastructure.
-  │  May deploy organizational gateways or facades that aggregate
-  │  internal EHR systems and expose a single conformant API surface.
-  │
-EHR System  ←── This IG defines this API surface
-      EHDS Annex II §2.1–2.6 obligations.
-      CE-marking self-declaration (Arts 25, 30, 39–41).
-      Regulatory obligations on EHR *vendors*, not national infra.
-```
+---
 
-**Regulatory line:** The EHDS Regulation places specific conformance obligations on EHR *systems* (Annex II, Art 25/30). It places separate obligations on *Member States* for access services and national infrastructure (Arts 4, 12, 23). This IG targets the EHR system layer. National infrastructure and access services are described as context; their requirements are not specified here.
+**EHR System** — *This IG*
+
+EHR systems store and serve patient health data in EEHRxF format. EHDS [Annex II §2.1–2.6](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0327#anx_II) requires EHR systems to provide an API for access to and receipt of priority-category data. This IG specifies that API. EHR vendors demonstrate conformance via CE-marking self-declaration ([Arts. 25, 30, 39–41](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0327)).
+
+**Healthcare Organization** — *Described; not specified*
+
+Healthcare providers deploy one or more EHR systems. They connect those systems to national infrastructure. How they connect — directly, through an organizational gateway, or through a vendor-supplied facade — is an organizational decision. This IG describes common patterns but does not mandate a specific approach.
+
+**National Interoperability Infrastructure** — *Out of scope — Member State obligation*
+
+Each Member State operates infrastructure that connects healthcare organizations to access services and to cross-border networks. This infrastructure may include document repositories, federated query layers, master patient indexes (MPIs), and authorization services. The design varies by Member State. [Art. 23](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0327) places this obligation on Member States, not on EHR vendors. National infrastructure acts as a *consumer* of this IG's API; its own requirements are not specified here.
+
+**Access Services (EHDAS / HPAS)** — *Out of scope — Member State obligation*
+
+Member States must establish an Electronic Health Data Access Service ([Art. 4](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0327)) for patient access and a Health Professional Access Service ([Art. 12](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0327)) for clinician access. Access services act as consumers of this IG's API. Wellness applications and patient apps connect through access service infrastructure, not directly to EHR systems. Access service requirements are out of scope for this IG.
+
+**Cross-Border Exchange (MyHealth@EU / NCP)** — *Out of scope — separate specification*
+
+National Contact Points exchange data across borders via the MyHealth@EU network ([Art. 23](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0327)). NCP-to-NCP exchange is governed by the [NCPeH API specification](https://build-fhir.ehdsi.eu/ncp-api/), not this IG. The national infrastructure layer connects EHR systems to the NCP; the EHR system API is the entry point at the bottom of that chain.
+
+---
 
 ### Use Cases
 
-The following use case pages describe how EHR systems and surrounding infrastructure use the API defined in this IG. Each page covers actors, workflows, technical flow, and scope boundaries.
+The following pages describe how this IG's API is used in specific deployment contexts. Each covers actors, workflow, technical flow, and scope boundaries.
 
-**EHR System Deployment Contexts**
+#### EHR System Deployment
 
-- [**Organization-Internal**](usecase-ehr-internal.html) — EHR systems operating within a healthcare provider. Internal document exchange, on-demand document patterns, and the organizational gateway/facade pattern.
-- [**Cross-Organization via National Infrastructure**](usecase-cross-org.html) — EHR systems as nodes in national health data infrastructure. Covers federated and central-repository national patterns. Draws the line between EHR API obligations and national infrastructure.
+- [**Organization Internal Exchange**](usecase-ehr-internal.html) — EHR systems within a healthcare provider: internal document exchange, on-demand document patterns, and the organizational and vendor-level facade pattern.
 
-**Access Service and Consumer Contexts**
+- [**Cross-Organization via National Infrastructure**](usecase-cross-org.html) — EHR systems as nodes in national health data infrastructure. Covers federated and central-repository national patterns and draws the boundary between EHR API obligations and national infrastructure.
+
+#### Access Service Contexts
 
 - [**Health Professional Access Service**](usecase-health-professional-portal.html) — Healthcare professionals accessing EEHRxF data through a professional portal.
-- [**Health Data Access Service**](usecase-health-data-portal.html) — Patients accessing their own health data through a national access service.
-- [**Wellness App Access**](usecase-wellness-app.html) — Patient-facing applications reading health data using the same API transactions. Patient authentication is brokered via national access service infrastructure.
 
-**Cross-Border**
+- [**Health Data Access Service**](usecase-health-data-portal.html) — Patients accessing their health data through a national access service.
 
-- [**Cross-Border Exchange via NCP**](usecase-cross-border-ncp.html) — Health data exchange across EU borders via National Contact Points and MyHealth@EU.
+- [**Wellness App Access**](usecase-wellness-app.html) — Patient-facing applications reading health data via the same API transactions. Patient authentication is brokered by national access service infrastructure, not the EHR.
 
-**Walkthrough Example**
+#### Cross-Border
+
+- [**Cross-Border Exchange via NCP**](usecase-cross-border-ncp.html) — EU cross-border exchange via National Contact Points and MyHealth@EU.
+
+#### Walkthrough
 
 - [**Retrieve a European Patient Summary**](example-patient-summary.html) — Step-by-step walkthrough of the complete document access flow.
 
-### Actor Usage
+### Actor Summary
 
-All use cases use the composite actors defined in [Actors and Transactions](actors.html):
+All use cases use the actors defined in [Actors and Transactions](actors.html):
 
-- [Document Publisher](actors.html#document-publisher)
-- [Document Access Provider](actors.html#document-access-provider)
-- [Document Consumer](actors.html#document-consumer)
-- [Resource Access Provider](actors.html#resource-access-provider)
-- [Resource Consumer](actors.html#resource-consumer)
+| Actor | Role |
+|---|---|
+| [Document Publisher](actors.html#document-publisher) | Produces and submits EEHRxF documents |
+| [Document Access Provider](actors.html#document-access-provider) | Serves document query and retrieval |
+| [Document Consumer](actors.html#document-consumer) | Queries and retrieves documents |
+| [Resource Access Provider](actors.html#resource-access-provider) | Serves individual FHIR resource queries |
+| [Resource Consumer](actors.html#resource-consumer) | Queries individual FHIR resources |

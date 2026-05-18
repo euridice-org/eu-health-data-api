@@ -87,7 +87,7 @@ National authorization infrastructure (IUA Authorization Servers, national ident
 
 | Use Case | Relationship |
 |---|---|
-| [Organization-Internal](usecase-ehr-internal.html) | Internal EHR systems feed data to the outward-facing EHR or gateway described here |
+| [Organization Internal Exchange](usecase-ehr-internal.html) | Internal EHR systems feed data to the outward-facing EHR or gateway described here |
 | [Health Professional Access Service](usecase-health-professional-portal.html) | HPAS is a consumer of this IG's API; its requirements are not specified here |
 | [Health Data Access Service](usecase-health-data-portal.html) | HDAS is a consumer of this IG's API for patient-initiated access |
 | [Cross-Border via NCP](usecase-cross-border-ncp.html) | NCP is a consumer of this IG's API at the national infrastructure layer |

@@ -1,6 +1,6 @@
 Member States across the European Union have diverse healthcare system architectures and health information exchange infrastructures. This IG accommodates that diversity by defining the **EHR system API surface** without prescribing national infrastructure design.
 
-This page describes the two primary national architectural patterns and how EHR systems fit within each. For how EHR systems are deployed internally within healthcare organizations, see [Use Case — Organization-Internal](usecase-ehr-internal.html). For how EHR systems connect externally, see [Use Case — Cross-Organization via National Infrastructure](usecase-cross-org.html).
+This page describes the two primary national architectural patterns and how EHR systems fit within each. For how EHR systems are deployed internally within healthcare organizations, see [Use Case — Organization Internal Exchange](usecase-ehr-internal.html). For how EHR systems connect externally, see [Use Case — Cross-Organization via National Infrastructure](usecase-cross-org.html).
 
 ### National Infrastructure is Out of Scope
 

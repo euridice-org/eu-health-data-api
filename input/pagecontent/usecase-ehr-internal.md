@@ -1,8 +1,8 @@
 ### Overview
 
-A **healthcare provider organization** deploys one or more EHR systems to manage patient health data internally. The EHR systems serve clinical workflows within the organization and support the organization's obligations to make data available through national health infrastructure.
+A healthcare provider deploys one or more EHR systems to manage patient health data. Those systems serve clinical workflows within the organization and support the organization's obligation to make data available through national health infrastructure.
 
-This use case describes the **organization-internal perspective**: how EHR systems within a healthcare provider use this IG's API patterns internally and position themselves to support outward connectivity.
+This use case covers how EHR systems within a healthcare provider use this IG's API patterns — internally and at the point where the organization connects outward.
 
 ### Scope
 
