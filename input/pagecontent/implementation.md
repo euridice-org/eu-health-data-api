@@ -1,44 +1,65 @@
-This section provides concrete examples and use cases showing how the functional requirements defined in this IG are applied in practice.
+This section describes how this IG is applied in practice — how EHR systems fit within the EHDS ecosystem, and how this specification relates to the different contexts in which EHR data is accessed.
 
-### Deployment Context
+### The EHDS Data Exchange Chain
 
-The EU Health Data API can be implemented in various deployment models to fit different Member State architectures and organizational structures.
+EHDS creates a chain of obligations from EHR systems all the way to cross-border exchange. Each layer has its own regulatory obligations and its own actors. This IG defines the API at the **EHR system layer**.
 
-#### Common Deployment Models
+```
+MyHealth@EU Network
+  │  Cross-border exchange between Member States via NCPs.
+  │  Governed by MyHealth@EU / eHDSI. Out of scope for this IG.
+  │
+National Contact Points (NCPs)
+  │  Each Member State operates an NCP that routes cross-border requests
+  │  to national infrastructure. Out of scope for this IG.
+  │
+National Infrastructure
+  │  Member State-operated: health professional access services (HPAS),
+  │  health data access services (EHDAS), national document repositories,
+  │  identity services, authorization infrastructure.
+  │  Obligations: EHDS Arts 4, 12, 23. Out of scope for this IG.
+  │  National infrastructure acts as a *consumer* of this IG's API.
+  │
+Healthcare Organization
+  │  Healthcare providers connect to national infrastructure.
+  │  May deploy organizational gateways or facades that aggregate
+  │  internal EHR systems and expose a single conformant API surface.
+  │
+EHR System  ←── This IG defines this API surface
+      EHDS Annex II §2.1–2.6 obligations.
+      CE-marking self-declaration (Arts 25, 30, 39–41).
+      Regulatory obligations on EHR *vendors*, not national infra.
+```
 
-**Direct EHR Implementation**: The EHR system directly implements the API specifications.
+**Regulatory line:** The EHDS Regulation places specific conformance obligations on EHR *systems* (Annex II, Art 25/30). It places separate obligations on *Member States* for access services and national infrastructure (Arts 4, 12, 23). This IG targets the EHR system layer. National infrastructure and access services are described as context; their requirements are not specified here.
 
-**Organizational Façade**: A hospital or healthcare organization deploys an aggregation layer implementing the API in front of one or more EHR systems.
+### Use Cases
 
-**Regional/National Hub**: Regional or national infrastructure implements the API, federating queries to underlying EHR systems or serving from a centralized repository.
+The following use case pages describe how EHR systems and surrounding infrastructure use the API defined in this IG. Each page covers actors, workflows, technical flow, and scope boundaries.
 
-**Registry Pattern**: A registry system implements the API and provides standardized interfaces for EHR systems to publish and retrieve information.
+**EHR System Deployment Contexts**
 
-See [Member State Architectures](member-state-architectures.html) for more details on how this specification accommodates different architectural patterns.
+- [**Organization-Internal**](usecase-ehr-internal.html) — EHR systems operating within a healthcare provider. Internal document exchange, on-demand document patterns, and the organizational gateway/facade pattern.
+- [**Cross-Organization via National Infrastructure**](usecase-cross-org.html) — EHR systems as nodes in national health data infrastructure. Covers federated and central-repository national patterns. Draws the line between EHR API obligations and national infrastructure.
 
-### Use Case Examples
+**Access Service and Consumer Contexts**
 
-The following pages provide examples of common use cases:
+- [**Health Professional Access Service**](usecase-health-professional-portal.html) — Healthcare professionals accessing EEHRxF data through a professional portal.
+- [**Health Data Access Service**](usecase-health-data-portal.html) — Patients accessing their own health data through a national access service.
+- [**Wellness App Access**](usecase-wellness-app.html) — Patient-facing applications reading health data using the same API transactions. Patient authentication is brokered via national access service infrastructure.
 
-#### [Retrieve a European Patient Summary](example-patient-summary.html)
+**Cross-Border**
 
-A step-by-step walkthrough showing the complete flow: authorization → patient identification → document query (IHE MHD ITI-67) → document retrieval (IHE MHD ITI-68). Demonstrates the most common pattern using the [Document Consumer](actors.html#document-consumer) and [Document Access Provider](actors.html#document-access-provider) actors with IHE MHD transactions.
+- [**Cross-Border Exchange via NCP**](usecase-cross-border-ncp.html) — Health data exchange across EU borders via National Contact Points and MyHealth@EU.
 
-#### [Health Professional Portal](usecase-health-professional-portal.html)
+**Walkthrough Example**
 
-Healthcare providers accessing EEHRxF data through a professional portal. Shows how clinicians can query and retrieve patient information from other organizations.
-
-#### [Health Data Portal](usecase-health-data-portal.html)
-
-Patients accessing their own health data through a health data access service. Demonstrates patient-facing access patterns.
-
-#### [Cross-Border Exchange via NCP](usecase-cross-border-ncp.html)
-
-Health information exchange across borders through National Contact Points and MyHealth@EU infrastructure. Shows how this API specification fits within the broader EHDS ecosystem.
+- [**Retrieve a European Patient Summary**](example-patient-summary.html) — Step-by-step walkthrough of the complete document access flow.
 
 ### Actor Usage
 
-All use cases leverage the composite actors defined in [Actors and Transactions](actors.html):
+All use cases use the composite actors defined in [Actors and Transactions](actors.html):
+
 - [Document Publisher](actors.html#document-publisher)
 - [Document Access Provider](actors.html#document-access-provider)
 - [Document Consumer](actors.html#document-consumer)

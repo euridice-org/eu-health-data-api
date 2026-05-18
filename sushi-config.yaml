@@ -92,6 +92,8 @@ pages:
       title: Member State Architectures
       fhir-documents-vs-resources.md:
         title: FHIR Documents and Resources
+      background-xds-fhir.md:
+        title: Relationship to XDS and FHIR Document Sharing
     changes.md:
       title: Change Log
     open-issues.md:

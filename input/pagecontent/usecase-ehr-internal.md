@@ -42,6 +42,23 @@ Organizations with multiple internal EHR systems may deploy an outward-facing sy
 
 Per [IHE General Introduction §6.3](https://profiles.ihe.net/GeneralIntro/ch-6.html), the facade's internal communication with constituent systems may use proprietary methods. The externally-exposed IHE interface capability is what determines conformance.
 
+#### Vendor-Level Multi-Product Facade
+
+A natural extension of the organizational facade pattern is a **vendor-level facade** covering multiple product lines from the same vendor deployed at a site. For example, a vendor may ship separate EHR products for acute care, ambulatory care, and laboratory — each holding its own clinical data. A facade layer provided by the same vendor aggregates all three and exposes a single conformant API surface.
+
+```
+                           ┌─ EHR Product A (acute)
+Facade ──[EEHRxF API]──▶  ├─ EHR Product B (ambulatory)
+  ▲                        └─ EHR Product C (laboratory)
+  │
+External consumers
+(national infra, HPAS, NCP)
+```
+
+From the perspective of external consumers and national infrastructure, the facade *is* the conformant EHR system. The facade is responsible for presenting documents, handling patient lookup, and serving resource queries as if it were a single system. Internal communication between the facade and the constituent products is implementation-private.
+
+This pattern is particularly relevant for FHIR-native deployments: the facade can assemble on-demand FHIR Document Bundles by querying clinical resources across products, then serve them through a single ITI-67/68 query surface. No constituent product needs to individually expose a conformant API — the facade carries the conformance obligation.
+
 ### Relationship to National Infrastructure
 
 Internal EHR systems support the organization; the organization supports the Member State's national infrastructure obligations. The connection outward — to national document repositories, identity services, authorization infrastructure, and ultimately the MyHealth@EU network — is an organizational and national-level concern.

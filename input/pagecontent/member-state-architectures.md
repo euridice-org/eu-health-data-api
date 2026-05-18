@@ -1,45 +1,55 @@
-Member States across the European Union have diverse healthcare system architectures and health information exchange infrastructures. This Implementation Guide is designed to accommodate different architectural approaches while maintaining interoperability.
+Member States across the European Union have diverse healthcare system architectures and health information exchange infrastructures. This IG accommodates that diversity by defining the **EHR system API surface** without prescribing national infrastructure design.
 
-### Common Architectural Patterns
+This page describes the two primary national architectural patterns and how EHR systems fit within each. For how EHR systems are deployed internally within healthcare organizations, see [Use Case — Organization-Internal](usecase-ehr-internal.html). For how EHR systems connect externally, see [Use Case — Cross-Organization via National Infrastructure](usecase-cross-org.html).
 
-#### Centralized Repository
+### National Infrastructure is Out of Scope
 
-Some Member States operate centralized national repositories where health data is stored and accessed:
-- EHR systems publish documents/resources to a central registry
-- Consumers query the central registry for patient information
-- National infrastructure manages authorization and access control
+The EHDS Regulation places the obligation to build and operate national health data infrastructure on **Member States** (Arts 4, 12, 23) — not on EHR vendors. This IG defines the API contract at the EHR system boundary. How Member States structure their national infrastructure is their decision; this IG does not prescribe it.
 
-#### Federated Model
+The two patterns below are **informative examples** of how national infrastructure can use this IG's API.
 
-Other Member States use federated architectures where data remains at the source:
-- EHR systems retain data locally
-- Queries are federated across multiple systems
-- National infrastructure routes queries to appropriate sources
-- Some national infrastructures mimic a virtual national EHR by broadcasting the inbound request to all systems that have records to share for the patient and requested resource (using a record locator service) and aggregates a concatenated response on the fly
+---
 
-### Fitting This Specification to Different Architectures
+### Pattern 1 — Centralized Repository
 
-This IG supports multiple deployment models by defining actors and transactions that can be implemented:
+EHR systems publish documents to a national (or regional) repository. Consumers query the repository rather than individual EHR systems.
 
-- **At the EHR system level** - Direct implementation of the API
-- **At the organizational level** - Hospital or regional aggregation layer
-- **At the national level** - National infrastructure exposing the API
-- **Via façade** - Adaptation layer in front of existing systems
+```
+EHR System A ──[ITI-105 publish]──▶ National Repository ──[ITI-67/68 query]──▶ HPAS / NCP
+EHR System B ──[ITI-105 publish]──▶         ▲
+EHR System C ──[ITI-105 publish]──┘
+```
 
-The specification focuses on the API contract, allowing flexibility in where and how it is implemented within Member State infrastructure.
+**EHR system role:** [Document Publisher](actors.html#document-publisher) — submits documents via ITI-105. The national repository acts as the [Document Access Provider](actors.html#document-access-provider); EHR systems do not need to host a query API.
 
-### Compatibility with Existing Document Sharing Infrastructure
+**Common in:** Many existing national XDS deployments. Repository may be FHIR-native or XDS-backed behind an MHD facade. See [Relationship to XDS and FHIR Document Sharing](background-xds-fhir.html) for how these backends differ technically.
 
-This specification accommodates existing document-sharing architectures (IHE XDS, XCA) without imposing those dependencies on new environments. [IHE MHD](https://profiles.ihe.net/ITI/MHD/) serves as the bridge: implementers MAY deploy it as a native FHIR document-sharing system or as a facade over XDS/XCA infrastructure. Because MHD's DocumentReference maps directly to XDS DocumentEntry, existing national investments remain valid.
+---
 
-Member States select the deployment model that fits their infrastructure:
+### Pattern 2 — Federated Query
 
-- **FHIR-native**: A RESTful API with no XDS dependencies, suitable for new deployments.
-- **MHD facade over XDS/XCA**: Existing XDS/XCA infrastructure exposes a FHIR API without replacement of underlying systems.
-- **Hybrid**: Some facilities operate FHIR-native while others connect through a facade; a national-level gateway unifies access.
+Data stays at the EHR system. A national record locator routes queries to the relevant EHR systems; responses are aggregated by the national layer.
 
-See [Actor Groupings](actors.html#example-groupings) for concrete combinations of these deployment models.
+```
+HPAS / NCP ──▶ Record Locator ──[ITI-67/68]──▶ EHR System A  (this IG's API)
+                               ──[ITI-67/68]──▶ EHR System B  (this IG's API)
+                               ──[ITI-67/68]──▶ EHR System C  (this IG's API)
+```
 
-**Example — centralized national repository:** A national repository acts as the [Document Access Provider](actors.html#document-access-provider) with the [Document Submission Option](actors.html#document-submission-option), serving queries from consumers (other Member States, patient portals, care providers). EHR systems across the country act as [Document Publishers](actors.html#document-publisher), submitting FHIR Documents (Patient Summaries, Laboratory Reports, Discharge Reports) to the repository via [ITI-105](document-exchange.html). The repository aggregates and serves documents on their behalf — EHR systems publish data but do not need to host APIs themselves.
+**EHR system role:** [Document Access Provider](actors.html#document-access-provider) — hosts a query and retrieval API. The national record locator is a [Document Consumer](actors.html#document-consumer) of each EHR's API.
 
-When every system in a Member State conforms to this specification, the national infrastructure presents a single API layer for health data access, whether the underlying systems are XDS-based, FHIR-native, or a mixture of both.
+**Common in:** Netherlands, Sweden (national record locator with patient identifier resolution at the national layer). EHR systems expose a conformant API endpoint; the national layer handles routing and aggregation.
+
+---
+
+### Hybrid
+
+Some Member States operate both patterns simultaneously — some EHR systems publish to a central repository while others are queried directly. A national gateway unifies access behind a single query surface. The EHR API contract (this IG) applies at each EHR system boundary regardless of the national pattern.
+
+---
+
+### Existing XDS/XCA Infrastructure
+
+This IG does not require migration from existing document-sharing infrastructure. [IHE MHD](https://profiles.ihe.net/ITI/MHD/) bridges FHIR API calls to XDS/XCA backends, allowing existing national investments to remain valid.
+
+See [Relationship to XDS and FHIR Document Sharing](background-xds-fhir.html) for the technical detail on FHIR-native vs XDS-bridge deployment patterns.
