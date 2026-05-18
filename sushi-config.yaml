@@ -114,6 +114,12 @@ pages:
     title: Implementation
     example-patient-summary.md:
       title: Retrieve a European Patient Summary
+    usecase-ehr-internal.md:
+      title: Use Case - Organization-Internal
+    usecase-cross-org.md:
+      title: Use Case - Cross-Organization via National Infrastructure
+    usecase-wellness-app.md:
+      title: Use Case - Wellness App Access
     usecase-health-professional-portal.md:
       title: Use Case - Health Professional Access Service
     usecase-health-data-portal.md:
@@ -178,6 +184,9 @@ menu:
     Resource Access: resource-access.html
   Implementation:
     Retrieve a European Patient Summary: example-patient-summary.html
+    Organization-Internal: usecase-ehr-internal.html
+    Cross-Organization via National Infrastructure: usecase-cross-org.html
+    Wellness App Access: usecase-wellness-app.html
     Health Professional Access Service: usecase-health-professional-portal.html
     Health Data Access Service: usecase-health-data-portal.html
     Cross-Border via NCP: usecase-cross-border-ncp.html
