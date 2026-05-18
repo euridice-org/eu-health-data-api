@@ -60,7 +60,11 @@ The two patterns use the same query workflow (ITI-67 + ITI-68) and the same EU p
 | XDS/XCA backend? | No | Optional |
 | CapStmt `supportedProfile` | `EehrxfMhdDocumentReference` | `EehrxfMhdDocumentReference` + optionally `IHE.MHD.Comprehensive.DocumentReference` |
 
-A national infrastructure may route queries to a mix of both — on-demand FHIR-native EHRs and persisted XDS repositories — behind a unified query layer. Both are valid Access Provider deployments.
+#### Pattern 3 — Registry (Metadata Only)
+
+A Document Access Provider may hold only `DocumentReference` metadata. `content.attachment.url` points to documents hosted elsewhere — at the originating EHR or a separate repository. Consumers follow that URL directly at ITI-68. No additional conformance requirements apply; `attachment.url` is opaque in MHD.
+
+**Typical deployment:** A national metadata index that EHRs publish to via ITI-105. Discoverability is centralized; retrieval goes back to the source.
 
 ---
 
