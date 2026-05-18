@@ -190,6 +190,38 @@ The server validates, extracts, and persists the document, returning the created
 
 > **Document content:** Per MHD ITI-105, the server extracts the document from `attachment.data` and persists it so that consumers can retrieve it via `attachment.url`. This IG requires that servers SHALL return FHIR Documents as native FHIR Document Bundles — not wrapped in Binary. The `attachment.url` format is unconstrained; servers host documents at any endpoint they choose.
 
+#### Provenance via `meta.source` {#meta-source}
+
+`Resource.meta.source` is a URI that identifies *where the resource came from* — i.e., the system or organization that submitted it through the API. On ITI-105, where a single Document Access Provider may ingest content from many independent Document Publishers, `meta.source` gives Consumers a stable, machine-readable answer to "which Publisher submitted this DocumentReference?".
+
+`meta.source` is distinct from:
+
+- `DocumentReference.author` — the clinical author of the document content.
+- `DocumentReference.custodian` — the organization responsible for maintaining the document.
+- `meta.source` — the submitting system/organization that pushed the resource into the Access Provider via ITI-105.
+
+A Publisher acting as a gateway for many authors will typically share a single `meta.source` value across submissions, even though `author` and `custodian` vary per document.
+
+##### Recommendations on ITI-105
+
+- The Document Publisher MAY include `meta.source` on the submitted DocumentReference. If absent, the Document Access Provider SHOULD populate `meta.source` on ingest with a URI that identifies the submitting Publisher, derived from the authenticated client identity (see below).
+- If `meta.source` is present on submission, the Document Access Provider SHOULD validate it against the authenticated client (see below) and either reject the request with `403 Forbidden` or overwrite the value with the server-derived one. Deployments SHALL document which behavior they apply.
+- Consumers MAY filter by submitting system using the [`_source` search parameter](https://hl7.org/fhir/search.html#source) on ITI-67.
+
+##### Verifying `meta.source` against JWT claims
+
+ITI-105 requests are authenticated using SMART Backend Services with `private_key_jwt` (see [Authorization](authorization.html)). The access token presented on the request — and, where introspected, the underlying client assertion — carries claims that identify the calling Publisher. The Document Access Provider SHOULD use these claims to verify that any client-supplied `meta.source` is consistent with the authenticated caller. Useful claims include:
+
+| Claim | Use for verifying `meta.source` |
+|-------|---------------------------------|
+| `client_id` (or `sub` for `client_credentials`) | The registered Publisher's identifier. Primary key for mapping to a permitted `meta.source` URI. |
+| `iss` | The Authorization Server that issued the token. Relevant when multiple trusted ASes serve different jurisdictions or tenants. |
+| `aud` | Confirms the token was minted for this Access Provider. |
+| Deployment-specific organization/tenant claims | Where carried (e.g., organization OID, jurisdiction code), can further constrain the permitted `meta.source` value. |
+{: .grid}
+
+The mapping from `client_id` (and any additional claims) to permitted `meta.source` URI(s) is established at client registration and is out of scope for this IG. The intent is that downstream Consumers can treat `meta.source` as an integrity-protected statement of *who submitted this document*, rather than free-text the Publisher could spoof.
+
 #### Other Publication Transactions
 
 This IG specifies ITI-105 as the publication mechanism for Document Publishers that submit to external Access Providers. ITI-105 gives publishers a single publication pattern for content conforming to EHDS priority category content profiles. The Document Access Provider handles persistence on ingest, so consumers retrieve documents in their native format via ITI-67/ITI-68.
