@@ -9,7 +9,7 @@ Example DocumentReference for a diagnostic imaging report.
 
 **Example query:**
 ```
-GET [base]/DocumentReference?patient.identifier=http://example.org/national-id|123456789&type=http://loinc.org|85430-7
+GET [base]/DocumentReference?patient.identifier=http://example.org/national-id|123456789&type=http://loinc.org|85430-7&status=current
 ```
 """
 Usage: #example

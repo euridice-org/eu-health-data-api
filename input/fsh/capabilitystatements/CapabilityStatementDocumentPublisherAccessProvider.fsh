@@ -155,49 +155,102 @@ Document creation is internal; no external create operation is supported.
 * rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHALL
 * rest[=].resource[=].searchParam[=].documentation = "Logical id of this artifact"
 
-// Search parameters for DocumentReference - SHOULD support
+// Search parameters for DocumentReference - SHALL support
+// (per IHE MHD Rev 4.x ITI-67 Document Responder requirements)
+* rest[=].resource[=].searchParam[+].name = "patient.identifier"
+* rest[=].resource[=].searchParam[=].type = #token
+* rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHALL
+* rest[=].resource[=].searchParam[=].documentation = "Patient identifier (chained search) - canonical cross-domain patient query form per MHD"
+
 * rest[=].resource[=].searchParam[+].name = "category"
 * rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-category"
 * rest[=].resource[=].searchParam[=].type = #token
 * rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
-* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHOULD
-* rest[=].resource[=].searchParam[=].documentation = "Categorization of document (XDS ClassCode) - SHOULD support for coarse filtering"
+* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHALL
+* rest[=].resource[=].searchParam[=].documentation = "Categorization of document (XDS ClassCode)"
 
 * rest[=].resource[=].searchParam[+].name = "date"
 * rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/clinical-date"
 * rest[=].resource[=].searchParam[=].type = #date
 * rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
-* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHOULD
-* rest[=].resource[=].searchParam[=].documentation = "When this document reference was created. The date modifiers ge, le, gt, lt SHOULD be supported."
+* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHALL
+* rest[=].resource[=].searchParam[=].documentation = "When this document reference was created. The date modifiers ge, le, gt, lt SHALL be supported."
 
 * rest[=].resource[=].searchParam[+].name = "status"
 * rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-status"
 * rest[=].resource[=].searchParam[=].type = #token
 * rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
-* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHOULD
-* rest[=].resource[=].searchParam[=].documentation = "current | superseded | entered-in-error"
+* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHALL
+* rest[=].resource[=].searchParam[=].documentation = "current | superseded | entered-in-error - Consumers typically query with status=current"
 
 * rest[=].resource[=].searchParam[+].name = "identifier"
 * rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/clinical-identifier"
 * rest[=].resource[=].searchParam[=].type = #token
 * rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
-* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHOULD
+* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHALL
 * rest[=].resource[=].searchParam[=].documentation = "Master Version Specific Identifier"
 
-// Search parameters for DocumentReference - MAY support
 * rest[=].resource[=].searchParam[+].name = "period"
 * rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-period"
 * rest[=].resource[=].searchParam[=].type = #date
 * rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
-* rest[=].resource[=].searchParam[=].extension[=].valueCode = #MAY
+* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHALL
 * rest[=].resource[=].searchParam[=].documentation = "Time of service that is being documented"
 
 * rest[=].resource[=].searchParam[+].name = "format"
 * rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-format"
 * rest[=].resource[=].searchParam[=].type = #token
 * rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
-* rest[=].resource[=].searchParam[=].extension[=].valueCode = #MAY
+* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHALL
 * rest[=].resource[=].searchParam[=].documentation = "Format/content rules for the document"
+
+* rest[=].resource[=].searchParam[+].name = "setting"
+* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-setting"
+* rest[=].resource[=].searchParam[=].type = #token
+* rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHALL
+* rest[=].resource[=].searchParam[=].documentation = "Additional details about where the content was created (e.g. clinical specialty)"
+
+* rest[=].resource[=].searchParam[+].name = "facility"
+* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-facility"
+* rest[=].resource[=].searchParam[=].type = #token
+* rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHALL
+* rest[=].resource[=].searchParam[=].documentation = "Kind of facility where patient was seen"
+
+* rest[=].resource[=].searchParam[+].name = "event"
+* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-event"
+* rest[=].resource[=].searchParam[=].type = #token
+* rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHALL
+* rest[=].resource[=].searchParam[=].documentation = "Main clinical acts documented"
+
+* rest[=].resource[=].searchParam[+].name = "security-label"
+* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-security-label"
+* rest[=].resource[=].searchParam[=].type = #token
+* rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHALL
+* rest[=].resource[=].searchParam[=].documentation = "Document security-tags"
+
+* rest[=].resource[=].searchParam[+].name = "related"
+* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-related"
+* rest[=].resource[=].searchParam[=].type = #reference
+* rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHALL
+* rest[=].resource[=].searchParam[=].documentation = "Related identifiers or resources"
+
+* rest[=].resource[=].searchParam[+].name = "author.given"
+* rest[=].resource[=].searchParam[=].type = #string
+* rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHALL
+* rest[=].resource[=].searchParam[=].documentation = "Given name of document author"
+
+* rest[=].resource[=].searchParam[+].name = "author.family"
+* rest[=].resource[=].searchParam[=].type = #string
+* rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHALL
+* rest[=].resource[=].searchParam[=].documentation = "Family name of document author"
 
 // ============================================================================
 // Binary resource - ITI-68 Retrieve Document (read only)

@@ -21,7 +21,7 @@ The Imaging Report is differentiated via the following DocumentReference fields:
 ### Example Query
 
 ```
-GET /DocumentReference?patient=123&type=http://loinc.org|85430-7&status=current
+GET /DocumentReference?patient.identifier=[system]|123&type=http://loinc.org|85430-7&status=current
 ```
 
 See [Example: Retrieve A European Patient Summary](example-patient-summary.html) for a complete workflow example (the pattern is identical).
