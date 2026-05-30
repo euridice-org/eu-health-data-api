@@ -42,6 +42,8 @@ The intended audiences of this Implementation Guide are:
 
 - **Architects of national infrastructures:** National eHealth agencies looking to understand how to use the capabilities of EHRs required by EHDS to meet the goals of EHDS in their Member States should refer to the [Implementation](implementation.html) for examples of how the EHR APIs can be used for the EHDS use cases.
 
+- **Healthcare providers and healthcare organizations:** Organizations deploying EHDS interoperability need to understand the use cases and how they map to national infrastructure requirements, in order to evaluate whether their EHR system's Interoperability Component meets their Member State's obligations. See [Functional Requirements](functional.html) and [Implementation](implementation.html).
+
 - **Wellness and personal health application developers:** App developers building patient-facing applications that consume health data from EHDS-conformant EHRs should refer to the [Wellness App](usecase-wellness-app.html) use case for how this IG applies to their context.
 
 ### Summary of Functional Requirements ("the API")
