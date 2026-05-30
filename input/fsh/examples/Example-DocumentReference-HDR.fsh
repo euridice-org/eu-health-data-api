@@ -8,7 +8,7 @@ Example DocumentReference for a hospital discharge report.
 
 **Example query:**
 ```
-GET [base]/DocumentReference?patient.identifier=http://example.org/national-id|123456789&type=http://loinc.org|18842-5
+GET [base]/DocumentReference?patient.identifier=http://example.org/national-id|123456789&type=http://loinc.org|18842-5&status=current
 ```
 """
 Usage: #example

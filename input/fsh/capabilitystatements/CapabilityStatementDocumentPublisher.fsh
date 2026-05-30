@@ -72,13 +72,18 @@ Required scopes for document publication:
 * rest[=].resource[+].type = #DocumentReference
 * rest[=].resource[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
 * rest[=].resource[=].extension[=].valueCode = #SHALL
-* rest[=].resource[=].supportedProfile[+] = Canonical(EehrxfMhdDocumentReference)
-* rest[=].resource[=].supportedProfile[+] = "https://profiles.ihe.net/ITI/MHD/StructureDefinition/IHE.MHD.SimplifiedPublish.DocumentReference"
-* rest[=].resource[=].supportedProfile[+] = "https://profiles.ihe.net/ITI/MHD/StructureDefinition/IHE.MHD.Minimal.DocumentReference"
+// The submitted (publish-time) DocumentReference conforms to the EEHRxF SimplifiedPublish
+// profile: embedded content.attachment.data is required and content.attachment.url is absent,
+// plus the EEHRxF metadata constraints. (The EEHRxF/Minimal-based DocumentReference profile
+// describes the served query-time form and is mutually exclusive with SimplifiedPublish on the
+// data/url axis.)
+* rest[=].resource[=].supportedProfile[+] = Canonical(EehrxfMhdSimplifiedPublishDocumentReference)
 * rest[=].resource[=].documentation = """
 DocumentReference resources are submitted via ITI-105 Simplified Publish with embedded
 document content in the attachment to publish documents to the Document Access Provider.
-The SimplifiedPublish profile requires content.attachment.data to be populated.
+The EEHRxF SimplifiedPublish profile requires content.attachment.data to be populated and
+content.attachment.url to be absent. The Document Source SHOULD populate
+content.attachment.hash and content.attachment.size when known.
 """
 * rest[=].resource[=].interaction[+].code = #create
 * rest[=].resource[=].interaction[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"

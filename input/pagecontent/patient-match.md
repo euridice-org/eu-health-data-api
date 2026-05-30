@@ -107,7 +107,7 @@ FHIR also supports querying resources directly by patient identifier via chained
 
 ```
 GET [base]/AllergyIntolerance?patient.identifier=[system]|[value]
-GET [base]/DocumentReference?patient.identifier=[system]|[value]&type=http://loinc.org|60591-5
+GET [base]/DocumentReference?patient.identifier=[system]|[value]&type=http://loinc.org|60591-5&status=current
 ```
 
 Chained search can be used to minimize round trips, for example with national aggregating gateways. The Access Provider must support chained search on `patient.identifier` for this to work.

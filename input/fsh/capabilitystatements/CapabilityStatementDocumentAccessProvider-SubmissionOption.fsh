@@ -75,10 +75,17 @@ patient's care team.
 * rest[=].resource[=].documentation = """
 DocumentReference resources with embedded document content are accepted via
 ITI-105 Simplified Publish. The server:
-1. Validates the DocumentReference against EEHRxF profiles
-2. Extracts the embedded document from content.attachment.data
-3. Persists both the DocumentReference and the document
-4. Returns the created DocumentReference with server-assigned IDs
+1. Validates the submitted DocumentReference against the EEHRxF SimplifiedPublish profile
+   (content.attachment.data populated, content.attachment.url absent, plus EEHRxF metadata)
+2. Validates the embedded document against the relevant EEHRxF content profile
+3. Extracts the embedded document from content.attachment.data
+4. Persists both the DocumentReference and the document
+5. Returns the created DocumentReference with server-assigned IDs
+
+Note: the submitted resource carries embedded `data` (SimplifiedPublish profile). The
+DocumentReference subsequently served via ITI-67/ITI-68 carries a retrieval `url` instead
+and conforms to the EEHRxF (Minimal-based) DocumentReference profile - the two profiles are
+mutually exclusive on the data/url axis, so the submitted and served forms differ.
 """
 
 * rest[=].resource[=].interaction[+].code = #create
@@ -87,25 +94,31 @@ ITI-105 Simplified Publish. The server:
 * rest[=].resource[=].interaction[=].documentation = """
 Accept DocumentReference with embedded document (ITI-105 Simplified Publish).
 
-The DocumentReference SHALL include:
+The submitted DocumentReference SHALL include (per MHD SimplifiedPublish profile):
 - status (required)
 - type (required - LOINC document type)
 - subject (required - Patient reference)
 - content.attachment.contentType (required)
 - content.attachment.data (required - base64-encoded document content)
+- content.attachment.url SHALL be absent (the document is embedded, not referenced)
+
+The Document Source SHOULD populate content.attachment.hash and content.attachment.size
+when known (per ITI-105 metadata-consistency guidance).
 
 The server SHALL:
-- Validate against EEHRxF DocumentReference profile
+- Validate the submitted DocumentReference against the EEHRxF SimplifiedPublish profile
+- Validate the embedded document against the relevant EEHRxF content profile
 - Extract and persist the document
 - For FHIR Documents, ensure the content is retrievable as a native FHIR Document Bundle (not wrapped in Binary)
 - Assign server-generated IDs
 - Return 201 Created with the persisted DocumentReference
 """
 
-// Supported profiles - EEHRxF DocumentReference, MHD SimplifiedPublish (requires .data), and MHD Minimal
-* rest[=].resource[=].supportedProfile[+] = Canonical(EehrxfMhdDocumentReference)
-* rest[=].resource[=].supportedProfile[+] = "https://profiles.ihe.net/ITI/MHD/StructureDefinition/IHE.MHD.SimplifiedPublish.DocumentReference"
-* rest[=].resource[=].supportedProfile[+] = "https://profiles.ihe.net/ITI/MHD/StructureDefinition/IHE.MHD.Minimal.DocumentReference"
+// Supported profile for the submitted (publish-time) DocumentReference: the EEHRxF
+// SimplifiedPublish profile (requires embedded .data, forbids .url, plus EEHRxF metadata
+// constraints). The served (query-time) form conforms to the EEHRxF (Minimal-based) profile
+// declared on the base Document Access Provider via ITI-67/68.
+* rest[=].resource[=].supportedProfile[+] = Canonical(EehrxfMhdSimplifiedPublishDocumentReference)
 
 // Operation outcome for validation errors
 * rest[=].resource[=].operation[+].name = "validate"
