@@ -190,6 +190,8 @@ Content-Type: application/fhir+json
 
 The server validates, extracts, and persists the document, returning the created DocumentReference with server-assigned IDs. See [IHE MHD ITI-105](https://profiles.ihe.net/ITI/MHD/ITI-105.html) for details.
 
+> **Publish shape vs query shape.** Publication and query use different DocumentReference shapes. At publish time the wire shape is [MHD SimplifiedPublish](https://profiles.ihe.net/ITI/MHD/StructureDefinition-IHE.MHD.SimplifiedPublish.DocumentReference.html) (`content.attachment.data` present, no `url`). The persisted, queried shape is [EehrxfMhdDocumentReference](StructureDefinition-EehrxfMhdDocumentReference.html), parented on MHD Minimal. ITI-105 is the publication path; the server transforms the submitted resource into the persisted form served via ITI-67/ITI-68.
+
 > **Document content:** Per MHD ITI-105, the server extracts the document from `attachment.data` and persists it so that consumers can retrieve it via `attachment.url`. This IG requires that servers SHALL return FHIR Documents as native FHIR Document Bundles — not wrapped in Binary. The `attachment.url` format is unconstrained; servers host documents at any endpoint they choose.
 
 #### Other Publication Transactions
