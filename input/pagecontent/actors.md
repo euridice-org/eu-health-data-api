@@ -165,14 +165,29 @@ sequenceDiagram
 
 ### Example Groupings
 
+IHE profiles are combined by grouping actors together. The following examples illustrate common actor groupings for this IG. See [IHE General Introduction §6.3](https://profiles.ihe.net/GeneralIntro/ch-6.html#63-actor-groupings-and-options) for the definition of actor grouping.
+
+#### Grouped Document Access Provider + Document Publisher (co-located)
+
+An EHR system that creates and stores its own documents and serves them directly combines the Document Publisher and Document Access Provider in a single system. The publish transaction is internal.
 
 <div style="text-align: center;">
 {% include img.html img="ExGroup_Doc.png" caption="Figure: Example Grouping - Document" %}
 </div>
 
+#### Facade Grouping
+
+A facade system aggregates documents from one or more backend EHR systems and exposes a single Document Access Provider endpoint. The backend systems act as Document Publishers toward the facade; the facade acts as Document Responder toward consumers. The facade may be a FHIR-native server or an MHD facade over an XDS/XCA backend.
+
+This grouping is a first-class deployment option. It allows systems that are not suited to hosting a 24/7 query API — including departmental EHRs, legacy systems, and iPad-class clients — to provide access through an aggregating layer. The facade is treated as part of the deployed EHR system for conformance purposes.
+
 <div style="text-align: center;">
-{% include img.html img="ExGroup_Group.png" caption="Figure: Example Grouping - Group" %}
+{% include img.html img="ExGroup_Group.png" caption="Figure: Example Grouping - Facade / Aggregator" %}
 </div>
+
+#### Document Assembly from Distributed Resources
+
+A Document Access Provider can assemble FHIR Documents on demand from individual FHIR resources held in a Resource Access Provider. The actor grouping combines Resource Access Provider and Document Access Provider in a single system; document content is assembled at query time rather than stored.
 
 <div style="text-align: center;">
 {% include img.html img="ExGroup_DocAssembly.png" caption="Figure: Example Grouping - Document Assembly from Distributed Resources" %}
