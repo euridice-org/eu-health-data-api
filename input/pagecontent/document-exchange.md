@@ -81,7 +81,7 @@ Human-readable representations (e.g. PDF narrative) are part of the FHIR Documen
 
 #### Document Search Strategy
 
-[IHE Document Sharing](https://profiles.ihe.net/ITI/HIE-Whitepaper/index.html) distinguishes `type` (specific document types, typically LOINC codes) from `category` (broad classification) on DocumentReference. This IG constrains `type` for document discovery but leaves `category` to [content IGs](priority-categories.html) and implementations.
+[IHE Document Sharing](https://profiles.ihe.net/ITI/HIE-Whitepaper/index.html) distinguishes `type` (specific document types, typically LOINC codes) from `category` (broad classification) on DocumentReference. This IG supports discovery on both: `type` for precise queries (preferred binding) and `category` for coarse, category-only queries.
 
 **Search parameter conformance and metadata commitment are separate axes.** Following MHD ITI-67, the Document Access Provider SHALL accept all declared search parameters but is not required to populate every corresponding metadata element on returned DocumentReferences. A server returning Minimal-profile DocumentReferences may accept queries on parameters like `setting`, `facility`, `event`, `security-label`, or `related` and legitimately return empty results when the underlying data is not indexed for those facets. Consumers should be robust to this per [ITI-67 §2:3.67.4.2.3](https://profiles.ihe.net/ITI/MHD/ITI-67.html#2367423): *"the response may contain DocumentReference Resources that match the query parameters but are not compliant with the DocumentReference constraints defined here."*
 
