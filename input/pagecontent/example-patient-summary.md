@@ -125,9 +125,9 @@ Response Bundle contains DocumentReference resources for available Patient Summa
       "url": "Bundle/ips-bundle-456"
     },
     "format": {
-      "system": "http://ihe.net/fhir/ihe.formatcode.fhir/CodeSystem/formatcode",
-      "code": "urn:ihe:pcc:ips:2020",
-      "display": "International Patient Summary"
+      "system": "urn:ietf:rfc:3986",
+      "code": "http://hl7.org/fhir/uv/ips/StructureDefinition/Bundle-uv-ips",
+      "display": "FHIR IPS Bundle"
     }
   }]
 }
