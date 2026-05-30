@@ -9,6 +9,9 @@ Title: "Example - Imaging Study Manifest (FHIR)"
 Description: """
 Example DocumentReference for a FHIR-encoded imaging study manifest.
 
+The referenced FHIR manifest is a FHIR **document** Bundle (`Bundle.type = document`,
+Composition first) centered on an ImagingStudy.
+
 This is one half of the dual-DocumentReference pattern for imaging manifests.
 The FHIR manifest DocumentReference is linked to its DICOM KOS counterpart
 via `relatesTo.code = transforms`.
@@ -52,7 +55,8 @@ Usage: #example
 * relatesTo.code = #transforms
 * relatesTo.target = Reference(ExampleDocumentReferenceImagingManifestKOS)
 
-// Content: MADO FHIR imaging manifest — a collection Bundle holding an ImagingStudy
+// Content: FHIR imaging manifest — a FHIR document Bundle (Bundle.type = document,
+// Composition first) centered on an ImagingStudy.
 * content.attachment.contentType = #application/fhir+json
 * content.attachment.url = "http://example.org/fhir/Bundle/ct-chest-manifest"
 * content.attachment.title = "CT Chest - FHIR Manifest"

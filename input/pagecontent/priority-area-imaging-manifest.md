@@ -26,13 +26,13 @@ The [EURIDICE MADO profile](https://hl7.eu/fhir/imaging-manifest-r5/) defines bo
 
 | DocumentReference | `contentType` | `type` (LOINC) | Content |
 |---|---|---|---|
-| FHIR Manifest | `application/fhir+json` | 18748-4 | [MADO FHIR imaging manifest](https://hl7.eu/fhir/imaging-manifest-r5/StructureDefinition-ImImagingStudyManifest.html) — a `collection` Bundle holding an ImagingStudy, not a bare ImagingStudy resource |
+| FHIR Manifest | `application/fhir+json` | 18748-4 | A FHIR **document** Bundle (`Bundle.type = document`, Composition first) centered on an ImagingStudy, not a bare ImagingStudy resource |
 | DICOM KOS | `application/dicom` | 18748-4 | DICOM Key Object Selection |
 {: .grid}
 
 The two DocumentReferences are linked using `relatesTo.code` = **`transforms`** — each is a different technical representation of the same imaging study manifest. Document Consumers query by `type` and select the representation they can consume based on `contentType`.
 
-The FHIR manifest is retrieved as a [`collection` Bundle](document-exchange.html#document-content) (the [MADO FHIR imaging manifest](https://hl7.eu/fhir/imaging-manifest-r5/StructureDefinition-ImImagingStudyManifest.html), which holds an ImagingStudy plus supporting resources), not as a bare `ImagingStudy` resource. A direct `GET [base]/ImagingStudy` query is a valid FHIR pattern but is out of scope for document exchange here.
+The FHIR manifest is retrieved as a [FHIR document Bundle](document-exchange.html#document-content) (`Bundle.type = document`, Composition first) centered on an ImagingStudy plus supporting resources, not as a bare `ImagingStudy` resource. A direct `GET [base]/ImagingStudy` query is a valid FHIR pattern but is out of scope for document exchange here.
 
 This pattern was chosen ([#50](https://github.com/euridice-org/eu-health-data-api/issues/50)) because it works across all Document Sharing transports (MHD, XDS, XCA) without requiring content negotiation at the server.
 

@@ -151,7 +151,7 @@ Response is the Patient Summary as a FHIR Document (Bundle of type `document`) i
 - All resource access requires [authorization](authorization.html)
 - Patient identification precedes health data queries
 - DocumentReference contains metadata about documents
-- FHIR Documents (IPS, etc.) are retrieved as `document` Bundles; FHIR imaging manifests ([IHE MADO](priority-area-imaging-manifest.html#ihe-mado)) as `collection` Bundles; DICOM KOS manifests as Binary resources
+- FHIR Documents (IPS, etc.) and FHIR imaging manifests ([IHE MADO](priority-area-imaging-manifest.html#ihe-mado)) are retrieved as `document` Bundles; DICOM KOS manifests as Binary resources
 - All transactions use standard FHIR RESTful interactions
 
 ### Variations
