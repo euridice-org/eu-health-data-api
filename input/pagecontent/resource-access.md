@@ -106,7 +106,7 @@ GET /MedicationRequest?patient=123&status=active
 
 ### Derived Resources
 
-If resources are derived from documents, Provenance SHOULD link to source DocumentReference:
+If resources are derived from documents, Provenance SHOULD reference the source document. The source may be a DocumentReference or a FHIR Document Bundle (`Bundle.type = "document"`):
 
 ```json
 {
@@ -119,7 +119,7 @@ If resources are derived from documents, Provenance SHOULD link to source Docume
 }
 ```
 
-The [IHE mXDE](https://profiles.ihe.net/ITI/mXDE/index.html) profile provides more detail on how to extract resources from documents while maintaining provenance.
+The [IHE mXDE](https://profiles.ihe.net/ITI/mXDE/index.html) profile (informative) describes how to extract resources from documents while maintaining provenance.
 
 ### References
 
