@@ -99,6 +99,10 @@ Systems that need to accept documents pushed from Publishers (e.g., national inf
 
 The interoperability requirements for EHR systems will be formally defined in the Implementing Act of Article 36. Since that IA is not yet available, the following table maps each D5.1 interoperability requirement to its implementation in this IG. These requirements may change when the Article 36 IA is published.
 
+The _Technical Spec_ column identifies where each requirement is satisfied:
+- **"This IG"** — the requirement is specified in this Implementation Guide (actors, transactions, capability statements, or profiles defined here).
+- **Named external specification** (e.g., SMART Backend Services, IHE IUA, PDQm, MHD, IPA) — the requirement is satisfied by conformance to that external standard, as referenced and constrained by this IG. Where not otherwise specified in this IG, the referenced external standard applies directly.
+
 #### API Requirements (Access Provider)
 
 > **Terminology note:** D5.1 uses "Producer" to describe the system serving the query API. This IG uses "Access Provider" to make the API-serving role explicit and avoid confusion with content creation.
