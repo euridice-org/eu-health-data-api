@@ -1,5 +1,9 @@
 This section contains information about the specification itself, its development, and how to use it.
 
+### Authors and Contributors
+
+See [Authors and Contributors](contributors.html) for the named contributor list.
+
 ### Version History
 
 See [Changes](changes.html) for a log of changes between versions of this specification.
