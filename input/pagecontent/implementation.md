@@ -71,6 +71,21 @@ Whether a wellness application connects to an EHR system directly or through the
 
 - [**Wellness App Access**](usecase-wellness-app.html) — Patients accessing their own health data via Wellness Applications.
 
+#### Actors and Transactions by Scenario
+
+Each scenario maps to the [actors](actors.html) an EHR system plays and the transactions exchanged:
+
+| Scenario | EHR system actor | Counterparty actor | Transactions |
+|----------|------------------|--------------------|--------------|
+| [Organization-Internal Exchange](usecase-ehr-internal.html) | Document/Resource Access Provider | Document/Resource Consumer | ITI-67, ITI-68, IPA query |
+| [Cross-Organization via National Infrastructure](usecase-cross-org.html) | Document Access Provider | Document Consumer (national infrastructure) | ITI-78, ITI-67, ITI-68 |
+| [Cross-Border via NCP](usecase-cross-border-ncp.html) | Document Access Provider | Document Consumer (NCPeH) | ITI-78, ITI-67, ITI-68 |
+| [Health Professional Access Service](usecase-health-professional-portal.html) | Document/Resource Access Provider | Document/Resource Consumer (HPAS) | ITI-78, ITI-67, ITI-68, IPA query |
+| [Health Data Access Service](usecase-health-data-portal.html) | Document/Resource Access Provider | Document/Resource Consumer (HDAS) | ITI-78, ITI-67, ITI-68, IPA query |
+| [Wellness App Access](usecase-wellness-app.html) | Document/Resource Access Provider | Document/Resource Consumer (wellness app) | ITI-78, ITI-67, ITI-68, IPA query |
+
+All scenarios authorize via SMART Backend Services (IUA Get Access Token, ITI-71).
+
 #### Concrete Examples
 
 Two scenarios illustrate how the deployment scenarios compose in practice (drawn from CapacityHD interoperability-testing workshops):
