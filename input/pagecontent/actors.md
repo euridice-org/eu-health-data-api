@@ -74,15 +74,19 @@ sequenceDiagram
 
     Publisher->>Provider: Get Access Token (IUA ITI-71)
     Provider-->>Publisher: access_token
-    Publisher->>Provider: Patient Lookup (PDQm ITI-78)
-    Provider-->>Publisher: Patient Bundle
+    opt Patient not yet identified
+        Publisher->>Provider: Patient Lookup (PDQm ITI-78)
+        Provider-->>Publisher: Patient Bundle
+    end
     Publisher->>Provider: Simplified Publish (MHD ITI-105)
     Provider-->>Publisher: Response
 
     Consumer->>Provider: Get Access Token (IUA ITI-71)
     Provider-->>Consumer: access_token
-    Consumer->>Provider: Patient Lookup (PDQm ITI-78)
-    Provider-->>Consumer: Patient Bundle
+    opt Patient not yet identified
+        Consumer->>Provider: Patient Lookup (PDQm ITI-78)
+        Provider-->>Consumer: Patient Bundle
+    end
     Consumer->>Provider: Find Document References (MHD ITI-67)
     Provider-->>Consumer: DocumentReference Bundle
     Consumer->>Provider: Retrieve Document (MHD ITI-68)
@@ -153,8 +157,10 @@ sequenceDiagram
 
     Consumer->>Provider: Get Access Token (IUA ITI-71)
     Provider-->>Consumer: access_token
-    Consumer->>Provider: Patient Lookup (PDQm ITI-78)
-    Provider-->>Consumer: Patient Bundle
+    opt Patient not yet identified
+        Consumer->>Provider: Patient Lookup (PDQm ITI-78)
+        Provider-->>Consumer: Patient Bundle
+    end
     Consumer->>Provider: Resource Query (IPA / QEDm PCC-44)
     Provider-->>Consumer: Resource Bundle
 ```
