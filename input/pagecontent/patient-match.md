@@ -41,15 +41,17 @@ The Provider SHALL support the `identifier` parameter for patient search. The Co
 |-----------|------|----------|----------|-------------|
 | identifier | token | SHALL | SHOULD | Patient identifier (e.g., national ID, MRN) |
 
-**Optional Search Parameters:**
+**Demographic Search Parameters:**
 
-Providers MAY support additional PDQm search parameters per [ITI-78](https://profiles.ihe.net/ITI/PDQm/ITI-78.html):
+A Provider conformant to PDQm [ITI-78](https://profiles.ihe.net/ITI/PDQm/ITI-78.html) processes the full ITI-78 parameter set. This specification highlights the parameters below as SHOULD for the European context; the rest remain available per ITI-78. A Consumer need not send any of them.
 
 | Parameter | Type | Expectation | Description |
 |-----------|------|-------------|-------------|
 | family | string | SHOULD | Patient family name |
 | given | string | SHOULD | Patient given name |
 | birthdate | date | SHOULD | Patient date of birth |
+| gender | token | SHOULD | Patient sex or gender |
+| address | string | SHOULD | Patient address |
 | _id | token | SHOULD | Patient logical ID |
 
 
