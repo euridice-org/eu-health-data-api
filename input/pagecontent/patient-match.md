@@ -1,10 +1,12 @@
 ### Overview
 
-Patient lookup is accomplished using IHE PDQm (Patient Demographics Query for Mobile), which relies on core FHIR `Patient.Search` [ITI-78] and `Patient.$match` [ITI-119]. This transaction allows Consumers to locate the correct Patient resource on a Access Provider before querying for health information.
+Patient lookup resolves the Patient resource an Access Provider holds, so a Consumer can query that patient's health information. It uses IHE PDQm (Patient Demographics Query for Mobile): `Patient.Search` [ITI-78] and the optional `Patient.$match` [ITI-119].
 
-This specification inherits directly from [IHE PDQm](https://profiles.ihe.net/ITI/PDQm/index.html) with one constraint: the `identifier` search parameter is required for patient search.
+This specification inherits from [IHE PDQm](https://profiles.ihe.net/ITI/PDQm/index.html) with one constraint: the Provider SHALL support the `identifier` search parameter.
 
-`Patient.Search` [ITI-78] should be used when a patient identifier (e.g. National ID) is available and trusted. If an identifier is not available, `Patient.$match` [ITI-119] should be used to perform a demographics search operation with available demographics.
+Patient identity is resolved before health data is queried. Often it is resolved upstream — by a national patient index or, for cross-border requests, by the National Contact Point (Regulation (EU) 2025/327 Art 13(3)). The Access Provider is then queried with a known identifier and need not perform demographic discovery itself. Lookup is a discovery step; a Consumer that already holds a trusted identifier may skip it and query directly.
+
+`Patient.Search` [ITI-78] by `identifier` is the required, primary path. `Patient.$match` [ITI-119] is optional, for the case where only demographics are available.
 
 ### Actor Roles
 
