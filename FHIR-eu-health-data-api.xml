@@ -5,34 +5,34 @@
 <artifactPageExtension value="-definitions"/>
 <artifactPageExtension value="-examples"/>
 <artifactPageExtension value="-mappings"/>
-<artifact id="ActorDefinition/EEHRxF-DocumentAccessProvider-Actor" key="ActorDefinition-EEHRxF-DocumentAccessProvider-Actor" name="EEHRxF Document Access Provider"/>
-<artifact id="CapabilityStatement/EEHRxF-DocumentAccessProvider-SubmissionOption" key="CapabilityStatement-EEHRxF-DocumentAccessProvider-SubmissionOption" name="EEHRxF Document Access Provider - Document Submission Option"/>
-<artifact id="CapabilityStatement/EEHRxF-DocumentAccessProvider" key="CapabilityStatement-EEHRxF-DocumentAccessProvider" name="EEHRxF Document Access Provider CapabilityStatement"/>
-<artifact id="ActorDefinition/EEHRxF-DocumentConsumer-Actor" key="ActorDefinition-EEHRxF-DocumentConsumer-Actor" name="EEHRxF Document Consumer"/>
-<artifact id="CapabilityStatement/EEHRxF-DocumentConsumer" key="CapabilityStatement-EEHRxF-DocumentConsumer" name="EEHRxF Document Consumer CapabilityStatement"/>
-<artifact id="CodeSystem/eehrxf-document-priority-category-cs" key="CodeSystem-eehrxf-document-priority-category-cs" name="EEHRxF Document Priority Category CodeSystem"/>
-<artifact id="ActorDefinition/EEHRxF-DocumentPublisher-Actor" key="ActorDefinition-EEHRxF-DocumentPublisher-Actor" name="EEHRxF Document Publisher"/>
-<artifact id="CapabilityStatement/EEHRxF-DocumentPublisher" key="CapabilityStatement-EEHRxF-DocumentPublisher" name="EEHRxF Document Publisher CapabilityStatement"/>
-<artifact id="ValueSet/eehrxf-document-type-vs" key="ValueSet-eehrxf-document-type-vs" name="EEHRxF Document Type ValueSet"/>
-<artifact id="ValueSet/eehrxf-document-type-discharge-report-vs" key="ValueSet-eehrxf-document-type-discharge-report-vs" name="EEHRxF Document Type ValueSet for Discharge Reports"/>
-<artifact id="ValueSet/eehrxf-document-type-laboratory-report-vs" key="ValueSet-eehrxf-document-type-laboratory-report-vs" name="EEHRxF Document Type ValueSet for Laboratory Reports"/>
-<artifact id="ValueSet/eehrxf-document-type-medical-imaging-vs" key="ValueSet-eehrxf-document-type-medical-imaging-vs" name="EEHRxF Document Type ValueSet for Medical Imaging"/>
-<artifact id="ValueSet/eehrxf-document-type-patient-summary-vs" key="ValueSet-eehrxf-document-type-patient-summary-vs" name="EEHRxF Document Type ValueSet for Patient Summaries"/>
-<artifact id="ActorDefinition/EEHRxF-DocumentPublisherAccessProvider-Actor" key="ActorDefinition-EEHRxF-DocumentPublisherAccessProvider-Actor" name="EEHRxF Grouped Document Publisher/Access Provider"/>
-<artifact id="CapabilityStatement/EEHRxF-DocumentPublisherAccessProvider" key="CapabilityStatement-EEHRxF-DocumentPublisherAccessProvider" name="EEHRxF Grouped Document Publisher/Access Provider CapabilityStatement"/>
-<artifact id="ConceptMap/EehrxfMhdDocumentReferenceCM" key="ConceptMap-EehrxfMhdDocumentReferenceCM" name="EEHRxF MHD DocumentReference ConceptMap"/>
-<artifact id="StructureDefinition/EehrxfMhdDocumentReference" key="StructureDefinition-EehrxfMhdDocumentReference" name="EEHRxF MHD DocumentReference Profile"/>
-<artifact id="ActorDefinition/EEHRxF-ResourceAccessProvider-Actor" key="ActorDefinition-EEHRxF-ResourceAccessProvider-Actor" name="EEHRxF Resource Access Provider"/>
-<artifact id="CapabilityStatement/EEHRxF-ResourceAccessProvider" key="CapabilityStatement-EEHRxF-ResourceAccessProvider" name="EEHRxF Resource Access Provider CapabilityStatement"/>
-<artifact id="ActorDefinition/EEHRxF-ResourceConsumer-Actor" key="ActorDefinition-EEHRxF-ResourceConsumer-Actor" name="EEHRxF Resource Consumer"/>
-<artifact id="CapabilityStatement/EEHRxF-ResourceConsumer" key="CapabilityStatement-EEHRxF-ResourceConsumer" name="EEHRxF Resource Consumer CapabilityStatement"/>
-<artifact id="DocumentReference/ExampleDocumentReferenceEPS" key="DocumentReference-ExampleDocumentReferenceEPS" name="Example - European Patient Summary DocumentReference"/>
-<artifact id="DocumentReference/ExampleDocumentReferenceHDR" key="DocumentReference-ExampleDocumentReferenceHDR" name="Example - Hospital Discharge Report DocumentReference"/>
-<artifact id="DocumentReference/ExampleDocumentReferenceImagingReport" key="DocumentReference-ExampleDocumentReferenceImagingReport" name="Example - Imaging Report DocumentReference"/>
-<artifact id="DocumentReference/ExampleDocumentReferenceImagingManifestKOS" key="DocumentReference-ExampleDocumentReferenceImagingManifestKOS" name="Example - Imaging Study Manifest (DICOM KOS)"/>
-<artifact id="DocumentReference/ExampleDocumentReferenceImagingManifestFHIR" key="DocumentReference-ExampleDocumentReferenceImagingManifestFHIR" name="Example - Imaging Study Manifest (FHIR)"/>
-<artifact id="DocumentReference/ExampleDocumentReferenceLaboratory" key="DocumentReference-ExampleDocumentReferenceLaboratory" name="Example - Laboratory Report DocumentReference"/>
-<artifact id="CapabilityStatement/EEHRxF-DocumentAccessProvider-Example" key="CapabilityStatement-EEHRxF-DocumentAccessProvider-Example" name="Example: Document Access Provider Supporting EPS and Laboratory"/>
+<artifact id="ActorDefinition/document-access-provider-actor-eu-api" key="ActorDefinition-document-access-provider-actor-eu-api" name="EEHRxF Document Access Provider"/>
+<artifact id="CapabilityStatement/document-access-provider-submission-option-eu-api" key="CapabilityStatement-document-access-provider-submission-option-eu-api" name="EEHRxF Document Access Provider - Document Submission Option"/>
+<artifact id="CapabilityStatement/document-access-provider-eu-api" key="CapabilityStatement-document-access-provider-eu-api" name="EEHRxF Document Access Provider CapabilityStatement"/>
+<artifact id="ActorDefinition/document-consumer-actor-eu-api" key="ActorDefinition-document-consumer-actor-eu-api" name="EEHRxF Document Consumer"/>
+<artifact id="CapabilityStatement/document-consumer-eu-api" key="CapabilityStatement-document-consumer-eu-api" name="EEHRxF Document Consumer CapabilityStatement"/>
+<artifact id="CodeSystem/document-priority-category-eu-api" key="CodeSystem-document-priority-category-eu-api" name="EEHRxF Document Priority Category CodeSystem"/>
+<artifact id="ActorDefinition/document-publisher-actor-eu-api" key="ActorDefinition-document-publisher-actor-eu-api" name="EEHRxF Document Publisher"/>
+<artifact id="CapabilityStatement/document-publisher-eu-api" key="CapabilityStatement-document-publisher-eu-api" name="EEHRxF Document Publisher CapabilityStatement"/>
+<artifact id="ValueSet/document-type-eu-api" key="ValueSet-document-type-eu-api" name="EEHRxF Document Type ValueSet"/>
+<artifact id="ValueSet/document-type-discharge-report-eu-api" key="ValueSet-document-type-discharge-report-eu-api" name="EEHRxF Document Type ValueSet for Discharge Reports"/>
+<artifact id="ValueSet/document-type-laboratory-report-eu-api" key="ValueSet-document-type-laboratory-report-eu-api" name="EEHRxF Document Type ValueSet for Laboratory Reports"/>
+<artifact id="ValueSet/document-type-medical-imaging-eu-api" key="ValueSet-document-type-medical-imaging-eu-api" name="EEHRxF Document Type ValueSet for Medical Imaging"/>
+<artifact id="ValueSet/document-type-patient-summary-eu-api" key="ValueSet-document-type-patient-summary-eu-api" name="EEHRxF Document Type ValueSet for Patient Summaries"/>
+<artifact id="ActorDefinition/document-publisher-access-provider-actor-eu-api" key="ActorDefinition-document-publisher-access-provider-actor-eu-api" name="EEHRxF Grouped Document Publisher/Access Provider"/>
+<artifact id="CapabilityStatement/document-publisher-access-provider-eu-api" key="CapabilityStatement-document-publisher-access-provider-eu-api" name="EEHRxF Grouped Document Publisher/Access Provider CapabilityStatement"/>
+<artifact id="ConceptMap/document-reference-category-type-eu-api" key="ConceptMap-document-reference-category-type-eu-api" name="EEHRxF MHD DocumentReference ConceptMap"/>
+<artifact id="StructureDefinition/document-reference-eu-api" key="StructureDefinition-document-reference-eu-api" name="EEHRxF MHD DocumentReference Profile"/>
+<artifact id="ActorDefinition/resource-access-provider-actor-eu-api" key="ActorDefinition-resource-access-provider-actor-eu-api" name="EEHRxF Resource Access Provider"/>
+<artifact id="CapabilityStatement/resource-access-provider-eu-api" key="CapabilityStatement-resource-access-provider-eu-api" name="EEHRxF Resource Access Provider CapabilityStatement"/>
+<artifact id="ActorDefinition/resource-consumer-actor-eu-api" key="ActorDefinition-resource-consumer-actor-eu-api" name="EEHRxF Resource Consumer"/>
+<artifact id="CapabilityStatement/resource-consumer-eu-api" key="CapabilityStatement-resource-consumer-eu-api" name="EEHRxF Resource Consumer CapabilityStatement"/>
+<artifact id="DocumentReference/example-documentreference-eps" key="DocumentReference-example-documentreference-eps" name="Example - European Patient Summary DocumentReference"/>
+<artifact id="DocumentReference/example-documentreference-hdr" key="DocumentReference-example-documentreference-hdr" name="Example - Hospital Discharge Report DocumentReference"/>
+<artifact id="DocumentReference/example-documentreference-imaging-report" key="DocumentReference-example-documentreference-imaging-report" name="Example - Imaging Report DocumentReference"/>
+<artifact id="DocumentReference/example-documentreference-imaging-manifest-kos" key="DocumentReference-example-documentreference-imaging-manifest-kos" name="Example - Imaging Study Manifest (DICOM KOS)"/>
+<artifact id="DocumentReference/example-documentreference-imaging-manifest-fhir" key="DocumentReference-example-documentreference-imaging-manifest-fhir" name="Example - Imaging Study Manifest (FHIR)"/>
+<artifact id="DocumentReference/example-documentreference-laboratory" key="DocumentReference-example-documentreference-laboratory" name="Example - Laboratory Report DocumentReference"/>
+<artifact id="CapabilityStatement/example-capabilitystatement-document-access-provider" key="CapabilityStatement-example-capabilitystatement-document-access-provider" name="Example: Document Access Provider Supporting EPS and Laboratory"/>
 <page key="NA" name="(NA)"/>
 <page key="many" name="(many)"/>
 <page key="about" name="About"/>
