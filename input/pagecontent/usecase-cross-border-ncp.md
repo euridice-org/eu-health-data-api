@@ -22,6 +22,8 @@ Country B facility → NCPeH-B → MyHealth@EU → NCPeH-A → National infrastr
                         └───── NCPeH API ─────┘          └──── MS choice ────┘     └── This IG ──┘
 ```
 
+This example illustrates the Document Query and Retrieve interaction pattern. Other interaction patterns — including push-based exchanges — are also supported within MyHealth@EU but are not illustrated here.
+
 All layers exchange EEHRxF-formatted data.
 
 ### Authorization
