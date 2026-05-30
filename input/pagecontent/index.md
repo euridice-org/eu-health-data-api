@@ -98,6 +98,3 @@ For medication data, this IG covers reading medication resources (MedicationRequ
 
 See the [HL7 Europe Implementation Guides registry](https://confluence.hl7.org/spaces/HEU/pages/358255737/Implementation+Guides) for the canonical list of Content IGs and their current publication URLs.
 
-## Authors
-
-{% include contributors.md %}
