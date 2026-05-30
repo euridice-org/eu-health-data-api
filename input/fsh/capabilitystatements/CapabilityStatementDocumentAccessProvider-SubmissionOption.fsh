@@ -15,7 +15,7 @@ Systems implementing this option:
 - SHALL also implement the base [Document Access Provider](CapabilityStatement-EEHRxF-DocumentAccessProvider.html) capabilities
 - SHALL accept ITI-105 transactions from authorized Document Publishers
 - SHALL make received documents available via ITI-67 and ITI-68
-- SHALL validate documents against EEHRxF content profiles
+- SHALL validate the submitted document content against EEHRxF content profiles after extracting it from the attachment
 
 This option is REQUIRED when acting as a delegated access provider for external
 Document Publishers (e.g., integration engines, national infrastructure).
@@ -75,10 +75,16 @@ patient's care team.
 * rest[=].resource[=].documentation = """
 DocumentReference resources with embedded document content are accepted via
 ITI-105 Simplified Publish. The server:
-1. Validates the DocumentReference against EEHRxF profiles
+1. Accepts the submitted DocumentReference in the MHD SimplifiedPublish shape (content.attachment.data present)
 2. Extracts the embedded document from content.attachment.data
-3. Persists both the DocumentReference and the document
-4. Returns the created DocumentReference with server-assigned IDs
+3. Validates the extracted document content against EEHRxF content profiles
+4. Persists both the DocumentReference and the document
+5. Returns the created DocumentReference with server-assigned IDs
+
+Validation at submission targets document content, not DocumentReference metadata.
+The submission wire shape is MHD SimplifiedPublish, not EehrxfMhdDocumentReference.
+EehrxfMhdDocumentReference remains normative as the persisted, queried shape served
+via ITI-67.
 """
 
 * rest[=].resource[=].interaction[+].code = #create
@@ -95,8 +101,9 @@ The DocumentReference SHALL include:
 - content.attachment.data (required - base64-encoded document content)
 
 The server SHALL:
-- Validate against EEHRxF DocumentReference profile
-- Extract and persist the document
+- Accept the SimplifiedPublish DocumentReference shape (no EehrxfMhdDocumentReference metadata gate at submission)
+- Extract and validate the document content against EEHRxF content profiles
+- Persist the document
 - For FHIR Documents, ensure the content is retrievable as a native FHIR Document Bundle (not wrapped in Binary)
 - Assign server-generated IDs
 - Return 201 Created with the persisted DocumentReference
