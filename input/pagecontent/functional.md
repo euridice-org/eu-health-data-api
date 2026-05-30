@@ -37,3 +37,16 @@ All exchange patterns follow a common flow:
 
 The specification allows implementations to support document exchange only, resource access only, or both patterns depending on their use case and architecture.
 
+### API Requirements and Conformance
+
+Each API is defined by a normative [CapabilityStatement](capability-discovery.html) that lists its required transactions, search parameters, and profiles. A CapabilityStatement is the testable requirement set against which an implementation declares and is held to conformance:
+
+| API | Conformance target |
+|-----|--------------------|
+| Document query/retrieval | [Document Access Provider](CapabilityStatement-EEHRxF-DocumentAccessProvider.html) |
+| Document publication (when accepted) | [Document Access Provider — Submission Option](CapabilityStatement-EEHRxF-DocumentAccessProvider-SubmissionOption.html) |
+| Co-located production + access | [Document Publisher/Access Provider](CapabilityStatement-EEHRxF-DocumentPublisherAccessProvider.html) |
+| Resource query | [Resource Access Provider](CapabilityStatement-EEHRxF-ResourceAccessProvider.html) |
+
+A server declares which APIs it offers via `CapabilityStatement.instantiates` (see [Capability Discovery](capability-discovery.html)).
+
