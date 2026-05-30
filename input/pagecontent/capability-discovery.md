@@ -48,7 +48,11 @@ The EHDS ANNEX II priority categories are:
 - Imaging Reports
 - Imaging Manifests
 
-Servers declare which priority categories they support by listing content IG canonical URLs in `CapabilityStatement.implementationGuide`. Consumers inspect `implementationGuide` to discover supported categories, then query by `DocumentReference.type` (LOINC) for specific document types. See [Document Exchange](document-exchange.html) for the type codes per priority category.
+**Document access**: Servers declare supported priority categories by listing content IG canonical URLs in `CapabilityStatement.implementationGuide`. Consumers inspect `implementationGuide` then query by `DocumentReference.type` (LOINC). See [Document Exchange](document-exchange.html) for the type codes per priority category.
+
+**Resource access (Xt-EHR D8.1 Resource Interoperability Profiles)**: Servers supporting IPA-aligned resource access declare conformance via `instantiates` referencing the IPA server CapabilityStatement (`http://hl7.org/fhir/uv/ipa/CapabilityStatement/ipa-server`) and the EEHRxF Resource Access Provider CapabilityStatement. Per-resource profile support appears in `rest.resource.supportedProfile`. See [Resource Access](resource-access.html).
+
+A server may support document access, resource access, or both.
 
 ### Profile Declarations
 
@@ -72,16 +76,16 @@ sequenceDiagram
     Note over Consumer: Consumer inspects:<br/>- instantiates (actor conformance)<br/>- implementationGuide (content IGs)<br/>- rest.resource.supportedProfile (profiles)<br/>- rest.resource (supported resources)
 ```
 
-### Example: Server Supporting Multiple Priority Categories
+### Example: Document Access Provider (Multiple Priority Categories)
 
 See the [example CapabilityStatement](CapabilityStatement-EEHRxF-DocumentAccessProvider-Example.html) for a Document Access Provider serving Patient Summaries and Laboratory Reports.
 
-The key elements a consumer looks for:
+Key elements:
 
 ```json
 {
   "instantiates": [
-    "...CapabilityStatement/EEHRxF-DocumentAccessProvider"
+    "https://hl7.eu/fhir/health-data-api/CapabilityStatement/EEHRxF-DocumentAccessProvider"
   ],
   "implementationGuide": [
     "http://hl7.eu/fhir/eps",
@@ -91,21 +95,49 @@ The key elements a consumer looks for:
     "resource": [{
       "type": "DocumentReference",
       "supportedProfile": [
-        "...EehrxfMhdDocumentReference",
-        "...IHE.MHD.Minimal.DocumentReference"
-      ]
-    }, {
-      "type": "Patient",
-      "supportedProfile": [
-        "...patient-eu-core"
+        "https://hl7.eu/fhir/health-data-api/StructureDefinition/EehrxfMhdDocumentReference",
+        "https://profiles.ihe.net/ITI/MHD/StructureDefinition/IHE.MHD.Minimal.DocumentReference"
       ]
     }]
   }]
 }
 ```
 
+### Example: Resource Access Provider (IPA-Aligned)
+
+A server supporting resource-level access (Xt-EHR D8.1 Resource Interoperability Profiles) declares:
+
+```json
+{
+  "instantiates": [
+    "http://hl7.org/fhir/uv/ipa/CapabilityStatement/ipa-server",
+    "https://hl7.eu/fhir/health-data-api/CapabilityStatement/EEHRxF-ResourceAccessProvider"
+  ],
+  "rest": [{
+    "resource": [
+      {
+        "type": "Condition",
+        "supportedProfile": [
+          "https://hl7.eu/fhir/base/StructureDefinition/Condition-eu-core"
+        ]
+      },
+      {
+        "type": "Observation",
+        "supportedProfile": [
+          "https://hl7.eu/fhir/base/StructureDefinition/Observation-eu-core"
+        ]
+      }
+    ]
+  }]
+}
+```
+
+Consumers inspect `instantiates` to determine which actor roles a server supports. A server may implement document access, resource access, or both.
+
 ### See Also
 - [FHIR CapabilityStatement](https://hl7.org/fhir/R4/capabilitystatement.html)
 - [Actors and Transactions](actors.html)
 - [IHE MHD](https://profiles.ihe.net/ITI/MHD/)
 - [Document Exchange](document-exchange.html)
+- [Resource Access](resource-access.html)
+- [IPA Server CapabilityStatement](https://hl7.org/fhir/uv/ipa/CapabilityStatement-ipa-server.html)
