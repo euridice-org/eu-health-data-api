@@ -16,7 +16,7 @@ For document-based access, use the [Document Exchange](document-exchange.html) t
 
 The Imaging Report is differentiated via the following DocumentReference fields:
 - **type**: `85430-7` (Diagnostic imaging report)
-- **category**: `Medical-Imaging` ([EHDS Priority Category](CodeSystem-eehrxf-document-priority-category-cs.html))
+- **category**: `18726-0` Radiology studies (set) — EHDS priority category over [LOINC Document Class](ValueSet-ehds-priority-category-vs.html)
 
 ### Example Query
 

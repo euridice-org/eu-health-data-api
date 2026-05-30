@@ -16,7 +16,7 @@ For document-based access, use the [Document Exchange](document-exchange.html) t
 
 The Hospital Discharge Report is differentiated via the following DocumentReference fields:
 - **type**: `18842-5` (Discharge summary)
-- **category**: `Discharge-Reports` ([EHDS Priority Category](CodeSystem-eehrxf-document-priority-category-cs.html))
+- **category**: `18842-5` Discharge summary — EHDS priority category over [LOINC Document Class](ValueSet-ehds-priority-category-vs.html)
 
 ### Example Query
 

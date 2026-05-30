@@ -1,6 +1,6 @@
 This ValueSet contains LOINC codes for specific document types that fall under the Patient Summary category as defined in the EHDS regulation. This ValueSet is intended for informational purposes to guide implementers on which specific document types are relevant for the Patient Summary category, and it may evolve over time as clinical practice changes and new document types become relevant for cross-border exchange.
 
-This ValueSet is identified using `useContext` with the code `focus` and the priority category code `Patient-Summaries` from the `EEHRxFDocumentPriorityCategoryCS` CodeSystem, which is the code system for the priority categories defined in the EHDS regulation. This allows implementers to easily identify which specific document types are relevant for the Patient Summary priority category when querying for documents in that category.
+This ValueSet is identified using `useContext` with the code `focus` and the EHDS priority category code `34133-9` (LOINC Document Class) used on `DocumentReference.category`. This allows implementers to easily identify which specific document types are relevant for the Patient Summary priority category when querying for documents in that category.
 
 When querying for the Patient Summary category, the document type codes in this ValueSet are used with the search parameter `type`.
 

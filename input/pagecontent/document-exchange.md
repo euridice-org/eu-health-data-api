@@ -87,9 +87,9 @@ Human-readable representations (e.g. PDF narrative) are part of the FHIR Documen
 
 ##### EHDS Priority Categories and Type Codes
 
-[Article 14](https://eur-lex.europa.eu/eli/reg/2025/327/oj#d1e2289-1-1) of the EHDS regulation defines six priority categories of electronic health data. [EEHRxFDocumentPriorityCategoryCS](CodeSystem-eehrxf-document-priority-category-cs.html) provides informative codes for these categories, organizing them by the LOINC `type` codes consumers use for document search.
+[Article 14](https://eur-lex.europa.eu/eli/reg/2025/327/oj#d1e2289-1-1) of the EHDS regulation defines six priority categories of electronic health data. Four travel as documents and carry an EHDS priority category code on `category`, drawn from LOINC Document Class codes ([EHDSPriorityCategoryVS](ValueSet-ehds-priority-category-vs.html)). Each maps to the precise LOINC `type` codes consumers use for document search.
 
-Each priority category has a ValueSet of known LOINC type codes:
+Each priority category has a ValueSet of example LOINC type codes:
 - `Patient-Summaries` → [EEHRxFDocumentTypePatientSummaryVS](ValueSet-eehrxf-document-type-patient-summary-vs.html)
 - `Discharge-Reports` → [EEHRxFDocumentTypeDischargeReportVS](ValueSet-eehrxf-document-type-discharge-report-vs.html)
 - `Laboratory-Reports` → [EEHRxFDocumentTypeLaboratoryReportVS](ValueSet-eehrxf-document-type-laboratory-report-vs.html)

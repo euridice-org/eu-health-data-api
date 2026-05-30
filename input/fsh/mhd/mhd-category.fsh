@@ -1,73 +1,51 @@
 // =============================================================================
-// EHDS Priority Category CodeSystem
+// EHDS Priority Category ValueSet (DocumentReference.category)
 // =============================================================================
-// EHDS Regulation defined priority document categories for cross-border primary use
+// Broad classification axis. Built over LOINC Document Class "(set)" codes for
+// the four EHDS priority categories that travel under document-exchange rails.
+// ePrescription and eDispensation are excluded — they are not document-exchange
+// content. Extensible binding so SNOMED, XDS classCode, or national codings may
+// appear as additional codings alongside the LOINC category code.
 
-CodeSystem: EEHRxFDocumentPriorityCategoryCS
-Id:         eehrxf-document-priority-category-cs
-Title:      "EEHRxF Document Priority Category CodeSystem"
-Description: """
-CodeSystem for priority document categories in EEHRxF as the document categories as defined in the EHDS regulation.
-"""
+ValueSet: EHDSPriorityCategoryVS
+Id: ehds-priority-category-vs
+Title: "EHDS Priority Category ValueSet"
+Description: "Broad document classification for the four EHDS priority categories carried as documents, over LOINC Document Class codes. Extensible: implementations MAY add SNOMED, XDS classCode, or national codings."
+* ^status = #draft
 * ^experimental = false
-* ^caseSensitive = true
-* #Patient-Summaries "patient summaries" """
-Electronic health data that include significant clinical facts related to an identified natural person and that are essential for the provision of safe and efficient healthcare to that person. The following information is part of a patient summary:
-
-1. Personal details.
-2. Contact information.
-3. Information on insurance.
-4. Allergies.
-5. Medical alerts.
-6. Vaccination/prophylaxis information, possibly in the form of a vaccination card.
-7. Current, resolved, closed or inactive problems, including in an international classification coding.
-8. Textual information related to medical history.
-9. Medical devices and implants.
-10. Medical or care procedures.
-11. Functional status.
-12. Current and relevant past medicines.
-13. Social history observations related to health.
-14. Pregnancy history.
-15. Patient-provided data.
-16. Observation results pertaining to the health condition.
-17. Plan of care.
-18. Information on a rare disease, such as details about the impact or characteristics of the disease.
-"""
-* #Electronic-Prescriptions "electronic prescriptions" "Electronic health data constituting a prescription for a medicinal product as defined in Article 3, point (k), of Directive 2011/24/EU."
-* #Electronic-Dispensations "electronic dispensations" "Information on the supply of a medicinal product to a natural person by a pharmacy based on an electronic prescription."
-* #Medical-Imaging "medical imaging studies and related imaging reports" "Electronic health data related to the use of or produced by technologies that are used to view the human body in order to prevent, diagnose, monitor or treat medical conditions."
-* #Laboratory-Reports "medical test results, including laboratory and other diagnostic results and related reports" "Electronic health data representing results of studies performed in particular through in vitro diagnostics such as clinical biochemistry, haematology, transfusion medicine, microbiology, immunology and others, and including, where relevant, reports supporting the interpretation of the results."
-* #Discharge-Reports "discharge reports" "Electronic health data related to a healthcare encounter or episode of care and including essential information about admission, treatment and discharge of a natural person."
+* insert LOINCCopyrightForVS
+* $loinc#34133-9 "Summary of episode note"
+* $loinc#18842-5 "Discharge summary"
+* $loinc#26436-6 "Laboratory studies (set)"
+* $loinc#18726-0 "Radiology studies (set)"
 
 
 // =============================================================================
 // DocumentReference Type ValueSet per priority category
 // =============================================================================
-// Given the priority category EEHRxFDocumentPriorityCategoryCS,
-// we define a ValueSet per priority category
-// with the clinical codes (usually LOINC codes) for specific document types.
-// These ValueSets are draft (informative), not normative, because the specific
-// document types may evolve over time. Content IGs are the authoritative source.
+// LOINC codes for specific document types within each priority category.
+// These ValueSets are draft (informative) examples, not exhaustive — specific
+// document types evolve. Content IGs are the authoritative source.
 
 ValueSet: EEHRxFDocumentTypePatientSummaryVS
 Id: eehrxf-document-type-patient-summary-vs
 Title: "EEHRxF Document Type ValueSet for Patient Summaries"
-Description: "ValueSet for specific document types within the Patient Summary priority category."
+Description: "Example LOINC document types within the Patient Summary priority category. Illustrative, not exhaustive."
 * ^status = #draft
 * ^experimental = false
 * ^useContext[+].code = http://terminology.hl7.org/CodeSystem/usage-context-type#focus
-* ^useContext[=].valueCodeableConcept = http://hl7.eu/fhir/health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Patient-Summaries
+* ^useContext[=].valueCodeableConcept = $loinc#34133-9
 * insert LOINCCopyrightForVS
 * $loinc#60591-5 "Patient summary Document"
 
 ValueSet: EEHRxFDocumentTypeDischargeReportVS
 Id: eehrxf-document-type-discharge-report-vs
 Title: "EEHRxF Document Type ValueSet for Discharge Reports"
-Description: "ValueSet for specific document types within the Discharge Report priority category."
+Description: "Example LOINC document types within the Discharge Report priority category. Illustrative, not exhaustive."
 * ^status = #draft
 * ^experimental = false
 * ^useContext[+].code = http://terminology.hl7.org/CodeSystem/usage-context-type#focus
-* ^useContext[=].valueCodeableConcept = http://hl7.eu/fhir/health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Discharge-Reports
+* ^useContext[=].valueCodeableConcept = $loinc#18842-5
 * insert LOINCCopyrightForVS
 * $loinc#18842-5 "Discharge summary"
 * $loinc#100719-4 "Surgical oncology Discharge summary"
@@ -75,39 +53,36 @@ Description: "ValueSet for specific document types within the Discharge Report p
 ValueSet: EEHRxFDocumentTypeLaboratoryReportVS
 Id: eehrxf-document-type-laboratory-report-vs
 Title: "EEHRxF Document Type ValueSet for Laboratory Reports"
-Description: "ValueSet for specific document types within the Laboratory Report priority category."
+Description: "Example LOINC document types within the Laboratory Report priority category. Illustrative, not exhaustive."
 * ^status = #draft
 * ^experimental = false
 * ^useContext[+].code = http://terminology.hl7.org/CodeSystem/usage-context-type#focus
-* ^useContext[=].valueCodeableConcept = http://hl7.eu/fhir/health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Laboratory-Reports
+* ^useContext[=].valueCodeableConcept = $loinc#26436-6
 * insert LOINCCopyrightForVS
 * $loinc#11502-2 "Laboratory report"
 
 ValueSet: EEHRxFDocumentTypeMedicalImagingVS
 Id: eehrxf-document-type-medical-imaging-vs
 Title: "EEHRxF Document Type ValueSet for Medical Imaging"
-Description: "ValueSet for specific document types within the Medical Imaging priority category."
+Description: "Example LOINC document types within the Medical Imaging priority category. Illustrative, not exhaustive."
 * ^status = #draft
 * ^experimental = false
 * ^useContext[+].code = http://terminology.hl7.org/CodeSystem/usage-context-type#focus
-* ^useContext[=].valueCodeableConcept = http://hl7.eu/fhir/health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
+* ^useContext[=].valueCodeableConcept = $loinc#18726-0
 * insert LOINCCopyrightForVS
 * $loinc#85430-7 "Diagnostic imaging report"
 * $loinc#18748-4 "Diagnostic imaging study"
 
 
-
-
-
 // =============================================================================
-// DocumentReference Type ValueSet (Clinical Precision)
+// DocumentReference Type ValueSet (aggregate, bound to DocumentReference.type)
 // =============================================================================
-// LOINC codes for specific document types - used for precise clinical identification
+// LOINC codes for specific document types — used for precise clinical discovery.
 
 ValueSet: EEHRxFDocumentTypeVS
 Id: eehrxf-document-type-vs
 Title: "EEHRxF Document Type ValueSet"
-Description: "Document type codes for clinical precision in document identification."
+Description: "Example LOINC document type codes for precise document discovery. Illustrative, not exhaustive."
 * ^status = #draft
 * ^experimental = false
 * insert LOINCCopyrightForVS
@@ -117,42 +92,49 @@ Description: "Document type codes for clinical precision in document identificat
 * include codes from valueset EEHRxFDocumentTypeMedicalImagingVS
 
 
+// =============================================================================
+// ConceptMap: priority category (LOINC Document Class) -> document type (LOINC)
+// =============================================================================
+
 Instance: EehrxfMhdDocumentReferenceCM
 InstanceOf: ConceptMap
 Title: "EEHRxF MHD DocumentReference ConceptMap"
 Description: """
-mapping from the EHDS regulatory priority categories to the LOINC document category codes for clinical precision in document identification. 
+Maps each EHDS priority category (LOINC Document Class code, used on `category`) to the LOINC document type codes (used on `type`) for precise discovery.
 """
 Usage: #example
 * url = "http://hl7.eu/fhir/health-data-api/ConceptMap/EehrxfMhdDocumentReferenceCM"
 * name = "EehrxfMhdDocumentReferenceCM"
 * title = "EEHRxF MHD DocumentReference ConceptMap"
-* description = "mapping from the EHDS regulatory priority categories to the LOINC document category codes for clinical precision in document identification."
+* description = "Maps each EHDS priority category (LOINC Document Class code, used on category) to the LOINC document type codes (used on type) for precise discovery."
 * experimental = false
 * status = #draft
-* purpose = "Guide implementers in understanding how the coarse-grained priority categories defined in the EHDS regulation relate to specific document categories identified by LOINC codes, and it may evolve over time as clinical practice changes and new document categories become relevant for cross-border exchange."
-* group.source = Canonical(EEHRxFDocumentPriorityCategoryCS)
+* purpose = "Guide implementers from a broad priority category to the specific LOINC document type codes used for discovery. Illustrative, not exhaustive; expected to evolve."
+* group.source = $loinc
 * group.target = $loinc
-* group.element[+].code = #Patient-Summaries
+* group.element[+].code = #34133-9
+* group.element[=].display = "Summary of episode note"
 * group.element[=].target[+].code = #60591-5
 * group.element[=].target[=].display = "Patient summary Document"
 * group.element[=].target[=].equivalence = #specializes
-* group.element[+].code = #Discharge-Reports
+* group.element[+].code = #18842-5
+* group.element[=].display = "Discharge summary"
 * group.element[=].target[+].code = #18842-5
 * group.element[=].target[=].display = "Discharge summary"
-* group.element[=].target[=].equivalence = #specializes
+* group.element[=].target[=].equivalence = #equivalent
 * group.element[=].target[+].code = #100719-4
 * group.element[=].target[=].display = "Surgical oncology Discharge summary"
 * group.element[=].target[=].equivalence = #specializes
-* group.element[+].code = #Laboratory-Reports
+* group.element[+].code = #26436-6
+* group.element[=].display = "Laboratory studies (set)"
 * group.element[=].target[+].code = #11502-2
 * group.element[=].target[=].display = "Laboratory report"
 * group.element[=].target[=].equivalence = #specializes
-* group.element[+].code = #Medical-Imaging
+* group.element[+].code = #18726-0
+* group.element[=].display = "Radiology studies (set)"
 * group.element[=].target[+].code = #85430-7
 * group.element[=].target[=].display = "Diagnostic imaging report"
 * group.element[=].target[=].equivalence = #specializes
 * group.element[=].target[+].code = #18748-4
 * group.element[=].target[=].display = "Diagnostic imaging study"
 * group.element[=].target[=].equivalence = #specializes
-
