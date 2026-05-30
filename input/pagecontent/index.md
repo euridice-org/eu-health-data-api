@@ -46,7 +46,7 @@ The intended audiences of this Implementation Guide are:
 
 - **[Capability Discovery](capability-discovery.html)** - Discover which priority categories a server supports
 - **[Authorization](authorization.html)** - SMART Backend Services (IUA actor model)
-- **[Patient Matching](patient-match.html)** - PDQm Patient Demographics Query
+- **[Patient Lookup](patient-match.html)** - PDQm Patient Demographics Query
 - **[Document Exchange](document-exchange.html)** - MHD transactions (ITI-67, ITI-68, ITI-105)
 - **[Resource Access](resource-access.html)** - International Patient Access (IPA) resource query patterns
 

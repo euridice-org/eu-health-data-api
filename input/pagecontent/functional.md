@@ -16,7 +16,7 @@ System-to-system authorization using SMART Backend Services and IHE IUA. Require
 
 #### Patient Identification
 
-Patient demographics query using IHE PDQm to locate the correct patient before accessing health information. See [Patient Matching](patient-match.html).
+Patient demographics query using IHE PDQm to locate the correct patient before accessing health information. See [Patient Lookup](patient-match.html).
 
 #### Document Exchange
 
