@@ -80,18 +80,18 @@ lookup is required; other resources are requested as needed.
 ### Scopes for Desired Resources
 
 Clients SHALL request scopes for the resources they need:
-- system/Patient.read, system/Patient.search (REQUIRED - read and search Patient)
-- system/Condition.read, system/Condition.search (if Condition needed)
-- system/AllergyIntolerance.read, system/AllergyIntolerance.search (if AllergyIntolerance needed)
-- system/Observation.read, system/Observation.search (if Observation needed)
-- system/DiagnosticReport.read, system/DiagnosticReport.search (if DiagnosticReport needed)
-- system/MedicationRequest.read, system/MedicationRequest.search (if MedicationRequest needed)
-- system/MedicationDispense.read, system/MedicationDispense.search (if MedicationDispense needed)
-- system/Immunization.read, system/Immunization.search (if Immunization needed)
-- system/MedicationStatement.read, system/MedicationStatement.search (if MedicationStatement needed)
-- system/Encounter.read, system/Encounter.search (if Encounter needed)
-- system/Practitioner.read (if Practitioner needed)
-- system/Organization.read (if Organization needed)
+- system/Patient.rs (REQUIRED - read and search Patient)
+- system/Condition.rs (if Condition needed)
+- system/AllergyIntolerance.rs (if AllergyIntolerance needed)
+- system/Observation.rs (if Observation needed)
+- system/DiagnosticReport.rs (if DiagnosticReport needed)
+- system/MedicationRequest.rs (if MedicationRequest needed)
+- system/MedicationDispense.rs (if MedicationDispense needed)
+- system/Immunization.rs (if Immunization needed)
+- system/MedicationStatement.rs (if MedicationStatement needed)
+- system/Encounter.rs (if Encounter needed)
+- system/Practitioner.r (if Practitioner needed)
+- system/Organization.r (if Organization needed)
 """
 
 // ============================================================================

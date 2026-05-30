@@ -86,18 +86,18 @@ actually supported.
 ### Scopes for Supported Resources
 
 Servers SHALL accept scopes for the resources they support:
-- system/Patient.read, system/Patient.search (REQUIRED - read and search Patient)
-- system/Condition.read, system/Condition.search (if Condition supported)
-- system/AllergyIntolerance.read, system/AllergyIntolerance.search (if AllergyIntolerance supported)
-- system/Observation.read, system/Observation.search (if Observation supported)
-- system/DiagnosticReport.read, system/DiagnosticReport.search (if DiagnosticReport supported)
-- system/MedicationRequest.read, system/MedicationRequest.search (if MedicationRequest supported)
-- system/MedicationDispense.read, system/MedicationDispense.search (if MedicationDispense supported)
-- system/Immunization.read, system/Immunization.search (if Immunization supported)
-- system/MedicationStatement.read, system/MedicationStatement.search (if MedicationStatement supported)
-- system/Encounter.read, system/Encounter.search (if Encounter supported)
-- system/Practitioner.read (if Practitioner supported)
-- system/Organization.read (if Organization supported)
+- system/Patient.rs (REQUIRED - read and search Patient)
+- system/Condition.rs (if Condition supported)
+- system/AllergyIntolerance.rs (if AllergyIntolerance supported)
+- system/Observation.rs (if Observation supported)
+- system/DiagnosticReport.rs (if DiagnosticReport supported)
+- system/MedicationRequest.rs (if MedicationRequest supported)
+- system/MedicationDispense.rs (if MedicationDispense supported)
+- system/Immunization.rs (if Immunization supported)
+- system/MedicationStatement.rs (if MedicationStatement supported)
+- system/Encounter.rs (if Encounter supported)
+- system/Practitioner.r (if Practitioner supported)
+- system/Organization.r (if Organization supported)
 """
 
 // ============================================================================
