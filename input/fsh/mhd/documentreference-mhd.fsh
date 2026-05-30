@@ -2,7 +2,7 @@ Profile: EehrxfMhdDocumentReference
 Parent: https://profiles.ihe.net/ITI/MHD/StructureDefinition/IHE.MHD.Minimal.DocumentReference
 Title: "EEHRxF MHD DocumentReference Profile"
 Description: """
-Profile for DocumentReference resources used in the EEHRxF context, based on the IHE MHD Minimal DocumentReference profile.
+Profile for DocumentReference resources used in the EEHRxF context. Derived from the IHE MHD Minimal DocumentReference profile; element requirements are expressed structurally in this StructureDefinition, not as narrative-only conformance statements.
 
 **Search Strategy**:
 - `type`: Search by LOINC document type for precise document discovery. See [Document Exchange](document-exchange.html) for type codes per EHDS priority category.
