@@ -83,6 +83,8 @@ Human-readable representations (e.g. PDF narrative) are part of the FHIR Documen
 
 [IHE Document Sharing](https://profiles.ihe.net/ITI/HIE-Whitepaper/index.html) distinguishes `type` (specific document types, typically LOINC codes) from `category` (broad classification) on DocumentReference. This IG constrains `type` for document discovery but leaves `category` to [content IGs](priority-categories.html) and implementations.
 
+**Search parameter conformance and metadata commitment are separate axes.** Following MHD ITI-67, the Document Access Provider SHALL accept all declared search parameters but is not required to populate every corresponding metadata element on returned DocumentReferences. A server returning Minimal-profile DocumentReferences may accept queries on parameters like `setting`, `facility`, `event`, `security-label`, or `related` and legitimately return empty results when the underlying data is not indexed for those facets. Consumers should be robust to this per [ITI-67 §2:3.67.4.2.3](https://profiles.ihe.net/ITI/MHD/ITI-67.html#2367423): *"the response may contain DocumentReference Resources that match the query parameters but are not compliant with the DocumentReference constraints defined here."*
+
 ##### EHDS Priority Categories and Type Codes
 
 [Article 14](https://eur-lex.europa.eu/eli/reg/2025/327/oj#d1e2289-1-1) of the EHDS regulation defines six priority categories of electronic health data. [EEHRxFDocumentPriorityCategoryCS](CodeSystem-eehrxf-document-priority-category-cs.html) provides informative codes for these categories, organizing them by the LOINC `type` codes consumers use for document search.
