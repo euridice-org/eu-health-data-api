@@ -21,7 +21,7 @@ The European Health Data Space (EHDS) regulation describes an obligation for EHR
 - §2.2: "SHALL **be able to receive** personal electronic health data [formatted in EEHRxF]"
 
 This Implementation Guide:
-1. **Defines a set of EHR functionalities that meet the Interoperability Component requirements:** describes how existing IHE profiles and other specifications can be used to provide secure access and enable secure exchange of EEHRxF data between systems.
+1. **Defines a set of EHR functionalities that meet the Interoperability Component requirements:** describes how existing specifications — IHE profiles and HL7 implementation guides (e.g. IPA) — can be used to provide secure access and enable secure exchange of EEHRxF data between systems.
 2. **Shows how these EHR functionalities can be used in real-world data exchange for EHDS use cases:** outlines how these EHR functionalities can be used to provide patients access to their own data, to allow providers access to patient data, and to support the cross-border data exchange in the myHealth@EU network.
 
 See [Regulatory Anchors](regulatoryAnchors.html) for more detail on the link to the EHDS regulation requirements, and the technical interpretation of those requirements used here.
