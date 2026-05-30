@@ -7,7 +7,7 @@ For how different server backends (FHIR-native on-demand vs persisted/XDS-bridge
 <div>
 <figure class="figure">
 <img src="docExchange_1.png" class="figure-img img-responsive img-rounded center-block" alt="Document Exchange Overview" style="width:50%">
-<figcaption class="figure-caption"><strong>Figure: Document Exchange Overview</strong></figcaption>
+<figcaption class="figure-caption"><strong>Figure 11: Document Exchange Overview</strong></figcaption>
 </figure>
 </div>
 

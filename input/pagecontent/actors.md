@@ -23,7 +23,7 @@ This is similar to the approach taken in the MHDS specification, but with a more
 Document exchange is defined with 3 actors:
 
 <div style="text-align: center;">
-{% include img.html img="docExchange_1.png" caption="Figure: Document Exchange Actors" %}
+{% include img.html img="docExchange_1.png" caption="Figure 4: Document Exchange Actors" %}
 </div>
 
 <a name="document-publisher"></a>
@@ -38,7 +38,7 @@ Document exchange is defined with 3 actors:
 These composite actors inherit existing actors from the IUA, PDQm, and MHD specifications:
 
 <div style="text-align: center;">
-{% include img.html img="docExchange_2.png" caption="Figure: Document Exchange - Actor Groupings" %}
+{% include img.html img="docExchange_2.png" caption="Figure 5: Document Exchange - Actor Groupings" %}
 </div>
 
 **Document Publisher**
@@ -102,7 +102,7 @@ This can be combined with content profiles defined by each EHDS Priority Categor
 It is also useful in many cases to transact with individual FHIR resources. For this purpose, two resource-based actors are defined:
 
 <div style="text-align: center;">
-{% include img.html img="resExchange_1.png" caption="Figure: Resource Exchange Actors" %}
+{% include img.html img="resExchange_1.png" caption="Figure 6: Resource Exchange Actors" %}
 </div>
 
 
@@ -124,7 +124,7 @@ Resource exchange is more complex than document publication, and in many cases h
 These composite actors inherit existing actors from the IUA, PDQm, and [International Patient Access (IPA)](https://hl7.org/fhir/uv/ipa/) specifications (with QEDm alignment where compatible):
 
 <div style="text-align: center;">
-{% include img.html img="resExchange_2.png" caption="Figure: Resource Access - Actor Groupings" %}
+{% include img.html img="resExchange_2.png" caption="Figure 7: Resource Access - Actor Groupings" %}
 </div>
 
 **Resource Access Provider**
@@ -167,15 +167,15 @@ sequenceDiagram
 
 
 <div style="text-align: center;">
-{% include img.html img="ExGroup_Doc.png" caption="Figure: Example Grouping - Document" %}
+{% include img.html img="ExGroup_Doc.png" caption="Figure 8: Example Grouping - Document" %}
 </div>
 
 <div style="text-align: center;">
-{% include img.html img="ExGroup_Group.png" caption="Figure: Example Grouping - Group" %}
+{% include img.html img="ExGroup_Group.png" caption="Figure 9: Example Grouping - Group" %}
 </div>
 
 <div style="text-align: center;">
-{% include img.html img="ExGroup_DocAssembly.png" caption="Figure: Example Grouping - Document Assembly from Distributed Resources" %}
+{% include img.html img="ExGroup_DocAssembly.png" caption="Figure 10: Example Grouping - Document Assembly from Distributed Resources" %}
 </div>
 
 

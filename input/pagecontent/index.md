@@ -68,7 +68,7 @@ We define composite actors that inherit and combine actors defined in these exis
 At a high level, the following actors are specified:
 
 <div style="max-width: 80%; margin: 0 auto;">
-{% include img.html img="actors_overall.png" caption="Figure: Actor Overview" %}
+{% include img.html img="actors_overall.png" caption="Figure 1: Actor Overview" %}
 </div>
 
 ## Document Exchange Actors
