@@ -155,6 +155,22 @@ ITI-68 Retrieve Document transaction.
 * rest[=].resource[=].interaction[=].documentation = "Retrieve document content (ITI-68)"
 
 // ============================================================================
+// Bundle resource - ITI-68 Retrieve Document (FHIR Document Bundle)
+// ============================================================================
+* rest[=].resource[+].type = #Bundle
+* rest[=].resource[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].extension[=].valueCode = #SHALL
+* rest[=].resource[=].documentation = """
+FHIR Document content is retrieved as a native FHIR Document Bundle (Bundle.type = "document")
+via the ITI-68 Retrieve Document transaction, not wrapped in Binary.
+"""
+
+* rest[=].resource[=].interaction[+].code = #read
+* rest[=].resource[=].interaction[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].interaction[=].extension[=].valueCode = #SHALL
+* rest[=].resource[=].interaction[=].documentation = "Retrieve FHIR Document Bundle (ITI-68)"
+
+// ============================================================================
 // Patient resource - PDQm ITI-78 patient lookup
 // ============================================================================
 * rest[=].resource[+].type = #Patient
