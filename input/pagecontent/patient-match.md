@@ -81,6 +81,17 @@ For safe clinical matching, the Consumer SHALL set `onlyCertainMatches` to `true
 
 Matching algorithms are product and deployment-specific and may reflect national or region-specific factors (e.g., availability of common demographics, name transliteration, required fields in national patient registries). This specification does not prescribe how matching works, consistent with [PDQm ITI-119](https://profiles.ihe.net/ITI/PDQm/ITI-119.html#231194224-quality-of-match).
 
+#### Chained Identifier Search (Optional)
+
+Once a patient is identified, a Consumer can query that patient's resources directly by identifier using a [chained search parameter](https://hl7.org/fhir/R4/search.html#chaining), skipping a separate lookup round trip. This is a post-match optimization, not an alternative to patient lookup: the identifier comes from a prior lookup or from upstream identity resolution. It applies to clinical resource queries and to document search ([ITI-67]):
+
+```
+GET [base]/AllergyIntolerance?patient.identifier=urn:oid:1.2.3|12345
+GET [base]/DocumentReference?patient.identifier=urn:oid:1.2.3|12345&type=http://loinc.org|60591-5
+```
+
+`patient.identifier` chains the search to the referenced Patient's `identifier`, returning resources for that patient without first fetching the Patient resource. National aggregating gateways use this to minimize round trips. A Provider declaring this option SHALL support `patient.identifier` on the searched resource.
+
 ### Provider Requirements
 
 | Actor | Transaction | Optionality |
@@ -114,17 +125,6 @@ sequenceDiagram
 ```
 
 *Patient lookup applies to both [Document Exchange](document-exchange.html) and [Resource Access](resource-access.html) patterns.*
-
-#### Option: Chained Identifier Search
-
-FHIR also supports querying resources directly by patient identifier via chained search, avoiding a separate lookup step. This applies to both clinical resource queries and document searches (ITI-67):
-
-```
-GET [base]/AllergyIntolerance?patient.identifier=[system]|[value]
-GET [base]/DocumentReference?patient.identifier=[system]|[value]&type=http://loinc.org|60591-5
-```
-
-Chained search can be used to minimize round trips, for example with national aggregating gateways. The Access Provider must support chained search on `patient.identifier` for this to work.
 
 ### Design Rationale
 
