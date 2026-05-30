@@ -34,6 +34,14 @@ This IG does not define clinical data models. Separate Content IGs maintained by
 
 This IG excludes ePrescription and eDispensation workflow transactions, user-level authorization, audit logging formats, and bulk data export. See [Regulatory Anchors](regulatoryAnchors.html) for requirements traceability.
 
+#### Future Considerations
+
+This edition specifies read and query access. The following are part of the EHDS regulatory frame but are out of scope for this edition and deferred to a future edition:
+
+- **Data insertion / write** ([Art. 5](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_5)). The patient's right to insert data is acknowledged informatively (see [Wellness App](usecase-wellness-app.html) and [Health Data Portal](usecase-health-data-portal.html)). This edition neither specifies nor forbids a write API.
+- **Generic resource publication** and a **Resource Publisher** role. The open problems — reference resolution, unsolicited data, reconciliation — are documented under [Resource Exchange](resourceExchange.html).
+- **ePrescription / eDispensation write workflows.** Medication content is readable via [Resource Access](resource-access.html); the prescribing/dispensing workflow defers to [IHE MPD](https://profiles.ihe.net/PHARM/MPD/index.html).
+
 ### Audience
 
 The intended audiences of this Implementation Guide are:
