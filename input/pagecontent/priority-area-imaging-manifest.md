@@ -26,7 +26,7 @@ The [EURIDICE MADO profile](https://hl7.eu/fhir/imaging-manifest-r5/) defines bo
 
 | DocumentReference | `contentType` | `type` (LOINC) | Content |
 |---|---|---|---|
-| FHIR Manifest | `application/fhir+json` | 18748-4 | FHIR ImagingStudy manifest |
+| FHIR Manifest | `application/fhir+json` | 18748-4 | [MADO FHIR imaging manifest](https://hl7.eu/fhir/imaging-manifest-r5/StructureDefinition-ImImagingStudyManifest.html) — a `collection` Bundle holding an ImagingStudy, not a bare ImagingStudy resource |
 | DICOM KOS | `application/dicom` | 18748-4 | DICOM Key Object Selection |
 {: .grid}
 

@@ -52,12 +52,12 @@ Usage: #example
 * relatesTo.code = #transforms
 * relatesTo.target = Reference(ExampleDocumentReferenceImagingManifestKOS)
 
-// Content: FHIR ImagingStudy manifest
+// Content: MADO FHIR imaging manifest — a collection Bundle holding an ImagingStudy
 * content.attachment.contentType = #application/fhir+json
-* content.attachment.url = "http://example.org/fhir/ImagingStudy/ct-chest-study"
+* content.attachment.url = "http://example.org/fhir/Bundle/ct-chest-manifest"
 * content.attachment.title = "CT Chest - FHIR Manifest"
 * content.attachment.creation = "2026-02-20T14:00:00+01:00"
-* content.format = urn:ietf:rfc:3986#http://hl7.eu/fhir/imaging-r5/StructureDefinition/ImagingStudyEu
+* content.format = urn:ietf:rfc:3986#http://hl7.eu/fhir/imaging-r5/StructureDefinition/ImImagingStudyManifest
 
 
 Instance: ExampleDocumentReferenceImagingManifestKOS
