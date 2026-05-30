@@ -26,10 +26,15 @@ InstanceOf: ActorDefinition
 Title: "EEHRxF Document Access Provider"
 Usage: #definition
 Description: """
-The Document Access Provider actor provides access to EEHRxF FHIR Documents by receiving
-documents from Document Publishers and serving them to Document Consumers. This composite
-actor groups MHD Document Recipient, MHD Document Responder, PDQm Patient Demographics
-Supplier, and IUA Authorization Server/Resource Server.
+The Document Access Provider actor serves EEHRxF FHIR Documents to Document Consumers
+(query and retrieve). This composite actor groups MHD Document Responder, PDQm Patient
+Demographics Supplier, and IUA Authorization Server/Resource Server.
+
+Receiving documents from external Document Publishers is an optional publish-side
+capability — the [Document Submission Option](document-exchange.html#document-submission-option),
+which adds the MHD Document Recipient role. Not every Document Access Provider supports
+submission; many serve documents created internally. See
+[EEHRxF-DocumentAccessProvider-SubmissionOption](CapabilityStatement-EEHRxF-DocumentAccessProvider-SubmissionOption.html).
 
 See [Document Access Provider CapabilityStatement](CapabilityStatement-EEHRxF-DocumentAccessProvider.html)
 for technical requirements.
