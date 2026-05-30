@@ -27,7 +27,7 @@ Document exchange is defined with 3 actors:
 </div>
 
 <a name="document-publisher"></a>
-1. **Document Publisher (client)** - Produces EEHRxF FHIR Documents, publishes those documents to a Document Access Provider. Can be grouped with Access Provider, in which case the publishing transactions are internalized.
+1. **Document Publisher (client)** - Produces EEHRxF FHIR Documents, publishes those documents to a Document Access Provider. A co-located system that publishes only to itself is modeled as the separately-defined Document Publisher/Access Provider actor (see [Co-located Document Publisher + Document Access Provider](#co-located-document-publisher--document-access-provider)), not an IHE grouping.
 
 <a name="document-access-provider"></a>
 2. **Document Access Provider (server)** - Provides access to EEHRxF FHIR Documents by offering query APIs to Document Consumers. See **Document Submission Option** below for systems that accept document publication from external producers.
@@ -167,9 +167,9 @@ sequenceDiagram
 
 IHE profiles are combined by grouping actors together. The following examples illustrate common actor groupings for this IG. See [IHE General Introduction §6.3](https://profiles.ihe.net/GeneralIntro/ch-6.html#63-actor-groupings-and-options) for the definition of actor grouping.
 
-#### Grouped Document Access Provider + Document Publisher (co-located)
+#### Co-located Document Publisher + Document Access Provider
 
-An EHR system that creates and stores its own documents and serves them directly combines the Document Publisher and Document Access Provider in a single system. The publish transaction is internal.
+An EHR system that creates, stores, and serves its own documents is modeled as the separately-defined EEHRxF Document Publisher/Access Provider actor, which exposes only the access-provision transactions (ITI-67, ITI-68); internal publishing is implementation-private. This is not an IHE actor grouping: per [IHE General Introduction §6.3](https://profiles.ihe.net/GeneralIntro/ch-6.html#63-actor-groupings-and-options), claiming a *grouped* Document Publisher would oblige externally exposing ITI-105 publishing, which a co-located system does not do.
 
 <div style="text-align: center;">
 {% include img.html img="ExGroup_Doc.png" caption="Figure: Example Grouping - Document" %}
