@@ -97,7 +97,7 @@ Systems that need to accept documents pushed from Publishers (e.g., national inf
 
 ### Requirements Table
 
-The following table maps each D5.1 interoperability requirement to its implementation in this IG:
+The interoperability requirements for EHR systems will be formally defined in the Implementing Act of Article 36. Since that IA is not yet available, the following table maps each D5.1 interoperability requirement to its implementation in this IG. These requirements may change when the Article 36 IA is published.
 
 #### API Requirements (Access Provider)
 
