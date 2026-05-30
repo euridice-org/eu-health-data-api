@@ -33,3 +33,9 @@ The national infrastructure is a logical grouping, not a single system. In pract
 ### Authorization
 
 Cross-border patient consent, health-professional authentication in the requesting country, and authorization at the NCPeH and national-infrastructure layers are governed by MyHealth@EU and Member State infrastructure — not by this IG. At the EHR API surface, the consumer is an authorized national-infrastructure component; how that authorization was established is out of scope here.
+
+### Applicability
+
+This IG's conformance target is the **EHR system**. NCPeHs and national infrastructure components are **consumers** of the EHR API — they are not required to conform to this IG themselves.
+
+There are known differences between the search parameters and retrieval patterns defined in this IG and those in the [NCPeH API specification](https://build-fhir.ehdsi.eu/ncp-api/) — for example, in how document retrieval endpoints are addressed and which patient and DocumentReference search parameters are required. Harmonization of the two specifications is planned in a future revision in coordination with the eHealth Network task force. This IG does not attempt wire-level harmonization in this version.
