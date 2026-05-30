@@ -52,7 +52,10 @@ A Provider conformant to PDQm [ITI-78](https://profiles.ihe.net/ITI/PDQm/ITI-78.
 | birthdate | date | SHOULD | Patient date of birth |
 | gender | token | SHOULD | Patient sex or gender |
 | address | string | SHOULD | Patient address |
+| birthLocation | string | SHOULD | Patient place of birth |
 | _id | token | SHOULD | Patient logical ID |
+
+`gender` and `address` are native FHIR `Patient` search parameters. `birthLocation` is not; supporting it requires a custom SearchParameter over the [patient-birthPlace](https://hl7.org/fhir/extensions/StructureDefinition-patient-birthPlace.html) extension. National policies that identify patients by these attributes SHOULD support them.
 
 
 #### Patient Demographics Match [ITI-119] `Patient.$match`  (Optional)
