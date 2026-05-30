@@ -15,7 +15,7 @@ See [Document Exchange](document-exchange.html) for query examples.
 * insert SetFmmAndStatusRule( 1, draft )
 * category 0..1
 * category MS
-* category from EHDSPriorityCategoryVS (extensible)
+* category from EHDSPriorityCategoryVS (example)
 * type MS
 * type from EEHRxFDocumentTypeVS (preferred)
 * subject 1..1
