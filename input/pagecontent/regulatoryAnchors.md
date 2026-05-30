@@ -72,7 +72,7 @@ The **Access Provider** actors ([Document Access Provider](actors.html#document-
 
 #### Delegated Access Option
 
-Alternatively, this IG proposes a path for EHR systems to delegate their §2.1 obligations to another system.
+Alternatively, this IG proposes a path for EHR systems to delegate their [EHDS Annex II §2.1](https://eur-lex.europa.eu/eli/reg/2025/327/oj/eng#anx_II) obligations to another system.
 
 The EHR system implements the [Document Publisher](actors.html#document-publisher) role, publishing data to an Access Provider that serves queries on its behalf.
 
@@ -92,7 +92,7 @@ The **Consumer** actors ([Document Consumer](actors.html#document-consumer), [Re
 
 #### Accepting Published Documents
 
-Systems that need to accept documents pushed from Publishers (e.g., national infrastructure, regional repositories, integration engines) may implement the **[Document Submission Option](actors.html#document-submission-option)** on the Document Access Provider actor. This is an *additional* capability for systems acting as aggregation points—it is not required to satisfy §2.2.
+Systems that need to accept documents pushed from Publishers (e.g., national infrastructure, regional repositories, integration engines) may implement the **[Document Submission Option](actors.html#document-submission-option)** on the Document Access Provider actor. This is an *additional* capability for systems acting as aggregation points—it is not required to satisfy [EHDS Annex II §2.2](https://eur-lex.europa.eu/eli/reg/2025/327/oj/eng#anx_II).
 
 ---
 
