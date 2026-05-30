@@ -115,7 +115,7 @@ The type ValueSets list example codes, not an exhaustive set. Content IGs are th
 GET [base]/DocumentReference?patient=Patient/123&category=http://loinc.org|26436-6&status=current
 ```
 
-`category` is bound extensibly to [EHDSPriorityCategoryVS](ValueSet-ehds-priority-category-vs.html), so deployments MAY carry additional SNOMED, XDS classCode, or national codings alongside the EHDS LOINC code.
+`category` is bound **extensible** to [EHDSPriorityCategoryVS](ValueSet-ehds-priority-category-vs.html). It is one element (`0..1`, MHD Minimal cap), but its `coding` is `0..*` — so a single `category` carries multiple codings (EHDS priority LOINC plus XDS classCode, SNOMED, or national) for multi-scheme categorization.
 
 | priority category (`category`) | type codes (`type`) | relevant IGs |
 |-------------------|------------|--------------|
