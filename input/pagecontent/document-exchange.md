@@ -83,7 +83,7 @@ Servers SHALL return content conforming to FHIR Document content profiles as a n
 
 `attachment.url` is an opaque retrieval URL — its format is unconstrained. Servers host content at any endpoint they choose. The examples above (`/Bundle/[id]`, `/Binary/[id]`) illustrate common patterns, not requirements.
 
-Human-readable representations (e.g. PDF narrative) are part of the FHIR Document as defined by the relevant [content IG](priority-categories.html) — not exposed at metadata level as separate DocumentReferences. EHDS top-level document exchange requires structured content; a PDF is not a conformant top-level document on its own.
+Human-readable representations (e.g. PDF narrative) are part of the FHIR Document as defined by the relevant [content IG](priority-categories.html) — not exposed at metadata level as separate DocumentReferences. EHDS top-level document exchange requires structured content; a PDF is not a conformant top-level document on its own. A separate PDF Binary referenced by its own DocumentReference is a valid FHIR pattern but does not satisfy EHDS conformance at the exchange surface.
 
 **Dual-representation pattern.** When the same content has two technical encodings, publish two DocumentReferences linked via `relatesTo.code = transforms` and let consumers select by `contentType`. The [imaging manifest](priority-area-imaging-manifest.html#dual-documentreference-pattern-mado) (FHIR + DICOM KOS) is the canonical case; the pattern applies to any content with EHDS-conformant alternative encodings. It does not legitimize a PDF-only representation as a conformant top-level document.
 
