@@ -115,6 +115,12 @@ Implementers: Does your system use or plan to use `category` for document classi
 
 </div>
 
+#### On-Demand Documents
+
+Some servers assemble documents on demand from operational data rather than serving pre-stored Bundles. MHD supports this: an on-demand DocumentReference has no `content.attachment.hash` or `content.attachment.size`. The `content.attachment.url` may invoke any endpoint that returns a valid Document Bundle, including FHIR operations (e.g., `Patient/[id]/$summary`).
+
+Consumers treat on-demand and persisted DocumentReferences identically — both are retrieved via ITI-68. Servers assembling on demand are not required to version or persist past renderings.
+
 #### Search Examples
 
 Search by `type` (LOINC) for the most accurate results. To find the relevant `type` codes for a priority category, consult the per-category ValueSet or the ConceptMap. When multiple `type` codes apply, include all of them.

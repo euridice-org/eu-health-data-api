@@ -2,9 +2,11 @@ This Implementation Guide supports two primary patterns for exchanging health da
 
 ### FHIR Documents
 
-FHIR Documents are complete, immutable snapshots of clinical information at a point in time. They are represented as FHIR Bundles with `type="document"` and contain a Composition resource that provides structure and rendering information. The Composition acts as a table of contents and enables the document to be displayed as a cohesive clinical report.
+FHIR Documents are clinical-report representations of a patient's health information at a defined moment, expressed as FHIR Bundles with `type="document"` containing a Composition resource that provides structure and rendering information. Documents may be **persisted** — stored as authored and later retrieved — or **assembled on demand** from operational data; both are first-class patterns in this IG.
 
-Documents are self-contained and can be signed and attested by healthcare providers, making them suitable for traditional clinical reports like patient summaries, discharge reports, and lab reports.
+Servers that assemble documents on demand are not required to version, history, or persist past renderings. Per [MHD ITI-67](https://profiles.ihe.net/ITI/MHD/ITI-67.html), an on-demand DocumentReference is identified by the absence of both `content.attachment.hash` and `content.attachment.size`. The `content.attachment.url` may resolve to any endpoint that produces a valid Document Bundle, including operation invocations such as `Patient/[id]/$summary`.
+
+Documents are self-contained and can be signed and attested by healthcare providers, making them suitable for clinical reports such as patient summaries, discharge reports, and laboratory reports.
 
 
 ### FHIR Resources
