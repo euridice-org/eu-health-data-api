@@ -60,8 +60,9 @@ A Provider conformant to PDQm [ITI-78](https://profiles.ihe.net/ITI/PDQm/ITI-78.
 
 #### Patient Demographics Match [ITI-119] `Patient.$match`  (Optional)
 
-The Patient Demographics $match option can be used to identify a patient when an identifier-based lookup is not possible (e.g., scenarios where the consumer does not know the patient's local identifier).
-The Patient $match operation identifies a patient record given demograpics data (Name, Birthdate, ...) using [IHE PDQm ITI-119](https://profiles.ihe.net/ITI/PDQm/ITI-119.html): 
+`$match` identifies a patient from demographics when an identifier-based lookup is not possible — the Consumer does not hold the patient's local identifier. It uses [IHE PDQm ITI-119](https://profiles.ihe.net/ITI/PDQm/ITI-119.html):
+
+`$match` is a separable, composable capability. A Provider MAY implement it directly, or a deployment MAY supply it through a separate identity service (PDQm Patient Demographics Supplier) that the Provider works behind. A Member State MAY mandate the bundled form through procurement. See [Member State Architectures](member-state-architectures.html).
 
 ```
 POST [base]/Patient/$match
@@ -76,7 +77,7 @@ The request body contains a Parameters resource with demographic information. Th
 |-----------|------|-------------|-------------|
 | onlyCertainMatches | boolean | SHALL | This parameter SHALL be set to true |
 
-In order to support safe clinical patient matching both Provider and Consumer SHALL support the `onlyCertainMatches` parameter which SHALL be set to `true` to indicate that the Consumer would only like matches returned when they are certain to be matches for the subject of the request.
+For safe clinical matching, the Consumer SHALL set `onlyCertainMatches` to `true`, returning only matches certain to be the subject of the request. A Provider MAY behave as if `onlyCertainMatches` were `true` regardless of the request, suppressing low-confidence candidates.
 
 Matching algorithms are product and deployment-specific and may reflect national or region-specific factors (e.g., availability of common demographics, name transliteration, required fields in national patient registries). This specification does not prescribe how matching works, consistent with [PDQm ITI-119](https://profiles.ihe.net/ITI/PDQm/ITI-119.html#231194224-quality-of-match).
 
