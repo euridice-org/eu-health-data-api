@@ -57,7 +57,7 @@ sequenceDiagram
     Provider-->>Consumer: DICOM KOS
     else Imaging Manifest (FHIR)
     Consumer->>Provider: GET [attachment.url from FHIR manifest DocumentReference]
-    Provider-->>Consumer: FHIR imaging manifest (collection Bundle)
+    Provider-->>Consumer: FHIR imaging manifest (document Bundle)
     end
 ```
 
