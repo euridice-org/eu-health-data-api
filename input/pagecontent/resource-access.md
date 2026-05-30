@@ -87,13 +87,19 @@ This is a core subset of resources for ballot. Ballot feedback is requested on w
 
 </div>
 
+### On-Demand Documents
+
+Some clinical artifacts (for example, a Patient Summary assembled at request time) are not pre-stored but generated on demand. MHD's ITI-67 query semantics accommodate on-demand documents via DocumentReference: a DocumentReference with absent `content.attachment.hash` and `content.attachment.size` signals that the document will be generated when fetched (ITI-68). The Resource Access Provider is not required to implement on-demand generation; this is a valid implementation pattern for systems that assemble documents from their resource store.
+
+For implementations that align with [IPA](https://hl7.org/fhir/uv/ipa/STU1/), the IPA `$docref` operation ([OperationDefinition-docref](https://hl7.org/fhir/uv/ipa/STU1/OperationDefinition-docref.html)) provides an equivalent on-demand document request mechanism on the IPA side. An IPA-aligned Resource Access Provider MAY support `$docref` in addition to the ITI-67/68 path.
+
 ### Supported Resources
 
-Following [International Patient Access (IPA)](https://hl7.org/fhir/uv/ipa/CapabilityStatement-ipa-server.html), Resource Access Providers are **not required to support all clinical resources**. Servers MAY choose which resources to implement based on their capabilities, use cases, and the regulatory context.
+Resource Access Providers are **not required to support all listed resources**, following [IPA STU1](https://hl7.org/fhir/uv/ipa/STU1/CapabilityStatement-ipa-server.html). Servers MAY choose which resources to implement based on capabilities, use cases, and regulatory context.
 
-Servers declare which resources they support in their CapabilityStatement (see [Capability Discovery](capability-discovery.html)). Clients MAY check the server's CapabilityStatement to discover available resources before making requests.
+Servers declare supported resources in their CapabilityStatement (see [Capability Discovery](capability-discovery.html)). Clients SHOULD check the server's CapabilityStatement before requesting.
 
-See the [Resource Access Provider CapabilityStatement](CapabilityStatement-EEHRxF-ResourceAccessProvider.html) and [Resource Consumer CapabilityStatement](CapabilityStatement-EEHRxF-ResourceConsumer.html) for detailed capability declarations.
+See the [Resource Access Provider CapabilityStatement](CapabilityStatement-EEHRxF-ResourceAccessProvider.html) and [Resource Consumer CapabilityStatement](CapabilityStatement-EEHRxF-ResourceConsumer.html) for capability declarations.
 
 ### Scopes
 
