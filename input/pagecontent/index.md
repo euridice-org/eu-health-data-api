@@ -14,6 +14,21 @@
   </div>
 </div>
 
+<div style="border: 2px solid #8b6914; border-radius: 8px; padding: 1em; background-color: #fffbf0; margin-bottom: 1.25rem;">
+  <strong>⚠ Draft specification — Implementing Acts forthcoming</strong><br/>
+  This Implementation Guide is a draft technical proposal prepared by HL7 EU and IHE Europe.
+  It is based on Xt-EHR Joint Action deliverables (D5.1, D8.1) drafted prior to the publication
+  of the EHDS Implementing Acts under Articles 15 and 36 of Regulation (EU) 2025/327.
+  <br/><br/>
+  The interoperability requirements for EHR systems will be finalized in the Implementing Act of
+  Article 36 — not in this guide. Member States retain sovereignty over their healthcare systems
+  (TFEU Art. 168(7)) and the specific obligations placed on EHR systems may vary by Member State.
+  <br/><br/>
+  This IG does <strong>not</strong> create legal obligations on EHR systems unless formally adopted
+  by the European Commission and the Member States through the applicable Implementing Acts.
+  Xt-EHR deliverables referenced here reflect their status at the time of this publication.
+</div>
+
 ### Regulatory Basis
 
 The European Health Data Space (EHDS) regulation describes an obligation for EHR systems to include an Interoperability Component that does the following:
