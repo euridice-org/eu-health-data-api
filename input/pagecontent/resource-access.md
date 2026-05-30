@@ -13,6 +13,8 @@ Data models for resource access inherit from [HL7 Europe Core](https://build.fhi
 - **Resource Access Provider** (server): Provides resource query capabilities
 - **Resource Consumer** (client): Queries resources
 
+A single system commonly fills more than one role: a Resource Access Provider may also produce the resources it serves, or also consume resources from other providers. This edition specifies only the query interface; how a system obtains the resources it serves is implementation-private (see [Resource Exchange](resourceExchange.html)).
+
 See [Actors and Transactions](actors.html) for detailed actor groupings.
 
 <details>
