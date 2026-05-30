@@ -6,11 +6,12 @@ Profile for DocumentReference resources used in the EEHRxF context, based on the
 
 **Search Strategy**:
 - `type`: Search by LOINC document type for precise document discovery. See [Document Exchange](document-exchange.html) for type codes per EHDS priority category.
-- `category`: This IG does not constrain category. Usage is determined by content IGs and implementation needs.
+- `category`: Open (0..1, inherited from MHD Minimal), not required, no value-set binding. Usage is determined by content IGs and implementation needs. MHD Minimal caps `category` at a single element; profiles needing multiple categorization schemes apply them on the content, not this DocumentReference.
 
 See [Document Exchange](document-exchange.html) for query examples.
 """
 * insert SetFmmAndStatusRule( 1, draft )
+* category 0..1
 * category MS
 * type MS
 * type from EEHRxFDocumentTypeVS (preferred)
