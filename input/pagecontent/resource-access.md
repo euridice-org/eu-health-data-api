@@ -6,7 +6,7 @@ A vaccination registry that serves Immunization resources, or a medication syste
 
 Resource access for resources that also appear within FHIR Documents (e.g., Conditions referenced in a Patient Summary) is permitted but not required.
 
-Data models for resource access inherit from [HL7 Europe Core](https://build.fhir.org/ig/hl7-eu/base/). This path corresponds to [Resource Interoperability Profiles](regulatoryAnchors.html#xt-ehr-deliverable-81-data-model-and-conformance-framework) in the Xt-EHR D8.1 conformance framework, aligned with the Xt-EHR Logical Models.
+Data models inherit from [HL7 Europe Core](https://build.fhir.org/ig/hl7-eu/base/) profiles where available; resources without an EU Core profile follow base FHIR R4. This path corresponds to [Resource Interoperability Profiles](regulatoryAnchors.html#xt-ehr-deliverable-81-data-model-and-conformance-framework) in the Xt-EHR D8.1 conformance framework.
 
 ### Actors
 
