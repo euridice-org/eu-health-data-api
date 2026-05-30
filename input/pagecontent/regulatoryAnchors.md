@@ -15,7 +15,7 @@ This IG inherits and builds upon the work of the Xt-EHR Joint Action, which has 
 
 These requirements have also been adjusted to harmonize with Xt-EHR Work Packages 6 and 7, which define requirements for each priority category.
 
-For more details on the Xt-EHR work, see [the Xt-EHR Website](https://www.xt-ehr.eu/work-packages/). Note: Xt-EHR deliverables are not yet publicly released.
+For more details on the Xt-EHR work, see [the Xt-EHR Website](https://www.xt-ehr.eu/work-packages/). Note: At the time of this publication, Xt-EHR deliverables had not yet been publicly released.
 
 ### Requirements Framework
 
