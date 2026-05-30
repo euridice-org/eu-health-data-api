@@ -61,9 +61,9 @@ Xt-EHR Deliverable 5.1 interpreted 2.1 and 2.2 as two sides of a query-based arc
 
 This interpretation is grounded in the following rationale:
 
-- **Clinical workflow fit**: When a patient arrives at a new care setting, their health data often resides elsewhere. Query-based exchange allows the treating provider to retrieve patient data *at the point of care*, rather than requiring precoordination with the data source to transmit the patient's data.
-- **MyHealth@EU alignment**: EU Cross-border services are primarily modeled as query-based exchanges. The requesting country's National Contact Point queries the responding National Contact Point, which queries the providing country's systems.
-- **Data availability**: Healthcare is 24/7. An API endpoint can serve requests at any time, ensuring data is accessible when needed for care. With a push architecture, data availability depends on the receiver being online and the sender initiating data transmission.
+- **Clinical workflow fit**: When a patient arrives at a new care setting, their health data often resides elsewhere. Query-based exchange allows the treating provider to retrieve data from the patient's electronic health record, rather than requiring precoordination with the data source to transmit the patient's data. This model accommodates national and regional health data infrastructures where data is centralized or federated across multiple systems.
+- **MyHealth@EU alignment**: EU Cross-border services are primarily modeled as query-based exchanges. The requesting country's National Contact Point queries the responding National Contact Point, which queries the country's health data infrastructure.
+- **Data availability**: Healthcare is 24/7. An API endpoint can serve requests at any time, ensuring data is accessible when needed for care.
 
 ### §2.1: Provide Access
 
