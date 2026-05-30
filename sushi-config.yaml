@@ -172,11 +172,18 @@ menu:
   Background:
     Regulatory Anchors: regulatoryAnchors.html
     Actors and Transactions: actors.html
-    Priority Categories: priority-categories.html
     Member State Architectures: member-state-architectures.html
     Relationship to XDS/FHIR: background-xds-fhir.html
     Change Log: changes.html
     Open Issues: open-issues.html
+  Priority Categories:
+    Overview: priority-categories.html
+    Patient Summary (EPS): priority-area-eps.html
+    ePrescription / eDispensation: priority-area-mpd.html
+    Medical Test Results: priority-area-laboratory.html
+    Medical Imaging Report: priority-area-imaging-report.html
+    Medical Imaging Manifest: priority-area-imaging-manifest.html
+    Hospital Discharge Report: priority-area-hdr.html
   Functional Requirements:
     Capability Discovery: capability-discovery.html
     Authorization: authorization.html
