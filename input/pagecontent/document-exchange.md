@@ -97,7 +97,7 @@ Human-readable representations (e.g. PDF narrative) are part of the FHIR Documen
 
 [Article 14](https://eur-lex.europa.eu/eli/reg/2025/327/oj#d1e2289-1-1) of the EHDS regulation defines six priority categories of electronic health data. Four travel as documents and carry an EHDS priority category code on `category`, drawn from LOINC Document Class codes ([EHDSPriorityCategoryVS](ValueSet-ehds-priority-category-vs.html)). Each maps to the precise LOINC `type` codes consumers use for document search.
 
-`category` and `type` are distinct axes: `category` is the broad EHDS classification for coarse discovery; `type` is the specific document type for precise discovery. The `type` binding is preferred, not required — content IGs may define their own typing. Patient Summary is the one case where a fixed `type` (`60591-5`) aids consistent identification.
+`category` and `type` are distinct axes: `category` is the broad EHDS classification for coarse discovery; `type` is the specific document type for precise discovery. `category` is bound extensible and `type` preferred to LOINC value sets — justified EHDS guidance, not locked, so broader codings stay conformant. Content IGs may define their own typing. Patient Summary is the one case where a fixed `type` (`60591-5`) aids consistent identification.
 
 Each category code maps to example LOINC `type` codes:
 - `34133-9` Summary of episode note → [EEHRxFDocumentTypePatientSummaryVS](ValueSet-eehrxf-document-type-patient-summary-vs.html)
