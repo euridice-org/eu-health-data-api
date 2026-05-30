@@ -4,13 +4,17 @@ Patient lookup resolves the Patient resource an Access Provider holds, so a Cons
 
 This specification inherits from [IHE PDQm](https://profiles.ihe.net/ITI/PDQm/index.html) with one constraint: the Provider SHALL support the `identifier` search parameter.
 
-Patient identity is resolved before health data is queried. Often it is resolved upstream — by a national patient index or, for cross-border requests, by the National Contact Point (Regulation (EU) 2025/327 Art 13(3)). The Access Provider is then queried with a known identifier and need not perform demographic discovery itself. Lookup is a discovery step; a Consumer that already holds a trusted identifier may skip it and query directly.
+Patient identity is resolved before health data is queried. Where that resolution happens depends on deployment. These are composable layers:
 
-`Patient.Search` [ITI-78] by `identifier` is the required, primary path. `Patient.$match` [ITI-119] is optional, for the case where only demographics are available.
+- **Identifier lookup (foundational).** `Patient.Search` [ITI-78] by `identifier` resolves a patient the Consumer already knows. Every Provider supports it.
+- **EHR-level demographic match (optional).** An Access Provider MAY resolve a patient from demographics directly, via `Patient.$match` [ITI-119]. This is a real, optional EHR-level capability — offered by some deployments, neither mandated nor forbidden.
+- **National EMPI (cross-border).** For cross-border requests, identity is resolved upstream by a national patient index or the National Contact Point (Regulation (EU) 2025/327 Art 13(3)); the resolved identifier is then used against the Access Provider.
+
+A Consumer that already holds a trusted identifier may skip lookup and query directly.
 
 ### Identification Practices
 
-This specification does not offer open-ended demographic discovery. A Consumer locates a patient it already knows, by identifier. Where no single identifier exists — some Member States identify a patient by an agreed set of attributes — `$match` resolves the patient from those demographics and returns the identifier for subsequent queries. Demographic resolution and cross-border attribute exchange happen above the EHR API, at the national index or National Contact Point.
+This specification does not require open-ended demographic discovery. The foundational path is identifier lookup: a Consumer locates a patient it already knows. Where no single identifier exists — some Member States identify a patient by an agreed set of attributes — a Provider MAY resolve the patient with `$match` and return the identifier for subsequent queries, or a national index / National Contact Point MAY resolve it upstream. Which layer does the resolution depends on deployment context.
 
 ### Actor Roles
 
@@ -66,7 +70,7 @@ A Provider conformant to PDQm [ITI-78](https://profiles.ihe.net/ITI/PDQm/ITI-78.
 
 `$match` identifies a patient from demographics when an identifier-based lookup is not possible — the Consumer does not hold the patient's local identifier. It uses [IHE PDQm ITI-119](https://profiles.ihe.net/ITI/PDQm/ITI-119.html):
 
-`$match` is a separable, composable capability. A Provider MAY implement it directly, or a deployment MAY supply it through a separate identity service (PDQm Patient Demographics Supplier) that the Provider works behind. A Member State MAY mandate the bundled form through procurement. See [Member State Architectures](member-state-architectures.html).
+`$match` is a real but optional EHR-level capability, composable with the other layers. A Provider MAY implement it directly, or a deployment MAY supply it through a separate identity service (PDQm Patient Demographics Supplier) that the Provider works behind, or rely on a national EMPI for cross-border resolution. A Member State MAY mandate the bundled form through procurement. See [Member State Architectures](member-state-architectures.html).
 
 ```
 POST [base]/Patient/$match
@@ -107,7 +111,7 @@ GET [base]/DocumentReference?patient.identifier=urn:oid:1.2.3|12345&type=http://
 
 Providers are RECOMMENDED to implement the $match operation in addition to the patient search for scenarios where identifier is not available.
 
-A Provider that supports only `Patient.Search` does not serve the no-identifier case: the `identifier` parameter is required, and an identifier-less query is unsupported. Such a Consumer resolves the patient upstream — via `$match` on a separate identity service or the national index — and queries with the resolved identifier. A deployment that must serve identifier-less Consumers directly implements `$match`.
+A Provider that supports only `Patient.Search` does not serve the no-identifier case: the `identifier` parameter is required, and an identifier-less query is unsupported. The no-identifier case is then resolved by another layer — the Provider's own `$match`, a separate identity service, or a national EMPI — which returns an identifier for the query. A deployment that wants to serve identifier-less Consumers at the EHR directly implements `$match`.
 
 ### Authorization
 
