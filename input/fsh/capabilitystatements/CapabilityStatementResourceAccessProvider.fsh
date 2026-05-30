@@ -135,7 +135,7 @@ primary clinical data resource in this actor.
 * rest[=].resource[=].searchParam[=].type = #token
 * rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
 * rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHALL
-* rest[=].resource[=].searchParam[=].documentation = "Patient identifier (e.g., national ID, MRN) - required for patient lookup"
+* rest[=].resource[=].searchParam[=].documentation = "Patient identifier (e.g., national ID, MRN). SHALL denotes Provider capability support; the Consumer is not required to use an identifier in every query."
 
 * rest[=].resource[=].searchParam[+].name = "family"
 * rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/individual-family"
