@@ -26,6 +26,10 @@ This example illustrates the Document Query and Retrieve interaction pattern. Ot
 
 All layers exchange EEHRxF-formatted data.
 
+### National Infrastructure
+
+The national infrastructure is a logical grouping, not a single system. In practice it consists of multiple components — EHR systems, national registries, gateways, and other services — that together mediate between the NCPeH and individual EHR systems. The national infrastructure acts as a gateway or coordination layer that interfaces with one or more underlying EHR systems, rather than being a single monolithic system. Member State architecture choices determine how these components are structured and connected (see [Cross-Organization via National Infrastructure](usecase-cross-org.html)).
+
 ### Authorization
 
 Cross-border patient consent, health-professional authentication in the requesting country, and authorization at the NCPeH and national-infrastructure layers are governed by MyHealth@EU and Member State infrastructure — not by this IG. At the EHR API surface, the consumer is an authorized national-infrastructure component; how that authorization was established is out of scope here.
