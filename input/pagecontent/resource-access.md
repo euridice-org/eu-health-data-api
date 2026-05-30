@@ -66,14 +66,14 @@ The following resources are available for read/search access. Where an [HL7 Euro
 | Immunization | `patient` | `patient+date` |
 | Encounter | `patient` | `patient+date`, `patient+status` |
 
-**Reference-only resources** — `patient` is not applicable; read by logical ID only.
+**Reference-only resources** — not patient-scoped; `patient` search parameter does not apply. Servers SHALL support read by logical ID for each supported resource.
 
-| Resource | SHALL | Note |
-|----------|-------|------|
-| Practitioner | read | resolve references |
-| PractitionerRole | read | resolve references |
-| Organization | read | resolve references |
-| Location | read | resolve references |
+| Resource | SHALL | Purpose |
+|----------|-------|---------|
+| Practitioner | read | resolve practitioner references |
+| PractitionerRole | read | resolve role-in-organization references |
+| Organization | read | resolve organization references |
+| Location | read | resolve location references |
 
 <div markdown="1" class="stu-note">
 
