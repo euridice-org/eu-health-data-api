@@ -10,14 +10,14 @@ We welcome your input via Github Issues, or by attending the weekly [HL7 Europe 
 
 How should systems differentiate documents by EHDS Priority Category? Patient Summary, Imaging Results, Medical Test Results, and Hospital Discharge Reports are all FHIR Documents exposed via DocumentReference and MHD.
 
-**Current Approach (going to ballot)**
+**Current Approach**
 
-DocumentReference `.type` with LOINC codes is the primary search parameter for document differentiation. The `.category` element is left unconstrained — servers may populate it, but it is not a required search parameter. A ConceptMap is provided mapping EHDS priority categories to LOINC codes used in `.type`.
+Two axes: `.type` (precise LOINC document type, preferred binding) for clinically specific discovery, and `.category` (broad EHDS priority category over LOINC Document Class, extensible binding) for coarse, category-only discovery. `.category` is capped at 0..1 by the MHD Minimal parent; multi-scheme classification belongs on the content. A ConceptMap maps each category to its LOINC `.type` codes. See [Document Search Strategy](document-exchange.html#document-search-strategy).
 
 **Seeking Input On**
 
-- Is `.type` with LOINC the right search parameter for priority category differentiation, or should `.category` or `format` play a role?
-- Does the ConceptMap approach work for your implementation context?
+- Does the two-axis `.type` / `.category` split work for your implementation context?
+- Are the four EHDS priority category LOINC codes the right coarse axis, or do you need additional codings (SNOMED, XDS classCode, national)?
 - What search patterns do Member States currently use for document discovery?
 
 ---
