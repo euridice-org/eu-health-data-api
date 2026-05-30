@@ -82,16 +82,23 @@ See the [Resource Access Provider CapabilityStatement](CapabilityStatement-EEHRx
 
 ### Scopes
 
+Scopes follow [SMART v2 conventions](https://hl7.org/fhir/smart-app-launch/scopes-and-launch-context.html#scopes-for-requesting-fhir-resources). The context is `system` (server-to-server / Backend Services). The suffix `.read` grants read-by-ID; `.search` grants search. Consumers request the scopes for each resource type they need; servers grant scopes for the resource types they support.
+
 ```
-system/AllergyIntolerance.rs
-system/Condition.rs
-system/Observation.rs
-system/DiagnosticReport.rs
-system/MedicationRequest.rs
-system/MedicationDispense.rs
-system/MedicationStatement.rs
-system/Immunization.rs
-system/Encounter.rs
+system/Patient.read system/Patient.search
+system/AllergyIntolerance.read system/AllergyIntolerance.search
+system/Condition.read system/Condition.search
+system/Observation.read system/Observation.search
+system/DiagnosticReport.read system/DiagnosticReport.search
+system/MedicationRequest.read system/MedicationRequest.search
+system/MedicationDispense.read system/MedicationDispense.search
+system/MedicationStatement.read system/MedicationStatement.search
+system/Immunization.read system/Immunization.search
+system/Encounter.read system/Encounter.search
+system/Practitioner.read
+system/PractitionerRole.read
+system/Organization.read
+system/Location.read
 ```
 
 ### Example Queries
