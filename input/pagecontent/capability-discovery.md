@@ -37,6 +37,8 @@ Servers declare actor conformance using `CapabilityStatement.instantiates`, refe
 
 Consumers inspect `instantiates` to determine which actor roles and exchange patterns a server supports.
 
+Servers MAY also list universal-realm CapabilityStatements (e.g., the [IPA Server](http://hl7.org/fhir/uv/ipa/CapabilityStatement/ipa-server)) alongside EEHRxF actors. A server conformant to IPA that also conforms to EEHRxF Resource Access Provider requirements declares both. This avoids EU-locking capability declarations for functionality with broad applicability outside the EU context.
+
 ### Priority Category Support
 
 The EHDS ANNEX II priority categories are:
