@@ -79,3 +79,18 @@ This approach was agreed by the API working group. However, alternative approach
 - Does the dual-DocumentReference pattern work for your imaging infrastructure?
 - Would a single-DocumentReference with multiple `content` entries be preferable?
 - How does your system currently handle FHIR/DICOM content negotiation for imaging manifests?
+
+---
+
+### Issue 7: R4/R5 Harmonization — Production Target
+
+Several Content IGs this IG references (notably EU Imaging) are published on FHIR R5. The HL7 ecosystem broadly treats R5 specifications in this space as preparatory groundwork for FHIR R6 rather than a stable production target.
+
+This IG's intended production target is FHIR R6. Implementers developing production systems now should plan for R6 equivalents as they become available. Where R6 dependencies are not yet stable, R4-based alternatives remain viable.
+
+R5 IGs referenced here (e.g., [EU Imaging Reports](https://build.fhir.org/ig/hl7-eu/imaging-r5/)) represent the current design foundation; production deployment should track their R6 successors.
+
+**Seeking Input On**
+
+- Does your Member State or system have R4 vs R5 vs R6 constraints that affect your implementation timeline?
+- Are there priority categories where an R4 fallback path is required?

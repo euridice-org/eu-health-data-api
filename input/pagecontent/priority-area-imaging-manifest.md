@@ -3,6 +3,8 @@ This section defines the API requirements for EHR systems that provide imaging s
 
 For detailed content profiles, see the [EU Imaging Study Manifest IG](https://hl7.eu/fhir/imaging-manifest-r5/).
 
+> **Note:** The EU Imaging Manifest IG is currently published on FHIR R5, which is preparatory groundwork for FHIR R6. The production target for this IG is R6. See [Open Issue 7](open-issues.html#issue-7-r4r5-harmonization--production-target).
+
 ### Actors
 
 Imaging Manifests can be accessed via document exchange.
