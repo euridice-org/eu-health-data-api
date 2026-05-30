@@ -71,6 +71,16 @@ Whether a wellness application connects to an EHR system directly or through the
 
 - [**Wellness App Access**](usecase-wellness-app.html) — Patients accessing their own health data via Wellness Applications.
 
+#### Concrete Examples
+
+Two scenarios illustrate how the deployment scenarios compose in practice (drawn from CapacityHD interoperability-testing workshops):
+
+**Patient self-access via HDAS (AHD_NP_HDAS)** — A patient wants to retrieve their radiology report from an EHR in their country of affiliation. The patient authenticates to the national Health Data Access Service. The HDAS, acting as [Document Consumer](actors.html#document-consumer), queries the EHR system using ITI-67 and retrieves the document using ITI-68. The patient receives the report in EEHRxF format.
+
+**Cross-border health professional access (PORT_HP_HPAS)** — A patient treated abroad needs their records reviewed by their family doctor at home. The family doctor authenticates to their country's Health Professional Access Service. The HPAS routes the query through national infrastructure (and, for cross-border requests, through the NCPeH/MyHealth@EU layer) to the foreign EHR system. The EHR system returns documents via the API defined in this IG.
+
+The full CapacityHD use-case catalogue (including cross-border push scenarios and Article 5 patient-insert workflows) is being consolidated by the eHealth Network task force. This IG addresses the EHR system API surface; use-case catalogue alignment is considered for future work.
+
 #### End-to-End Use Cases
 
 - [**Retrieve a European Patient Summary**](example-patient-summary.html) — Step-by-step: authorization, patient lookup, document query, and document retrieval.
