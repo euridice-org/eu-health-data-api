@@ -32,6 +32,8 @@ The [EURIDICE MADO profile](https://hl7.eu/fhir/imaging-manifest-r5/) defines bo
 
 The two DocumentReferences are linked using `relatesTo.code` = **`transforms`** — each is a different technical representation of the same imaging study manifest. Document Consumers query by `type` and select the representation they can consume based on `contentType`.
 
+The FHIR manifest is retrieved as a [`collection` Bundle](document-exchange.html#document-content) (the [MADO FHIR imaging manifest](https://hl7.eu/fhir/imaging-manifest-r5/StructureDefinition-ImImagingStudyManifest.html), which holds an ImagingStudy plus supporting resources), not as a bare `ImagingStudy` resource. A direct `GET [base]/ImagingStudy` query is a valid FHIR pattern but is out of scope for document exchange here.
+
 This pattern was chosen ([#50](https://github.com/euridice-org/eu-health-data-api/issues/50)) because it works across all Document Sharing transports (MHD, XDS, XCA) without requiring content negotiation at the server.
 
 <div markdown="1" class="stu-note">
