@@ -92,6 +92,8 @@ Matching algorithms are product and deployment-specific and may reflect national
 
 Providers are RECOMMENDED to implement the $match operation in addition to the patient search for scenarios where identifier is not available.
 
+A Provider that supports only `Patient.Search` does not serve the no-identifier case: the `identifier` parameter is required, and an identifier-less query is unsupported. Such a Consumer resolves the patient upstream — via `$match` on a separate identity service or the national index — and queries with the resolved identifier. A deployment that must serve identifier-less Consumers directly implements `$match`.
+
 ### Authorization
 
 When grouped with IUA actors:
