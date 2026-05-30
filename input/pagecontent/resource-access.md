@@ -75,6 +75,12 @@ The following resources are available for read/search access. Where an [HL7 Euro
 | Organization | read | resolve organization references |
 | Location | read | resolve location references |
 
+**Additional patient-scoped resources** — supported where applicable to priority category.
+
+| Resource | SHALL combos | Priority Category |
+|----------|-------------|------------------|
+| ImagingStudy | `patient` | Imaging Results |
+
 <div markdown="1" class="stu-note">
 
 This is a core subset of resources for ballot. Ballot feedback is requested on whether this set is appropriate. See [Open Issue #9](open-issues.html#issue-9-core-resource-set-validation).

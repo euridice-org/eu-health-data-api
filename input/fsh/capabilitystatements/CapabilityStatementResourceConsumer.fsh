@@ -635,3 +635,28 @@ Clients MAY omit this resource based on their needs.
 * rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
 * rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHOULD
 * rest[=].resource[=].searchParam[=].documentation = "Classification of the encounter (e.g., inpatient, outpatient)"
+
+// ============================================================================
+// ImagingStudy Resource - Imaging Results (Optional)
+// ============================================================================
+* rest[=].resource[+].type = #ImagingStudy
+* rest[=].resource[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].extension[=].valueCode = #SHOULD
+* rest[=].resource[=].documentation = "ImagingStudy resources are used in the Imaging Results priority category."
+
+* rest[=].resource[=].interaction[+].code = #read
+* rest[=].resource[=].interaction[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].interaction[=].extension[=].valueCode = #SHALL
+* rest[=].resource[=].interaction[=].documentation = "Read ImagingStudy by logical ID"
+
+* rest[=].resource[=].interaction[+].code = #search-type
+* rest[=].resource[=].interaction[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].interaction[=].extension[=].valueCode = #SHALL
+* rest[=].resource[=].interaction[=].documentation = "Search for ImagingStudy resources"
+
+* rest[=].resource[=].searchParam[+].name = "patient"
+* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/clinical-patient"
+* rest[=].resource[=].searchParam[=].type = #reference
+* rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHALL
+* rest[=].resource[=].searchParam[=].documentation = "The patient subject of the imaging study"
