@@ -65,7 +65,7 @@ sequenceDiagram
 - **`type`** (LOINC code) — identifies the clinical document type and which [content IG](priority-categories.html) applies.
 - **`attachment.contentType`** — identifies the technical format.
 
-Together, these tell the consumer what the retrieved document contains.
+Together, these tell the consumer what the retrieved document contains. The patterns below are illustrative, not exhaustive — other content profiles and formats may apply per the relevant content IG.
 
 | Content Pattern | `attachment.contentType` | Retrieved Content | Example |
 |---|---|---|---|
@@ -77,7 +77,7 @@ Servers SHALL return content conforming to FHIR Document content profiles as a n
 
 `attachment.url` is an opaque retrieval URL — its format is unconstrained. Servers host content at any endpoint they choose. The examples above (`/Bundle/[id]`, `/Binary/[id]`) illustrate common patterns, not requirements.
 
-Human-readable representations (e.g. PDF narrative) are part of the FHIR Document as defined by the relevant [content IG](priority-categories.html) — not exposed at metadata level as separate DocumentReferences.
+Human-readable representations (e.g. PDF narrative) are part of the FHIR Document as defined by the relevant [content IG](priority-categories.html) — not exposed at metadata level as separate DocumentReferences. EHDS top-level document exchange requires structured content; a PDF is not a conformant top-level document on its own.
 
 #### Document Search Strategy
 
