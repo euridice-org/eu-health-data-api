@@ -6,7 +6,7 @@ Semantics also vary by resource type and workflow. Exchange patterns are often d
 
 ### Current Scope
 
-For this version of the implementation guide, instead of supporting a generic resource PUSH, we take as a precondition that a system acting as a Resource Access Provider already has access to resources. It may have gained access to these resources by:
+For this version of the implementation guide, instead of supporting a generic resource PUSH — an external system sending unsolicited resources to a Resource Access Provider — we take as a precondition that a system acting as a Resource Access Provider already has access to resources. It may have gained access to these resources by:
 
 1. Creating resources from user-entered data, effectively grouping with an implied *Resource Producer* actor
 2. Consuming external resources by grouping with a *Resource Consumer* actor and querying another Resource Access Provider
