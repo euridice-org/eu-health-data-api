@@ -52,15 +52,13 @@ sequenceDiagram
 
 ### Step-by-Step Flow
 
-#### Step 1: Discover Capabilities
+#### Step 1: Discover Capabilities (optional)
 
-Document Consumer inspects the Document Access Provider's capabilities via [Capability Discovery](capability-discovery.html).
+Conformance to this guide's actors and profiles is normally established out-of-band; runtime capability discovery is optional. A Document Consumer MAY inspect the Document Access Provider's [CapabilityStatement](capability-discovery.html) to confirm the declared actor conformance (document exchange, patient lookup, and the European Patient Summary priority category) before proceeding.
 
 ```
 GET https://provider.example.org/fhir/metadata
 ```
-
-The CapabilityStatement confirms support for IHE MHD document exchange, PDQm patient search, and European Patient Summary priority category.
 
 #### Step 2: Obtain Authorization Token
 
