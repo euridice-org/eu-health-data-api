@@ -41,7 +41,7 @@ sequenceDiagram
     Note over Consumer,Provider: Document Exchange (MHD ITI-67, ITI-68)
     Consumer->>Provider: GET /DocumentReference?patient=...&type=60591-5
     Provider-->>Consumer: DocumentReference Bundle
-    Consumer->>Provider: GET /Bundle/[id]
+    Consumer->>Provider: GET [DocumentReference.content.attachment.url]
     Provider-->>Consumer: Patient Summary (FHIR Document)
     end
 ```
