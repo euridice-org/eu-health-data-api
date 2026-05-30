@@ -55,6 +55,9 @@ sequenceDiagram
     Note over Consumer,Provider: See IHE MADO / Imaging Manifest
     Consumer->>Provider: GET [attachment.url from KOS DocumentReference]
     Provider-->>Consumer: DICOM KOS
+    else Imaging Manifest (FHIR)
+    Consumer->>Provider: GET [attachment.url from FHIR manifest DocumentReference]
+    Provider-->>Consumer: FHIR imaging manifest (collection Bundle)
     end
 ```
 
