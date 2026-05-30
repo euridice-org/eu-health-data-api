@@ -50,7 +50,7 @@ The EHDS ANNEX II priority categories are:
 - Imaging Reports
 - Imaging Manifests
 
-**Document access**: Servers declare supported priority categories by listing content IG canonical URLs in `CapabilityStatement.implementationGuide`. Consumers inspect `implementationGuide` then query by `DocumentReference.type` (LOINC). See [Document Exchange](document-exchange.html) for the type codes per priority category.
+**Document access**: Servers declare supported priority categories by listing content IG canonical URLs in `CapabilityStatement.implementationGuide`. Consumers inspect `implementationGuide` then query by `DocumentReference.type` (LOINC). See [Document Exchange](document-exchange.html) for the type codes per priority category. The `.type` codes are LOINC — a universal-realm standard — not EU-specific codes. Servers SHOULD NOT restrict `DocumentReference.type` or `DocumentReference.category` to EU-defined code systems when universal-realm or LOINC codes cover the same concept.
 
 **Resource access (Xt-EHR D8.1 Resource Interoperability Profiles)**: Servers supporting IPA-aligned resource access declare conformance via `instantiates` referencing the IPA server CapabilityStatement (`http://hl7.org/fhir/uv/ipa/CapabilityStatement/ipa-server`) and the EEHRxF Resource Access Provider CapabilityStatement. Per-resource profile support appears in `rest.resource.supportedProfile`. See [Resource Access](resource-access.html).
 
