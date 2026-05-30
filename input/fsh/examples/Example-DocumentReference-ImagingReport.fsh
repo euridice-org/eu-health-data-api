@@ -1,8 +1,8 @@
 // Example DocumentReference for Imaging Report
 // Based on HL7 EU Imaging IG DocumentReferenceImagingReport profile
 
-Instance: ExampleDocumentReferenceImagingReport
-InstanceOf: EehrxfMhdDocumentReference
+Instance: example-documentreference-imaging-report
+InstanceOf: DocumentReferenceEuApi
 Title: "Example - Imaging Report DocumentReference"
 Description: """
 Example DocumentReference for a diagnostic imaging report.

@@ -1,7 +1,7 @@
 // CapabilityStatement for EEHRxF Resource Consumer Actor (IPA/QEDm client)
 // Based on IPA Client (primary) and IHE QEDm Clinical Data Consumer with SMART Backend Services security
 
-Instance: EEHRxF-ResourceConsumer
+Instance: resource-consumer-eu-api
 InstanceOf: CapabilityStatement
 Title: "EEHRxF Resource Consumer CapabilityStatement"
 Usage: #definition
@@ -41,7 +41,7 @@ Systems SHALL support SMART Backend Services authorization for all transactions.
 Consumers SHOULD expect resources conforming to EU Core profiles where available.
 """
 
-* name = "EEHRxFResourceConsumer"
+* name = "ResourceConsumerEuApi"
 * title = "EEHRxF Resource Consumer CapabilityStatement"
 * status = #active
 * experimental = false

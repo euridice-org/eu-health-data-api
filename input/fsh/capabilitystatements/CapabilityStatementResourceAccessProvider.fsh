@@ -1,7 +1,7 @@
 // CapabilityStatement for EEHRxF Resource Access Provider Actor (IPA/QEDm server)
 // Based on IPA Server (primary) and IHE QEDm Clinical Data Source with SMART Backend Services security
 
-Instance: EEHRxF-ResourceAccessProvider
+Instance: resource-access-provider-eu-api
 InstanceOf: CapabilityStatement
 Title: "EEHRxF Resource Access Provider CapabilityStatement"
 Usage: #definition
@@ -42,7 +42,7 @@ Systems SHALL support SMART Backend Services authorization for all transactions.
 Resources SHOULD conform to EU Core profiles where available.
 """
 
-* name = "EEHRxFResourceAccessProvider"
+* name = "ResourceAccessProviderEuApi"
 * title = "EEHRxF Resource Access Provider CapabilityStatement"
 * status = #active
 * experimental = false

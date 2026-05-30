@@ -1,7 +1,7 @@
 // CapabilityStatement for EEHRxF Document Access Provider - Document Submission Option
 // Extends base Document Access Provider with ITI-105 Simplified Publish capability
 
-Instance: EEHRxF-DocumentAccessProvider-SubmissionOption
+Instance: document-access-provider-submission-option-eu-api
 InstanceOf: CapabilityStatement
 Title: "EEHRxF Document Access Provider - Document Submission Option"
 Usage: #definition
@@ -12,7 +12,7 @@ This option enables the Access Provider to receive documents from external Docum
 Publishers via [ITI-105 Simplified Publish](https://profiles.ihe.net/ITI/MHD/ITI-105.html).
 
 Systems implementing this option:
-- SHALL also implement the base [Document Access Provider](CapabilityStatement-EEHRxF-DocumentAccessProvider.html) capabilities
+- SHALL also implement the base [Document Access Provider](CapabilityStatement-document-access-provider-eu-api.html) capabilities
 - SHALL accept ITI-105 transactions from authorized Document Publishers
 - SHALL make received documents available via ITI-67 and ITI-68
 - SHALL validate the submitted document content against EEHRxF content profiles after extracting it from the attachment
@@ -35,7 +35,7 @@ Adds to base Document Access Provider:
 Systems SHALL support SMART Backend Services authorization for document submission.
 """
 
-* name = "EEHRxFDocumentAccessProviderSubmissionOption"
+* name = "DocumentAccessProviderSubmissionOptionEuApi"
 * title = "EEHRxF Document Access Provider - Document Submission Option"
 * status = #active
 * experimental = false
@@ -47,7 +47,7 @@ Systems SHALL support SMART Backend Services authorization for document submissi
 * format[+] = #xml
 
 // Reference to base capability
-* imports = Canonical(EEHRxF-DocumentAccessProvider)
+* imports = Canonical(document-access-provider-eu-api)
 
 * rest[+].mode = #server
 * rest[=].documentation = """
@@ -82,8 +82,8 @@ ITI-105 Simplified Publish. The server:
 5. Returns the created DocumentReference with server-assigned IDs
 
 Validation at submission targets document content, not DocumentReference metadata.
-The submission wire shape is MHD SimplifiedPublish, not EehrxfMhdDocumentReference.
-EehrxfMhdDocumentReference remains normative as the persisted, queried shape served
+The submission wire shape is MHD SimplifiedPublish, not DocumentReferenceEuApi.
+DocumentReferenceEuApi remains normative as the persisted, queried shape served
 via ITI-67.
 """
 
@@ -101,7 +101,7 @@ The DocumentReference SHALL include:
 - content.attachment.data (required - base64-encoded document content)
 
 The server SHALL:
-- Accept the SimplifiedPublish DocumentReference shape (no EehrxfMhdDocumentReference metadata gate at submission)
+- Accept the SimplifiedPublish DocumentReference shape (no DocumentReferenceEuApi metadata gate at submission)
 - Extract and validate the document content against EEHRxF content profiles
 - Persist the document
 - For FHIR Documents, ensure the content is retrievable as a native FHIR Document Bundle (not wrapped in Binary)
@@ -110,7 +110,7 @@ The server SHALL:
 """
 
 // Supported profiles - EEHRxF DocumentReference, MHD SimplifiedPublish (requires .data), and MHD Minimal
-* rest[=].resource[=].supportedProfile[+] = Canonical(EehrxfMhdDocumentReference)
+* rest[=].resource[=].supportedProfile[+] = Canonical(document-reference-eu-api)
 * rest[=].resource[=].supportedProfile[+] = "https://profiles.ihe.net/ITI/MHD/StructureDefinition/IHE.MHD.SimplifiedPublish.DocumentReference"
 * rest[=].resource[=].supportedProfile[+] = "https://profiles.ihe.net/ITI/MHD/StructureDefinition/IHE.MHD.Minimal.DocumentReference"
 

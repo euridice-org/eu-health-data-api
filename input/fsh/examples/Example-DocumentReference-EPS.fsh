@@ -2,8 +2,8 @@
 // Demonstrates use of EEHRxF category and type valuesets
 // See: https://github.com/euridice-org/eu-health-data-api/issues/49
 
-Instance: ExampleDocumentReferenceEPS
-InstanceOf: EehrxfMhdDocumentReference
+Instance: example-documentreference-eps
+InstanceOf: DocumentReferenceEuApi
 Title: "Example - European Patient Summary DocumentReference"
 Description: """
 Example DocumentReference showing an EPS document with EEHRxF category coding.

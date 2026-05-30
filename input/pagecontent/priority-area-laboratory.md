@@ -7,8 +7,8 @@ Laboratory Reports can be accessed via document exchange.
 
 | Actor | Description | CapabilityStatement |
 |-------|-------------|---------------------|
-| Document Consumer | Retrieves laboratory reports | [EEHRxF Document Consumer](CapabilityStatement-EEHRxF-DocumentConsumer.html) |
-| Document Access Provider | Serves laboratory reports | [EEHRxF Document Access Provider](CapabilityStatement-EEHRxF-DocumentAccessProvider.html) |
+| Document Consumer | Retrieves laboratory reports | [EEHRxF Document Consumer](CapabilityStatement-document-consumer-eu-api.html) |
+| Document Access Provider | Serves laboratory reports | [EEHRxF Document Access Provider](CapabilityStatement-document-access-provider-eu-api.html) |
 
 ### Document Exchange
 
@@ -16,7 +16,7 @@ For document-based access, use the [Document Exchange](document-exchange.html) t
 
 The Laboratory Report is differentiated via the following DocumentReference fields:
 - **type**: `11502-2` (Laboratory report)
-- **category**: `26436-6` Laboratory studies (set) — EHDS priority category over [LOINC Document Class](ValueSet-ehds-priority-category-vs.html)
+- **category**: `26436-6` Laboratory studies (set) — EHDS priority category over [LOINC Document Class](ValueSet-ehds-priority-category-eu-api.html)
 
 ### Example Query
 

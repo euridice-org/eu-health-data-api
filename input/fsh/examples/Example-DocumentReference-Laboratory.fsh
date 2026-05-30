@@ -1,7 +1,7 @@
 // Example DocumentReference for Laboratory Report
 
-Instance: ExampleDocumentReferenceLaboratory
-InstanceOf: EehrxfMhdDocumentReference
+Instance: example-documentreference-laboratory
+InstanceOf: DocumentReferenceEuApi
 Title: "Example - Laboratory Report DocumentReference"
 Description: """
 Example DocumentReference for a laboratory report.

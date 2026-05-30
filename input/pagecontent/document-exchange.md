@@ -96,19 +96,19 @@ Human-readable representations (e.g. PDF narrative) are part of the FHIR Documen
 
 ##### EHDS Priority Categories and Type Codes
 
-[Article 14](https://eur-lex.europa.eu/eli/reg/2025/327/oj#d1e2289-1-1) of the EHDS regulation defines six priority categories of electronic health data. Four travel as documents and carry an EHDS priority category code on `category`, drawn from LOINC Document Class codes ([EHDSPriorityCategoryVS](ValueSet-ehds-priority-category-vs.html)). Each maps to the precise LOINC `type` codes consumers use for document search.
+[Article 14](https://eur-lex.europa.eu/eli/reg/2025/327/oj#d1e2289-1-1) of the EHDS regulation defines six priority categories of electronic health data. Four travel as documents and carry an EHDS priority category code on `category`, drawn from LOINC Document Class codes ([EhdsPriorityCategoryEuApiVS](ValueSet-ehds-priority-category-eu-api.html)). Each maps to the precise LOINC `type` codes consumers use for document search.
 
 `category` and `type` are distinct axes: `category` is the broad EHDS classification for coarse discovery; `type` is the specific document type for precise discovery. `category` is bound extensible and `type` preferred to LOINC value sets — justified EHDS guidance, not locked, so broader codings stay conformant. Content IGs may define their own typing. Patient Summary is the one case where a fixed `type` (`60591-5`) aids consistent identification.
 
 Each category code maps to example LOINC `type` codes:
-- `34133-9` Summary of episode note → [EEHRxFDocumentTypePatientSummaryVS](ValueSet-eehrxf-document-type-patient-summary-vs.html)
-- `18842-5` Discharge summary → [EEHRxFDocumentTypeDischargeReportVS](ValueSet-eehrxf-document-type-discharge-report-vs.html)
-- `26436-6` Laboratory studies (set) → [EEHRxFDocumentTypeLaboratoryReportVS](ValueSet-eehrxf-document-type-laboratory-report-vs.html)
-- `18726-0` Radiology studies (set) → [EEHRxFDocumentTypeMedicalImagingVS](ValueSet-eehrxf-document-type-medical-imaging-vs.html)
+- `34133-9` Summary of episode note → [DocumentTypePatientSummaryEuApiVS](ValueSet-document-type-patient-summary-eu-api.html)
+- `18842-5` Discharge summary → [DocumentTypeDischargeReportEuApiVS](ValueSet-document-type-discharge-report-eu-api.html)
+- `26436-6` Laboratory studies (set) → [DocumentTypeLaboratoryReportEuApiVS](ValueSet-document-type-laboratory-report-eu-api.html)
+- `18726-0` Radiology studies (set) → [DocumentTypeMedicalImagingEuApiVS](ValueSet-document-type-medical-imaging-eu-api.html)
 
 The type ValueSets list example codes, not an exhaustive set. Content IGs are the authoritative source. ePrescription and eDispensation do not travel as documents and have no category or type codes here.
 
-[EEHRxFDocumentTypeVS](ValueSet-eehrxf-document-type-vs.html) aggregates the per-category type codes into one ValueSet bound (preferred) to `DocumentReference.type`. A [ConceptMap](ConceptMap-EehrxfMhdDocumentReferenceCM.html) gives the category-to-type mapping in machine-readable form.
+[DocumentTypeEuApiVS](ValueSet-document-type-eu-api.html) aggregates the per-category type codes into one ValueSet bound (preferred) to `DocumentReference.type`. A [ConceptMap](ConceptMap-document-reference-category-type-eu-api.html) gives the category-to-type mapping in machine-readable form.
 
 **Category-based discovery.** Consumers MAY search by `category` alone to retrieve all documents in a priority category without naming each LOINC `type` code:
 
@@ -116,7 +116,7 @@ The type ValueSets list example codes, not an exhaustive set. Content IGs are th
 GET [base]/DocumentReference?patient=Patient/123&category=http://loinc.org|26436-6&status=current
 ```
 
-`category` is bound **extensible** to [EHDSPriorityCategoryVS](ValueSet-ehds-priority-category-vs.html). It is one element (`0..1`, MHD Minimal cap), but its `coding` is `0..*` — so a single `category` carries multiple codings (EHDS priority LOINC plus XDS classCode, SNOMED, or national) for multi-scheme categorization.
+`category` is bound **extensible** to [EhdsPriorityCategoryEuApiVS](ValueSet-ehds-priority-category-eu-api.html). It is one element (`0..1`, MHD Minimal cap), but its `coding` is `0..*` — so a single `category` carries multiple codings (EHDS priority LOINC plus XDS classCode, SNOMED, or national) for multi-scheme categorization.
 
 | priority category (`category`) | type codes (`type`) | relevant IGs |
 |-------------------|------------|--------------|
@@ -182,7 +182,7 @@ When Document Publisher and Document Access Provider are **separate systems**, t
 
 The Document Access Provider MAY support receiving documents from external Publishers by implementing the [MHD Simplified Publish Option](https://profiles.ihe.net/ITI/MHD/1332_actor_options.html#13324-simplified-publish-option). This is the **Document Submission Option**.
 
-Systems implementing this option declare it via [EEHRxF-DocumentAccessProvider-SubmissionOption](CapabilityStatement-EEHRxF-DocumentAccessProvider-SubmissionOption.html). See [Actors - Document Submission Option](actors.html#document-submission-option) for actor groupings.
+Systems implementing this option declare it via [Document Access Provider - Document Submission Option](CapabilityStatement-document-access-provider-submission-option-eu-api.html). See [Actors - Document Submission Option](actors.html#document-submission-option) for actor groupings.
 
 #### ITI-105 Simplified Publish
 
@@ -206,7 +206,7 @@ Content-Type: application/fhir+json
 
 The server validates, extracts, and persists the document, returning the created DocumentReference with server-assigned IDs. See [IHE MHD ITI-105](https://profiles.ihe.net/ITI/MHD/ITI-105.html) for details.
 
-> **Publish shape vs query shape.** Publication and query use different DocumentReference shapes. At publish time the wire shape is [MHD SimplifiedPublish](https://profiles.ihe.net/ITI/MHD/StructureDefinition-IHE.MHD.SimplifiedPublish.DocumentReference.html) (`content.attachment.data` present, no `url`). The persisted, queried shape is [EehrxfMhdDocumentReference](StructureDefinition-EehrxfMhdDocumentReference.html), parented on MHD Minimal. ITI-105 is the publication path; the server transforms the submitted resource into the persisted form served via ITI-67/ITI-68.
+> **Publish shape vs query shape.** Publication and query use different DocumentReference shapes. At publish time the wire shape is [MHD SimplifiedPublish](https://profiles.ihe.net/ITI/MHD/StructureDefinition-IHE.MHD.SimplifiedPublish.DocumentReference.html) (`content.attachment.data` present, no `url`). The persisted, queried shape is [DocumentReferenceEuApi](StructureDefinition-document-reference-eu-api.html), parented on MHD Minimal. ITI-105 is the publication path; the server transforms the submitted resource into the persisted form served via ITI-67/ITI-68.
 
 > **Document content:** Per MHD ITI-105, the server extracts the document from `attachment.data` and persists it so that consumers can retrieve it via `attachment.url`. This IG requires that servers SHALL return FHIR Documents as native FHIR Document Bundles — not wrapped in Binary. The `attachment.url` format is unconstrained; servers host documents at any endpoint they choose.
 

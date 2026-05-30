@@ -7,8 +7,8 @@
 // content. Extensible binding so SNOMED, XDS classCode, or national codings may
 // appear as additional codings alongside the LOINC category code.
 
-ValueSet: EHDSPriorityCategoryVS
-Id: ehds-priority-category-vs
+ValueSet: EhdsPriorityCategoryEuApiVS
+Id: ehds-priority-category-eu-api
 Title: "EHDS Priority Category ValueSet"
 Description: "Broad document classification for the four EHDS priority categories carried as documents, over LOINC Document Class codes. Extensible: implementations MAY add SNOMED, XDS classCode, or national codings."
 * ^status = #draft
@@ -27,8 +27,8 @@ Description: "Broad document classification for the four EHDS priority categorie
 // These ValueSets are draft (informative) examples, not exhaustive — specific
 // document types evolve. Content IGs are the authoritative source.
 
-ValueSet: EEHRxFDocumentTypePatientSummaryVS
-Id: eehrxf-document-type-patient-summary-vs
+ValueSet: DocumentTypePatientSummaryEuApiVS
+Id: document-type-patient-summary-eu-api
 Title: "EEHRxF Document Type ValueSet for Patient Summaries"
 Description: "Example LOINC document types within the Patient Summary priority category. Illustrative, not exhaustive."
 * ^status = #draft
@@ -38,8 +38,8 @@ Description: "Example LOINC document types within the Patient Summary priority c
 * insert LOINCCopyrightForVS
 * $loinc#60591-5 "Patient summary Document"
 
-ValueSet: EEHRxFDocumentTypeDischargeReportVS
-Id: eehrxf-document-type-discharge-report-vs
+ValueSet: DocumentTypeDischargeReportEuApiVS
+Id: document-type-discharge-report-eu-api
 Title: "EEHRxF Document Type ValueSet for Discharge Reports"
 Description: "Example LOINC document types within the Discharge Report priority category. Illustrative, not exhaustive."
 * ^status = #draft
@@ -50,8 +50,8 @@ Description: "Example LOINC document types within the Discharge Report priority 
 * $loinc#18842-5 "Discharge summary"
 * $loinc#100719-4 "Surgical oncology Discharge summary"
 
-ValueSet: EEHRxFDocumentTypeLaboratoryReportVS
-Id: eehrxf-document-type-laboratory-report-vs
+ValueSet: DocumentTypeLaboratoryReportEuApiVS
+Id: document-type-laboratory-report-eu-api
 Title: "EEHRxF Document Type ValueSet for Laboratory Reports"
 Description: "Example LOINC document types within the Laboratory Report priority category. Illustrative, not exhaustive."
 * ^status = #draft
@@ -61,8 +61,8 @@ Description: "Example LOINC document types within the Laboratory Report priority
 * insert LOINCCopyrightForVS
 * $loinc#11502-2 "Laboratory report"
 
-ValueSet: EEHRxFDocumentTypeMedicalImagingVS
-Id: eehrxf-document-type-medical-imaging-vs
+ValueSet: DocumentTypeMedicalImagingEuApiVS
+Id: document-type-medical-imaging-eu-api
 Title: "EEHRxF Document Type ValueSet for Medical Imaging"
 Description: "Example LOINC document types within the Medical Imaging priority category. Illustrative, not exhaustive."
 * ^status = #draft
@@ -79,32 +79,32 @@ Description: "Example LOINC document types within the Medical Imaging priority c
 // =============================================================================
 // LOINC codes for specific document types — used for precise clinical discovery.
 
-ValueSet: EEHRxFDocumentTypeVS
-Id: eehrxf-document-type-vs
+ValueSet: DocumentTypeEuApiVS
+Id: document-type-eu-api
 Title: "EEHRxF Document Type ValueSet"
 Description: "Example LOINC document type codes for precise document discovery. Illustrative, not exhaustive."
 * ^status = #draft
 * ^experimental = false
 * insert LOINCCopyrightForVS
-* include codes from valueset EEHRxFDocumentTypePatientSummaryVS
-* include codes from valueset EEHRxFDocumentTypeDischargeReportVS
-* include codes from valueset EEHRxFDocumentTypeLaboratoryReportVS
-* include codes from valueset EEHRxFDocumentTypeMedicalImagingVS
+* include codes from valueset DocumentTypePatientSummaryEuApiVS
+* include codes from valueset DocumentTypeDischargeReportEuApiVS
+* include codes from valueset DocumentTypeLaboratoryReportEuApiVS
+* include codes from valueset DocumentTypeMedicalImagingEuApiVS
 
 
 // =============================================================================
 // ConceptMap: priority category (LOINC Document Class) -> document type (LOINC)
 // =============================================================================
 
-Instance: EehrxfMhdDocumentReferenceCM
+Instance: document-reference-category-type-eu-api
 InstanceOf: ConceptMap
 Title: "EEHRxF MHD DocumentReference ConceptMap"
 Description: """
 Maps each EHDS priority category (LOINC Document Class code, used on `category`) to the LOINC document type codes (used on `type`) for precise discovery.
 """
 Usage: #example
-* url = "http://hl7.eu/fhir/health-data-api/ConceptMap/EehrxfMhdDocumentReferenceCM"
-* name = "EehrxfMhdDocumentReferenceCM"
+* url = "http://hl7.eu/fhir/health-data-api/ConceptMap/document-reference-category-type-eu-api"
+* name = "DocumentReferenceCategoryTypeEuApi"
 * title = "EEHRxF MHD DocumentReference ConceptMap"
 * description = "Maps each EHDS priority category (LOINC Document Class code, used on category) to the LOINC document type codes (used on type) for precise discovery."
 * experimental = false

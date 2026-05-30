@@ -9,8 +9,8 @@ Imaging Manifests can be accessed via document exchange.
 
 | Actor | Description | CapabilityStatement |
 |-------|-------------|---------------------|
-| Document Consumer | Retrieves imaging manifests | [EEHRxF Document Consumer](CapabilityStatement-EEHRxF-DocumentConsumer.html) |
-| Document Access Provider | Serves imaging manifests | [EEHRxF Document Access Provider](CapabilityStatement-EEHRxF-DocumentAccessProvider.html) |
+| Document Consumer | Retrieves imaging manifests | [EEHRxF Document Consumer](CapabilityStatement-document-consumer-eu-api.html) |
+| Document Access Provider | Serves imaging manifests | [EEHRxF Document Access Provider](CapabilityStatement-document-access-provider-eu-api.html) |
 
 ### Document Exchange
 
@@ -18,7 +18,7 @@ For document-based access, use the [Document Exchange](document-exchange.html) t
 
 The Imaging Manifest is differentiated via the following DocumentReference fields:
 - **type**: `18748-4` (Diagnostic imaging Study) — the LOINC code used for document search
-- **category**: `18726-0` Radiology studies (set) — EHDS priority category over [LOINC Document Class](ValueSet-ehds-priority-category-vs.html); see [Document Search Strategy](document-exchange.html#document-search-strategy).
+- **category**: `18726-0` Radiology studies (set) — EHDS priority category over [LOINC Document Class](ValueSet-ehds-priority-category-eu-api.html); see [Document Search Strategy](document-exchange.html#document-search-strategy).
 
 ### Dual-DocumentReference Pattern (MADO)
 
@@ -46,7 +46,7 @@ Implementers: does the dual-DocumentReference pattern work for your imaging infr
 
 </div>
 
-See [Example: Imaging Study Manifest — FHIR](DocumentReference-ExampleDocumentReferenceImagingManifestFHIR.html) and [Example: Imaging Study Manifest — DICOM KOS](DocumentReference-ExampleDocumentReferenceImagingManifestKOS.html) for instances showing the dual pattern.
+See [Example: Imaging Study Manifest — FHIR](DocumentReference-example-documentreference-imaging-manifest-fhir.html) and [Example: Imaging Study Manifest — DICOM KOS](DocumentReference-example-documentreference-imaging-manifest-kos.html) for instances showing the dual pattern.
 
 ### Example Queries
 
