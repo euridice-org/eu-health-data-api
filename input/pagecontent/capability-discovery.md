@@ -10,12 +10,12 @@ Capability discovery uses the standard FHIR capabilities interaction:
 GET [base]/metadata
 ```
 
-The server returns a CapabilityStatement resource that declares:
-- Supported FHIR version
-- Supported resource types and profiles
-- Supported interactions (read, search, create, etc.)
-- Supported search parameters
-- Actor conformance and priority category support (see below)
+Consumers interpret the CapabilityStatement by inspecting:
+- `instantiates` — actor conformance (which EEHRxF actors the server implements)
+- `implementationGuide` — content IGs supported (which priority categories are available)
+- `rest.resource.supportedProfile` — profiles the server produces
+- `rest.resource` — supported resource types and interactions
+- `fhirVersion` — FHIR version
 
 ### Provider Actors
 
