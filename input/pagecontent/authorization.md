@@ -176,7 +176,7 @@ sequenceDiagram
 
 ### Transport Security {#transport-security}
 
-All API communications SHALL use secure transport as defined by [IHE ATNA](https://profiles.ihe.net/ITI/TF/Volume1/ch-9.html) with the TLS 1.2 Floor using BCP195 Option.
+All API communications SHALL use secure transport as defined by [IHE ATNA §9.2.6.4 TLS 1.2 Floor using BCP195 Option](https://profiles.ihe.net/ITI/TF/Volume1/ch-9.html#9.2.6.4).
 
 ### IUA and SMART Backend Services
 
@@ -188,7 +188,7 @@ For example: this IG requires `private_key_jwt` client authentication (per SMART
 
 ### Potential Future Work: User-Level Authorization
 
-User-level authorization (including patient-mediated access) is out of scope for this version of the implementation Guide. For patient-mediated access patterns, readers are encouraged to consider [SMART on FHIR App Launch](https://hl7.org/fhir/smart-app-launch/) and [International Patient Access](https://hl7.org/fhir/uv/ipa/). Implementors might consider UDAP for dynamic client registration (see [FHIR UDAP Security IG](https://hl7.org/fhir/us/udap-security/)).
+User-level authorization (including patient-mediated access) is out of scope for this version of the implementation Guide. For patient-mediated access patterns, readers are encouraged to consider [SMART on FHIR App Launch](https://hl7.org/fhir/smart-app-launch/) and [International Patient Access](https://hl7.org/fhir/uv/ipa/). Implementors might consider UDAP for dynamic client registration (see [UDAP Security](https://www.udap.org/)).
 
 Integration with the EU Digital Identity Wallet and eIDAS framework may be addressed in future editions.
 
