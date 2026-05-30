@@ -84,7 +84,7 @@ Each scenario maps to the [actors](actors.html) an EHR system plays and the tran
 | [Health Data Access Service](usecase-health-data-portal.html) | Document/Resource Access Provider | Document/Resource Consumer (HDAS) | ITI-78, ITI-67, ITI-68, IPA query |
 | [Wellness App Access](usecase-wellness-app.html) | Document/Resource Access Provider | Document/Resource Consumer (wellness app) | ITI-78, ITI-67, ITI-68, IPA query |
 
-All scenarios authorize via SMART Backend Services (IUA Get Access Token, ITI-71).
+Most scenarios authorize via SMART Backend Services (IUA Get Access Token, ITI-71); direct-EHR-auth deployments (e.g. patient or health-professional portals) use user-level SMART on FHIR / IPA.
 
 #### Concrete Examples
 
