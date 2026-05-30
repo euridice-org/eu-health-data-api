@@ -126,8 +126,6 @@ pages:
       title: Authors and contributors
     copyright.md:
       title: Copyright
-    references.md:
-      title: References
 
   # actors-and-transactions.md:
   #   title: System actors
