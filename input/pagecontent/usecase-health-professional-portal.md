@@ -22,4 +22,10 @@ The service may query EHR systems directly, through national infrastructure that
 
 ### Authorization
 
-The professional's identity and authorization are established at the access service. At the EHR API surface, the consumer is an authorized system-to-system caller; the mechanism — for example SMART Backend Services credentials issued by a national authorization server — is described in [Authorization](authorization.html).
+Two deployment patterns are in use:
+
+**Broker model (HPAS as intermediary):** The professional authenticates to the HPAS (e.g., eIDAS). The HPAS holds system-level credentials and queries EHR systems using SMART Backend Services. At the EHR API surface, the consumer is an authorized system-to-system caller; the professional's identity is asserted by the HPAS.
+
+**Direct-EHR-auth model:** The professional authenticates directly to the EHR system using institutional credentials, as described in IPA and SMART on FHIR. In this model, the EHR enforces access policy at the API surface.
+
+Both patterns are consistent with this IG; the choice depends on Member State architecture. See [Authorization](authorization.html) for the SMART/IUA details that apply to either model.

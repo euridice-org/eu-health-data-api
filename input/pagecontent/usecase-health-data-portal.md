@@ -20,7 +20,13 @@ This IG defines the API the access service uses when querying EHR systems. The a
 
 ### Authorization
 
-The patient's identity and authorization are established at the access service. At the EHR API surface, the consumer is an authorized system-to-system caller; the mechanism is described in [Authorization](authorization.html). Patient consent preferences are enforced by the access service and/or the EHR system per Member State policy.
+Two deployment patterns are in use:
+
+**Broker model (HDAS as intermediary):** The patient authenticates to the HDAS (national eID, EU Digital Identity Wallet). The HDAS holds system-level credentials and queries EHR systems on the patient's behalf using SMART Backend Services. At the EHR API surface, the consumer is an authorized system-to-system caller; patient identity and consent are asserted by the HDAS. This is the pattern anticipated by the EHDS Regulation.
+
+**Direct-EHR-auth model:** The patient authenticates directly to the EHR system, typically using existing portal credentials, as described in IPA and SMART on FHIR. In this model, the EHR enforces consent at the API surface. This pattern is in production today and is valid where Member State policy permits.
+
+Both patterns are consistent with this IG; the choice depends on Member State architecture. See [Authorization](authorization.html) for the SMART/IUA details that apply to either model.
 
 #### Patient-Provided Data 
 
