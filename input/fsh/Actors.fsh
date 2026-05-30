@@ -62,21 +62,29 @@ for technical requirements.
 
 Instance: EEHRxF-DocumentPublisherAccessProvider-Actor
 InstanceOf: ActorDefinition
-Title: "EEHRxF Grouped Document Publisher/Access Provider"
+Title: "EEHRxF Document Publisher/Access Provider"
 Usage: #definition
 Description: """
-The grouped Document Publisher/Access Provider actor represents a deployment where document
-production and access provision are co-located in the same system. In this configuration,
-document submission (ITI-105) is internal and only document query/retrieval (ITI-67, ITI-68)
-is exposed externally.
+A separately-defined actor for systems that produce documents and serve them to Document
+Consumers from the same product (e.g. a hospital EHR that publishes to itself). It exposes
+only the access-provision transactions (ITI-67, ITI-68); internal publishing is
+implementation-private.
 
-This is common for hospital EHR systems that produce and serve their own documents.
+This actor is not a grouping of Document Publisher and Document Access Provider. Per
+[IHE General Introduction §6.3](https://profiles.ihe.net/GeneralIntro/ch-6.html), claiming
+both grouped actors would require externally exposing each actor's required transactions,
+including ITI-105 publishing to an external Recipient. Co-located systems that do not publish
+externally claim this actor instead, and combine constituent actors by means other than IHE
+transactions.
 
-See [Grouped Document Publisher/Access Provider CapabilityStatement](CapabilityStatement-EEHRxF-DocumentPublisherAccessProvider.html)
+Required Actor Groupings: MHD Document Responder, PDQm Patient Demographics Supplier, IUA
+Authorization Server / Resource Server. MHD Document Source is not required.
+
+See [Document Publisher/Access Provider CapabilityStatement](CapabilityStatement-EEHRxF-DocumentPublisherAccessProvider.html)
 for technical requirements.
 """
 * name = "EEHRxF_DocumentPublisherAccessProvider"
-* title = "EEHRxF Grouped Document Publisher/Access Provider"
+* title = "EEHRxF Document Publisher/Access Provider"
 * status = #active
 * experimental = false
 * type = #system

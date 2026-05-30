@@ -27,7 +27,7 @@ Document exchange is defined with 3 actors:
 </div>
 
 <a name="document-publisher"></a>
-1. **Document Publisher (client)** - Produces EEHRxF FHIR Documents, publishes those documents to a Document Access Provider. Can be grouped with Access Provider, in which case the publishing transactions are internalized.
+1. **Document Publisher (client)** - Produces EEHRxF FHIR Documents, publishes those documents to a Document Access Provider. Systems that produce documents and serve them from the same product instead implement the [Document Publisher/Access Provider](#document-publisher-access-provider) actor.
 
 <a name="document-access-provider"></a>
 2. **Document Access Provider (server)** - Provides access to EEHRxF FHIR Documents by offering query APIs to Document Consumers. See **Document Submission Option** below for systems that accept document publication from external producers.
@@ -95,6 +95,11 @@ See the following functional pages for detailed transaction information:
 - [Document Exchange](document-exchange.html) - Document query and retrieval transactions
 
 This can be combined with content profiles define by each EHDS Priority Category, for those categories that are primarily represented as a FHIR Document. For example, a system can be a **Lab Result Document Publisher**, a **Patient Summary Document Consumer**, or a **Imaging Manifest Document Access Provider**. 
+
+<a name="document-publisher-access-provider"></a>
+**Document Publisher/Access Provider (server)** - A separately-defined actor for systems that produce documents and serve them from the same product (e.g. a hospital EHR that publishes to itself). It exposes only the access-provision transactions (ITI-67, ITI-68); internal publishing is implementation-private.
+
+This actor is not a grouping of Document Publisher and Document Access Provider. Per [IHE General Introduction §6.3](https://profiles.ihe.net/GeneralIntro/ch-6.html), claiming both grouped actors would require externally exposing each actor's required transactions, including ITI-105 publishing to an external Recipient. Co-located systems that do not publish externally claim this actor instead. See its [CapabilityStatement](CapabilityStatement-EEHRxF-DocumentPublisherAccessProvider.html).
 
 
 ### Resource Exchange

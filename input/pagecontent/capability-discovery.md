@@ -32,7 +32,7 @@ Servers declare actor conformance using `CapabilityStatement.instantiates`, refe
 
 - [Document Access Provider](CapabilityStatement-EEHRxF-DocumentAccessProvider.html)
 - [Document Access Provider — Document Submission Option](CapabilityStatement-EEHRxF-DocumentAccessProvider-SubmissionOption.html)
-- [Grouped Document Publisher/Access Provider](CapabilityStatement-EEHRxF-DocumentPublisherAccessProvider.html)
+- [Document Publisher/Access Provider](CapabilityStatement-EEHRxF-DocumentPublisherAccessProvider.html)
 - [Resource Access Provider](CapabilityStatement-EEHRxF-ResourceAccessProvider.html)
 
 Consumers inspect `instantiates` to determine which actor roles and exchange patterns a server supports.

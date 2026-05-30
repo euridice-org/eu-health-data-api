@@ -1,14 +1,14 @@
-// CapabilityStatement for Grouped EEHRxF Document Publisher + Document Access Provider
-// For deployments where document production and access are co-located (publication is internal)
+// CapabilityStatement for the EEHRxF Document Publisher/Access Provider actor
+// Separately-defined actor for co-located production + access (publication is internal)
 
 Instance: EEHRxF-DocumentPublisherAccessProvider
 InstanceOf: CapabilityStatement
-Title: "EEHRxF Grouped Document Publisher/Access Provider CapabilityStatement"
+Title: "EEHRxF Document Publisher/Access Provider CapabilityStatement"
 Usage: #definition
 Description: """
-CapabilityStatement for the grouped EEHRxF Document Publisher and Document Access Provider
-actors. This represents a deployment where document production and access provision are
-co-located in the same system.
+CapabilityStatement for the EEHRxF Document Publisher/Access Provider actor — a
+separately-defined actor for systems that produce documents and serve them from the same
+product (e.g. a hospital EHR that publishes to itself).
 
 ### Deployment Pattern
 
@@ -17,23 +17,26 @@ This CapabilityStatement applies when:
 - Document publication is handled internally
 - External clients only need to query and retrieve documents
 
-In this grouped deployment, document publication is internal to the system and not exposed
-externally. The external API provides only document discovery (ITI-67) and retrieval (ITI-68)
-capabilities.
+Internal publishing is implementation-private. The external API provides only document
+discovery (ITI-67) and retrieval (ITI-68).
 
-### Actor Grouping
+### Actor Definition
 
-This grouped actor combines:
-- **Document Publisher** (internal) - Produces and stores documents internally
-- **Document Access Provider** (external-facing) - Serves documents to Document Consumers
+This is not a grouping of Document Publisher and Document Access Provider. Per
+[IHE General Introduction §6.3](https://profiles.ihe.net/GeneralIntro/ch-6.html), claiming
+both grouped actors would require externally exposing each actor's required transactions,
+including ITI-105 publishing to an external Recipient. This actor exposes only the
+access-provision transactions; constituent actors are combined by means other than IHE
+transactions.
 
-The underlying IHE actors are:
+Required Actor Groupings:
 - [IUA Authorization Server](https://profiles.ihe.net/ITI/IUA/index.html#34112-authorization-server)
 - [IUA Resource Server](https://profiles.ihe.net/ITI/IUA/index.html#34113-resource-server)
 - [PDQm Patient Demographics Supplier](https://profiles.ihe.net/ITI/PDQm/volume-1.html)
 - [MHD Document Responder](https://profiles.ihe.net/ITI/MHD/1331_actors_and_transactions.html)
 
-Note: MHD Document Recipient is not listed because publication is internal.
+MHD Document Source and Document Recipient are not required — publishing is internal and not
+externally exposed.
 
 ### External Transactions
 
@@ -59,7 +62,7 @@ For systems that need to receive documents from external sources, use the
 """
 
 * name = "EEHRxFDocumentPublisherAccessProvider"
-* title = "EEHRxF Grouped Document Publisher/Access Provider CapabilityStatement"
+* title = "EEHRxF Document Publisher/Access Provider CapabilityStatement"
 * status = #active
 * experimental = false
 * date = "2026-01-26"
