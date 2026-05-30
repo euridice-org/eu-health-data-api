@@ -1,5 +1,14 @@
 This section contains information about the specification itself, its development, and how to use it.
 
+### How to Read This Guide
+
+Pages are either **normative** or **informative**:
+
+- **Normative** pages carry conformance obligations. Implementers claiming conformance to this IG SHALL meet their requirements. These define the API surface — actors, transactions, profiles, and CapabilityStatements.
+- **Informative** pages provide background, regulatory framing, deployment guidance, and worked examples. They explain and illustrate; they impose no conformance obligation.
+
+The **Artifacts** (profiles, CapabilityStatements, value sets) are normative; they are the testable conformance targets.
+
 ### Version History
 
 See [Changes](changes.html) for a log of changes between versions of this specification.
