@@ -30,6 +30,8 @@ This IG aligns with:
 - [IHE QEDm](https://profiles.ihe.net/PCC/QEDm/) - Query Existing Data mobile, where compatible with IPA. QEDm has a goal of aligning with IPA.
   - [PCC-44](https://profiles.ihe.net/PCC/QEDm/PCC-44.html) - Mobile Query Existing Data transaction
 
+> **IPA and SMART App Launch**: IPA mandates [SMART App Launch](https://hl7.org/fhir/smart-app-launch/) for patient-facing apps. This IG's primary authorization mechanism is SMART Backend Services (system-to-system). Patient-facing access patterns (SMART App Launch, patient-scoped tokens) are deployment-scenario dependent; see [Authorization](authorization.html). Servers conforming to this IG are not required to support SMART App Launch as a condition of IPA alignment, as this IG targets system-to-system exchange rather than patient-facing app access.
+
 ### Sequence Diagram
 
 ```mermaid
