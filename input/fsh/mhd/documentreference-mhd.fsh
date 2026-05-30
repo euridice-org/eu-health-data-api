@@ -17,4 +17,4 @@ See [Document Exchange](document-exchange.html) for query examples.
 * subject 1..1
 * subject only Reference( http://hl7.eu/fhir/base/StructureDefinition/patient-eu-core )
 * date 0..1
-* custodian 1..1
+* custodian 0..1
