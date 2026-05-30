@@ -50,3 +50,5 @@ Each API is defined by a normative [CapabilityStatement](capability-discovery.ht
 
 A server declares which APIs it offers via `CapabilityStatement.instantiates` (see [Capability Discovery](capability-discovery.html)).
 
+Because the underlying transactions are IHE MHD, PDQm, and IUA, existing test tooling applies — IHE MHD test plans and the [Inferno](https://inferno.healthit.gov/) framework. A dedicated test plan and assertion set for the EU-specific constraints is planned for a future version.
+
