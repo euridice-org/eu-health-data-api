@@ -35,11 +35,11 @@ This approach covers the majority of European use cases where patient identifier
 
 **Required Search Parameters:**
 
-Both Provider and Consumer SHALL support the `identifier` parameter for patient search.
+The Provider SHALL support the `identifier` parameter for patient search. The Consumer SHOULD use it where a trusted identifier is available; not every Member State issues a single patient identifier.
 
-| Parameter | Type | Expectation | Description |
-|-----------|------|-------------|-------------|
-| identifier | token | SHALL | Patient identifier (e.g., national ID, MRN) |
+| Parameter | Type | Provider | Consumer | Description |
+|-----------|------|----------|----------|-------------|
+| identifier | token | SHALL | SHOULD | Patient identifier (e.g., national ID, MRN) |
 
 **Optional Search Parameters:**
 
