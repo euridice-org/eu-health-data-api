@@ -4,8 +4,8 @@ This Implementation Guide addresses technical requirements from the European Hea
 
 The regulatory basis is primarily found in EHDS ANNEX II - Essential Requirements for EHR Systems ([EUR-Lex](https://eur-lex.europa.eu/eli/reg/2025/327/oj/eng#anx_II), [Local Copy](ehds-annex-ii.html)), which describes an obligation for EHR systems to include an *Interoperability Component* that does the following:
 
-- §2.1: "SHALL provide an **interface enabling access** to the personal electronic health data [formatted in EEHRxF]"
-- §2.2: "SHALL **be able to receive** personal electronic health data [formatted in EEHRxF]"
+- [EHDS Annex II §2.1](https://eur-lex.europa.eu/eli/reg/2025/327/oj/eng#anx_II): "SHALL provide an **interface enabling access** to the personal electronic health data [formatted in EEHRxF]"
+- [EHDS Annex II §2.2](https://eur-lex.europa.eu/eli/reg/2025/327/oj/eng#anx_II): "SHALL **be able to receive** personal electronic health data [formatted in EEHRxF]"
 
 Note that this IG does NOT create legal obligations on EHR Systems unless adopted by the European Commission.
 
@@ -53,8 +53,8 @@ Xt-EHR Deliverable 5.1 interpreted 2.1 and 2.2 as two sides of a query-based arc
 
 | Regulation | D5.1 Interpretation | IG Actor |
 |------------|---------------------|----------|
-| §2.1 "provide interface enabling access" | Producer: Serve queries for EEHRxF data | **Access Provider** |
-| §2.2 "be able to receive" | Consumer: Initiate queries and receive responses | **Consumer** |
+| EHDS Annex II §2.1 "provide interface enabling access" | Producer: Serve queries for EEHRxF data | **Access Provider** |
+| EHDS Annex II §2.2 "be able to receive" | Consumer: Initiate queries and receive responses | **Consumer** |
 
 <div style="max-width: 70%; margin: 0 auto;">
 {% include img.html img="5-1_exchange.png" caption="Figure: Query-Based Exchange Model" %}
@@ -66,9 +66,9 @@ This interpretation is grounded in the following rationale:
 - **MyHealth@EU alignment**: EU Cross-border services are primarily modeled as query-based exchanges. The requesting country's National Contact Point queries the responding National Contact Point, which queries the providing country's systems.
 - **Data availability**: Healthcare is 24/7. An API endpoint can serve requests at any time, ensuring data is accessible when needed for care. With a push architecture, data availability depends on the receiver being online and the sender initiating data transmission.
 
-### §2.1: Provide Access
+### EHDS Annex II §2.1: Provide Access {#annex-ii-21-provide-access}
 
-The **Access Provider** actors ([Document Access Provider](actors.html#document-access-provider), [Resource Access Provider](actors.html#resource-access-provider)) satisfy §2.1 by serving Document and Resource FHIR queries.
+The **Access Provider** actors ([Document Access Provider](actors.html#document-access-provider), [Resource Access Provider](actors.html#resource-access-provider)) satisfy [EHDS Annex II §2.1](https://eur-lex.europa.eu/eli/reg/2025/327/oj/eng#anx_II) by serving Document and Resource FHIR queries.
 
 #### Delegated Access Option
 
@@ -86,9 +86,9 @@ See [Actors](actors.html) for complete definitions and [Example Groupings](actor
 
 ---
 
-### §2.2: Receive Data
+### EHDS Annex II §2.2: Receive Data {#annex-ii-22-receive-data}
 
-The **Consumer** actors ([Document Consumer](actors.html#document-consumer), [Resource Consumer](actors.html#resource-consumer)) satisfy §2.2 by initiating Document and Resource queries to retrieve and receive data from Access Providers.
+The **Consumer** actors ([Document Consumer](actors.html#document-consumer), [Resource Consumer](actors.html#resource-consumer)) satisfy [EHDS Annex II §2.2](https://eur-lex.europa.eu/eli/reg/2025/327/oj/eng#anx_II) by initiating Document and Resource queries to retrieve and receive data from Access Providers.
 
 #### Accepting Published Documents
 
