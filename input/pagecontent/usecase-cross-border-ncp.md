@@ -15,9 +15,11 @@ NCPeH-to-NCPeH exchange over MyHealth@EU is governed by the [NCPeH API specifica
 
 ### Architecture
 
+The final arrow in the diagram — from national infrastructure to the EHR system — is the interface defined by this IG. The NCPeH-to-NCPeH layer is governed by the NCPeH API specification, not by this IG.
+
 ```
 Country B facility → NCPeH-B → MyHealth@EU → NCPeH-A → National infrastructure → EHR System API
-                       └──── NCPeH API ────┘        └──── MS choice ────┘     └── This IG ──┘
+                        └───── NCPeH API ─────┘          └──── MS choice ────┘     └── This IG ──┘
 ```
 
 All layers exchange EEHRxF-formatted data.
