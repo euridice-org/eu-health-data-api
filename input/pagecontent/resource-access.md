@@ -15,20 +15,14 @@ Data models for resource access inherit from [HL7 Europe Core](https://build.fhi
 
 See [Actors and Transactions](actors.html) for detailed actor groupings.
 
-<details>
-<summary><i>Note: What about Resource Publisher? Click for more</i></summary>
-
-Resource publication is more complex than document publication, and in many cases has resource and use-case specific considerations. Within the scope of this version of the IG, we assume a precondition that the Resource Access Provider has access to resources and focus on defining how the Resource Access Provider enables a consumer to search and read those resources. For more details and possible approaches, see the <a href="resourceExchange.html">Resource Exchange</a> page.
-
-</details>
+**Resource publication** (write access) is out of scope for this version of the IG. The Resource Access Provider is defined as a read-only query actor. For background on how resources reach the provider, see [Resource Exchange](resourceExchange.html).
 
 ### Specifications
 
 This IG aligns with:
 
-- [HL7 International Patient Access (IPA)](https://hl7.org/fhir/uv/ipa/) - Resource access patterns and CapabilityStatements
-- [IHE QEDm](https://profiles.ihe.net/PCC/QEDm/) - Query Existing Data mobile, where compatible with IPA. QEDm has a goal of aligning with IPA.
-  - [PCC-44](https://profiles.ihe.net/PCC/QEDm/PCC-44.html) - Mobile Query Existing Data transaction
+- [HL7 International Patient Access (IPA) STU1](https://hl7.org/fhir/uv/ipa/STU1/) — resource access patterns and CapabilityStatements
+- [IHE QEDm](https://profiles.ihe.net/PCC/QEDm/) — where compatible with IPA (QEDm aligns with IPA)
 
 ### Sequence Diagram
 
@@ -124,12 +118,24 @@ system/Location.read
 
 ### Example Queries
 
+Required combinations (SHALL):
+
 ```
 GET /AllergyIntolerance?patient=123
+GET /Condition?patient=123
+GET /Observation?patient=123&category=vital-signs
+GET /Observation?patient=123&code=8867-4
+GET /DiagnosticReport?patient=123&category=LAB
+GET /MedicationRequest?patient=123
+GET /Immunization?patient=123
+```
+
+Optional combinations (SHOULD):
+
+```
 GET /Condition?patient=123&clinical-status=active
 GET /Observation?patient=123&category=vital-signs&date=ge2024-01-01
-GET /DiagnosticReport?patient=123&category=LAB
-GET /MedicationRequest?patient=123&status=active
+GET /MedicationRequest?patient=123&status=active&intent=order
 ```
 
 ### Derived Resources
@@ -151,12 +157,9 @@ The [IHE mXDE](https://profiles.ihe.net/ITI/mXDE/index.html) profile (informativ
 
 ### References
 
-- [HL7 International Patient Access (IPA)](https://hl7.org/fhir/uv/ipa/)
-- [IHE QEDm](https://profiles.ihe.net/PCC/QEDm/)
-  - [PCC-44 Mobile Query Existing Data](https://profiles.ihe.net/PCC/QEDm/PCC-44.html)
-- [IHE mXDE](https://profiles.ihe.net/ITI/mXDE/index.html)
+- [HL7 International Patient Access (IPA) STU1](https://hl7.org/fhir/uv/ipa/STU1/) — normative reference for search parameters and CapabilityStatements
+- [IPA CapabilityStatement (STU1)](https://hl7.org/fhir/uv/ipa/STU1/CapabilityStatement-ipa-server.html)
+- [IPA $docref operation (STU1)](https://hl7.org/fhir/uv/ipa/STU1/OperationDefinition-docref.html)
+- [IHE QEDm](https://profiles.ihe.net/PCC/QEDm/) — where compatible with IPA
+- [IHE mXDE](https://profiles.ihe.net/ITI/mXDE/index.html) — informative; provenance pattern for document-derived resources
 - [Actors and Transactions](actors.html)
-
-### International Patient Access vs QEDm
-
-This IG uses [International Patient Access (IPA)](https://hl7.org/fhir/uv/ipa/) as the primary reference for CapabilityStatements and search parameters. QEDm is referenced where compatible with International Patient Access - and QEDm has a stated goal of aligning with IPA.
