@@ -205,6 +205,10 @@ Member states or local deployments MAY additionally support:
 
 These are not required for conformance to the actors within the scope of this implementation guide.
 
+#### Document Lifecycle
+
+Update and withdrawal use native FHIR DocumentReference semantics, not XDS SubmissionSet machinery. A new version supersedes a prior document via `DocumentReference.relatesTo` (`code = replaces`); the prior `DocumentReference.status` becomes `superseded`. Withdrawal sets `status` to `entered-in-error`. The FHIR resource graph carries the relationships that XDS SubmissionSets expressed, so this IG does not import SubmissionSet metadata.
+
 #### Patient Identity in Document Publication
 
 This specification does not require a patient lookup step before publication — how the publisher obtains the patient identifier is up to the implementer. Per [MHD ITI-105 §Patient Identity](https://profiles.ihe.net/ITI/MHD/ITI-105.html#231054122-patient-identity):
