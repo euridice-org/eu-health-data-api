@@ -85,7 +85,7 @@ For safe clinical matching, the Consumer SHALL set `onlyCertainMatches` to `true
 
 Matching algorithms are product and deployment-specific and may reflect national or region-specific factors (e.g., availability of common demographics, name transliteration, required fields in national patient registries). This specification does not prescribe how matching works, consistent with [PDQm ITI-119](https://profiles.ihe.net/ITI/PDQm/ITI-119.html#231194224-quality-of-match).
 
-#### Chained Identifier Search (Optional)
+#### Option: Chained Identifier Search
 
 Once a patient is identified, a Consumer can query that patient's resources directly by identifier using a [chained search parameter](https://hl7.org/fhir/R4/search.html#chaining), skipping a separate lookup round trip. This is a post-match optimization, not an alternative to patient lookup: the identifier comes from a prior lookup or from upstream identity resolution. It applies to clinical resource queries and to document search ([ITI-67]):
 
