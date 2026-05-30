@@ -18,12 +18,20 @@ Individual FHIR Resources represent discrete pieces of health information (obser
 
 Resources can be extracted from documents, and documents can be generated from resources. This IG supports both patterns to accommodate different implementation architectures and use cases.
 
+### Documents Are Targeted; Resource Access Covers the Long Tail
+
+Documents in this IG are **targeted** — they carry the actively relevant, summarized clinical content for a defined use case (e.g., a Patient Summary at a care transition, a signed Laboratory Report). Their content is constrained by the corresponding Content IG.
+
+Resource access serves the **long tail**: content that doesn't fit neatly into a targeted document, unplanned-for use cases, and clinical decision support that needs granular, queryable data. Implementers should use document exchange for the EHDS priority categories and resource access for everything else.
+
+This complementary framing means document content does not need to be exhaustive — resource access is the release valve.
+
 ### Exchange Patterns
 
 The choice of exchange pattern follows from the priority category:
 
 - **[Document exchange](document-exchange.html)** for priority categories structured as FHIR Documents (Patient Summary, Discharge Report, Laboratory Report, Imaging).
-- **[Resource access](resource-access.html)** for individual clinical resources under scoped conformance (allergies, conditions, immunizations, medications, observations).
+- **[Resource access](resource-access.html)** for individual clinical resources and use cases not covered by a targeted document.
 
 See [Priority Categories](priority-categories.html) for the full mapping.
 
