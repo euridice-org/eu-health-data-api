@@ -72,10 +72,11 @@ Together, these tell the consumer what the retrieved document contains. The patt
 | Content Pattern | `attachment.contentType` | Retrieved Content | Example |
 |---|---|---|---|
 | FHIR Document | `application/fhir+json` or `application/fhir+xml` | FHIR Document Bundle (`Bundle.type = "document"`) | `/Bundle/[id]` |
+| FHIR collection (e.g. imaging manifest) | `application/fhir+json` or `application/fhir+xml` | FHIR Bundle (`Bundle.type = "collection"`) | `/Bundle/[id]` |
 | Non-FHIR | `application/dicom` | Binary content (DICOM KOS) | `/Binary/[id]` |
 {: .grid}
 
-Servers SHALL return content conforming to FHIR Document content profiles as a native FHIR Document Bundle, not wrapped in Binary. For DICOM KOS imaging manifests ([IHE MADO](priority-area-imaging-manifest.html#ihe-mado)), standard MHD behavior applies.
+Servers SHALL return content conforming to FHIR Document content profiles as a native FHIR Document Bundle, not wrapped in Binary. `Bundle.type` is not constrained to `document`: content profiles MAY define a `collection` Bundle, as the [MADO FHIR imaging manifest](priority-area-imaging-manifest.html#dual-documentreference-pattern-mado) does. For DICOM KOS imaging manifests ([IHE MADO](priority-area-imaging-manifest.html#ihe-mado)), standard MHD behavior applies.
 
 `attachment.url` is an opaque retrieval URL — its format is unconstrained. Servers host content at any endpoint they choose. The examples above (`/Bundle/[id]`, `/Binary/[id]`) illustrate common patterns, not requirements.
 
