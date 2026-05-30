@@ -8,13 +8,14 @@ Minimal is the profile the MHD Document Responder (ITI-67) declares, so it is th
 
 **Search Strategy**:
 - `type`: Search by LOINC document type for precise document discovery. See [Document Exchange](document-exchange.html) for type codes per EHDS priority category.
-- `category`: Open (0..1, inherited from MHD Minimal), not required, no value-set binding. Usage is determined by content IGs and implementation needs. MHD Minimal caps `category` at a single element; profiles needing multiple categorization schemes apply them on the content, not this DocumentReference.
+- `category`: EHDS priority category (broad classification) for coarse discovery. Bound extensibly to LOINC Document Class codes; implementations MAY add SNOMED, XDS classCode, or national codings. MHD Minimal caps `category` at 0..1, so a single category code applies; multi-scheme classification belongs on the content, not this DocumentReference.
 
 See [Document Exchange](document-exchange.html) for query examples.
 """
 * insert SetFmmAndStatusRule( 1, draft )
 * category 0..1
 * category MS
+* category from EHDSPriorityCategoryVS (extensible)
 * type MS
 * type from EEHRxFDocumentTypeVS (preferred)
 * subject 1..1

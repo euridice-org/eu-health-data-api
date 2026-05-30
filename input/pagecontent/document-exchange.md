@@ -89,33 +89,31 @@ Human-readable representations (e.g. PDF narrative) are part of the FHIR Documen
 
 [Article 14](https://eur-lex.europa.eu/eli/reg/2025/327/oj#d1e2289-1-1) of the EHDS regulation defines six priority categories of electronic health data. Four travel as documents and carry an EHDS priority category code on `category`, drawn from LOINC Document Class codes ([EHDSPriorityCategoryVS](ValueSet-ehds-priority-category-vs.html)). Each maps to the precise LOINC `type` codes consumers use for document search.
 
-Each priority category has a ValueSet of example LOINC type codes:
-- `Patient-Summaries` → [EEHRxFDocumentTypePatientSummaryVS](ValueSet-eehrxf-document-type-patient-summary-vs.html)
-- `Discharge-Reports` → [EEHRxFDocumentTypeDischargeReportVS](ValueSet-eehrxf-document-type-discharge-report-vs.html)
-- `Laboratory-Reports` → [EEHRxFDocumentTypeLaboratoryReportVS](ValueSet-eehrxf-document-type-laboratory-report-vs.html)
-- `Medical-Imaging` → [EEHRxFDocumentTypeMedicalImagingVS](ValueSet-eehrxf-document-type-medical-imaging-vs.html)
-`Electronic-Prescriptions` and `Electronic-Dispensations` fall outside the document exchange model and have no type codes.
+Each category code maps to example LOINC `type` codes:
+- `34133-9` Summary of episode note → [EEHRxFDocumentTypePatientSummaryVS](ValueSet-eehrxf-document-type-patient-summary-vs.html)
+- `18842-5` Discharge summary → [EEHRxFDocumentTypeDischargeReportVS](ValueSet-eehrxf-document-type-discharge-report-vs.html)
+- `26436-6` Laboratory studies (set) → [EEHRxFDocumentTypeLaboratoryReportVS](ValueSet-eehrxf-document-type-laboratory-report-vs.html)
+- `18726-0` Radiology studies (set) → [EEHRxFDocumentTypeMedicalImagingVS](ValueSet-eehrxf-document-type-medical-imaging-vs.html)
 
-[EEHRxFDocumentTypeVS](ValueSet-eehrxf-document-type-vs.html) aggregates all per-category type codes into a single ValueSet bound to `DocumentReference.type`. A [ConceptMap](ConceptMap-EehrxfMhdDocumentReferenceCM.html) provides the same mapping in machine-readable form.
+The type ValueSets list example codes, not an exhaustive set. Content IGs are the authoritative source. ePrescription and eDispensation do not travel as documents and have no category or type codes here.
 
+[EEHRxFDocumentTypeVS](ValueSet-eehrxf-document-type-vs.html) aggregates the per-category type codes into one ValueSet bound (preferred) to `DocumentReference.type`. A [ConceptMap](ConceptMap-EehrxfMhdDocumentReferenceCM.html) gives the category-to-type mapping in machine-readable form.
 
-| priority category | type codes | relevant IGs |
+**Category-based discovery.** Consumers MAY search by `category` alone to retrieve all documents in a priority category without naming each LOINC `type` code:
+
+```
+GET [base]/DocumentReference?patient=Patient/123&category=http://loinc.org|26436-6&status=current
+```
+
+`category` is bound extensibly to [EHDSPriorityCategoryVS](ValueSet-ehds-priority-category-vs.html), so deployments MAY carry additional SNOMED, XDS classCode, or national codings alongside the EHDS LOINC code.
+
+| priority category (`category`) | type codes (`type`) | relevant IGs |
 |-------------------|------------|--------------|
-| Patient-Summaries | 60591-5 | [Europe Patient Summary](https://build.fhir.org/ig/hl7-eu/eps/) |
-| Discharge-Reports | 18842-5, 100719-4 | [Hospital Discharge Report](https://build.fhir.org/ig/hl7-eu/hdr/) |
-| Laboratory-Reports | 11502-2 | [Europe Laboratory Report](https://hl7.eu/fhir/laboratory/) |
-| Medical-Imaging | 85430-7, 18748-4 | [Europe Imaging Reports](https://build.fhir.org/ig/hl7-eu/imaging-r5/en/) |
+| 34133-9 Summary of episode note | 60591-5 | [Europe Patient Summary](https://build.fhir.org/ig/hl7-eu/eps/) |
+| 18842-5 Discharge summary | 18842-5, 100719-4 | [Hospital Discharge Report](https://build.fhir.org/ig/hl7-eu/hdr/) |
+| 26436-6 Laboratory studies (set) | 11502-2 | [Europe Laboratory Report](https://hl7.eu/fhir/laboratory/) |
+| 18726-0 Radiology studies (set) | 85430-7, 18748-4 | [Europe Imaging Reports](https://build.fhir.org/ig/hl7-eu/imaging-r5/en/) |
 {: .grid}
-
-<div markdown="1" class="stu-note">
-
-**Feedback requested on `category` and document differentiation in search.** This IG uses `DocumentReference.type` with LOINC codes as the primary search parameter for distinguishing priority categories. The use of `.category` is left to the needs of the implementation.
-
-The EHDS priority categories (Patient Summary, Laboratory Report, etc.) are regulatory groupings that no established code system defines today. A coarse-grained search parameter grouping documents by `category` — independent of their specific LOINC `type` code — could simplify consumer logic, especially as code sets evolve. For example, the `category` field could represent priority categories or another classification scheme for search.
-
-Implementers: Does your system use or plan to use `category` for document classification? Would constraining `category` to the EHDS priority categories be useful for your search workflows, or conflict with other category schemes? Are there other good code sets for differentiating, for example, laboratory reports from imaging reports?
-
-</div>
 
 #### Search Examples
 
