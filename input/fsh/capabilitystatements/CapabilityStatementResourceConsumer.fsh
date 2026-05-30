@@ -129,7 +129,7 @@ a primary clinical data resource in this actor.
 * rest[=].resource[=].searchParam[=].type = #token
 * rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
 * rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHALL
-* rest[=].resource[=].searchParam[=].documentation = "Patient identifier (e.g., national ID, MRN) - required for patient lookup"
+* rest[=].resource[=].searchParam[=].documentation = "Patient identifier — SHALL be in [system]|[value] form with both components non-empty"
 
 * rest[=].resource[=].searchParam[+].name = "family"
 * rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/individual-family"
@@ -174,15 +174,38 @@ Clients SHOULD support this resource but MAY omit it based on their needs.
 * rest[=].resource[+].type = #Organization
 * rest[=].resource[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
 * rest[=].resource[=].extension[=].valueCode = #SHOULD
-* rest[=].resource[=].documentation = """
-Organization resources are read to resolve context for referenced healthcare organizations.
-Clients SHOULD support this resource but MAY omit it based on their needs.
-"""
+* rest[=].resource[=].documentation = "Organization resources are read to resolve context for referenced healthcare organizations."
 
 * rest[=].resource[=].interaction[+].code = #read
 * rest[=].resource[=].interaction[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
 * rest[=].resource[=].interaction[=].extension[=].valueCode = #SHALL
 * rest[=].resource[=].interaction[=].documentation = "Read Organization by logical ID"
+
+// ============================================================================
+// PractitionerRole Resource - Read Only (Optional)
+// ============================================================================
+* rest[=].resource[+].type = #PractitionerRole
+* rest[=].resource[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].extension[=].valueCode = #SHOULD
+* rest[=].resource[=].documentation = "PractitionerRole resources are read to resolve role-in-organization context."
+
+* rest[=].resource[=].interaction[+].code = #read
+* rest[=].resource[=].interaction[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].interaction[=].extension[=].valueCode = #SHALL
+* rest[=].resource[=].interaction[=].documentation = "Read PractitionerRole by logical ID"
+
+// ============================================================================
+// Location Resource - Read Only (Optional)
+// ============================================================================
+* rest[=].resource[+].type = #Location
+* rest[=].resource[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].extension[=].valueCode = #SHOULD
+* rest[=].resource[=].documentation = "Location resources are read to resolve physical-location context."
+
+* rest[=].resource[=].interaction[+].code = #read
+* rest[=].resource[=].interaction[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].interaction[=].extension[=].valueCode = #SHALL
+* rest[=].resource[=].interaction[=].documentation = "Read Location by logical ID"
 
 // ============================================================================
 // Condition Resource - Problems and Diagnoses (Optional)

@@ -135,7 +135,7 @@ primary clinical data resource in this actor.
 * rest[=].resource[=].searchParam[=].type = #token
 * rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
 * rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHALL
-* rest[=].resource[=].searchParam[=].documentation = "Patient identifier (e.g., national ID, MRN) - required for patient lookup"
+* rest[=].resource[=].searchParam[=].documentation = "Patient identifier — SHALL be in [system]|[value] form with both components non-empty (aligns with IPA STU1 privacy requirement)"
 
 * rest[=].resource[=].searchParam[+].name = "family"
 * rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/individual-family"
@@ -184,13 +184,38 @@ Servers SHOULD support this resource but MAY omit it based on their capabilities
 * rest[=].resource[=].documentation = """
 Organization resources provide context for referenced healthcare organizations.
 Read-only access supports resolving organization references in clinical resources.
-Servers SHOULD support this resource but MAY omit it based on their capabilities.
 """
 
 * rest[=].resource[=].interaction[+].code = #read
 * rest[=].resource[=].interaction[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
 * rest[=].resource[=].interaction[=].extension[=].valueCode = #SHALL
 * rest[=].resource[=].interaction[=].documentation = "Read Organization by logical ID"
+
+// ============================================================================
+// PractitionerRole Resource - Read Only (Optional)
+// ============================================================================
+* rest[=].resource[+].type = #PractitionerRole
+* rest[=].resource[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].extension[=].valueCode = #SHOULD
+* rest[=].resource[=].documentation = "PractitionerRole resources resolve role-in-organization context for referenced practitioners."
+
+* rest[=].resource[=].interaction[+].code = #read
+* rest[=].resource[=].interaction[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].interaction[=].extension[=].valueCode = #SHALL
+* rest[=].resource[=].interaction[=].documentation = "Read PractitionerRole by logical ID"
+
+// ============================================================================
+// Location Resource - Read Only (Optional)
+// ============================================================================
+* rest[=].resource[+].type = #Location
+* rest[=].resource[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].extension[=].valueCode = #SHOULD
+* rest[=].resource[=].documentation = "Location resources resolve physical-location context for referenced sites."
+
+* rest[=].resource[=].interaction[+].code = #read
+* rest[=].resource[=].interaction[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].interaction[=].extension[=].valueCode = #SHALL
+* rest[=].resource[=].interaction[=].documentation = "Read Location by logical ID"
 
 // ============================================================================
 // Condition Resource - Problems and Diagnoses (Optional)
@@ -287,7 +312,9 @@ Servers MAY omit this resource based on their capabilities.
 * rest[=].resource[=].documentation = """
 Observation resources represent clinical observations including vital signs,
 laboratory results, and other measurements. If supported, servers SHALL support
-search by patient and category. Servers MAY omit this resource based on their capabilities.
+the following search parameter combinations (per IPA STU1):
+- SHALL: patient+category, patient+code, patient+category+date
+- SHOULD: patient+code+date, patient+category+status
 """
 
 * rest[=].resource[=].interaction[+].code = #read
@@ -343,8 +370,9 @@ search by patient and category. Servers MAY omit this resource based on their ca
 * rest[=].resource[=].extension[=].valueCode = #SHOULD
 * rest[=].resource[=].documentation = """
 DiagnosticReport resources represent laboratory results and imaging reports.
-If supported, servers SHALL support search by patient and category.
-Servers MAY omit this resource based on their capabilities.
+If supported, servers SHALL support the following search parameter combinations (per IPA STU1):
+- SHALL: patient+category
+- SHOULD: patient+code, patient+category+date
 """
 
 * rest[=].resource[=].interaction[+].code = #read

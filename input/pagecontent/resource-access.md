@@ -44,27 +44,36 @@ sequenceDiagram
     Provider-->>Consumer: Bundle of Observations
 ```
 
-### Constraints
-
-- **Patient-scoped queries** - `patient` parameter required on all searches
-- Searches without `patient` parameter are rejected
-
-
 ### Core Resources
 
 The following resources are available for read/search access. Where an [HL7 Europe Core](https://build.fhir.org/ig/hl7-eu/base/) profile exists for a resource, data models inherit from that profile. Resources not covered by HL7 Europe Core follow the base FHIR R4 specification. Required search parameter combinations align with [IPA STU1](https://hl7.org/fhir/uv/ipa/STU1/CapabilityStatement-ipa-server.html).
 
-| Resource | Required Search Parameters |
-|----------|---------------------------|
-| AllergyIntolerance | `patient` |
-| Condition | `patient` |
-| Observation | `patient`, `category` |
-| DiagnosticReport | `patient`, `category` |
-| MedicationRequest | `patient` |
-| MedicationDispense | `patient` |
-| MedicationStatement | `patient` |
-| Immunization | `patient` |
-| Encounter | `patient` |
+**Patient** — for lookup context; not a primary clinical resource in this actor.
+
+- SHALL: `identifier` in `[system]|[value]` form (both components required)
+
+**Patient-scoped clinical resources** — SHALL support `patient` on all searches.
+
+| Resource | SHALL combos | SHOULD combos |
+|----------|-------------|---------------|
+| AllergyIntolerance | `patient` | `patient+clinical-status` |
+| Condition | `patient` | `patient+clinical-status`, `patient+category`, `patient+code` |
+| Observation | `patient+category`, `patient+code`, `patient+category+date` | `patient+code+date`, `patient+category+status` |
+| DiagnosticReport | `patient+category` | `patient+code`, `patient+category+date` |
+| MedicationRequest | `patient` | `patient+intent`, `patient+status` |
+| MedicationDispense | `patient` | `patient+status` |
+| MedicationStatement | `patient` | `patient+status` |
+| Immunization | `patient` | `patient+date` |
+| Encounter | `patient` | `patient+date`, `patient+status` |
+
+**Reference-only resources** — `patient` is not applicable; read by logical ID only.
+
+| Resource | SHALL | Note |
+|----------|-------|------|
+| Practitioner | read | resolve references |
+| PractitionerRole | read | resolve references |
+| Organization | read | resolve references |
+| Location | read | resolve references |
 
 <div markdown="1" class="stu-note">
 
