@@ -7,7 +7,7 @@ The regulatory basis is primarily found in EHDS ANNEX II - Essential Requirement
 - §2.1: "SHALL provide an **interface enabling access** to the personal electronic health data [formatted in EEHRxF]"
 - §2.2: "SHALL **be able to receive** personal electronic health data [formatted in EEHRxF]"
 
-Note that this IG does NOT create legal obligations on EHR Systems unless adopted by the European Commission.
+Note that this IG does NOT create legal obligations on EHR Systems unless adopted by the European Commission and the Member States through the applicable Implementing Acts. Member States retain sovereignty over their healthcare systems (TFEU Art. 168(7)).
 
 ### Xt-EHR Joint Action
 
