@@ -1,6 +1,10 @@
-Open issues under discussion in this IG. Each has a corresponding [GitHub Issue](https://github.com/euridice-org/eu-health-data-api/issues) where you can add input to existing issues, or create your own. 
+This page lists issues for which the editors are actively soliciting community input. It is **curated, not exhaustive** — it is not the full open-issue list.
 
-We welcome your input via Github Issues, or by attending the weekly [HL7 Europe API Workgroup Meetings](https://confluence.hl7.org/spaces/HEU/pages/345086021/EU+Health+Data+API+Edition+1).
+- **[GitHub Issues](https://github.com/euridice-org/eu-health-data-api/issues)** are the bug and feature tracker.
+- **HL7 Jira** is the formal comment channel during ballot.
+- This page surfaces a curated subset of those issues that most need community input.
+
+Add input via the linked GitHub Issue for each item, or attend the weekly [HL7 Europe API Workgroup Meetings](https://confluence.hl7.org/spaces/HEU/pages/345086021/EU+Health+Data+API+Edition+1).
 
 ---
 

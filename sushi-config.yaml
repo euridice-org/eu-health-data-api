@@ -178,7 +178,7 @@ menu:
     Member State Architectures: member-state-architectures.html
     Relationship to XDS/FHIR: background-xds-fhir.html
     Change Log: changes.html
-    Open Issues: open-issues.html
+    Input Requested: open-issues.html
   Functional Requirements:
     Capability Discovery: capability-discovery.html
     Authorization: authorization.html

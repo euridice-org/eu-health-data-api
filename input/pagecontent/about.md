@@ -20,7 +20,7 @@ The **Artifacts** (profiles, CapabilityStatements, value sets) are normative; th
 | Artifacts (profiles, CapabilityStatements, value sets) | Normative |
 | [Home](index.html), [Regulatory Anchors](regulatoryAnchors.html), [Priority Categories](priority-categories.html), [Member State Architectures](member-state-architectures.html), [Relationship to XDS/FHIR](background-xds-fhir.html) | Informative |
 | [Implementation](implementation.html) overview, deployment scenarios, and end-to-end examples | Informative |
-| [Open Issues](open-issues.html), [Change Log](changes.html) | Informative |
+| [Input Requested](open-issues.html), [Change Log](changes.html) | Informative |
 
 ### Version History
 
