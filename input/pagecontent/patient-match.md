@@ -27,9 +27,13 @@ Providers support one or both of the following patient identification mechanisms
 
 Patient search using the [IHE PDQm ITI-78](https://profiles.ihe.net/ITI/PDQm/ITI-78.html) transaction. This specification constrains ITI-78 to require the `identifier` parameter.
 
+The `identifier` is a token of the form `[system]|[value]`, where `system` is the identifier's namespace (a URI such as an OID for a national identifier scheme) and `value` is the patient's identifier in that scheme (see [FHIR token search](https://hl7.org/fhir/R4/search.html#token)):
+
 ```
-GET [base]/Patient?identifier=[system]|[value]
+GET [base]/Patient?identifier=urn:oid:1.2.3|12345
 ```
+
+The response is a searchset Bundle of matching Patient resources. The Consumer uses the returned `Patient.id` for subsequent queries.
 
 This approach covers the majority of European use cases where patient identifiers (MRN, national ID) are available.
 
