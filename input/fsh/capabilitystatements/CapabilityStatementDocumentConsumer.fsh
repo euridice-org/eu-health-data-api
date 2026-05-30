@@ -115,7 +115,7 @@ transaction to discover available documents for a patient.
 * rest[=].resource[=].searchParam[=].type = #token
 * rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
 * rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHOULD
-* rest[=].resource[=].searchParam[=].documentation = "Categorization of document (XDS ClassCode) - SHOULD support for coarse filtering"
+* rest[=].resource[=].searchParam[=].documentation = "EHDS priority category (broad classification) for coarse, category-only filtering"
 
 * rest[=].resource[=].searchParam[+].name = "date"
 * rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/clinical-date"

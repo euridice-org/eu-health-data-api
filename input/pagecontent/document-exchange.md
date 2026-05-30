@@ -123,6 +123,11 @@ These examples assume the consumer has resolved the patient to a FHIR reference 
 
 ##### Patient Summary
 
+By category (EHDS priority category, coarse):
+```
+GET [base]/DocumentReference?patient=Patient/123&category=http://loinc.org|34133-9&status=current
+```
+
 By type (LOINC):
 ```
 GET [base]/DocumentReference?patient=Patient/123&type=http://loinc.org|60591-5&status=current

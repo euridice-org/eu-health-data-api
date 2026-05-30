@@ -168,7 +168,7 @@ Document creation is internal; no external create operation is supported.
 * rest[=].resource[=].searchParam[=].type = #token
 * rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
 * rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHALL
-* rest[=].resource[=].searchParam[=].documentation = "Categorization of document (XDS ClassCode)"
+* rest[=].resource[=].searchParam[=].documentation = "EHDS priority category (broad classification). Category-only search SHALL be supported."
 
 * rest[=].resource[=].searchParam[+].name = "date"
 * rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/clinical-date"
