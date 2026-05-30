@@ -65,6 +65,8 @@ sequenceDiagram
 - **`type`** (LOINC code) — identifies the clinical document type and which [content IG](priority-categories.html) applies.
 - **`attachment.contentType`** — identifies the technical format.
 
+Here these elements are read as **metadata** on a retrieved DocumentReference, describing its content. Document discovery uses search parameters (see [Document Search Strategy](#document-search-strategy)); `type` is both a metadata element and a search parameter, while `contentType` is metadata only and is not a search axis in this IG.
+
 Together, these tell the consumer what the retrieved document contains. The patterns below are illustrative, not exhaustive — other content profiles and formats may apply per the relevant content IG.
 
 | Content Pattern | `attachment.contentType` | Retrieved Content | Example |
