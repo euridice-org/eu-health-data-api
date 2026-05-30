@@ -74,3 +74,16 @@ Whether a wellness application connects to an EHR system directly or through the
 #### End-to-End Use Cases
 
 - [**Retrieve a European Patient Summary**](example-patient-summary.html) — Step-by-step: authorization, patient lookup, document query, and document retrieval.
+
+### System Replacement and Data Export
+
+System replacement is a key driver for health data portability. When an EHR system is decommissioned or migrated, existing patient data must transfer to the successor system in a conformant format.
+
+The EHDS regulation does not mandate a specific technology for bulk data export or import in the system replacement context. This IG's actors and transactions are designed for **operational interoperability** (query at the point of care), not bulk migration. However, the same EEHRxF content profiles apply: data exported for system replacement must be conformant EEHRxF regardless of the transfer mechanism.
+
+Possible patterns (informative):
+
+- A successor system acting as a **Document Consumer** can query the outgoing system's **Document Access Provider** to retrieve documents prior to decommissioning.
+- Bulk export mechanisms (e.g., FHIR Bulk Data Access, flat-file export) may be used for migration; the specific technology is left to implementers and Member State requirements.
+
+This IG does not define a system replacement transaction. Implementation guidance for migration scenarios should be addressed in national or vendor-specific specifications.
