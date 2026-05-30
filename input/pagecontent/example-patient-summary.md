@@ -23,16 +23,18 @@ sequenceDiagram
     participant AuthZ as Authorization Server
     participant Provider as Document Access Provider
 
-    rect rgb(240, 248, 255)
-    Note over Consumer,Provider: Authorization (IUA)
+    opt Capability discovery (optional, often out-of-band)
     Consumer->>Provider: GET /metadata
     Provider-->>Consumer: CapabilityStatement
+    end
+
+    rect rgb(240, 248, 255)
+    Note over Consumer,Provider: Authorization (IUA) — required
     Consumer->>AuthZ: POST /auth/token (JWT assertion)
     AuthZ-->>Consumer: access_token
     end
 
-    rect rgb(240, 255, 240)
-    Note over Consumer,Provider: Patient Lookup (PDQm ITI-78)
+    opt Patient lookup (when patient reference not already known) (PDQm ITI-78)
     Consumer->>Provider: GET /Patient?identifier=...
     Provider-->>Consumer: Patient Bundle
     end
