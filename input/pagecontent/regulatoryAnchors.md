@@ -93,6 +93,19 @@ The **Consumer** actors ([Document Consumer](actors.html#document-consumer), [Re
 
 Systems that need to accept documents pushed from Publishers (e.g., national infrastructure, regional repositories, integration engines) may implement the **[Document Submission Option](actors.html#document-submission-option)** on the Document Access Provider actor. This is an *additional* capability for systems acting as aggregation points—it is not required to satisfy §2.2.
 
+#### Interpretation: "Receive" as a Data Ingestion Transaction
+
+§2.2's "be able to receive" obligation is interpreted as a **data ingestion capability**, not as a requirement that every EHR system implement a full real-time API client. The obligation is met when a system can acquire conformant EEHRxF data and incorporate it—regardless of the mechanism by which data crosses the boundary (API query, scheduled import, or administrative ingestion workflow).
+
+A system may satisfy §2.2 by:
+
+- Querying an external Access Provider at the point of care ([Document Consumer](actors.html#document-consumer) or [Resource Consumer](actors.html#resource-consumer)), or
+- Receiving documents via a national or regional repository that delivers data through an import or ingestion transaction.
+
+Not every EHR system needs to act as a live API client. A system that receives data through an external access provider (e.g., a national repository, hospital aggregator) acting as an intermediary meets the spirit of §2.2, provided the data reaches the system in conformant EEHRxF format.
+
+The specific technical mechanism for ingestion (API query, bulk transfer, administrative import) is content- and deployment-specific and is not mandated by this IG. The obligation is on the content: received data must conform to EEHRxF.
+
 ---
 
 ### Requirements Table
