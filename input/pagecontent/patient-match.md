@@ -1,4 +1,4 @@
-### Overview
+### Overview {#patient-lookup-overview}
 
 Patient lookup is accomplished using IHE PDQm (Patient Demographics Query for Mobile), which relies on core FHIR `Patient.Search` [ITI-78] and `Patient.$match` [ITI-119]. This transaction allows Consumers to locate the correct Patient resource on a Access Provider before querying for health information.
 

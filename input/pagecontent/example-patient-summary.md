@@ -76,7 +76,7 @@ grant_type=client_credentials
 
 #### Step 3: Identify the Patient
 
-Document Consumer searches for the patient using a known identifier ([Patient Match](patient-match.html)).
+Document Consumer searches for the patient using a known identifier ([Patient Lookup](patient-match.html)).
 
 ```
 GET https://provider.example.org/fhir/Patient?identifier=urn:oid:2.16.840.1.113883.2.4.6.3|123456789

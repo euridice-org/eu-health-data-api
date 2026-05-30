@@ -91,7 +91,7 @@ sequenceDiagram
 
 See the following functional pages for detailed transaction information:
 - [Authorization](authorization.html) - Authentication and authorization flows
-- [Patient Match](patient-match.html) - Patient identification transactions
+- [Patient Lookup](patient-match.html) - Patient identification transactions
 - [Document Exchange](document-exchange.html) - Document query and retrieval transactions
 
 This can be combined with content profiles define by each EHDS Priority Category, for those categories that are primarily represented as a FHIR Document. For example, a system can be a **Lab Result Document Publisher**, a **Patient Summary Document Consumer**, or a **Imaging Manifest Document Access Provider**. 
