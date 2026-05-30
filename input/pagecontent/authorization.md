@@ -27,9 +27,9 @@ IHE IUA defines three key actors for authorization:
 
 ### IHE IUA Actor Groupings
 
-- **Document/Resource Publisher:** IUA Authorization Client
-- **Document/Resource Consumer:** IUA Authorization Client
-- **Document/Resource Access Provider:** IUA Resource Server (required) + IUA Authorization Server (if internal)
+- **Document Publisher:** IUA Authorization Client
+- **Document Consumer:** IUA Authorization Client
+- **Document Access Provider:** IUA Resource Server (required) + IUA Authorization Server (if internal)
 
 #### Authorization Server Deployment
 
