@@ -8,6 +8,10 @@ Patient identity is resolved before health data is queried. Often it is resolved
 
 `Patient.Search` [ITI-78] by `identifier` is the required, primary path. `Patient.$match` [ITI-119] is optional, for the case where only demographics are available.
 
+### Identification Practices
+
+This specification does not offer open-ended demographic discovery. A Consumer locates a patient it already knows, by identifier. Where no single identifier exists — some Member States identify a patient by an agreed set of attributes — `$match` resolves the patient from those demographics and returns the identifier for subsequent queries. Demographic resolution and cross-border attribute exchange happen above the EHR API, at the national index or National Contact Point.
+
 ### Actor Roles
 
 | Actor | Role |
