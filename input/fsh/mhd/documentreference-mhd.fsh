@@ -7,8 +7,8 @@ Profile for DocumentReference resources used in the EEHRxF context. Derived from
 Minimal is the profile the MHD Document Responder (ITI-67) declares, so it is the correct query-side baseline. This profile cherry-picks selected Comprehensive constraints and excludes `securityLabel`, following the IHE MADO pattern.
 
 **Search Strategy**:
-- `type`: Search by LOINC document type for precise document discovery. See [Document Exchange](document-exchange.html) for type codes per EHDS priority category.
-- `category`: broad classification for coarse discovery. Open coding — LOINC, SNOMED, XDS classCode, or national codes are all conformant. `EHDSPriorityCategoryVS` is illustrative, not required.
+- `type`: precise document type for discovery. LOINC is the illustrative direction; `EEHRxFDocumentTypeVS` is preferred (non-required), so broader LOINC or other type codings are conformant. See [Document Exchange](document-exchange.html) for type codes per EHDS priority category.
+- `category`: broad classification for coarse discovery, 0..1 (MHD Minimal cap), so one coding applies. Open coding — LOINC, SNOMED, XDS classCode, or national codes are all conformant. `EHDSPriorityCategoryVS` is illustrative, not required.
 
 See [Document Exchange](document-exchange.html) for query examples.
 """
