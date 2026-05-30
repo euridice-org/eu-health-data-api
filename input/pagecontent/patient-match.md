@@ -87,7 +87,7 @@ Matching algorithms are product and deployment-specific and may reflect national
 
 #### Option: Chained Identifier Search
 
-Once a patient is identified, a Consumer can query that patient's resources directly by identifier using a [chained search parameter](https://hl7.org/fhir/R4/search.html#chaining), skipping a separate lookup round trip. This is a post-match optimization, not an alternative to patient lookup: the identifier comes from a prior lookup or from upstream identity resolution. It applies to clinical resource queries and to document search ([ITI-67]):
+Once a patient is identified, a Consumer can query that patient's resources directly by identifier using a [chained search parameter](https://hl7.org/fhir/R4/search.html#chaining), skipping a separate lookup round trip. This is a post-match optimization, not an alternative to patient lookup: the identifier comes from a prior lookup or from upstream identity resolution. It applies to clinical resource queries and to document search (MHD ITI-67):
 
 ```
 GET [base]/AllergyIntolerance?patient.identifier=urn:oid:1.2.3|12345
