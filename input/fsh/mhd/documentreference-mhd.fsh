@@ -4,6 +4,8 @@ Title: "EEHRxF MHD DocumentReference Profile"
 Description: """
 Profile for DocumentReference resources used in the EEHRxF context. Derived from the IHE MHD Minimal DocumentReference profile; element requirements are expressed structurally in this StructureDefinition, not as narrative-only conformance statements.
 
+Minimal is the profile the MHD Document Responder (ITI-67) declares, so it is the correct query-side baseline. This profile cherry-picks selected Comprehensive constraints and excludes `securityLabel`, following the IHE MADO pattern.
+
 **Search Strategy**:
 - `type`: Search by LOINC document type for precise document discovery. See [Document Exchange](document-exchange.html) for type codes per EHDS priority category.
 - `category`: Open (0..1, inherited from MHD Minimal), not required, no value-set binding. Usage is determined by content IGs and implementation needs. MHD Minimal caps `category` at a single element; profiles needing multiple categorization schemes apply them on the content, not this DocumentReference.
