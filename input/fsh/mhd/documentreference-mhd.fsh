@@ -16,5 +16,5 @@ See [Document Exchange](document-exchange.html) for query examples.
 * type from EEHRxFDocumentTypeVS (preferred)
 * subject 1..1
 * subject only Reference( http://hl7.eu/fhir/base/StructureDefinition/patient-eu-core )
-* date 1..1
+* date 0..1
 * custodian 1..1
