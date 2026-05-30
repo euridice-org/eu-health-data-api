@@ -1,10 +1,12 @@
-# EHDS Regulation (EU) 2025/327 - ANNEX II
+# EHDS Regulation (EU) 2025/327 — Interoperability Requirements
 
-## Essential Requirements for EHR Systems
+## Annex II: Essential Requirements for EHR Systems
 
 > Source: [EUR-Lex Regulation (EU) 2025/327](https://eur-lex.europa.eu/eli/reg/2025/327/oj/eng)
 >
 > Published: 5 March 2025 | Entered into force: 26 March 2025
+
+> **Note:** Annex II is not the sole source of requirements for EHR systems. Additional obligations arise from Articles 3, 4, 5, 7, 11, 12, 23, and 48 of Regulation (EU) 2025/327, and from the Implementing Acts under Articles 15 and 36 (not yet published). Annex II is reproduced here as the primary reference for the interoperability component requirements addressed by this IG.
 
 ---
 

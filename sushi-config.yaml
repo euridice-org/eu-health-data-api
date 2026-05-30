@@ -71,7 +71,7 @@ pages:
     regulatoryAnchors.md:
       title: Regulatory Anchors
       ehds-annex-ii.md:
-        title: EHDS Annex II - Essential Requirements
+        title: EHDS Interoperability Requirements (Annex II)
     actors.md:
       title: Actors and Transactions
     priority-categories.md:
