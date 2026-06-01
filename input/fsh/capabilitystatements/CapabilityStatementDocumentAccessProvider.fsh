@@ -234,20 +234,20 @@ indexes document metadata for queries by Document Consumers.
 * rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHALL
 * rest[=].resource[=].searchParam[=].documentation = "When this document was created (DocumentReference.content.attachment.creation) - clinical document creation time, distinct from date (metadata indexing time)"
 
-// Additional search parameters - MAY support
+// Remaining search parameters - SHALL support
+// (MHD ITI-67 Document Responder lists every ITI-67 search param, which renders SHALL;
+//  this CapabilityStatement makes that obligation explicit per parameter.)
 * rest[=].resource[=].searchParam[+].name = "_lastupdated"
 * rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/Resource-lastUpdated"
 * rest[=].resource[=].searchParam[=].type = #date
 * rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
-* rest[=].resource[=].searchParam[=].extension[=].valueCode = #MAY
+* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHALL
 * rest[=].resource[=].searchParam[=].documentation = "When the resource version last changed"
 
-// patient.identifier reverted to MAY (its main-branch treatment); promotion to a
-// canonical cross-domain query form is deferred to a separate patient-matching change.
 * rest[=].resource[=].searchParam[+].name = "patient.identifier"
 * rest[=].resource[=].searchParam[=].type = #token
 * rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
-* rest[=].resource[=].searchParam[=].extension[=].valueCode = #MAY
+* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHALL
 * rest[=].resource[=].searchParam[=].documentation = "Patient identifier (chained search)"
 
 // ============================================================================
