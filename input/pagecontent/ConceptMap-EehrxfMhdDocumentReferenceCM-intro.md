@@ -1,6 +1,6 @@
-This ConceptMap is intended to guide implementers in understanding how the coarse-grained priority categories defined in the EHDS regulation relate to specific document types identified by LOINC codes, and it may evolve over time as clinical practice changes and new document types become relevant for cross-border exchange.
+This ConceptMap correlates the coarse-grained priority categories defined in the EHDS regulation to the LOINC document **class** codes carried in `DocumentReference.category`. The regulatory priority category is a policy grouping; the LOINC class code is the value a server filters on. It may evolve as new document classes become relevant for cross-border exchange.
 
-This ValueSet groups the priority category specific ValueSets:
+For the precise LOINC document **type** codes within each category (used in `DocumentReference.type`), see the per-category ValueSets:
 - `Patient-Summaries` codes are found in [EEHRxFDocumentTypePatientSummaryVS](ValueSet-eehrxf-document-type-patient-summary-vs.html)
 - `Discharge-Reports` codes are found in [EEHRxFDocumentTypeDischargeReportVS](ValueSet-eehrxf-document-type-discharge-report-vs.html)
 - `Laboratory-Reports` codes are found in [EEHRxFDocumentTypeLaboratoryReportVS](ValueSet-eehrxf-document-type-laboratory-report-vs.html)

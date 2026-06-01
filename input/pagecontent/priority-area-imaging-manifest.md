@@ -17,8 +17,8 @@ Imaging Manifests can be accessed via document exchange.
 For document-based access, use the [Document Exchange](document-exchange.html) transactions.
 
 The Imaging Manifest is differentiated via the following DocumentReference fields:
-- **type**: `18748-4` (Diagnostic imaging Study) — the LOINC code used for document search
-- **category**: Unconstrained by this IG. `Medical-Imaging` ([EHDS Priority Category](CodeSystem-eehrxf-document-priority-category-cs.html)) is an informative classification; see [Document Search Strategy](document-exchange.html#document-search-strategy).
+- **type**: `18748-4` (Diagnostic imaging study) — precise LOINC document type
+- **category**: `18726-0` (Radiology studies (set)) — LOINC document class; maps from the `Medical-Imaging` [EHDS priority category](CodeSystem-eehrxf-document-priority-category-cs.html). See [Document Search Strategy](document-exchange.html#document-search-strategy).
 
 ### Dual-DocumentReference Pattern (MADO)
 

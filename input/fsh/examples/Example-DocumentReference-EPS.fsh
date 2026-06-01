@@ -9,12 +9,12 @@ Description: """
 Example DocumentReference showing an EPS document with EEHRxF category coding.
 
 This example demonstrates the recommended search strategy:
-- `category` = Patient-Summaries (EHDS priority category for coarse filtering)
-- `type` = 60591-5 (LOINC code for clinical precision)
+- `category` = 34133-9 (LOINC document class — coarse, server-side filter)
+- `type` = 60591-5 (LOINC document type — clinical precision)
 
-**Example query to find this document by priority category:**
+**Example query to find this document by document class:**
 ```
-GET [base]/DocumentReference?patient=Patient/example-patient&category=https://euridice.ec.europa.eu/fhir/eehrxf/CodeSystem/eehrxf-document-priority-category-cs|Patient-Summaries
+GET [base]/DocumentReference?patient=Patient/example-patient&category=http://loinc.org|34133-9
 ```
 
 **Example query to find this document by type:**
@@ -28,10 +28,10 @@ Usage: #example
 * masterIdentifier.value = "urn:uuid:7d5bb8ac-68ee-4926-85e7-b8aac8e1f09d"
 * status = #current
 
-// Category: EHDS Priority Category (coarse search)
-* category = EEHRxFDocumentPriorityCategoryCS#Patient-Summaries "patient summaries"
+// Category: LOINC document class (coarse, server-side filter)
+* category = $loinc#34133-9 "Summarization of episode note"
 
-// Type: LOINC code (clinical precision)
+// Type: LOINC document type (clinical precision)
 * type = $loinc#60591-5 "Patient summary Document"
 
 // Subject: Reference to patient (required 1..1)

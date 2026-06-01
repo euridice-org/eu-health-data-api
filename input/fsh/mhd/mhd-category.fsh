@@ -121,38 +121,32 @@ Instance: EehrxfMhdDocumentReferenceCM
 InstanceOf: ConceptMap
 Title: "EEHRxF MHD DocumentReference ConceptMap"
 Description: """
-mapping from the EHDS regulatory priority categories to the LOINC document category codes for clinical precision in document identification. 
+Correlation from the EHDS regulatory priority categories to the LOINC document **class** codes that go on the wire in `DocumentReference.category`. The regulatory category is policy grouping; the LOINC class code is the value a server filters on.
 """
 Usage: #example
 * url = "http://hl7.eu/fhir/health-data-api/ConceptMap/EehrxfMhdDocumentReferenceCM"
 * name = "EehrxfMhdDocumentReferenceCM"
 * title = "EEHRxF MHD DocumentReference ConceptMap"
-* description = "mapping from the EHDS regulatory priority categories to the LOINC document category codes for clinical precision in document identification."
+* description = "Correlation from the EHDS regulatory priority categories to the LOINC document class codes used in DocumentReference.category."
 * experimental = false
 * status = #draft
-* purpose = "Guide implementers in understanding how the coarse-grained priority categories defined in the EHDS regulation relate to specific document categories identified by LOINC codes, and it may evolve over time as clinical practice changes and new document categories become relevant for cross-border exchange."
+* purpose = "Guide implementers in mapping the coarse-grained priority categories defined in the EHDS regulation to the LOINC document class code carried in DocumentReference.category. It may evolve as new document classes become relevant for cross-border exchange."
 * group.source = Canonical(EEHRxFDocumentPriorityCategoryCS)
 * group.target = $loinc
 * group.element[+].code = #Patient-Summaries
-* group.element[=].target[+].code = #60591-5
-* group.element[=].target[=].display = "Patient summary Document"
-* group.element[=].target[=].equivalence = #specializes
+* group.element[=].target[+].code = #34133-9
+* group.element[=].target[=].display = "Summarization of episode note"
+* group.element[=].target[=].equivalence = #relatedto
 * group.element[+].code = #Discharge-Reports
 * group.element[=].target[+].code = #18842-5
 * group.element[=].target[=].display = "Discharge summary"
-* group.element[=].target[=].equivalence = #specializes
-* group.element[=].target[+].code = #100719-4
-* group.element[=].target[=].display = "Surgical oncology Discharge summary"
-* group.element[=].target[=].equivalence = #specializes
+* group.element[=].target[=].equivalence = #relatedto
 * group.element[+].code = #Laboratory-Reports
-* group.element[=].target[+].code = #11502-2
-* group.element[=].target[=].display = "Laboratory report"
-* group.element[=].target[=].equivalence = #specializes
+* group.element[=].target[+].code = #26436-6
+* group.element[=].target[=].display = "Laboratory Studies (set)"
+* group.element[=].target[=].equivalence = #relatedto
 * group.element[+].code = #Medical-Imaging
-* group.element[=].target[+].code = #85430-7
-* group.element[=].target[=].display = "Diagnostic imaging report"
-* group.element[=].target[=].equivalence = #specializes
-* group.element[=].target[+].code = #18748-4
-* group.element[=].target[=].display = "Diagnostic imaging study"
-* group.element[=].target[=].equivalence = #specializes
+* group.element[=].target[+].code = #18726-0
+* group.element[=].target[=].display = "Radiology studies (set)"
+* group.element[=].target[=].equivalence = #relatedto
 
