@@ -138,14 +138,6 @@ indexes document metadata for queries by Document Consumers.
 * rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHALL
 * rest[=].resource[=].searchParam[=].documentation = "Logical id of this artifact"
 
-// Search parameters for DocumentReference - SHALL support
-// (per IHE MHD Rev 4.x ITI-67 Document Responder requirements)
-* rest[=].resource[=].searchParam[+].name = "patient.identifier"
-* rest[=].resource[=].searchParam[=].type = #token
-* rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
-* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHALL
-* rest[=].resource[=].searchParam[=].documentation = "Patient identifier (chained search) - canonical cross-domain patient query form per MHD"
-
 * rest[=].resource[=].searchParam[+].name = "category"
 * rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-category"
 * rest[=].resource[=].searchParam[=].type = #token
@@ -249,6 +241,14 @@ indexes document metadata for queries by Document Consumers.
 * rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
 * rest[=].resource[=].searchParam[=].extension[=].valueCode = #MAY
 * rest[=].resource[=].searchParam[=].documentation = "When the resource version last changed"
+
+// patient.identifier reverted to MAY (its main-branch treatment); promotion to a
+// canonical cross-domain query form is deferred to a separate patient-matching change.
+* rest[=].resource[=].searchParam[+].name = "patient.identifier"
+* rest[=].resource[=].searchParam[=].type = #token
+* rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].searchParam[=].extension[=].valueCode = #MAY
+* rest[=].resource[=].searchParam[=].documentation = "Patient identifier (chained search)"
 
 // ============================================================================
 // Binary resource - ITI-68 retrieve
