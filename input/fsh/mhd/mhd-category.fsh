@@ -100,9 +100,9 @@ Description: "ValueSet for specific document types within the Medical Imaging pr
 
 
 // =============================================================================
-// DocumentReference Type ValueSet (Clinical Precision)
+// DocumentReference Type ValueSet (Clinical Precision) — INFORMATIVE ONLY
 // =============================================================================
-// LOINC codes for specific document types - used for precise clinical identification
+// Not bound to .type (which inherits MHD/base FHIR); illustrative only.
 
 ValueSet: EEHRxFDocumentTypeVS
 Id: eehrxf-document-type-vs
@@ -133,10 +133,8 @@ Usage: #example
 * purpose = "Guide implementers in mapping the coarse-grained priority categories defined in the EHDS regulation to the LOINC document class code carried in DocumentReference.category. It may evolve as new document classes become relevant for cross-border exchange."
 * group.source = Canonical(EEHRxFDocumentPriorityCategoryCS)
 * group.target = $loinc
-* group.element[+].code = #Patient-Summaries
-* group.element[=].target[+].code = #34133-9
-* group.element[=].target[=].display = "Summarization of episode note"
-* group.element[=].target[=].equivalence = #relatedto
+// Patient-Summaries intentionally has no class mapping: the summary is identified by
+// type 60591-5 alone (no .category). EU PS IG defines no DocumentReference class either.
 * group.element[+].code = #Discharge-Reports
 * group.element[=].target[+].code = #18842-5
 * group.element[=].target[=].display = "Discharge summary"

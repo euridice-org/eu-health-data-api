@@ -14,9 +14,9 @@ The European Patient Summary document can be accessed via document exchange
 
 For document-based access, use the [Document Exchange](document-exchange.html) transactions:
 
-The Patient Summary is differentiated via the following DocumentReference fields:
+The Patient Summary is identified by `type` alone:
 - **type**: `60591-5` (Patient summary Document) — precise LOINC document type
-- **category**: `34133-9` (Summarization of episode note) — LOINC document class; maps from the `Patient-Summaries` [EHDS priority category](CodeSystem-eehrxf-document-priority-category-cs.html)
+- **category**: *(none)* — the Patient Summary is a single fixed type, not a coarse class to filter on
 
 
 ### Example Query

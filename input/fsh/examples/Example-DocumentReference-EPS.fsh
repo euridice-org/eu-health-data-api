@@ -1,21 +1,14 @@
 // Example DocumentReference for European Patient Summary
-// Demonstrates use of EEHRxF category and type valuesets
+// Identified by type (60591-5) alone — no .category.
 // See: https://github.com/euridice-org/eu-health-data-api/issues/49
 
 Instance: ExampleDocumentReferenceEPS
 InstanceOf: EehrxfMhdDocumentReference
 Title: "Example - European Patient Summary DocumentReference"
 Description: """
-Example DocumentReference showing an EPS document with EEHRxF category coding.
+Example DocumentReference for an EPS document.
 
-This example demonstrates the recommended search strategy:
-- `category` = 34133-9 (LOINC document class — coarse, server-side filter)
-- `type` = 60591-5 (LOINC document type — clinical precision)
-
-**Example query to find this document by document class:**
-```
-GET [base]/DocumentReference?patient=Patient/example-patient&category=http://loinc.org|34133-9
-```
+The Patient Summary is identified by `type` alone — `60591-5` (LOINC document type). It carries no `.category`: the summary is a single fixed type, not a coarse class to filter on.
 
 **Example query to find this document by type:**
 ```
@@ -28,8 +21,7 @@ Usage: #example
 * masterIdentifier.value = "urn:uuid:7d5bb8ac-68ee-4926-85e7-b8aac8e1f09d"
 * status = #current
 
-// Category: LOINC document class (coarse, server-side filter)
-* category = $loinc#34133-9 "Summarization of episode note"
+// No .category: the Patient Summary is identified by type alone.
 
 // Type: LOINC document type (clinical precision)
 * type = $loinc#60591-5 "Patient summary Document"

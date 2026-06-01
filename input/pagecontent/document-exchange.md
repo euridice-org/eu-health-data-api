@@ -91,7 +91,7 @@ Per [MHD ITI-67](https://profiles.ihe.net/ITI/MHD/ITI-67.html), four requirement
 [IHE Document Sharing](https://profiles.ihe.net/ITI/HIE-Whitepaper/index.html) distinguishes `type` (specific document types, typically LOINC codes) from `category` (broad classification) on DocumentReference. This IG uses both, for two different purposes:
 
 - **`category`** — the coarse **document class** (XDS `classCode`), for server-side query filtering ("all the lab documents"). Bound (example) to the LOINC-based FHIR [Document Class value set](https://hl7.org/fhir/R4/valueset-document-classcodes.html); additional codings (SNOMED, XDS) and codes MAY be used. `category` is `0..1` — a document has one class; other axes use `setting`/`facility`/`event`.
-- **`type`** — the clinically precise **LOINC document type**, which the consumer uses to select among the returned index cards before retrieval. Bound (preferred) to [EEHRxFDocumentTypeVS](ValueSet-eehrxf-document-type-vs.html), a non-exhaustive starter set; the full LOINC richness remains available.
+- **`type`** — the clinically precise **LOINC document type**, which the consumer uses to select among the returned index cards before retrieval. This IG **inherits the MHD Minimal / base FHIR `type` binding** and imposes no EU-specific value set: any LOINC document-type code is valid, and the applicable content IG is the authoritative source for the expected code. [EEHRxFDocumentTypeVS](ValueSet-eehrxf-document-type-vs.html) lists illustrative per-category codes informatively, not as a constraint.
 
 ##### EHDS Priority Categories
 
@@ -99,7 +99,7 @@ Per [MHD ITI-67](https://profiles.ihe.net/ITI/MHD/ITI-67.html), four requirement
 
 | priority category | document class (`category` wire code) | precise `type` codes | relevant IGs |
 |-------------------|------------|------------|--------------|
-| Patient-Summaries | 34133-9 Summarization of episode note | 60591-5 | [Europe Patient Summary](https://build.fhir.org/ig/hl7-eu/eps/) |
+| Patient-Summaries | — (type only) | 60591-5 | [Europe Patient Summary](https://build.fhir.org/ig/hl7-eu/eps/) |
 | Discharge-Reports | 18842-5 Discharge summary | 18842-5, 100719-4 | [Hospital Discharge Report](https://build.fhir.org/ig/hl7-eu/hdr/) |
 | Laboratory-Reports | 26436-6 Laboratory Studies (set) | 11502-2 | [Europe Laboratory Report](https://hl7.eu/fhir/laboratory/) |
 | Medical-Imaging | 18726-0 Radiology studies (set) | 85430-7, 18748-4 | [Europe Imaging Reports](https://build.fhir.org/ig/hl7-eu/imaging-r5/en/) |
