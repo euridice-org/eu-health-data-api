@@ -90,7 +90,7 @@ Response includes the Patient resource with `id=patient-123`.
 Document Consumer queries for Patient Summary documents using **IHE MHD ITI-67** (Find Document References) transaction ([Document Exchange](document-exchange.html)).
 
 ```
-GET https://provider.example.org/fhir/DocumentReference?patient=patient-123&type=http://loinc.org|60591-5
+GET https://provider.example.org/fhir/DocumentReference?patient=patient-123&type=http://loinc.org|60591-5&status=current
 Authorization: Bearer [access_token]
 ```
 

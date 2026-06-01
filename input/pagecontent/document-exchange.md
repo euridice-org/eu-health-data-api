@@ -117,32 +117,32 @@ Implementers: Does your system use or plan to use `category` for document classi
 
 Search by `type` (LOINC) for the most accurate results. To find the relevant `type` codes for a priority category, consult the per-category ValueSet or the ConceptMap. When multiple `type` codes apply, include all of them.
 
-These examples assume the consumer has resolved the patient to a FHIR reference (e.g., `Patient/123`) via [Patient Matching](patient-match.html). Alternatively, use [chained identifier search](patient-match.html#option-chained-identifier-search) (e.g., `patient.identifier=[system]|[value]`).
+These examples use the MHD-canonical [chained identifier search](patient-match.html#option-chained-identifier-search) (`patient.identifier=[system]|[value]`), which is the recommended form for cross-border / multi-publisher Document Access Providers. Where a consumer has already resolved the patient locally via [Patient Matching](patient-match.html), `patient=Patient/[id]` may be used instead.
 
 ##### Patient Summary
 
 By type (LOINC):
 ```
-GET [base]/DocumentReference?patient=Patient/123&type=http://loinc.org|60591-5&status=current
+GET [base]/DocumentReference?patient.identifier=[system]|[value]&type=http://loinc.org|60591-5&status=current
 ```
 
 ##### Medical Test Results (Laboratory)
 
 By type (LOINC):
 ```
-GET [base]/DocumentReference?patient=Patient/123&type=http://loinc.org|11502-2&status=current
+GET [base]/DocumentReference?patient.identifier=[system]|[value]&type=http://loinc.org|11502-2&status=current
 ```
 
 ##### Imaging Reports and Manifests
 
 By type (LOINC — imaging reports):
 ```
-GET [base]/DocumentReference?patient=Patient/123&type=http://loinc.org|85430-7&status=current
+GET [base]/DocumentReference?patient.identifier=[system]|[value]&type=http://loinc.org|85430-7&status=current
 ```
 
 By type (LOINC — imaging study manifests):
 ```
-GET [base]/DocumentReference?patient=Patient/123&type=http://loinc.org|18748-4&status=current
+GET [base]/DocumentReference?patient.identifier=[system]|[value]&type=http://loinc.org|18748-4&status=current
 ```
 
 > Imaging manifests may use the [dual-DocumentReference pattern](priority-area-imaging-manifest.html#dual-documentreference-pattern-mado): two DocumentReferences (FHIR and DICOM KOS) linked via `relatesTo.transforms`. Consumers select the representation they support based on `contentType`.
@@ -151,7 +151,7 @@ GET [base]/DocumentReference?patient=Patient/123&type=http://loinc.org|18748-4&s
 
 By type (LOINC):
 ```
-GET [base]/DocumentReference?patient=Patient/123&type=http://loinc.org|18842-5,http://loinc.org|100719-4&status=current
+GET [base]/DocumentReference?patient.identifier=[system]|[value]&type=http://loinc.org|18842-5,http://loinc.org|100719-4&status=current
 ```
 
 ---

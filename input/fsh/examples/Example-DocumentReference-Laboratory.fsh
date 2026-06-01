@@ -8,7 +8,7 @@ Example DocumentReference for a laboratory report.
 
 **Example query:**
 ```
-GET [base]/DocumentReference?patient.identifier=http://example.org/national-id|123456789&type=http://loinc.org|11502-2
+GET [base]/DocumentReference?patient.identifier=http://example.org/national-id|123456789&type=http://loinc.org|11502-2&status=current
 ```
 """
 Usage: #example

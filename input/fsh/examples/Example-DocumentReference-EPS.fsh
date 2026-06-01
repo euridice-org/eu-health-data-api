@@ -14,12 +14,12 @@ This example demonstrates the recommended search strategy:
 
 **Example query to find this document by priority category:**
 ```
-GET [base]/DocumentReference?patient=Patient/example-patient&category=https://euridice.ec.europa.eu/fhir/eehrxf/CodeSystem/eehrxf-document-priority-category-cs|Patient-Summaries
+GET [base]/DocumentReference?patient.identifier=http://example.org/national-id|123456789&category=https://euridice.ec.europa.eu/fhir/eehrxf/CodeSystem/eehrxf-document-priority-category-cs|Patient-Summaries&status=current
 ```
 
 **Example query to find this document by type:**
 ```
-GET [base]/DocumentReference?patient=Patient/example-patient&type=http://loinc.org|60591-5
+GET [base]/DocumentReference?patient.identifier=http://example.org/national-id|123456789&type=http://loinc.org|60591-5&status=current
 ```
 """
 Usage: #example
