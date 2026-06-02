@@ -88,39 +88,24 @@ Per [MHD ITI-67](https://profiles.ihe.net/ITI/MHD/ITI-67.html), four requirement
 
 #### Document Search Strategy
 
-[IHE Document Sharing](https://profiles.ihe.net/ITI/HIE-Whitepaper/index.html) distinguishes `type` (specific document types, typically LOINC codes) from `category` (broad classification) on DocumentReference. This IG constrains `type` for document discovery but leaves `category` to [content IGs](priority-categories.html) and implementations.
+[IHE Document Sharing](https://profiles.ihe.net/ITI/HIE-Whitepaper/index.html) distinguishes `type` (specific document types, typically LOINC codes) from `category` (broad classification) on DocumentReference. This IG uses both, for two different purposes:
 
-##### EHDS Priority Categories and Type Codes
+- **`category`** — the coarse **document class** (XDS `classCode`), for server-side query filtering ("all the lab documents"). Bound **(preferred)** to the LOINC-based FHIR [Document Class value set](https://hl7.org/fhir/R4/valueset-document-classcodes.html) — any document-class code is valid; additional codings (SNOMED, XDS) MAY be used. The EHDS priority-category subset that drives cross-border discovery is listed informatively in [EEHRxFDocumentCategoryVS](ValueSet-eehrxf-document-category-vs.html); to be discoverable on the EHDS rails a server SHOULD tag a priority-category document with the matching class code. `category` is `0..1` — a document has one class; other axes use `setting`/`facility`/`event`.
+- **`type`** — the clinically precise **LOINC document type**, which the consumer uses to select among the returned index cards before retrieval. This IG **inherits the MHD Minimal / base FHIR `type` binding** and imposes no EU-specific value set: any LOINC document-type code is valid, and the applicable content IG is the authoritative source for the expected code. [EEHRxFDocumentTypeVS](ValueSet-eehrxf-document-type-vs.html) lists illustrative per-category codes informatively, not as a constraint.
 
-[Article 14](https://eur-lex.europa.eu/eli/reg/2025/327/oj#d1e2289-1-1) of the EHDS regulation defines six priority categories of electronic health data. [EEHRxFDocumentPriorityCategoryCS](CodeSystem-eehrxf-document-priority-category-cs.html) provides informative codes for these categories, organizing them by the LOINC `type` codes consumers use for document search.
+##### EHDS Priority Categories
 
-Each priority category has a ValueSet of known LOINC type codes:
-- `Patient-Summaries` → [EEHRxFDocumentTypePatientSummaryVS](ValueSet-eehrxf-document-type-patient-summary-vs.html)
-- `Discharge-Reports` → [EEHRxFDocumentTypeDischargeReportVS](ValueSet-eehrxf-document-type-discharge-report-vs.html)
-- `Laboratory-Reports` → [EEHRxFDocumentTypeLaboratoryReportVS](ValueSet-eehrxf-document-type-laboratory-report-vs.html)
-- `Medical-Imaging` → [EEHRxFDocumentTypeMedicalImagingVS](ValueSet-eehrxf-document-type-medical-imaging-vs.html)
-`Electronic-Prescriptions` and `Electronic-Dispensations` fall outside the document exchange model and have no type codes.
+[Article 14](https://eur-lex.europa.eu/eli/reg/2025/327/oj#d1e2289-1-1) of the EHDS regulation defines six priority categories of electronic health data. [EEHRxFDocumentPriorityCategoryCS](CodeSystem-eehrxf-document-priority-category-cs.html) provides informative codes for these. They are **regulatory groupings, not wire values** — the code carried in `DocumentReference.category` is the LOINC document class the priority category maps to, via the [EehrxfMhdDocumentReferenceCM ConceptMap](ConceptMap-EehrxfMhdDocumentReferenceCM.html):
 
-[EEHRxFDocumentTypeVS](ValueSet-eehrxf-document-type-vs.html) aggregates all per-category type codes into a single ValueSet bound to `DocumentReference.type`. A [ConceptMap](ConceptMap-EehrxfMhdDocumentReferenceCM.html) provides the same mapping in machine-readable form.
-
-
-| priority category | type codes | relevant IGs |
-|-------------------|------------|--------------|
-| Patient-Summaries | 60591-5 | [Europe Patient Summary](https://build.fhir.org/ig/hl7-eu/eps/) |
-| Discharge-Reports | 18842-5, 100719-4 | [Hospital Discharge Report](https://build.fhir.org/ig/hl7-eu/hdr/) |
-| Laboratory-Reports | 11502-2 | [Europe Laboratory Report](https://hl7.eu/fhir/laboratory/) |
-| Medical-Imaging | 85430-7, 18748-4 | [Europe Imaging Reports](https://build.fhir.org/ig/hl7-eu/imaging-r5/en/) |
+| priority category | document class (`category` wire code) | precise `type` codes | relevant IGs |
+|-------------------|------------|------------|--------------|
+| Patient-Summaries | — (type only) | 60591-5 | [Europe Patient Summary](https://build.fhir.org/ig/hl7-eu/eps/) |
+| Discharge-Reports | 18842-5 Discharge summary | 18842-5, 100719-4 | [Hospital Discharge Report](https://build.fhir.org/ig/hl7-eu/hdr/) |
+| Laboratory-Reports | 26436-6 Laboratory Studies (set) | 11502-2 | [Europe Laboratory Report](https://hl7.eu/fhir/laboratory/) |
+| Medical-Imaging | 18748-4 Diagnostic imaging study | 85430-7, 18748-4 | [Europe Imaging Reports](https://build.fhir.org/ig/hl7-eu/imaging-r5/en/) |
 {: .grid}
 
-<div markdown="1" class="stu-note">
-
-**Feedback requested on `category` and document differentiation in search.** This IG uses `DocumentReference.type` with LOINC codes as the primary search parameter for distinguishing priority categories. The use of `.category` is left to the needs of the implementation.
-
-The EHDS priority categories (Patient Summary, Laboratory Report, etc.) are regulatory groupings that no established code system defines today. A coarse-grained search parameter grouping documents by `category` — independent of their specific LOINC `type` code — could simplify consumer logic, especially as code sets evolve. For example, the `category` field could represent priority categories or another classification scheme for search.
-
-Implementers: Does your system use or plan to use `category` for document classification? Would constraining `category` to the EHDS priority categories be useful for your search workflows, or conflict with other category schemes? Are there other good code sets for differentiating, for example, laboratory reports from imaging reports?
-
-</div>
+`Electronic-Prescriptions` and `Electronic-Dispensations` fall outside the document exchange model. Each priority category also has a per-category ValueSet of known LOINC `type` codes ([Patient Summary](ValueSet-eehrxf-document-type-patient-summary-vs.html), [Discharge Report](ValueSet-eehrxf-document-type-discharge-report-vs.html), [Laboratory](ValueSet-eehrxf-document-type-laboratory-report-vs.html), [Medical Imaging](ValueSet-eehrxf-document-type-medical-imaging-vs.html)), aggregated into [EEHRxFDocumentTypeVS](ValueSet-eehrxf-document-type-vs.html).
 
 #### Search Examples
 

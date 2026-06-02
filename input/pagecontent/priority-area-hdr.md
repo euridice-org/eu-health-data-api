@@ -15,8 +15,8 @@ Hospital Discharge Reports can be accessed via document exchange.
 For document-based access, use the [Document Exchange](document-exchange.html) transactions.
 
 The Hospital Discharge Report is differentiated via the following DocumentReference fields:
-- **type**: `18842-5` (Discharge summary)
-- **category**: `Discharge-Reports` ([EHDS Priority Category](CodeSystem-eehrxf-document-priority-category-cs.html))
+- **type**: `18842-5` (Discharge summary) — precise LOINC document type
+- **category**: `18842-5` (Discharge summary) — LOINC document class; maps from the `Discharge-Reports` [EHDS priority category](CodeSystem-eehrxf-document-priority-category-cs.html)
 
 ### Example Query
 

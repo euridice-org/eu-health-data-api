@@ -15,8 +15,8 @@ Laboratory Reports can be accessed via document exchange.
 For document-based access, use the [Document Exchange](document-exchange.html) transactions.
 
 The Laboratory Report is differentiated via the following DocumentReference fields:
-- **type**: `11502-2` (Laboratory report)
-- **category**: `Laboratory-Reports` ([EHDS Priority Category](CodeSystem-eehrxf-document-priority-category-cs.html))
+- **type**: `11502-2` (Laboratory report) — precise LOINC document type
+- **category**: `26436-6` (Laboratory Studies (set)) — LOINC document class; maps from the `Laboratory-Reports` [EHDS priority category](CodeSystem-eehrxf-document-priority-category-cs.html)
 
 ### Example Query
 

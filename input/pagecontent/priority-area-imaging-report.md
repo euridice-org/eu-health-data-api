@@ -15,8 +15,8 @@ Imaging Reports can be accessed via document exchange.
 For document-based access, use the [Document Exchange](document-exchange.html) transactions.
 
 The Imaging Report is differentiated via the following DocumentReference fields:
-- **type**: `85430-7` (Diagnostic imaging report)
-- **category**: `Medical-Imaging` ([EHDS Priority Category](CodeSystem-eehrxf-document-priority-category-cs.html))
+- **type**: `85430-7` (Diagnostic imaging report) — precise LOINC document type
+- **category**: `18748-4` (Diagnostic imaging study) — LOINC document class; maps from the `Medical-Imaging` [EHDS priority category](CodeSystem-eehrxf-document-priority-category-cs.html)
 
 ### Example Query
 

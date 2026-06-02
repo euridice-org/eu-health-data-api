@@ -100,9 +100,9 @@ Description: "ValueSet for specific document types within the Medical Imaging pr
 
 
 // =============================================================================
-// DocumentReference Type ValueSet (Clinical Precision)
+// DocumentReference Type ValueSet (Clinical Precision) — INFORMATIVE ONLY
 // =============================================================================
-// LOINC codes for specific document types - used for precise clinical identification
+// Not bound to .type (which inherits MHD/base FHIR); illustrative only.
 
 ValueSet: EEHRxFDocumentTypeVS
 Id: eehrxf-document-type-vs
@@ -117,42 +117,62 @@ Description: "Document type codes for clinical precision in document identificat
 * include codes from valueset EEHRxFDocumentTypeMedicalImagingVS
 
 
+// =============================================================================
+// DocumentReference Category ValueSet — INFORMATIVE discovery set
+// =============================================================================
+// The EHDS priority-category subset of the FHIR LOINC document *class* codes.
+// NOT bound: DocumentReference.category binds (preferred) to the full
+// document-classcodes set. This set lists the class codes that drive EHDS
+// cross-border discovery (the target codes of EehrxfMhdDocumentReferenceCM).
+// A server SHOULD tag a priority-category document with the matching code here
+// so it is discoverable via category search. FHIR-56632.
+
+ValueSet: EEHRxFDocumentCategoryVS
+Id: eehrxf-document-category-vs
+Title: "EEHRxF Document Category ValueSet"
+Description: """
+Informative subset of LOINC document **class** codes corresponding to the EHDS priority categories, used to drive cross-border `DocumentReference.category` discovery.
+
+This is **not** a binding constraint — `DocumentReference.category` binds (preferred) to the full FHIR [document-classcodes](https://hl7.org/fhir/R4/valueset-document-classcodes.html) value set, so any document-class code remains valid. These are the codes a server SHOULD use so priority-category documents are discoverable on the EHDS rails. Mirrors the target codes of the [EehrxfMhdDocumentReferenceCM](ConceptMap-EehrxfMhdDocumentReferenceCM.html) ConceptMap. Patient Summary is intentionally absent — it carries no `.category` (identified by `.type` 60591-5 alone).
+"""
+* ^status = #draft
+* ^experimental = false
+* insert LOINCCopyrightForVS
+* $loinc#26436-6 "Laboratory Studies (set)"
+// Imaging uses 18748-4 (Diagnostic imaging study), the umbrella class — not 18726-0
+// (Radiology studies), since EHDS medical imaging is broader than radiology.
+* $loinc#18748-4 "Diagnostic imaging study"
+* $loinc#18842-5 "Discharge summary"
+
+
 Instance: EehrxfMhdDocumentReferenceCM
 InstanceOf: ConceptMap
 Title: "EEHRxF MHD DocumentReference ConceptMap"
 Description: """
-mapping from the EHDS regulatory priority categories to the LOINC document category codes for clinical precision in document identification. 
+Correlation from the EHDS regulatory priority categories to the LOINC document **class** codes that go on the wire in `DocumentReference.category`. The regulatory category is policy grouping; the LOINC class code is the value a server filters on.
 """
 Usage: #example
 * url = "http://hl7.eu/fhir/health-data-api/ConceptMap/EehrxfMhdDocumentReferenceCM"
 * name = "EehrxfMhdDocumentReferenceCM"
 * title = "EEHRxF MHD DocumentReference ConceptMap"
-* description = "mapping from the EHDS regulatory priority categories to the LOINC document category codes for clinical precision in document identification."
+* description = "Correlation from the EHDS regulatory priority categories to the LOINC document class codes used in DocumentReference.category."
 * experimental = false
 * status = #draft
-* purpose = "Guide implementers in understanding how the coarse-grained priority categories defined in the EHDS regulation relate to specific document categories identified by LOINC codes, and it may evolve over time as clinical practice changes and new document categories become relevant for cross-border exchange."
+* purpose = "Guide implementers in mapping the coarse-grained priority categories defined in the EHDS regulation to the LOINC document class code carried in DocumentReference.category. It may evolve as new document classes become relevant for cross-border exchange."
 * group.source = Canonical(EEHRxFDocumentPriorityCategoryCS)
 * group.target = $loinc
-* group.element[+].code = #Patient-Summaries
-* group.element[=].target[+].code = #60591-5
-* group.element[=].target[=].display = "Patient summary Document"
-* group.element[=].target[=].equivalence = #specializes
+// Patient-Summaries intentionally has no class mapping: the summary is identified by
+// type 60591-5 alone (no .category). EU PS IG defines no DocumentReference class either.
 * group.element[+].code = #Discharge-Reports
 * group.element[=].target[+].code = #18842-5
 * group.element[=].target[=].display = "Discharge summary"
-* group.element[=].target[=].equivalence = #specializes
-* group.element[=].target[+].code = #100719-4
-* group.element[=].target[=].display = "Surgical oncology Discharge summary"
-* group.element[=].target[=].equivalence = #specializes
+* group.element[=].target[=].equivalence = #relatedto
 * group.element[+].code = #Laboratory-Reports
-* group.element[=].target[+].code = #11502-2
-* group.element[=].target[=].display = "Laboratory report"
-* group.element[=].target[=].equivalence = #specializes
+* group.element[=].target[+].code = #26436-6
+* group.element[=].target[=].display = "Laboratory Studies (set)"
+* group.element[=].target[=].equivalence = #relatedto
 * group.element[+].code = #Medical-Imaging
-* group.element[=].target[+].code = #85430-7
-* group.element[=].target[=].display = "Diagnostic imaging report"
-* group.element[=].target[=].equivalence = #specializes
 * group.element[=].target[+].code = #18748-4
 * group.element[=].target[=].display = "Diagnostic imaging study"
-* group.element[=].target[=].equivalence = #specializes
+* group.element[=].target[=].equivalence = #relatedto
 

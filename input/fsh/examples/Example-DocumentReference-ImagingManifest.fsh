@@ -24,10 +24,10 @@ Usage: #example
 * masterIdentifier.value = "urn:uuid:a1b2c3d4-e5f6-7890-abcd-ef1234567890"
 * status = #current
 
-// Category: EHDS Priority Category (informative)
-* category = EEHRxFDocumentPriorityCategoryCS#Medical-Imaging "medical imaging studies and related imaging reports"
+// Category: LOINC document class (coarse, server-side filter)
+* category = $loinc#18748-4 "Diagnostic imaging study"
 
-// Type: LOINC code for imaging study manifest
+// Type: LOINC document type (clinical precision)
 * type = $loinc#18748-4 "Diagnostic imaging study"
 
 // Subject
@@ -76,10 +76,10 @@ Usage: #example
 * masterIdentifier.value = "urn:uuid:b2c3d4e5-f6a7-8901-bcde-f12345678901"
 * status = #current
 
-// Category: EHDS Priority Category (informative)
-* category = EEHRxFDocumentPriorityCategoryCS#Medical-Imaging "medical imaging studies and related imaging reports"
+// Category: LOINC document class (coarse, server-side filter)
+* category = $loinc#18748-4 "Diagnostic imaging study"
 
-// Type: LOINC code for imaging study manifest
+// Type: LOINC document type (clinical precision)
 * type = $loinc#18748-4 "Diagnostic imaging study"
 
 // Subject

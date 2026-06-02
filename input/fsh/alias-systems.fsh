@@ -8,6 +8,7 @@ Alias: $condition-category = http://terminology.hl7.org/CodeSystem/condition-cat
 Alias: $data-absent-reason = http://terminology.hl7.org/CodeSystem/data-absent-reason
 Alias: $diagnosis-role = http://terminology.hl7.org/CodeSystem/diagnosis-role
 Alias: $diagnostic-service-sections = http://hl7.org/fhir/ValueSet/diagnostic-service-sections
+Alias: $document-classcodes = http://hl7.org/fhir/ValueSet/document-classcodes
 // $dcm below covers DICOM ontology
 Alias: $edqm = https://standardterms.edqm.eu
 Alias: $encounter-status = http://hl7.org/fhir/encounter-status
