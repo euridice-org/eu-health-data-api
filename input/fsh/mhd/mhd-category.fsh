@@ -117,6 +117,32 @@ Description: "Document type codes for clinical precision in document identificat
 * include codes from valueset EEHRxFDocumentTypeMedicalImagingVS
 
 
+// =============================================================================
+// DocumentReference Category ValueSet — INFORMATIVE discovery set
+// =============================================================================
+// The EHDS priority-category subset of the FHIR LOINC document *class* codes.
+// NOT bound: DocumentReference.category binds (preferred) to the full
+// document-classcodes set. This set lists the class codes that drive EHDS
+// cross-border discovery (the target codes of EehrxfMhdDocumentReferenceCM).
+// A server SHOULD tag a priority-category document with the matching code here
+// so it is discoverable via category search. FHIR-56632.
+
+ValueSet: EEHRxFDocumentCategoryVS
+Id: eehrxf-document-category-vs
+Title: "EEHRxF Document Category ValueSet"
+Description: """
+Informative subset of LOINC document **class** codes corresponding to the EHDS priority categories, used to drive cross-border `DocumentReference.category` discovery.
+
+This is **not** a binding constraint — `DocumentReference.category` binds (preferred) to the full FHIR [document-classcodes](https://hl7.org/fhir/R4/valueset-document-classcodes.html) value set, so any document-class code remains valid. These are the codes a server SHOULD use so priority-category documents are discoverable on the EHDS rails. Mirrors the target codes of the [EehrxfMhdDocumentReferenceCM](ConceptMap-EehrxfMhdDocumentReferenceCM.html) ConceptMap. Patient Summary is intentionally absent — it carries no `.category` (identified by `.type` 60591-5 alone).
+"""
+* ^status = #draft
+* ^experimental = false
+* insert LOINCCopyrightForVS
+* $loinc#26436-6 "Laboratory Studies (set)"
+* $loinc#18726-0 "Radiology studies (set)"
+* $loinc#18842-5 "Discharge summary"
+
+
 Instance: EehrxfMhdDocumentReferenceCM
 InstanceOf: ConceptMap
 Title: "EEHRxF MHD DocumentReference ConceptMap"
