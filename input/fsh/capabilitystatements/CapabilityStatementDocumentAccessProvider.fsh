@@ -152,6 +152,13 @@ indexes document metadata for queries by Document Consumers.
 * rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHALL
 * rest[=].resource[=].searchParam[=].documentation = "When this document reference was created. The date modifiers ge, le, gt, lt SHALL be supported."
 
+* rest[=].resource[=].searchParam[+].name = "creation"
+* rest[=].resource[=].searchParam[=].definition = "https://profiles.ihe.net/ITI/MHD/SearchParameter/DocumentReference-Creation"
+* rest[=].resource[=].searchParam[=].type = #date
+* rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHALL
+* rest[=].resource[=].searchParam[=].documentation = "When this document was created (DocumentReference.content.attachment.creation) - clinical document creation time, distinct from date (metadata indexing time)"
+
 * rest[=].resource[=].searchParam[+].name = "status"
 * rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-status"
 * rest[=].resource[=].searchParam[=].type = #token
@@ -179,6 +186,14 @@ indexes document metadata for queries by Document Consumers.
 * rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
 * rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHALL
 * rest[=].resource[=].searchParam[=].documentation = "Format/content rules for the document"
+
+// _lastupdated: listed in the MHD Document Responder CapabilityStatement; SHALL support. FHIR-56695.
+* rest[=].resource[=].searchParam[+].name = "_lastupdated"
+* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/Resource-lastUpdated"
+* rest[=].resource[=].searchParam[=].type = #date
+* rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHALL
+* rest[=].resource[=].searchParam[=].documentation = "When the resource version last changed"
 
 * rest[=].resource[=].searchParam[+].name = "setting"
 * rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-setting"
@@ -226,23 +241,6 @@ indexes document metadata for queries by Document Consumers.
 * rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
 * rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHALL
 * rest[=].resource[=].searchParam[=].documentation = "Family name of document author"
-
-* rest[=].resource[=].searchParam[+].name = "creation"
-* rest[=].resource[=].searchParam[=].definition = "https://profiles.ihe.net/ITI/MHD/SearchParameter/DocumentReference-Creation"
-* rest[=].resource[=].searchParam[=].type = #date
-* rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
-* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHALL
-* rest[=].resource[=].searchParam[=].documentation = "When this document was created (DocumentReference.content.attachment.creation) - clinical document creation time, distinct from date (metadata indexing time)"
-
-// Remaining search parameters - SHALL support
-// (MHD ITI-67 Document Responder lists every ITI-67 search param, which renders SHALL;
-//  this CapabilityStatement makes that obligation explicit per parameter.)
-* rest[=].resource[=].searchParam[+].name = "_lastupdated"
-* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/Resource-lastUpdated"
-* rest[=].resource[=].searchParam[=].type = #date
-* rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
-* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHALL
-* rest[=].resource[=].searchParam[=].documentation = "When the resource version last changed"
 
 * rest[=].resource[=].searchParam[+].name = "patient.identifier"
 * rest[=].resource[=].searchParam[=].type = #token
