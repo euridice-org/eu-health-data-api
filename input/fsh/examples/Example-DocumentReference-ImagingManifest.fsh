@@ -25,7 +25,7 @@ Usage: #example
 * status = #current
 
 // Category: LOINC document class (coarse, server-side filter)
-* category = $loinc#18726-0 "Radiology studies (set)"
+* category = $loinc#18748-4 "Diagnostic imaging study"
 
 // Type: LOINC document type (clinical precision)
 * type = $loinc#18748-4 "Diagnostic imaging study"
@@ -77,7 +77,7 @@ Usage: #example
 * status = #current
 
 // Category: LOINC document class (coarse, server-side filter)
-* category = $loinc#18726-0 "Radiology studies (set)"
+* category = $loinc#18748-4 "Diagnostic imaging study"
 
 // Type: LOINC document type (clinical precision)
 * type = $loinc#18748-4 "Diagnostic imaging study"

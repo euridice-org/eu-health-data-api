@@ -102,7 +102,7 @@ Per [MHD ITI-67](https://profiles.ihe.net/ITI/MHD/ITI-67.html), four requirement
 | Patient-Summaries | — (type only) | 60591-5 | [Europe Patient Summary](https://build.fhir.org/ig/hl7-eu/eps/) |
 | Discharge-Reports | 18842-5 Discharge summary | 18842-5, 100719-4 | [Hospital Discharge Report](https://build.fhir.org/ig/hl7-eu/hdr/) |
 | Laboratory-Reports | 26436-6 Laboratory Studies (set) | 11502-2 | [Europe Laboratory Report](https://hl7.eu/fhir/laboratory/) |
-| Medical-Imaging | 18726-0 Radiology studies (set) | 85430-7, 18748-4 | [Europe Imaging Reports](https://build.fhir.org/ig/hl7-eu/imaging-r5/en/) |
+| Medical-Imaging | 18748-4 Diagnostic imaging study | 85430-7, 18748-4 | [Europe Imaging Reports](https://build.fhir.org/ig/hl7-eu/imaging-r5/en/) |
 {: .grid}
 
 `Electronic-Prescriptions` and `Electronic-Dispensations` fall outside the document exchange model. Each priority category also has a per-category ValueSet of known LOINC `type` codes ([Patient Summary](ValueSet-eehrxf-document-type-patient-summary-vs.html), [Discharge Report](ValueSet-eehrxf-document-type-discharge-report-vs.html), [Laboratory](ValueSet-eehrxf-document-type-laboratory-report-vs.html), [Medical Imaging](ValueSet-eehrxf-document-type-medical-imaging-vs.html)), aggregated into [EEHRxFDocumentTypeVS](ValueSet-eehrxf-document-type-vs.html).

@@ -139,7 +139,9 @@ This is **not** a binding constraint — `DocumentReference.category` binds (pre
 * ^experimental = false
 * insert LOINCCopyrightForVS
 * $loinc#26436-6 "Laboratory Studies (set)"
-* $loinc#18726-0 "Radiology studies (set)"
+// Imaging uses 18748-4 (Diagnostic imaging study), the umbrella class — not 18726-0
+// (Radiology studies), since EHDS medical imaging is broader than radiology.
+* $loinc#18748-4 "Diagnostic imaging study"
 * $loinc#18842-5 "Discharge summary"
 
 
@@ -170,7 +172,7 @@ Usage: #example
 * group.element[=].target[=].display = "Laboratory Studies (set)"
 * group.element[=].target[=].equivalence = #relatedto
 * group.element[+].code = #Medical-Imaging
-* group.element[=].target[+].code = #18726-0
-* group.element[=].target[=].display = "Radiology studies (set)"
+* group.element[=].target[+].code = #18748-4
+* group.element[=].target[=].display = "Diagnostic imaging study"
 * group.element[=].target[=].equivalence = #relatedto
 

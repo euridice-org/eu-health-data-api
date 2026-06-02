@@ -16,7 +16,7 @@ For document-based access, use the [Document Exchange](document-exchange.html) t
 
 The Imaging Report is differentiated via the following DocumentReference fields:
 - **type**: `85430-7` (Diagnostic imaging report) — precise LOINC document type
-- **category**: `18726-0` (Radiology studies (set)) — LOINC document class; maps from the `Medical-Imaging` [EHDS priority category](CodeSystem-eehrxf-document-priority-category-cs.html)
+- **category**: `18748-4` (Diagnostic imaging study) — LOINC document class; maps from the `Medical-Imaging` [EHDS priority category](CodeSystem-eehrxf-document-priority-category-cs.html)
 
 ### Example Query
 
