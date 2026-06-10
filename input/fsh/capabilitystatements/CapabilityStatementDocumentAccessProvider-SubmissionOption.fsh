@@ -32,7 +32,7 @@ Adds to base Document Access Provider:
 | ITI-105 Simplified Publish | Accept document publication from Document Publishers | R |
 
 ### Security
-Systems SHOULD support SMART Backend Services authorization for document submission; a deployment MAY declare another scheme here where its context requires.
+Systems SHALL support SMART Backend Services authorization for document submission.
 """
 
 * name = "EEHRxFDocumentAccessProviderSubmissionOption"

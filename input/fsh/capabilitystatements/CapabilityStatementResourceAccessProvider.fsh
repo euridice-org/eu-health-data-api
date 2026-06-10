@@ -36,7 +36,7 @@ support EU Core for certain resource types.
 The server's CapabilityStatement declares which resources are actually supported.
 
 ### Security
-Systems SHOULD support SMART Backend Services authorization for all transactions; a deployment MAY declare another scheme here where its context requires.
+Systems SHALL support SMART Backend Services authorization for all transactions.
 
 ### Profile Inheritance
 Resources SHOULD conform to EU Core profiles where available.
@@ -63,14 +63,14 @@ The Resource Access Provider actor responds to queries for clinical data resourc
 following IPA and QEDm patterns. This enables direct resource access complementing
 document-based exchange via MHD.
 
-All transactions require authorization; SMART Backend Services is the preferred scheme.
+All transactions require SMART Backend Services authorization.
 """
 
 * rest[=].security.cors = false
 * rest[=].security.service = http://hl7.org/fhir/restful-security-service#SMART-on-FHIR
 * rest[=].security.description = """
-SMART Backend Services authorization is the preferred scheme for all transactions (SHOULD); a deployment MAY declare another scheme where its context requires.
-When SMART Backend Services is used, systems SHALL:
+SMART Backend Services authorization is REQUIRED for all transactions.
+Systems SHALL:
 - Validate JWT client credentials (RFC 7523)
 - Verify appropriate scopes for resource access
 - Use TLS 1.2 or higher for all communications

@@ -27,7 +27,7 @@ This composite actor groups the following IHE actors:
 | Get Access Token | Issue authorization tokens to clients | R |
 
 ### Security
-Systems SHOULD support SMART Backend Services authorization for all transactions; a deployment MAY declare another scheme here where its context requires.
+Systems SHALL support SMART Backend Services authorization for all transactions.
 
 ### Document Submission Option
 To accept document publication from external Document Publishers, implement the
@@ -57,14 +57,14 @@ for this deployment pattern.
 The Document Access Provider actor responds to document queries from Document Consumers
 (ITI-67, ITI-68) and provides patient lookup services (PDQm ITI-78).
 
-All transactions require authorization; SMART Backend Services is the preferred scheme.
+All transactions require SMART Backend Services authorization.
 """
 
 * rest[=].security.cors = false
 * rest[=].security.service = http://hl7.org/fhir/restful-security-service#SMART-on-FHIR
 * rest[=].security.description = """
-SMART Backend Services authorization is the preferred scheme for all transactions (SHOULD); a deployment MAY declare another scheme where its context requires.
-When SMART Backend Services is used, systems SHALL:
+SMART Backend Services authorization is REQUIRED for all transactions.
+Systems SHALL:
 - Validate JWT client credentials (RFC 7523)
 - Verify appropriate scopes for document operations
 - Use TLS 1.2 or higher for all communications

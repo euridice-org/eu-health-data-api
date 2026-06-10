@@ -1,15 +1,15 @@
 
 ### Overview
 
-Authorization is required for all API transactions. For system-to-system authorization this IG adopts [SMART Backend Services](https://hl7.org/fhir/smart-app-launch/backend-services.html) from [FHIR SMART App Launch](https://hl7.org/fhir/smart-app-launch/app-launch.html) as the strongly preferred mechanism, grouped with IHE IUA actors.
+Authorization is required for all API transactions. This IG inherits [SMART Backend Services](https://hl7.org/fhir/smart-app-launch/backend-services.html) from [FHIR SMART App Launch](https://hl7.org/fhir/smart-app-launch/app-launch.html) for system-to-system authorization, grouped with IHE IUA actors.
 
-SMART Backend Services SHOULD be supported. A deployment MAY use another authorization scheme where its context requires, declaring that scheme in its CapabilityStatement. Absent such a declaration, SMART Backend Services is the expected default at the EHR API surface—a single inherited, testable mechanism that maximizes interoperability.
+The EHDS regulation and national implementations may admit other authorization capabilities; this specification prescribes SMART Backend Services at the EHR API surface.
 
-Where SMART Backend Services is used, it is adopted as specified—including grant types, client authentication (`private_key_jwt`), and related JWT requirements. As a profile on SMART, all underlying SMART requirements still apply; omitting a detail from this IG does not exempt implementations from SMART requirements.
+We adopt SMART Backend Services as specified—including grant types, client authentication (`private_key_jwt`), and related JWT requirements—to align with globally recognized specifications and reduce implementation burden. As a profile on SMART, all underlying SMART requirements still apply; omitting a detail from this IG does not exempt implementations from SMART requirements.
 
-SMART Backend Services is itself a profile of [RFC 6749](https://www.rfc-editor.org/rfc/rfc6749) (`client_credentials` grant) and [RFC 8414](https://www.rfc-editor.org/rfc/rfc8414) (authorization-server metadata), packaged as a single testable mechanism—preferred over the bare RFCs for that reason. National trust frameworks that use coarser, regulatory-level scope groupings operate at the access-service layer; the EHR API enforces resource-level scopes.
+SMART Backend Services is itself a profile of [RFC 6749](https://www.rfc-editor.org/rfc/rfc6749) (`client_credentials` grant) and [RFC 8414](https://www.rfc-editor.org/rfc/rfc8414) (authorization-server metadata), packaged as a single testable mechanism. This IG requires that profile (SHALL) rather than the bare RFCs, and rather than offering SMART as one option among several: a single inherited mechanism at the EHR API surface gives interoperability and conformance testability. National trust frameworks that use coarser, regulatory-level scope groupings operate at the access-service layer; the EHR API enforces resource-level scopes. IHE conformance alone does not satisfy this requirement—SMART Backend Services SHALL be supported.
 
-> **Note:** This IG uses IHE IUA actor definitions grouped with the SMART Backend Services requirements. Where a deployment uses SMART and the two differ, SMART Backend Services is authoritative.
+> **Note:** This IG uses IHE IUA actor definitions grouped with SMART Backend Services normative requirements. Where requirements differ, SMART Backend Services is authoritative.
 
 ### Scope: System-to-System Authorization
 
@@ -193,7 +193,7 @@ ATNA is referenced here only for the secure-transport (TLS) requirement — the 
 
 SMART Backend Services and IHE IUA **compose**: IUA supplies the actor model (Authorization Client, Authorization Server, Resource Server) and the actor groupings used across this IG; SMART Backend Services supplies the token, scope, and client-authentication mechanics on the wire. They are not competing alternatives to choose between.
 
-IUA itself [notes its relationship to SMART-on-FHIR](https://profiles.ihe.net/ITI/IUA/#relation-to-smart-on-fhir): "IUA is not based on SMART-on-FHIR, but does strive to not conflict with that standard." Where a deployment uses SMART and the two differ, this IG follows SMART. The differences relevant to this IG:
+IUA itself [notes its relationship to SMART-on-FHIR](https://profiles.ihe.net/ITI/IUA/#relation-to-smart-on-fhir): "IUA is not based on SMART-on-FHIR, but does strive to not conflict with that standard." Where the two differ, this IG follows SMART. The differences relevant to this IG:
 
 | Topic | IUA | This IG (follows SMART) |
 |---|---|---|
@@ -216,7 +216,7 @@ Member States MAY layer user-level authorization on top of system-to-system auth
 
 EHDS [Article 12](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_12) and [Article 16](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_16) place eIDAS and EU Digital Identity Wallet obligations on **access services** and cross-border exchange — not on EHR systems. SMART Backend Services authorizes the system-to-system call between an access service and an EHR. Identity assurance for the human user (eIDAS levels, wallet presentation) is established at the access service before it calls the EHR API.
 
-This IG therefore keeps SMART Backend Services as the preferred EHR-surface mechanism and does not restate eIDAS/EUDIW requirements that bind the access-service layer. Member State access services SHALL meet their applicable eIDAS-2 obligations.
+This IG therefore keeps SMART Backend Services as the EHR-surface mechanism and does not restate eIDAS/EUDIW requirements that bind the access-service layer. Member State access services SHALL meet their applicable eIDAS-2 obligations.
 
 ### References
 

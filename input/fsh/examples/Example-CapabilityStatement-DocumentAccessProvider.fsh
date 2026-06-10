@@ -46,7 +46,7 @@ ITI-68 (Retrieve Document), and PDQm ITI-78 (Patient Demographics Query).
 """
 
 * rest[=].security.service = http://hl7.org/fhir/restful-security-service#SMART-on-FHIR
-* rest[=].security.description = "SMART Backend Services authorization (preferred scheme)."
+* rest[=].security.description = "SMART Backend Services authorization required."
 
 // ============================================================================
 // DocumentReference — advertise EEHRxF and MHD profiles

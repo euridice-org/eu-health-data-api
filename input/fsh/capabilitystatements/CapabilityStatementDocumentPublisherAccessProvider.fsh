@@ -45,7 +45,7 @@ Note: MHD Document Recipient is not listed because publication is internal.
 | Get Access Token | Issue authorization tokens to clients | R |
 
 ### Security
-Systems SHOULD support SMART Backend Services authorization for all transactions; a deployment MAY declare another scheme here where its context requires.
+Systems SHALL support SMART Backend Services authorization for all transactions.
 
 ### When to Use This CapabilityStatement
 
@@ -76,14 +76,14 @@ This grouped actor provides document access to external Document Consumers.
 Document publication is internal and not exposed. The external API
 supports document discovery (ITI-67), retrieval (ITI-68), and patient lookup (ITI-78).
 
-All transactions require authorization; SMART Backend Services is the preferred scheme.
+All transactions require SMART Backend Services authorization.
 """
 
 * rest[=].security.cors = false
 * rest[=].security.service = http://hl7.org/fhir/restful-security-service#SMART-on-FHIR
 * rest[=].security.description = """
-SMART Backend Services authorization is the preferred scheme for all transactions (SHOULD); a deployment MAY declare another scheme where its context requires.
-When SMART Backend Services is used, systems SHALL:
+SMART Backend Services authorization is REQUIRED for all transactions.
+Systems SHALL:
 - Validate JWT client credentials (RFC 7523)
 - Verify appropriate scopes for document access
 - Use TLS 1.2 or higher for all communications

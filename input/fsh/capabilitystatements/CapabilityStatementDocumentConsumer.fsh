@@ -26,7 +26,7 @@ This composite actor groups the following IHE actors:
 | Get Access Token | Obtain authorization token for API access | R |
 
 ### Security
-Systems SHOULD support SMART Backend Services authorization for all transactions; a deployment MAY declare another scheme here where its context requires.
+Systems SHALL support SMART Backend Services authorization for all transactions.
 """
 
 * name = "EEHRxFDocumentConsumer"
@@ -45,14 +45,14 @@ Systems SHOULD support SMART Backend Services authorization for all transactions
 * rest[=].documentation = """
 The Document Consumer actor queries for document metadata and retrieves documents
 from a Document Access Provider. It also queries for patient context using PDQm.
-All transactions require authorization; SMART Backend Services is the preferred scheme.
+All transactions require SMART Backend Services authorization.
 """
 
 * rest[=].security.cors = false
 * rest[=].security.service = http://hl7.org/fhir/restful-security-service#SMART-on-FHIR
 * rest[=].security.description = """
-SMART Backend Services authorization is the preferred scheme for all transactions (SHOULD); a deployment MAY declare another scheme where its context requires.
-When SMART Backend Services is used, systems SHALL:
+SMART Backend Services authorization is REQUIRED for all transactions.
+Systems SHALL:
 - Authenticate using JWT client credentials (RFC 7523)
 - Request appropriate scopes for document access
 - Use TLS 1.2 or higher for all communications

@@ -35,7 +35,7 @@ allows clients to implement targeted use cases without requiring support for all
 Clients should check the server's CapabilityStatement to discover which resources are available.
 
 ### Security
-Systems SHOULD support SMART Backend Services authorization for all transactions; a deployment MAY declare another scheme here where its context requires.
+Systems SHALL support SMART Backend Services authorization for all transactions.
 
 ### Profile Inheritance
 Consumers SHOULD expect resources conforming to EU Core profiles where available.
@@ -59,14 +59,14 @@ The Resource Consumer actor queries for clinical data resources from a Resource 
 Provider following IPA and QEDm patterns. This enables direct resource access complementing
 document-based exchange via MHD.
 
-All transactions require authorization; SMART Backend Services is the preferred scheme.
+All transactions require SMART Backend Services authorization.
 """
 
 * rest[=].security.cors = false
 * rest[=].security.service = http://hl7.org/fhir/restful-security-service#SMART-on-FHIR
 * rest[=].security.description = """
-SMART Backend Services authorization is the preferred scheme for all transactions (SHOULD); a deployment MAY declare another scheme where its context requires.
-When SMART Backend Services is used, systems SHALL:
+SMART Backend Services authorization is REQUIRED for all transactions.
+Systems SHALL:
 - Authenticate using JWT client credentials (RFC 7523)
 - Request appropriate scopes for resource access
 - Use TLS 1.2 or higher for all communications
