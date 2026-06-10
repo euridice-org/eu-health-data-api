@@ -42,6 +42,8 @@ The intended audiences of this Implementation Guide are:
 
 - **Architects of national infrastructures:** National eHealth agencies looking to understand how to use the capabilities of EHRs required by EHDS to meet the goals of EHDS in their Member States should refer to the [Implementation](implementation.html) for examples of how the EHR APIs can be used for the EHDS use cases.
 
+- **Vendors of applications and devices** claiming conformance with an EHDS system (EHDS Articles 47–48), looking to either access data from EHDS systems or write data into an EHDS system.
+
 ### Summary of Functional Requirements ("the API")
 
 - **[Capability Discovery](capability-discovery.html)** - Discover which priority categories a server supports
