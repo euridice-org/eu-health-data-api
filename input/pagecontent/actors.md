@@ -13,7 +13,6 @@ This is similar to the approach taken in the MHDS specification, but with a more
   - [IHE MHD](https://profiles.ihe.net/ITI/MHD/) - Defines exchange of Documents, which we use to exchange FHIR document content.
 - Resource Exchange
   - [HL7 International Patient Access (IPA)](https://hl7.org/fhir/uv/ipa/) - Defines how an application can access FHIR information using SMART authorization and resource access. IPA is the primary reference for resource access patterns.
-  - [IHE QEDm](https://profiles.ihe.net/PCC/QEDm/index.html) - Defines how a client can query for existing FHIR resources from a FHIR server. Referenced where compatible with IPA.
 - Foundational
   - [IHE Consistent Time](https://profiles.ihe.net/ITI/TF/Volume1/ch-7.html) - Defines the use of Network Time Protocol (NTP) to provide consistent time across systems.
   - [IHE ATNA](https://profiles.ihe.net/ITI/TF/Volume1/ch-9.html) - Referenced for secure transport requirements (TLS 1.2 Floor using BCP195 Option).
@@ -134,7 +133,6 @@ These composite actors inherit existing actors from the IUA, PDQm, and [Internat
 - [PDQm Patient Demographics Supplier](https://profiles.ihe.net/ITI/PDQm/volume-1.html) ([CapabilityStatement](https://profiles.ihe.net/ITI/PDQm/CapabilityStatement-IHE.PDQm.PatientDemographicsSupplier.html))
 - Resource Access
   - [HL7 International Patient Access Server](https://hl7.org/fhir/uv/ipa/) ([CapabilityStatement](https://hl7.org/fhir/uv/ipa/CapabilityStatement-ipa-server.html))
-  - [QEDm Clinical Data Source](https://profiles.ihe.net/PCC/QEDm/volume-1.html#actors-and-transactions) ([CapabilityStatement](https://profiles.ihe.net/PCC/QEDm/CapabilityStatement-IHE.QEDm.Clinical-Data-Source.html)) - where compatible with IPA
 
 **Resource Consumer**
 
@@ -142,7 +140,6 @@ These composite actors inherit existing actors from the IUA, PDQm, and [Internat
 - [PDQm Patient Demographics Consumer](https://profiles.ihe.net/ITI/PDQm/volume-1.html) ([CapabilityStatement](https://profiles.ihe.net/ITI/PDQm/CapabilityStatement-IHE.PDQm.PatientDemographicsConsumerQuery.html))
 - Resource Access
   - [HL7 International Patient Access Client](https://hl7.org/fhir/uv/ipa/) ([CapabilityStatement](https://hl7.org/fhir/uv/ipa/CapabilityStatement-ipa-client.html))
-  - [QEDm Clinical Data Consumer](https://profiles.ihe.net/PCC/QEDm/volume-1.html#actors-and-transactions) ([CapabilityStatement](https://profiles.ihe.net/PCC/QEDm/CapabilityStatement-IHE.QEDm.Clinical-Data-Consumer.html)) - where compatible with IPA
 
 This leads to the following required transactions between these actors:
 
@@ -155,7 +152,7 @@ sequenceDiagram
     Provider-->>Consumer: access_token
     Consumer->>Provider: Patient Lookup (PDQm ITI-78)
     Provider-->>Consumer: Patient Bundle
-    Consumer->>Provider: Resource Query (IPA / QEDm PCC-44)
+    Consumer->>Provider: Resource Query (IPA)
     Provider-->>Consumer: Resource Bundle
 ```
 
