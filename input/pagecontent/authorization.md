@@ -136,7 +136,7 @@ Scopes follow [SMART v2 conventions](https://hl7.org/fhir/smart-app-launch/scope
 
 #### Scope Conventions
 
-SMART v2 scope syntax: `system/<ResourceType>.<actions>` where actions are one or more of `c` (create), `r` (read), `u` (update), `d` (delete), `s` (search). Common combinations:
+SMART v2 scope syntax (see [SMART App Launch — Scopes for Requesting FHIR Resources](https://hl7.org/fhir/smart-app-launch/scopes-and-launch-context.html#scopes-for-requesting-fhir-resources)): `system/<ResourceType>.<actions>`, where `<actions>` is one or more of `c` (create), `r` (read), `u` (update), `d` (delete), `s` (search). Common combinations:
 - `.rs` = read + search
 - `.r` = read only
 - `.c` = create only

@@ -89,10 +89,10 @@ Systems SHALL:
 - Use TLS 1.2 or higher for all communications
 
 Required scopes to accept:
-- system/DocumentReference.read, system/DocumentReference.search (read and search DocumentReference - ITI-67)
-- system/Binary.read (read Binary - ITI-68)
-- system/Bundle.read (read Bundle - ITI-68 for FHIR Documents)
-- system/Patient.read, system/Patient.search (read and search Patient - ITI-78)
+- system/DocumentReference.rs (read + search DocumentReference - ITI-67)
+- system/Binary.r (read Binary - ITI-68)
+- system/Bundle.r (read Bundle - ITI-68 for FHIR Documents)
+- system/Patient.rs (read + search Patient - ITI-78)
 """
 
 // System-level search interaction

@@ -60,7 +60,7 @@ embedded document, making them available via ITI-67 and ITI-68.
 * rest[=].security.service = http://hl7.org/fhir/restful-security-service#SMART-on-FHIR
 * rest[=].security.description = """
 Additional scope required for document submission:
-- system/DocumentReference.create (create DocumentReference via ITI-105)
+- system/DocumentReference.c (create DocumentReference via ITI-105)
 
 The Document Publisher must be authorized to submit documents on behalf of the
 patient's care team.

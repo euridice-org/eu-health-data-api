@@ -58,10 +58,10 @@ Systems SHALL:
 - Use TLS 1.2 or higher for all communications
 
 Required scopes:
-- system/DocumentReference.read, system/DocumentReference.search (read and search DocumentReference - ITI-67)
-- system/Binary.read (read Binary for document retrieval - ITI-68)
-- system/Bundle.read (read Bundle for FHIR Document retrieval - ITI-68)
-- system/Patient.read, system/Patient.search (read and search Patient for context - ITI-78)
+- system/DocumentReference.rs (read + search DocumentReference - ITI-67)
+- system/Binary.r (read Binary for document retrieval - ITI-68)
+- system/Bundle.r (read Bundle for FHIR Document retrieval - ITI-68)
+- system/Patient.rs (read + search Patient for context - ITI-78)
 """
 
 // ============================================================================

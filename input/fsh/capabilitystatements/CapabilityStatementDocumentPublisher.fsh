@@ -62,8 +62,8 @@ Systems SHALL:
 - Use TLS 1.2 or higher for all communications
 
 Required scopes for document publication:
-- system/DocumentReference.create (create DocumentReference - ITI-105)
-- system/Patient.read, system/Patient.search (read and search Patient for context)
+- system/DocumentReference.c (create DocumentReference - ITI-105)
+- system/Patient.rs (read + search Patient for context)
 """
 
 // ============================================================================
