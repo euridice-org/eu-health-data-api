@@ -15,7 +15,7 @@ This IG inherits and builds upon the work of the Xt-EHR Joint Action, which has 
 
 These requirements have also been adjusted to harmonize with Xt-EHR Work Packages 6 and 7, which define requirements for each priority category.
 
-For more details on the Xt-EHR work, see [the Xt-EHR Website](https://www.xt-ehr.eu/work-packages/). Note: At the time of writing (March 2026), Xt-EHR deliverables are not yet publicly released.
+For more details on the Xt-EHR work, see [the Xt-EHR Website](https://www.xt-ehr.eu/work-packages/). The Xt-EHR deliverables, including D5.1, D5.2, and D8.1, are available on the [Xt-EHR deliverables page](https://www.xt-ehr.eu/deliverables/).
 
 ### Requirements Framework
 
@@ -112,7 +112,7 @@ The following table maps each D5.1 interoperability requirement to its implement
 | `api-provider-backendAuthRequireToken` | The EHR system Interoperability Software Component SHALL require a valid authorization token from the Consumer EHR on Interoperability Component exchange. | Annex II §1.4, Art. 36(3)(e) | Access Provider | [Incorporate Access Token (ITI-72)](authorization.html#incorporate-access-token) | Bearer token validation, IHE IUA |
 | `api-provider-patient` | The EHR system Interoperability Software Component SHALL offer a patient lookup API. | Annex II §2.1 | Access Provider | [Patient Demographics Supplier](patient-match.html) | PDQm ITI-78 |
 | `api-provider-doc` | The EHR system Interoperability Software Component SHALL offer an API that enables an external system to access and retrieve its priority category data modelled as FHIR Documents. | Annex II §2.1 | Access Provider | [Document Responder](document-exchange.html) | MHD ITI-67, ITI-68 |
-| `api-provider-resource` | The EHR system Interoperability Software Component SHALL offer search and read access via individual FHIR Resource API(s). | Annex II §2.1 | Access Provider | [Clinical Data Source](resource-access.html) | IPA Server/QEDm |
+| `api-provider-resource` | The EHR system Interoperability Software Component SHALL offer search and read access via individual FHIR Resource API(s). | Annex II §2.1 | Access Provider | [Clinical Data Source](resource-access.html) | IPA Server |
 
 [1] **Note on Authorization Server:** The EHR system may or may not be bundled with its own authorization server. See [Authorization Server Deployment](authorization.html#authorization-server-deployment) for details.
 
@@ -126,7 +126,7 @@ The following table maps each D5.1 interoperability requirement to its implement
 | `api-consumer-backendAuthPresentToken` | The EHR system Interoperability Software Component SHALL present a valid token to the Provider EHR on Interoperability Component Exchange. | Annex II §1.4, Art. 36(3)(e) | Consumer | [Incorporate Access Token (ITI-72)](authorization.html#incorporate-access-token) | Bearer token in Authorization header |
 | `api-consumer-patient` | The EHR system Interoperability Software Component SHALL support an external patient lookup query API. | Annex II §2.2 | Consumer | [Patient Demographics Consumer](patient-match.html) | PDQm Consumer |
 | `api-consumer-doc` | The EHR system Interoperability Software Component SHALL support an external document query API. | Annex II §2.2 | Consumer | [Document Consumer](document-exchange.html) | MHD Document Consumer |
-| `api-consumer-resource` | The EHR system Interoperability Software Component SHALL support an external resource query API. | Annex II §2.2 | Consumer | [Clinical Data Consumer](resource-access.html) | IPA Client/QEDm |
+| `api-consumer-resource` | The EHR system Interoperability Software Component SHALL support an external resource query API. | Annex II §2.2 | Consumer | [Clinical Data Consumer](resource-access.html) | IPA Client |
 
 ### Content Format Requirements
 
@@ -151,7 +151,7 @@ The preceding sections describe how this IG implements D5.1's exchange requireme
 
 D8.1 defines what conformant health data looks like: the fields a Patient Summary must contain, the obligations on systems that create or consume that data, and the scope of conformance a system can claim. This IG implements D5.1's exchange requirements as FHIR actors and transactions. The Content IGs implement D8.1's data requirements as FHIR profiles. Together, they provide a complete interoperability specification.
 
-> Note: D8.1 is an in-progress Xt-EHR deliverable, not yet publicly released. This section summarizes the concepts this IG builds upon.
+> Note: [D8.1](https://www.xt-ehr.eu/deliverables/) is published on the Xt-EHR deliverables page. This section summarizes the concepts this IG builds upon.
 
 <div style="max-width: 70%; margin: 0 auto;">
 {% include img.html img="ContentExchangeXtEhr.png" caption="Figure 3: Relationship between Xt-EHR deliverables and this IG. D5.1 exchange requirements are implemented by MHD (document exchange) and IPA (resource exchange). D8.1 data content profiles are implemented by HL7 EU Priority Category IGs and HL7 EU Core Resources." %}
