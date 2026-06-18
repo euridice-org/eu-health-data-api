@@ -1,7 +1,7 @@
 // CapabilityStatement for EEHRxF Resource Consumer Actor (IPA client)
 // Based on IPA Client with SMART Backend Services security
 
-Instance: EehrxfResourceConsumer
+Instance: resource-consumer-eu-api
 InstanceOf: CapabilityStatement
 Title: "EEHRxF Resource Consumer CapabilityStatement"
 Usage: #definition
@@ -39,7 +39,7 @@ Systems SHALL support SMART Backend Services authorization for all transactions.
 Consumers SHOULD expect resources conforming to EU Core profiles where available.
 """
 
-* name = "EehrxfResourceConsumer"
+* name = "ResourceConsumerEuApi"
 * title = "EEHRxF Resource Consumer CapabilityStatement"
 * status = #active
 * experimental = false

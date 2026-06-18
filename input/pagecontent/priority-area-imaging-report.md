@@ -7,8 +7,8 @@ Imaging Reports can be accessed via document exchange.
 
 | Actor | Description | CapabilityStatement |
 |-------|-------------|---------------------|
-| Document Consumer | Retrieves imaging reports | [EEHRxF Document Consumer](CapabilityStatement-EehrxfDocumentConsumer.html) |
-| Document Access Provider | Serves imaging reports | [EEHRxF Document Access Provider](CapabilityStatement-EehrxfDocumentAccessProvider.html) |
+| Document Consumer | Retrieves imaging reports | [EEHRxF Document Consumer](CapabilityStatement-document-consumer-eu-api.html) |
+| Document Access Provider | Serves imaging reports | [EEHRxF Document Access Provider](CapabilityStatement-document-access-provider-eu-api.html) |
 
 ### Document Exchange
 
@@ -16,7 +16,7 @@ For document-based access, use the [Document Exchange](document-exchange.html) t
 
 The Imaging Report is differentiated via the following DocumentReference fields:
 - **type**: `85430-7` (Diagnostic imaging report)
-- **category**: `Medical-Imaging` ([EHDS Priority Category](CodeSystem-eehrxf-document-priority-category-cs.html))
+- **category**: `Medical-Imaging` ([EHDS Priority Category](CodeSystem-document-priority-category-eu-api.html))
 
 ### Example Query
 

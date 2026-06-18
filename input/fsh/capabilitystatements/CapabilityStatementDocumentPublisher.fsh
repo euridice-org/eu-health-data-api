@@ -1,7 +1,7 @@
 // CapabilityStatement for EEHRxF Document Publisher Actor
 // Composite actor grouping MHD Document Source + PDQm Consumer + IUA Authorization Client
 
-Instance: EehrxfDocumentPublisher
+Instance: document-publisher-eu-api
 InstanceOf: CapabilityStatement
 Title: "EEHRxF Document Publisher CapabilityStatement"
 Usage: #definition
@@ -30,11 +30,11 @@ Systems SHALL support SMART Backend Services authorization for all transactions.
 ### Deployment
 The Document Publisher may be grouped with Document Access Provider, in which case the
 ITI-105 transaction becomes internal and is not exposed externally. See the
-[grouped Document Publisher/Access Provider CapabilityStatement](CapabilityStatement-EehrxfDocumentPublisherAccessProvider.html)
+[grouped Document Publisher/Access Provider CapabilityStatement](CapabilityStatement-document-publisher-access-provider-eu-api.html)
 for this deployment pattern.
 """
 
-* name = "EehrxfDocumentPublisher"
+* name = "DocumentPublisherEuApi"
 * title = "EEHRxF Document Publisher CapabilityStatement"
 * status = #active
 * experimental = false
@@ -72,7 +72,7 @@ Required scopes for document publication:
 * rest[=].resource[+].type = #DocumentReference
 * rest[=].resource[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
 * rest[=].resource[=].extension[=].valueCode = #SHALL
-* rest[=].resource[=].supportedProfile[+] = Canonical(EehrxfMhdDocumentReference)
+* rest[=].resource[=].supportedProfile[+] = Canonical(DocumentReferenceEuApi)
 * rest[=].resource[=].supportedProfile[+] = "https://profiles.ihe.net/ITI/MHD/StructureDefinition/IHE.MHD.SimplifiedPublish.DocumentReference"
 * rest[=].resource[=].supportedProfile[+] = "https://profiles.ihe.net/ITI/MHD/StructureDefinition/IHE.MHD.Minimal.DocumentReference"
 * rest[=].resource[=].documentation = """

@@ -1,7 +1,7 @@
 // CapabilityStatement for Grouped EEHRxF Document Publisher + Document Access Provider
 // For deployments where document production and access are co-located (publication is internal)
 
-Instance: EehrxfDocumentPublisherAccessProvider
+Instance: document-publisher-access-provider-eu-api
 InstanceOf: CapabilityStatement
 Title: "EEHRxF Grouped Document Publisher/Access Provider CapabilityStatement"
 Usage: #definition
@@ -55,10 +55,10 @@ Use this CapabilityStatement when implementing:
 - Any system where document creation and access are tightly coupled
 
 For systems that need to receive documents from external sources, use the
-[Document Access Provider with Document Submission Option](CapabilityStatement-EehrxfDocumentAccessProviderSubmissionOption.html).
+[Document Access Provider with Document Submission Option](CapabilityStatement-document-access-provider-submission-option-eu-api.html).
 """
 
-* name = "EehrxfDocumentPublisherAccessProvider"
+* name = "DocumentPublisherAccessProviderEuApi"
 * title = "EEHRxF Grouped Document Publisher/Access Provider CapabilityStatement"
 * status = #active
 * experimental = false
@@ -107,7 +107,7 @@ Required scopes to accept:
 * rest[=].resource[+].type = #DocumentReference
 * rest[=].resource[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
 * rest[=].resource[=].extension[=].valueCode = #SHALL
-* rest[=].resource[=].supportedProfile[+] = Canonical(EehrxfMhdDocumentReference)
+* rest[=].resource[=].supportedProfile[+] = Canonical(DocumentReferenceEuApi)
 * rest[=].resource[=].supportedProfile[+] = "https://profiles.ihe.net/ITI/MHD/StructureDefinition/IHE.MHD.Minimal.DocumentReference"
 * rest[=].resource[=].documentation = """
 DocumentReference resources are served via ITI-67 Find Document References.
