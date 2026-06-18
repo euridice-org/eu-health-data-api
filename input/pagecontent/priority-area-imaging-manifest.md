@@ -9,8 +9,8 @@ Imaging Manifests can be accessed via document exchange.
 
 | Actor | Description | CapabilityStatement |
 |-------|-------------|---------------------|
-| Document Consumer | Retrieves imaging manifests | [EEHRxF Document Consumer](CapabilityStatement-EEHRxF-DocumentConsumer.html) |
-| Document Access Provider | Serves imaging manifests | [EEHRxF Document Access Provider](CapabilityStatement-EEHRxF-DocumentAccessProvider.html) |
+| Document Consumer | Retrieves imaging manifests | [EEHRxF Document Consumer](CapabilityStatement-EehrxfDocumentConsumer.html) |
+| Document Access Provider | Serves imaging manifests | [EEHRxF Document Access Provider](CapabilityStatement-EehrxfDocumentAccessProvider.html) |
 
 ### Document Exchange
 

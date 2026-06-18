@@ -1,7 +1,7 @@
 // CapabilityStatement for EEHRxF Document Access Provider - Document Submission Option
 // Extends base Document Access Provider with ITI-105 Simplified Publish capability
 
-Instance: EEHRxF-DocumentAccessProvider-SubmissionOption
+Instance: EehrxfDocumentAccessProviderSubmissionOption
 InstanceOf: CapabilityStatement
 Title: "EEHRxF Document Access Provider - Document Submission Option"
 Usage: #definition
@@ -12,7 +12,7 @@ This option enables the Access Provider to receive documents from external Docum
 Publishers via [ITI-105 Simplified Publish](https://profiles.ihe.net/ITI/MHD/ITI-105.html).
 
 Systems implementing this option:
-- SHALL also implement the base [Document Access Provider](CapabilityStatement-EEHRxF-DocumentAccessProvider.html) capabilities
+- SHALL also implement the base [Document Access Provider](CapabilityStatement-EehrxfDocumentAccessProvider.html) capabilities
 - SHALL accept ITI-105 transactions from authorized Document Publishers
 - SHALL make received documents available via ITI-67 and ITI-68
 - SHALL validate documents against EEHRxF content profiles
@@ -35,7 +35,7 @@ Adds to base Document Access Provider:
 Systems SHALL support SMART Backend Services authorization for document submission.
 """
 
-* name = "EEHRxFDocumentAccessProviderSubmissionOption"
+* name = "EehrxfDocumentAccessProviderSubmissionOption"
 * title = "EEHRxF Document Access Provider - Document Submission Option"
 * status = #active
 * experimental = false
@@ -47,7 +47,7 @@ Systems SHALL support SMART Backend Services authorization for document submissi
 * format[+] = #xml
 
 // Reference to base capability
-* imports = Canonical(EEHRxF-DocumentAccessProvider)
+* imports = Canonical(EehrxfDocumentAccessProvider)
 
 * rest[+].mode = #server
 * rest[=].documentation = """

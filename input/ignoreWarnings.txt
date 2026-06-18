@@ -22,7 +22,7 @@ CONFORMANCE_STATEMENT_NOCONFWORD
 A definition for CodeSystem 'http://dicom.nema.org/resources/ontology/DCMUID' could not be found, so the code cannot be validated
 
 
-The resource CapabilityStatement/EEHRxF-DocumentAccessProvider-Example could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+The resource CapabilityStatement/EehrxfDocumentAccessProviderExample could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
 
 # Not validated target for performance reasons
 CONCEPTMAP_GROUP_TARGET_SERVER_SIDE
@@ -31,7 +31,7 @@ CONCEPTMAP_GROUP_TARGET_SERVER_SIDE
 MSG_DRAFT
 
 # Not Assigned OID
-The resource CapabilityStatement/EEHRxF-DocumentAccessProvider-Example could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+The resource CapabilityStatement/EehrxfDocumentAccessProviderExample could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
 
 The resource ConceptMap/EehrxfMhdDocumentReferenceCM could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
 

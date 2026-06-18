@@ -13,7 +13,7 @@ See [Document Exchange](document-exchange.html) for query examples.
 * insert SetFmmAndStatusRule( 1, draft )
 * category MS
 * type MS
-* type from EEHRxFDocumentTypeVS (preferred)
+* type from EehrxfDocumentTypeVS (preferred)
 * subject 1..1
 * subject only Reference( http://hl7.eu/fhir/base/StructureDefinition/patient-eu-core )
 * date 1..1

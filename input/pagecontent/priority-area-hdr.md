@@ -7,8 +7,8 @@ Hospital Discharge Reports can be accessed via document exchange.
 
 | Actor | Description | CapabilityStatement |
 |-------|-------------|---------------------|
-| Document Consumer | Retrieves HDR documents | [EEHRxF Document Consumer](CapabilityStatement-EEHRxF-DocumentConsumer.html) |
-| Document Access Provider | Serves HDR documents | [EEHRxF Document Access Provider](CapabilityStatement-EEHRxF-DocumentAccessProvider.html) |
+| Document Consumer | Retrieves HDR documents | [EEHRxF Document Consumer](CapabilityStatement-EehrxfDocumentConsumer.html) |
+| Document Access Provider | Serves HDR documents | [EEHRxF Document Access Provider](CapabilityStatement-EehrxfDocumentAccessProvider.html) |
 
 ### Document Exchange
 

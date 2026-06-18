@@ -1,7 +1,7 @@
 // CapabilityStatement for EEHRxF Document Consumer Actor
 // Composite actor grouping MHD Document Consumer + PDQm Consumer + IUA Authorization Client
 
-Instance: EEHRxF-DocumentConsumer
+Instance: EehrxfDocumentConsumer
 InstanceOf: CapabilityStatement
 Title: "EEHRxF Document Consumer CapabilityStatement"
 Usage: #definition
@@ -29,7 +29,7 @@ This composite actor groups the following IHE actors:
 Systems SHALL support SMART Backend Services authorization for all transactions.
 """
 
-* name = "EEHRxFDocumentConsumer"
+* name = "EehrxfDocumentConsumer"
 * title = "EEHRxF Document Consumer CapabilityStatement"
 * status = #active
 * experimental = false

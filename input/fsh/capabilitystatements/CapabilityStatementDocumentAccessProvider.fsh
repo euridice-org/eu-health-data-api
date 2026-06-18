@@ -1,7 +1,7 @@
 // CapabilityStatement for EEHRxF Document Access Provider Actor
 // Composite actor grouping MHD Document Responder + PDQm Supplier + IUA
 
-Instance: EEHRxF-DocumentAccessProvider
+Instance: EehrxfDocumentAccessProvider
 InstanceOf: CapabilityStatement
 Title: "EEHRxF Document Access Provider CapabilityStatement"
 Usage: #definition
@@ -31,16 +31,16 @@ Systems SHALL support SMART Backend Services authorization for all transactions.
 
 ### Document Submission Option
 To accept document publication from external Document Publishers, implement the
-[Document Submission Option](CapabilityStatement-EEHRxF-DocumentAccessProvider-SubmissionOption.html).
+[Document Submission Option](CapabilityStatement-EehrxfDocumentAccessProviderSubmissionOption.html).
 
 ### Deployment
 The Document Access Provider may be grouped with Document Publisher, in which case
 document publication is internal. See the
-[grouped Document Publisher/Access Provider CapabilityStatement](CapabilityStatement-EEHRxF-DocumentPublisherAccessProvider.html)
+[grouped Document Publisher/Access Provider CapabilityStatement](CapabilityStatement-EehrxfDocumentPublisherAccessProvider.html)
 for this deployment pattern.
 """
 
-* name = "EEHRxFDocumentAccessProvider"
+* name = "EehrxfDocumentAccessProvider"
 * title = "EEHRxF Document Access Provider CapabilityStatement"
 * status = #active
 * experimental = false

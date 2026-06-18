@@ -1,7 +1,7 @@
 // CapabilityStatement for Grouped EEHRxF Document Publisher + Document Access Provider
 // For deployments where document production and access are co-located (publication is internal)
 
-Instance: EEHRxF-DocumentPublisherAccessProvider
+Instance: EehrxfDocumentPublisherAccessProvider
 InstanceOf: CapabilityStatement
 Title: "EEHRxF Grouped Document Publisher/Access Provider CapabilityStatement"
 Usage: #definition
@@ -55,10 +55,10 @@ Use this CapabilityStatement when implementing:
 - Any system where document creation and access are tightly coupled
 
 For systems that need to receive documents from external sources, use the
-[Document Access Provider with Document Submission Option](CapabilityStatement-EEHRxF-DocumentAccessProvider-SubmissionOption.html).
+[Document Access Provider with Document Submission Option](CapabilityStatement-EehrxfDocumentAccessProviderSubmissionOption.html).
 """
 
-* name = "EEHRxFDocumentPublisherAccessProvider"
+* name = "EehrxfDocumentPublisherAccessProvider"
 * title = "EEHRxF Grouped Document Publisher/Access Provider CapabilityStatement"
 * status = #active
 * experimental = false

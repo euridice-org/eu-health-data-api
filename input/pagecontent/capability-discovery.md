@@ -30,10 +30,10 @@ A system may implement one or both.
 
 Servers declare actor conformance using `CapabilityStatement.instantiates`, referencing the normative CapabilityStatements in this IG:
 
-- [Document Access Provider](CapabilityStatement-EEHRxF-DocumentAccessProvider.html)
-- [Document Access Provider — Document Submission Option](CapabilityStatement-EEHRxF-DocumentAccessProvider-SubmissionOption.html)
-- [Grouped Document Publisher/Access Provider](CapabilityStatement-EEHRxF-DocumentPublisherAccessProvider.html)
-- [Resource Access Provider](CapabilityStatement-EEHRxF-ResourceAccessProvider.html)
+- [Document Access Provider](CapabilityStatement-EehrxfDocumentAccessProvider.html)
+- [Document Access Provider — Document Submission Option](CapabilityStatement-EehrxfDocumentAccessProviderSubmissionOption.html)
+- [Grouped Document Publisher/Access Provider](CapabilityStatement-EehrxfDocumentPublisherAccessProvider.html)
+- [Resource Access Provider](CapabilityStatement-EehrxfResourceAccessProvider.html)
 
 Consumers inspect `instantiates` to determine which actor roles and exchange patterns a server supports.
 
@@ -74,14 +74,14 @@ sequenceDiagram
 
 ### Example: Server Supporting Multiple Priority Categories
 
-See the [example CapabilityStatement](CapabilityStatement-EEHRxF-DocumentAccessProvider-Example.html) for a Document Access Provider serving Patient Summaries and Laboratory Reports.
+See the [example CapabilityStatement](CapabilityStatement-EehrxfDocumentAccessProviderExample.html) for a Document Access Provider serving Patient Summaries and Laboratory Reports.
 
 The key elements a consumer looks for:
 
 ```json
 {
   "instantiates": [
-    "...CapabilityStatement/EEHRxF-DocumentAccessProvider"
+    "...CapabilityStatement/EehrxfDocumentAccessProvider"
   ],
   "implementationGuide": [
     "http://hl7.eu/fhir/eps",

@@ -1,7 +1,7 @@
 // CapabilityStatement for EEHRxF Document Publisher Actor
 // Composite actor grouping MHD Document Source + PDQm Consumer + IUA Authorization Client
 
-Instance: EEHRxF-DocumentPublisher
+Instance: EehrxfDocumentPublisher
 InstanceOf: CapabilityStatement
 Title: "EEHRxF Document Publisher CapabilityStatement"
 Usage: #definition
@@ -30,11 +30,11 @@ Systems SHALL support SMART Backend Services authorization for all transactions.
 ### Deployment
 The Document Publisher may be grouped with Document Access Provider, in which case the
 ITI-105 transaction becomes internal and is not exposed externally. See the
-[grouped Document Publisher/Access Provider CapabilityStatement](CapabilityStatement-EEHRxF-DocumentPublisherAccessProvider.html)
+[grouped Document Publisher/Access Provider CapabilityStatement](CapabilityStatement-EehrxfDocumentPublisherAccessProvider.html)
 for this deployment pattern.
 """
 
-* name = "EEHRxFDocumentPublisher"
+* name = "EehrxfDocumentPublisher"
 * title = "EEHRxF Document Publisher CapabilityStatement"
 * status = #active
 * experimental = false

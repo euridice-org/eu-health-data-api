@@ -2,7 +2,7 @@
 // Document Exchange Actors
 // ===========================================================================
 
-Instance: EEHRxF-DocumentPublisher-Actor
+Instance: EehrxfDocumentPublisherActor
 InstanceOf: ActorDefinition
 Title: "EEHRxF Document Publisher"
 Usage: #definition
@@ -11,17 +11,17 @@ The Document Publisher actor produces EEHRxF FHIR Documents and publishes them t
 Document Access Provider. This composite actor groups MHD Document Source, PDQm
 Patient Demographics Consumer, and IUA Authorization Client.
 
-See [Document Publisher CapabilityStatement](CapabilityStatement-EEHRxF-DocumentPublisher.html)
+See [Document Publisher CapabilityStatement](CapabilityStatement-EehrxfDocumentPublisher.html)
 for technical requirements.
 """
-* name = "EEHRxF_DocumentPublisher"
+* name = "EehrxfDocumentPublisherActor"
 * title = "EEHRxF Document Publisher"
 * status = #active
 * experimental = false
 * type = #system
-* capabilities = Canonical(EEHRxF-DocumentPublisher)
+* capabilities = Canonical(EehrxfDocumentPublisher)
 
-Instance: EEHRxF-DocumentAccessProvider-Actor
+Instance: EehrxfDocumentAccessProviderActor
 InstanceOf: ActorDefinition
 Title: "EEHRxF Document Access Provider"
 Usage: #definition
@@ -31,17 +31,17 @@ documents from Document Publishers and serving them to Document Consumers. This 
 actor groups MHD Document Recipient, MHD Document Responder, PDQm Patient Demographics
 Supplier, and IUA Authorization Server/Resource Server.
 
-See [Document Access Provider CapabilityStatement](CapabilityStatement-EEHRxF-DocumentAccessProvider.html)
+See [Document Access Provider CapabilityStatement](CapabilityStatement-EehrxfDocumentAccessProvider.html)
 for technical requirements.
 """
-* name = "EEHRxF_DocumentAccessProvider"
+* name = "EehrxfDocumentAccessProviderActor"
 * title = "EEHRxF Document Access Provider"
 * status = #active
 * experimental = false
 * type = #system
-* capabilities = Canonical(EEHRxF-DocumentAccessProvider)
+* capabilities = Canonical(EehrxfDocumentAccessProvider)
 
-Instance: EEHRxF-DocumentConsumer-Actor
+Instance: EehrxfDocumentConsumerActor
 InstanceOf: ActorDefinition
 Title: "EEHRxF Document Consumer"
 Usage: #definition
@@ -50,17 +50,17 @@ The Document Consumer actor consumes EEHRxF FHIR Documents by querying a Documen
 Provider. This composite actor groups MHD Document Consumer, PDQm Patient Demographics
 Consumer, and IUA Authorization Client.
 
-See [Document Consumer CapabilityStatement](CapabilityStatement-EEHRxF-DocumentConsumer.html)
+See [Document Consumer CapabilityStatement](CapabilityStatement-EehrxfDocumentConsumer.html)
 for technical requirements.
 """
-* name = "EEHRxF_DocumentConsumer"
+* name = "EehrxfDocumentConsumerActor"
 * title = "EEHRxF Document Consumer"
 * status = #active
 * experimental = false
 * type = #system
-* capabilities = Canonical(EEHRxF-DocumentConsumer)
+* capabilities = Canonical(EehrxfDocumentConsumer)
 
-Instance: EEHRxF-DocumentPublisherAccessProvider-Actor
+Instance: EehrxfDocumentPublisherAccessProviderActor
 InstanceOf: ActorDefinition
 Title: "EEHRxF Grouped Document Publisher/Access Provider"
 Usage: #definition
@@ -72,21 +72,21 @@ is exposed externally.
 
 This is common for hospital EHR systems that produce and serve their own documents.
 
-See [Grouped Document Publisher/Access Provider CapabilityStatement](CapabilityStatement-EEHRxF-DocumentPublisherAccessProvider.html)
+See [Grouped Document Publisher/Access Provider CapabilityStatement](CapabilityStatement-EehrxfDocumentPublisherAccessProvider.html)
 for technical requirements.
 """
-* name = "EEHRxF_DocumentPublisherAccessProvider"
+* name = "EehrxfDocumentPublisherAccessProviderActor"
 * title = "EEHRxF Grouped Document Publisher/Access Provider"
 * status = #active
 * experimental = false
 * type = #system
-* capabilities = Canonical(EEHRxF-DocumentPublisherAccessProvider)
+* capabilities = Canonical(EehrxfDocumentPublisherAccessProvider)
 
 // ===========================================================================
 // Resource Exchange Actors
 // ===========================================================================
 
-Instance: EEHRxF-ResourceAccessProvider-Actor
+Instance: EehrxfResourceAccessProviderActor
 InstanceOf: ActorDefinition
 Title: "EEHRxF Resource Access Provider"
 Usage: #definition
@@ -96,17 +96,17 @@ This enables direct resource access complementing document-based exchange.
 This composite actor groups IPA Server, PDQm Patient Demographics
 Supplier, and IUA Authorization Server/Resource Server.
 
-See [Resource Access Provider CapabilityStatement](CapabilityStatement-EEHRxF-ResourceAccessProvider.html)
+See [Resource Access Provider CapabilityStatement](CapabilityStatement-EehrxfResourceAccessProvider.html)
 for technical requirements.
 """
-* name = "EEHRxF_ResourceAccessProvider"
+* name = "EehrxfResourceAccessProviderActor"
 * title = "EEHRxF Resource Access Provider"
 * status = #active
 * experimental = false
 * type = #system
-* capabilities = Canonical(EEHRxF-ResourceAccessProvider)
+* capabilities = Canonical(EehrxfResourceAccessProvider)
 
-Instance: EEHRxF-ResourceConsumer-Actor
+Instance: EehrxfResourceConsumerActor
 InstanceOf: ActorDefinition
 Title: "EEHRxF Resource Consumer"
 Usage: #definition
@@ -115,12 +115,12 @@ The Resource Consumer actor queries for clinical data resources from a Resource 
 Provider following IPA patterns. This composite actor groups IPA Client,
 PDQm Patient Demographics Consumer, and IUA Authorization Client.
 
-See [Resource Consumer CapabilityStatement](CapabilityStatement-EEHRxF-ResourceConsumer.html)
+See [Resource Consumer CapabilityStatement](CapabilityStatement-EehrxfResourceConsumer.html)
 for technical requirements.
 """
-* name = "EEHRxF_ResourceConsumer"
+* name = "EehrxfResourceConsumerActor"
 * title = "EEHRxF Resource Consumer"
 * status = #active
 * experimental = false
 * type = #system
-* capabilities = Canonical(EEHRxF-ResourceConsumer)
+* capabilities = Canonical(EehrxfResourceConsumer)

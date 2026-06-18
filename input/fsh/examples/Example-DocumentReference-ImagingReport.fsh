@@ -17,7 +17,7 @@ Usage: #example
 * masterIdentifier.system = "urn:oid:2.999.3.4.5.6.7.8.9"
 * masterIdentifier.value = "urn:uuid:e5f6a7b8-c9d0-1234-ef01-345678901234"
 * status = #current
-* category = EEHRxFDocumentPriorityCategoryCS#Medical-Imaging "medical imaging studies and related imaging reports"
+* category = EehrxfDocumentPriorityCategoryCS#Medical-Imaging "medical imaging studies and related imaging reports"
 * type = $loinc#85430-7 "Diagnostic imaging report"
 * subject.reference = "http://example.org/fhir/Patient/example-patient"
 * subject.display = "Jan Jansen"

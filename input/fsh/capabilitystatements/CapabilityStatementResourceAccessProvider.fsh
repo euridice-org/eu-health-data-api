@@ -1,7 +1,7 @@
 // CapabilityStatement for EEHRxF Resource Access Provider Actor (IPA server)
 // Based on IPA Server with SMART Backend Services security
 
-Instance: EEHRxF-ResourceAccessProvider
+Instance: EehrxfResourceAccessProvider
 InstanceOf: CapabilityStatement
 Title: "EEHRxF Resource Access Provider CapabilityStatement"
 Usage: #definition
@@ -40,7 +40,7 @@ Systems SHALL support SMART Backend Services authorization for all transactions.
 Resources SHOULD conform to EU Core profiles where available.
 """
 
-* name = "EEHRxFResourceAccessProvider"
+* name = "EehrxfResourceAccessProvider"
 * title = "EEHRxF Resource Access Provider CapabilityStatement"
 * status = #active
 * experimental = false

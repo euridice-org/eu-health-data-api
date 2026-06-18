@@ -29,7 +29,7 @@ Usage: #example
 * status = #current
 
 // Category: EHDS Priority Category (coarse search)
-* category = EEHRxFDocumentPriorityCategoryCS#Patient-Summaries "patient summaries"
+* category = EehrxfDocumentPriorityCategoryCS#Patient-Summaries "patient summaries"
 
 // Type: LOINC code (clinical precision)
 * type = $loinc#60591-5 "Patient summary Document"

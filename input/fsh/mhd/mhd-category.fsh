@@ -3,7 +3,7 @@
 // =============================================================================
 // EHDS Regulation defined priority document categories for cross-border primary use
 
-CodeSystem: EEHRxFDocumentPriorityCategoryCS
+CodeSystem: EehrxfDocumentPriorityCategoryCS
 Id:         eehrxf-document-priority-category-cs
 Title:      "EEHRxF Document Priority Category CodeSystem"
 Description: """
@@ -43,13 +43,13 @@ Electronic health data that include significant clinical facts related to an ide
 // =============================================================================
 // DocumentReference Type ValueSet per priority category
 // =============================================================================
-// Given the priority category EEHRxFDocumentPriorityCategoryCS,
+// Given the priority category EehrxfDocumentPriorityCategoryCS,
 // we define a ValueSet per priority category
 // with the clinical codes (usually LOINC codes) for specific document types.
 // These ValueSets are draft (informative), not normative, because the specific
 // document types may evolve over time. Content IGs are the authoritative source.
 
-ValueSet: EEHRxFDocumentTypePatientSummaryVS
+ValueSet: EehrxfDocumentTypePatientSummaryVS
 Id: eehrxf-document-type-patient-summary-vs
 Title: "EEHRxF Document Type ValueSet for Patient Summaries"
 Description: "ValueSet for specific document types within the Patient Summary priority category."
@@ -60,7 +60,7 @@ Description: "ValueSet for specific document types within the Patient Summary pr
 * insert LOINCCopyrightForVS
 * $loinc#60591-5 "Patient summary Document"
 
-ValueSet: EEHRxFDocumentTypeDischargeReportVS
+ValueSet: EehrxfDocumentTypeDischargeReportVS
 Id: eehrxf-document-type-discharge-report-vs
 Title: "EEHRxF Document Type ValueSet for Discharge Reports"
 Description: "ValueSet for specific document types within the Discharge Report priority category."
@@ -72,7 +72,7 @@ Description: "ValueSet for specific document types within the Discharge Report p
 * $loinc#18842-5 "Discharge summary"
 * $loinc#100719-4 "Surgical oncology Discharge summary"
 
-ValueSet: EEHRxFDocumentTypeLaboratoryReportVS
+ValueSet: EehrxfDocumentTypeLaboratoryReportVS
 Id: eehrxf-document-type-laboratory-report-vs
 Title: "EEHRxF Document Type ValueSet for Laboratory Reports"
 Description: "ValueSet for specific document types within the Laboratory Report priority category."
@@ -83,7 +83,7 @@ Description: "ValueSet for specific document types within the Laboratory Report 
 * insert LOINCCopyrightForVS
 * $loinc#11502-2 "Laboratory report"
 
-ValueSet: EEHRxFDocumentTypeMedicalImagingVS
+ValueSet: EehrxfDocumentTypeMedicalImagingVS
 Id: eehrxf-document-type-medical-imaging-vs
 Title: "EEHRxF Document Type ValueSet for Medical Imaging"
 Description: "ValueSet for specific document types within the Medical Imaging priority category."
@@ -104,17 +104,17 @@ Description: "ValueSet for specific document types within the Medical Imaging pr
 // =============================================================================
 // LOINC codes for specific document types - used for precise clinical identification
 
-ValueSet: EEHRxFDocumentTypeVS
+ValueSet: EehrxfDocumentTypeVS
 Id: eehrxf-document-type-vs
 Title: "EEHRxF Document Type ValueSet"
 Description: "Document type codes for clinical precision in document identification."
 * ^status = #draft
 * ^experimental = false
 * insert LOINCCopyrightForVS
-* include codes from valueset EEHRxFDocumentTypePatientSummaryVS
-* include codes from valueset EEHRxFDocumentTypeDischargeReportVS
-* include codes from valueset EEHRxFDocumentTypeLaboratoryReportVS
-* include codes from valueset EEHRxFDocumentTypeMedicalImagingVS
+* include codes from valueset EehrxfDocumentTypePatientSummaryVS
+* include codes from valueset EehrxfDocumentTypeDischargeReportVS
+* include codes from valueset EehrxfDocumentTypeLaboratoryReportVS
+* include codes from valueset EehrxfDocumentTypeMedicalImagingVS
 
 
 Instance: EehrxfMhdDocumentReferenceCM
@@ -131,7 +131,7 @@ Usage: #example
 * experimental = false
 * status = #draft
 * purpose = "Guide implementers in understanding how the coarse-grained priority categories defined in the EHDS regulation relate to specific document categories identified by LOINC codes, and it may evolve over time as clinical practice changes and new document categories become relevant for cross-border exchange."
-* group.source = Canonical(EEHRxFDocumentPriorityCategoryCS)
+* group.source = Canonical(EehrxfDocumentPriorityCategoryCS)
 * group.target = $loinc
 * group.element[+].code = #Patient-Summaries
 * group.element[=].target[+].code = #60591-5

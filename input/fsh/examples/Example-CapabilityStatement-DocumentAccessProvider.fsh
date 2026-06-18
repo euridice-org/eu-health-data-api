@@ -1,7 +1,7 @@
 // Example CapabilityStatement showing a realistic Document Access Provider deployment
 // that declares actor conformance and priority category support
 
-Instance: EEHRxF-DocumentAccessProvider-Example
+Instance: EehrxfDocumentAccessProviderExample
 InstanceOf: CapabilityStatement
 Title: "Example: Document Access Provider Supporting EPS and Laboratory"
 Usage: #example
@@ -29,7 +29,7 @@ See [Capability Discovery](capability-discovery.html) for guidance.
 * format[+] = #xml
 
 // Actor conformance — this server implements the EEHRxF Document Access Provider
-* instantiates[+] = Canonical(EEHRxF-DocumentAccessProvider)
+* instantiates[+] = Canonical(EehrxfDocumentAccessProvider)
 // NOTE: instantiates was considered for priority category support, but requires
 // each content IG to publish a CapabilityStatement — none currently do.
 // implementationGuide needs only the IG canonical URL.

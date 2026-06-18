@@ -164,7 +164,7 @@ When Document Publisher and Document Access Provider are **separate systems**, t
 
 The Document Access Provider MAY support receiving documents from external Publishers by implementing the [MHD Simplified Publish Option](https://profiles.ihe.net/ITI/MHD/1332_actor_options.html#13324-simplified-publish-option). This is the **Document Submission Option**.
 
-Systems implementing this option declare it via [EEHRxF-DocumentAccessProvider-SubmissionOption](CapabilityStatement-EEHRxF-DocumentAccessProvider-SubmissionOption.html). See [Actors - Document Submission Option](actors.html#document-submission-option) for actor groupings.
+Systems implementing this option declare it via [EehrxfDocumentAccessProviderSubmissionOption](CapabilityStatement-EehrxfDocumentAccessProviderSubmissionOption.html). See [Actors - Document Submission Option](actors.html#document-submission-option) for actor groupings.
 
 #### ITI-105 Simplified Publish
 
