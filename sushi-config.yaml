@@ -70,8 +70,6 @@ pages:
     title: Background
     regulatoryAnchors.md:
       title: Regulatory Anchors
-      ehds-annex-ii.md:
-        title: EHDS Annex II - Essential Requirements
     actors.md:
       title: Actors and Transactions
     priority-categories.md:
