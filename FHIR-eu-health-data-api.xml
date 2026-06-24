@@ -35,6 +35,10 @@
 <artifact id="CapabilityStatement/EEHRxF-DocumentAccessProvider-Example" key="CapabilityStatement-EEHRxF-DocumentAccessProvider-Example" name="Example: Document Access Provider Supporting EPS and Laboratory"/>
 <page key="NA" name="(NA)"/>
 <page key="many" name="(many)"/>
+<page key="api-definitions" name="API Definitions"/>
+<page key="api-wellness" name="API Wellness Applications"/>
+<page key="api-cross-memberstate-organization" name="API for Cross-Member State Organizational Exchange"/>
+<page key="api-intra-healthcare-provider" name="API for Intra Healthcare Provider Exchange Environment"/>
 <page key="about" name="About"/>
 <page key="actors" name="Actors and Transactions"/>
 <page key="artifacts" name="Artifacts Summary"/>
@@ -48,6 +52,7 @@
 <page key="usecase-cross-org" name="Cross-Organization via National Infrastructure"/>
 <page key="document-exchange" name="Document Exchange"/>
 <page key="ehds-annex-ii" name="EHDS Annex II - Essential Requirements"/>
+<page key="ehr-system-composition" name="EHR System Composition"/>
 <page key="fhir-documents-vs-resources" name="FHIR Documents and Resources"/>
 <page key="functional" name="Functional Requirements"/>
 <page key="usecase-health-data-portal" name="Health Data Access Service"/>
@@ -55,12 +60,12 @@
 <page key="index" name="Home"/>
 <page key="priority-area-hdr" name="Hospital Discharge Report"/>
 <page key="implementation" name="Implementation"/>
+<page key="environment-healthcare-provider" name="Intra Healthcare Provider Exchange Environment"/>
 <page key="priority-area-imaging-manifest" name="Medical Imaging Manifest"/>
 <page key="priority-area-imaging-report" name="Medical Imaging Report"/>
 <page key="priority-area-laboratory" name="Medical Test Results (Laboratory)"/>
 <page key="member-state-architectures" name="Member State Architectures"/>
 <page key="open-issues" name="Open Issues"/>
-<page key="usecase-ehr-internal" name="Organization-Internal Exchange"/>
 <page key="patient-match" name="Patient Matching"/>
 <page key="priority-area-eps" name="Patient Summary (EPS)"/>
 <page key="priority-categories" name="Priority Categories"/>

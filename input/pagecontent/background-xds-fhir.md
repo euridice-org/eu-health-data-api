@@ -1,47 +1,52 @@
 ### Overview
 
-The document exchange model in this IG is derived from the IHE MHD Standard. The FHIR `DocumentReference` resource is an index card representing a document: [ITI-67](https://profiles.ihe.net/ITI/MHD/ITI-67.html) finds the cards, [ITI-68](https://profiles.ihe.net/ITI/MHD/ITI-68.html) follows `attachment.url` to fetch the document. The Document Consumer queries, follows the URL, and gets a document of the type and format the card advertises.
+EHR systems across the EU use different approaches to manage health documents — from FHIR servers that generate documents from clinical resources, to document-centric systems backed by XDS/XCA repositories. This IG defines an API contract that both approaches can implement.
 
-How the server (Document Access Provider) stores or builds that document does not change the API contract, but different patterns are discussed on this page as informative examples for implementers.
+The choice of approach is **orthogonal to organizational deployment topology**. A FHIR server and an XDS system can each be deployed directly, behind a facade, or as part of a national infrastructure. The shared API surface — ITI-67, ITI-68, and the `EehrxfMhdDocumentReference` profile — works for both.
 
----
-
-### Backend Implementation Patterns
-
-- **FHIR server**: A FHIR server holding individual FHIR resources may produce FHIR documents on demand by assembling these resources into a FHIR Document (for example, a Patient Summary via `$summary`) or it can serve FHIR documents it has persisted. A FHIR server may also expose the underlying clinical resources directly through [Resource Access](resource-access.html).
-- **[Proxy to XDS Infrastructure](https://profiles.ihe.net/ITI/MHD/1336_cross_profile_considerations.html#13361-mhd-actor-grouped-with-xds-infrastructure)**: an MHD layer over an existing XDS/XCA repository of persistent documents; it maps each XDS [`DocumentEntry`](https://profiles.ihe.net/ITI/MHD/32_fhir_maps.html#3451-metadata-object-types-mapped-to-fhir) onto a FHIR `DocumentReference`.
-
-In MHD, the `attachment.url` is opaque, the consumer simply gets it from the [ITI-68](https://profiles.ihe.net/ITI/MHD/ITI-68.html) response. Depending on the deployment, the URL might resolve to:
-- An FHIR operation that assembles a document on demand, such as the IPS [`$summary`](https://build.fhir.org/ig/HL7/fhir-ips/OperationDefinition-summary.html) operation (`[base]/Patient/[id]/$summary`)
-- A persisted FHIR Document `Bundle` (`[base]/Bundle/[id]`)
-- A URL on another system, as when a registry holds only metadata and the document lives at its source
-
-See [Document Exchange](document-exchange.html) for detail on the transactions.
+See [Document Exchange](document-exchange.html) for transaction details and [Member State Architectures](member-state-architectures.html) for national infrastructure patterns.
 
 ---
 
-### Document Assembly
+### FHIR Server
 
-Whether a document exists before it is requested is the Document Access Provider's choice. MHD defines three modes; either backend can use any of them.
+The server holds clinical data as FHIR resources (Observation, Condition, MedicationStatement, Encounter, etc.) and assembles FHIR Document Bundles at retrieval time. Documents are views generated from the resource store — never persisted as static artifacts.
 
-| Mode | Content | `attachment.hash` / `size` | MHD |
-|---|---|---|---|
-| On-demand | assembled on each request | absent | [On-Demand Documents](https://profiles.ihe.net/ITI/MHD/ITI-67.html#236742212-support-for-on-demand-documents) |
-| Delayed | assembled on first request, then kept | `size = 0`, fixed empty hash | [Delayed Document Assembly](https://profiles.ihe.net/ITI/MHD/ITI-67.html#236742213-support-for-delayed-document-assembly) |
-| Stable | persisted before the request (MHD default) | present | — |
-{: .grid}
+- ITI-67 returns `DocumentReference` resources with **absent `hash` and `size`** — MHD's signal for an on-demand document.
+- At ITI-68, the server synthesizes the Bundle from current resource state. `attachment.url` is implementation-private; the materialization mechanism (e.g., `Patient/$summary`, `Composition/$document`) is not constrained.
+- ITI-105 does not apply — no inbound publication is needed; the resource store is the data source.
+- A FHIR server MAY also expose the same clinical resources directly via [Resource Access](resource-access.html). Documents and resources are complementary views of the same underlying data.
 
-An ITI-67 search returns one `DocumentReference` per retrievable document. The mode governs only the *content behind* `attachment.url`: whether it already exists (stable) or is built when fetched (on-demand or delayed). MHD does not require the `DocumentReference` nor the content to exist beforehand; the server may produce either on request.
+**CapabilityStatement:** declares `supportedProfile: EehrxfMhdDocumentReference`.
 
 ---
 
-### Conformance
+### Document-Centric System
 
-Regardless of backend or assembly mode, a Document Access Provider meets the same API requirements:
+Documents are stored artifacts. This covers two common implementations:
 
-- **Query**: it accepts the search parameters defined in the [Document Access Provider CapabilityStatement](CapabilityStatement-EEHRxF-DocumentAccessProvider.html) for ITI-67.
-- **Return**: every `DocumentReference` it returns conforms to the [`EehrxfMhdDocumentReference`](StructureDefinition-EehrxfMhdDocumentReference.html) profile.
+**FHIR Document Store** — a FHIR server that persists `DocumentReference` resources and associated content (Binary or Bundle). Publishers submit via ITI-105 (Simplified Publish) or ITI-65 (Provide Document Bundle). ITI-67 queries the stored metadata; ITI-68 retrieves the stored content.
 
-These fix the shape of the query and its results, not how the server stores or builds documents.
+**XDS Proxy** — an MHD translation layer over a XDS/XCA repository. FHIR API calls are translated to XDS transactions against the underlying registry and repository. `DocumentReference` maps directly to XDS `DocumentEntry` per MHD's normative mapping. Existing national XDS investments require no replacement.
 
+Both declare `supportedProfile: EehrxfMhdDocumentReference`. XDS-backed systems that assert full XDS-grade metadata additionally declare `supportedProfile: IHE.MHD.Comprehensive.DocumentReference`.
 
+**`attachment.hash` and `size` are present** in both — indicating stored documents.
+
+**Variant — Metadata Registry:** A document-centric system MAY hold only `DocumentReference` metadata, with `attachment.url` pointing to documents hosted at source systems. Consumers follow that URL at ITI-68. No additional conformance requirements apply.
+
+---
+
+### The Shared API Contract
+
+A consumer using ITI-67 and ITI-68 cannot tell which approach the server uses — only whether hash/size is present or absent. Both approaches conform to the same `EehrxfMhdDocumentReference` profile and respond to the same transactions.
+
+| | FHIR Server | Document-Centric System |
+|---|---|---|
+| `attachment.hash` / `size` | **Absent** | Present |
+| Documents persisted? | No | Yes |
+| Resources exposed via IPA? | MAY | No |
+| ITI-105 publish used? | No | Optional |
+| XDS/XCA backend? | No | Optional |
+
+[IHE MHD](https://profiles.ihe.net/ITI/MHD/) enables this interoperability: `DocumentReference` maps to XDS `DocumentEntry`, allowing FHIR servers and XDS systems to participate in the same document exchange network.

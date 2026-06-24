@@ -15,14 +15,14 @@ For how different server backends (FHIR-native on-demand vs persisted/XDS-bridge
 
 This IG defines three document exchange actors. See [Actors](actors.html) for detailed actor groupings.
 
-| Actor | MHD Actor | Transaction | Optionality |
-|-------|-----------|-------------|-------------|
-| [Document Consumer](actors.html#document-consumer) | [Document Consumer](https://profiles.ihe.net/ITI/MHD/1331_actors_and_transactions.html#133112-document-consumer) | [ITI-67](https://profiles.ihe.net/ITI/MHD/ITI-67.html) Find Document References | R |
-| [Document Consumer](actors.html#document-consumer) | [Document Consumer](https://profiles.ihe.net/ITI/MHD/1331_actors_and_transactions.html#133112-document-consumer) | [ITI-68](https://profiles.ihe.net/ITI/MHD/ITI-68.html) Retrieve Document | R |
-| [Document Access Provider](actors.html#document-access-provider) | [Document Responder](https://profiles.ihe.net/ITI/MHD/1331_actors_and_transactions.html#133114-document-responder) | [ITI-67](https://profiles.ihe.net/ITI/MHD/ITI-67.html) Find Document References | R |
-| [Document Access Provider](actors.html#document-access-provider) | [Document Responder](https://profiles.ihe.net/ITI/MHD/1331_actors_and_transactions.html#133114-document-responder) | [ITI-68](https://profiles.ihe.net/ITI/MHD/ITI-68.html) Retrieve Document | R |
-| [Document Access Provider](actors.html#document-access-provider) | [Document Recipient](https://profiles.ihe.net/ITI/MHD/1331_actors_and_transactions.html#133113-document-recipient) | [ITI-105: Simplified Publish](https://profiles.ihe.net/ITI/MHD/ITI-105.html) | O |
-| [Document Publisher](actors.html#document-publisher) | [Document Source](https://profiles.ihe.net/ITI/MHD/1331_actors_and_transactions.html#133111-document-source) | [ITI-105: Simplified Publish](https://profiles.ihe.net/ITI/MHD/ITI-105.html) | R |
+| Actor | Transaction | Optionality |
+|-------|-------------|-------------|
+| [Document Consumer](actors.html#document-consumer) | [ITI-67](https://profiles.ihe.net/ITI/MHD/ITI-67.html) Find Document References | R |
+| [Document Consumer](actors.html#document-consumer) | [ITI-68](https://profiles.ihe.net/ITI/MHD/ITI-68.html) Retrieve Document | R |
+| [Document Access Provider](actors.html#document-access-provider) | [ITI-67](https://profiles.ihe.net/ITI/MHD/ITI-67.html) Find Document References | R |
+| [Document Access Provider](actors.html#document-access-provider) | [ITI-68](https://profiles.ihe.net/ITI/MHD/ITI-68.html) Retrieve Document | R |
+| [Document Access Provider](actors.html#document-access-provider) | [ITI-105: Simplified Publish](https://profiles.ihe.net/ITI/MHD/ITI-105.html) | O |
+| [Document Publisher](actors.html#document-publisher) | [ITI-105: Simplified Publish](https://profiles.ihe.net/ITI/MHD/ITI-105.html) | R |
 {: .grid}
 
 
@@ -114,6 +114,12 @@ The EHDS priority categories (Patient Summary, Laboratory Report, etc.) are regu
 Implementers: Does your system use or plan to use `category` for document classification? Would constraining `category` to the EHDS priority categories be useful for your search workflows, or conflict with other category schemes? Are there other good code sets for differentiating, for example, laboratory reports from imaging reports?
 
 </div>
+
+#### On-Demand Documents
+
+Some servers assemble documents on demand from operational data rather than serving pre-stored Bundles. MHD supports this: an on-demand DocumentReference has no `content.attachment.hash` or `content.attachment.size`. The `content.attachment.url` may invoke any endpoint that returns a valid Document Bundle, including FHIR operations (e.g., `Patient/[id]/$summary`).
+
+Consumers treat on-demand and persisted DocumentReferences identically — both are retrieved via ITI-68. Servers assembling on demand are not required to version or persist past renderings.
 
 #### Search Examples
 

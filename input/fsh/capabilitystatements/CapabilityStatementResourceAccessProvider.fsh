@@ -54,7 +54,7 @@ Resources SHOULD conform to EU Core profiles where available.
 * format[+] = #xml
 
 // Instantiation references
-* instantiates[+] = "http://hl7.org/fhir/uv/ipa/CapabilityStatement/ipa-server"
+// * instantiates[+] = "http://hl7.org/fhir/uv/ipa/CapabilityStatement/ipa-server"
 
 // Server mode for Resource Access Provider
 * rest[+].mode = #server

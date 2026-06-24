@@ -1,18 +1,16 @@
-**This page is informative.** It illustrates how national infrastructures can use this IG's API; it defines no conformance requirements of its own.
-
 Member States across the European Union have diverse healthcare system architectures and health information exchange infrastructures. This IG accommodates that diversity by defining the **EHR system API surface** without prescribing national infrastructure design.
 
-This page describes the two primary national architectural patterns and how EHR systems fit within each. For how EHR systems are deployed internally within healthcare organizations, see [Use Case — Organization-Internal Exchange](usecase-ehr-internal.html). For how EHR systems connect externally, see [Use Case — Cross-Organization via National Infrastructure](usecase-cross-org.html).
+This page describes the two primary national architectural patterns and how EHR systems fit within each. For how EHR systems are deployed internally within healthcare organizations, see [Use Case — Organization-Internal Exchange](environment-healthcare-provider.html). For how EHR systems connect externally, see [Use Case — Cross-Organization via National Infrastructure](usecase-cross-org.html).
 
 ### National Infrastructure is Out of Scope
 
-The EHDS Regulation places the obligation to build and operate national health data interoperability infrastructure on **Member States** (Arts 4, 12, 23). This IG defines the API contract at the EHR system boundary and provides informative examples of how it can be used across Member States. How Member States structure their national infrastructure is their decision; this IG does not prescribe it.
+The EHDS Regulation places the obligation to build and operate national health data interoperability infrastructure on **Member States** (Arts 4, 12, 23). This IG defines the API contract at the EHR system boundary, and informative examples how this might be useful in different member state . How Member States structure their national infrastructure is their decision; this IG does not prescribe it.
 
 The two patterns below are **informative examples** of how national infrastructure can use this IG's API.
 
 ---
 
-### Pattern 1: Centralized Repository
+### Pattern 1 — Centralized Repository
 
 EHR systems publish documents to a national (or regional) repository. Consumers query the repository rather than individual EHR systems.
 
@@ -22,13 +20,13 @@ EHR System B ──[ITI-105 publish]──▶         ▲
 EHR System C ──[ITI-105 publish]─────────────┘
 ```
 
-**EHR system role:** [Document Publisher](actors.html#document-publisher), submitting documents via ITI-105. The national repository acts as the [Document Access Provider](actors.html#document-access-provider); EHR systems do not need to host a query API.
+**EHR system role:** [Document Publisher](actors.html#document-publisher) — submits documents via ITI-105. The national repository acts as the [Document Access Provider](actors.html#document-access-provider); EHR systems do not need to host a query API.
 
 **Common in:** Existing national XDS/XCA deployments. Repository may be FHIR-native or XDS-backed behind an MHD facade. See [Relationship to XDS/FHIR Document Sharing](background-xds-fhir.html) for how these backends differ technically.
 
 ---
 
-### Pattern 2: Federated Query
+### Pattern 2 — Federated Query
 
 Data stays at the EHR system. A national record locator routes queries to the relevant EHR systems; responses may be aggregated by the national layer.
 
@@ -38,7 +36,7 @@ HPAS / NCP ──▶ Record Locator ──[ITI-67/68]──▶ EHR System A  (th
                                ──[ITI-67/68]──▶ EHR System C  (this IG's API)
 ```
 
-**EHR system role:** [Document Access Provider](actors.html#document-access-provider), hosting a query and retrieval API. The national record locator is a [Document Consumer](actors.html#document-consumer) of each EHR's API.
+**EHR system role:** [Document Access Provider](actors.html#document-access-provider) — hosts a query and retrieval API. The national record locator is a [Document Consumer](actors.html#document-consumer) of each EHR's API.
 
 **Common in:** Netherlands, Sweden (national record locator with patient identifier resolution at the national layer). EHR systems expose a conformant API endpoint; the national layer handles routing and aggregation.
 
