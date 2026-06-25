@@ -4,7 +4,7 @@ A **Health Professional Access Service** ([Art. 12](https://eur-lex.europa.eu/le
 
 ### Scope
 
-This IG defines the API the access service could use to query EHR systems. Requirements for the access service itself — including how the professional authenticates (e.g eIDAS), how the patient is selected, and how queries are routed across EHR systems — are governed by Member State requirements and are **out of scope** here.
+This IG defines the EHR interoperability component API surface the access service could use to query EHR systems. Requirements for the access service itself — including how the professional authenticates (e.g eIDAS), how the patient is selected, and how queries are routed across EHR systems — are governed by Member State requirements and are **out of scope** here.
 
 ### Participants
 
@@ -22,4 +22,4 @@ The service may query EHR systems directly, through national infrastructure that
 
 ### Authorization
 
-The professional's identity and authorization are established at the access service. At the EHR API surface, the consumer is an authorized system-to-system caller; the mechanism — for example SMART Backend Services credentials issued by a national authorization server — is described in [Authorization](authorization.html).
+The professional's identity and authorization are established at the access service. At the EHR interoperability component API surface, the consumer is an authorized system-to-system caller; the mechanism — for example SMART Backend Services credentials issued by a national authorization server — is described in [Authorization](authorization.html).

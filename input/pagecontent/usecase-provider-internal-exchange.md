@@ -2,21 +2,21 @@
 
 Provider-internal exchange describes how a healthcare provider can use the same EHR interoperability component capabilities within its own environment.
 
-This page is informative. EHDS does not require provider-internal workflow changes. It shows where the EHR system API defined in this IG can support internal exchange, aggregation for external exchange, or both.
+This page is informative. EHDS does not require provider-internal workflow changes. It shows where the EHR interoperability component API surface defined in this IG can support internal exchange, aggregation for external exchange, or both.
 
 <div>
   <figure class="figure">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 816 442" class="figure-img img-responsive img-rounded center-block" style="max-width:80%; height:auto;" role="img" >
-      <image href="environment-intra-healthcare-provider.drawio.svg" width="816" height="442" preserveAspectRatio="xMidYMid meet" />
+      <image href="usecase-provider-internal-exchange.drawio.svg" width="816" height="442" preserveAspectRatio="xMidYMid meet" />
     </svg>
-    <figcaption class="figure-caption"><em>Figure: Healthcare Provider Environment</em></figcaption>
+    <figcaption class="figure-caption"><em>Figure: Provider-Internal Exchange</em></figcaption>
   </figure>
   <p></p>
 </div>
 
 A healthcare provider may deploy multiple EHR systems. Those systems may expose document or resource access directly, or the provider may use a gateway, facade, aggregator, or registry-style deployment to present a single EHR system boundary. See [EHR System Composition Patterns](ehr-system-composition.html).
 
-When the provider connects to national infrastructure, the gateway-facing EHR system is responsible for making provider data available through the API surface expected by the Member State. Provider-internal exchange and national exchange can use the same functional components, but they are separate deployment contexts.
+When the provider connects to national infrastructure, the gateway-facing EHR system is responsible for making provider data available through the API surface expected by the Member State. Provider-internal exchange and national exchange can use the same EHR interoperability component capabilities, but they are separate deployment contexts.
 
 ### Participants
 

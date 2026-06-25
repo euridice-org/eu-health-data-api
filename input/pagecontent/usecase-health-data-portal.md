@@ -4,7 +4,7 @@ A **Health Data Access Service** ([Art. 4](https://eur-lex.europa.eu/legal-conte
 
 ### Scope
 
-This IG defines the API the access service uses when querying EHR systems. The access service itself — patient authentication (national eID, EU Digital Identity Wallet), consent management, and how queries are routed across EHR systems — is governed by Member State requirements and is out of scope here.
+This IG defines the EHR interoperability component API surface the access service uses when querying EHR systems. The access service itself — patient authentication (national eID, EU Digital Identity Wallet), consent management, and how queries are routed across EHR systems — is governed by Member State requirements and is out of scope here.
 
 ### Participants
 
@@ -20,8 +20,8 @@ This IG defines the API the access service uses when querying EHR systems. The a
 
 ### Authorization
 
-The patient's identity and authorization are established at the access service. At the EHR API surface, the consumer is an authorized system-to-system caller; the mechanism is described in [Authorization](authorization.html). Patient consent preferences are enforced by the access service and/or the EHR system per Member State policy.
+The patient's identity and authorization are established at the access service. At the EHR interoperability component API surface, the consumer is an authorized system-to-system caller; the mechanism is described in [Authorization](authorization.html). Patient consent preferences are enforced by the access service and/or the EHR system per Member State policy.
 
 #### Patient-Provided Data 
 
-Articles 5 give patients the right to insert data into to their health record using the Health Data Access Service. In this context, a Health Data Access service could also act as a [Document Publisher](actors.html#document-publisher), submitting patient-sourced documents to an EHR system via ITI-105. Patient-sourced content may be tagged using `.meta.security` or `Provenance` resources to distinguish it from clinician-authored data (informative; see content specifications). See the [Wellness App](usecase-wellness-app.html) for a related use case where wellness applications are used to submit patient-provided data.
+Article 5 gives patients the right to insert information into their EHR through the Health Data Access Service or applications linked to that service. In this context, a Health Data Access Service can support patient-provided data directly, or establish the authorization and linking context used by a wellness application. For the EHR-facing document case, the Health Data Access Service or linked application could act as a [Document Publisher](actors.html#document-publisher), submitting patient-sourced documents to an EHR system via ITI-105. Patient-sourced content may be tagged using `.meta.security` or `Provenance` resources to distinguish it from clinician-authored data (informative; see content specifications). See the [Wellness App](usecase-wellness-app.html) for the linked-application case.

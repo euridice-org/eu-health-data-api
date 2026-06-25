@@ -16,12 +16,12 @@
 
 ### Regulatory Basis
 
-The European Health Data Space (EHDS) regulation describes an obligation for EHR systems to include an Interoperability Component that does the following:
+The European Health Data Space (EHDS) regulation describes an obligation for EHR systems to include an EHR interoperability component that does the following:
 - §2.1: "SHALL provide an **interface enabling access** to the personal electronic health data [formatted in EEHRxF]"
 - §2.2: "SHALL **be able to receive** personal electronic health data [formatted in EEHRxF]"
 
 This Implementation Guide:
-1. **Defines a set of EHR functionalities that meet the Interoperability Component requirements:** describes how existing IHE profiles and other specifications can be used to provide secure access and enable secure exchange of EEHRxF data between systems.
+1. **Defines a set of EHR functionalities that meet the EHR interoperability component requirements:** describes how existing IHE profiles and other specifications can be used to provide secure access and enable secure exchange of EEHRxF data between systems.
 2. **Shows how these EHR functionalities can be used in real-world data exchange for EHDS use cases:** outlines how these EHR functionalities can be used to provide patients access to their own data, to allow providers access to patient data, and to support the cross-border data exchange in the myHealth@EU network.
 
 See [Regulatory Anchors](regulatoryAnchors.html) for more detail on the link to the EHDS regulation requirements, and the technical interpretation of those requirements used here.
@@ -38,15 +38,15 @@ This IG excludes ePrescription and eDispensation workflow transactions, user-lev
 
 The intended audiences of this Implementation Guide are:
 
-- **Manufacturers of EHR systems:** EHR vendors looking to develop support for APIs that meet the needs of EHDS should refer to the [Functional Requirements](functional.html) for a list of functional specifications EHRs should support.
+- **Manufacturers of EHR systems:** EHR vendors looking to support the EHR interoperability component capabilities required by EHDS should refer to the [Functional Requirements](functional.html) for a list of functional specifications EHRs should support.
 
-- **Architects of national infrastructures:** National eHealth agencies looking to understand how to use the capabilities of EHRs required by EHDS to meet the goals of EHDS in their Member States should refer to the [Implementation](implementation.html) for examples of how the EHR APIs can be used for the EHDS use cases.
+- **Architects of national infrastructures:** National eHealth agencies looking to understand how to use the EHR interoperability component capabilities required by EHDS should refer to the [Implementation](implementation.html) for examples of how those capabilities can support EHDS use cases.
 
-- **Healthcare providers and healthcare organizations:** Organizations deploying EHDS interoperability need to understand the use cases and how they map to national infrastructure requirements, in order to evaluate whether their EHR system's Interoperability Component meets their Member State's obligations. See [Functional Requirements](functional.html) and [Implementation](implementation.html).
+- **Healthcare providers and healthcare organizations:** Organizations deploying EHDS interoperability need to understand the use cases and how they map to national infrastructure requirements, in order to evaluate whether their EHR system's interoperability component supports their Member State's obligations. See [Functional Requirements](functional.html) and [Implementation](implementation.html).
 
 - **Wellness and personal health application developers:** App developers building patient-facing applications that consume health data from EHDS-conformant EHRs should refer to the [Wellness App](usecase-wellness-app.html) use case for how this IG applies to their context.
 
-### Summary of Functional Requirements ("the API")
+### Summary of EHR Interoperability Component Capabilities
 
 - **[Capability Discovery](capability-discovery.html)** - Discover which priority categories a server supports
 - **[Authorization](authorization.html)** - SMART Backend Services (IUA actor model)

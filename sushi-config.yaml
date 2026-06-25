@@ -116,7 +116,7 @@ pages:
     title: Implementation
     ehr-system-composition.md:
       title: EHR System Composition Patterns
-    environment-healthcare-provider.md:
+    usecase-provider-internal-exchange.md:
       title: Provider-Internal Exchange
     usecase-cross-org.md:
       title: Cross-Organization via National Infrastructure
@@ -190,7 +190,7 @@ menu:
   Implementation:
     Overview: implementation.html
     EHR System Composition Patterns: ehr-system-composition.html
-    Provider-Internal Exchange: environment-healthcare-provider.html
+    Provider-Internal Exchange: usecase-provider-internal-exchange.html
     Cross-Organization via National Infrastructure: usecase-cross-org.html
     Cross-Border via NCP: usecase-cross-border-ncp.html
     Health Professional Access Service: usecase-health-professional-portal.html

@@ -1,6 +1,6 @@
 ### Overview
 
-EHR systems across the EU use different approaches to manage health documents — from FHIR servers that generate documents from clinical resources, to document-centric systems backed by XDS/XCA repositories. This IG defines an API contract that both approaches can implement.
+EHR systems across the EU use different approaches to manage health documents — from FHIR servers that generate documents from clinical resources, to document-centric systems backed by XDS/XCA repositories. This IG defines an EHR interoperability component API surface that both approaches can expose.
 
 The choice of approach is **orthogonal to organizational deployment topology**. A FHIR server and an XDS system can each be deployed directly, behind a facade, or as part of a national infrastructure. The shared API surface — ITI-67, ITI-68, and the `EehrxfMhdDocumentReference` profile — works for both.
 

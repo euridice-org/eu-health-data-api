@@ -78,13 +78,14 @@ See [Regulatory Anchors](https://build.fhir.org/ig/euridice-org/eu-health-data-a
 │   └── Resource Exchange Patterns
 │
 ├── Implementation
-│   ├── Retrieve a European Patient Summary
-│   ├── Organization-Internal Exchange
+│   ├── EHR System Composition Patterns
+│   ├── Provider-Internal Exchange
 │   ├── Cross-Organization via National Infrastructure
 │   ├── Cross-Border via NCP
 │   ├── Health Professional Access Service
 │   ├── Health Data Access Service
-│   └── Wellness App Access
+│   ├── Wellness App Access
+│   └── Retrieve a European Patient Summary
 │
 ├── Artifacts
 │
