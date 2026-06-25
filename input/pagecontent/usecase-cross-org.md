@@ -6,6 +6,8 @@ An EHR system acts as a participant in a Member State's national interoperabilit
 
 National infrastructure design is a Member State choice and is not prescribed by EHDS or this IG. This IG defines the interoperability component API surface at the EHR system boundary, and this deployment scenario shows how EHR systems conforming to this IG can support data exchange in different Member State architectures.
 
+The patterns below are illustrative; Member States may combine them or use other national infrastructure designs.
+
 ### Participants
 
 - **EHR system** — [Document Publisher](actors.html#document-publisher), [Document Access Provider](actors.html#document-access-provider), and/or [Resource Access Provider](actors.html#resource-access-provider); the conformance target of this IG

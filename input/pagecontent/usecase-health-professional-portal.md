@@ -4,7 +4,7 @@ A **Health Professional Access Service** ([Art. 12](https://eur-lex.europa.eu/le
 
 ### Scope
 
-This IG defines the interoperability component API surface the access service could use to query EHR systems. Requirements for the access service itself — including how the professional authenticates (e.g eIDAS), how the patient is selected, and how queries are routed across EHR systems — are governed by Member State requirements and are **out of scope** here.
+This IG defines the interoperability component API surface the access service can use to query EHR systems. Requirements for the access service itself — including how the professional authenticates (e.g., eIDAS), how the patient is selected, and how queries are routed across EHR systems — are governed by Member State requirements and are **out of scope** here.
 
 ### Participants
 

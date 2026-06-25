@@ -36,6 +36,7 @@ Specific requirements related to this environment include:
 * Access patterns
   * EHR systems may support resource and/or document based access.
   * Registry-style deployments require a registry or repository component that can provide access to published EEHRxF documents.
+  * Registry or repository deployments define which component retains published EEHRxF document versions and makes them available for later access.
 
 * Authorization
   * EHR systems acting as Document/Resource Access providers may contain their own authorization server, or use an organization-level authorization server to control API access.
@@ -44,10 +45,3 @@ Specific requirements related to this environment include:
 * Patient Identity
   * Healthcare providers may have an Enterprise Master Patient Index (EMPI) that identifies patients known to the organization and shares this patient identity with other EHR systems in the organization.
   * A gateway-facing EHR system is responsible for ensuring that data provided to national infrastructure includes the required national and European identifiers.
-
-* Import of data
-
-* Export of data
-
-Other - feedback requested:
-* Custodian specifics - store and allow access to all published EEHRxF document versions.
