@@ -1,10 +1,10 @@
 ### Overview
 
-An EHR system acts as a participant in a Member State's national interoperability infrastructure, enabling cross-organization data exchange. 
+An EHR system acts as a participant in a Member State's national interoperability infrastructure, enabling cross-organization data exchange.
 
 ### Scope
 
-National infrastructure design is a Member State choice and is not prescribed by EHDS or this IG. This IG defines the EHR interoperability component API surface at the EHR system boundary, and this deployment scenario shows how EHR systems conforming to this IG can support data exchange in different Member State architectures.
+National infrastructure design is a Member State choice and is not prescribed by EHDS or this IG. This IG defines the interoperability component API surface at the EHR system boundary, and this deployment scenario shows how EHR systems conforming to this IG can support data exchange in different Member State architectures.
 
 ### Participants
 
@@ -15,26 +15,26 @@ National infrastructure design is a Member State choice and is not prescribed by
 
 #### Federated
 
-A national "record location" service holds references to where patient data resides. A consumer queries the record locator to identify which EHR systems hold data for a patient, then uses this information to queries those systems directly or through a proxy. 
+A national "record location" service holds references to where patient data resides. A consumer queries the record locator to identify which EHR systems hold data for a patient, then uses this information to query those systems directly or through a proxy. The record locator is national infrastructure and is not specified by this IG.
 
 ```
 Consumer → Record Locator ──→ EHR System A
                           └──→ EHR System B
 ```
 
-In this scenario, data-holidng EHR(s) acting as Document/Resource Access Providers offer query access to their data to destination EHR's acting as Document/Resource Consumers; the record locator is national infrastructure outside the scope of this IG.
+In this scenario, data-holding EHR systems acting as Document/Resource Access Providers offer query access to their data to destination EHR systems acting as Document/Resource Consumers.
 
 #### Central Repository
 
-In this model, source EHR systems publish documents to a central national repository (or repositories), which enable acccess to this data by offering query access to consuming systems. 
+In this model, source EHR systems publish documents to a central national repository (or repositories), which enables access to this data by offering query access to consuming systems.
 
 ```
 EHR System (source) ──[publish]──→ National Repository ──→ Consumer
 ```
 
-The source EHR acts as [Document Publisher](actors.html#document-publisher) towards the central repository (Document Access Provider), which enables EHRs acting as Docuemnt Consumers to query.
+The source EHR acts as [Document Publisher](actors.html#document-publisher) towards the central repository (Document Access Provider), which enables EHRs acting as Document Consumers to query.
 
-Both patterns use the same EHR interoperability component API surface defined in this IG. See [Member State Architectures](member-state-architectures.html) for more detail.
+Both patterns use the same interoperability component API surface defined in this IG. See [Member State Architectures](member-state-architectures.html) for more detail.
 
 ### Patient Lookup
 
@@ -42,4 +42,4 @@ In both patterns, a consumer needs to identify which patient data to retrieve. O
 
 ### Authorization
 
-Authorization methods to secure cross-organization exchange is a national architecture choice outside the scope of this IG. Member states choosing to align with the SMART Backend Client Credentials functionality would benefit from EHR system support as defined in the authorization page (link) within this IG.
+Authorization methods to secure cross-organization exchange are a national architecture choice outside the scope of this IG. Member States choosing to align with SMART Backend Services client credentials can use the EHR system support defined in [Authorization](authorization.html).

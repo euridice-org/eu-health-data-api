@@ -1,6 +1,6 @@
 ### Overview
 
-EHR systems across the EU use different approaches to manage health documents — from FHIR servers that generate documents from clinical resources, to document-centric systems backed by XDS/XCA repositories. This IG defines an EHR interoperability component API surface that both approaches can expose.
+EHR systems across the EU use different approaches to manage health documents — from FHIR servers that generate documents from clinical resources, to document-centric systems backed by XDS/XCA repositories. This IG defines an interoperability component API surface that both approaches can expose.
 
 The choice of approach is **orthogonal to organizational deployment topology**. A FHIR server and an XDS system can each be deployed directly, behind a facade, or as part of a national infrastructure. The shared API surface — ITI-67, ITI-68, and the `EehrxfMhdDocumentReference` profile — works for both.
 
@@ -29,7 +29,7 @@ Documents are stored artifacts. This covers two common implementations:
 
 **XDS Proxy** — an MHD translation layer over a XDS/XCA repository. FHIR API calls are translated to XDS transactions against the underlying registry and repository. `DocumentReference` maps directly to XDS `DocumentEntry` per MHD's normative mapping. Existing national XDS investments require no replacement.
 
-Both declare `supportedProfile: EehrxfMhdDocumentReference`. XDS-backed systems that assert full XDS-grade metadata additionally declare `supportedProfile: IHE.MHD.Comprehensive.DocumentReference`.
+Both expose `DocumentReference` resources conforming to `EehrxfMhdDocumentReference`. XDS-backed systems that need richer XDS/XCA metadata should use the metadata capabilities and mappings defined by MHD; this IG does not scope full XDS metadata conformance.
 
 **`attachment.hash` and `size` are present** in both — indicating stored documents.
 

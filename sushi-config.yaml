@@ -114,22 +114,22 @@ pages:
       title: Resource Exchange Patterns
   implementation.md:
     title: Implementation
-    ehr-system-composition.md:
-      title: EHR System Composition Patterns
-    usecase-provider-internal-exchange.md:
-      title: Provider-Internal Exchange
-    usecase-cross-org.md:
-      title: Cross-Organization via National Infrastructure
+    example-patient-summary.md:
+      title: Retrieve a European Patient Summary
     usecase-cross-border-ncp.md:
-      title: Cross-Border via NCP
+      title: Cross-Border Exchange via NCP
     usecase-health-professional-portal.md:
       title: Health Professional Access Service
     usecase-health-data-portal.md:
       title: Health Data Access Service
     usecase-wellness-app.md:
-      title: Wellness App Access
-    example-patient-summary.md:
-      title: Retrieve a European Patient Summary
+      title: Wellness Apps
+    usecase-cross-org.md:
+      title: Cross-Organization via National Infrastructure
+    usecase-provider-internal-exchange.md:
+      title: Provider-Internal Exchange
+    ehr-system-composition.md:
+      title: EHR System Composition Patterns
   about.md:
     title: About
     contributors.md:
@@ -189,14 +189,14 @@ menu:
     Resource Access: resource-access.html
   Implementation:
     Overview: implementation.html
-    EHR System Composition Patterns: ehr-system-composition.html
-    Provider-Internal Exchange: usecase-provider-internal-exchange.html
-    Cross-Organization via National Infrastructure: usecase-cross-org.html
-    Cross-Border via NCP: usecase-cross-border-ncp.html
+    Retrieve a European Patient Summary: example-patient-summary.html
+    Cross-Border Exchange via NCP: usecase-cross-border-ncp.html
     Health Professional Access Service: usecase-health-professional-portal.html
     Health Data Access Service: usecase-health-data-portal.html
-    Wellness App Access: usecase-wellness-app.html
-    Retrieve a European Patient Summary: example-patient-summary.html
+    Wellness Apps: usecase-wellness-app.html
+    Cross-Organization via National Infrastructure: usecase-cross-org.html
+    Provider-Internal Exchange: usecase-provider-internal-exchange.html
+    EHR System Composition Patterns: ehr-system-composition.html
   Artifacts: artifacts.html
   About: about.html
 

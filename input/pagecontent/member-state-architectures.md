@@ -1,6 +1,6 @@
-**This page is informative.** It illustrates how national infrastructures can use the EHR interoperability component API surface defined in this IG; it defines no conformance requirements of its own.
+**This page is informative.** It illustrates how national infrastructures can use the interoperability component API surface defined in this IG; it defines no conformance requirements of its own.
 
-Member States across the European Union have diverse healthcare system architectures and health information exchange infrastructures. This IG accommodates that diversity by defining the **EHR interoperability component API surface** without prescribing national infrastructure design.
+Member States across the European Union have diverse healthcare system architectures and health information exchange infrastructures. This IG accommodates that diversity by defining the **interoperability component API surface** without prescribing national infrastructure design.
 
 This page describes the two primary national architectural patterns and how EHR systems fit within each. For how EHR systems are deployed internally within healthcare organizations, see [Use Case — Provider-Internal Exchange](usecase-provider-internal-exchange.html). For how EHR systems connect externally, see [Use Case — Cross-Organization via National Infrastructure](usecase-cross-org.html).
 
@@ -8,7 +8,7 @@ This page describes the two primary national architectural patterns and how EHR 
 
 The EHDS Regulation places the obligation to build and operate national health data interoperability infrastructure on **Member States** (Arts 4, 12, 23). This IG defines the API surface at the EHR system boundary and provides informative examples of how it can be used across Member States. How Member States structure their national infrastructure is their decision; this IG does not prescribe it.
 
-The two patterns below are **informative examples** of how national infrastructure can use the EHR interoperability component API surface.
+The two patterns below are **informative examples** of how national infrastructure can use the interoperability component API surface.
 
 ---
 

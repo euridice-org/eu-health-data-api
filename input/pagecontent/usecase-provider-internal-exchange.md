@@ -1,8 +1,8 @@
 ### Overview
 
-Provider-internal exchange describes how a healthcare provider can use the same EHR interoperability component capabilities within its own environment.
+Provider-internal exchange describes how a healthcare provider can use the same interoperability component capabilities within its own environment.
 
-This page is informative. EHDS does not require provider-internal workflow changes. It shows where the EHR interoperability component API surface defined in this IG can support internal exchange, aggregation for external exchange, or both.
+This page is informative. EHDS does not require provider-internal workflow changes. It shows where the interoperability component API surface defined in this IG can support internal exchange, aggregation for external exchange, or both.
 
 <div>
   <figure class="figure">
@@ -16,7 +16,7 @@ This page is informative. EHDS does not require provider-internal workflow chang
 
 A healthcare provider may deploy multiple EHR systems. Those systems may expose document or resource access directly, or the provider may use a gateway, facade, aggregator, or registry-style deployment to present a single EHR system boundary. See [EHR System Composition Patterns](ehr-system-composition.html).
 
-When the provider connects to national infrastructure, the gateway-facing EHR system is responsible for making provider data available through the API surface expected by the Member State. Provider-internal exchange and national exchange can use the same EHR interoperability component capabilities, but they are separate deployment contexts.
+When the provider connects to national infrastructure, the gateway-facing EHR system is responsible for making provider data available through the API surface expected by the Member State. Provider-internal exchange and national exchange can use the same interoperability component capabilities, but they are separate deployment contexts.
 
 ### Participants
 

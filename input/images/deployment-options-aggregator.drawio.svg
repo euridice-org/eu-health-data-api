@@ -1,4 +1,4 @@
-<svg host="65bd71144e" xmlns="http://www.w3.org/2000/svg" style="background: transparent; background-color: transparent;" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="631px" height="231px" viewBox="-0.5 -0.5 631 231" content="&lt;mxfile&gt;&lt;diagram id=&quot;48OBgp8QFrlcBwugOrAG&quot; name=&quot;Page-1&quot;&gt;7VdNj5swEP01SO1hJYMTkhyzNNvtoVLVVOrZCg5YazB1nA3013cMNh9rVhtpSaqVYg6YNx7wvDeDbQ9HWflVkiL9LmLKvQDFpYe/eEHgL8IAbhqpGmQ1M0AiWWwGdcCW/aUGRAY9spgeBgOVEFyxYgjuRJ7TnRpgREpxGg7bCz78akES6gDbHeEu+pvFKm3Q5Rx1+CNlSWq/7CNjyYgdbIBDSmJx6kF44+FICqGaXlZGlGvyLC+N38Mr1nZikubqHAe8bDyeCT+a4MzEVGWjleKYx1Q7IA/fn1Km6LYgO209gb6ApSrj8ORDd884jwQXEp65puAuJvLpkxdgGurLCyJPzwn7RF+ftYvIlXUBQ9MAPygpnmjPsgn1BRYzZyoVLV8N3G/phDykIqNKVjCkskloFDh1AobYYGlPvMCCxCRN0r6r4xU6htpxmhcjLIdcmeDrTLVRhn+OWnyIEe/r1ofCRN83jz/BZVsdFM2gs/7xzb4N5tG8sBnoSPmGeA7jD3V7ISvgCFrYKeHQPiKOq4Sxzgy/Rpi2yHvCzMMRYabQZSz7p9Ll+oogdBlFFnNHEX85oshq/n5FVpMqsk4SSROiwOPqeixmmwtViF0tr1EhthpvJTKQpOX2f9SI7980GSuTYKgJRsvzNLHb0Xdpgm9L/NnKnF0tU/zBsFstv2ipHOKUBgdcEdjA5tDfQeQUaLnXETM4BqyNIWNxrN1HN8XDbfMULK5esDgf2cJeisSZQ2J/bUWFFM/1mSxAY6kLRyw9KjvqMxowBsTX9sMHVGEoQpu2F1iM4bE7Cda23nkab/4B&lt;/diagram&gt;&lt;/mxfile&gt;">
+<svg host="65bd71144e" xmlns="http://www.w3.org/2000/svg" style="background: transparent; background-color: transparent;" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="631px" height="231px" viewBox="-0.5 -0.5 631 231" content="&lt;mxfile&gt;&lt;diagram id=&quot;48OBgp8QFrlcBwugOrAG&quot; name=&quot;Page-1&quot;&gt;7VdNj5swEP01SO1hJWMnJDlm2exuD5Wq5tCzhR1AazA1JiT99R2D+VpYNVLY9BJzwLyZMZ73PBg7xE9OL4pm0XfJuHAwYieHPDkYu56L4WaQc41s8KYGQhUz69QB+/gPtyCyaBEzng8ctZRCx9kQDGSa8kAPMKqULIduBymGb81oyEfAPqBijP6KmY5qdL1EHf7K4zBq3uwia0lo42yBPKJMlj2I7BziKyl13UtOPheGvIaXOu75A2s7McVTfUkAWdcRRyoKm5ydmD432SpZpIybAOSQxzKKNd9nNDDWEvQFLNKJgCcXuodYCF8KqeBZGAoeGFVvXxxMuGcuB/uOmRNxqbm+mhCZ6iYEDHUDPNdKvvGeZeeZCyzjLG3iR640P/Ugm/ULlwnX6gwudsm5K6tA2QnoEYtFPfFwA1K7aMJ2rI5X6Fhqp2leTbDsCW2Tr1Zqk6X3uzDiQ47kULU+5IXmvnv9CSH7c655Ap3tj2/NaDCPesDacSTlP8QbMf5ctXeyAo6gedcqYa0Ly68Vpi3ynjBLb0KYOXSZWv1z6XJ7RRD6HEVWy5Ei7npCkc3yekU2syqyDUPFQ6oh4uZ6rBZXf6s+0GOBb1chTTXeS2QgScvt/6gR171rMlUmeKgJQevLNPHwDJqQ+xZ/sTIXV8scXzCyGCnT3xZQpuSxOk5gNMU6nA6MV1KY4wWQDGRX9nzEPJChh2RT+ANOoR8AdRx4fTSUxXCO2FpDEjNmwif/qof/3fPvIy3jn7CPwGN3iKlsvaMg2f0F&lt;/diagram&gt;&lt;/mxfile&gt;">
     <defs/>
     <g>
         <g>
@@ -138,27 +138,6 @@
                     </foreignObject>
                     <text x="510" y="124" fill="light-dark(#000000, #ffffff)" font-family="&quot;Helvetica&quot;" font-size="12px" text-anchor="middle">
                         EHR System API
-                    </text>
-                </switch>
-            </g>
-        </g>
-        <g>
-            <rect x="490" y="80" width="60" height="30" fill="none" stroke="none" pointer-events="all"/>
-        </g>
-        <g>
-            <g transform="translate(-0.5 -0.5)">
-                <switch>
-                    <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
-                        <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 58px; height: 1px; padding-top: 95px; margin-left: 491px;">
-                            <div style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; ">
-                                <div style="display: inline-block; font-size: 12px; font-family: &quot;Helvetica&quot;; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
-                                    Text
-                                </div>
-                            </div>
-                        </div>
-                    </foreignObject>
-                    <text x="520" y="99" fill="light-dark(#000000, #ffffff)" font-family="&quot;Helvetica&quot;" font-size="12px" text-anchor="middle">
-                        Text
                     </text>
                 </switch>
             </g>
