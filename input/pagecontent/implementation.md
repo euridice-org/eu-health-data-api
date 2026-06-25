@@ -1,8 +1,10 @@
-This IG defines the API contract for EHR systems under EHDS. The EHR system API is one part of a broader interoperability landscape: Member States operate national and cross-border infrastructure, healthcare providers deploy EHR systems, and EHR systems expose interoperability component capabilities that national and access-service infrastructure can use.
+This IG defines the API contract for EHR systems under EHDS, but EHR systems are one part of a broader interoperability landscape: Member States operate national and cross-border infrastructure, healthcare providers deploy EHR systems, and EHR systems expose interoperability component capabilities that national and access-service infrastructure can use.
+
+This page describes informative guidance for how the EHR components described in this Implementation Guide fit into the EHDS interoperability landscape.
 
 ### The EHDS Interoperability Landscape
 
-The diagram below shows the main EHDS actors and the API boundaries between them. The blue boxes represent deployment scenarios where the functionality described in this Implementation Guide can be used.
+The diagram below shows the EHDS actors and the boundaries between them. The blue boxes represent use cases: contexts where the interoperability component API described in this Implementation Guide is deployed or consumed.
 
 <div>
   <figure class="figure">
@@ -21,20 +23,20 @@ The diagram below shows the main EHDS actors and the API boundaries between them
       <a href="usecase-wellness-app.html"><title>Wellness App Access</title><rect x="469" y="320" width="86" height="58" fill="transparent" pointer-events="all" /></a>
       <a href="environment-healthcare-provider.html"><title>Organization-Internal Exchange</title><rect x="177" y="349" width="75" height="40" fill="transparent" pointer-events="all" /></a>
     </svg>
-    <figcaption class="figure-caption"><em>Figure: EHDS Overview</em></figcaption>
+    <figcaption class="figure-caption"><em>Figure: EHDS Interoperability Landscape</em></figcaption>
   </figure>
   <p></p>
 </div>
 
 The figure shows different elements:
-* **Environments** (white/grey boxes), different environment within the EHDS landscape with specific rules and deployment options.
+* **Environments** (white/grey boxes), different environments within the EHDS landscape with specific rules and deployment options.
 * **System actors** (black boxes), systems in an environment.
-* **Human actors** (user icons), key users in different environments that interact with the systems in that environment through a user-facing service or API
-* **APIs** (blue boxes), interoperability APIs that allow actors to interact with each other.
+* **Human actors** (user icons), key users in different environments that interact with the systems in that environment through a user interface. HP = Health Professional, Pat = Patient.
+* **Use cases** (blue boxes), contexts where the interoperability component API is deployed or consumed.
 
-The specification defines APIs in the context of the environment in which they are deployed. For the purposes of this Implementation Guide, the health data access service and health professional access service are modeled primarily as user-facing services. The system-to-system APIs used behind those services are implementation choices unless explicitly described in a deployment scenario.
+This Implementation Guide defines the functional components of the EHR system API, such as document exchange, patient lookup, and authorization. The use cases described here are deployments of those shared components. Some use cases are direct EHR-facing exchange paths; others are user-facing access services that consume those paths behind the scenes. Each use case and environment carries its own rules and requirements, which are not within the scope of this Implementation Guide; here, we focus on how the EHR system API defined in this IG can **support** actors across the different EHDS use cases.
 
-#### EHDS Environments
+#### EHDS Environments and Actors
 
 [**MyHealth@EU**](usecase-cross-border-ncp.html)
 
@@ -48,9 +50,10 @@ Member States must operate the national and cross-border infrastructure that ena
 
   - **MyHealth@EU and National Contact Points (NCPs):** Member States must operate NCPs that connect to the MyHealth@EU central platform ([Art. 23(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_23)) and must ensure healthcare providers are connected to that infrastructure ([Art. 23(5)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_23)). NCP-to-NCP exchange is governed by the [NCPeH API specification](https://build-fhir.ehdsi.eu/ncp-api/), not by this IG.
 
-  - **Health data access service:** Member States must operate a patient-facing health data access service ([Art. 4](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_4)). For the purposes of this Implementation Guide, this is modeled primarily as a user-facing service. It can act as a consumer of the EHR system API; its service requirements are not specified here.
+  - **Health data access service (HDAS):** Member States must operate a patient-facing health data access service ([Art. 4](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_4)). For the purposes of this Implementation Guide, this is modeled primarily as a user-facing interface that can act as a consumer of the EHR system API; its service requirements are not specified here.
 
-  - **Health professional access service:** Member States must operate a health professional access service ([Art. 12](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_12)). For the purposes of this Implementation Guide, this is modeled primarily as a user-facing service. It can act as a consumer of the EHR system API; its service requirements are not specified here.
+  - **Health professional access service (HPAS):** Member States must operate a health professional access service ([Art. 12](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_12)). For the purposes of this Implementation Guide, this is modeled primarily as a user-facing service which can act as a consumer of the EHR system API; its service requirements are not specified here.
+
 
 - [**Healthcare providers:**](environment-healthcare-provider.html) Healthcare providers deploy one or more EHR systems to support care delivery, including EHR systems which support *internal* clinical workflows within an organization as well as EHR systems which support *cross-organization* exchange with national infrastructure, for example to meet the member state requirement [Art. 23(5)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_23) to connect their data to the national NCP for cross-border exchange. This enviroment holds the following system actors:
 
@@ -60,18 +63,15 @@ Member States must operate the national and cross-border infrastructure that ena
 
 - **Wellness applications** A Wellness Application ([Art. 2](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_2_ab)) may be used to, when the authorized, to share information with an EHR system. It may also optionally claim EHR interoperability component conformance ([Art. 47–48](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_47)); in which case they use the same API transactions defined here and are within the scope of this IG. Whether a wellness application connects to an EHR system directly or through the health data access service is not specified by the regulation and is left free to implementation. When connecting to the Patient API, Wellness Applications can potentially also be used to support the EHDS Patient right to insert data into their EHR ([Art. 5](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_5), [Art. 48(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_48)).
 
-#### EHDS APIs and Access Services
+#### Implementation Patterns
 
-The EHDS overview defines the following APIs and access services:
+- [**EHR System Composition Patterns**](ehr-system-composition.html) — How an EHR system can implement the API directly, through a facade, through an aggregator, or through a registry-style deployment.
 
-- **Cross-border API**, this API is implemented by each National Contact Point and allows exchange of EEHRxF between different member states. It is defined by MyHEalth@EU and out of scope of this IG.
-- **Cross-Organization API**, this API is the country specific API that allows for exchange of information within member states. This specification will define several patterns for implementation of such API. These examples can be used as input for a member-state decision on what the Cross-Organization API will look like.
-- **Health Data Access Service**, the patient-facing service through which patients access EEHRxF information. It may also support upload of patient-provided information. For the purposes of this Implementation Guide, this service is modeled primarily as a user interface, not as a patient-facing API.
-- **Health Professional Access Service**, the health-professional-facing service through which health professionals log in, search for, and access relevant patient information from other healthcare providers and member states. For the purposes of this Implementation Guide, this service is modeled primarily as a user interface, not as a health-professional-facing API.
-- **Wellness API**, this can be used by EHR System(s) to connect to Wellness Applications so, when consent has been granted by the patient, they can access the Wellness Application data and potentially import it.
+#### Use Cases
 
-#### Cross Environment Deployment Scenarios
+- [**Provider-Internal Exchange**](environment-healthcare-provider.html) — How a healthcare provider using multiple EHR systems can use the same interoperability component capabilities for internal exchange or external aggregation.
 
+- [**Cross-Organization via National Infrastructure**](usecase-cross-org.html) — How EHR systems act as participants in national interoperability infrastructure to exchange data across healthcare providers.
 
 - [**Cross-Border via NCP**](usecase-cross-border-ncp.html) — How EHR systems support cross-border exchange of data via national interoperability infrastructure, National Contact Points, and MyHealth@EU.
 

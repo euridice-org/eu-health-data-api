@@ -114,10 +114,10 @@ pages:
       title: Resource Exchange Patterns
   implementation.md:
     title: Implementation
-    example-patient-summary.md:
-      title: Retrieve a European Patient Summary
+    ehr-system-composition.md:
+      title: EHR System Composition Patterns
     environment-healthcare-provider.md:
-      title: Intra Healthcare Provider Exchange Environment
+      title: Provider-Internal Exchange
     usecase-cross-org.md:
       title: Cross-Organization via National Infrastructure
     usecase-cross-border-ncp.md:
@@ -128,16 +128,8 @@ pages:
       title: Health Data Access Service
     usecase-wellness-app.md:
       title: Wellness App Access
-  api-definitions.md:
-    title: API Definitions
-    ehr-system-composition.md:
-      title: EHR System Composition
-    api-intra-healthcare-provider.md:
-      title: API for Intra Healthcare Provider Exchange Environment
-    api-wellness.md:
-      title: API Wellness Applications
-    api-cross-memberstate-organization.md:
-      title: API for Cross-Member State Organizational Exchange
+    example-patient-summary.md:
+      title: Retrieve a European Patient Summary
   about.md:
     title: About
     contributors.md:
@@ -197,13 +189,14 @@ menu:
     Resource Access: resource-access.html
   Implementation:
     Overview: implementation.html
-    Retrieve a European Patient Summary: example-patient-summary.html
-    Organization-Internal Exchange: environment-healthcare-provider.html
+    EHR System Composition Patterns: ehr-system-composition.html
+    Provider-Internal Exchange: environment-healthcare-provider.html
     Cross-Organization via National Infrastructure: usecase-cross-org.html
     Cross-Border via NCP: usecase-cross-border-ncp.html
     Health Professional Access Service: usecase-health-professional-portal.html
     Health Data Access Service: usecase-health-data-portal.html
     Wellness App Access: usecase-wellness-app.html
+    Retrieve a European Patient Summary: example-patient-summary.html
   Artifacts: artifacts.html
   About: about.html
 
