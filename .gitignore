@@ -6,8 +6,11 @@ Thumbs.db
 /temp
 /template
 /.claude
+/.codex
 /plans
 /josh
 /old
 CLAUDE.md
+AGENTS.md
 /.vscode
+__pycache__/

@@ -29,10 +29,10 @@ The diagram below shows the main EHDS actors and the API boundaries between them
 The figure shows different elements:
 * **Environments** (white/grey boxes), different environment within the EHDS landscape with specific rules and deployment options.
 * **System actors** (black boxes), systems in an environment.
-* **Human actors** (user icons), key users in different environments that interact with the systems in that environment through a specific API
+* **Human actors** (user icons), key users in different environments that interact with the systems in that environment through a user-facing service or API
 * **APIs** (blue boxes), interoperability APIs that allow actors to interact with each other.
 
-The specification will define each API in the context of the environment in which they are deployed.
+The specification defines APIs in the context of the environment in which they are deployed. For the purposes of this Implementation Guide, the health data access service and health professional access service are modeled primarily as user-facing services. The system-to-system APIs used behind those services are implementation choices unless explicitly described in a deployment scenario.
 
 #### EHDS Environments
 
@@ -48,7 +48,9 @@ Member States must operate the national and cross-border infrastructure that ena
 
   - **MyHealth@EU and National Contact Points (NCPs):** Member States must operate NCPs that connect to the MyHealth@EU central platform ([Art. 23(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_23)) and must ensure healthcare providers are connected to that infrastructure ([Art. 23(5)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_23)). NCP-to-NCP exchange is governed by the [NCPeH API specification](https://build-fhir.ehdsi.eu/ncp-api/), not by this IG.
 
-  - **Access services:** Member States must operate a patient-facing health data access service ([Art. 4](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_4)) and a health professional access service ([Art. 12](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_12)). Either can act as a consumer of the EHR system API; their service requirements are not specified here.
+  - **Health data access service:** Member States must operate a patient-facing health data access service ([Art. 4](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_4)). For the purposes of this Implementation Guide, this is modeled primarily as a user-facing service. It can act as a consumer of the EHR system API; its service requirements are not specified here.
+
+  - **Health professional access service:** Member States must operate a health professional access service ([Art. 12](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_12)). For the purposes of this Implementation Guide, this is modeled primarily as a user-facing service. It can act as a consumer of the EHR system API; its service requirements are not specified here.
 
 - [**Healthcare providers:**](environment-healthcare-provider.html) Healthcare providers deploy one or more EHR systems to support care delivery, including EHR systems which support *internal* clinical workflows within an organization as well as EHR systems which support *cross-organization* exchange with national infrastructure, for example to meet the member state requirement [Art. 23(5)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_23) to connect their data to the national NCP for cross-border exchange. This enviroment holds the following system actors:
 
@@ -58,14 +60,14 @@ Member States must operate the national and cross-border infrastructure that ena
 
 - **Wellness applications** A Wellness Application ([Art. 2](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_2_ab)) may be used to, when the authorized, to share information with an EHR system. It may also optionally claim EHR interoperability component conformance ([Art. 47–48](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_47)); in which case they use the same API transactions defined here and are within the scope of this IG. Whether a wellness application connects to an EHR system directly or through the health data access service is not specified by the regulation and is left free to implementation. When connecting to the Patient API, Wellness Applications can potentially also be used to support the EHDS Patient right to insert data into their EHR ([Art. 5](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_5), [Art. 48(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_48)).
 
-#### EHDS APIs
+#### EHDS APIs and Access Services
 
-The EHDS overview defines the following API's:
+The EHDS overview defines the following APIs and access services:
 
 - **Cross-border API**, this API is implemented by each National Contact Point and allows exchange of EEHRxF between different member states. It is defined by MyHEalth@EU and out of scope of this IG.
 - **Cross-Organization API**, this API is the country specific API that allows for exchange of information within member states. This specification will define several patterns for implementation of such API. These examples can be used as input for a member-state decision on what the Cross-Organization API will look like.
-- **Patient Access API**,  the interface of the Patient Access Service (HDAS). The API is used by Patient and Wellness Applications. It provides access the EEHRxF information but also supports upload of patient provided information.
-- **Healthcare Professional (HP) Access API**,  the interface of the Healthcare Professional Access Service (HPAS). The API is used by Healthcare Professionals to log in and access EEHRxF information allowing them to search for and access relevant patient information from other Healthcare Providers and member states.
+- **Health Data Access Service**, the patient-facing service through which patients access EEHRxF information. It may also support upload of patient-provided information. For the purposes of this Implementation Guide, this service is modeled primarily as a user interface, not as a patient-facing API.
+- **Health Professional Access Service**, the health-professional-facing service through which health professionals log in, search for, and access relevant patient information from other healthcare providers and member states. For the purposes of this Implementation Guide, this service is modeled primarily as a user interface, not as a health-professional-facing API.
 - **Wellness API**, this can be used by EHR System(s) to connect to Wellness Applications so, when consent has been granted by the patient, they can access the Wellness Application data and potentially import it.
 
 #### Cross Environment Deployment Scenarios
