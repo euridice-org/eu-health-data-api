@@ -22,6 +22,8 @@ This IG defines the interoperability component API surface the access service us
 
 The patient's identity and authorization are established at the access service. At the interoperability component API surface, the consumer is an authorized system-to-system caller; the mechanism is described in [Authorization](authorization.html). Patient consent preferences and app-linking rules are established by the access service or Member State infrastructure; this IG describes only the EHR-facing system-to-system exchange.
 
-#### Patient-Provided Data 
+### Patient-Provided Data
 
 Article 5 gives patients the right to insert information into their EHR through the Health Data Access Service or via linked wellness applications. In this context, a Health Data Access Service can support patient-provided data directly, or establish the authorization and linking context used by a wellness application. For the EHR-facing document case, the Health Data Access Service could act as a [Document Publisher](actors.html#document-publisher), submitting patient-sourced documents to an EHR system via ITI-105. Patient-sourced content may be tagged using `.meta.security` or `Provenance` resources to distinguish it from clinician-authored data (informative; see content specifications). See the [Wellness App](usecase-wellness-app.html) for the linked-application case.
+
+Article 5 covers inserting *information* generally, which extends beyond priority-category documents to individual resources (observations, medications, and similar). Resource-level patient-provided data is future work; see [Future Work: Resource-Level Patient-Provided Data](usecase-wellness-app.html#future-work-resource-level-patient-provided-data).

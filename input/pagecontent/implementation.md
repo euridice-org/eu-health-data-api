@@ -34,7 +34,9 @@ The figure shows different elements:
 * **Human actors** (user icons), key users in different environments that interact with the systems in that environment through a user interface. HP = Health Professional, Pat = Patient.
 * **Use cases** (blue boxes), contexts where the API surface of the interoperability component is deployed or consumed.
 
-This Implementation Guide defines the interoperability component and its API surface, including document exchange, resource access, patient lookup, authorization, and document publication. The use cases described here show where that same component is deployed or consumed. Some use cases are direct EHR-facing exchange paths; others are user-facing access services that consume those paths behind the scenes. Each use case and environment carries its own rules and requirements, which are outside the scope of this Implementation Guide; here, we focus on how the interoperability component defined in this IG can **support** actors across the different EHDS use cases.
+This Implementation Guide describes the API surface of the EHDS interoperability component: document exchange, resource access, patient lookup, authorization, and document publication. The use cases outlined in this section show where the interoperability component can be deployed in the EHDS interoperability landscape. Some use cases directly involve data exchange with EHRs; others indirectly make use of data that has previously been consumed via data exchange with EHRs.
+
+Each use case and environment might have its own rules and requirements, which are outside the scope of this Implementation Guide; here, we focus on how the interoperability component as described in this Implementation Guide can **support** actors across the use cases.
 
 #### EHDS Environments and Actors
 
