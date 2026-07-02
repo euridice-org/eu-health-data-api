@@ -16,22 +16,21 @@ It inherits patterns from:
 
 ### Resource Flexibility (IPA Alignment)
 
-Following IPA's approach, servers are not required to support all clinical resources listed
-below. Servers MAY choose which resources to implement based on their capabilities and use
-cases. The only required resource is Patient (for lookup context). This flexibility
-encourages partial implementations, allowing more servers to participate even if they only
-support EU Core for certain resource types.
+This CS mirrors IPA Server's resource-level expectations: Patient is **SHALL** support;
+all other clinical resources are **SHOULD** support (servers MAY omit those they do not
+implement). The server's CapabilityStatement declares which resources are actually supported.
 
-**Required**: Patient (for lookup context)
-**Recommended (choose based on capabilities)**:
-- Practitioner, Organization: Reference resolution
-- Condition, AllergyIntolerance: Patient safety data
-- Observation, DiagnosticReport: Clinical results
-- MedicationRequest, MedicationDispense, MedicationStatement: Medication data
-- Immunization: Vaccination records
-- Encounter: Visit context
+**SHALL** (IPA): Patient (for lookup context)
+**SHOULD** (IPA): Condition, AllergyIntolerance, Observation, MedicationRequest,
+MedicationStatement, Immunization, Practitioner, Organization
+**SHOULD (EU extension beyond IPA)**: DiagnosticReport, MedicationDispense, Encounter —
+these are not in IPA Server CS but are included here to cover EHDS priority categories.
 
-The server's CapabilityStatement declares which resources are actually supported.
+### IPA Search Parameter Combinations
+
+This CS reproduces IPA's required combined search parameters (e.g. `patient+category`
+on Observation as SHALL) using the `capabilitystatement-search-parameter-combination`
+extension. Individual search parameter expectations are kept at or above IPA's strength.
 
 ### Security
 Systems SHALL support SMART Backend Services authorization for all transactions.
@@ -154,7 +153,27 @@ primary clinical data resource in this actor.
 * rest[=].resource[=].searchParam[=].type = #date
 * rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
 * rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHOULD
-* rest[=].resource[=].searchParam[=].documentation = "Patient date of birth"
+* rest[=].resource[=].searchParam[=].documentation = "Patient date of birth (day precision required per IPA)"
+
+* rest[=].resource[=].searchParam[+].name = "gender"
+* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/individual-gender"
+* rest[=].resource[=].searchParam[=].type = #token
+* rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHOULD
+* rest[=].resource[=].searchParam[=].documentation = "Patient administrative gender (IPA SHOULD)"
+
+* rest[=].resource[=].searchParam[+].name = "name"
+* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/Patient-name"
+* rest[=].resource[=].searchParam[=].type = #string
+* rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHOULD
+* rest[=].resource[=].searchParam[=].documentation = "Patient name across any part (IPA SHOULD)"
+
+// IPA Patient combination search parameters (SHOULD per IPA Server CS)
+* rest[=].resource[=] insert IpaCombo2(SHOULD, family, gender)
+* rest[=].resource[=] insert IpaCombo2(SHOULD, birthdate, family)
+* rest[=].resource[=] insert IpaCombo2(SHOULD, birthdate, name)
+* rest[=].resource[=] insert IpaCombo2(SHOULD, gender, name)
 
 // ============================================================================
 // Practitioner Resource - Read Only (Optional)
@@ -240,6 +259,27 @@ Servers MAY omit this resource based on their capabilities.
 * rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHOULD
 * rest[=].resource[=].searchParam[=].documentation = "Code for the condition"
 
+* rest[=].resource[=].searchParam[+].name = "verification-status"
+* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/Condition-verification-status"
+* rest[=].resource[=].searchParam[=].type = #token
+* rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].searchParam[=].extension[=].valueCode = #MAY
+* rest[=].resource[=].searchParam[=].documentation = "Verification status of the condition (IPA MAY)"
+
+* rest[=].resource[=].searchParam[+].name = "onset-date"
+* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/Condition-onset-date"
+* rest[=].resource[=].searchParam[=].type = #date
+* rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].searchParam[=].extension[=].valueCode = #MAY
+* rest[=].resource[=].searchParam[=].documentation = "Date the condition began (IPA MAY)"
+
+// IPA Condition combination search parameters
+* rest[=].resource[=] insert IpaCombo2(SHOULD, patient, clinical-status)
+* rest[=].resource[=] insert IpaCombo2(SHOULD, patient, category)
+* rest[=].resource[=] insert IpaCombo3(SHOULD, patient, category, clinical-status)
+* rest[=].resource[=] insert IpaCombo2(SHOULD, patient, code)
+* rest[=].resource[=] insert IpaCombo2(SHOULD, patient, onset-date)
+
 // ============================================================================
 // AllergyIntolerance Resource (Optional)
 // ============================================================================
@@ -275,6 +315,9 @@ Servers MAY omit this resource based on their capabilities.
 * rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
 * rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHOULD
 * rest[=].resource[=].searchParam[=].documentation = "The clinical status of the allergy or intolerance"
+
+// IPA AllergyIntolerance combination search parameters
+* rest[=].resource[=] insert IpaCombo2(SHOULD, patient, clinical-status)
 
 // ============================================================================
 // Observation Resource - Clinical Observations (Optional)
@@ -332,6 +375,13 @@ search by patient and category. Servers MAY omit this resource based on their ca
 * rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
 * rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHOULD
 * rest[=].resource[=].searchParam[=].documentation = "The status of the observation"
+
+// IPA Observation combination search parameters (Server SHALL for the first three)
+* rest[=].resource[=] insert IpaCombo2(SHALL, patient, category)
+* rest[=].resource[=] insert IpaCombo2(SHALL, patient, code)
+* rest[=].resource[=] insert IpaCombo3(SHALL, patient, category, date)
+* rest[=].resource[=] insert IpaCombo3(SHOULD, patient, category, status)
+* rest[=].resource[=] insert IpaCombo3(SHOULD, patient, code, date)
 
 // ============================================================================
 // DiagnosticReport Resource - Laboratory and Imaging Reports (Optional)
@@ -440,6 +490,25 @@ Servers MAY omit this resource based on their capabilities.
 * rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHOULD
 * rest[=].resource[=].searchParam[=].documentation = "Return prescriptions written on this date"
 
+* rest[=].resource[=].searchParam[+].name = "category"
+* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/MedicationRequest-category"
+* rest[=].resource[=].searchParam[=].type = #token
+* rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHOULD
+* rest[=].resource[=].searchParam[=].documentation = "Category of medication request (IPA SHOULD)"
+
+* rest[=].resource[=].searchParam[+].name = "code"
+* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/clinical-code"
+* rest[=].resource[=].searchParam[=].type = #token
+* rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHOULD
+* rest[=].resource[=].searchParam[=].documentation = "Code of the medication (IPA SHOULD)"
+
+// IPA MedicationRequest combination search parameters
+* rest[=].resource[=] insert IpaCombo2(SHOULD, patient, intent)
+* rest[=].resource[=] insert IpaCombo3(SHOULD, patient, intent, authoredon)
+* rest[=].resource[=] insert IpaCombo3(SHOULD, patient, intent, status)
+
 // ============================================================================
 // MedicationDispense Resource - Dispensing Records (Optional)
 // ============================================================================
@@ -526,6 +595,10 @@ Servers MAY omit this resource based on their capabilities.
 * rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHOULD
 * rest[=].resource[=].searchParam[=].documentation = "Status of the immunization"
 
+// IPA Immunization combination search parameters
+* rest[=].resource[=] insert IpaCombo2(SHOULD, patient, date)
+* rest[=].resource[=] insert IpaCombo2(SHOULD, patient, status)
+
 // ============================================================================
 // MedicationStatement Resource - Medication Usage (Optional)
 // ============================================================================
@@ -568,6 +641,9 @@ Servers MAY omit this resource based on their capabilities.
 * rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
 * rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHOULD
 * rest[=].resource[=].searchParam[=].documentation = "Date when patient was taking the medication"
+
+// IPA MedicationStatement combination search parameters
+* rest[=].resource[=] insert IpaCombo2(SHOULD, patient, status)
 
 // ============================================================================
 // Encounter Resource - Patient Encounters (Optional)

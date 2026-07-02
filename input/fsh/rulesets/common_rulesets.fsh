@@ -39,3 +39,27 @@ RuleSet: LOINCCopyrightForVS
 
 RuleSet: UCUMCopyrightForVS
 * ^copyright = "The UCUM codes, UCUM table (regardless of format), and UCUM Specification are copyright 1999-2009, Regenstrief Institute, Inc. and the Unified Codes for Units of Measures (UCUM) Organization. All rights reserved. https://ucum.org/trac/wiki/TermsOfUse"
+
+// IPA-style required-parameter search combinations.
+// Apply within a CapabilityStatement.rest.resource block, e.g.:
+//   * rest[=].resource[=].insert IpaCombo2(SHALL, patient, category)
+
+RuleSet: IpaCombo2(expectation, p1, p2)
+* extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-search-parameter-combination"
+* extension[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* extension[=].extension[=].valueCode = #{expectation}
+* extension[=].extension[+].url = "required"
+* extension[=].extension[=].valueString = "{p1}"
+* extension[=].extension[+].url = "required"
+* extension[=].extension[=].valueString = "{p2}"
+
+RuleSet: IpaCombo3(expectation, p1, p2, p3)
+* extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-search-parameter-combination"
+* extension[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* extension[=].extension[=].valueCode = #{expectation}
+* extension[=].extension[+].url = "required"
+* extension[=].extension[=].valueString = "{p1}"
+* extension[=].extension[+].url = "required"
+* extension[=].extension[=].valueString = "{p2}"
+* extension[=].extension[+].url = "required"
+* extension[=].extension[=].valueString = "{p3}"
