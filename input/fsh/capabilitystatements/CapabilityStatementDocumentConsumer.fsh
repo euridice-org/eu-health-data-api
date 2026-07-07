@@ -128,8 +128,8 @@ transaction to discover available documents for a patient.
 * rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-status"
 * rest[=].resource[=].searchParam[=].type = #token
 * rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
-* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHOULD
-* rest[=].resource[=].searchParam[=].documentation = "current | superseded | entered-in-error"
+* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHALL
+* rest[=].resource[=].searchParam[=].documentation = "current | superseded | entered-in-error - part of the consumer query floor (patient + status)"
 
 * rest[=].resource[=].searchParam[+].name = "identifier"
 * rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/clinical-identifier"

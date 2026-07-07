@@ -17,5 +17,5 @@ See [Document Exchange](document-exchange.html) for query examples.
 * type from DocumentTypeEuApiVS (preferred)
 * subject 1..1
 * subject only Reference( http://hl7.eu/fhir/base/StructureDefinition/patient-eu-core )
-* date 1..1
-* custodian 1..1
+// `date` and `custodian` intentionally inherit MHD Minimal cardinality (0..1);
+// the IG previously constrained both to 1..1 without justification. FHIR-56711, FHIR-56700.

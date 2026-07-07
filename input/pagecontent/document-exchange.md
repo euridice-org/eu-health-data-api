@@ -77,6 +77,15 @@ Servers SHALL return content conforming to FHIR Document content profiles as a n
 
 Human-readable representations (e.g. PDF narrative) are part of the FHIR Document as defined by the relevant [content IG](priority-categories.html) — not exposed at metadata level as separate DocumentReferences.
 
+#### Search Requirements
+
+Per [MHD ITI-67](https://profiles.ihe.net/ITI/MHD/ITI-67.html), four requirement levels are distinct, each defined by its own artifact:
+
+- **Consumer-Issue** — which parameters a consumer must be able to issue; defined in the [Document Consumer](CapabilityStatement-EEHRxF-DocumentConsumer.html) CapabilityStatement.
+- **Server-Accept** — which parameters the server must accept and process; defined in the [Document Access Provider](CapabilityStatement-EEHRxF-DocumentAccessProvider.html) CapabilityStatement, matching the MHD [Document Responder](https://profiles.ihe.net/ITI/MHD/CapabilityStatement-IHE.MHD.DocumentResponder.html).
+- **Consumer-Include** — which parameters a consumer must send: only `patient` (or `patient.identifier`) and `status`; all others are optional on a given query.
+- **DocRef Cardinality** — which elements a returned DocumentReference carries; defined in the [EehrxfMhdDocumentReference](StructureDefinition-EehrxfMhdDocumentReference.html) profile.
+
 #### Document Search Strategy
 
 [IHE Document Sharing](https://profiles.ihe.net/ITI/HIE-Whitepaper/index.html) distinguishes `type` (specific document types, typically LOINC codes) from `category` (broad classification) on DocumentReference. This IG constrains `type` for document discovery but leaves `category` to [content IGs](priority-categories.html) and implementations.
