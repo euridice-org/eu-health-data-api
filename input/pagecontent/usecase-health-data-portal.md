@@ -22,8 +22,21 @@ This IG defines the interoperability component API surface the access service us
 
 The patient's identity and authorization are established at the access service. At the interoperability component API surface, the consumer is an authorized system-to-system caller; the mechanism is described in [Authorization](authorization.html). Patient consent preferences and app-linking rules are established by the access service or Member State infrastructure; this IG describes only the EHR-facing system-to-system exchange.
 
-### Patient-Provided Data
+### Art. 5: Insertion of Patient-Provided Data (Informative)
 
-Article 5 gives patients the right to insert information into their EHR through the Health Data Access Service or via linked wellness applications. In this context, a Health Data Access Service can support patient-provided data directly, or establish the authorization and linking context used by a wellness application. For the EHR-facing document case, the Health Data Access Service could act as a [Document Publisher](actors.html#document-publisher), submitting patient-sourced documents to an EHR system via ITI-105. Patient-sourced content may be tagged using `.meta.security` or `Provenance` resources to distinguish it from clinician-authored data (informative; see content specifications). See the [Wellness App](usecase-wellness-app.html) for the linked-application case.
+Article 5 gives patients the right to insert information into their own EHR through health data access services or applications linked to those services.
 
-Article 5 covers inserting *information* generally, which extends beyond priority-category documents to individual resources (observations, medications, and similar). Resource-level patient-provided data is future work; see [Future Work: Resource-Level Patient-Provided Data](usecase-wellness-app.html#future-work-resource-level-patient-provided-data).
+EHDS has not fully specified the expected data, service-linking model, review workflow, or transport path for Article 5 insertion.
+
+#### Submitting Patient-Provided Documents
+
+A Health Data Access Service may submit patient-provided priority-category data in EEHRxF format to an EHR system using the [Document Publisher](actors.html#document-publisher) interactions defined in this IG (ITI-105), where the receiving EHR system supports the [Document Submission Option](actors.html#document-submission-option).
+
+To distinguish patient-provided data from clinician-authored data, resources may carry `.meta.security` tags and/or [Provenance](https://hl7.org/fhir/provenance.html) resources indicating the patient as the source.
+
+#### Future Work: Resource-Level Patient-Provided Data
+
+Patient-provided data extends beyond priority-category documents. For individual resources (observations, medications, etc.), we recommend future work follows an approach analogous to the [FHIR CGM specification](https://build.fhir.org/ig/HL7/cgm/), modeling the needs of a specific use case and its interaction with care providers — for example:
+- Continuous glucose monitoring and other device-sourced observations
+- Patient-reported vitals/observations (fitness trackers, home monitoring)
+- Patient-reported medications and supplements
