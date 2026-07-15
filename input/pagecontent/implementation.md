@@ -1,8 +1,8 @@
-This IG defines the API surface for the interoperability component under EHDS. EHR systems are one part of a broader interoperability landscape: Member States operate national and cross-border infrastructure, healthcare providers deploy EHR systems, and EHR systems expose interoperability component capabilities that national and access-service infrastructure can use.
+This IG describes a FHIR API surface for EHR systems that targets the EHDS interoperability component requirements. EHR systems are one part of a broader interoperability landscape: Member States operate national and cross-border infrastructure, healthcare providers deploy EHR systems, and EHR systems expose interoperability component capabilities that national and access-service infrastructure can use.
 
-This page provides *informative* guidance for how EHR systems supporting the interoperability component fit into the EHDS interoperability landscape and can **support** different actors in meeting their EHDS obligations.
+This page provides *informative* guidance for how EHR systems supporting the interoperability component fit into the EHDS interoperability landscape and can **support** different actors in meeting their EHDS obligations. While EHDS does not dictate interoperability implementation details at the Member State or healthcare organization level, Member States and healthcare organizations can deploy these capabilities within their existing domains to support EHDS implementation. For example, the Member State obligation to connect all healthcare providers to their MyHealth@EU national contact point (NCP) ([Art. 23(5)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_23)) can be supported by a healthcare provider deploying an EHR system as a [Document Access Provider](actors.html#document-access-provider) to make the organization's priority-category data available to the NCP, which retrieves it by acting as a [Document Consumer](actors.html#document-consumer). 
 
-### The EHDS Interoperability Landscape
+### The EU Health Data API Interoperability Landscape
 
 The diagram below shows the EHDS actors and the boundaries between them. The blue boxes represent use cases: contexts where the API surface of the interoperability component is deployed or consumed.
 
@@ -17,11 +17,11 @@ The diagram below shows the EHDS actors and the boundaries between them. The blu
       <a href="usecase-cross-border-ncp.html"><title>National Contact Point</title><rect x="675" y="118" width="100" height="58" fill="transparent" pointer-events="all" /></a>
       <a href="member-state-architectures.html"><title>National Interoperability Infrastructure</title><rect x="35" y="140" width="542" height="100" fill="transparent" pointer-events="all" /></a>
       <a href="usecase-cross-org.html"><title>Cross-Organization via National Infrastructure</title><rect x="229" y="182" width="120" height="30" fill="transparent" pointer-events="all" /></a>
-      <a href="usecase-health-professional-portal.html"><title>Health Professional Access Service</title><rect x="460" y="146" width="100" height="40" fill="transparent" pointer-events="all" /></a>
-      <a href="usecase-health-data-portal.html"><title>Health Data Access Service</title><rect x="460" y="196" width="100" height="40" fill="transparent" pointer-events="all" /></a>
-      <a href="usecase-health-data-portal.html"><title>Patient Access</title><rect x="464" y="261" width="96" height="30" fill="transparent" pointer-events="all" /></a>
-      <a href="usecase-wellness-app.html"><title>Wellness App Access</title><rect x="469" y="320" width="86" height="58" fill="transparent" pointer-events="all" /></a>
-      <a href="usecase-provider-internal-exchange.html"><title>Provider-Internal Exchange</title><rect x="177" y="349" width="75" height="40" fill="transparent" pointer-events="all" /></a>
+      <a href="usecase-health-professional-portal.html"><title>Health Professional Access Service</title><rect x="461" y="187" width="110" height="40" fill="transparent" pointer-events="all" /></a>
+      <a href="usecase-health-data-portal.html"><title>Health Data Access Service</title><rect x="470" y="284" width="93" height="40" fill="transparent" pointer-events="all" /></a>
+      <a href="usecase-health-data-portal.html"><title>Patient Access</title><rect x="540" y="249" width="71" height="30" fill="transparent" pointer-events="all" /></a>
+      <a href="usecase-wellness-app.html"><title>Wellness App Access</title><rect x="446" y="380" width="86" height="41" fill="transparent" pointer-events="all" /></a>
+      <a href="usecase-provider-internal-exchange.html"><title>Provider-Internal Exchange</title><rect x="157" y="308" width="100" height="38" fill="transparent" pointer-events="all" /></a>
     </svg>
     <figcaption class="figure-caption"><em>Figure: EHDS Interoperability Landscape</em></figcaption>
   </figure>

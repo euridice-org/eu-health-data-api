@@ -2,7 +2,7 @@
 
 Provider-internal exchange describes how a healthcare provider can use the same interoperability component capabilities within its own environment.
 
-This page is informative: EHDS does not require provider-internal workflow changes. Healthcare providers already use many interoperability standards and local integration patterns that are not covered here. This page does not model all provider-internal exchange; it focuses on where the interoperability component capabilities defined in this IG can be used within a healthcare provider environment to **support** internal exchange.
+This page is informative. EHDS does not dictate how a provider exchanges data internally. Healthcare providers already use many interoperability standards and local integration patterns that are not covered here. This page does not model all provider-internal exchange; it focuses on where the interoperability component capabilities defined in this IG can be used within a healthcare provider environment to **support** internal exchange.
 
 <div>
   <figure class="figure">
