@@ -4,7 +4,7 @@ A wellness application is software, or a combination of hardware and software, i
 
 Under EHDS, wellness application interoperability is not a separate API defined by this IG. A wellness application may claim interoperability with an EHR system only when the relevant common specifications and Annex II requirements are met ([Art. 47-48](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_47)). Article 48 limits sharing or transmission of data from the wellness application to the patient's Article 5 right to insert information into their EHR, with patient consent and control over the categories and circumstances of sharing.
 
-Article 5 allows patients to insert information into their EHR through electronic health data access services or applications linked to those services. This page describes how those linked-application access and insertion use cases can use the same interoperability component transactions defined elsewhere in this IG.
+Article 5 allows patients to insert information into their EHR through electronic health data access services or applications linked to those services. This page describes how those linked-application access and insertion use cases can use the same Interoperability Component transactions defined elsewhere in this IG.
 
 ### Scope
 

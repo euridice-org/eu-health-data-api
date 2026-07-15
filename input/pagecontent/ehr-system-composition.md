@@ -1,4 +1,4 @@
-This page describes common patterns for constructing an EHR system boundary that exposes the interoperability component API surface defined in this IG. These are implementation patterns, not separate conformance targets.
+This page describes common patterns for constructing an EHR system boundary that exposes the Interoperability Component API surface defined in this IG. These are implementation patterns, not separate conformance targets.
 
 ### Direct implementation
 
@@ -30,7 +30,7 @@ A facade can expose the API surface in front of a base EHR system.
   <p></p>
 </div>
 
-In this approach, the base EHR system is not updated. The facade uses proprietary APIs or internal integration points to provide the interoperability component API surface. The boundary of the EHR system is still the grey box, so the facade is treated as part of the deployed EHR system.
+In this approach, the base EHR system is not updated. The facade uses proprietary APIs or internal integration points to provide the Interoperability Component API surface. The boundary of the EHR system is still the grey box, so the facade is treated as part of the deployed EHR system.
 
 ### Aggregator
 

@@ -4,7 +4,7 @@ An EHR system acts as a participant in a Member State's national interoperabilit
 
 ### Scope
 
-National infrastructure design is a Member State choice and is not prescribed by EHDS or this IG. This IG defines the interoperability component API surface at the EHR system boundary, and this deployment scenario shows how EHR systems conforming to this IG can support data exchange in different Member State architectures.
+National infrastructure design is a Member State choice and is not prescribed by EHDS or this IG. This IG defines the Interoperability Component API surface at the EHR system boundary, and this deployment scenario shows how EHR systems conforming to this IG can support data exchange in different Member State architectures.
 
 The patterns below are illustrative; Member States may combine them or use other national infrastructure designs.
 
@@ -36,7 +36,7 @@ EHR System (source) ──[publish]──→ National Repository ──→ Consu
 
 The source EHR acts as [Document Publisher](actors.html#document-publisher) towards the central repository (Document Access Provider), which enables EHRs acting as Document Consumers to query.
 
-Both patterns use the same interoperability component API surface defined in this IG. See [Member State Architectures](member-state-architectures.html) for more detail.
+Both patterns use the same Interoperability Component API surface defined in this IG. See [Member State Architectures](member-state-architectures.html) for more detail.
 
 ### Patient Lookup
 

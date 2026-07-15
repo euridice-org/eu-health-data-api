@@ -21,7 +21,7 @@ The European Health Data Space (EHDS) regulation describes an obligation for EHR
 - [EHDS Annex II §2.2](https://eur-lex.europa.eu/eli/reg/2025/327/oj/eng#anx_II): "SHALL **be able to receive** personal electronic health data [formatted in EEHRxF]"
 
 This Implementation Guide:
-1. **Defines a set of EHR functionalities that meet the interoperability component requirements:** describes how existing IHE profiles and other specifications can be used to provide secure access and enable secure exchange of EEHRxF data between systems.
+1. **Defines a set of EHR functionalities that meet the Interoperability Component requirements:** describes how existing IHE profiles and other specifications can be used to provide secure access and enable secure exchange of EEHRxF data between systems.
 2. **Shows how these EHR functionalities can be used in real-world data exchange for EHDS use cases:** outlines how these EHR functionalities can be used to provide patients access to their own data, to allow providers access to patient data, and to support the cross-border data exchange in the myHealth@EU network.
 
 See [Regulatory Anchors](regulatoryAnchors.html) for more detail on the link to the EHDS regulation requirements, and the technical interpretation of those requirements used here.
@@ -38,11 +38,11 @@ This IG excludes ePrescription and eDispensation workflow transactions, user-lev
 
 The intended audiences of this Implementation Guide are:
 
-- **Manufacturers of EHR systems:** EHR vendors looking to support the interoperability component capabilities required by EHDS should refer to the [Functional Requirements](functional.html) for a list of functional specifications EHRs should support.
+- **Manufacturers of EHR systems:** EHR vendors looking to support the Interoperability Component capabilities required by EHDS should refer to the [Functional Requirements](functional.html) for a list of functional specifications EHRs should support.
 
-- **Architects of national infrastructures:** National eHealth agencies looking to understand how to use the interoperability component capabilities required by EHDS should refer to the [Implementation](implementation.html) for examples of how those capabilities can support EHDS use cases.
+- **Architects of national infrastructures:** National eHealth agencies looking to understand how to use the Interoperability Component capabilities required by EHDS should refer to the [Implementation](implementation.html) for examples of how those capabilities can support EHDS use cases.
 
-- **Healthcare providers and healthcare organizations:** Organizations deploying EHDS interoperability need to understand the use cases and how they map to national infrastructure requirements, in order to evaluate whether their EHR system's interoperability component supports their Member State's obligations. See [Functional Requirements](functional.html) and [Implementation](implementation.html).
+- **Healthcare providers and healthcare organizations:** Organizations deploying EHDS interoperability need to understand the use cases and how they map to national infrastructure requirements, in order to evaluate whether their EHR system's Interoperability Component supports their Member State's obligations. See [Functional Requirements](functional.html) and [Implementation](implementation.html).
 
 - **Manufacturers of wellness applications:** Vendors of wellness applications claiming interoperability with an EHR system (EHDS Articles 47–48), looking to either access data from EHR systems or write data into an EHR system. See the [Wellness App](usecase-wellness-app.html) use case and [Implementation](implementation.html) page.
 

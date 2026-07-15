@@ -4,7 +4,7 @@ A **Health Data Access Service** ([Art. 4](https://eur-lex.europa.eu/legal-conte
 
 ### Scope
 
-This IG defines the interoperability component API surface the access service uses when querying EHR systems. The access service itself — patient authentication (national eID, EU Digital Identity Wallet), consent management, and how queries are routed across EHR systems — is governed by Member State requirements and is out of scope here.
+This IG defines the Interoperability Component API surface the access service uses when querying EHR systems. The access service itself — patient authentication (national eID, EU Digital Identity Wallet), consent management, and how queries are routed across EHR systems — is governed by Member State requirements and is out of scope here.
 
 ### Participants
 
@@ -20,7 +20,7 @@ This IG defines the interoperability component API surface the access service us
 
 ### Authorization
 
-The patient's identity and authorization are established at the access service. At the interoperability component API surface, the consumer is an authorized system-to-system caller; the mechanism is described in [Authorization](authorization.html). Patient consent preferences and app-linking rules are established by the access service or Member State infrastructure; this IG describes only the EHR-facing system-to-system exchange.
+The patient's identity and authorization are established at the access service. At the Interoperability Component API surface, the consumer is an authorized system-to-system caller; the mechanism is described in [Authorization](authorization.html). Patient consent preferences and app-linking rules are established by the access service or Member State infrastructure; this IG describes only the EHR-facing system-to-system exchange.
 
 ### Art. 5: Insertion of Patient-Provided Data (Informative)
 
