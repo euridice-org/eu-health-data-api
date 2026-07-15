@@ -22,6 +22,9 @@ The diagram below shows the EHDS actors and the boundaries between them. The blu
       <a href="usecase-health-data-portal.html"><title>Patient Access</title><rect x="540" y="249" width="71" height="30" fill="transparent" pointer-events="all" /></a>
       <a href="usecase-wellness-app.html"><title>Wellness App Access</title><rect x="446" y="380" width="86" height="41" fill="transparent" pointer-events="all" /></a>
       <a href="usecase-provider-internal-exchange.html"><title>Provider-Internal Exchange</title><rect x="157" y="308" width="100" height="38" fill="transparent" pointer-events="all" /></a>
+      <a href="usecase-health-professional-portal.html"><title>HP Access</title><rect x="539" y="146" width="73" height="30" fill="transparent" pointer-events="all" /></a>
+      <a href="usecase-wellness-app.html"><title>Wellness (HDAS)</title><rect x="446" y="339" width="99" height="22" fill="transparent" pointer-events="all" /></a>
+      <a href="usecase-wellness-app.html"><title>Wellness (Direct)</title><rect x="305" y="384" width="88" height="32" fill="transparent" pointer-events="all" /></a>
     </svg>
     <figcaption class="figure-caption"><em>Figure: EHDS Interoperability Landscape</em></figcaption>
   </figure>
