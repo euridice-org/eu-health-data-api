@@ -121,6 +121,7 @@ Quick start:
 - Andreas Klingler, IHE Europe
 - Katie Reynolds, Epic
 - Janos Vincze, IHE Europe
+- Jens Kristian Villadsen, Trifork
 
 ---
 
