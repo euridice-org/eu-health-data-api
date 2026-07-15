@@ -14,11 +14,7 @@ else Patient Lookup (demographics only)
     Consumer -> Provider : ITI-119 PDQm $match
 end
 
-alt Resource Query
-    Consumer -> Provider : PCC-44 QEDm Mobile Query Existing Data
-else 
-    Consumer -> Provider : IPA Finding and Retrieving Patient Information
-end
+Consumer -> Provider : IPA Finding and Retrieving Patient Information
 
 
 @enduml

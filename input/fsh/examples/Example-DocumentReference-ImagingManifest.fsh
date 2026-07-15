@@ -3,8 +3,8 @@
 // One for the FHIR ImagingStudy manifest, one for the DICOM KOS manifest.
 // See: https://github.com/euridice-org/eu-health-data-api/issues/50
 
-Instance: ExampleDocumentReferenceImagingManifestFHIR
-InstanceOf: EehrxfMhdDocumentReference
+Instance: example-documentreference-imaging-manifest-fhir
+InstanceOf: DocumentReferenceEuApi
 Title: "Example - Imaging Study Manifest (FHIR)"
 Description: """
 Example DocumentReference for a FHIR-encoded imaging study manifest.
@@ -25,7 +25,7 @@ Usage: #example
 * status = #current
 
 // Category: EHDS Priority Category (informative)
-* category = EEHRxFDocumentPriorityCategoryCS#Medical-Imaging "medical imaging studies and related imaging reports"
+* category = DocumentPriorityCategoryEuApiCS#Medical-Imaging "medical imaging studies and related imaging reports"
 
 // Type: LOINC code for imaging study manifest
 * type = $loinc#18748-4 "Diagnostic imaging study"
@@ -50,7 +50,7 @@ Usage: #example
 
 // Link to DICOM KOS counterpart
 * relatesTo.code = #transforms
-* relatesTo.target = Reference(ExampleDocumentReferenceImagingManifestKOS)
+* relatesTo.target = Reference(example-documentreference-imaging-manifest-kos)
 
 // Content: FHIR ImagingStudy manifest
 * content.attachment.contentType = #application/fhir+json
@@ -60,8 +60,8 @@ Usage: #example
 * content.format = urn:ietf:rfc:3986#http://hl7.eu/fhir/imaging-r5/StructureDefinition/ImagingStudyEu
 
 
-Instance: ExampleDocumentReferenceImagingManifestKOS
-InstanceOf: EehrxfMhdDocumentReference
+Instance: example-documentreference-imaging-manifest-kos
+InstanceOf: DocumentReferenceEuApi
 Title: "Example - Imaging Study Manifest (DICOM KOS)"
 Description: """
 Example DocumentReference for a DICOM KOS-encoded imaging study manifest.
@@ -77,7 +77,7 @@ Usage: #example
 * status = #current
 
 // Category: EHDS Priority Category (informative)
-* category = EEHRxFDocumentPriorityCategoryCS#Medical-Imaging "medical imaging studies and related imaging reports"
+* category = DocumentPriorityCategoryEuApiCS#Medical-Imaging "medical imaging studies and related imaging reports"
 
 // Type: LOINC code for imaging study manifest
 * type = $loinc#18748-4 "Diagnostic imaging study"
@@ -102,7 +102,7 @@ Usage: #example
 
 // Link to FHIR manifest counterpart
 * relatesTo.code = #transforms
-* relatesTo.target = Reference(ExampleDocumentReferenceImagingManifestFHIR)
+* relatesTo.target = Reference(example-documentreference-imaging-manifest-fhir)
 
 // Content: DICOM KOS
 * content.attachment.contentType = #application/dicom

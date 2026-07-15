@@ -7,7 +7,7 @@ For how different server backends (FHIR-native on-demand vs persisted/XDS-bridge
 <div>
 <figure class="figure">
 <img src="docExchange_1.png" class="figure-img img-responsive img-rounded center-block" alt="Document Exchange Overview" style="width:50%">
-<figcaption class="figure-caption"><strong>Figure: Document Exchange Overview</strong></figcaption>
+<figcaption class="figure-caption"><strong>Figure 11: Document Exchange Overview</strong></figcaption>
 </figure>
 </div>
 
@@ -85,16 +85,16 @@ Human-readable representations (e.g. PDF narrative) are part of the FHIR Documen
 
 ##### EHDS Priority Categories and Type Codes
 
-[Article 14](https://eur-lex.europa.eu/eli/reg/2025/327/oj#d1e2289-1-1) of the EHDS regulation defines six priority categories of electronic health data. [EEHRxFDocumentPriorityCategoryCS](CodeSystem-eehrxf-document-priority-category-cs.html) provides informative codes for these categories, organizing them by the LOINC `type` codes consumers use for document search.
+[Article 14](https://eur-lex.europa.eu/eli/reg/2025/327/oj#d1e2289-1-1) of the EHDS regulation defines six priority categories of electronic health data. [EEHRxFDocumentPriorityCategoryCS](CodeSystem-document-priority-category-eu-api.html) provides informative codes for these categories, organizing them by the LOINC `type` codes consumers use for document search.
 
 Each priority category has a ValueSet of known LOINC type codes:
-- `Patient-Summaries` → [EEHRxFDocumentTypePatientSummaryVS](ValueSet-eehrxf-document-type-patient-summary-vs.html)
-- `Discharge-Reports` → [EEHRxFDocumentTypeDischargeReportVS](ValueSet-eehrxf-document-type-discharge-report-vs.html)
-- `Laboratory-Reports` → [EEHRxFDocumentTypeLaboratoryReportVS](ValueSet-eehrxf-document-type-laboratory-report-vs.html)
-- `Medical-Imaging` → [EEHRxFDocumentTypeMedicalImagingVS](ValueSet-eehrxf-document-type-medical-imaging-vs.html)
+- `Patient-Summaries` → [EEHRxFDocumentTypePatientSummaryVS](ValueSet-document-type-patient-summary-eu-api.html)
+- `Discharge-Reports` → [EEHRxFDocumentTypeDischargeReportVS](ValueSet-document-type-discharge-report-eu-api.html)
+- `Laboratory-Reports` → [EEHRxFDocumentTypeLaboratoryReportVS](ValueSet-document-type-laboratory-report-eu-api.html)
+- `Medical-Imaging` → [EEHRxFDocumentTypeMedicalImagingVS](ValueSet-document-type-medical-imaging-eu-api.html)
 `Electronic-Prescriptions` and `Electronic-Dispensations` fall outside the document exchange model and have no type codes.
 
-[EEHRxFDocumentTypeVS](ValueSet-eehrxf-document-type-vs.html) aggregates all per-category type codes into a single ValueSet bound to `DocumentReference.type`. A [ConceptMap](ConceptMap-EehrxfMhdDocumentReferenceCM.html) provides the same mapping in machine-readable form.
+[EEHRxFDocumentTypeVS](ValueSet-document-type-eu-api.html) aggregates all per-category type codes into a single ValueSet bound to `DocumentReference.type`. A [ConceptMap](ConceptMap-document-reference-category-type-eu-api.html) provides the same mapping in machine-readable form.
 
 
 | priority category | type codes | relevant IGs |
@@ -125,7 +125,7 @@ Consumers treat on-demand and persisted DocumentReferences identically — both 
 
 Search by `type` (LOINC) for the most accurate results. To find the relevant `type` codes for a priority category, consult the per-category ValueSet or the ConceptMap. When multiple `type` codes apply, include all of them.
 
-These examples assume the consumer has resolved the patient to a FHIR reference (e.g., `Patient/123`) via [Patient Matching](patient-match.html). Alternatively, use [chained identifier search](patient-match.html#option-chained-identifier-search) (e.g., `patient.identifier=[system]|[value]`).
+These examples assume the consumer has resolved the patient to a FHIR reference (e.g., `Patient/123`) via [Patient Lookup](patient-match.html). Alternatively, use [chained identifier search](patient-match.html#option-chained-identifier-search) (e.g., `patient.identifier=[system]|[value]`).
 
 ##### Patient Summary
 
@@ -172,7 +172,7 @@ When Document Publisher and Document Access Provider are **separate systems**, t
 
 The Document Access Provider MAY support receiving documents from external Publishers by implementing the [MHD Simplified Publish Option](https://profiles.ihe.net/ITI/MHD/1332_actor_options.html#13324-simplified-publish-option). This is the **Document Submission Option**.
 
-Systems implementing this option declare it via [EEHRxF-DocumentAccessProvider-SubmissionOption](CapabilityStatement-EEHRxF-DocumentAccessProvider-SubmissionOption.html). See [Actors - Document Submission Option](actors.html#document-submission-option) for actor groupings.
+Systems implementing this option declare it via [document-access-provider-submission-option-eu-api](CapabilityStatement-document-access-provider-submission-option-eu-api.html). See [Actors - Document Submission Option](actors.html#document-submission-option) for actor groupings.
 
 #### ITI-105 Simplified Publish
 

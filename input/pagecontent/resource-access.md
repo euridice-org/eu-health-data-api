@@ -26,9 +26,7 @@ Resource publication is more complex than document publication, and in many case
 
 This IG aligns with:
 
-- [HL7 International Patient Access (IPA)](https://hl7.org/fhir/uv/ipa/) - Resource access patterns and CapabilityStatements
-- [IHE QEDm](https://profiles.ihe.net/PCC/QEDm/) - Query Existing Data mobile, where compatible with IPA. QEDm has a goal of aligning with IPA.
-  - [PCC-44](https://profiles.ihe.net/PCC/QEDm/PCC-44.html) - Mobile Query Existing Data transaction
+- [HL7 International Patient Access (IPA)](https://hl7.org/fhir/uv/ipa/) - Primary reference for resource access patterns and CapabilityStatements
 
 ### Sequence Diagram
 
@@ -78,7 +76,7 @@ Following [International Patient Access (IPA)](https://hl7.org/fhir/uv/ipa/Capab
 
 Servers declare which resources they support in their CapabilityStatement (see [Capability Discovery](capability-discovery.html)). Clients MAY check the server's CapabilityStatement to discover available resources before making requests.
 
-See the [Resource Access Provider CapabilityStatement](CapabilityStatement-EEHRxF-ResourceAccessProvider.html) and [Resource Consumer CapabilityStatement](CapabilityStatement-EEHRxF-ResourceConsumer.html) for detailed capability declarations.
+See the [Resource Access Provider CapabilityStatement](CapabilityStatement-resource-access-provider-eu-api.html) and [Resource Consumer CapabilityStatement](CapabilityStatement-resource-consumer-eu-api.html) for detailed capability declarations.
 
 ### Scopes
 
@@ -124,11 +122,5 @@ The [IHE mXDE](https://profiles.ihe.net/ITI/mXDE/index.html) profile provides mo
 ### References
 
 - [HL7 International Patient Access (IPA)](https://hl7.org/fhir/uv/ipa/)
-- [IHE QEDm](https://profiles.ihe.net/PCC/QEDm/)
-  - [PCC-44 Mobile Query Existing Data](https://profiles.ihe.net/PCC/QEDm/PCC-44.html)
 - [IHE mXDE](https://profiles.ihe.net/ITI/mXDE/index.html)
 - [Actors and Transactions](actors.html)
-
-### International Patient Access vs QEDm
-
-This IG uses [International Patient Access (IPA)](https://hl7.org/fhir/uv/ipa/) as the primary reference for CapabilityStatements and search parameters. QEDm is referenced where compatible with International Patient Access - and QEDm has a stated goal of aligning with IPA.

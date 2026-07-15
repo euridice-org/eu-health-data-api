@@ -13,7 +13,6 @@ This is similar to the approach taken in the MHDS specification, but with a more
   - [IHE MHD](https://profiles.ihe.net/ITI/MHD/) - Defines exchange of Documents, which we use to exchange FHIR document content.
 - Resource Exchange
   - [HL7 International Patient Access (IPA)](https://hl7.org/fhir/uv/ipa/) - Defines how an application can access FHIR information using SMART authorization and resource access. IPA is the primary reference for resource access patterns.
-  - [IHE QEDm](https://profiles.ihe.net/PCC/QEDm/index.html) - Defines how a client can query for existing FHIR resources from a FHIR server. Referenced where compatible with IPA.
 - Foundational
   - [IHE Consistent Time](https://profiles.ihe.net/ITI/TF/Volume1/ch-7.html) - Defines the use of Network Time Protocol (NTP) to provide consistent time across systems.
   - [IHE ATNA](https://profiles.ihe.net/ITI/TF/Volume1/ch-9.html) - Referenced for secure transport requirements (TLS 1.2 Floor using BCP195 Option).
@@ -23,7 +22,7 @@ This is similar to the approach taken in the MHDS specification, but with a more
 Document exchange is defined with 3 actors:
 
 <div style="text-align: center;">
-{% include img.html img="docExchange_1.png" caption="Figure: Document Exchange Actors" %}
+{% include img.html img="docExchange_1.png" caption="Figure 4: Document Exchange Actors" %}
 </div>
 
 <a name="document-publisher"></a>
@@ -38,7 +37,7 @@ Document exchange is defined with 3 actors:
 These composite actors inherit existing actors from the IUA, PDQm, and MHD specifications:
 
 <div style="text-align: center;">
-{% include img.html img="docExchange_2.png" caption="Figure: Document Exchange - Actor Groupings" %}
+{% include img.html img="docExchange_2.png" caption="Figure 5: Document Exchange - Actor Groupings" %}
 </div>
 
 **Document Publisher**
@@ -91,10 +90,10 @@ sequenceDiagram
 
 See the following functional pages for detailed transaction information:
 - [Authorization](authorization.html) - Authentication and authorization flows
-- [Patient Match](patient-match.html) - Patient identification transactions
+- [Patient Lookup](patient-match.html) - Patient identification transactions
 - [Document Exchange](document-exchange.html) - Document query and retrieval transactions
 
-This can be combined with content profiles define by each EHDS Priority Category, for those categories that are primarily represented as a FHIR Document. For example, a system can be a **Lab Result Document Publisher**, a **Patient Summary Document Consumer**, or a **Imaging Manifest Document Access Provider**. 
+This can be combined with content profiles defined by each EHDS Priority Category, for those categories that are primarily represented as a FHIR Document. For example, a system can be a **Lab Result Document Publisher**, a **Patient Summary Document Consumer**, or a **Imaging Manifest Document Access Provider**. 
 
 
 ### Resource Exchange
@@ -102,7 +101,7 @@ This can be combined with content profiles define by each EHDS Priority Category
 It is also useful in many cases to transact with individual FHIR resources. For this purpose, two resource-based actors are defined:
 
 <div style="text-align: center;">
-{% include img.html img="resExchange_1.png" caption="Figure: Resource Exchange Actors" %}
+{% include img.html img="resExchange_1.png" caption="Figure 6: Resource Exchange Actors" %}
 </div>
 
 
@@ -124,7 +123,7 @@ Resource exchange is more complex than document publication, and in many cases h
 These composite actors inherit existing actors from the IUA, PDQm, and [International Patient Access (IPA)](https://hl7.org/fhir/uv/ipa/) specifications (with QEDm alignment where compatible):
 
 <div style="text-align: center;">
-{% include img.html img="resExchange_2.png" caption="Figure: Resource Access - Actor Groupings" %}
+{% include img.html img="resExchange_2.png" caption="Figure 7: Resource Access - Actor Groupings" %}
 </div>
 
 **Resource Access Provider**
@@ -134,7 +133,6 @@ These composite actors inherit existing actors from the IUA, PDQm, and [Internat
 - [PDQm Patient Demographics Supplier](https://profiles.ihe.net/ITI/PDQm/volume-1.html) ([CapabilityStatement](https://profiles.ihe.net/ITI/PDQm/CapabilityStatement-IHE.PDQm.PatientDemographicsSupplier.html))
 - Resource Access
   - [HL7 International Patient Access Server](https://hl7.org/fhir/uv/ipa/) ([CapabilityStatement](https://hl7.org/fhir/uv/ipa/CapabilityStatement-ipa-server.html))
-  - [QEDm Clinical Data Source](https://profiles.ihe.net/PCC/QEDm/volume-1.html#actors-and-transactions) ([CapabilityStatement](https://profiles.ihe.net/PCC/QEDm/CapabilityStatement-IHE.QEDm.Clinical-Data-Source.html)) - where compatible with IPA
 
 **Resource Consumer**
 
@@ -142,7 +140,6 @@ These composite actors inherit existing actors from the IUA, PDQm, and [Internat
 - [PDQm Patient Demographics Consumer](https://profiles.ihe.net/ITI/PDQm/volume-1.html) ([CapabilityStatement](https://profiles.ihe.net/ITI/PDQm/CapabilityStatement-IHE.PDQm.PatientDemographicsConsumerQuery.html))
 - Resource Access
   - [HL7 International Patient Access Client](https://hl7.org/fhir/uv/ipa/) ([CapabilityStatement](https://hl7.org/fhir/uv/ipa/CapabilityStatement-ipa-client.html))
-  - [QEDm Clinical Data Consumer](https://profiles.ihe.net/PCC/QEDm/volume-1.html#actors-and-transactions) ([CapabilityStatement](https://profiles.ihe.net/PCC/QEDm/CapabilityStatement-IHE.QEDm.Clinical-Data-Consumer.html)) - where compatible with IPA
 
 This leads to the following required transactions between these actors:
 
@@ -155,7 +152,7 @@ sequenceDiagram
     Provider-->>Consumer: access_token
     Consumer->>Provider: Patient Lookup (PDQm ITI-78)
     Provider-->>Consumer: Patient Bundle
-    Consumer->>Provider: Resource Query (IPA / QEDm PCC-44)
+    Consumer->>Provider: Resource Query (IPA)
     Provider-->>Consumer: Resource Bundle
 ```
 
@@ -167,15 +164,15 @@ sequenceDiagram
 
 
 <div style="text-align: center;">
-{% include img.html img="ExGroup_Doc.png" caption="Figure: Example Grouping - Document" %}
+{% include img.html img="ExGroup_Doc.png" caption="Figure 8: Example Grouping - Document" %}
 </div>
 
 <div style="text-align: center;">
-{% include img.html img="ExGroup_Group.png" caption="Figure: Example Grouping - Group" %}
+{% include img.html img="ExGroup_Group.png" caption="Figure 9: Example Grouping - Group" %}
 </div>
 
 <div style="text-align: center;">
-{% include img.html img="ExGroup_DocAssembly.png" caption="Figure: Example Grouping - Document Assembly from Distributed Resources" %}
+{% include img.html img="ExGroup_DocAssembly.png" caption="Figure 10: Example Grouping - Document Assembly from Distributed Resources" %}
 </div>
 
 

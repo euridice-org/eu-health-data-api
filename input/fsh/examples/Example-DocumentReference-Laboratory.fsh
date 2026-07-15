@@ -1,7 +1,7 @@
 // Example DocumentReference for Laboratory Report
 
-Instance: ExampleDocumentReferenceLaboratory
-InstanceOf: EehrxfMhdDocumentReference
+Instance: example-documentreference-laboratory
+InstanceOf: DocumentReferenceEuApi
 Title: "Example - Laboratory Report DocumentReference"
 Description: """
 Example DocumentReference for a laboratory report.
@@ -16,7 +16,7 @@ Usage: #example
 * masterIdentifier.system = "urn:oid:2.999.3.4.5.6.7.8.9"
 * masterIdentifier.value = "urn:uuid:c3d4e5f6-a7b8-9012-cdef-123456789012"
 * status = #current
-* category = EEHRxFDocumentPriorityCategoryCS#Laboratory-Reports "medical test results, including laboratory and other diagnostic results and related reports"
+* category = DocumentPriorityCategoryEuApiCS#Laboratory-Reports "medical test results, including laboratory and other diagnostic results and related reports"
 * type = $loinc#11502-2 "Laboratory report"
 * subject.reference = "http://example.org/fhir/Patient/example-patient"
 * subject.display = "Jan Jansen"

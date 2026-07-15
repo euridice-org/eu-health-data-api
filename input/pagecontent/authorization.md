@@ -27,9 +27,9 @@ IHE IUA defines three key actors for authorization:
 
 ### IHE IUA Actor Groupings
 
-- **Document/Resource Publisher:** IUA Authorization Client
-- **Document/Resource Consumer:** IUA Authorization Client
-- **Document/Resource Access Provider:** IUA Resource Server (required) + IUA Authorization Server (if internal)
+- **Document Publisher:** IUA Authorization Client
+- **Document Consumer:** IUA Authorization Client
+- **Document Access Provider:** IUA Resource Server (required) + IUA Authorization Server (if internal)
 
 #### Authorization Server Deployment
 
@@ -121,27 +121,25 @@ In deployments using an external Authorization Server, token validation commonly
 Scopes follow [SMART v2 conventions](https://hl7.org/fhir/smart-app-launch/scopes-and-launch-context.html#scopes-for-requesting-fhir-resources) and align with required MHD and IPA transactions:
 
 #### Document Publisher (MHD ITI-105)
-- `system/DocumentReference.create` - Create DocumentReference
-- `system/Patient.read` - Read Patient (for patient context)
-- `system/Patient.search` - Search Patient (for patient matching)
+- `system/DocumentReference.c` - Create DocumentReference
+- `system/Patient.rs` - Read/search Patient (for patient lookup)
 
 #### Document Consumer (MHD ITI-67, ITI-68)
-- `system/Patient.read` - Read Patient
-- `system/Patient.search` - Search Patient
-- `system/DocumentReference.read` - Read DocumentReference
-- `system/DocumentReference.search` - Search DocumentReference
-- `system/Binary.read` - Read Binary
-- `system/Bundle.read` - Read Bundle (for FHIR Documents)
+- `system/Patient.rs` - Read/search Patient
+- `system/DocumentReference.rs` - Read/search DocumentReference
+- `system/Binary.r` - Read Binary
+- `system/Bundle.r` - Read Bundle (for FHIR Documents)
 
 #### Resource Consumer (International Patient Access)
-- `system/Patient.read` - Read Patient
-- `system/Patient.search` - Search Patient
-- Additional scopes per resource type: `system/Observation.read`, `system/Observation.search`, `system/Condition.read`, `system/Condition.search`, `system/DiagnosticReport.read`, `system/DiagnosticReport.search`, etc.
+- `system/Patient.rs` - Read/search Patient
+- Additional scopes per resource type: `system/Observation.rs`, `system/Condition.rs`, `system/DiagnosticReport.rs`, etc.
 
 #### Scope Conventions
-- `.read` = read a single resource by ID
-- `.search` = search for resources by criteria
-- `.create` = create a new resource
+
+SMART v2 scope syntax (see [SMART App Launch — Scopes for Requesting FHIR Resources](https://hl7.org/fhir/smart-app-launch/scopes-and-launch-context.html#scopes-for-requesting-fhir-resources)): `system/<ResourceType>.<actions>`, where `<actions>` is one or more of `c` (create), `r` (read), `u` (update), `d` (delete), `s` (search). Common combinations:
+- `.rs` = read + search
+- `.r` = read only
+- `.c` = create only
 
 #### External Authorization Server {#external-authorization-server}
 
@@ -178,7 +176,7 @@ sequenceDiagram
 
 ### Transport Security {#transport-security}
 
-All API communications SHALL use secure transport as defined by [IHE ATNA](https://profiles.ihe.net/ITI/TF/Volume1/ch-9.html) with the TLS 1.2 Floor using BCP195 Option.
+All API communications SHALL use secure transport as defined by [IHE ATNA §9.2.6.4 TLS 1.2 Floor using BCP195 Option](https://profiles.ihe.net/ITI/TF/Volume1/ch-9.html#9.2.6.4).
 
 ### IUA and SMART Backend Services
 
@@ -190,7 +188,7 @@ For example: this IG requires `private_key_jwt` client authentication (per SMART
 
 ### Potential Future Work: User-Level Authorization
 
-User-level authorization (including patient-mediated access) is out of scope for this version of the implementation Guide. For patient-mediated access patterns, readers are encouraged to consider [SMART on FHIR App Launch](https://hl7.org/fhir/smart-app-launch/) and [International Patient Access](https://hl7.org/fhir/uv/ipa/). Implementors might consider UDAP for dynamic client registration (see [FHIR UDAP Security IG](https://hl7.org/fhir/us/udap-security/)).
+User-level authorization (including patient-mediated access) is out of scope for this version of the implementation Guide. For patient-mediated access patterns, readers are encouraged to consider [SMART on FHIR App Launch](https://hl7.org/fhir/smart-app-launch/) and [International Patient Access](https://hl7.org/fhir/uv/ipa/). Implementors might consider UDAP for dynamic client registration (see [UDAP Security](https://www.udap.org/)).
 
 Integration with the EU Digital Identity Wallet and eIDAS framework may be addressed in future editions.
 

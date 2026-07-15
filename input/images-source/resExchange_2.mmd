@@ -1,0 +1,31 @@
+%% Resource Access - Actor Groupings (Figure 7, actors.html)
+%% Regenerate: mmdc -i resExchange_2.mmd -o ../images/resExchange_2.png -b white -s 3 -p /tmp/pptr.json
+%%{init: {'flowchart': {'nodeSpacing': 18, 'rankSpacing': 22, 'padding': 6}}}%%
+flowchart LR
+    subgraph Provider["Resource Access Provider"]
+        direction TB
+        P1("IUA Authorization<br/>Server")
+        P2("IUA Resource Server")
+        P3("PDQm Patient<br/>Demographics Supplier")
+        P4("IPA Server")
+        P1 ~~~ P2 ~~~ P3 ~~~ P4
+    end
+    subgraph Consumer["Resource Consumer"]
+        direction TB
+        C1("IUA Authorization<br/>Client")
+        C2("PDQm Patient<br/>Demographics Consumer")
+        C3("IPA Client")
+        C0[" "]:::spacer
+        C1 ~~~ C2 ~~~ C3 ~~~ C0
+    end
+    Provider ~~~ Consumer
+
+    classDef iua fill:#f8cecc,stroke:#b85450,color:#000000;
+    classDef pdqm fill:#e1d5e7,stroke:#9673a6,color:#000000;
+    classDef ipa fill:#d5e8d4,stroke:#82b366,color:#000000;
+    classDef spacer fill:#f5f5f5,stroke:#f5f5f5,color:#f5f5f5;
+    class P1,P2,C1 iua;
+    class P3,C2 pdqm;
+    class P4,C3 ipa;
+    style Provider fill:#f5f5f5,stroke:#999999,color:#333333;
+    style Consumer fill:#f5f5f5,stroke:#999999,color:#333333;

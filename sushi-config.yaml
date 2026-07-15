@@ -70,8 +70,6 @@ pages:
     title: Background
     regulatoryAnchors.md:
       title: Regulatory Anchors
-      ehds-annex-ii.md:
-        title: EHDS Annex II - Essential Requirements
     actors.md:
       title: Actors and Transactions
     priority-categories.md:
@@ -105,7 +103,7 @@ pages:
     authorization.md:
       title: Authorization
     patient-match.md:
-      title: Patient Matching
+      title: Patient Lookup
     document-exchange.md:
       title: Document Exchange
     resource-access.md:
@@ -136,8 +134,6 @@ pages:
       title: Authors and contributors
     copyright.md:
       title: Copyright
-    references.md:
-      title: References
 
   # actors-and-transactions.md:
   #   title: System actors
@@ -176,15 +172,22 @@ menu:
   Background:
     Regulatory Anchors: regulatoryAnchors.html
     Actors and Transactions: actors.html
-    Priority Categories: priority-categories.html
     Member State Architectures: member-state-architectures.html
     Relationship to XDS/FHIR: background-xds-fhir.html
     Change Log: changes.html
     Open Issues: open-issues.html
+  Priority Categories:
+    Overview: priority-categories.html
+    Patient Summary (EPS): priority-area-eps.html
+    ePrescription / eDispensation: priority-area-mpd.html
+    Medical Test Results: priority-area-laboratory.html
+    Medical Imaging Report: priority-area-imaging-report.html
+    Medical Imaging Manifest: priority-area-imaging-manifest.html
+    Hospital Discharge Report: priority-area-hdr.html
   Functional Requirements:
     Capability Discovery: capability-discovery.html
     Authorization: authorization.html
-    Patient Matching: patient-match.html
+    Patient Lookup: patient-match.html
     Document Exchange: document-exchange.html
     Resource Access: resource-access.html
   Implementation:

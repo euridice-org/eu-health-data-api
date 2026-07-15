@@ -1,20 +1,18 @@
-// CapabilityStatement for EEHRxF Resource Access Provider Actor (IPA/QEDm server)
-// Based on IPA Server (primary) and IHE QEDm Clinical Data Source with SMART Backend Services security
+// CapabilityStatement for EEHRxF Resource Access Provider Actor (IPA server)
+// Based on IPA Server with SMART Backend Services security
 
-Instance: EEHRxF-ResourceAccessProvider
+Instance: resource-access-provider-eu-api
 InstanceOf: CapabilityStatement
 Title: "EEHRxF Resource Access Provider CapabilityStatement"
 Usage: #definition
 Description: """
 CapabilityStatement for the EEHRxF Resource Access Provider actor. This actor serves
-clinical data resources following the International Patient Access (IPA) patterns and
-IHE QEDm Clinical Data Source capabilities.
+clinical data resources following the International Patient Access (IPA) patterns.
 
 This CapabilityStatement defines the capabilities for systems providing direct resource
 access (beyond document-based exchange) in the EU EHR Exchange Format (EEHRxF) ecosystem.
 It inherits patterns from:
 - **IPA (International Patient Access)**: Resource profiles and search parameter patterns
-- **IHE QEDm (Query for Existing Data for Mobile)**: Clinical Data Source actor capabilities
 
 ### Resource Flexibility (IPA Alignment)
 
@@ -42,7 +40,7 @@ Systems SHALL support SMART Backend Services authorization for all transactions.
 Resources SHOULD conform to EU Core profiles where available.
 """
 
-* name = "EEHRxFResourceAccessProvider"
+* name = "ResourceAccessProviderEuApi"
 * title = "EEHRxF Resource Access Provider CapabilityStatement"
 * status = #active
 * experimental = false
@@ -60,7 +58,7 @@ Resources SHOULD conform to EU Core profiles where available.
 * rest[+].mode = #server
 * rest[=].documentation = """
 The Resource Access Provider actor responds to queries for clinical data resources
-following IPA and QEDm patterns. This enables direct resource access complementing
+following IPA patterns. This enables direct resource access complementing
 document-based exchange via MHD.
 
 All transactions require SMART Backend Services authorization.
@@ -86,18 +84,18 @@ actually supported.
 ### Scopes for Supported Resources
 
 Servers SHALL accept scopes for the resources they support:
-- system/Patient.read, system/Patient.search (REQUIRED - read and search Patient)
-- system/Condition.read, system/Condition.search (if Condition supported)
-- system/AllergyIntolerance.read, system/AllergyIntolerance.search (if AllergyIntolerance supported)
-- system/Observation.read, system/Observation.search (if Observation supported)
-- system/DiagnosticReport.read, system/DiagnosticReport.search (if DiagnosticReport supported)
-- system/MedicationRequest.read, system/MedicationRequest.search (if MedicationRequest supported)
-- system/MedicationDispense.read, system/MedicationDispense.search (if MedicationDispense supported)
-- system/Immunization.read, system/Immunization.search (if Immunization supported)
-- system/MedicationStatement.read, system/MedicationStatement.search (if MedicationStatement supported)
-- system/Encounter.read, system/Encounter.search (if Encounter supported)
-- system/Practitioner.read (if Practitioner supported)
-- system/Organization.read (if Organization supported)
+- system/Patient.rs (REQUIRED - read + search Patient)
+- system/Condition.rs (if Condition supported)
+- system/AllergyIntolerance.rs (if AllergyIntolerance supported)
+- system/Observation.rs (if Observation supported)
+- system/DiagnosticReport.rs (if DiagnosticReport supported)
+- system/MedicationRequest.rs (if MedicationRequest supported)
+- system/MedicationDispense.rs (if MedicationDispense supported)
+- system/Immunization.rs (if Immunization supported)
+- system/MedicationStatement.rs (if MedicationStatement supported)
+- system/Encounter.rs (if Encounter supported)
+- system/Practitioner.r (if Practitioner supported)
+- system/Organization.r (if Organization supported)
 """
 
 // ============================================================================

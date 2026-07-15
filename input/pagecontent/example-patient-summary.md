@@ -41,7 +41,7 @@ sequenceDiagram
     Note over Consumer,Provider: Document Exchange (MHD ITI-67, ITI-68)
     Consumer->>Provider: GET /DocumentReference?patient=...&type=60591-5
     Provider-->>Consumer: DocumentReference Bundle
-    Consumer->>Provider: GET /Bundle/[id]
+    Consumer->>Provider: GET [DocumentReference.content.attachment.url]
     Provider-->>Consumer: Patient Summary (FHIR Document)
     end
 ```
@@ -69,14 +69,14 @@ POST https://provider.example.org/auth/token
 Content-Type: application/x-www-form-urlencoded
 
 grant_type=client_credentials
-&scope=system/Patient.read system/Patient.search system/DocumentReference.read system/DocumentReference.search system/Bundle.read
+&scope=system/Patient.rs system/DocumentReference.rs system/Bundle.r
 &client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-bearer
 &client_assertion=[signed JWT]
 ```
 
 #### Step 3: Identify the Patient
 
-Document Consumer searches for the patient using a known identifier ([Patient Match](patient-match.html)).
+Document Consumer searches for the patient using a known identifier ([Patient Lookup](patient-match.html)).
 
 ```
 GET https://provider.example.org/fhir/Patient?identifier=urn:oid:2.16.840.1.113883.2.4.6.3|123456789

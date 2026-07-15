@@ -1,7 +1,7 @@
 // CapabilityStatement for EEHRxF Document Consumer Actor
 // Composite actor grouping MHD Document Consumer + PDQm Consumer + IUA Authorization Client
 
-Instance: EEHRxF-DocumentConsumer
+Instance: document-consumer-eu-api
 InstanceOf: CapabilityStatement
 Title: "EEHRxF Document Consumer CapabilityStatement"
 Usage: #definition
@@ -29,7 +29,7 @@ This composite actor groups the following IHE actors:
 Systems SHALL support SMART Backend Services authorization for all transactions.
 """
 
-* name = "EEHRxFDocumentConsumer"
+* name = "DocumentConsumerEuApi"
 * title = "EEHRxF Document Consumer CapabilityStatement"
 * status = #active
 * experimental = false
@@ -58,10 +58,10 @@ Systems SHALL:
 - Use TLS 1.2 or higher for all communications
 
 Required scopes:
-- system/DocumentReference.read, system/DocumentReference.search (read and search DocumentReference - ITI-67)
-- system/Binary.read (read Binary for document retrieval - ITI-68)
-- system/Bundle.read (read Bundle for FHIR Document retrieval - ITI-68)
-- system/Patient.read, system/Patient.search (read and search Patient for context - ITI-78)
+- system/DocumentReference.rs (read + search DocumentReference - ITI-67)
+- system/Binary.r (read Binary for document retrieval - ITI-68)
+- system/Bundle.r (read Bundle for FHIR Document retrieval - ITI-68)
+- system/Patient.rs (read + search Patient for context - ITI-78)
 """
 
 // ============================================================================
@@ -70,7 +70,7 @@ Required scopes:
 * rest[=].resource[+].type = #DocumentReference
 * rest[=].resource[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
 * rest[=].resource[=].extension[=].valueCode = #SHALL
-* rest[=].resource[=].supportedProfile[+] = Canonical(EehrxfMhdDocumentReference)
+* rest[=].resource[=].supportedProfile[+] = Canonical(DocumentReferenceEuApi)
 * rest[=].resource[=].supportedProfile[+] = "https://profiles.ihe.net/ITI/MHD/StructureDefinition/IHE.MHD.Minimal.DocumentReference"
 * rest[=].resource[=].documentation = """
 DocumentReference resources are queried using the ITI-67 Find Document References

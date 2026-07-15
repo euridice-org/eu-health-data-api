@@ -22,7 +22,7 @@ CONFORMANCE_STATEMENT_NOCONFWORD
 A definition for CodeSystem 'http://dicom.nema.org/resources/ontology/DCMUID' could not be found, so the code cannot be validated
 
 
-The resource CapabilityStatement/EEHRxF-DocumentAccessProvider-Example could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+The resource CapabilityStatement/example-capabilitystatement-document-access-provider could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
 
 # Not validated target for performance reasons
 CONCEPTMAP_GROUP_TARGET_SERVER_SIDE
@@ -31,9 +31,9 @@ CONCEPTMAP_GROUP_TARGET_SERVER_SIDE
 MSG_DRAFT
 
 # Not Assigned OID
-The resource CapabilityStatement/EEHRxF-DocumentAccessProvider-Example could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+The resource CapabilityStatement/example-capabilitystatement-document-access-provider could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
 
-The resource ConceptMap/EehrxfMhdDocumentReferenceCM could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+The resource ConceptMap/document-reference-category-type-eu-api could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
 
 # Wrong Display Name in the Value Set
 Wrong Display Name 'Diagnostic imaging report' for http://loinc.org#85430-7. Valid display is one of 3 choices: 'Diagnostic imaging report - example sections and entries' (en-US), 'Diagnostic imaging report - example sections and entries' (en-US) or 'DIR - example sections+entries' (en-US) (for the language(s) 'en, en-US'). Note that the display in the ValueSet does not have to match; this check exists to help check that it's not accidentally the wrong code

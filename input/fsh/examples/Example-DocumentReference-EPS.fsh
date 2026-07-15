@@ -2,8 +2,8 @@
 // Demonstrates use of EEHRxF category and type valuesets
 // See: https://github.com/euridice-org/eu-health-data-api/issues/49
 
-Instance: ExampleDocumentReferenceEPS
-InstanceOf: EehrxfMhdDocumentReference
+Instance: example-documentreference-eps
+InstanceOf: DocumentReferenceEuApi
 Title: "Example - European Patient Summary DocumentReference"
 Description: """
 Example DocumentReference showing an EPS document with EEHRxF category coding.
@@ -14,7 +14,7 @@ This example demonstrates the recommended search strategy:
 
 **Example query to find this document by priority category:**
 ```
-GET [base]/DocumentReference?patient=Patient/example-patient&category=https://euridice.ec.europa.eu/fhir/eehrxf/CodeSystem/eehrxf-document-priority-category-cs|Patient-Summaries
+GET [base]/DocumentReference?patient=Patient/example-patient&category=https://euridice.ec.europa.eu/fhir/eehrxf/CodeSystem/document-priority-category-eu-api|Patient-Summaries
 ```
 
 **Example query to find this document by type:**
@@ -29,7 +29,7 @@ Usage: #example
 * status = #current
 
 // Category: EHDS Priority Category (coarse search)
-* category = EEHRxFDocumentPriorityCategoryCS#Patient-Summaries "patient summaries"
+* category = DocumentPriorityCategoryEuApiCS#Patient-Summaries "patient summaries"
 
 // Type: LOINC code (clinical precision)
 * type = $loinc#60591-5 "Patient summary Document"

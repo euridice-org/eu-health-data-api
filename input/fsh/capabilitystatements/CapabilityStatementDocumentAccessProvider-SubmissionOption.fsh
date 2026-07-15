@@ -1,7 +1,7 @@
 // CapabilityStatement for EEHRxF Document Access Provider - Document Submission Option
 // Extends base Document Access Provider with ITI-105 Simplified Publish capability
 
-Instance: EEHRxF-DocumentAccessProvider-SubmissionOption
+Instance: document-access-provider-submission-option-eu-api
 InstanceOf: CapabilityStatement
 Title: "EEHRxF Document Access Provider - Document Submission Option"
 Usage: #definition
@@ -12,7 +12,7 @@ This option enables the Access Provider to receive documents from external Docum
 Publishers via [ITI-105 Simplified Publish](https://profiles.ihe.net/ITI/MHD/ITI-105.html).
 
 Systems implementing this option:
-- SHALL also implement the base [Document Access Provider](CapabilityStatement-EEHRxF-DocumentAccessProvider.html) capabilities
+- SHALL also implement the base [Document Access Provider](CapabilityStatement-document-access-provider-eu-api.html) capabilities
 - SHALL accept ITI-105 transactions from authorized Document Publishers
 - SHALL make received documents available via ITI-67 and ITI-68
 - SHALL validate documents against EEHRxF content profiles
@@ -35,7 +35,7 @@ Adds to base Document Access Provider:
 Systems SHALL support SMART Backend Services authorization for document submission.
 """
 
-* name = "EEHRxFDocumentAccessProviderSubmissionOption"
+* name = "DocumentAccessProviderSubmissionOptionEuApi"
 * title = "EEHRxF Document Access Provider - Document Submission Option"
 * status = #active
 * experimental = false
@@ -47,7 +47,7 @@ Systems SHALL support SMART Backend Services authorization for document submissi
 * format[+] = #xml
 
 // Reference to base capability
-* imports = Canonical(EEHRxF-DocumentAccessProvider)
+* imports = Canonical(document-access-provider-eu-api)
 
 * rest[+].mode = #server
 * rest[=].documentation = """
@@ -60,7 +60,7 @@ embedded document, making them available via ITI-67 and ITI-68.
 * rest[=].security.service = http://hl7.org/fhir/restful-security-service#SMART-on-FHIR
 * rest[=].security.description = """
 Additional scope required for document submission:
-- system/DocumentReference.create (create DocumentReference via ITI-105)
+- system/DocumentReference.c (create DocumentReference via ITI-105)
 
 The Document Publisher must be authorized to submit documents on behalf of the
 patient's care team.
@@ -103,7 +103,7 @@ The server SHALL:
 """
 
 // Supported profiles - EEHRxF DocumentReference, MHD SimplifiedPublish (requires .data), and MHD Minimal
-* rest[=].resource[=].supportedProfile[+] = Canonical(EehrxfMhdDocumentReference)
+* rest[=].resource[=].supportedProfile[+] = Canonical(DocumentReferenceEuApi)
 * rest[=].resource[=].supportedProfile[+] = "https://profiles.ihe.net/ITI/MHD/StructureDefinition/IHE.MHD.SimplifiedPublish.DocumentReference"
 * rest[=].resource[=].supportedProfile[+] = "https://profiles.ihe.net/ITI/MHD/StructureDefinition/IHE.MHD.Minimal.DocumentReference"
 

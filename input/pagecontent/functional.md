@@ -16,7 +16,7 @@ System-to-system authorization using SMART Backend Services and IHE IUA. Require
 
 #### Patient Identification
 
-Patient demographics query using IHE PDQm to locate the correct patient before accessing health information. See [Patient Matching](patient-match.html).
+Patient demographics query using IHE PDQm to locate the correct patient before accessing health information. See [Patient Lookup](patient-match.html).
 
 #### Document Exchange
 
@@ -24,7 +24,7 @@ Exchange of FHIR Documents (Patient Summaries, Lab Reports, Discharge Reports, e
 
 #### Resource Access
 
-Query individual FHIR resources (Observations, Conditions, Medications, etc.) using IPA/QEDm patterns. See [Resource Access](resource-access.html).
+Query individual FHIR resources (Observations, Conditions, Medications, etc.) using IPA patterns. See [Resource Access](resource-access.html).
 
 ### Relationship Between Functional Areas
 

@@ -30,10 +30,10 @@ A system may implement one or both.
 
 Servers declare actor conformance using `CapabilityStatement.instantiates`, referencing the normative CapabilityStatements in this IG:
 
-- [Document Access Provider](CapabilityStatement-EEHRxF-DocumentAccessProvider.html)
-- [Document Access Provider — Document Submission Option](CapabilityStatement-EEHRxF-DocumentAccessProvider-SubmissionOption.html)
-- [Grouped Document Publisher/Access Provider](CapabilityStatement-EEHRxF-DocumentPublisherAccessProvider.html)
-- [Resource Access Provider](CapabilityStatement-EEHRxF-ResourceAccessProvider.html)
+- [Document Access Provider](CapabilityStatement-document-access-provider-eu-api.html)
+- [Document Access Provider — Document Submission Option](CapabilityStatement-document-access-provider-submission-option-eu-api.html)
+- [Grouped Document Publisher/Access Provider](CapabilityStatement-document-publisher-access-provider-eu-api.html)
+- [Resource Access Provider](CapabilityStatement-resource-access-provider-eu-api.html)
 
 Consumers inspect `instantiates` to determine which actor roles and exchange patterns a server supports.
 
@@ -54,7 +54,7 @@ Servers declare which priority categories they support by listing content IG can
 
 The normative CapabilityStatements in this IG declare `supportedProfile` on:
 
-- **DocumentReference** — the [EEHRxF MHD DocumentReference](StructureDefinition-EehrxfMhdDocumentReference.html) profile and the base [MHD DocumentReference](https://profiles.ihe.net/ITI/MHD/StructureDefinition-IHE.MHD.Minimal.DocumentReference.html) profiles
+- **DocumentReference** — the [EEHRxF MHD DocumentReference](StructureDefinition-document-reference-eu-api.html) profile and the base [MHD DocumentReference](https://profiles.ihe.net/ITI/MHD/StructureDefinition-IHE.MHD.Minimal.DocumentReference.html) profiles
 - **Patient** — the [EU Core Patient](http://hl7.eu/fhir/base/StructureDefinition/patient-eu-core) profile
 
 These tell consumers which resource profiles to expect.
@@ -74,14 +74,14 @@ sequenceDiagram
 
 ### Example: Server Supporting Multiple Priority Categories
 
-See the [example CapabilityStatement](CapabilityStatement-EEHRxF-DocumentAccessProvider-Example.html) for a Document Access Provider serving Patient Summaries and Laboratory Reports.
+See the [example CapabilityStatement](CapabilityStatement-example-capabilitystatement-document-access-provider.html) for a Document Access Provider serving Patient Summaries and Laboratory Reports.
 
 The key elements a consumer looks for:
 
 ```json
 {
   "instantiates": [
-    "...CapabilityStatement/EEHRxF-DocumentAccessProvider"
+    "...CapabilityStatement/document-access-provider-eu-api"
   ],
   "implementationGuide": [
     "http://hl7.eu/fhir/eps",
@@ -91,7 +91,7 @@ The key elements a consumer looks for:
     "resource": [{
       "type": "DocumentReference",
       "supportedProfile": [
-        "...EehrxfMhdDocumentReference",
+        "...document-reference-eu-api",
         "...IHE.MHD.Minimal.DocumentReference"
       ]
     }, {

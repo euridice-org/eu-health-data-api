@@ -1,20 +1,18 @@
-// CapabilityStatement for EEHRxF Resource Consumer Actor (IPA/QEDm client)
-// Based on IPA Client (primary) and IHE QEDm Clinical Data Consumer with SMART Backend Services security
+// CapabilityStatement for EEHRxF Resource Consumer Actor (IPA client)
+// Based on IPA Client with SMART Backend Services security
 
-Instance: EEHRxF-ResourceConsumer
+Instance: resource-consumer-eu-api
 InstanceOf: CapabilityStatement
 Title: "EEHRxF Resource Consumer CapabilityStatement"
 Usage: #definition
 Description: """
 CapabilityStatement for the EEHRxF Resource Consumer actor. This actor queries for
-clinical data resources following the International Patient Access (IPA) patterns and
-IHE QEDm Clinical Data Consumer capabilities.
+clinical data resources following the International Patient Access (IPA) patterns.
 
 This CapabilityStatement defines the requirements for systems consuming direct resource
 access (beyond document-based exchange) in the EU EHR Exchange Format (EEHRxF) ecosystem.
 It inherits patterns from:
 - **IPA (International Patient Access)**: Resource profiles and search parameter patterns
-- **IHE QEDm (Query for Existing Data for Mobile)**: Clinical Data Consumer actor capabilities
 
 ### Resource Flexibility (IPA Alignment)
 
@@ -41,7 +39,7 @@ Systems SHALL support SMART Backend Services authorization for all transactions.
 Consumers SHOULD expect resources conforming to EU Core profiles where available.
 """
 
-* name = "EEHRxFResourceConsumer"
+* name = "ResourceConsumerEuApi"
 * title = "EEHRxF Resource Consumer CapabilityStatement"
 * status = #active
 * experimental = false
@@ -56,7 +54,7 @@ Consumers SHOULD expect resources conforming to EU Core profiles where available
 * rest[+].mode = #client
 * rest[=].documentation = """
 The Resource Consumer actor queries for clinical data resources from a Resource Access
-Provider following IPA and QEDm patterns. This enables direct resource access complementing
+Provider following IPA patterns. This enables direct resource access complementing
 document-based exchange via MHD.
 
 All transactions require SMART Backend Services authorization.
@@ -80,18 +78,18 @@ lookup is required; other resources are requested as needed.
 ### Scopes for Desired Resources
 
 Clients SHALL request scopes for the resources they need:
-- system/Patient.read, system/Patient.search (REQUIRED - read and search Patient)
-- system/Condition.read, system/Condition.search (if Condition needed)
-- system/AllergyIntolerance.read, system/AllergyIntolerance.search (if AllergyIntolerance needed)
-- system/Observation.read, system/Observation.search (if Observation needed)
-- system/DiagnosticReport.read, system/DiagnosticReport.search (if DiagnosticReport needed)
-- system/MedicationRequest.read, system/MedicationRequest.search (if MedicationRequest needed)
-- system/MedicationDispense.read, system/MedicationDispense.search (if MedicationDispense needed)
-- system/Immunization.read, system/Immunization.search (if Immunization needed)
-- system/MedicationStatement.read, system/MedicationStatement.search (if MedicationStatement needed)
-- system/Encounter.read, system/Encounter.search (if Encounter needed)
-- system/Practitioner.read (if Practitioner needed)
-- system/Organization.read (if Organization needed)
+- system/Patient.rs (REQUIRED - read + search Patient)
+- system/Condition.rs (if Condition needed)
+- system/AllergyIntolerance.rs (if AllergyIntolerance needed)
+- system/Observation.rs (if Observation needed)
+- system/DiagnosticReport.rs (if DiagnosticReport needed)
+- system/MedicationRequest.rs (if MedicationRequest needed)
+- system/MedicationDispense.rs (if MedicationDispense needed)
+- system/Immunization.rs (if Immunization needed)
+- system/MedicationStatement.rs (if MedicationStatement needed)
+- system/Encounter.rs (if Encounter needed)
+- system/Practitioner.r (if Practitioner needed)
+- system/Organization.r (if Organization needed)
 """
 
 // ============================================================================

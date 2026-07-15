@@ -1,7 +1,7 @@
 // Example CapabilityStatement showing a realistic Document Access Provider deployment
 // that declares actor conformance and priority category support
 
-Instance: EEHRxF-DocumentAccessProvider-Example
+Instance: example-capabilitystatement-document-access-provider
 InstanceOf: CapabilityStatement
 Title: "Example: Document Access Provider Supporting EPS and Laboratory"
 Usage: #example
@@ -29,7 +29,7 @@ See [Capability Discovery](capability-discovery.html) for guidance.
 * format[+] = #xml
 
 // Actor conformance — this server implements the EEHRxF Document Access Provider
-* instantiates[+] = Canonical(EEHRxF-DocumentAccessProvider)
+* instantiates[+] = Canonical(document-access-provider-eu-api)
 // NOTE: instantiates was considered for priority category support, but requires
 // each content IG to publish a CapabilityStatement — none currently do.
 // implementationGuide needs only the IG canonical URL.
@@ -52,7 +52,7 @@ ITI-68 (Retrieve Document), and PDQm ITI-78 (Patient Demographics Query).
 // DocumentReference — advertise EEHRxF and MHD profiles
 // ============================================================================
 * rest[=].resource[+].type = #DocumentReference
-* rest[=].resource[=].supportedProfile[+] = Canonical(EehrxfMhdDocumentReference)
+* rest[=].resource[=].supportedProfile[+] = Canonical(DocumentReferenceEuApi)
 * rest[=].resource[=].supportedProfile[+] = "https://profiles.ihe.net/ITI/MHD/StructureDefinition/IHE.MHD.Minimal.DocumentReference"
 * rest[=].resource[=].documentation = """
 DocumentReference resources are served via ITI-67. This server indexes Patient

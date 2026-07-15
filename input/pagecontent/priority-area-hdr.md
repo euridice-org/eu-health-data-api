@@ -7,8 +7,8 @@ Hospital Discharge Reports can be accessed via document exchange.
 
 | Actor | Description | CapabilityStatement |
 |-------|-------------|---------------------|
-| Document Consumer | Retrieves HDR documents | [EEHRxF Document Consumer](CapabilityStatement-EEHRxF-DocumentConsumer.html) |
-| Document Access Provider | Serves HDR documents | [EEHRxF Document Access Provider](CapabilityStatement-EEHRxF-DocumentAccessProvider.html) |
+| Document Consumer | Retrieves HDR documents | [EEHRxF Document Consumer](CapabilityStatement-document-consumer-eu-api.html) |
+| Document Access Provider | Serves HDR documents | [EEHRxF Document Access Provider](CapabilityStatement-document-access-provider-eu-api.html) |
 
 ### Document Exchange
 
@@ -16,7 +16,7 @@ For document-based access, use the [Document Exchange](document-exchange.html) t
 
 The Hospital Discharge Report is differentiated via the following DocumentReference fields:
 - **type**: `18842-5` (Discharge summary)
-- **category**: `Discharge-Reports` ([EHDS Priority Category](CodeSystem-eehrxf-document-priority-category-cs.html))
+- **category**: `Discharge-Reports` ([EHDS Priority Category](CodeSystem-document-priority-category-eu-api.html))
 
 ### Example Query
 
