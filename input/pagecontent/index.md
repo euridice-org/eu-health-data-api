@@ -46,7 +46,7 @@ The intended audiences of this Implementation Guide are:
 
 - **Manufacturers of wellness applications:** Vendors of wellness applications claiming interoperability with an EHR system (EHDS Articles 47–48), looking to either access data from EHR systems or write data into an EHR system. See the [Wellness App](usecase-wellness-app.html) use case and [Implementation](implementation.html) page.
 
-### Summary of Interoperability Component Capabilities
+### Summary of Functional Components
 
 - **[Capability Discovery](capability-discovery.html)** - Discover which priority categories a server supports
 - **[Authorization](authorization.html)** - SMART Backend Services (IUA actor model)
