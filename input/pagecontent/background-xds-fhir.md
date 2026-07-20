@@ -2,7 +2,7 @@
 
 EHR systems across the EU use different approaches to manage health documents — from FHIR servers that generate documents from clinical resources, to document-centric systems backed by XDS/XCA repositories. This IG defines an Interoperability Component API surface that both approaches can expose.
 
-The choice of approach is **orthogonal to organizational deployment topology**. A FHIR server and an XDS system can each be deployed directly, behind a facade, or as part of a national infrastructure. The shared API surface — ITI-67, ITI-68, and the `EehrxfMhdDocumentReference` profile — works for both.
+The choice of approach is **orthogonal to organizational deployment topology**. A FHIR server and an XDS system can each be deployed directly, behind a facade, or as part of a national infrastructure. Both expose the same ITI-67 and ITI-68 API surface.
 
 See [Document Exchange](document-exchange.html) for transaction details and [Member State Architectures](member-state-architectures.html) for national infrastructure patterns.
 
@@ -17,7 +17,7 @@ The server holds clinical data as FHIR resources (Observation, Condition, Medica
 - ITI-105 does not apply — no inbound publication is needed; the resource store is the data source.
 - A FHIR server MAY also expose the same clinical resources directly via [Resource Access](resource-access.html). Documents and resources are complementary views of the same underlying data.
 
-**CapabilityStatement:** declares `supportedProfile: EehrxfMhdDocumentReference`.
+**CapabilityStatement:** declares DocumentReference search support and the required search parameters. ITI-67 results use base FHIR DocumentReference resources.
 
 ---
 
@@ -29,7 +29,7 @@ Documents are stored artifacts. This covers two common implementations:
 
 **XDS Proxy** — an MHD translation layer over a XDS/XCA repository. FHIR API calls are translated to XDS transactions against the underlying registry and repository. MHD defines mappings between FHIR `DocumentReference` and XDS `DocumentEntry` metadata; this allows existing national XDS investments to remain in place.
 
-Both expose `DocumentReference` resources conforming to `EehrxfMhdDocumentReference`. XDS-backed systems that need richer XDS/XCA metadata should use the metadata capabilities and mappings defined by MHD; this IG does not scope full XDS metadata conformance.
+Both expose base FHIR DocumentReference resources. XDS-backed systems that need richer XDS/XCA metadata should also use the metadata capabilities and mappings defined by MHD; this IG does not scope full XDS metadata conformance.
 
 **`attachment.hash` and `size` are present** in both — indicating stored documents.
 
@@ -39,7 +39,7 @@ Both expose `DocumentReference` resources conforming to `EehrxfMhdDocumentRefere
 
 ### The Shared API Contract
 
-A consumer using ITI-67 and ITI-68 cannot tell which approach the server uses — only whether hash/size is present or absent. Both approaches conform to the same `EehrxfMhdDocumentReference` profile and respond to the same transactions.
+A consumer using ITI-67 and ITI-68 cannot tell which approach the server uses — only whether hash/size is present or absent. Both approaches return base FHIR DocumentReference resources through the same transactions.
 
 | | FHIR Server | Document-Centric System |
 |---|---|---|

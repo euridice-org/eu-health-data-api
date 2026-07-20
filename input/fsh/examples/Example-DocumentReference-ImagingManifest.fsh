@@ -4,7 +4,7 @@
 // See: https://github.com/euridice-org/eu-health-data-api/issues/50
 
 Instance: example-documentreference-imaging-manifest-fhir
-InstanceOf: DocumentReferenceEuApi
+InstanceOf: DocumentReference
 Title: "Example - Imaging Study Manifest (FHIR)"
 Description: """
 Example DocumentReference for a FHIR-encoded imaging study manifest.
@@ -61,7 +61,7 @@ Usage: #example
 
 
 Instance: example-documentreference-imaging-manifest-kos
-InstanceOf: DocumentReferenceEuApi
+InstanceOf: DocumentReference
 Title: "Example - Imaging Study Manifest (DICOM KOS)"
 Description: """
 Example DocumentReference for a DICOM KOS-encoded imaging study manifest.

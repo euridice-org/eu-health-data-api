@@ -9,8 +9,8 @@ Description: """
 **Example** CapabilityStatement for a Document Access Provider that supports
 European Patient Summaries and Laboratory Reports.
 
-Shows how a deployment declares actor conformance via `instantiates`,
-content IG support via `implementationGuide`, and profile support via `supportedProfile`.
+Shows how a deployment declares actor conformance via `instantiates` and
+content IG support via `implementationGuide`.
 
 See [Capability Discovery](capability-discovery.html) for guidance.
 """
@@ -49,29 +49,19 @@ ITI-68 (Retrieve Document), and PDQm ITI-78 (Patient Demographics Query).
 * rest[=].security.description = "SMART Backend Services authorization required."
 
 // ============================================================================
-// DocumentReference — advertise EEHRxF and MHD profiles
+// DocumentReference — ITI-67 returns base FHIR DocumentReference resources
 // ============================================================================
 * rest[=].resource[+].type = #DocumentReference
-* rest[=].resource[=].supportedProfile[+] = Canonical(DocumentReferenceEuApi)
-* rest[=].resource[=].supportedProfile[+] = "https://profiles.ihe.net/ITI/MHD/StructureDefinition/IHE.MHD.Minimal.DocumentReference"
 * rest[=].resource[=].documentation = """
 DocumentReference resources are served via ITI-67. This server indexes Patient
-Summaries (LOINC 60591-5) and Laboratory Reports (LOINC 11502-2).
+Summaries (LOINC 60591-5) and Laboratory Reports (LOINC 11502-2). The response
+uses base FHIR DocumentReference resources without a required return profile.
 """
 
 * rest[=].resource[=].interaction[+].code = #read
 * rest[=].resource[=].interaction[+].code = #search-type
 
-* rest[=].resource[=].searchParam[+].name = "patient"
-* rest[=].resource[=].searchParam[=].type = #reference
-* rest[=].resource[=].searchParam[+].name = "type"
-* rest[=].resource[=].searchParam[=].type = #token
-* rest[=].resource[=].searchParam[+].name = "status"
-* rest[=].resource[=].searchParam[=].type = #token
-* rest[=].resource[=].searchParam[+].name = "date"
-* rest[=].resource[=].searchParam[=].type = #date
-* rest[=].resource[=].searchParam[+].name = "_id"
-* rest[=].resource[=].searchParam[=].type = #token
+* insert DocumentReferenceProviderSearchParameters
 
 // ============================================================================
 // Patient — advertise EU Core Patient profile

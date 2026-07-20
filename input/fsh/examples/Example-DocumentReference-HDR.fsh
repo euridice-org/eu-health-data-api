@@ -1,7 +1,7 @@
 // Example DocumentReference for Hospital Discharge Report
 
 Instance: example-documentreference-hdr
-InstanceOf: DocumentReferenceEuApi
+InstanceOf: DocumentReference
 Title: "Example - Hospital Discharge Report DocumentReference"
 Description: """
 Example DocumentReference for a hospital discharge report.

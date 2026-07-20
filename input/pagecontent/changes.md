@@ -24,6 +24,8 @@ This page tracks significant changes to the EU Health Data API Implementation Gu
 
 **January 8, 2026** — Consolidated open issues into single tracking page. Added MHD and Resource Access CapabilityStatements. Restructured IG per review feedback. Replaced ASCII diagrams with Mermaid. Fixed heading levels across all pages.
 
+**July 2026** — Ballot reconciliation: aligned ITI-67 DocumentReference search capabilities for Providers and Consumers (FHIR-56694, FHIR-56695, FHIR-56851, FHIR-56853). Search responses now use base FHIR DocumentReference resources without an EU return profile (FHIR-56714, FHIR-56847, FHIR-56700, FHIR-56711, FHIR-56710, FHIR-56846, FHIR-56856).
+
 **January 7, 2026** — Initial draft for wide review. Composite actor model built on IHE MHD, PDQm, IUA and HL7 SMART Backend Services. Functional requirements for authorization, patient matching, document exchange, resource access, and capability discovery. Use cases for health professional portals, patient portals, and cross-border NCP exchange. EPS priority area fully specified.
 
 **January 3, 2026** — Major IG restructure. New page hierarchy with Introduction, Functional, Implementation, and Priority Areas sections. Simplified use case pages. Enhanced patient summary example walkthrough. Removed 15 deprecated files.

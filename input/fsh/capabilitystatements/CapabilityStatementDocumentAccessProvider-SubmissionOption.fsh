@@ -75,7 +75,7 @@ patient's care team.
 * rest[=].resource[=].documentation = """
 DocumentReference resources with embedded document content are accepted via
 ITI-105 Simplified Publish. The server:
-1. Validates the DocumentReference against EEHRxF profiles
+1. Validates the DocumentReference against the MHD Simplified Publish profile
 2. Extracts the embedded document from content.attachment.data
 3. Persists both the DocumentReference and the document
 4. Returns the created DocumentReference with server-assigned IDs
@@ -95,15 +95,14 @@ The DocumentReference SHALL include:
 - content.attachment.data (required - base64-encoded document content)
 
 The server SHALL:
-- Validate against EEHRxF DocumentReference profile
+- Validate against the MHD Simplified Publish DocumentReference profile
 - Extract and persist the document
 - For FHIR Documents, ensure the content is retrievable as a native FHIR Document Bundle (not wrapped in Binary)
 - Assign server-generated IDs
 - Return 201 Created with the persisted DocumentReference
 """
 
-// Supported profiles - EEHRxF DocumentReference, MHD SimplifiedPublish (requires .data), and MHD Minimal
-* rest[=].resource[=].supportedProfile[+] = Canonical(DocumentReferenceEuApi)
+// Supported profiles - MHD SimplifiedPublish (requires .data) and MHD Minimal
 * rest[=].resource[=].supportedProfile[+] = "https://profiles.ihe.net/ITI/MHD/StructureDefinition/IHE.MHD.SimplifiedPublish.DocumentReference"
 * rest[=].resource[=].supportedProfile[+] = "https://profiles.ihe.net/ITI/MHD/StructureDefinition/IHE.MHD.Minimal.DocumentReference"
 
