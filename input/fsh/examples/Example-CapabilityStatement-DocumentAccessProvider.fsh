@@ -53,9 +53,8 @@ ITI-68 (Retrieve Document), and PDQm ITI-78 (Patient Demographics Query).
 // ============================================================================
 * rest[=].resource[+].type = #DocumentReference
 * rest[=].resource[=].documentation = """
-DocumentReference resources are served via ITI-67. This server indexes Patient
-Summaries (LOINC 60591-5) and Laboratory Reports (LOINC 11502-2). The response
-uses base FHIR DocumentReference resources without a required return profile.
+DocumentReference resources are served via ITI-67. The response uses base FHIR
+DocumentReference resources without a required return profile.
 """
 
 * rest[=].resource[=].interaction[+].code = #read
