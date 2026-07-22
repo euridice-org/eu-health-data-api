@@ -89,7 +89,7 @@ The [Document Access Provider](CapabilityStatement-document-access-provider-eu-a
 | Document Consumer | `patient`, `patient.identifier`, `_id` | — | All others |
 {: .grid}
 
-These are capability requirements. A SHALL means that an actor can issue or process the parameter; it does not require every query to contain that parameter or every returned DocumentReference to populate the corresponding element. `patient` and `patient.identifier` are alternative ways to identify the subject.
+These are capability requirements. A SHALL means that an actor SHALL be able to issue or process the parameter; it does not require every query to contain that parameter or every returned DocumentReference to populate the corresponding element. `patient` and `patient.identifier` are alternative ways to identify the subject.
 
 Content IGs may require additional search parameters. A Provider claiming conformance to several content IGs supports the union of their requirements.
 
@@ -126,7 +126,7 @@ Each priority category has a ValueSet of known LOINC type codes:
 - `Medical-Imaging` → [EEHRxFDocumentTypeMedicalImagingVS](ValueSet-document-type-medical-imaging-eu-api.html)
 `Electronic-Prescriptions` and `Electronic-Dispensations` fall outside the document exchange model and have no type codes.
 
-[EEHRxFDocumentTypeVS](ValueSet-document-type-eu-api.html) aggregates the per-category type codes as an informative reference. A [ConceptMap](ConceptMap-document-reference-category-type-eu-api.html) provides the same mapping in machine-readable form. This guide does not bind either artifact to returned DocumentReference resources.
+[EEHRxFDocumentTypeVS](ValueSet-document-type-eu-api.html) aggregates the per-category type codes. A [ConceptMap](ConceptMap-document-reference-category-type-eu-api.html) provides the same mapping in machine-readable form.
 
 
 | priority category | type codes | relevant IGs |
