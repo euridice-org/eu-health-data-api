@@ -39,3 +39,60 @@ RuleSet: LOINCCopyrightForVS
 
 RuleSet: UCUMCopyrightForVS
 * ^copyright = "The UCUM codes, UCUM table (regardless of format), and UCUM Specification are copyright 1999-2009, Regenstrief Institute, Inc. and the Unified Codes for Units of Measures (UCUM) Organization. All rights reserved. https://ucum.org/trac/wiki/TermsOfUse"
+
+RuleSet: AddDocumentReferenceSearchParameter(name, definition, type, expectation, documentation)
+* rest[=].resource[=].searchParam[+].name = "{name}"
+* rest[=].resource[=].searchParam[=].definition = "{definition}"
+* rest[=].resource[=].searchParam[=].type = #{type}
+* rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].searchParam[=].extension[=].valueCode = #{expectation}
+* rest[=].resource[=].searchParam[=].documentation = "{documentation}"
+
+RuleSet: AddDocumentReferenceSearchParameterWithoutDefinition(name, type, expectation, documentation)
+* rest[=].resource[=].searchParam[+].name = "{name}"
+* rest[=].resource[=].searchParam[=].type = #{type}
+* rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].searchParam[=].extension[=].valueCode = #{expectation}
+* rest[=].resource[=].searchParam[=].documentation = "{documentation}"
+
+RuleSet: DocumentReferenceProviderSearchParameters
+* insert AddDocumentReferenceSearchParameter(_id, http://hl7.org/fhir/SearchParameter/Resource-id, token, SHALL, Logical id)
+* insert AddDocumentReferenceSearchParameter(_lastUpdated, http://hl7.org/fhir/SearchParameter/Resource-lastUpdated, date, MAY, Resource version last updated)
+* insert AddDocumentReferenceSearchParameterWithoutDefinition(author.given, string, MAY, Author given name)
+* insert AddDocumentReferenceSearchParameterWithoutDefinition(author.family, string, MAY, Author family name)
+* insert AddDocumentReferenceSearchParameter(category, http://hl7.org/fhir/SearchParameter/DocumentReference-category, token, SHALL, Document category)
+* insert AddDocumentReferenceSearchParameter(creation, https://profiles.ihe.net/ITI/MHD/SearchParameter/DocumentReference-Creation, date, SHALL, Document creation time)
+* insert AddDocumentReferenceSearchParameter(date, http://hl7.org/fhir/SearchParameter/DocumentReference-date, date, SHOULD, Reference creation time)
+* insert AddDocumentReferenceSearchParameter(event, http://hl7.org/fhir/SearchParameter/DocumentReference-event, token, MAY, Main clinical acts documented)
+* insert AddDocumentReferenceSearchParameter(facility, http://hl7.org/fhir/SearchParameter/DocumentReference-facility, token, MAY, Facility kind)
+* insert AddDocumentReferenceSearchParameter(format, http://hl7.org/fhir/SearchParameter/DocumentReference-format, token, MAY, Document format)
+* insert AddDocumentReferenceSearchParameter(identifier, http://hl7.org/fhir/SearchParameter/clinical-identifier, token, MAY, Document identifier)
+* insert AddDocumentReferenceSearchParameter(patient, http://hl7.org/fhir/SearchParameter/clinical-patient, reference, SHALL, Patient reference)
+* insert AddDocumentReferenceSearchParameterWithoutDefinition(patient.identifier, token, SHALL, Chained patient identifier)
+* insert AddDocumentReferenceSearchParameter(period, http://hl7.org/fhir/SearchParameter/DocumentReference-period, date, MAY, Documented service period)
+* insert AddDocumentReferenceSearchParameter(related, http://hl7.org/fhir/SearchParameter/DocumentReference-related, reference, MAY, Related identifier or resource)
+* insert AddDocumentReferenceSearchParameter(security-label, http://hl7.org/fhir/SearchParameter/DocumentReference-security-label, token, MAY, Document security label)
+* insert AddDocumentReferenceSearchParameter(setting, http://hl7.org/fhir/SearchParameter/DocumentReference-setting, token, MAY, Clinical setting)
+* insert AddDocumentReferenceSearchParameter(status, http://hl7.org/fhir/SearchParameter/DocumentReference-status, token, SHOULD, Document reference status)
+* insert AddDocumentReferenceSearchParameter(type, http://hl7.org/fhir/SearchParameter/clinical-type, token, SHALL, Document type)
+
+RuleSet: DocumentReferenceConsumerSearchParameters
+* insert AddDocumentReferenceSearchParameter(_id, http://hl7.org/fhir/SearchParameter/Resource-id, token, SHALL, Logical id)
+* insert AddDocumentReferenceSearchParameter(_lastUpdated, http://hl7.org/fhir/SearchParameter/Resource-lastUpdated, date, MAY, Resource version last updated)
+* insert AddDocumentReferenceSearchParameterWithoutDefinition(author.given, string, MAY, Author given name)
+* insert AddDocumentReferenceSearchParameterWithoutDefinition(author.family, string, MAY, Author family name)
+* insert AddDocumentReferenceSearchParameter(category, http://hl7.org/fhir/SearchParameter/DocumentReference-category, token, MAY, Document category)
+* insert AddDocumentReferenceSearchParameter(creation, https://profiles.ihe.net/ITI/MHD/SearchParameter/DocumentReference-Creation, date, MAY, Document creation time)
+* insert AddDocumentReferenceSearchParameter(date, http://hl7.org/fhir/SearchParameter/DocumentReference-date, date, MAY, Reference creation time)
+* insert AddDocumentReferenceSearchParameter(event, http://hl7.org/fhir/SearchParameter/DocumentReference-event, token, MAY, Main clinical acts documented)
+* insert AddDocumentReferenceSearchParameter(facility, http://hl7.org/fhir/SearchParameter/DocumentReference-facility, token, MAY, Facility kind)
+* insert AddDocumentReferenceSearchParameter(format, http://hl7.org/fhir/SearchParameter/DocumentReference-format, token, MAY, Document format)
+* insert AddDocumentReferenceSearchParameter(identifier, http://hl7.org/fhir/SearchParameter/clinical-identifier, token, MAY, Document identifier)
+* insert AddDocumentReferenceSearchParameter(patient, http://hl7.org/fhir/SearchParameter/clinical-patient, reference, SHALL, Patient reference)
+* insert AddDocumentReferenceSearchParameterWithoutDefinition(patient.identifier, token, SHALL, Chained patient identifier)
+* insert AddDocumentReferenceSearchParameter(period, http://hl7.org/fhir/SearchParameter/DocumentReference-period, date, MAY, Documented service period)
+* insert AddDocumentReferenceSearchParameter(related, http://hl7.org/fhir/SearchParameter/DocumentReference-related, reference, MAY, Related identifier or resource)
+* insert AddDocumentReferenceSearchParameter(security-label, http://hl7.org/fhir/SearchParameter/DocumentReference-security-label, token, MAY, Document security label)
+* insert AddDocumentReferenceSearchParameter(setting, http://hl7.org/fhir/SearchParameter/DocumentReference-setting, token, MAY, Clinical setting)
+* insert AddDocumentReferenceSearchParameter(status, http://hl7.org/fhir/SearchParameter/DocumentReference-status, token, MAY, Document reference status)
+* insert AddDocumentReferenceSearchParameter(type, http://hl7.org/fhir/SearchParameter/clinical-type, token, MAY, Document type)

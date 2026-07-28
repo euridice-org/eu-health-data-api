@@ -32,10 +32,12 @@ See [Example: Retrieve A European Patient Summary](example-patient-summary.html)
 
 For resource-based access, use the [Resource Access](resource-access.html) transactions to query individual clinical resources referenced in the Patient Summary.
 
-Note: The [IPS Specification also defines the $summary operation](https://build.fhir.org/ig/HL7/fhir-ips/en/OperationDefinition-summary.html) to request an IPS document from a FHIR server given a known patient.  
+### On-Demand Patient Summary Assembly
+
+FHIR servers can assemble Patient Summary documents on demand from clinical resources. When supported, the [IPS $summary operation](https://build.fhir.org/ig/HL7/fhir-ips/en/OperationDefinition-summary.html) returns a Patient Summary Bundle directly:
 
 ```
-GET /Patient/[id]/$Summary
+GET /Patient/[id]/$summary
 ```
 
-
+A server can also expose the same on-demand Patient Summary through MHD. In that pattern, ITI-67 returns an on-demand DocumentReference whose `content.attachment.url` points to `Patient/[id]/$summary`. Per MHD on-demand semantics, the DocumentReference omits `content.attachment.hash` and `content.attachment.size`.

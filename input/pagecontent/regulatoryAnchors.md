@@ -19,7 +19,7 @@ For more details on the Xt-EHR work, see [the Xt-EHR Website](https://www.xt-ehr
 
 ### Requirements Framework
 
-The EHDS regulation defines the interoperability component at a high level, but interoperability needs to be defined with technical precision in order for two systems to effectively achieve interoperability.
+The EHDS regulation defines the Interoperability Component at a high level, but interoperability needs to be defined with technical precision in order for two systems to effectively achieve interoperability.
 
 This table describes the bridge between the regulation text and precise and implementable specifications.
 
@@ -42,7 +42,7 @@ We inherit and evolve that work, focusing on the **technical specification layer
 
 D5.1 defined **26 requirements** across three categories (see Xt-EHR D5.1 Annex for complete list):
 
-- **[In Scope] 15 Interoperability Component Requirements:** This implementation guide primarily focuses on the technical implementation of these requirements.
+- **[In Scope] 15 Interoperability Component requirements:** This implementation guide primarily focuses on the technical implementation of these requirements.
 - **[Out of Scope] 6 Logging Component Requirements:** This Implementation Guide does not specify the logging component format or the interoperability of logs from EHR systems. EHDS ANNEX II requires the generation of local audit logs for review, but does not specify the data format or require interoperability of those logs. Implementers needing standardized audit logging should consider [IHE ATNA](https://profiles.ihe.net/ITI/TF/Volume1/ch-9.html) and [IHE BALP](https://profiles.ihe.net/ITI/BALP/index.html) (Basic Audit Log Patterns), which define FHIR AuditEvent-based audit log profiles. The IHE profiles used in this IG (MHD, PDQm, IUA) recommend but do not require ATNA grouping.
 - **[Out of Scope] 5 General requirements:** D5.1 also defines general requirements covering software installation, documentation, performance, and safety of EHR systems. These are not testable API specifications and are therefore out of scope for this IG.
 
@@ -182,5 +182,4 @@ For medication data, this IG covers reading MedicationRequest and MedicationStat
 D8.1 specifies that when a Priority Interoperability Profile references another profile (e.g., a Patient Summary references the EHDS Patient profile), the referenced profile's data obligations also apply. This is a data model requirement: the Patient resource inside a Patient Summary must conform to the EHDS Patient profile. It does not by itself mandate independent resource-level exchange for that resource. Data model conformance is the Content IGs' domain; exchange is this IG's domain, based on the system's declared conformance path.
 
 ---
-
 

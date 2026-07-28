@@ -12,7 +12,7 @@ How should systems differentiate documents by EHDS Priority Category? Patient Su
 
 **Current Approach (going to ballot)**
 
-DocumentReference `.type` with LOINC codes is the primary search parameter for document differentiation. The `.category` element is left unconstrained — servers may populate it, but it is not a required search parameter. A ConceptMap is provided mapping EHDS priority categories to LOINC codes used in `.type`.
+DocumentReference `.type` with LOINC codes is the primary search parameter for document differentiation. Providers also support `category` search, while population of the repeating `.category` element remains unconstrained. A ConceptMap maps EHDS priority categories to LOINC codes used in `.type`.
 
 **Seeking Input On**
 

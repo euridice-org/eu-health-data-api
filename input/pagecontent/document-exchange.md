@@ -2,6 +2,8 @@
 
 Document exchange using IHE MHD (Mobile Health Documents) transactions. This IG inherits MHD transactions as-is, with constraints specific to EEHRxF content.
 
+For how different server backends (FHIR-native on-demand vs persisted/XDS-bridge) implement these transactions, see [Relationship to XDS/FHIR Document Sharing](background-xds-fhir.html).
+
 <div>
 <figure class="figure">
 <img src="docExchange_1.png" class="figure-img img-responsive img-rounded center-block" alt="Document Exchange Overview" style="width:50%">
@@ -13,14 +15,14 @@ Document exchange using IHE MHD (Mobile Health Documents) transactions. This IG 
 
 This IG defines three document exchange actors. See [Actors](actors.html) for detailed actor groupings.
 
-| Actor | Transaction | Optionality |
-|-------|-------------|-------------|
-| [Document Consumer](actors.html#document-consumer) | [ITI-67](https://profiles.ihe.net/ITI/MHD/ITI-67.html) Find Document References | R |
-| [Document Consumer](actors.html#document-consumer) | [ITI-68](https://profiles.ihe.net/ITI/MHD/ITI-68.html) Retrieve Document | R |
-| [Document Access Provider](actors.html#document-access-provider) | [ITI-67](https://profiles.ihe.net/ITI/MHD/ITI-67.html) Find Document References | R |
-| [Document Access Provider](actors.html#document-access-provider) | [ITI-68](https://profiles.ihe.net/ITI/MHD/ITI-68.html) Retrieve Document | R |
-| [Document Access Provider](actors.html#document-access-provider) | [ITI-105: Simplified Publish](https://profiles.ihe.net/ITI/MHD/ITI-105.html) | O |
-| [Document Publisher](actors.html#document-publisher) | [ITI-105: Simplified Publish](https://profiles.ihe.net/ITI/MHD/ITI-105.html) | R |
+| Actor | MHD Actor | Transaction | Optionality |
+|-------|-----------|-------------|-------------|
+| [Document Consumer](actors.html#document-consumer) | [Document Consumer](https://profiles.ihe.net/ITI/MHD/1331_actors_and_transactions.html#133112-document-consumer) | [ITI-67](https://profiles.ihe.net/ITI/MHD/ITI-67.html) Find Document References | R |
+| [Document Consumer](actors.html#document-consumer) | [Document Consumer](https://profiles.ihe.net/ITI/MHD/1331_actors_and_transactions.html#133112-document-consumer) | [ITI-68](https://profiles.ihe.net/ITI/MHD/ITI-68.html) Retrieve Document | R |
+| [Document Access Provider](actors.html#document-access-provider) | [Document Responder](https://profiles.ihe.net/ITI/MHD/1331_actors_and_transactions.html#133114-document-responder) | [ITI-67](https://profiles.ihe.net/ITI/MHD/ITI-67.html) Find Document References | R |
+| [Document Access Provider](actors.html#document-access-provider) | [Document Responder](https://profiles.ihe.net/ITI/MHD/1331_actors_and_transactions.html#133114-document-responder) | [ITI-68](https://profiles.ihe.net/ITI/MHD/ITI-68.html) Retrieve Document | R |
+| [Document Access Provider](actors.html#document-access-provider) | [Document Recipient](https://profiles.ihe.net/ITI/MHD/1331_actors_and_transactions.html#133113-document-recipient) | [ITI-105: Simplified Publish](https://profiles.ihe.net/ITI/MHD/ITI-105.html) | O |
+| [Document Publisher](actors.html#document-publisher) | [Document Source](https://profiles.ihe.net/ITI/MHD/1331_actors_and_transactions.html#133111-document-source) | [ITI-105: Simplified Publish](https://profiles.ihe.net/ITI/MHD/ITI-105.html) | R |
 {: .grid}
 
 
@@ -77,9 +79,41 @@ Servers SHALL return content conforming to FHIR Document content profiles as a n
 
 Human-readable representations (e.g. PDF narrative) are part of the FHIR Document as defined by the relevant [content IG](priority-categories.html) — not exposed at metadata level as separate DocumentReferences.
 
+#### Search Capabilities
+
+The [Document Access Provider](CapabilityStatement-document-access-provider-eu-api.html) and [Document Consumer](CapabilityStatement-document-consumer-eu-api.html) use the same DocumentReference search parameter menu with different expectations:
+
+| Actor | SHALL | SHOULD | MAY |
+|---|---|---|---|
+| Document Access Provider | `patient`, `patient.identifier`, `_id`, `type`, `category`, `creation` | `status`, `date` | All others, including `period`, `_lastUpdated`, and the remaining MHD parameters |
+| Document Consumer | `patient`, `patient.identifier`, `_id` | — | All others |
+{: .grid}
+
+These are capability requirements. A SHALL means that an actor SHALL be able to issue or process the parameter; it does not require every query to contain that parameter or every returned DocumentReference to populate the corresponding element. `patient` and `patient.identifier` are alternative ways to identify the subject.
+
+Content IGs may require additional search parameters. A Provider claiming conformance to several content IGs supports the union of their requirements.
+
+The date parameters have distinct meanings:
+
+| Parameter | Meaning |
+|---|---|
+| `creation` | `DocumentReference.content.attachment.creation`: when the document content was created |
+| `date` | `DocumentReference.date`: when the DocumentReference was created |
+| `period` | The clinical period documented |
+| `_lastUpdated` | When the DocumentReference resource version last changed |
+{: .grid}
+
+The `format` parameter searches `DocumentReference.content.format`, which identifies document format and content rules. It is distinct from `content.attachment.contentType`, which identifies the MIME type.
+
+#### Search Response
+
+An ITI-67 response contains base FHIR DocumentReference resources. This guide defines no EU DocumentReference return profile and does not require returned resources to conform to an MHD metadata profile. The Provider SHOULD return the metadata it has. Base FHIR therefore governs element cardinalities, including `date` and `custodian` at 0..1 and `category` at 0..*.
+
+Implementers that need XDS compatibility should use the applicable MHD on FHIR profiles and mappings in addition to this guide.
+
 #### Document Search Strategy
 
-[IHE Document Sharing](https://profiles.ihe.net/ITI/HIE-Whitepaper/index.html) distinguishes `type` (specific document types, typically LOINC codes) from `category` (broad classification) on DocumentReference. This IG constrains `type` for document discovery but leaves `category` to [content IGs](priority-categories.html) and implementations.
+[IHE Document Sharing](https://profiles.ihe.net/ITI/HIE-Whitepaper/index.html) distinguishes `type` (specific document types, typically LOINC codes) from `category` (broad classification) on DocumentReference. This IG constrains `type` for document discovery but leaves the `category` vocabulary to [content IGs](priority-categories.html) and implementations. Providers still support the `category` search parameter.
 
 ##### EHDS Priority Categories and Type Codes
 
@@ -92,7 +126,7 @@ Each priority category has a ValueSet of known LOINC type codes:
 - `Medical-Imaging` → [EEHRxFDocumentTypeMedicalImagingVS](ValueSet-document-type-medical-imaging-eu-api.html)
 `Electronic-Prescriptions` and `Electronic-Dispensations` fall outside the document exchange model and have no type codes.
 
-[EEHRxFDocumentTypeVS](ValueSet-document-type-eu-api.html) aggregates all per-category type codes into a single ValueSet bound to `DocumentReference.type`. A [ConceptMap](ConceptMap-document-reference-category-type-eu-api.html) provides the same mapping in machine-readable form.
+[EEHRxFDocumentTypeVS](ValueSet-document-type-eu-api.html) aggregates the per-category type codes. A [ConceptMap](ConceptMap-document-reference-category-type-eu-api.html) provides the same mapping in machine-readable form.
 
 
 | priority category | type codes | relevant IGs |
@@ -112,6 +146,12 @@ The EHDS priority categories (Patient Summary, Laboratory Report, etc.) are regu
 Implementers: Does your system use or plan to use `category` for document classification? Would constraining `category` to the EHDS priority categories be useful for your search workflows, or conflict with other category schemes? Are there other good code sets for differentiating, for example, laboratory reports from imaging reports?
 
 </div>
+
+#### On-Demand Documents
+
+Some servers assemble documents on demand from operational data rather than serving pre-stored Bundles. MHD supports this: an on-demand DocumentReference has no `content.attachment.hash` or `content.attachment.size`. The `content.attachment.url` may invoke any endpoint that returns a valid Document Bundle, including FHIR operations (e.g., `Patient/[id]/$summary`).
+
+Consumers treat on-demand and persisted DocumentReferences identically — both are retrieved via ITI-68. Servers assembling on demand are not required to version or persist past renderings.
 
 #### Search Examples
 

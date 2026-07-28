@@ -52,12 +52,9 @@ Servers declare which priority categories they support by listing content IG can
 
 ### Profile Declarations
 
-The normative CapabilityStatements in this IG declare `supportedProfile` on:
+The normative CapabilityStatements in this IG declare `supportedProfile` for Patient using the [EU Core Patient](http://hl7.eu/fhir/base/StructureDefinition/patient-eu-core) profile.
 
-- **DocumentReference** — the [EEHRxF MHD DocumentReference](StructureDefinition-document-reference-eu-api.html) profile and the base [MHD DocumentReference](https://profiles.ihe.net/ITI/MHD/StructureDefinition-IHE.MHD.Minimal.DocumentReference.html) profiles
-- **Patient** — the [EU Core Patient](http://hl7.eu/fhir/base/StructureDefinition/patient-eu-core) profile
-
-These tell consumers which resource profiles to expect.
+ITI-67 search results use base FHIR DocumentReference resources. This guide defines no DocumentReference return profile, so those CapabilityStatements declare none through `supportedProfile`.
 
 ### Example Capability Discovery Flow
 
@@ -89,11 +86,7 @@ The key elements a consumer looks for:
   ],
   "rest": [{
     "resource": [{
-      "type": "DocumentReference",
-      "supportedProfile": [
-        "...document-reference-eu-api",
-        "...IHE.MHD.Minimal.DocumentReference"
-      ]
+      "type": "DocumentReference"
     }, {
       "type": "Patient",
       "supportedProfile": [

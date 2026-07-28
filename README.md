@@ -65,6 +65,7 @@ See [Regulatory Anchors](https://build.fhir.org/ig/euridice-org/eu-health-data-a
 │   ├── Actors and Transactions
 │   ├── Priority Categories
 │   ├── Member State Architectures
+│   ├── Relationship to XDS/FHIR Document Sharing
 │   ├── Change Log
 │   └── Open Issues
 │
@@ -73,13 +74,18 @@ See [Regulatory Anchors](https://build.fhir.org/ig/euridice-org/eu-health-data-a
 │   ├── Authorization
 │   ├── Patient Matching
 │   ├── Document Exchange
-│   └── Resource Access
+│   ├── Resource Access
+│   └── Resource Exchange Patterns
 │
 ├── Implementation
 │   ├── Retrieve a European Patient Summary
+│   ├── Cross-Border Exchange via NCP
 │   ├── Health Professional Access Service
 │   ├── Health Data Access Service
-│   └── Cross-Border via NCP
+│   ├── Wellness Apps
+│   ├── Cross-Organization via National Infrastructure
+│   ├── Provider-Internal Exchange
+│   └── EHR System Composition Patterns
 │
 ├── Artifacts
 │
@@ -89,11 +95,9 @@ See [Regulatory Anchors](https://build.fhir.org/ig/euridice-org/eu-health-data-a
     └── References
 ```
 
-### Additional Pages (linked but not in navigation)
+### Additional Pages (linked but not top-level navigation entries)
 
-- **Resource Exchange Patterns** - Discussion of resource production approaches
 - **FHIR Documents vs Resources** - When to use document vs resource exchange
-- **XDS/XCA Bridge** - Guidance for Member States with existing XDS/XCA infrastructure
 
 ---
 
@@ -117,6 +121,7 @@ Quick start:
 - Andreas Klingler, IHE Europe
 - Katie Reynolds, Epic
 - Janos Vincze, IHE Europe
+- Jens Kristian Villadsen, Trifork
 
 ---
 

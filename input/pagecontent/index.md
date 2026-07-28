@@ -38,13 +38,15 @@ This IG excludes ePrescription and eDispensation workflow transactions, user-lev
 
 The intended audiences of this Implementation Guide are:
 
-- **Manufacturers of EHR systems:** EHR vendors looking to develop support for APIs that meet the needs of EHDS should refer to the [Functional Requirements](functional.html) for a list of functional specifications EHRs should support.
+- **Manufacturers of EHR systems:** EHR vendors looking to support the Interoperability Component capabilities required by EHDS should refer to the [Functional Requirements](functional.html) for a list of functional specifications EHRs should support.
 
-- **Architects of national infrastructures:** National eHealth agencies looking to understand how to use the capabilities of EHRs required by EHDS to meet the goals of EHDS in their Member States should refer to the [Implementation](implementation.html) for examples of how the EHR APIs can be used for the EHDS use cases.
+- **Architects of national infrastructures:** National eHealth agencies looking to understand how to use the Interoperability Component capabilities required by EHDS should refer to the [Implementation](implementation.html) for examples of how those capabilities can support EHDS use cases.
 
-- **Manufacturers of wellness applications:** Vendors of wellness applications claiming interoperability with an EHR system (EHDS Articles 47–48), looking to either access data from EHR systems or write data into an EHR system.
+- **Healthcare providers and healthcare organizations:** Organizations deploying EHDS interoperability need to understand the use cases and how they map to national infrastructure requirements, in order to evaluate whether their EHR system's Interoperability Component supports their Member State's obligations. See [Functional Requirements](functional.html) and [Implementation](implementation.html).
 
-### Summary of Functional Requirements ("the API")
+- **Manufacturers of wellness applications:** Vendors of wellness applications claiming interoperability with an EHR system (EHDS Articles 47–48), looking to either access data from EHR systems or write data into an EHR system. See the [Wellness App](usecase-wellness-app.html) use case and [Implementation](implementation.html) page.
+
+### Summary of Functional Components
 
 - **[Capability Discovery](capability-discovery.html)** - Discover which priority categories a server supports
 - **[Authorization](authorization.html)** - SMART Backend Services (IUA actor model)

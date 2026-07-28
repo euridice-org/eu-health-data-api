@@ -3,7 +3,7 @@
 // See: https://github.com/euridice-org/eu-health-data-api/issues/49
 
 Instance: example-documentreference-eps
-InstanceOf: DocumentReferenceEuApi
+InstanceOf: DocumentReference
 Title: "Example - European Patient Summary DocumentReference"
 Description: """
 Example DocumentReference showing an EPS document with EEHRxF category coding.

@@ -1,42 +1,27 @@
 ### Overview
 
-Health information is exchanged across borders through National Contact Points (NCPs) using the MyHealth@EU network.
+Cross-border exchange routes through National Contact Points (NCPs) over the MyHealth@EU network ([Art. 23(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_23)). When a patient from Country A receives care in Country B, Country B's NCP requests the patient's data from Country A's NCP, which then queries national infrastructure to retrieve it.
 
-### How Cross-Border Exchange Works
+This IG defines the Interoperability Component API surface used at the **final step** — how national infrastructure (or the NCP itself) queries EHR systems for the patient's data.
 
-NCPs communicate with each other via the **MyHealth@EU network**. When a **patient** from Country A needs care in Country B:
+### Scope
 
-1. Country B's healthcare facility requests data through their NCP
-2. NCPs exchange data over MyHealth@EU
-3. Country A's NCP queries national infrastructure to retrieve the patient's data
+NCP-to-NCP exchange over MyHealth@EU is governed by the [NCPeH API specification](https://build-fhir.ehdsi.eu/ncp-api/), not by this IG. National infrastructure design — how a Member State routes an NCP query to the holding EHR systems — is a Member State choice (see [Cross-Organization via National Infrastructure](usecase-cross-org.html)).
 
-**This IG enables the final step**: Country A's national infrastructure (or the NCP itself) acts as a **Consumer** to query EHR systems that are **Access Providers**.
+### Participants
 
-### Actor Groupings
-
-- **NCP or National Infrastructure** acts as [Document Consumer](actors.html#document-consumer) (according to [Grouping Example 1, 1b, 1c or 2](actors.html#example-groupings)) or [Resource Consumer](actors.html#resource-exchange) (according to [Grouping Example 3](actors.html#example-groupings))
-- **EHR systems** act as [Document Access Provider](actors.html#document-access-provider) or [Resource Access Provider](actors.html#resource-exchange) accordingly
+- **NCP or national infrastructure** — acts as [Document Consumer](actors.html#document-consumer) and/or [Resource Consumer](actors.html#resource-consumer) of the Interoperability Component API surface
+- **EHR system** — [Document Access Provider](actors.html#document-access-provider) and/or [Resource Access Provider](actors.html#resource-access-provider); the conformance target of this IG
 
 ### Architecture
 
 ```
-Country B Facility → NCP-B → MyHealth@EU → NCP-A → National Infrastructure → EHR System API
-                                                                              ↑
-                                                                    This IG defines this API
+Country B facility → NCP-B → MyHealth@EU → NCP-A → National infrastructure →  EHR system
+                       └──── NCPeH API ────┘        └──── MS choice ────┘     └ This IG ┘
 ```
 
-### Role of This Specification
+All layers exchange EEHRxF-formatted data.
 
-| Layer | Defined By |
-|-------|-----------|
-| Cross-Border API (MyHealth@EU) | [MyHealth@EU NCPeH API](https://build-fhir.ehdsi.eu/ncp-api/) |
-| National Infrastructure API | Member States |
-| **EHR System API** | **This IG** |
+### Authorization
 
-All layers exchange EEHRxF-formatted data to ensure semantic interoperability.
-
-### Authorization Context
-
-- Patient consent for cross-border access
-- Healthcare professional authentication in requesting country
-- Authorization decisions at NCP, national infrastructure, and EHR system levels
+Cross-border patient consent, health-professional authentication in the requesting country, and authorization at the NCP and national-infrastructure layers are governed by MyHealth@EU and Member State infrastructure — not by this IG. At the Interoperability Component API surface, the consumer is an authorized national-infrastructure component; how that authorization was established is out of scope here.
