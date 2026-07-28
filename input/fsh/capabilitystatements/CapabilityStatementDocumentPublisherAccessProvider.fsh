@@ -107,11 +107,8 @@ Required scopes to accept:
 * rest[=].resource[+].type = #DocumentReference
 * rest[=].resource[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
 * rest[=].resource[=].extension[=].valueCode = #SHALL
-* rest[=].resource[=].supportedProfile[+] = Canonical(DocumentReferenceEuApi)
-* rest[=].resource[=].supportedProfile[+] = "https://profiles.ihe.net/ITI/MHD/StructureDefinition/IHE.MHD.Minimal.DocumentReference"
 * rest[=].resource[=].documentation = """
-DocumentReference resources are served via ITI-67 Find Document References.
-Document creation is internal; no external create operation is supported.
+DocumentReference resources are returned as base FHIR resources. No EU or MHD return profile is required. Document creation is internal.
 """
 
 // ITI-67: Read DocumentReference by ID
@@ -133,71 +130,8 @@ Document creation is internal; no external create operation is supported.
 * rest[=].resource[=].referencePolicy = #resolves
 * rest[=].resource[=].searchRevInclude = "Provenance:target"
 
-// Search parameters for DocumentReference - SHALL support
-* rest[=].resource[=].searchParam[+].name = "patient"
-* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/clinical-patient"
-* rest[=].resource[=].searchParam[=].type = #reference
-* rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
-* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHALL
-* rest[=].resource[=].searchParam[=].documentation = "The patient the document is about. The server SHALL support at least id value and MAY support both Type and id values."
-
-* rest[=].resource[=].searchParam[+].name = "type"
-* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/clinical-type"
-* rest[=].resource[=].searchParam[=].type = #token
-* rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
-* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHALL
-* rest[=].resource[=].searchParam[=].documentation = "Kind of document (LOINC code) - SHALL support for clinical precision filtering"
-
-* rest[=].resource[=].searchParam[+].name = "_id"
-* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/Resource-id"
-* rest[=].resource[=].searchParam[=].type = #token
-* rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
-* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHALL
-* rest[=].resource[=].searchParam[=].documentation = "Logical id of this artifact"
-
-// Search parameters for DocumentReference - SHOULD support
-* rest[=].resource[=].searchParam[+].name = "category"
-* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-category"
-* rest[=].resource[=].searchParam[=].type = #token
-* rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
-* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHOULD
-* rest[=].resource[=].searchParam[=].documentation = "Categorization of document (XDS ClassCode) - SHOULD support for coarse filtering"
-
-* rest[=].resource[=].searchParam[+].name = "date"
-* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/clinical-date"
-* rest[=].resource[=].searchParam[=].type = #date
-* rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
-* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHOULD
-* rest[=].resource[=].searchParam[=].documentation = "When this document reference was created. The date modifiers ge, le, gt, lt SHOULD be supported."
-
-* rest[=].resource[=].searchParam[+].name = "status"
-* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-status"
-* rest[=].resource[=].searchParam[=].type = #token
-* rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
-* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHOULD
-* rest[=].resource[=].searchParam[=].documentation = "current | superseded | entered-in-error"
-
-* rest[=].resource[=].searchParam[+].name = "identifier"
-* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/clinical-identifier"
-* rest[=].resource[=].searchParam[=].type = #token
-* rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
-* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHOULD
-* rest[=].resource[=].searchParam[=].documentation = "Master Version Specific Identifier"
-
-// Search parameters for DocumentReference - MAY support
-* rest[=].resource[=].searchParam[+].name = "period"
-* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-period"
-* rest[=].resource[=].searchParam[=].type = #date
-* rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
-* rest[=].resource[=].searchParam[=].extension[=].valueCode = #MAY
-* rest[=].resource[=].searchParam[=].documentation = "Time of service that is being documented"
-
-* rest[=].resource[=].searchParam[+].name = "format"
-* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-format"
-* rest[=].resource[=].searchParam[=].type = #token
-* rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
-* rest[=].resource[=].searchParam[=].extension[=].valueCode = #MAY
-* rest[=].resource[=].searchParam[=].documentation = "Format/content rules for the document"
+// Search parameters follow the July 15 MHD-alignment block vote.
+* insert DocumentReferenceProviderSearchParameters
 
 // ============================================================================
 // Binary resource - ITI-68 Retrieve Document (read only)

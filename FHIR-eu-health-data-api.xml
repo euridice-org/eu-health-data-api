@@ -21,7 +21,6 @@
 <artifact id="ActorDefinition/EEHRxF-DocumentPublisherAccessProvider-Actor" key="ActorDefinition-EEHRxF-DocumentPublisherAccessProvider-Actor" name="EEHRxF Grouped Document Publisher/Access Provider"/>
 <artifact id="CapabilityStatement/EEHRxF-DocumentPublisherAccessProvider" key="CapabilityStatement-EEHRxF-DocumentPublisherAccessProvider" name="EEHRxF Grouped Document Publisher/Access Provider CapabilityStatement"/>
 <artifact id="ConceptMap/EehrxfMhdDocumentReferenceCM" key="ConceptMap-EehrxfMhdDocumentReferenceCM" name="EEHRxF MHD DocumentReference ConceptMap"/>
-<artifact id="StructureDefinition/EehrxfMhdDocumentReference" key="StructureDefinition-EehrxfMhdDocumentReference" name="EEHRxF MHD DocumentReference Profile"/>
 <artifact id="ActorDefinition/EEHRxF-ResourceAccessProvider-Actor" key="ActorDefinition-EEHRxF-ResourceAccessProvider-Actor" name="EEHRxF Resource Access Provider"/>
 <artifact id="CapabilityStatement/EEHRxF-ResourceAccessProvider" key="CapabilityStatement-EEHRxF-ResourceAccessProvider" name="EEHRxF Resource Access Provider CapabilityStatement"/>
 <artifact id="ActorDefinition/EEHRxF-ResourceConsumer-Actor" key="ActorDefinition-EEHRxF-ResourceConsumer-Actor" name="EEHRxF Resource Consumer"/>

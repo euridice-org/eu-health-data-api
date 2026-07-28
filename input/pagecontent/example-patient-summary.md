@@ -94,7 +94,7 @@ GET https://provider.example.org/fhir/DocumentReference?patient=patient-123&type
 Authorization: Bearer [access_token]
 ```
 
-Response Bundle contains DocumentReference resources for available Patient Summaries. A typical DocumentReference entry looks like:
+The response Bundle contains base FHIR DocumentReference resources for available Patient Summaries. The Provider SHOULD return the metadata it has; the fields shown below are illustrative, not a required return profile.
 
 ```json
 {

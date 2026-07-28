@@ -79,9 +79,41 @@ Servers SHALL return content conforming to FHIR Document content profiles as a n
 
 Human-readable representations (e.g. PDF narrative) are part of the FHIR Document as defined by the relevant [content IG](priority-categories.html) — not exposed at metadata level as separate DocumentReferences.
 
+#### Search Capabilities
+
+The [Document Access Provider](CapabilityStatement-document-access-provider-eu-api.html) and [Document Consumer](CapabilityStatement-document-consumer-eu-api.html) use the same DocumentReference search parameter menu with different expectations:
+
+| Actor | SHALL | SHOULD | MAY |
+|---|---|---|---|
+| Document Access Provider | `patient`, `patient.identifier`, `_id`, `type`, `category`, `creation` | `status`, `date` | All others, including `period`, `_lastUpdated`, and the remaining MHD parameters |
+| Document Consumer | `patient`, `patient.identifier`, `_id` | — | All others |
+{: .grid}
+
+These are capability requirements. A SHALL means that an actor SHALL be able to issue or process the parameter; it does not require every query to contain that parameter or every returned DocumentReference to populate the corresponding element. `patient` and `patient.identifier` are alternative ways to identify the subject.
+
+Content IGs may require additional search parameters. A Provider claiming conformance to several content IGs supports the union of their requirements.
+
+The date parameters have distinct meanings:
+
+| Parameter | Meaning |
+|---|---|
+| `creation` | `DocumentReference.content.attachment.creation`: when the document content was created |
+| `date` | `DocumentReference.date`: when the DocumentReference was created |
+| `period` | The clinical period documented |
+| `_lastUpdated` | When the DocumentReference resource version last changed |
+{: .grid}
+
+The `format` parameter searches `DocumentReference.content.format`, which identifies document format and content rules. It is distinct from `content.attachment.contentType`, which identifies the MIME type.
+
+#### Search Response
+
+An ITI-67 response contains base FHIR DocumentReference resources. This guide defines no EU DocumentReference return profile and does not require returned resources to conform to an MHD metadata profile. The Provider SHOULD return the metadata it has. Base FHIR therefore governs element cardinalities, including `date` and `custodian` at 0..1 and `category` at 0..*.
+
+Implementers that need XDS compatibility should use the applicable MHD on FHIR profiles and mappings in addition to this guide.
+
 #### Document Search Strategy
 
-[IHE Document Sharing](https://profiles.ihe.net/ITI/HIE-Whitepaper/index.html) distinguishes `type` (specific document types, typically LOINC codes) from `category` (broad classification) on DocumentReference. This IG constrains `type` for document discovery but leaves `category` to [content IGs](priority-categories.html) and implementations.
+[IHE Document Sharing](https://profiles.ihe.net/ITI/HIE-Whitepaper/index.html) distinguishes `type` (specific document types, typically LOINC codes) from `category` (broad classification) on DocumentReference. This IG constrains `type` for document discovery but leaves the `category` vocabulary to [content IGs](priority-categories.html) and implementations. Providers still support the `category` search parameter.
 
 ##### EHDS Priority Categories and Type Codes
 
@@ -94,7 +126,7 @@ Each priority category has a ValueSet of known LOINC type codes:
 - `Medical-Imaging` → [EEHRxFDocumentTypeMedicalImagingVS](ValueSet-document-type-medical-imaging-eu-api.html)
 `Electronic-Prescriptions` and `Electronic-Dispensations` fall outside the document exchange model and have no type codes.
 
-[EEHRxFDocumentTypeVS](ValueSet-document-type-eu-api.html) aggregates all per-category type codes into a single ValueSet bound to `DocumentReference.type`. A [ConceptMap](ConceptMap-document-reference-category-type-eu-api.html) provides the same mapping in machine-readable form.
+[EEHRxFDocumentTypeVS](ValueSet-document-type-eu-api.html) aggregates the per-category type codes. A [ConceptMap](ConceptMap-document-reference-category-type-eu-api.html) provides the same mapping in machine-readable form.
 
 
 | priority category | type codes | relevant IGs |
