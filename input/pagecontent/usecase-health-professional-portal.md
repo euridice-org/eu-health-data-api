@@ -1,6 +1,6 @@
 ### Overview
 
-A **Health Professional Access Service** ([Art. 12](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_12)) enables a health professional to query patient health information from EHR systems. The service authenticates the professional, locates the patient, and queries one or more EHR systems for that patient's data.
+A **Health Professional Access Service** ([Art. 12](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_12)) is provided by a Member State to health professionals for accessing their patients' health data. The service can be delivered as a web portal, an API, or other means. It authenticates the professional, locates the patient, and queries one or more EHR systems. The infrastructure behind these services is country-specific — see [Member State Architectures](member-state-architectures.html).
 
 ### Scope
 
