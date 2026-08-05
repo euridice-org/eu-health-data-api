@@ -1,16 +1,16 @@
-This IG describes a FHIR API surface for EHR systems that targets the EHDS Interoperability Component requirements. EHR systems are one part of a broader interoperability landscape: Member States operate national and cross-border infrastructure, healthcare providers deploy EHR systems, and EHR systems expose Interoperability Component capabilities that national and access-service infrastructure can use.
+This IG describes a FHIR API surface for EHR systems that supports implementation of the EHDS Interoperability Component requirements. EHR systems are one part of a broader European interoperability landscape: Member States operate national and cross-border infrastructure, healthcare providers deploy EHR systems, and EHR systems expose Interoperability Component capabilities that national and access-service infrastructure can use. The same capabilities can also support national and provider use cases beyond EHDS.
 
-This page provides *informative* guidance for how EHR systems supporting the Interoperability Component fit into the EHDS interoperability landscape and can **support** different actors in meeting their EHDS obligations. While EHDS does not dictate interoperability implementation details at the Member State or healthcare organization level, Member States and healthcare organizations can deploy these capabilities within their existing domains to support EHDS implementation. For example, the Member State obligation to connect all healthcare providers to their MyHealth@EU national contact point (NCP) ([Art. 23(5)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_23)) can be supported by a healthcare provider deploying an EHR system as a [Document Access Provider](actors.html#document-access-provider) to make the organization's priority-category data available to the NCP, which retrieves it by acting as a [Document Consumer](actors.html#document-consumer). 
+This page provides *informative* guidance for how EHR systems supporting the Interoperability Component fit into the European interoperability landscape and can **support** different actors in meeting their EHDS obligations. While EHDS does not dictate interoperability implementation details at the Member State or healthcare organization level, Member States and healthcare organizations can deploy these capabilities within their existing domains to support EHDS implementation. For example, the Member State obligation to connect all healthcare providers to their MyHealth@EU national contact point (NCP) ([Art. 23(5)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_23)) can be supported by a healthcare provider deploying an EHR system as a [Document Access Provider](actors.html#document-access-provider) to make the organization's priority-category data available to the NCP, which retrieves it by acting as a [Document Consumer](actors.html#document-consumer). 
 
-### The EU Health Data API Interoperability Landscape
+### The European Interoperability Landscape
 
 The diagram below shows the EHDS actors and the boundaries between them. The blue boxes represent use cases: contexts where the API surface of the Interoperability Component is deployed or consumed.
 
 <div>
   <figure class="figure">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 816 442" class="figure-img img-responsive img-rounded center-block" style="max-width:100%; height:auto;" role="img" aria-labelledby="ehds-overview-title ehds-overview-desc">
-      <title id="ehds-overview-title">EHDS Overview</title>
-      <desc id="ehds-overview-desc">Overview diagram of EHDS deployment scenarios with links to related implementation pages.</desc>
+      <title id="ehds-overview-title">European Interoperability Landscape</title>
+      <desc id="ehds-overview-desc">Overview diagram of the European interoperability landscape, showing deployment scenarios with links to related implementation pages.</desc>
       <image href="EHDS-overview.drawio.svg" width="816" height="442" preserveAspectRatio="xMidYMid meet" />
       <a href="usecase-cross-border-ncp.html"><title>Cross-Border via NCP</title><rect x="334" y="74" width="170" height="30" fill="transparent" pointer-events="all" /></a>
       <a href="usecase-cross-border-ncp.html"><title>National Contact Point</title><rect x="77" y="118" width="100" height="58" fill="transparent" pointer-events="all" /></a>
@@ -26,18 +26,18 @@ The diagram below shows the EHDS actors and the boundaries between them. The blu
       <a href="usecase-wellness-app.html"><title>Wellness (HDAS)</title><rect x="446" y="339" width="99" height="22" fill="transparent" pointer-events="all" /></a>
       <a href="usecase-wellness-app.html"><title>Wellness (Direct)</title><rect x="305" y="384" width="88" height="32" fill="transparent" pointer-events="all" /></a>
     </svg>
-    <figcaption class="figure-caption"><em>Figure: EHDS Interoperability Landscape</em></figcaption>
+    <figcaption class="figure-caption"><em>Figure: European Interoperability Landscape</em></figcaption>
   </figure>
   <p></p>
 </div>
 
 The figure shows different elements:
-* **Environments** (white/grey boxes), different environments within the EHDS landscape with specific rules and deployment options.
+* **Environments** (white/grey boxes), different environments within the European interoperability landscape with specific rules and deployment options.
 * **System actors** (black boxes), systems in an environment.
 * **Human actors** (user icons), key users in different environments that interact with the systems in that environment through a user interface. HP = Health Professional, Pat = Patient.
 * **Use cases** (blue boxes), contexts where the API surface of the Interoperability Component is deployed or consumed.
 
-This Implementation Guide describes the API surface of the EHDS Interoperability Component: document exchange, resource access, patient lookup, authorization, and document publication. The use cases outlined in this section show where the Interoperability Component can be deployed in the EHDS interoperability landscape. Some use cases directly involve data exchange with EHRs; others indirectly make use of data that has previously been consumed via data exchange with EHRs.
+This Implementation Guide describes the API surface of the EHDS Interoperability Component: document exchange, resource access, patient lookup, authorization, and document publication. The use cases outlined in this section show where the Interoperability Component can be deployed in the European interoperability landscape. Some use cases directly involve data exchange with EHRs; others indirectly make use of data that has previously been consumed via data exchange with EHRs.
 
 Each use case and environment might have its own rules and requirements, which are outside the scope of this Implementation Guide; here, we focus on how the Interoperability Component as described in this Implementation Guide can **support** actors across the use cases.
 
