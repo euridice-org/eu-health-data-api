@@ -230,6 +230,12 @@ The server validates, extracts, and persists the document, returning the created
 
 > **Document content:** Per MHD ITI-105, the server extracts the document from `attachment.data` and persists it so that consumers can retrieve it via `attachment.url`. This IG requires that servers SHALL return FHIR Documents as native FHIR Document Bundles — not wrapped in Binary. The `attachment.url` format is unconstrained; servers host documents at any endpoint they choose.
 
+#### Patient-Provided Documents (Article 5) {#patient-provided-documents}
+
+[EHDS Article 5](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_5) gives natural persons, or their representatives, the right to insert information into their own EHR through electronic health data access services or linked applications. For document-shaped data, the patient-facing service acts as a Document Publisher and submits via ITI-105 to a Document Access Provider implementing the [Document Submission Option](#document-submission-option).
+
+The normative requirements — marking documents as patient-provided (`author`, `securityLabel`, `meta.source`) and the non-alteration rules — are specified on the [Patient-Provided Data](patient-provided-data.html) page.
+
 #### Other Publication Transactions
 
 This IG specifies ITI-105 as the publication mechanism for Document Publishers that submit to external Access Providers. ITI-105 gives publishers a single publication pattern for content conforming to EHDS priority category content profiles. The Document Access Provider handles persistence on ingest, so consumers retrieve documents in their native format via ITI-67/ITI-68.

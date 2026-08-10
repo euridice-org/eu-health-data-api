@@ -78,6 +78,10 @@ Required scopes for document publication:
 DocumentReference resources are submitted via ITI-105 Simplified Publish with embedded
 document content in the attachment to publish documents to the Document Access Provider.
 The SimplifiedPublish profile requires content.attachment.data to be populated.
+
+When submitting patient-provided documents (EHDS Article 5), the Publisher marks them per
+[Patient-Provided Data](patient-provided-data.html): `author` = Patient/RelatedPerson,
+`securityLabel` = PATRPT/SDMRPT, and `meta.source` identifying the originating system.
 """
 * rest[=].resource[=].interaction[+].code = #create
 * rest[=].resource[=].interaction[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"

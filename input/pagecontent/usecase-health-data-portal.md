@@ -24,15 +24,9 @@ The patient's identity and authorization are established at the access service. 
 
 ### Art. 5: Insertion of Patient-Provided Data (Informative)
 
-Article 5 gives patients the right to insert information into their own EHR through health data access services or applications linked to those services.
+Article 5 gives patients the right to insert information into their own EHR through health data access services or applications linked to those services. This IG specifies the document-based path normatively: the Health Data Access Service acts as a [Document Publisher](actors.html#document-publisher) using ITI-105, and the receiving system implements the [Document Submission Option](actors.html#document-submission-option). See [Patient-Provided Data](patient-provided-data.html) for the normative requirements and [Regulatory Anchors — Article 5](regulatoryAnchors.html#article-5-insert) for the regulation mapping.
 
-EHDS has not fully specified the expected data, service-linking model, review workflow, or transport path for Article 5 insertion.
-
-#### Submitting Patient-Provided Documents
-
-A Health Data Access Service may submit patient-provided priority-category data in EEHRxF format to an EHR system using the [Document Publisher](actors.html#document-publisher) interactions defined in this IG (ITI-105), where the receiving EHR system supports the [Document Submission Option](actors.html#document-submission-option).
-
-To distinguish patient-provided data from clinician-authored data, resources may carry `.meta.security` tags and/or [Provenance](https://hl7.org/fhir/provenance.html) resources indicating the patient as the source.
+Patient-provided documents are distinguishable from clinician-authored documents by `DocumentReference.author` (the Patient, or a RelatedPerson for a representative), the `PATRPT`/`SDMRPT` security label, and `meta.source` identifying the originating system, as specified in [Distinguishing Patient-Provided Documents](patient-provided-data.html#distinguishing-patient-provided-documents). Patient-provided submissions cannot alter professional data: submissions create new documents, and replacement, update, and removal are restricted to the person's own prior submissions.
 
 #### Future Work: Resource-Level Patient-Provided Data
 
