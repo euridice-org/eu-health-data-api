@@ -190,7 +190,7 @@ For example: this IG requires `private_key_jwt` client authentication (per SMART
 
 User-level authorization (including patient-mediated access) is out of scope for this version of the implementation Guide. For patient-mediated access patterns, readers are encouraged to consider [SMART on FHIR App Launch](https://hl7.org/fhir/smart-app-launch/) and [International Patient Access](https://hl7.org/fhir/uv/ipa/). Implementors might consider UDAP for dynamic client registration (see [UDAP Security](https://www.udap.org/)).
 
-This includes representative/proxy authorization under EHDS Art. 4(2) for the Article 5 insertion right; at this API surface the representative is currently conveyed in data ([RelatedPerson authorship](patient-provided-data.html#distinguishing-patient-provided-documents)), not in the access token.
+This includes representative/proxy authorization under EHDS Art. 4(2) for the Article 5 insertion right; at this API surface the representative may be conveyed as the document author when they authored it or as the submitting agent in optional `Provenance`, not in the access token ([Distinguishing Patient-Provided Documents](patient-provided-data.html#distinguishing-patient-provided-documents)).
 
 Integration with the EU Digital Identity Wallet and eIDAS framework may be addressed in future editions.
 

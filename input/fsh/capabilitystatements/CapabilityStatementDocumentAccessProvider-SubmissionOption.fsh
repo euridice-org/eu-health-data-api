@@ -106,8 +106,9 @@ The server SHALL:
 - Return 201 Created with the persisted DocumentReference
 
 For patient-provided documents (EHDS Article 5), the server additionally SHALL:
-- Preserve `author`, `securityLabel`, and `meta.source` of the received DocumentReference and return them unaltered via ITI-67/ITI-68
-- Reject (with an OperationOutcome) a patient-provided submission whose `relatesTo.code = replaces` targets a DocumentReference that is not itself marked patient-provided for the same subject, and apply the same restriction to any update or removal mechanism offered on this channel
+- Preserve supplied `author`, `securityLabel`, and `meta.source` of the received DocumentReference and return them unaltered via ITI-67/ITI-68
+- Reject (with an OperationOutcome) a patient-provided submission whose `relatesTo.code = replaces` targets a DocumentReference that is not itself marked `PATRPT` for the same subject, and apply the same restriction to any update or removal mechanism offered on this channel
+- Accept `relatesTo.code = appends` when it links a new PATRPT-marked document to an existing document for the same subject, without changing the status or content of the target document
 
 See [Patient-Provided Data](patient-provided-data.html) for the full Article 5 requirements.
 """

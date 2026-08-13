@@ -1,6 +1,6 @@
 // Example DocumentReferences for patient-provided documents (EHDS Article 5)
 // Demonstrates the distinguishability marking specified on the Patient-Provided Data page:
-// author = Patient/RelatedPerson, securityLabel = PATRPT/SDMRPT, meta.source = originating system
+// author = actual document author(s), securityLabel = PATRPT, meta.source = originating system
 
 Instance: example-documentreference-patient-provided
 InstanceOf: DocumentReference
@@ -11,7 +11,7 @@ as submitted via ITI-105 Simplified Publish and persisted by a Document Access P
 implementing the Document Submission Option.
 
 The distinguishability marking (see [Patient-Provided Data](patient-provided-data.html#distinguishing-patient-provided-documents)):
-- `author` references the **Patient** (the natural person who inserted the information)
+- `author` references the **Patient** because the natural person authored this example document
 - `securityLabel` carries `PATRPT` (patient reported) from v3-ObservationValue
 - `meta.source` identifies the originating system (here, a health data access service)
 
@@ -62,9 +62,11 @@ Example DocumentReference for a document inserted by a representative referred t
 EHDS Article 4(2) — for example a parent, guardian, or authorized proxy — on behalf of
 the natural person.
 
-The distinguishability marking differs from the patient-provided case in two elements:
-- `author` references a **RelatedPerson** (the representative), not the Patient
-- `securityLabel` carries `SDMRPT` (substitute decision maker reported) instead of `PATRPT`
+In this example, `author` references a **RelatedPerson** because the representative authored
+the document. The `PATRPT` label is the same for all documents submitted through the Article 5
+channel. If the representative submitted a document authored by somebody else, the original
+author would remain in `author` and an accompanying Provenance could identify the representative
+as the submitting agent.
 
 Verifying the representative's authority is a Member State proxy-service and user-level
 authorization concern, out of scope for this IG (see
@@ -89,8 +91,8 @@ Usage: #example
 * author.reference = "http://example.org/fhir/RelatedPerson/example-relatedperson"
 * author.display = "Maria Jansen (mother)"
 
-// Security label: substitute decision maker reported (v3-ObservationValue provenance code)
-* securityLabel = $v3-ObservationValue#SDMRPT "substitute decision maker reported"
+// Security label: submitted through the Article 5 patient insertion channel
+* securityLabel = $v3-ObservationValue#PATRPT "patient reported"
 
 * description = "Health information provided by Maria Jansen on behalf of Jan Jansen via the national health data access service"
 
@@ -99,3 +101,35 @@ Usage: #example
 * content.attachment.url = "http://example.org/fhir/Bundle/representative-provided-jan-jansen"
 * content.attachment.title = "Representative-provided health information"
 * content.attachment.creation = "2026-08-01T10:40:00+02:00"
+
+
+Instance: example-documentreference-patient-appended-notes
+InstanceOf: DocumentReference
+Title: "Example - Patient Notes Appended to a Professional Document (Article 5)"
+Description: """
+Example of a new patient-provided document that adds personal notes to an existing professional
+document. The `appends` relationship preserves the link between the documents without replacing,
+superseding, or otherwise altering the professional document.
+"""
+Usage: #example
+
+* meta.source = "http://example.org/hdas/national-health-portal"
+* masterIdentifier.system = "urn:oid:2.999.3.4.5.6.7.8.12" // OID 2.999 is reserved for examples
+* masterIdentifier.value = "urn:uuid:2a4d6f80-1357-49bd-8ace-2468ace13579"
+* status = #current
+* type = $loinc#51855-5 "Patient Note"
+* subject.reference = "http://example.org/fhir/Patient/example-patient"
+* subject.display = "Jan Jansen"
+* date = "2026-08-01T11:05:00+02:00"
+* author.reference = "http://example.org/fhir/Patient/example-patient"
+* author.display = "Jan Jansen"
+* securityLabel = $v3-ObservationValue#PATRPT "patient reported"
+* relatesTo.code = #appends
+* relatesTo.target.reference = "http://example.org/fhir/DocumentReference/professional-care-plan"
+* relatesTo.target.display = "Professional care plan"
+* description = "Personal notes appended to the professional care plan"
+* content.attachment.contentType = #application/fhir+json
+* content.attachment.language = #en
+* content.attachment.url = "http://example.org/fhir/Bundle/patient-appended-notes-jan-jansen"
+* content.attachment.title = "Patient notes on professional care plan"
+* content.attachment.creation = "2026-08-01T11:05:00+02:00"

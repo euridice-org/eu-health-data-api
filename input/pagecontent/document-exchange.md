@@ -234,7 +234,7 @@ The server validates, extracts, and persists the document, returning the created
 
 [EHDS Article 5](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_5) gives natural persons, or their representatives, the right to insert information into their own EHR through electronic health data access services or linked applications. For document-shaped data, the patient-facing service acts as a Document Publisher and submits via ITI-105 to a Document Access Provider implementing the [Document Submission Option](#document-submission-option).
 
-The normative requirements — marking documents as patient-provided (`author`, `securityLabel`, `meta.source`) and the non-alteration rules — are specified on the [Patient-Provided Data](patient-provided-data.html) page.
+The normative requirements — classifying Article 5 submissions with `PATRPT`, retaining actual authorship in `author`, recording system provenance in `meta.source`, and enforcing the non-alteration rules — are specified on the [Patient-Provided Data](patient-provided-data.html) page.
 
 #### Other Publication Transactions
 

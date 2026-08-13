@@ -86,16 +86,16 @@ This approach was agreed by the API working group. However, alternative approach
 
 [GitHub Issues](https://github.com/euridice-org/eu-health-data-api/issues) | **Priority:** High
 
-This IG specifies the document-based path for the EHDS Article 5 patient insertion right: ITI-105 submission with `DocumentReference.author` = Patient/RelatedPerson, `securityLabel` `PATRPT`/`SDMRPT` (v3-ObservationValue provenance codes), and `meta.source` identifying the originating system, with new-document-only submissions and replacement/update/removal restricted to the person's own prior submissions. These requirements originate in this IG — Xt-EHR D5.1 contains no Article 5 requirement. See [Patient-Provided Data](patient-provided-data.html).
+This IG specifies the document-based path for the EHDS Article 5 patient insertion right: ITI-105 submission marked with `securityLabel` `PATRPT` (a v3-ObservationValue provenance code), actual document authorship retained in `DocumentReference.author`, and `meta.source` identifying the originating system. Replacement, update, and removal are restricted to the person's own prior submissions, while a new patient-provided document may append to an existing professional document without altering it. These requirements originate in this IG — Xt-EHR D5.1 contains no Article 5 requirement. See [Patient-Provided Data](patient-provided-data.html).
 
 **Current Approach (going to ballot)**
 
-Access to write data is governed by the authorization of the submitting service (system-to-system, SMART Backend Services) together with the receiving service; the authorship markings are attribution that cross-references that security context, not a security mechanism. The Access Provider trusts the health data access service or linked application to have authenticated the person and captured consent.
+Access to write data is governed by the authorization of the submitting service (system-to-system, SMART Backend Services) together with the receiving service. `PATRPT` classifies the Article 5 submission channel and does not identify the underlying document author or impose an access-control obligation. The Access Provider trusts the health data access service or linked application to have authenticated the person and captured consent.
 
 **Seeking Input On**
 
-- Are `PATRPT`/`SDMRPT` (reported) the right default codes, with `PATAST`/`SDMAST` (asserted) reserved for verified submissions? Should the IG define a formal ValueSet?
+- Is `PATRPT` the right single classification for all documents submitted through the Article 5 channel, including submissions by representatives and externally authored documents? Should the IG define a formal ValueSet?
 - Should the label also be REQUIRED (not SHOULD) inside the document (`Bundle.meta.security`), given documents circulate detached from their DocumentReference?
 - Should a constrained DocumentReference profile (on MHD SimplifiedPublish) be published for testability, or do narrative requirements suffice given this IG defines no EU DocumentReference profile?
-- Representative (Art. 4(2)) handling: is data-level marking (RelatedPerson + `SDMRPT`) sufficient while user-level/proxy authorization remains out of scope, or is a token-level mechanism needed in a future edition?
+- Representative (Art. 4(2)) handling: is optional `Provenance` attribution sufficient when the representative is not the document author, while user-level/proxy authorization remains out of scope, or is a token-level mechanism needed in a future edition?
 - Is the trust delegation (Access Provider trusts the access service/app for person authentication and consent) acceptable to Member State deployments, or is a token-level patient-context binding needed sooner?
