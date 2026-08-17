@@ -4,7 +4,21 @@ Patient lookup is accomplished using IHE PDQm (Patient Demographics Query for Mo
 
 This specification inherits directly from [IHE PDQm](https://profiles.ihe.net/ITI/PDQm/index.html) with one constraint: the `identifier` search parameter is required for patient search.
 
-`Patient.Search` [ITI-78] should be used when a patient identifier (e.g. National ID) is available and trusted. If an identifier is not available, `Patient.$match` [ITI-119] should be used to perform a demographics search operation with available demographics.
+#### Conformance Language
+
+This specification uses the same definition of [conformance language](https://hl7.org/fhir/R4/conformance-rules.html#conflang) as the FHIR Core specification.
+
+Additional clarification regarding the use of search parameters:
+- The requirement “an actor SHALL support a parameter XY” indicates a general capability and not that this parameter XY must be present for every query.
+
+#### Relationship to MyHealth@EU
+The main difference between the two guides is that the EU Health Data API IG describes ways to find patient records based on different parameters whereas the MyHealth@EU uses the patient search transaction for [validation of the patient identity](https://fhir.ehdsi.eu/build/ncp-api/bus-scenario-pat.html) that was acquired via different means (e.g. EUDI Wallet).
+
+Nevertheless, the EU Health Data API implementation guide is aligned as much as possible with the corresponding [patient search transaction](https://fhir.ehdsi.eu/build/ncp-api/sequence-pat.html) from the MyHealth@EU cross-border specification. This includes conformance language and the requirements for search parameters.
+If identifiers and/or demographic data of a patient are used as search parameters depends on the agreed identification attributes for a patient of each member state for the cross-border scenario.
+
+#### Patient Lookup Governance
+ToDo
 
 ### Actor Roles
 
@@ -19,33 +33,41 @@ Providers support one or both of the following patient identification mechanisms
 
 #### [ITI-78] Mobile Patient Demographics Query `Patient.Search` - (Required)
 
-Patient search using the [IHE PDQm ITI-78](https://profiles.ihe.net/ITI/PDQm/ITI-78.html) transaction. This specification constrains ITI-78 to require the `identifier` parameter.
+Patient search using the [IHE PDQm ITI-78](https://profiles.ihe.net/ITI/PDQm/ITI-78.html) transaction. This specification constrains ITI-78 so that both consumer and provider SHALL support the `identifier` parameter.
 
 ```
 GET [base]/Patient?identifier=[system]|[value]
 ```
 
-This approach covers the majority of European use cases where patient identifiers (MRN, national ID) are available.
+This approach covers the majority of European use cases for agreed identification attributes for a patient especially where patient identifiers (MRN, national ID) are available.
 
-**Required Search Parameters:**
+**Search Parameters:**
 
 Both Provider and Consumer SHALL support the `identifier` parameter for patient search.
 
-| Parameter | Type | Expectation | Description |
+| Parameter | Type | Expectation Prov/Cons | Description |
 |-----------|------|-------------|-------------|
-| identifier | token | SHALL | Patient identifier (e.g., national ID, MRN) |
+| identifier | token | SHALL/SHALL | Patient identifier (e.g., national ID, MRN) |
 
-**Optional Search Parameters:**
 
-Providers MAY support additional PDQm search parameters per [ITI-78](https://profiles.ihe.net/ITI/PDQm/ITI-78.html):
+Provider SHALL support all listed parameters below, Consumer SHOULD support them.
 
-| Parameter | Type | Expectation | Description |
+| Parameter | Type | Expectation Prov/Cons | Description |
 |-----------|------|-------------|-------------|
-| family | string | SHOULD | Patient family name |
-| given | string | SHOULD | Patient given name |
-| birthdate | date | SHOULD | Patient date of birth |
-| _id | token | SHOULD | Patient logical ID |
+| _id | token | SHALL/SHOULD | Patient logical ID |
+| active | token | SHALL/SHOULD | Wether the patient record is active |
+| family | string | SHALL/SHOULD | Patient family name |
+| given | string | SHALL/SHOULD | Patient given name |
+| telecom | token | SHALL/SHOULD | Telecom details of the patient |
+| birthdate | date | SHALL/SHOULD | Patient date of birth |
+| address | string | SHALL/SHOULD | A server defined search that may match any of the string fields in the Address, including line, city, district, state, country, postalCode, and/or text |
+| address-city | string | SHALL/SHOULD | A city specified in an address |
+| address-country | string | SHALL/SHOULD | A country specified in an address |
+| address-postalcode | string | SHALL/SHOULD | A postal code specified in an address |
+| address-state | string | SHALL/SHOULD | A state specified in an address |
+| gender | token | SHALL/SHOULD | Administrative gender of the patient |
 
+While the above search parameters SHALL be supported individually, support for combinations of parameters will be needed for effective searching. Which combinations will be needed depends on the governances for patient lookup as well as on each member state’s agreed identification attributes for a patient.
 
 #### Patient Demographics Match [ITI-119] `Patient.$match`  (Optional)
 
