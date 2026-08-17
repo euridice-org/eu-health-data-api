@@ -123,17 +123,6 @@ sequenceDiagram
 
 *Patient lookup applies to both [Document Exchange](document-exchange.html) and [Resource Access](resource-access.html) patterns.*
 
-#### Option: Chained Identifier Search
-
-FHIR also supports querying resources directly by patient identifier via chained search, avoiding a separate lookup step. This applies to both clinical resource queries and document searches (ITI-67):
-
-```
-GET [base]/AllergyIntolerance?patient.identifier=[system]|[value]
-GET [base]/DocumentReference?patient.identifier=[system]|[value]&type=http://loinc.org|60591-5
-```
-
-Chained search can be used to minimize round trips, for example with national aggregating gateways. The Access Provider must support chained search on `patient.identifier` for this to work.
-
 ### Design Rationale
 
 In most European exchanges the consumer already holds a trusted patient identifier (national health ID, MRN, or similar). Identifier-based lookup produces an unambiguous match and avoids dependence on demographic data quality, which varies in completeness and localization across member states. The [MyHealth@EU cross-border infrastructure](https://fhir.ehdsi.eu/build/ncp-api/bus-scenario-pat.html) already follows this pattern.

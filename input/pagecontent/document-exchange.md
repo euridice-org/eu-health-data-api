@@ -105,6 +105,18 @@ The date parameters have distinct meanings:
 
 The `format` parameter searches `DocumentReference.content.format`, which identifies document format and content rules. It is distinct from `content.attachment.contentType`, which identifies the MIME type.
 
+##### Option: Chained Identifier Search
+
+FHIR also supports querying resources directly by patient identifier via [chained search](https://hl7.org/fhir/R4/search.html#chaining), where the corresponding patient identifier is either known in advance or was received during a [patient lookup transaction](patient-match.html). This applies to both clinical resource queries and document searches (ITI-67):
+
+```
+GET [base]/AllergyIntolerance?patient.identifier=[system]|[value]
+GET [base]/DocumentReference?patient.identifier=[system]|[value]&type=http://loinc.org|60591-5
+```
+
+Chained search can be used to minimize round trips, for example with national aggregating gateways. The Access Provider must support chained search on `patient.identifier` for this to work.
+Chaining is however not possible if [logical references](https://hl7.org/fhir/R4/references.html#logical) are used.
+
 #### Search Response
 
 An ITI-67 response contains base FHIR DocumentReference resources. This guide defines no EU DocumentReference return profile and does not require returned resources to conform to an MHD metadata profile. The Provider SHOULD return the metadata it has. Base FHIR therefore governs element cardinalities, including `date` and `custodian` at 0..1 and `category` at 0..*.
