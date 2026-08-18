@@ -78,18 +78,100 @@ The Patient $match operation identifies a patient record given demograpics data 
 POST [base]/Patient/$match
 ```
 
-The request body contains a Parameters resource with demographic information. The server responds with candidate matches and confidence scores.
+The HTTP Body SHALL consist of a FHIR Parameters Resource according to the [PDQm $match OperationDefinition](https://profiles.ihe.net/ITI/PDQm/OperationDefinition-PDQmMatch.html). The `resource` parameter SHALL be set to a Patient Resource containing the demographic information for which the Patient Demographics Consumer desires a match. The server responds with candidate matches and confidence scores.
 
-**Required Search Parameters:**
+The Patient Resource in the input parameter `resource` SHALL comply to the [EU Core Profile for Patient](https://hl7.eu/fhir/base/StructureDefinition-patient-eu-core.html).
 
+<div markdown="1" class="stu-note">
 
-| Parameter | Type | Expectation | Description |
+**Feedback requested:** 
+Is it acceptable to limit the input Patient Resource just to the EU Core Profile?
+
+</div>
+
+**Additional Required Input Parameters:**
+
+| Parameter | Type | Expectation Prov/Cons | Description |
 |-----------|------|-------------|-------------|
-| onlyCertainMatches | boolean | SHALL | This parameter SHALL be set to true |
+| onlyCertainMatches | boolean | SHALL/SHALL | This parameter SHALL be set to true |
 
 In order to support safe clinical patient matching both Provider and Consumer SHALL support the `onlyCertainMatches` parameter which SHALL be set to `true` to indicate that the Consumer would only like matches returned when they are certain to be matches for the subject of the request.
 
 Matching algorithms are product and deployment-specific and may reflect national or region-specific factors (e.g., availability of common demographics, name transliteration, required fields in national patient registries). This specification does not prescribe how matching works, consistent with [PDQm ITI-119](https://profiles.ihe.net/ITI/PDQm/ITI-119.html#231194224-quality-of-match).
+
+##### Example
+
+Request: Patient match using a patient resource (which conforms to the EU Core Profile):
+
+```
+POST [base]/Patient/$match
+
+{
+  "resourceType": "Parameters",
+  "id": "example",
+  "parameter": [
+    {
+      "name": "resource",
+      "resource": {
+        "resourceType" : "Patient",
+        "id" : "patient-eu-core-example",
+        "meta" : {
+          "profile" : [
+            "http://hl7.eu/fhir/base/StructureDefinition/patient-eu-core"
+          ]
+        },
+        "identifier": [
+          {
+            "use": "usual",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://hl7.org/fhir/v2/0203",
+                  "code": "MR"
+                }
+              ]
+            },
+            "system": "urn:oid:1.2.36.146.595.217.0.1",
+            "value": "12345"
+          }
+        ],        
+        "name" : [
+          {
+            "family" : "Doe",
+            "given" : [
+              "John"
+            ]
+          }
+        ],
+        "telecom" : [
+          {
+            "system" : "phone",
+            "value" : "555-1234",
+            "use" : "home"
+          }
+        ],
+        "gender" : "male",
+        "birthDate" : "1980-01-01",
+        "address" : [
+          {
+            "line" : [
+              "123 Example Street"
+            ],
+            "city" : "Example City",
+            "state" : "EX",
+            "postalCode" : "12345",
+            "country" : "EX"
+          }
+        ],
+      }
+    },
+    {
+      "name": "onlyCertainMatches",
+      "valueBoolean": "true"
+    }
+  ]
+}
+```
 
 ### Provider Requirements
 
