@@ -92,8 +92,7 @@ While the above search parameters SHALL be supported individually, support for c
 
 #### Patient Demographics Match [ITI-119] `Patient.$match`  (Optional)
 
-The Patient Demographics $match option can be used to identify a patient when an identifier-based lookup is not possible (e.g., scenarios where the consumer does not know the patient's local identifier).
-The Patient $match operation identifies a patient record given demograpics data (Name, Birthdate, ...) using [IHE PDQm ITI-119](https://profiles.ihe.net/ITI/PDQm/ITI-119.html): 
+The Patient $match operation identifies a patient record given demograpics data (Name, Birthdate, ...) and/or identifier using [IHE PDQm ITI-119](https://profiles.ihe.net/ITI/PDQm/ITI-119.html). It returns scored / graded candidates with a search.score and a [match-grade](https://hl7.org/fhir/R4/extension-match-grade.html) informing the client about the match quality.: 
 
 ```
 POST [base]/Patient/$match
@@ -228,9 +227,26 @@ sequenceDiagram
 
 ### Design Rationale
 
-In most European exchanges the consumer already holds a trusted patient identifier (national health ID, MRN, or similar). Identifier-based lookup produces an unambiguous match and avoids dependence on demographic data quality, which varies in completeness and localization across member states. The [MyHealth@EU cross-border infrastructure](https://fhir.ehdsi.eu/build/ncp-api/bus-scenario-pat.html) already follows this pattern.
+In most European exchanges the consumer already holds a trusted patient identifier (national health ID, MRN, or similar). Identifier-based lookup produces an unambiguous match and avoids dependence on demographic data quality, which varies in completeness and localization across member states. The [MyHealth@EU cross-border infrastructure](https://fhir.ehdsi.eu/build/ncp-api/bus-scenario-pat.html) already follows this pattern and makes use of the patient search transcation.
 
-Where an identifier is not available, `Patient.$match` [ITI-119] is safer than demographics-based `Patient.Search` [ITI-78] for automated resolution. `Patient.$match` moves resolution to the server, which has richer context (aliases, prior identifiers, phonetic matching) and returns only high-confidence matches when `onlyCertainMatches` is set to `true`. Demographics-based `Patient.Search` may return multiple candidates for common names, miss near-matches from spelling variation (e.g., "Schroeder" vs. "Schröder"), or produce false matches — and clients have no confidence score to guide selection.
+Both transactions support the use of identifier and/or demographics as search/input parameters. It depends on the various expectations with regard to the query and response behavior of patient lookup transactions (e.g. only one result allowed, multiple results allowed, etc.) which one to use, depending again on governance for the various deployment layers and architectures.
+
+Such a governances could define the response behavior of a server to return:
+- Exact result (or no result)
+- Response feedback: more traits needed, until exact result (or no result)
+- Multiple results OK
+- Multiple results OK with score
+
+and for clients to support:
+- a request trait list (required attributes, optional attributes).  Does not include patient ID.
+- a request trait list (required attributes, optional attributes).  Includes patient ID.
+- an exact result response
+- a result response feedback: OK or more traits needed
+- a selection among multiple results response
+- a election among multiple results response with score
+
+The IHE Profile PDQm defines the support of the ITI-78 patient search transaction as required and the ITI-119 $match transaction as optional. Furthermore, the cross-border scenario legally requires patient search and not $match, therefore patient search has to be supported anyway for patient lookup scenarios.
+The EU Health Data API IG is therefore aligned with those requirements. Additional derived deployments IGs could require the $match transaction though. 
 
 ### References
 
