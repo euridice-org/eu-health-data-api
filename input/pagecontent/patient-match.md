@@ -11,14 +11,35 @@ This specification uses the same definition of [conformance language](https://hl
 Additional clarification regarding the use of search parameters:
 - The requirement “an actor SHALL support a parameter XY” indicates a general capability and not that this parameter XY must be present for every query.
 
-#### Relationship to MyHealth@EU
+#### Relationship to the MyHealth@EU IG
 The main difference between the two guides is that the EU Health Data API IG describes ways to find patient records based on different parameters whereas the MyHealth@EU uses the patient search transaction for [validation of the patient identity](https://fhir.ehdsi.eu/build/ncp-api/bus-scenario-pat.html) that was acquired via different means (e.g. EUDI Wallet).
 
 Nevertheless, the EU Health Data API implementation guide is aligned as much as possible with the corresponding [patient search transaction](https://fhir.ehdsi.eu/build/ncp-api/sequence-pat.html) from the MyHealth@EU cross-border specification. This includes conformance language and the requirements for search parameters.
 If identifiers and/or demographic data of a patient are used as search parameters depends on the agreed identification attributes for a patient of each member state for the cross-border scenario.
 
 #### Patient Lookup Governance
-ToDo
+
+If and how patient lookup transactions are to be used depends on several factors. The European interoperability landscape is quite complex and consists of different deployment scenarios and layers as described on the [implementation overview page](implementation.html).
+Apart from the cross-border scenario, the chosen architecture of a member state does have a big influence how the patient lookup transactions are provided and should be used and if they are needed at all. Scenarios like a central national infrastructure with an MPI, federated connected EHR systems or simply the availability of a national identifier lead to different requirements on which systems have to provide and/or use an API for patient lookup and where patient information is actually located:
+- on the same server as the document or resource information 
+(e.g. access provider = hospital EHR System or clinical data repository...)
+- on a different server but in the same network/domain layer 
+(e.g. access provider = radiology EHR System for Imaging Report and hospital EHR System for patient information...)
+- on a different server and in a different network/domain layer
+(e.g. access provider = hospital EHR System or XDS Repository with MHD Facade for documents and MPI for patient information...)
+
+Another factor is which identifying information from a Patient will be used on the document/resource metadata, e.g. on `DocumentReference.subject`:
+- A (business) identifier as [logical reference](https://hl7.org/fhir/R4/references.html#logical) in `Reference.identifier`or a reference with Resource id as [literal reference](https://hl7.org/fhir/R4/references.html#literal) in `Reference.reference` (relative or absolute)? 
+- will it be the same method for all inner-member state access providers?
+- will it be the same for cross-border use cases and inner-member state use cases?
+
+Therefore, **governances** for the various deployment layers (cross-border, national, regional, local) and architectures in place will be needed that define which systems have to provide a patient lookup API, which data is used for lookup transactions (identifiers, demographics, both) or if a patient lookup is needed at all. 
+
+In short:
+- not every Document/Resource Access Provider system has to provide a Patient Lookup API, it depends on the national/regional/local architectures which components have to provide it or if it is needed at all
+- depending on the governances which identifier(s) are used and in which form, an identifier conversion mechanism might be needed, resulting in the need of doing more than one patient lookup transaction
+
+As conclusion, the pre-condition for EHDS EEHRxF related transactions is, that each client (consumer for pull, producer in case of push) has to know in advance which patient identifying information to use and where to get it from based on the corresponding governances that are relevant for the client. In case of cross-border transactions this responsibility is (already) part of the NCP configuration/behavior.
 
 ### Actor Roles
 
