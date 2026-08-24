@@ -109,7 +109,7 @@ The Patient Resource in the input parameter `resource` SHOULD comply to the [EU 
 |-----------|------|-------------|-------------|
 | onlyCertainMatches | boolean | SHALL/SHALL | This parameter SHALL be set to true |
 
-In order to support safe clinical patient matching both Provider and Consumer SHALL support the `onlyCertainMatches` parameter which SHALL be set to `true` to indicate that the Consumer would only like matches returned when they are certain to be matches for the subject of the request.
+In order to support safe clinical patient matching both Provider and Consumer SHALL support the `onlyCertainMatches` parameter to indicate that the Consumer would only like matches returned when they are certain to be matches for the subject of the request.
 
 Matching algorithms are product and deployment-specific and may reflect national or region-specific factors (e.g., availability of common demographics, name transliteration, required fields in national patient registries). This specification does not prescribe how matching works, consistent with [PDQm ITI-119](https://profiles.ihe.net/ITI/PDQm/ITI-119.html#231194224-quality-of-match).
 
