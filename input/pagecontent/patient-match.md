@@ -15,7 +15,7 @@ Additional clarification regarding the use of search parameters:
 The main difference between the two guides is that the EU Health Data API IG describes ways to find patient records based on different parameters whereas the MyHealth@EU uses the patient search transaction for [validation of the patient identity](https://fhir.ehdsi.eu/build/ncp-api/bus-scenario-pat.html) that was acquired via different means (e.g. EUDI Wallet).
 
 Nevertheless, the EU Health Data API implementation guide is aligned as much as possible with the corresponding [patient search transaction](https://fhir.ehdsi.eu/build/ncp-api/sequence-pat.html) from the MyHealth@EU cross-border specification. This includes conformance language and the requirements for search parameters.
-If identifiers and/or demographic data of a patient are used as search parameters depends on the agreed identification attributes for a patient of each member state for the cross-border scenario.
+Whether identifiers and/or demographic data of a patient are used as search parameters depends on the agreed identification attributes for a patient of each member state for the cross-border scenario.
 
 #### Patient Lookup Governance
 
@@ -76,7 +76,7 @@ Provider SHALL support all listed parameters below, Consumer SHOULD support them
 | Parameter | Type | Expectation Prov/Cons | Description |
 |-----------|------|-------------|-------------|
 | _id | token | SHALL/SHOULD | Patient logical ID |
-| active | token | SHALL/SHOULD | Wether the patient record is active |
+| active | token | SHALL/SHOULD | Whether the patient record is active |
 | family | string | SHALL/SHOULD | Patient family name |
 | given | string | SHALL/SHOULD | Patient given name |
 | telecom | token | SHALL/SHOULD | Telecom details of the patient |
@@ -92,7 +92,7 @@ While the above search parameters SHALL be supported individually, support for c
 
 #### Patient Demographics Match [ITI-119] `Patient.$match`  (Optional)
 
-The Patient $match operation identifies a patient record given demograpics data (Name, Birthdate, ...) and/or identifier using [IHE PDQm ITI-119](https://profiles.ihe.net/ITI/PDQm/ITI-119.html). It returns scored / graded candidates with a search.score and a [match-grade](https://hl7.org/fhir/R4/extension-match-grade.html) informing the client about the match quality.: 
+The Patient $match operation identifies a patient record given demograpics data (Name, Birthdate, ...) and/or identifier using [IHE PDQm ITI-119](https://profiles.ihe.net/ITI/PDQm/ITI-119.html). It returns scored / graded candidates with a search.score and a [match-grade](https://hl7.org/fhir/R4/extension-match-grade.html) informing the client about the match quality: 
 
 ```
 POST [base]/Patient/$match
