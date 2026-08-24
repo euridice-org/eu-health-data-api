@@ -36,7 +36,7 @@ Another factor is which identifying information from a Patient will be used on t
 Therefore, **governances** for the various deployment layers (cross-border, national, regional, local) and architectures in place will be needed that define which systems have to provide a patient lookup API, which data is used for lookup transactions (identifiers, demographics, both) or if a patient lookup is needed at all. 
 
 In short:
-- not every Document/Resource Access Provider system has to provide a Patient Lookup API, it depends on the national/regional/local architectures which components have to provide it or if it is needed at all
+- not every Document/Resource Access Provider system has to provide a Patient Lookup API in a given implementation. It depends on the national/regional/local architectures, which determine which components have to provide it or if it is needed at all.
 - depending on the governances which identifier(s) are used and in which form, an identifier conversion mechanism might be needed, resulting in the need of doing more than one patient lookup transaction
 
 As conclusion, the pre-condition for EHDS EEHRxF related transactions is, that each client (consumer for pull, producer in case of push) has to know in advance which patient identifying information to use and where to get it from based on the corresponding governances that are relevant for the client. In case of cross-border transactions this responsibility is (already) part of the NCP configuration/behavior.
@@ -100,14 +100,8 @@ POST [base]/Patient/$match
 
 The HTTP Body SHALL consist of a FHIR Parameters Resource according to the [PDQm $match OperationDefinition](https://profiles.ihe.net/ITI/PDQm/OperationDefinition-PDQmMatch.html). The `resource` parameter SHALL be set to a Patient Resource containing the demographic information for which the Patient Demographics Consumer desires a match. The server responds with candidate matches and confidence scores.
 
-The Patient Resource in the input parameter `resource` SHALL comply to the [EU Core Profile for Patient](https://hl7.eu/fhir/base/StructureDefinition-patient-eu-core.html).
+The Patient Resource in the input parameter `resource` SHOULD comply to the [EU Base Profile for Patient](https://hl7.eu/fhir/base/StructureDefinition-patient-eu.html).
 
-<div markdown="1" class="stu-note">
-
-**Feedback requested:** 
-Is it acceptable to limit the input Patient Resource just to the EU Core Profile?
-
-</div>
 
 **Additional Required Input Parameters:**
 
@@ -137,7 +131,7 @@ POST [base]/Patient/$match
         "id" : "patient-eu-core-example",
         "meta" : {
           "profile" : [
-            "http://hl7.eu/fhir/base/StructureDefinition/patient-eu-core"
+            "https://hl7.eu/fhir/base/StructureDefinition-patient-eu"
           ]
         },
         "identifier": [
@@ -182,7 +176,7 @@ POST [base]/Patient/$match
             "postalCode" : "12345",
             "country" : "EX"
           }
-        ],
+        ]
       }
     },
     {
