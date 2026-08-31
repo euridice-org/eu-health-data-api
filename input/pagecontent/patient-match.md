@@ -58,6 +58,12 @@ Patient search using the [IHE PDQm ITI-78](https://profiles.ihe.net/ITI/PDQm/ITI
 
 ```
 GET [base]/Patient?identifier=[system]|[value]
+
+or
+
+POST [base]/Patient/_search
+Content-Type: application/x-www-form-urlencoded
+identifier=[system]|[value]
 ```
 
 This approach covers the majority of European use cases for agreed identification attributes for a patient especially where patient identifiers (MRN, national ID) are available.
@@ -92,7 +98,7 @@ While the above search parameters SHALL be supported individually, support for c
 
 #### Patient Demographics Match [ITI-119] `Patient.$match`  (Optional)
 
-The Patient $match operation identifies a patient record given demograpics data (Name, Birthdate, ...) and/or identifier using [IHE PDQm ITI-119](https://profiles.ihe.net/ITI/PDQm/ITI-119.html). It returns scored / graded candidates with a search.score and a [match-grade](https://hl7.org/fhir/R4/extension-match-grade.html) informing the client about the match quality: 
+The Patient $match operation identifies a patient record given demograpics data (Name, Birthdate, ...) and/or identifier using [IHE PDQm ITI-119](https://profiles.ihe.net/ITI/PDQm/ITI-119.html). It provides advantages when the search focus is on aptient demographics and a certain "fuzziness" is expected due to spelling variations (e.g., "Schroeder" vs. "Schröder") or similarities (e.g., "Mayer", "Maier", "Mayr", "Meyer", ...). It returns scored / graded candidates with a search.score and a [match-grade](https://hl7.org/fhir/R4/extension-match-grade.html) informing the client about the match quality: 
 
 ```
 POST [base]/Patient/$match
@@ -227,9 +233,50 @@ Both transactions support the use of identifier and/or demographics as search/in
 
 Such a governances could define the response behavior of a server to return:
 - Exact result (or no result)
+  - exact result responses can also be requested by a client, query examples
+    - ITI-78 with `_total`:
+      ```
+      GET [base]/Patient?identifier=[system]|[value]&_total=1
+      ```
+    - ITI-119 with `count`:
+      ```
+      POST [base]/Patient/$match
+      ...
+        "parameter" : [
+          ...
+          {
+            "name": "count",
+            "valueInteger": "1"
+          }
+        ]
+      ...
+      ```
 - Response feedback: more traits needed, until exact result (or no result)
+  - Example:
+    ```
+    HTTP/1.1 403
+
+    {
+      "resourceType" : "OperationOutcome",
+      "id" : "eu-moreTraits-failure",
+      "issue" : [
+        {
+          "severity" : "error",
+          "code" : "business-rule",
+          "details" : {
+          "text" : "Too many results were found, please provide more traits of the patient in question."
+          }
+        }
+      ]
+    }
+    ```
 - Multiple results OK
 - Multiple results OK with score
+  - ITI-119
+    - Providing information about the score in the response is the default behavior for this transaction
+  - ITI-78
+    - If an access provider does support score information for patient searches in its application, providing such a score information can be requested in search transactions as well via the optional  `_score` search result parameter. The score information will be added to each entry of the response bundle in `Bundle.entry.search.score` similar to $match and has the same meaning. 
+  
 
 and for clients to support:
 - a request trait list (required attributes, optional attributes).  Does not include patient ID.
