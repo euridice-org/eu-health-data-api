@@ -169,7 +169,7 @@ Consumers treat on-demand and persisted DocumentReferences identically — both 
 
 Search by `type` (LOINC) for the most accurate results. To find the relevant `type` codes for a priority category, consult the per-category ValueSet or the ConceptMap. When multiple `type` codes apply, include all of them.
 
-These examples assume the consumer has resolved the patient to a FHIR reference (e.g., `Patient/123`) via [Patient Lookup](patient-match.html). Alternatively, use [chained identifier search](patient-match.html#option-chained-identifier-search) (e.g., `patient.identifier=[system]|[value]`).
+These examples assume the consumer has resolved the patient to a FHIR reference (e.g., `Patient/123`) via [Patient Lookup](patient-match.html). Alternatively, use [chained identifier search](document-exchange.html#option-chained-identifier-search) (e.g., `patient.identifier=[system]|[value]`).
 
 ##### Patient Summary
 

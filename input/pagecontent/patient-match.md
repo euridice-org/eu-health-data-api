@@ -98,7 +98,7 @@ While the above search parameters SHALL be supported individually, support for c
 
 #### Patient Demographics Match [ITI-119] `Patient.$match`  (Optional)
 
-The Patient $match operation identifies a patient record given demograpics data (Name, Birthdate, ...) and/or identifier using [IHE PDQm ITI-119](https://profiles.ihe.net/ITI/PDQm/ITI-119.html). It provides advantages when the search focus is on aptient demographics and a certain "fuzziness" is expected due to spelling variations (e.g., "Schroeder" vs. "Schröder") or similarities (e.g., "Mayer", "Maier", "Mayr", "Meyer", ...). It returns scored / graded candidates with a search.score and a [match-grade](https://hl7.org/fhir/R4/extension-match-grade.html) informing the client about the match quality: 
+The goal of the Patient $match operation is to identify patient records given demographics data (Name, Birthdate, ...) and/or identifier via the  [IHE PDQm ITI-119](https://profiles.ihe.net/ITI/PDQm/ITI-119.html) transaction, using the matching algorithm logic of an access provider. It provides advantages when the search focus is on aptient demographics and a certain "fuzziness" is expected due to spelling variations (e.g., "Schroeder" vs. "Schröder") or similarities (e.g., "Mayer", "Maier", "Mayr", "Meyer", ...). It returns scored / graded candidates with a search.score and a [match-grade](https://hl7.org/fhir/R4/extension-match-grade.html) informing the client about the match quality: 
 
 ```
 POST [base]/Patient/$match
