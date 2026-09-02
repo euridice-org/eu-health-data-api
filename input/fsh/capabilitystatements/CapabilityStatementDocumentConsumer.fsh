@@ -136,8 +136,15 @@ This uses PDQm [ITI-78] with identifier as a required search parameter.
 * rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/Resource-id"
 * rest[=].resource[=].searchParam[=].type = #token
 * rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
-* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHALL
+* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHOULD
 * rest[=].resource[=].searchParam[=].documentation = "Patient logical ID"
+
+* rest[=].resource[=].searchParam[+].name = "active"
+* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/Patient-active"
+* rest[=].resource[=].searchParam[=].type = #token
+* rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHOULD
+* rest[=].resource[=].searchParam[=].documentation = "Whether the patient record is active"
 
 * rest[=].resource[=].searchParam[+].name = "family"
 * rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/individual-family"
@@ -153,9 +160,58 @@ This uses PDQm [ITI-78] with identifier as a required search parameter.
 * rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHOULD
 * rest[=].resource[=].searchParam[=].documentation = "Patient given name"
 
+* rest[=].resource[=].searchParam[+].name = "telecom"
+* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/individual-telecom"
+* rest[=].resource[=].searchParam[=].type = #token
+* rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHOULD
+* rest[=].resource[=].searchParam[=].documentation = "Telecom details of the patient"
+
 * rest[=].resource[=].searchParam[+].name = "birthdate"
 * rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/individual-birthdate"
 * rest[=].resource[=].searchParam[=].type = #date
 * rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
 * rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHOULD
 * rest[=].resource[=].searchParam[=].documentation = "Patient date of birth"
+
+* rest[=].resource[=].searchParam[+].name = "address"
+* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/individual-address"
+* rest[=].resource[=].searchParam[=].type = #string
+* rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHOULD
+* rest[=].resource[=].searchParam[=].documentation = "A server defined search that may match any of the string fields in the Address, including line, city, district, state, country, postalCode, and/or text"
+
+* rest[=].resource[=].searchParam[+].name = "address-city"
+* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/individual-address-city"
+* rest[=].resource[=].searchParam[=].type = #string
+* rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHOULD
+* rest[=].resource[=].searchParam[=].documentation = "A city specified in an address"
+
+* rest[=].resource[=].searchParam[+].name = "address-country"
+* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/individual-address-country"
+* rest[=].resource[=].searchParam[=].type = #string
+* rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHOULD
+* rest[=].resource[=].searchParam[=].documentation = "A country specified in an address"
+
+* rest[=].resource[=].searchParam[+].name = "address-postalcode"
+* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/individual-address-postalcode"
+* rest[=].resource[=].searchParam[=].type = #string
+* rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHOULD
+* rest[=].resource[=].searchParam[=].documentation = "A postal code specified in an address"
+
+* rest[=].resource[=].searchParam[+].name = "address-state"
+* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/individual-address-state"
+* rest[=].resource[=].searchParam[=].type = #string
+* rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHOULD
+* rest[=].resource[=].searchParam[=].documentation = "A state specified in an address"
+
+* rest[=].resource[=].searchParam[+].name = "gender"
+* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/individual-gender"
+* rest[=].resource[=].searchParam[=].type = #token
+* rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHOULD
+* rest[=].resource[=].searchParam[=].documentation = "Administrative gender of the patient"
