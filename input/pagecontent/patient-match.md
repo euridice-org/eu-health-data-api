@@ -106,7 +106,7 @@ POST [base]/Patient/$match
 
 The HTTP Body SHALL consist of a FHIR Parameters Resource according to the [PDQm $match OperationDefinition](https://profiles.ihe.net/ITI/PDQm/OperationDefinition-PDQmMatch.html). The `resource` parameter SHALL be set to a Patient Resource containing the demographic information for which the Patient Demographics Consumer desires a match. The server responds with candidate matches and confidence scores.
 
-The Patient Resource in the input parameter `resource` SHOULD comply to the [EU Base Profile for Patient](https://hl7.eu/fhir/base/StructureDefinition-patient-eu.html).
+The Patient Resource in the input parameter `resource` SHOULD comply to the [EU Base Profile for Patient](https://hl7.eu/fhir/base/StructureDefinition-patient-eu.html), which also enables the use of Extensions for demographic data like `birthPlace` or `citizenship` defined in this profile as search input.
 
 
 **Additional Required Input Parameters:**
@@ -233,28 +233,10 @@ Both transactions support the use of identifier and/or demographics as search/in
 
 Such a governances could define the response behavior of a server to return:
 - Exact result (or no result)
-  - exact result responses can also be requested by a client, query examples
-    - ITI-78 with `_total`:
-      ```
-      GET [base]/Patient?identifier=[system]|[value]&_total=1
-      ```
-    - ITI-119 with `count`:
-      ```
-      POST [base]/Patient/$match
-      ...
-        "parameter" : [
-          ...
-          {
-            "name": "count",
-            "valueInteger": 1
-          }
-        ]
-      ...
-      ```
 - Response feedback: more traits needed, until exact result (or no result)
   - Example:
     ```
-    HTTP/1.1 403
+    HTTP/1.1 400
 
     {
       "resourceType" : "OperationOutcome",
@@ -275,7 +257,7 @@ Such a governances could define the response behavior of a server to return:
   - ITI-119
     - Providing information about the score in the response is the default behavior for this transaction
   - ITI-78
-    - If an access provider does support score information for patient searches in its application, providing such a score information can be requested in search transactions as well via the optional  `_score` search result parameter. The score information will be added to each entry of the response bundle in `Bundle.entry.search.score` similar to $match and has the same meaning. 
+    - If an access provider does support score information for patient searches in its application, it MAY populate `Bundle.entry.search.score` on any searchset to provide the score information similar to $match.
   
 
 and for clients to support:

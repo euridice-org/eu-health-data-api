@@ -114,7 +114,7 @@ GET [base]/AllergyIntolerance?patient.identifier=[system]|[value]
 GET [base]/DocumentReference?patient.identifier=[system]|[value]&type=http://loinc.org|60591-5
 ```
 
-Chained search can be used to minimize round trips, for example with national aggregating gateways. The Access Provider SAHLL support chained search on `patient.identifier` for this to work.
+Chained search can be used to minimize round trips, for example with national aggregating gateways. The Access Provider SHALL support chained search on `patient.identifier` for this to work.
 Chaining is however not possible if [logical references](https://hl7.org/fhir/R4/references.html#logical) are used.
 
 #### Search Response
