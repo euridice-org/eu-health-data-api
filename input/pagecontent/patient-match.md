@@ -113,7 +113,7 @@ The Patient Resource in the input parameter `resource` SHOULD comply to the [EU 
 
 | Parameter | Type | Expectation Prov/Cons | Description |
 |-----------|------|-------------|-------------|
-| onlyCertainMatches | boolean | SHALL/SHALL | This parameter SHALL be set to true |
+| onlyCertainMatches | boolean | SHALL/SHALL |  Indicates that the Consumer would only like certain matches returned |
 
 In order to support safe clinical patient matching both Provider and Consumer SHALL support the `onlyCertainMatches` parameter to indicate that the Consumer would only like matches returned when they are certain to be matches for the subject of the request.
 
@@ -134,10 +134,10 @@ POST [base]/Patient/$match
       "name": "resource",
       "resource": {
         "resourceType" : "Patient",
-        "id" : "patient-eu-core-example",
+        "id" : "patient-eu-base-example",
         "meta" : {
           "profile" : [
-            "https://hl7.eu/fhir/base/StructureDefinition-patient-eu"
+            "http://hl7.eu/fhir/base/StructureDefinition/patient-eu"
           ]
         },
         "identifier": [
@@ -146,12 +146,12 @@ POST [base]/Patient/$match
             "type": {
               "coding": [
                 {
-                  "system": "http://hl7.org/fhir/v2/0203",
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
                   "code": "MR"
                 }
               ]
             },
-            "system": "urn:oid:1.2.36.146.595.217.0.1",
+            "system": "urn:oid:1.2.40.0.34.3.2",
             "value": "12345"
           }
         ],        
@@ -187,7 +187,7 @@ POST [base]/Patient/$match
     },
     {
       "name": "onlyCertainMatches",
-      "valueBoolean": "true"
+      "valueBoolean": true
     }
   ]
 }
@@ -246,7 +246,7 @@ Such a governances could define the response behavior of a server to return:
           ...
           {
             "name": "count",
-            "valueInteger": "1"
+            "valueInteger": 1
           }
         ]
       ...
