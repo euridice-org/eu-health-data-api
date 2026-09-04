@@ -20,6 +20,10 @@ Systems implementing this option:
 This option is REQUIRED when acting as a delegated access provider for external
 Document Publishers (e.g., integration engines, national infrastructure).
 
+This option is also the receiving end of the EHDS Article 5 patient insertion channel:
+patient-provided documents are submitted through the same ITI-105 transaction, marked per
+[Patient-Provided Data](patient-provided-data.html).
+
 ### Actor Grouping
 
 Adds to base Document Access Provider:
@@ -100,6 +104,13 @@ The server SHALL:
 - For FHIR Documents, ensure the content is retrievable as a native FHIR Document Bundle (not wrapped in Binary)
 - Assign server-generated IDs
 - Return 201 Created with the persisted DocumentReference
+
+For patient-provided documents (EHDS Article 5), the server additionally SHALL:
+- Preserve supplied `author`, `securityLabel`, and `meta.source` of the received DocumentReference and return them unaltered via ITI-67/ITI-68
+- Reject (with an OperationOutcome) a patient-provided submission whose `relatesTo.code = replaces` targets a DocumentReference that is not itself marked `PATRPT` for the same subject, and apply the same restriction to any update or removal mechanism offered on this channel
+- Accept `relatesTo.code = appends` when it links a new PATRPT-marked document to an existing document for the same subject, without changing the status or content of the target document
+
+See [Patient-Provided Data](patient-provided-data.html) for the full Article 5 requirements.
 """
 
 // Supported profiles - MHD SimplifiedPublish (requires .data) and MHD Minimal

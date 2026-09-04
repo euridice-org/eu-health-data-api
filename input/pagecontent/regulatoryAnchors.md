@@ -7,6 +7,10 @@ The regulatory basis is primarily found in EHDS ANNEX II - Essential Requirement
 - [EHDS Annex II §2.1](https://eur-lex.europa.eu/eli/reg/2025/327/oj/eng#anx_II): "SHALL provide an **interface enabling access** to the personal electronic health data [formatted in EEHRxF]"
 - [EHDS Annex II §2.2](https://eur-lex.europa.eu/eli/reg/2025/327/oj/eng#anx_II): "SHALL **be able to receive** personal electronic health data [formatted in EEHRxF]"
 
+In addition, this IG addresses the patient insertion right of the regulation body text:
+
+- [EHDS Article 5](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_5): natural persons, or their representatives ([Art. 4(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_4)), "shall have the right to **insert information** in the EHR", clearly distinguishable as inserted by them, without altering data inserted by health professionals — see [Article 5: Insert Information](#article-5-insert)
+
 Note that this IG does NOT create legal obligations on EHR Systems unless adopted by the European Commission.
 
 ### Xt-EHR Joint Action
@@ -96,6 +100,25 @@ Systems that need to accept documents pushed from Publishers (e.g., national inf
 
 ---
 
+### EHDS Article 5: Insert Information {#article-5-insert}
+
+[Article 5](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_5) gives natural persons, or their representatives referred to in [Article 4(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_4), the right to insert information in their own EHR through electronic health data access services or applications linked to those services. Inserted information must be clearly distinguishable as inserted by the person or representative, and natural persons must not be able to directly alter electronic health data inserted by health professionals.
+
+This IG satisfies Article 5 for document-shaped data using existing actors — no new actor is defined. The full specification is on the [Patient-Provided Data](patient-provided-data.html) page; the mapping is:
+
+| Article 5 element | IG mechanism |
+|---|---|
+| Insertion channel via access service or linked application | The patient-facing service acts as a [Document Publisher](actors.html#document-publisher), submitting via ITI-105 to a Document Access Provider implementing the [Document Submission Option](actors.html#document-submission-option) |
+| "Clearly distinguishable" | `DocumentReference.securityLabel` = `PATRPT` identifies the Article 5 submission channel; `author`, `meta.source`, and optional `Provenance` retain precise authorship and submission provenance — see [Distinguishing Patient-Provided Documents](patient-provided-data.html#distinguishing-patient-provided-documents) |
+| No direct alteration of professional data | Submissions create new documents; replacement, update, and removal are restricted to the person's own prior submissions — see [Non-Alteration](patient-provided-data.html#non-alteration-of-professional-data) |
+| Representatives (Art. 4(2)) | The submission uses `PATRPT`; a `RelatedPerson` may be the document author or may be recorded as the submitting agent in `Provenance`. Verifying the representative's authority is a Member State proxy-service and user-level authorization concern, out of scope here — see [Representatives](patient-provided-data.html#representatives) |
+| Wellness applications (Art. 48(2)) | Same transport (Document Publisher); consent and category-level sharing choices occur in the application / access-service layer, out of scope for this API — see [Wellness Applications](patient-provided-data.html#wellness-applications) |
+{: .grid}
+
+Resource-level insertion (individual observations, medications) is deferred; see [Resource Exchange](resourceExchange.html).
+
+---
+
 ### Requirements Table
 
 The following table maps each D5.1 interoperability requirement to its implementation in this IG:
@@ -127,6 +150,18 @@ The following table maps each D5.1 interoperability requirement to its implement
 | `api-consumer-patient` | The EHR system Interoperability Software Component SHALL support an external patient lookup query API. | Annex II §2.2 | Consumer | [Patient Demographics Consumer](patient-match.html) | PDQm Consumer |
 | `api-consumer-doc` | The EHR system Interoperability Software Component SHALL support an external document query API. | Annex II §2.2 | Consumer | [Document Consumer](document-exchange.html) | MHD Document Consumer |
 | `api-consumer-resource` | The EHR system Interoperability Software Component SHALL support an external resource query API. | Annex II §2.2 | Consumer | [Clinical Data Consumer](resource-access.html) | IPA Client |
+
+#### Patient Insertion Requirements (Article 5)
+
+> **Origin note:** Xt-EHR D5.1 defines no requirement covering Article 5. The requirement IDs below originate in **this IG** (they are not D5.1 IDs) and are proposed for consideration in the EHDS Implementing Acts.
+
+| Req ID (this IG) | Normative Requirement | EHDS Basis | Actor | IG Section | Technical Spec |
+|-------------|----------------------------|------------|-------|------------|----------------|
+| `api-publisher-patientInsert` | A system submitting information provided by a natural person or their representative (e.g., a health data access service or a linked application) SHALL submit that information as an EEHRxF document via ITI-105 Simplified Publish. | Art. 5, Art. 4(1)–(2), Annex II §2.2 | Document Publisher | [Patient-Provided Data](patient-provided-data.html) | MHD ITI-105 |
+| `api-publisher-patientDistinguish` | The Document Publisher SHALL mark documents submitted through the Article 5 patient insertion channel with `DocumentReference.securityLabel` `PATRPT`. `DocumentReference.author` SHALL identify the actual document author or authors when known, `meta.source` SHOULD identify the originating system, and `Provenance` MAY identify the submitting Patient or RelatedPerson when they are not the author. | Art. 5, Recital 12 | Document Publisher | [Distinguishing Patient-Provided Documents](patient-provided-data.html#distinguishing-patient-provided-documents) | v3-ObservationValue provenance code |
+| `api-provider-patientDistinguish` | The Document Access Provider SHALL preserve the author, security labels, and `meta.source` of received patient-provided documents and return them unaltered via ITI-67/ITI-68. | Art. 5, Recital 12 | Document Access Provider (Document Submission Option) | [Distinguishing Patient-Provided Documents](patient-provided-data.html#distinguishing-patient-provided-documents) | MHD ITI-67, ITI-68 |
+| `api-provider-patientNoAlter` | A patient-provided submission SHALL NOT alter professional-authored documents or resources. Mechanisms that change previously submitted content (`relatesTo.code = replaces`, update, or removal) SHALL be restricted to the person's own prior patient-provided submissions for the same subject. A new patient-provided document MAY use `relatesTo.code = appends` to link to an existing document for the same subject without altering the target. | Art. 5 | Document Access Provider (Document Submission Option) | [Non-Alteration of Professional Data](patient-provided-data.html#non-alteration-of-professional-data) | FHIR `create`; `DocumentReference.relatesTo` |
+{: .grid}
 
 ### Content Format Requirements
 
@@ -182,4 +217,3 @@ For medication data, this IG covers reading MedicationRequest and MedicationStat
 D8.1 specifies that when a Priority Interoperability Profile references another profile (e.g., a Patient Summary references the EHDS Patient profile), the referenced profile's data obligations also apply. This is a data model requirement: the Patient resource inside a Patient Summary must conform to the EHDS Patient profile. It does not by itself mandate independent resource-level exchange for that resource. Data model conformance is the Content IGs' domain; exchange is this IG's domain, based on the system's declared conformance path.
 
 ---
-
