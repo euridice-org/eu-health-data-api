@@ -20,6 +20,10 @@ Systems implementing this option:
 This option is REQUIRED when acting as a delegated access provider for external
 Document Publishers (e.g., integration engines, national infrastructure).
 
+This option is also the receiving end of the EHDS Article 5 patient insertion channel:
+patient-provided documents are submitted through the same ITI-105 transaction, marked per
+[Patient-Provided Data](patient-provided-data.html).
+
 ### Actor Grouping
 
 Adds to base Document Access Provider:
@@ -100,6 +104,16 @@ The server SHALL:
 - For FHIR Documents, ensure the content is retrievable as a native FHIR Document Bundle (not wrapped in Binary)
 - Assign server-generated IDs
 - Return 201 Created with the persisted DocumentReference
+
+For patient-provided documents (EHDS Article 5), the server additionally SHALL:
+- Preserve supplied `author`, `securityLabel`, and `meta.source` of the received DocumentReference and return them unaltered via ITI-67/ITI-68
+- Apply existing MHD document relationship semantics, including the mapping of XDS transformation with replacement (`XFRM_RPLC`) to `replaces`
+- Restrict `relatesTo.code = replaces`, including transformation with replacement, to prior patient-channel submissions marked `PATRPT` for the same subject that the submitting natural person or representative is authorized to replace; establish authorization from the trusted submission context, not from document authorship or the label and subject alone, and apply the same restrictions to any update or removal mechanism offered on this channel
+- Accept `relatesTo.code = appends` or `transforms` when it links a new PATRPT-marked addendum or alternative representation to an existing document for the same subject and satisfies the applicable MHD/XDS relationship constraints, without changing the status or content of the target document
+- Evaluate every supplied relationship and propagated lifecycle effect before applying changes, applying the authorization and prior-patient-submission restrictions to every existing document affected by replacement, update, or removal
+- Reject the submission with an OperationOutcome, without applying any lifecycle changes, if these restrictions are not met or if processing would alter or supersede documents, resources, or related metadata inserted by health professionals, including through propagated lifecycle effects
+
+See [Patient-Provided Data](patient-provided-data.html) for the full Article 5 requirements.
 """
 
 // Supported profiles - MHD SimplifiedPublish (requires .data) and MHD Minimal

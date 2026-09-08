@@ -19,6 +19,7 @@
 The European Health Data Space (EHDS) regulation describes an obligation for EHR systems to include an Interoperability Component that does the following:
 - [EHDS Annex II §2.1](https://eur-lex.europa.eu/eli/reg/2025/327/oj/eng#anx_II): "SHALL provide an **interface enabling access** to the personal electronic health data [formatted in EEHRxF]"
 - [EHDS Annex II §2.2](https://eur-lex.europa.eu/eli/reg/2025/327/oj/eng#anx_II): "SHALL **be able to receive** personal electronic health data [formatted in EEHRxF]"
+- [EHDS Article 5](https://eur-lex.europa.eu/eli/reg/2025/327/oj/eng#art_5): natural persons, or their representatives, "shall have the right to **insert information** in the EHR", clearly distinguishable as inserted by them, without altering data inserted by health professionals
 
 This Implementation Guide:
 1. **Defines a set of EHR functionalities that meet the Interoperability Component requirements:** describes how existing IHE profiles and other specifications can be used to provide secure access and enable secure exchange of EEHRxF data between systems.
@@ -32,7 +33,7 @@ This IG defines exchange patterns — actors, transactions, and security — tha
 
 This IG does not define clinical data models. Separate Content IGs maintained by HL7 Europe define the structure and content of each priority category: what fields a Patient Summary contains, what codes a Laboratory Report uses (see [Priority Categories](priority-categories.html)). An implementable system combines this IG for transport with a Content IG for the data model.
 
-This IG excludes ePrescription and eDispensation workflow transactions, user-level authorization, audit logging formats, and bulk data export. See [Regulatory Anchors](regulatoryAnchors.html) for requirements traceability.
+This IG excludes ePrescription and eDispensation workflow transactions, user-level authorization, audit logging formats, and bulk data export. Patient-provided data is in scope as documents ([Article 5](regulatoryAnchors.html#article-5-insert), specified in [Patient-Provided Data](patient-provided-data.html)); resource-level patient-provided data is deferred. See [Regulatory Anchors](regulatoryAnchors.html) for requirements traceability.
 
 ### Audience
 
