@@ -4,9 +4,9 @@
 
 Instance: example-documentreference-patient-provided
 InstanceOf: DocumentReference
-Title: "Example - Patient-Provided DocumentReference (Article 5)"
+Title: "Example - Patient-Authored DocumentReference (Article 5)"
 Description: """
-Example DocumentReference for a document inserted by the natural person under EHDS Article 5,
+Example DocumentReference for a document authored and submitted by the natural person under EHDS Article 5,
 as submitted via ITI-105 Simplified Publish and persisted by a Document Access Provider
 implementing the Document Submission Option.
 
@@ -15,10 +15,12 @@ The distinguishability marking (see [Patient-Provided Data](patient-provided-dat
 - `securityLabel` carries `PATRPT` (patient reported) from v3-ObservationValue
 - `meta.source` identifies the originating system (here, a health data access service)
 
-To correct or withdraw this submission, the person submits a new document with
+To correct this submission, an authorized person submits a new document with
 `relatesTo.code = replaces` targeting this DocumentReference; the Access Provider marks
-this one `superseded`. Replacement of documents that are not themselves patient-provided
-is rejected (see [Non-Alteration](patient-provided-data.html#non-alteration-of-professional-data)).
+this one `superseded`. Authorization is established from the trusted submission context,
+not the label and subject alone. Replacement is rejected if any affected document is not
+an authorized prior patient-channel submission, including documents affected by propagated
+lifecycle effects (see [Non-Alteration](patient-provided-data.html#non-alteration-of-professional-data)).
 """
 Usage: #example
 
@@ -37,21 +39,65 @@ Usage: #example
 // Date: when the DocumentReference was created
 * date = "2026-08-01T09:15:00+02:00"
 
-// Author: the natural person who inserted the information (Article 5 distinguishability)
+// Author: the patient who authored this document; submission is classified separately by PATRPT
 * author.reference = "http://example.org/fhir/Patient/example-patient"
 * author.display = "Jan Jansen"
 
 // Security label: patient reported (v3-ObservationValue provenance code)
 * securityLabel = $v3-ObservationValue#PATRPT "patient reported"
 
-* description = "Patient-provided health information submitted by Jan Jansen via the national health data access service"
+* description = "Health information authored and submitted by Jan Jansen via the national health data access service"
 
 // Content: the actual document reference
 * content.attachment.contentType = #application/fhir+json
 * content.attachment.language = #en
 * content.attachment.url = "http://example.org/fhir/Bundle/patient-provided-jan-jansen"
-* content.attachment.title = "Patient-provided health information"
+* content.attachment.title = "Patient-authored health information"
 * content.attachment.creation = "2026-08-01T09:15:00+02:00"
+
+
+Instance: example-documentreference-patient-submitted
+InstanceOf: DocumentReference
+Title: "Example - Practitioner-Authored, Patient-Submitted DocumentReference (Article 5)"
+Description: """
+Example of an existing practitioner-authored patient summary obtained outside the EHDS realm
+and submitted unchanged by the patient through the Article 5 insertion channel. The document
+conforms to the applicable EEHRxF content IG. This example illustrates the persisted
+DocumentReference; the document content is not included.
+
+- `author` references the **Practitioner** who authored the document; the Patient is not added
+  as an author merely because they submitted it
+- `securityLabel` carries `PATRPT` because the patient submitted the document through the
+  Article 5 channel, independently of its clinical authorship
+- `meta.source` identifies the submitting health data access service
+
+The Patient in `subject` identifies whose health record the document concerns, not who
+submitted it. Optional Provenance may identify the Patient as the submitting agent.
+The document creation time predates this submission's DocumentReference creation time.
+"""
+Usage: #example
+
+* meta.source = "http://example.org/hdas/national-health-portal"
+* masterIdentifier.system = "urn:oid:2.999.3.4.5.6.7.8.14"
+* masterIdentifier.value = "urn:uuid:45ec2173-29f4-46f7-983f-e2c0b8c571d6"
+* status = #current
+* type = $loinc#60591-5 "Patient summary Document"
+* subject.reference = "http://example.org/fhir/Patient/example-patient"
+* subject.display = "Jan Jansen"
+* date = "2026-08-01T09:45:00+02:00"
+
+// Author: the practitioner who authored the document, independently of its submission by the patient
+* author.reference = "http://example.org/fhir/Practitioner/example-practitioner"
+* author.display = "Original clinical author"
+
+// Security label: submitted through the Article 5 patient insertion channel
+* securityLabel = $v3-ObservationValue#PATRPT "patient reported"
+* description = "Practitioner-authored patient summary submitted unchanged by Jan Jansen via the national health data access service"
+* content.attachment.contentType = #application/fhir+json
+* content.attachment.language = #en
+* content.attachment.url = "http://example.org/fhir/Bundle/practitioner-authored-summary-jan-jansen"
+* content.attachment.title = "Practitioner-authored patient summary"
+* content.attachment.creation = "2026-07-20T14:00:00+02:00"
 
 
 Instance: example-documentreference-representative-provided
@@ -133,3 +179,45 @@ Usage: #example
 * content.attachment.url = "http://example.org/fhir/Bundle/patient-appended-notes-jan-jansen"
 * content.attachment.title = "Patient notes on professional care plan"
 * content.attachment.creation = "2026-08-01T11:05:00+02:00"
+
+
+Instance: example-documentreference-patient-transformed
+InstanceOf: DocumentReference
+Title: "Example - Patient-Submitted Transformation of a Professional Document (Article 5)"
+Description: """
+Example of a patient-submitted alternative representation of an existing professional patient
+summary, converted from CDA to a FHIR document conforming to the applicable EEHRxF content IG.
+The `transforms` relationship links the new representation to the original document without
+replacing, superseding, or changing the original document's content or status. This example
+illustrates the persisted DocumentReference; the document content is not included.
+
+The new DocumentReference carries `PATRPT` because it was submitted through the Article 5
+channel. The known original clinical author remains in `author`; optional Provenance can
+record the conversion activity and the submitting person. The transformation adds no patient
+commentary; additional notes would use `appends` instead.
+
+A transformation that also replaces the source is subject to the replacement restrictions
+and cannot supersede this professionally inserted source document.
+"""
+Usage: #example
+
+* meta.source = "http://example.org/hdas/national-health-portal"
+* masterIdentifier.system = "urn:oid:2.999.3.4.5.6.7.8.13"
+* masterIdentifier.value = "urn:uuid:76db6351-89de-4f7e-a521-924c85702d34"
+* status = #current
+* type = $loinc#60591-5 "Patient summary Document"
+* subject.reference = "http://example.org/fhir/Patient/example-patient"
+* subject.display = "Jan Jansen"
+* date = "2026-08-01T11:30:00+02:00"
+* author.reference = "http://example.org/fhir/Practitioner/example-practitioner"
+* author.display = "Original clinical author"
+* securityLabel = $v3-ObservationValue#PATRPT "patient reported"
+* relatesTo.code = #transforms
+* relatesTo.target.reference = "http://example.org/fhir/DocumentReference/professional-patient-summary-cda"
+* relatesTo.target.display = "Original professional patient summary (CDA)"
+* description = "Patient-submitted FHIR representation of a professional patient summary"
+* content.attachment.contentType = #application/fhir+json
+* content.attachment.language = #en
+* content.attachment.url = "http://example.org/fhir/Bundle/patient-transformed-summary-jan-jansen"
+* content.attachment.title = "Patient-submitted patient summary (FHIR)"
+* content.attachment.creation = "2026-08-01T11:30:00+02:00"

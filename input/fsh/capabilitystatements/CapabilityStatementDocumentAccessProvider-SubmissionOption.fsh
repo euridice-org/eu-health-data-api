@@ -107,8 +107,11 @@ The server SHALL:
 
 For patient-provided documents (EHDS Article 5), the server additionally SHALL:
 - Preserve supplied `author`, `securityLabel`, and `meta.source` of the received DocumentReference and return them unaltered via ITI-67/ITI-68
-- Reject (with an OperationOutcome) a patient-provided submission whose `relatesTo.code = replaces` targets a DocumentReference that is not itself marked `PATRPT` for the same subject, and apply the same restriction to any update or removal mechanism offered on this channel
-- Accept `relatesTo.code = appends` when it links a new PATRPT-marked document to an existing document for the same subject, without changing the status or content of the target document
+- Apply existing MHD document relationship semantics, including the mapping of XDS transformation with replacement (`XFRM_RPLC`) to `replaces`
+- Restrict `relatesTo.code = replaces`, including transformation with replacement, to prior patient-channel submissions marked `PATRPT` for the same subject that the submitting natural person or representative is authorized to replace; establish authorization from the trusted submission context, not from document authorship or the label and subject alone, and apply the same restrictions to any update or removal mechanism offered on this channel
+- Accept `relatesTo.code = appends` or `transforms` when it links a new PATRPT-marked addendum or alternative representation to an existing document for the same subject and satisfies the applicable MHD/XDS relationship constraints, without changing the status or content of the target document
+- Evaluate every supplied relationship and propagated lifecycle effect before applying changes, applying the authorization and prior-patient-submission restrictions to every existing document affected by replacement, update, or removal
+- Reject the submission with an OperationOutcome, without applying any lifecycle changes, if these restrictions are not met or if processing would alter or supersede documents, resources, or related metadata inserted by health professionals, including through propagated lifecycle effects
 
 See [Patient-Provided Data](patient-provided-data.html) for the full Article 5 requirements.
 """

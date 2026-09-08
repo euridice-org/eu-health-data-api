@@ -32,7 +32,10 @@
 <artifact id="DocumentReference/example-documentreference-imaging-manifest-kos" key="DocumentReference-ExampleDocumentReferenceImagingManifestKOS" name="Example - Imaging Study Manifest (DICOM KOS)"/>
 <artifact id="DocumentReference/example-documentreference-imaging-manifest-fhir" key="DocumentReference-ExampleDocumentReferenceImagingManifestFHIR" name="Example - Imaging Study Manifest (FHIR)"/>
 <artifact id="DocumentReference/example-documentreference-laboratory" key="DocumentReference-ExampleDocumentReferenceLaboratory" name="Example - Laboratory Report DocumentReference"/>
-<artifact id="DocumentReference/example-documentreference-patient-provided" key="DocumentReference-example-documentreference-patient-provided" name="Example - Patient-Provided DocumentReference (Article 5)"/>
+<artifact id="DocumentReference/example-documentreference-patient-appended-notes" key="DocumentReference-example-documentreference-patient-appended-notes" name="Example - Patient Notes Appended to a Professional Document (Article 5)"/>
+<artifact id="DocumentReference/example-documentreference-patient-provided" key="DocumentReference-example-documentreference-patient-provided" name="Example - Patient-Authored DocumentReference (Article 5)"/>
+<artifact id="DocumentReference/example-documentreference-patient-transformed" key="DocumentReference-example-documentreference-patient-transformed" name="Example - Patient-Submitted Transformation of a Professional Document (Article 5)"/>
+<artifact id="DocumentReference/example-documentreference-patient-submitted" key="DocumentReference-example-documentreference-patient-submitted" name="Example - Practitioner-Authored, Patient-Submitted DocumentReference (Article 5)"/>
 <artifact id="DocumentReference/example-documentreference-representative-provided" key="DocumentReference-example-documentreference-representative-provided" name="Example - Representative-Provided DocumentReference (Article 5)"/>
 <artifact id="CapabilityStatement/example-capabilitystatement-document-access-provider" key="CapabilityStatement-EEHRxF-DocumentAccessProvider-Example" name="Example: Document Access Provider Supporting EPS and Laboratory"/>
 <page key="NA" name="(NA)"/>
