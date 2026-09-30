@@ -33,7 +33,8 @@ allows clients to implement targeted use cases without requiring support for all
 Clients should check the server's CapabilityStatement to discover which resources are available.
 
 ### Security
-Systems SHALL support SMART Backend Services authorization for all transactions.
+This CapabilityStatement selects SMART Backend Services for direct system-to-system access.
+It does not assert IUA or interactive SMART conformance; see [Authorization](authorization.html#environment-specific-requirements).
 
 ### Profile Inheritance
 Consumers SHOULD expect resources conforming to EU Core profiles where available.
@@ -57,15 +58,16 @@ The Resource Consumer actor queries for clinical data resources from a Resource 
 Provider following IPA patterns. This enables direct resource access complementing
 document-based exchange via MHD.
 
-All transactions require SMART Backend Services authorization.
+This direct system-to-system profile selects SMART Backend Services. It is a SMART Backend
+Service client; see [Authorization](authorization.html#smart-app-launch).
 """
 
 * rest[=].security.cors = false
 * rest[=].security.service = http://hl7.org/fhir/restful-security-service#SMART-on-FHIR
 * rest[=].security.description = """
-SMART Backend Services authorization is REQUIRED for all transactions.
+SMART Backend Services authorization is REQUIRED for this direct system-to-system profile.
 Systems SHALL:
-- Authenticate using JWT client credentials (RFC 7523)
+- Use `client_credentials` and `private_key_jwt` asymmetric client authentication
 - Request appropriate scopes for resource access
 - Use TLS 1.2 or higher for all communications
 
@@ -90,6 +92,9 @@ Clients SHALL request scopes for the resources they need:
 - system/Encounter.rs (if Encounter needed)
 - system/Practitioner.r (if Practitioner needed)
 - system/Organization.r (if Organization needed)
+
+These are **SMART App Launch 2.2 FHIR Resource Scopes**, not IUA transaction scopes.
+See [Authorization](authorization.html#tokens-scopes-enforcement-and-errors).
 """
 
 // ============================================================================

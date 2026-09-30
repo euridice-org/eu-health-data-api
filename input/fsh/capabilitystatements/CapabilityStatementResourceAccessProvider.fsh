@@ -34,7 +34,8 @@ support EU Core for certain resource types.
 The server's CapabilityStatement declares which resources are actually supported.
 
 ### Security
-Systems SHALL support SMART Backend Services authorization for all transactions.
+This CapabilityStatement selects SMART Backend Services for direct system-to-system access.
+It does not assert IUA or interactive SMART conformance; see [Authorization](authorization.html#environment-specific-requirements).
 
 ### Profile Inheritance
 Resources SHOULD conform to EU Core profiles where available.
@@ -61,15 +62,16 @@ The Resource Access Provider actor responds to queries for clinical data resourc
 following IPA patterns. This enables direct resource access complementing
 document-based exchange via MHD.
 
-All transactions require SMART Backend Services authorization.
+This direct system-to-system profile selects SMART Backend Services. The protected API is a
+SMART FHIR Resource Server; its Authorization Server remains an independent participant.
 """
 
 * rest[=].security.cors = false
 * rest[=].security.service = http://hl7.org/fhir/restful-security-service#SMART-on-FHIR
 * rest[=].security.description = """
-SMART Backend Services authorization is REQUIRED for all transactions.
+SMART Backend Services authorization is REQUIRED for this direct system-to-system profile.
 Systems SHALL:
-- Validate JWT client credentials (RFC 7523)
+- Validate access tokens and granted scopes; the Authorization Server validates client assertions
 - Verify appropriate scopes for resource access
 - Use TLS 1.2 or higher for all communications
 - Return HTTP 401, 403, or 404 for unauthorized requests
@@ -96,6 +98,9 @@ Servers SHALL accept scopes for the resources they support:
 - system/Encounter.rs (if Encounter supported)
 - system/Practitioner.r (if Practitioner supported)
 - system/Organization.r (if Organization supported)
+
+These are **SMART App Launch 2.2 FHIR Resource Scopes**, not IUA transaction scopes.
+See [Authorization](authorization.html#tokens-scopes-enforcement-and-errors).
 """
 
 // ============================================================================

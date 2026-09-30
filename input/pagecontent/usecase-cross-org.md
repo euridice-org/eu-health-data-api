@@ -44,4 +44,8 @@ In both patterns, a consumer needs to identify which patient data to retrieve. O
 
 ### Authorization
 
-Authorization methods to secure cross-organization exchange are a national architecture choice outside the scope of this IG. Member States choosing to align with SMART Backend Services client credentials can use the EHR system support defined in [Authorization](authorization.html).
+The National Interoperability Infrastructure environment recommends IHE IUA where participants
+and the Authorization Server are preconfigured and user or patient claims are needed. The
+applicable IUA transaction and MHD transaction-scope requirements are selected per deployment.
+SMART Backend Services is a separate direct-system profile, not automatic dual conformance.
+See [Authorization](authorization.html#national-interoperability-infrastructure).

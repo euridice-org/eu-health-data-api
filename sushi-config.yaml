@@ -10,8 +10,8 @@ title: EU Health Data API
 description: >-
   This Implementation Guide defines FHIR-based APIs for accessing and exchanging
   health data in the European Health Data Space (EHDS). It composes existing IHE
-  and HL7 specifications — MHD for document exchange, SMART Backend Services for
-  authorization, PDQm for patient matching, and IPA for resource access — into a
+  and HL7 specifications — MHD for document exchange, SMART App Launch and IHE IUA
+  for environment-specific authorization, PDQm for patient matching, and IPA for resource access — into a
   unified conformance target for EHR systems across Europe.
 status: draft # draft | active | retired | unknown
 version: 1.0.0-ballot
@@ -44,7 +44,7 @@ dependencies:
 # Removed: ihe.iti.pixm (Spencer S5 - not useful for this use case)
 # Removed: hl7.fhir.uv.bulkdata (bulk data out of scope v1)
 # Note: IUA is referenced conceptually but not as a package dependency
-# Authorization uses SMART Backend Services with IUA actor groupings
+# Authorization selects SMART App Launch or IHE IUA by environment; see authorization.md
 #   hl7.fhir.us.core: 3.1.0
 #   hl7.fhir.us.mcode:
 #     id: mcode

@@ -45,15 +45,16 @@ Systems SHALL support SMART Backend Services authorization for all transactions.
 * rest[=].documentation = """
 The Document Consumer actor queries for document metadata and retrieves documents
 from a Document Access Provider. It also queries for patient context using PDQm.
-All transactions require SMART Backend Services authorization.
+This direct system-to-system profile selects SMART Backend Services. It does not assert IUA
+or interactive SMART conformance; see [Authorization](authorization.html#environment-specific-requirements).
 """
 
 * rest[=].security.cors = false
 * rest[=].security.service = http://hl7.org/fhir/restful-security-service#SMART-on-FHIR
 * rest[=].security.description = """
-SMART Backend Services authorization is REQUIRED for all transactions.
+SMART Backend Services authorization is REQUIRED for this direct system-to-system profile.
 Systems SHALL:
-- Authenticate using JWT client credentials (RFC 7523)
+- Use `client_credentials` and `private_key_jwt` asymmetric client authentication
 - Request appropriate scopes for document access
 - Use TLS 1.2 or higher for all communications
 
@@ -62,6 +63,9 @@ Required scopes:
 - system/Binary.r (read Binary for document retrieval - ITI-68)
 - system/Bundle.r (read Bundle for FHIR Document retrieval - ITI-68)
 - system/Patient.rs (read + search Patient for context - ITI-78)
+
+These are **SMART App Launch 2.2 FHIR Resource Scopes**, not IUA transaction scopes.
+See [Authorization](authorization.html#smart-app-launch) for discovery, token, and CORS rules.
 """
 
 // ============================================================================

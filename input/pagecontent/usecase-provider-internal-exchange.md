@@ -41,7 +41,8 @@ Considerations related to this environment include:
   * Registry or repository deployments define which component retains published EEHRxF document versions and makes them available for later access.
 
 * Authorization
-  * EHR systems acting as Document/Resource Access providers may contain their own authorization server, or use an organization-level authorization server to control API access.
+  * The Healthcare Provider environment SHALL use SMART. Gateway system-to-system uploads use SMART Backend Services; interactive clinician access uses SMART App Launch with the applicable Clinician Access capability set.
+  * A protected Document/Resource Access Provider is a SMART FHIR Resource Server. Its Authorization Server is independent and MAY be co-located or organization-level.
   * EHR systems are **not** required to use eIDAS wallet-based authorization for provider-internal exchange.
 
 * Patient Identity

@@ -49,7 +49,8 @@ These composite actors inherit existing actors from the IUA, PDQm, and MHD speci
 **Document Access Provider**
 
 - [IUA Resource Server](https://profiles.ihe.net/ITI/IUA/index.html#34113-resource-server) - Required
-- [IUA Authorization Server](https://profiles.ihe.net/ITI/IUA/index.html#34112-authorization-server) - Required if authorization is handled internally; not required if using external authorization infrastructure. See [Authorization Server Deployment](authorization.html#authorization-server-deployment).
+- [SMART FHIR Resource Server](ActorDefinition-smart-fhir-resource-server-eu-api.html) when SMART is selected; see [Authorization](authorization.html#environment-specific-requirements).
+- An IUA or SMART Authorization Server is an independent actor. It MAY be co-located with the provider, but is not a required provider grouping.
 - [PDQm Patient Demographics Supplier](https://profiles.ihe.net/ITI/PDQm/volume-1.html) ([CapabilityStatement](https://profiles.ihe.net/ITI/PDQm/CapabilityStatement-IHE.PDQm.PatientDemographicsSupplier.html))
 - [MHD Document Responder](https://profiles.ihe.net/ITI/MHD/1331_actors_and_transactions.html) ([CapabilityStatement](https://profiles.ihe.net/ITI/MHD/CapabilityStatement-IHE.MHD.DocumentResponder.html))
 
@@ -129,7 +130,8 @@ These composite actors inherit existing actors from the IUA, PDQm, and [Internat
 **Resource Access Provider**
 
 - [IUA Resource Server](https://profiles.ihe.net/ITI/IUA/index.html#34113-resource-server) - Required
-- [IUA Authorization Server](https://profiles.ihe.net/ITI/IUA/index.html#34112-authorization-server) - Required if authorization is handled internally; not required if using external authorization infrastructure. See [Authorization Server Deployment](authorization.html#authorization-server-deployment).
+- [SMART FHIR Resource Server](ActorDefinition-smart-fhir-resource-server-eu-api.html) when SMART is selected; see [Authorization](authorization.html#environment-specific-requirements).
+- An IUA or SMART Authorization Server is an independent actor. It MAY be co-located with the provider, but is not a required provider grouping.
 - [PDQm Patient Demographics Supplier](https://profiles.ihe.net/ITI/PDQm/volume-1.html) ([CapabilityStatement](https://profiles.ihe.net/ITI/PDQm/CapabilityStatement-IHE.PDQm.PatientDemographicsSupplier.html))
 - Resource Access
   - [HL7 International Patient Access Server](https://hl7.org/fhir/uv/ipa/) ([CapabilityStatement](https://hl7.org/fhir/uv/ipa/CapabilityStatement-ipa-server.html))

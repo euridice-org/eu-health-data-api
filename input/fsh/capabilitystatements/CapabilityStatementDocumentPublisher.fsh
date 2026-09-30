@@ -25,7 +25,9 @@ This composite actor groups the following IHE actors:
 | Get Access Token | Obtain authorization token for API access | R |
 
 ### Security
-Systems SHALL support SMART Backend Services authorization for all transactions.
+This CapabilityStatement selects SMART Backend Services for its direct system-to-system
+transactions. It does not assert IUA or interactive SMART conformance; those selections are
+defined by [Authorization](authorization.html#environment-specific-requirements).
 
 ### Deployment
 The Document Publisher may be grouped with Document Access Provider, in which case the
@@ -49,21 +51,24 @@ for this deployment pattern.
 * rest[+].mode = #client
 * rest[=].documentation = """
 The Document Publisher actor initiates transactions to publish documents and query for
-patient context. All transactions require SMART Backend Services authorization.
+patient context. It is a SMART Backend Service client for this direct system-to-system profile.
 """
 
 * rest[=].security.cors = false
 * rest[=].security.service = http://hl7.org/fhir/restful-security-service#SMART-on-FHIR
 * rest[=].security.description = """
-SMART Backend Services authorization is REQUIRED for all transactions.
+SMART Backend Services authorization is REQUIRED for this direct system-to-system profile.
 Systems SHALL:
-- Authenticate using JWT client credentials (RFC 7523)
+- Use `client_credentials` and `private_key_jwt` asymmetric client authentication
 - Request appropriate scopes for document submission and patient lookup
 - Use TLS 1.2 or higher for all communications
 
 Required scopes for document publication:
 - system/DocumentReference.c (create DocumentReference - ITI-105)
 - system/Patient.rs (read + search Patient for context)
+
+These are **SMART App Launch 2.2 FHIR Resource Scopes**, not IUA transaction scopes.
+See [Authorization](authorization.html#smart-app-launch) for discovery, token, and CORS rules.
 """
 
 // ============================================================================

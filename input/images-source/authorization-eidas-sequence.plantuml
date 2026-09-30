@@ -1,0 +1,38 @@
+@startuml authorization-eidas-sequence
+skinparam svgDimensionStyle false
+
+participant App
+participant "FHIR Server\n(Resource Server)" as FHIR
+participant "Authorization Server" as AS
+participant "eIDAS / EUDI Wallet" as eIDAS
+
+== Discover ==
+
+App -> FHIR: Discover SMART configuration
+FHIR --> App: SMART configuration
+
+== Get Access Token ==
+
+alt Pre-authorized Backend Service
+    App -> AS: Token request\n(client_credentials, private_key_jwt)
+    AS --> App: Access token
+else Interactive user or patient launch
+    App -> AS: Authorization request\n(authorization code + PKCE)
+    AS -> eIDAS: Authenticate user when required\nby the environment
+    eIDAS --> AS: Authentication result / presentation
+    note right of AS
+        Validate result
+        Establish user session
+        Apply authorization policy
+    end note
+    AS --> App: Redirect with authorization code
+    App -> AS: Token request\n(code, PKCE verifier, client authentication as applicable)
+    AS --> App: Access token and applicable launch context
+end
+
+== Access Content ==
+
+App -> FHIR: Protected resource request (access token)
+FHIR --> App: Authorized response
+
+@enduml

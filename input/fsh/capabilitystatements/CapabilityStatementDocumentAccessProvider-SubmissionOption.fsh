@@ -32,7 +32,8 @@ Adds to base Document Access Provider:
 | ITI-105 Simplified Publish | Accept document publication from Document Publishers | R |
 
 ### Security
-Systems SHALL support SMART Backend Services authorization for document submission.
+This direct system-to-system option selects SMART Backend Services. ITI-105 has no
+IUA-defined transaction scope; see [Authorization](authorization.html#tokens-scopes-enforcement-and-errors).
 """
 
 * name = "DocumentAccessProviderSubmissionOptionEuApi"
@@ -61,6 +62,8 @@ embedded document, making them available via ITI-67 and ITI-68.
 * rest[=].security.description = """
 Additional scope required for document submission:
 - system/DocumentReference.c (create DocumentReference via ITI-105)
+
+This is a **SMART App Launch 2.2 FHIR Resource Scope**, not an IUA transaction scope.
 
 The Document Publisher must be authorized to submit documents on behalf of the
 patient's care team.

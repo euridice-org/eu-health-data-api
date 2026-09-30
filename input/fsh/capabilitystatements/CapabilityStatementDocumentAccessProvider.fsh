@@ -11,9 +11,8 @@ provides access to EEHRxF FHIR Documents by serving them to Document Consumers v
 
 ### Actor Grouping
 
-This composite actor groups the following IHE actors:
-- [IUA Authorization Server](https://profiles.ihe.net/ITI/IUA/index.html#34112-authorization-server)
-- [IUA Resource Server](https://profiles.ihe.net/ITI/IUA/index.html#34113-resource-server)
+This composite actor groups the applicable protected-server role:
+- [SMART FHIR Resource Server](ActorDefinition-smart-fhir-resource-server-eu-api.html) for this direct system-to-system profile
 - [PDQm Patient Demographics Supplier](https://profiles.ihe.net/ITI/PDQm/volume-1.html)
 - [MHD Document Responder](https://profiles.ihe.net/ITI/MHD/1331_actors_and_transactions.html)
 
@@ -24,7 +23,6 @@ This composite actor groups the following IHE actors:
 | ITI-67 Find Document References | Respond to document metadata queries from Document Consumers | R |
 | ITI-68 Retrieve Document | Serve document content to Document Consumers | R |
 | ITI-78 Patient Demographics Query | Respond to patient demographics queries | O |
-| Get Access Token | Issue authorization tokens to clients | R |
 
 ### Security
 Systems SHALL support SMART Backend Services authorization for all transactions.
@@ -57,15 +55,16 @@ for this deployment pattern.
 The Document Access Provider actor responds to document queries from Document Consumers
 (ITI-67, ITI-68) and optional provides patient lookup services (PDQm ITI-78).
 
-All transactions require SMART Backend Services authorization.
+This direct system-to-system profile selects SMART Backend Services. The Authorization Server
+is independent and is not a required provider grouping; see [Authorization](authorization.html#smart-app-launch).
 """
 
 * rest[=].security.cors = false
 * rest[=].security.service = http://hl7.org/fhir/restful-security-service#SMART-on-FHIR
 * rest[=].security.description = """
-SMART Backend Services authorization is REQUIRED for all transactions.
+SMART Backend Services authorization is REQUIRED for this direct system-to-system profile.
 Systems SHALL:
-- Validate JWT client credentials (RFC 7523)
+- Validate access tokens and granted scopes; the Authorization Server validates client assertions
 - Verify appropriate scopes for document operations
 - Use TLS 1.2 or higher for all communications
 
@@ -74,6 +73,9 @@ Required scopes to accept:
 - system/Binary.r (read Binary - ITI-68)
 - system/Bundle.r (read Bundle - ITI-68 for FHIR Documents)
 - system/Patient.rs (read + search Patient - ITI-78)
+
+These are **SMART App Launch 2.2 FHIR Resource Scopes**, not IUA transaction scopes.
+See [Authorization](authorization.html#tokens-scopes-enforcement-and-errors).
 """
 
 // System-level search interaction

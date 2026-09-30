@@ -27,9 +27,9 @@ This grouped actor combines:
 - **Document Publisher** (internal) - Produces and stores documents internally
 - **Document Access Provider** (external-facing) - Serves documents to Document Consumers
 
-The underlying IHE actors are:
-- [IUA Authorization Server](https://profiles.ihe.net/ITI/IUA/index.html#34112-authorization-server)
-- [IUA Resource Server](https://profiles.ihe.net/ITI/IUA/index.html#34113-resource-server)
+The external-facing protected-server role is the
+[SMART FHIR Resource Server](ActorDefinition-smart-fhir-resource-server-eu-api.html).
+The Authorization Server is independent and may be optionally co-located.
 - [PDQm Patient Demographics Supplier](https://profiles.ihe.net/ITI/PDQm/volume-1.html)
 - [MHD Document Responder](https://profiles.ihe.net/ITI/MHD/1331_actors_and_transactions.html)
 
@@ -42,7 +42,6 @@ Note: MHD Document Recipient is not listed because publication is internal.
 | ITI-67 Find Document References | Respond to document metadata queries from Document Consumers | R |
 | ITI-68 Retrieve Document | Serve document content to Document Consumers | R |
 | ITI-78 Patient Demographics Query | Respond to patient demographics queries | O |
-| Get Access Token | Issue authorization tokens to clients | R |
 
 ### Security
 Systems SHALL support SMART Backend Services authorization for all transactions.
@@ -76,15 +75,15 @@ This grouped actor provides document access to external Document Consumers.
 Document publication is internal and not exposed. The external API
 supports document discovery (ITI-67), retrieval (ITI-68), and optional patient lookup (ITI-78).
 
-All transactions require SMART Backend Services authorization.
+This direct system-to-system profile selects SMART Backend Services; see [Authorization](authorization.html#smart-app-launch).
 """
 
 * rest[=].security.cors = false
 * rest[=].security.service = http://hl7.org/fhir/restful-security-service#SMART-on-FHIR
 * rest[=].security.description = """
-SMART Backend Services authorization is REQUIRED for all transactions.
+SMART Backend Services authorization is REQUIRED for this direct system-to-system profile.
 Systems SHALL:
-- Validate JWT client credentials (RFC 7523)
+- Validate access tokens and granted scopes; the Authorization Server validates client assertions
 - Verify appropriate scopes for document access
 - Use TLS 1.2 or higher for all communications
 
@@ -93,6 +92,8 @@ Required scopes to accept:
 - system/Binary.r (read Binary - ITI-68)
 - system/Bundle.r (read Bundle - ITI-68 for FHIR Documents)
 - system/Patient.rs (read + search Patient - ITI-78)
+
+These are **SMART App Launch 2.2 FHIR Resource Scopes**, not IUA transaction scopes.
 """
 
 // System-level search interaction

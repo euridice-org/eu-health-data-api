@@ -72,20 +72,20 @@ At a high level, the following actors are specified:
 {% include img.html img="actors_overall.png" caption="Figure 1: Actor Overview" %}
 </div>
 
-## Document Exchange Actors
+### Document Exchange Actors
 
 - **Document Publisher** - Produces EEHRxF FHIR Documents and publishes to Document Access Providers
 - **Document Access Provider** - Serves EEHRxF FHIR Documents via query API. Optionally accepts documents from Document Publisher (Document Submission Option).
 - **Document Consumer** - Queries and retrieves EEHRxF documents from Document Access Providers
 
-## Resource Exchange Actors
+### Resource Exchange Actors
 
 - **Resource Access Provider** - Provides query access to individual FHIR resources
 - **Resource Consumer** - Queries FHIR resources from Resource Access Providers
 
 These resource actors are initially scoped for search + read. See [Resource Access](resource-access.html) for detailed discussion and possible approaches for resource exchange patterns.
 
-## Priority Categories
+### Priority Categories
 
 EHDS defines priority categories of health data for interoperability. Each pairs a Content IG (data model) with an exchange pattern (this IG). See [Priority Categories](priority-categories.html) for details.
 

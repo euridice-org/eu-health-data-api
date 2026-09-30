@@ -8,7 +8,10 @@ Article 5 allows patients to insert information into their EHR through electroni
 
 ### Scope
 
-This page is informative. It covers the EHR-facing exchange patterns for wellness applications and applications linked to health data access services. Requirements for the health data access service itself, including patient identity, app linking, consent management, eIDAS 2.0 patient wallet use, and any app authorization or launch protocol, are out of scope.
+This page is informative about the exchange workflow. Its authorization selection is normative:
+Wellness Applications SHALL use SMART as defined in [Authorization](authorization.html#wellness-applications).
+Patient identity, consent management, and eIDAS assurance remain deployment and Member State
+responsibilities; an access token does not replace them.
 
 ### Participants
 
@@ -25,7 +28,12 @@ EHDS does not specify whether the wellness application sends data through the he
 
 #### Authorizing Patient Data Exchange
 
-For a wellness application to act on behalf of a patient, an authorization mechanism is required that ties the exchange to the patient's identity, consent, and application authorization context. Defining that patient-level authorization mechanism is outside this IG's scope. Implementers may consider the [SMART App Launch](https://hl7.org/fhir/smart-app-launch/) framework for this app-linking and authorization need.
+A wellness application acting for a patient SHALL use SMART App Launch. HDAS-linked access uses
+FHIR-endpoint SMART discovery and the applicable Patient Access capability set. Clinician launch
+uses the applicable Clinician Access capability set and current-patient launch context. A direct,
+preconfigured server-side wellness application MAY use Backend Services only when it is
+pre-authorized, uses asymmetric confidential-client authentication, and has no runtime
+end-user authorization.
 
 ### Accessing Patient Data
 

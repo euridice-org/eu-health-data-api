@@ -9,7 +9,9 @@ Usage: #definition
 Description: """
 The Document Publisher actor produces EEHRxF FHIR Documents and publishes them to a
 Document Access Provider. This composite actor groups MHD Document Source, PDQm
-Patient Demographics Consumer, and IUA Authorization Client.
+Patient Demographics Consumer, and the IUA Authorization Client or SMART Backend
+Service role selected by the deployment. See the Authorization page for the selected
+protocol and flow.
 
 See [Document Publisher CapabilityStatement](CapabilityStatement-document-publisher-eu-api.html)
 for technical requirements.
@@ -29,7 +31,8 @@ Description: """
 The Document Access Provider actor provides access to EEHRxF FHIR Documents by receiving
 documents from Document Publishers and serving them to Document Consumers. This composite
 actor groups MHD Document Recipient, MHD Document Responder, PDQm Patient Demographics
-Supplier, and IUA Authorization Server/Resource Server.
+Supplier, and the applicable IUA Resource Server or SMART FHIR Resource Server role.
+An Authorization Server is independent; it may be co-located only as an optional deployment.
 
 See [Document Access Provider CapabilityStatement](CapabilityStatement-document-access-provider-eu-api.html)
 for technical requirements.
@@ -94,7 +97,8 @@ Description: """
 The Resource Access Provider actor provides access to FHIR resources following IPA patterns.
 This enables direct resource access complementing document-based exchange.
 This composite actor groups IPA Server, PDQm Patient Demographics
-Supplier, and IUA Authorization Server/Resource Server.
+Supplier, and the applicable IUA Resource Server or SMART FHIR Resource Server role.
+An Authorization Server is independent; it may be co-located only as an optional deployment.
 
 See [Resource Access Provider CapabilityStatement](CapabilityStatement-resource-access-provider-eu-api.html)
 for technical requirements.
@@ -113,7 +117,8 @@ Usage: #definition
 Description: """
 The Resource Consumer actor queries for clinical data resources from a Resource Access
 Provider following IPA patterns. This composite actor groups IPA Client,
-PDQm Patient Demographics Consumer, and IUA Authorization Client.
+PDQm Patient Demographics Consumer, and the IUA Authorization Client or SMART
+App/Backend Service role selected by the deployment.
 
 See [Resource Consumer CapabilityStatement](CapabilityStatement-resource-consumer-eu-api.html)
 for technical requirements.
@@ -124,3 +129,135 @@ for technical requirements.
 * experimental = false
 * type = #system
 * capabilities = Canonical(resource-consumer-eu-api)
+
+// ===========================================================================
+// Authorization Protocol Roles
+// ===========================================================================
+
+Instance: iua-authorization-client-eu-api
+InstanceOf: ActorDefinition
+Title: "IHE IUA Authorization Client"
+Usage: #definition
+Description: """
+The IHE IUA Authorization Client authenticates to the Authorization Server, requests
+least-privilege scopes, and presents the resulting bearer token to the Resource Server.
+It implements the applicable IUA transactions. See the
+[IHE IUA Authorization Client](https://profiles.ihe.net/ITI/IUA/index.html#34111-authorization-client)
+and [Authorization](authorization.html#ihe-iua).
+"""
+* name = "IuaAuthorizationClientEuApi"
+* title = "IHE IUA Authorization Client"
+* status = #active
+* experimental = false
+* type = #system
+
+Instance: iua-authorization-server-eu-api
+InstanceOf: ActorDefinition
+Title: "IHE IUA Authorization Server"
+Usage: #definition
+Description: """
+The independent IHE IUA Authorization Server authenticates clients, validates client
+assertions when selected, applies issuance policy, prevents replay, and issues tokens.
+It does not provide protected-resource enforcement. See the
+[IHE IUA Authorization Server](https://profiles.ihe.net/ITI/IUA/index.html#34112-authorization-server)
+and [Authorization](authorization.html#ihe-iua).
+"""
+* name = "IuaAuthorizationServerEuApi"
+* title = "IHE IUA Authorization Server"
+* status = #active
+* experimental = false
+* type = #system
+
+Instance: iua-resource-server-eu-api
+InstanceOf: ActorDefinition
+Title: "IHE IUA Resource Server"
+Usage: #definition
+Description: """
+The IHE IUA Resource Server validates or introspects access tokens and enforces granted
+authorization and local policy for protected resources. It does not validate client
+assertions for an independent Authorization Server. See the
+[IHE IUA Resource Server](https://profiles.ihe.net/ITI/IUA/index.html#34113-resource-server)
+and [Authorization](authorization.html#ihe-iua).
+"""
+* name = "IuaResourceServerEuApi"
+* title = "IHE IUA Resource Server"
+* status = #active
+* experimental = false
+* type = #system
+
+Instance: smart-app-eu-api
+InstanceOf: ActorDefinition
+Title: "SMART App"
+Usage: #definition
+Description: """
+The SMART App is an interactive client using authorization code and PKCE in standalone
+or EHR-launch mode. See [SMART App Launch](https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html)
+and [Authorization](authorization.html#smart-app-launch).
+"""
+* name = "SmartAppEuApi"
+* title = "SMART App"
+* status = #active
+* experimental = false
+* type = #system
+
+Instance: smart-backend-service-eu-api
+InstanceOf: ActorDefinition
+Title: "SMART Backend Service"
+Usage: #definition
+Description: """
+The SMART Backend Service is a pre-authorized confidential server-side client using
+client credentials, asymmetric client authentication, and applicable system scopes.
+See [SMART Backend Services](https://hl7.org/fhir/smart-app-launch/STU2.2/backend-services.html)
+and [Authorization](authorization.html#smart-app-launch).
+"""
+* name = "SmartBackendServiceEuApi"
+* title = "SMART Backend Service"
+* status = #active
+* experimental = false
+* type = #system
+
+Instance: smart-fhir-resource-server-eu-api
+InstanceOf: ActorDefinition
+Title: "SMART FHIR Resource Server"
+Usage: #definition
+Description: """
+The SMART FHIR Resource Server hosts protected FHIR resources, validates access tokens,
+and enforces granted SMART scopes. See [SMART App Launch](https://hl7.org/fhir/smart-app-launch/STU2.2/)
+and [Authorization](authorization.html#smart-app-launch).
+"""
+* name = "SmartFhirResourceServerEuApi"
+* title = "SMART FHIR Resource Server"
+* status = #active
+* experimental = false
+* type = #system
+
+Instance: smart-authorization-server-eu-api
+InstanceOf: ActorDefinition
+Title: "SMART Authorization Server"
+Usage: #definition
+Description: """
+The SMART Authorization Server authenticates clients as applicable, authorizes requests,
+and issues tokens. It remains a distinct participant from the protected FHIR Resource Server.
+See [SMART App Launch](https://hl7.org/fhir/smart-app-launch/STU2.2/)
+and [Authorization](authorization.html#smart-app-launch).
+"""
+* name = "SmartAuthorizationServerEuApi"
+* title = "SMART Authorization Server"
+* status = #active
+* experimental = false
+* type = #system
+
+Instance: smart-launching-system-eu-api
+InstanceOf: ActorDefinition
+Title: "SMART Launching System"
+Usage: #definition
+Description: """
+The SMART Launching System initiates an EHR launch and supplies the launch context for
+an interactive SMART App. See [SMART App Launch](https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html)
+and [Authorization](authorization.html#smart-app-launch).
+"""
+* name = "SmartLaunchingSystemEuApi"
+* title = "SMART Launching System"
+* status = #active
+* experimental = false
+* type = #system
