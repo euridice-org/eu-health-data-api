@@ -6,55 +6,7 @@ InstanceOf: CapabilityStatement
 Title: "EEHRxF Grouped Document Publisher/Access Provider CapabilityStatement"
 Usage: #definition
 Description: """
-CapabilityStatement for the grouped EEHRxF Document Publisher and Document Access Provider
-actors. This represents a deployment where document production and access provision are
-co-located in the same system.
-
-### Deployment Pattern
-
-This CapabilityStatement applies when:
-- An EHR system both produces documents AND provides access to them
-- Document publication is handled internally
-- External clients only need to query and retrieve documents
-
-In this grouped deployment, document publication is internal to the system and not exposed
-externally. The external API provides only document discovery (ITI-67) and retrieval (ITI-68)
-capabilities.
-
-### Actor Grouping
-
-This grouped actor combines:
-- **Document Publisher** (internal) - Produces and stores documents internally
-- **Document Access Provider** (external-facing) - Serves documents to Document Consumers
-
-The external-facing protected-server role is the
-[SMART FHIR Resource Server](ActorDefinition-smart-fhir-resource-server-eu-api.html).
-The Authorization Server is independent and may be optionally co-located.
-- [PDQm Patient Demographics Supplier](https://profiles.ihe.net/ITI/PDQm/volume-1.html)
-- [MHD Document Responder](https://profiles.ihe.net/ITI/MHD/1331_actors_and_transactions.html)
-
-Note: MHD Document Recipient is not listed because publication is internal.
-
-### External Transactions
-
-| Transaction | Description | Optionality |
-|-------------|-------------|-------------|
-| ITI-67 Find Document References | Respond to document metadata queries from Document Consumers | R |
-| ITI-68 Retrieve Document | Serve document content to Document Consumers | R |
-| ITI-78 Patient Demographics Query | Respond to patient demographics queries | O |
-
-### Security
-Systems SHALL support SMART Backend Services authorization for all transactions.
-
-### When to Use This CapabilityStatement
-
-Use this CapabilityStatement when implementing:
-- Hospital EHR systems that produce and serve their own documents
-- Regional health information exchanges with integrated document repositories
-- Any system where document creation and access are tightly coupled
-
-For systems that need to receive documents from external sources, use the
-[Document Access Provider with Document Submission Option](CapabilityStatement-document-access-provider-submission-option-eu-api.html).
+Requirements for a deployment that combines an internal Document Publisher with an external-facing Document Access Provider.
 """
 
 * name = "DocumentPublisherAccessProviderEuApi"
@@ -75,25 +27,38 @@ This grouped actor provides document access to external Document Consumers.
 Document publication is internal and not exposed. The external API
 supports document discovery (ITI-67), retrieval (ITI-68), and optional patient lookup (ITI-78).
 
-This direct system-to-system profile selects SMART Backend Services; see [Authorization](authorization.html#smart-app-launch).
+The external endpoint groups with the Resource Server role selected by the environment and use case;
+see [Authorization](authorization.html#environment-specific-requirements).
 """
 
-* rest[=].security.cors = false
-* rest[=].security.service = http://hl7.org/fhir/restful-security-service#SMART-on-FHIR
 * rest[=].security.description = """
-SMART Backend Services authorization is REQUIRED for this direct system-to-system profile.
-Systems SHALL:
-- Validate access tokens and granted scopes; the Authorization Server validates client assertions
-- Verify appropriate scopes for document access
-- Use TLS 1.2 or higher for all communications
+This abstract requirements statement does not advertise a fixed security service. A concrete
+deployment SHALL select the protocol required for its environment and advertise only that service.
+The Resource Server validates access tokens and granted authorization; the independent Authorization
+Server performs token issuance and any client-assertion validation.
 
-Required scopes to accept:
+### IHE IUA
+
+The external endpoint groups with the IUA Resource Server and enforces the IUA MHD transaction
+scopes `ITI-67` and `ITI-68`. PDQm ITI-78 has no IUA MHD transaction scope.
+
+### SMART Backend Services
+
+For a pre-authorized system-to-system use case, the endpoint groups with the SMART FHIR Resource
+Server and accepts:
 - system/DocumentReference.rs (read + search DocumentReference - ITI-67)
 - system/Binary.r (read Binary - ITI-68)
 - system/Bundle.r (read Bundle - ITI-68 for FHIR Documents)
 - system/Patient.rs (read + search Patient - ITI-78)
 
-These are **SMART App Launch 2.2 FHIR Resource Scopes**, not IUA transaction scopes.
+### Interactive SMART
+
+Where an interactive use case applies, the endpoint groups with the SMART FHIR Resource Server and
+enforces the corresponding `patient/` or `user/` forms of the supported resource scopes. Browser CORS
+requirements apply only to deployments supporting browser-based clients.
+
+All modes use TLS 1.2 or higher. See
+[Authorization](authorization.html#tokens-scopes-enforcement-and-errors).
 """
 
 // System-level search interaction

@@ -10,8 +10,9 @@ Description: """
 The Document Publisher actor produces EEHRxF FHIR Documents and publishes them to a
 Document Access Provider. This composite actor groups MHD Document Source, PDQm
 Patient Demographics Consumer, and the IUA Authorization Client or SMART Backend
-Service role selected by the deployment. See the Authorization page for the selected
-protocol and flow.
+Service role selected by the environment and use case. The Authorization Server is a
+separate participant. See [Authorization](authorization.html#environment-specific-requirements)
+for the selected protocol and flow.
 
 See [Document Publisher CapabilityStatement](CapabilityStatement-document-publisher-eu-api.html)
 for technical requirements.
@@ -33,6 +34,7 @@ documents from Document Publishers and serving them to Document Consumers. This 
 actor groups MHD Document Recipient, MHD Document Responder, PDQm Patient Demographics
 Supplier, and the applicable IUA Resource Server or SMART FHIR Resource Server role.
 An Authorization Server is independent; it may be co-located only as an optional deployment.
+See [Authorization](authorization.html#environment-specific-requirements) for the selected role.
 
 See [Document Access Provider CapabilityStatement](CapabilityStatement-document-access-provider-eu-api.html)
 for technical requirements.
@@ -51,7 +53,9 @@ Usage: #definition
 Description: """
 The Document Consumer actor consumes EEHRxF FHIR Documents by querying a Document Access
 Provider. This composite actor groups MHD Document Consumer, PDQm Patient Demographics
-Consumer, and IUA Authorization Client.
+Consumer, and the IUA Authorization Client, SMART App, or SMART Backend Service role selected
+by the environment and use case. The Authorization Server is a separate participant. See
+[Authorization](authorization.html#environment-specific-requirements) for the selected role.
 
 See [Document Consumer CapabilityStatement](CapabilityStatement-document-consumer-eu-api.html)
 for technical requirements.
@@ -71,7 +75,11 @@ Description: """
 The grouped Document Publisher/Access Provider actor represents a deployment where document
 production and access provision are co-located in the same system. In this configuration,
 document submission (ITI-105) is internal and only document query/retrieval (ITI-67, ITI-68)
-is exposed externally.
+is exposed externally. The external protected endpoint groups with the applicable IUA Resource
+Server or SMART FHIR Resource Server role. Internal publication does not create another externally
+advertised authorization role. An Authorization Server remains a separate participant and may be
+co-located only as an optional deployment. See
+[Authorization](authorization.html#environment-specific-requirements) for the selected role.
 
 This is common for hospital EHR systems that produce and serve their own documents.
 
@@ -99,6 +107,7 @@ This enables direct resource access complementing document-based exchange.
 This composite actor groups IPA Server, PDQm Patient Demographics
 Supplier, and the applicable IUA Resource Server or SMART FHIR Resource Server role.
 An Authorization Server is independent; it may be co-located only as an optional deployment.
+See [Authorization](authorization.html#environment-specific-requirements) for the selected role.
 
 See [Resource Access Provider CapabilityStatement](CapabilityStatement-resource-access-provider-eu-api.html)
 for technical requirements.
@@ -118,7 +127,9 @@ Description: """
 The Resource Consumer actor queries for clinical data resources from a Resource Access
 Provider following IPA patterns. This composite actor groups IPA Client,
 PDQm Patient Demographics Consumer, and the IUA Authorization Client or SMART
-App/Backend Service role selected by the deployment.
+App or SMART Backend Service role selected by the environment and use case. The Authorization
+Server is a separate participant. See
+[Authorization](authorization.html#environment-specific-requirements) for the selected role.
 
 See [Resource Consumer CapabilityStatement](CapabilityStatement-resource-consumer-eu-api.html)
 for technical requirements.

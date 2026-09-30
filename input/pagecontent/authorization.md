@@ -82,6 +82,15 @@ Healthcare Provider deployments SHALL use SMART. A system-to-system upload throu
 
 For every flow, the client, independent Authorization Server, Resource Server/FHIR server, user type, launch mode, data direction, and discovery model SHALL be identified. The authorization diagrams and use-case pages apply these selections; HDAS refers to the Health Data Access Service.
 
+The ActorDefinition and `kind = requirements` CapabilityStatement resources in this IG describe
+cross-environment requirements. Provider actors pair with the Resource Server role selected for the
+environment; consumers and other token-obtaining actors pair with the selected authorization-client
+role. These abstract CapabilityStatements do not advertise one fixed security-service coding. A
+concrete deployment CapabilityStatement SHALL advertise only its selected service: `SMART-on-FHIR`
+for SMART or the IHE `IUA` coding for IUA, unless a future profile explicitly defines dual
+conformance. The Resource Server role is implemented by the protected FHIR endpoint and remains
+distinct from the Authorization Server, including when both are co-located.
+
 <a name="authorization-server-discovery"></a>
 <a name="get-access-token"></a>
 <a name="incorporate-access-token"></a>
@@ -125,9 +134,4 @@ Authentication failures use `401 Unauthorized`; authenticated requests lacking a
 
 Future work may define a hybrid IHE IUA/SMART profile, including claim and scope mappings, discovery precedence, token-context precedence, error semantics, audit identity, and same-endpoint dual-conformance rules. These topics are not normative for this release.
 
-#### Authorization Follow-up To Do
-
-- [ ] Identify the authoritative released MyHealth@EU authorization and security documents, confirm the applicable deployment profile, and add only the references and requirements that apply to this IG's MyHealth@EU environment.
-- [ ] Review the authoritative eIDAS and European Digital Identity Wallet documents, including relevant implementing acts and technical specifications, and add references only where they establish an applicable API authorization or assurance requirement.
-- [ ] Reassess the EHDS Article 16 implementing acts when published, including any cross-border identification and authentication requirements for natural persons and health professionals.
-- [ ] Define any future IHE IUA/SMART hybrid profile only after agreeing scope mappings, discovery precedence, token-context precedence, error semantics, and audit identity.
+{% include auth-todo.md %}

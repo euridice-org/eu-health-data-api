@@ -5,8 +5,8 @@ This is similar to the approach taken in the MHDS specification, but with a more
 ### Relevant Specifications:
 
 - Authorization
-  - [HL7 SMART Backend Services](https://hl7.org/fhir/smart-app-launch/) - Defines authorization in FHIR. We use the SMART Backend Services profile for system-system authorization, and FHIR scopes.
-  - [IHE IUA](https://profiles.ihe.net/ITI/IUA/index.html) - Defines authorization and access control actors and mechanisms. We use the actors and transactions model.
+  - [HL7 SMART App Launch 2.2](https://hl7.org/fhir/smart-app-launch/STU2.2/) - Defines interactive App Launch and Backend Services authorization for FHIR. The applicable mode is selected by environment and use case.
+  - [IHE IUA](https://profiles.ihe.net/ITI/IUA/index.html) - Defines authorization and access control actors and mechanisms. IUA is selected where required or recommended by the environment.
 - Patient Identity Matching
   - [IHE PDQm](https://profiles.ihe.net/ITI/PDQm/index.html) - Defines how a client can perform patient lookup given demographics against a server.
 - Document Exchange
@@ -34,7 +34,8 @@ Document exchange is defined with 3 actors:
 <a name="document-consumer"></a>
 3. **Document Consumer (client)** - Consumes EEHRxF FHIR documents by querying a Document Access Provider.
 
-These composite actors inherit existing actors from the IUA, PDQm, and MHD specifications:
+These composite actors inherit existing actors from the selected IUA or SMART authorization
+profile and from the PDQm and MHD specifications:
 
 <div style="text-align: center;">
 {% include img.html img="docExchange_2.png" caption="Figure 5: Document Exchange - Actor Groupings" %}
@@ -42,14 +43,13 @@ These composite actors inherit existing actors from the IUA, PDQm, and MHD speci
 
 **Document Publisher**
 
-- [IUA Authorization Client](https://profiles.ihe.net/ITI/IUA/index.html#34111-authorization-client)
+- The selected [IUA Authorization Client](ActorDefinition-iua-authorization-client-eu-api.html), [SMART App](ActorDefinition-smart-app-eu-api.html), or [SMART Backend Service](ActorDefinition-smart-backend-service-eu-api.html); see [Authorization](authorization.html#environment-specific-requirements).
 - [PDQm Patient Demographics Consumer](https://profiles.ihe.net/ITI/PDQm/volume-1.html) ([CapabilityStatement](https://profiles.ihe.net/ITI/PDQm/CapabilityStatement-IHE.PDQm.PatientDemographicsConsumerQuery.html))
 - [MHD Document Source](https://profiles.ihe.net/ITI/MHD/1331_actors_and_transactions.html) with [Simplified Publish Option](https://profiles.ihe.net/ITI/MHD/1332_actor_options.html#13324-simplified-publish-option) ([CapabilityStatement](https://profiles.ihe.net/ITI/MHD/CapabilityStatement-IHE.MHD.DocumentSource.html))
 
 **Document Access Provider**
 
-- [IUA Resource Server](https://profiles.ihe.net/ITI/IUA/index.html#34113-resource-server) - Required
-- [SMART FHIR Resource Server](ActorDefinition-smart-fhir-resource-server-eu-api.html) when SMART is selected; see [Authorization](authorization.html#environment-specific-requirements).
+- The selected [IUA Resource Server](ActorDefinition-iua-resource-server-eu-api.html) or [SMART FHIR Resource Server](ActorDefinition-smart-fhir-resource-server-eu-api.html); see [Authorization](authorization.html#environment-specific-requirements).
 - An IUA or SMART Authorization Server is an independent actor. It MAY be co-located with the provider, but is not a required provider grouping.
 - [PDQm Patient Demographics Supplier](https://profiles.ihe.net/ITI/PDQm/volume-1.html) ([CapabilityStatement](https://profiles.ihe.net/ITI/PDQm/CapabilityStatement-IHE.PDQm.PatientDemographicsSupplier.html))
 - [MHD Document Responder](https://profiles.ihe.net/ITI/MHD/1331_actors_and_transactions.html) ([CapabilityStatement](https://profiles.ihe.net/ITI/MHD/CapabilityStatement-IHE.MHD.DocumentResponder.html))
@@ -60,7 +60,7 @@ These composite actors inherit existing actors from the IUA, PDQm, and MHD speci
 
 **Document Consumer**
 
-- [IUA Authorization Client](https://profiles.ihe.net/ITI/IUA/index.html#34111-authorization-client)
+- The selected [IUA Authorization Client](ActorDefinition-iua-authorization-client-eu-api.html), [SMART App](ActorDefinition-smart-app-eu-api.html), or [SMART Backend Service](ActorDefinition-smart-backend-service-eu-api.html); see [Authorization](authorization.html#environment-specific-requirements).
 - [PDQm Patient Demographics Consumer](https://profiles.ihe.net/ITI/PDQm/volume-1.html) ([CapabilityStatement](https://profiles.ihe.net/ITI/PDQm/CapabilityStatement-IHE.PDQm.PatientDemographicsConsumerQuery.html))
 - [MHD Document Consumer](https://profiles.ihe.net/ITI/MHD/1331_actors_and_transactions.html) ([CapabilityStatement](https://profiles.ihe.net/ITI/MHD/CapabilityStatement-IHE.MHD.DocumentConsumer.html))
 
@@ -69,18 +69,19 @@ This leads to the following required transactions between these actors:
 ```mermaid
 sequenceDiagram
     participant Publisher as Document Publisher
+  participant Authorization as Authorization Server
     participant Provider as Document Access Provider
     participant Consumer as Document Consumer
 
-    Publisher->>Provider: Get Access Token (IUA ITI-71)
-    Provider-->>Publisher: access_token
+  Publisher->>Authorization: Get Access Token (selected IUA or SMART flow)
+  Authorization-->>Publisher: access_token
     Publisher->>Provider: Patient Lookup (PDQm ITI-78)
     Provider-->>Publisher: Patient Bundle
     Publisher->>Provider: Simplified Publish (MHD ITI-105)
     Provider-->>Publisher: Response
 
-    Consumer->>Provider: Get Access Token (IUA ITI-71)
-    Provider-->>Consumer: access_token
+    Consumer->>Authorization: Get Access Token (selected IUA or SMART flow)
+    Authorization-->>Consumer: access_token
     Consumer->>Provider: Patient Lookup (PDQm ITI-78)
     Provider-->>Consumer: Patient Bundle
     Consumer->>Provider: Find Document References (MHD ITI-67)
@@ -121,7 +122,9 @@ Resource exchange is more complex than document publication, and in many cases h
 
 
 
-These composite actors inherit existing actors from the IUA, PDQm, and [International Patient Access (IPA)](https://hl7.org/fhir/uv/ipa/) specifications (with QEDm alignment where compatible):
+These composite actors inherit existing actors from the selected IUA or SMART authorization
+profile, PDQm, and [International Patient Access (IPA)](https://hl7.org/fhir/uv/ipa/)
+specifications (with QEDm alignment where compatible):
 
 <div style="text-align: center;">
 {% include img.html img="resExchange_2.png" caption="Figure 7: Resource Access - Actor Groupings" %}
@@ -129,8 +132,7 @@ These composite actors inherit existing actors from the IUA, PDQm, and [Internat
 
 **Resource Access Provider**
 
-- [IUA Resource Server](https://profiles.ihe.net/ITI/IUA/index.html#34113-resource-server) - Required
-- [SMART FHIR Resource Server](ActorDefinition-smart-fhir-resource-server-eu-api.html) when SMART is selected; see [Authorization](authorization.html#environment-specific-requirements).
+- The selected [IUA Resource Server](ActorDefinition-iua-resource-server-eu-api.html) or [SMART FHIR Resource Server](ActorDefinition-smart-fhir-resource-server-eu-api.html); see [Authorization](authorization.html#environment-specific-requirements).
 - An IUA or SMART Authorization Server is an independent actor. It MAY be co-located with the provider, but is not a required provider grouping.
 - [PDQm Patient Demographics Supplier](https://profiles.ihe.net/ITI/PDQm/volume-1.html) ([CapabilityStatement](https://profiles.ihe.net/ITI/PDQm/CapabilityStatement-IHE.PDQm.PatientDemographicsSupplier.html))
 - Resource Access
@@ -138,7 +140,7 @@ These composite actors inherit existing actors from the IUA, PDQm, and [Internat
 
 **Resource Consumer**
 
-- [IUA Authorization Client](https://profiles.ihe.net/ITI/IUA/index.html#34111-authorization-client)
+- The selected [IUA Authorization Client](ActorDefinition-iua-authorization-client-eu-api.html), [SMART App](ActorDefinition-smart-app-eu-api.html), or [SMART Backend Service](ActorDefinition-smart-backend-service-eu-api.html); see [Authorization](authorization.html#environment-specific-requirements).
 - [PDQm Patient Demographics Consumer](https://profiles.ihe.net/ITI/PDQm/volume-1.html) ([CapabilityStatement](https://profiles.ihe.net/ITI/PDQm/CapabilityStatement-IHE.PDQm.PatientDemographicsConsumerQuery.html))
 - Resource Access
   - [HL7 International Patient Access Client](https://hl7.org/fhir/uv/ipa/) ([CapabilityStatement](https://hl7.org/fhir/uv/ipa/CapabilityStatement-ipa-client.html))
@@ -148,17 +150,20 @@ This leads to the following required transactions between these actors:
 ```mermaid
 sequenceDiagram
     participant Provider as Resource Access Provider
+  participant Authorization as Authorization Server
     participant Consumer as Resource Consumer
 
-    Consumer->>Provider: Get Access Token (IUA ITI-71)
-    Provider-->>Consumer: access_token
+  Consumer->>Authorization: Get Access Token (selected IUA or SMART flow)
+  Authorization-->>Consumer: access_token
     Consumer->>Provider: Patient Lookup (PDQm ITI-78)
     Provider-->>Consumer: Patient Bundle
     Consumer->>Provider: Resource Query (IPA)
     Provider-->>Consumer: Resource Bundle
 ```
 
-> **Note:** This diagram assumes a bundled Authorization Server. When using external authorization infrastructure (hospital, regional, or national level), the authorization flow differs. See [Authorization Server Deployment](authorization.html#authorization-server-deployment) for details.
+> **Note:** The Authorization Server is a separate protocol participant. It MAY be co-located with
+> a provider as a deployment choice, but co-location does not merge its responsibilities with the
+> Resource Server. See [Authorization Server Deployment](authorization.html#authorization-server-deployment).
 
 
 

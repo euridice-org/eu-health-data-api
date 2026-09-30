@@ -1,32 +1,12 @@
 // CapabilityStatement for EEHRxF Document Consumer Actor
-// Composite actor grouping MHD Document Consumer + PDQm Consumer + IUA Authorization Client
+// Composite actor grouping MHD Document Consumer + PDQm Consumer + selected authorization client
 
 Instance: document-consumer-eu-api
 InstanceOf: CapabilityStatement
 Title: "EEHRxF Document Consumer CapabilityStatement"
 Usage: #definition
 Description: """
-CapabilityStatement for the EEHRxF Document Consumer actor. This composite actor
-consumes EEHRxF FHIR Documents by querying a Document Access Provider.
-
-### Actor Grouping
-
-This composite actor groups the following IHE actors:
-- [IUA Authorization Client](https://profiles.ihe.net/ITI/IUA/index.html#34111-authorization-client)
-- [PDQm Patient Demographics Consumer](https://profiles.ihe.net/ITI/PDQm/volume-1.html)
-- [MHD Document Consumer](https://profiles.ihe.net/ITI/MHD/1331_actors_and_transactions.html)
-
-### Transactions
-
-| Transaction | Description | Optionality |
-|-------------|-------------|-------------|
-| ITI-67 Find Document References | Query for document metadata from Document Access Provider | R |
-| ITI-68 Retrieve Document | Retrieve document content from Document Access Provider | R |
-| ITI-78 Patient Demographics Query | Query for patient demographics to establish patient context | R |
-| Get Access Token | Obtain authorization token for API access | R |
-
-### Security
-Systems SHALL support SMART Backend Services authorization for all transactions.
+Requirements for an EEHRxF Document Consumer that queries and retrieves FHIR Documents.
 """
 
 * name = "DocumentConsumerEuApi"
@@ -40,32 +20,46 @@ Systems SHALL support SMART Backend Services authorization for all transactions.
 * format[+] = #json
 * format[+] = #xml
 
-// Security requirements - SMART Backend Services
+// Security requirements - protocol selected by environment and use case
 * rest[+].mode = #client
 * rest[=].documentation = """
 The Document Consumer actor queries for document metadata and retrieves documents
 from a Document Access Provider. It also queries for patient context using PDQm.
-This direct system-to-system profile selects SMART Backend Services. It does not assert IUA
-or interactive SMART conformance; see [Authorization](authorization.html#environment-specific-requirements).
+It groups with the IUA Authorization Client, SMART App, or SMART Backend Service selected by the
+environment and use case. The Authorization Server is a separate participant; see
+[Authorization](authorization.html#environment-specific-requirements).
 """
 
-* rest[=].security.cors = false
-* rest[=].security.service = http://hl7.org/fhir/restful-security-service#SMART-on-FHIR
 * rest[=].security.description = """
-SMART Backend Services authorization is REQUIRED for this direct system-to-system profile.
-Systems SHALL:
-- Use `client_credentials` and `private_key_jwt` asymmetric client authentication
-- Request appropriate scopes for document access
-- Use TLS 1.2 or higher for all communications
+This abstract requirements statement does not advertise a fixed security service. A concrete
+deployment SHALL select the protocol required for its environment and advertise only that service.
 
-Required scopes:
+### IHE IUA
+
+The consumer groups with the IUA Authorization Client and requests the applicable IUA MHD
+transaction scopes for its supported transactions:
+- ITI-67
+- ITI-68
+
+PDQm ITI-78 has no IUA MHD transaction scope.
+
+### SMART Backend Services
+
+For a pre-authorized system-to-system use case, the consumer groups with the SMART Backend Service,
+uses `client_credentials` and `private_key_jwt`, and requests:
 - system/DocumentReference.rs (read + search DocumentReference - ITI-67)
 - system/Binary.r (read Binary for document retrieval - ITI-68)
 - system/Bundle.r (read Bundle for FHIR Document retrieval - ITI-68)
 - system/Patient.rs (read + search Patient for context - ITI-78)
 
-These are **SMART App Launch 2.2 FHIR Resource Scopes**, not IUA transaction scopes.
-See [Authorization](authorization.html#smart-app-launch) for discovery, token, and CORS rules.
+### Interactive SMART
+
+Where an interactive use case applies, the consumer groups with the SMART App, uses authorization
+code with PKCE, and replaces the `system/` prefix above with the applicable `patient/` or `user/`
+scope prefix. Browser CORS requirements apply only to deployments supporting browser-based clients.
+
+All modes use TLS 1.2 or higher. See [Authorization](authorization.html#smart-app-launch) for the
+selected capability set, discovery, token, scope, and CORS rules.
 """
 
 // ============================================================================
