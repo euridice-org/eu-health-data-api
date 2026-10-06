@@ -30,7 +30,7 @@ See [Example: Retrieve A European Patient Summary](example-patient-summary.html)
 
 ### Resource Exchange
 
-For resource-based access, use the [Resource Access](resource-access.html) transactions to query individual clinical resources referenced in the Patient Summary.
+For resource-based access, use the [Resource Access](resource-access.html) transactions to query individual clinical resources of the kinds a Patient Summary contains. These reflect the system's current record rather than the content of any particular Patient Summary document; see [Resource Content](resource-access.html#resource-content).
 
 ### On-Demand Patient Summary Assembly
 

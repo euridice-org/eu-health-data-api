@@ -16,7 +16,7 @@ Individual FHIR Resources represent discrete pieces of health information (obser
 
 ### Relationship
 
-Resources can be extracted from documents, and documents can be generated from resources. This IG supports both patterns to accommodate different implementation architectures and use cases.
+Resources can be extracted from documents, and documents can be generated from resources. This IG supports both patterns to accommodate different implementation architectures and use cases. What a served resource represents, and when a link back to a source document is expected, is described under [Resource Content](resource-access.html#resource-content) and [Derived Resources](resource-access.html#derived-resources).
 
 ### Documents Are Targeted; Resource Access Covers the Long Tail
 

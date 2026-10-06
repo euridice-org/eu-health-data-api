@@ -45,7 +45,7 @@ A consumer using ITI-67 and ITI-68 cannot tell which approach the server uses â€
 |---|---|---|
 | `attachment.hash` / `size` | **Absent** | Present |
 | Documents persisted? | No | Yes |
-| Resources exposed via IPA? | MAY | No |
+| Resources exposed via IPA? | MAY | MAY, e.g. extracted from held documents (see [Derived Resources](resource-access.html#derived-resources)) |
 | ITI-105 publish used? | No | Optional |
 | XDS/XCA backend? | No | Optional |
 
