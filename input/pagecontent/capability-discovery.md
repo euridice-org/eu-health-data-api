@@ -85,6 +85,8 @@ sequenceDiagram
     Note over Consumer: Consumer inspects:<br/>- instantiates (actor conformance)<br/>- implementationGuide (content IGs)<br/>- rest.resource.supportedProfile (profiles)<br/>- rest.resource (supported resources)
 ```
 
+  {% include figure-caption.html caption="Capability discovery flow" %}
+
 ### Example: Server Supporting Multiple Priority Categories
 
 See the [example CapabilityStatement](CapabilityStatement-example-capabilitystatement-document-access-provider.html) for a Document Access Provider serving Patient Summaries and Laboratory Reports.

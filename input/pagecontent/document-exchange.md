@@ -53,6 +53,8 @@ sequenceDiagram
     end
 ```
 
+  {% include figure-caption.html caption="Document discovery and retrieval" %}
+
 #### Document Content
 
 [ITI-68](https://profiles.ihe.net/ITI/MHD/ITI-68.html) retrieves the document from the URL in `DocumentReference.content.attachment.url`. Consumers identify the content using two DocumentReference elements:

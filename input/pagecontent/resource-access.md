@@ -42,6 +42,9 @@ sequenceDiagram
     Provider-->>Consumer: Bundle of Observations
 ```
 
+  {% include figure-caption.html caption="Patient-scoped clinical resource queries"
+  %}
+
 ### Constraints
 
 - **Patient-scoped queries** - `patient` parameter required on all searches

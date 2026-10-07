@@ -85,6 +85,9 @@ sequenceDiagram
     Provider-->>Consumer: Document Content
 ```
 
+  {% include figure-caption.html
+     caption="Document publication and consumption transactions" %}
+
 See the following functional pages for detailed transaction information:
 - [Authorization](authorization.html) - Authentication and authorization flows
 - [Patient Lookup](patient-match.html) - Patient identification transactions
@@ -155,6 +158,8 @@ sequenceDiagram
     Consumer->>Provider: Resource Query (IPA)
     Provider-->>Consumer: Resource Bundle
 ```
+
+  {% include figure-caption.html caption="Resource access transactions" %}
 
 > **Note:** The Authorization Server is a separate protocol participant. It MAY be co-located with
 > a provider as a deployment choice, but co-location does not merge its responsibilities with the
