@@ -6,8 +6,9 @@ A patient presents to a care provider, but his data is in another system. The cu
 
 ### Actors
 
-- **[Document Consumer](actors.html#document-consumer)** - The healthcare provider's system requesting the Patient Summary
-- **[Document Access Provider](actors.html#document-access-provider)** - The system holding the patient's health data
+- **[Document Consumer](actors.html#document-consumer)** - The healthcare provider's system acting as the [EU Authorization Client](ActorDefinition-eu-authorization-client-eu-api.html), with the selected SMART or IUA protocol role
+- **[Document Access Provider](actors.html#document-access-provider)** - The system holding the patient's health data and acting as the [EU Authorization Resource Server](ActorDefinition-eu-authorization-resource-server-eu-api.html)
+- **[EU Authorization Server](ActorDefinition-eu-authorization-server-eu-api.html)** - Issues the access token under the selected protocol and remains distinct from the Document Access Provider; optional co-location is a deployment choice
 
 ### Prerequisites
 
@@ -19,12 +20,12 @@ A patient presents to a care provider, but his data is in another system. The cu
 
 ```mermaid
 sequenceDiagram
-    participant Consumer as Document Consumer
-    participant AuthZ as Authorization Server
-    participant Provider as Document Access Provider
+    participant Consumer as Document Consumer (EU Authorization Client)
+    participant AuthZ as EU Authorization Server
+    participant Provider as Document Access Provider (EU Authorization Resource Server)
 
     rect rgb(240, 248, 255)
-    Note over Consumer,Provider: Authorization (IUA)
+    Note over Consumer,AuthZ: Authorization (SMART Backend Services)
     Consumer->>Provider: GET /metadata
     Provider-->>Consumer: CapabilityStatement
     Consumer->>AuthZ: POST /auth/token (JWT assertion)
@@ -46,7 +47,7 @@ sequenceDiagram
     end
 ```
 
-*Note: This diagram assumes the Authorization Server is grouped with the Document Access Provider. See [Authorization Server Deployment](authorization.html#authorization-server-deployment) for discussion of alternative deployments.*
+*Note: The Authorization Server is a separate participant and MAY be co-located with the Document Access Provider as an optional deployment choice. The sequence shows the SMART Backend Services flow described below.*
 
 ### Step-by-Step Flow
 
@@ -62,7 +63,7 @@ The CapabilityStatement confirms support for IHE MHD document exchange, PDQm pat
 
 #### Step 2: Obtain Authorization Token
 
-Document Consumer requests an access token using SMART Backend Services ([Authorization](authorization.html)).
+The EU Authorization Client role is realized here by the SMART Backend Service. The Document Consumer requests an access token using SMART Backend Services ([Authorization](authorization.html#smart-app-launch)); the EU Authorization Server and EU Authorization Resource Server roles remain distinct.
 
 ```
 POST https://provider.example.org/auth/token

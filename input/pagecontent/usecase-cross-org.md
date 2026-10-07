@@ -48,4 +48,4 @@ The National Interoperability Infrastructure environment recommends IHE IUA wher
 and the Authorization Server are preconfigured and user or patient claims are needed. The
 applicable IUA transaction and MHD transaction-scope requirements are selected per deployment.
 SMART Backend Services is a separate direct-system profile, not automatic dual conformance.
-See [Authorization](authorization.html#national-interoperability-infrastructure).
+The consumer and protected EHR or repository endpoint have the generic [EU Authorization Client](ActorDefinition-eu-authorization-client-eu-api.html) and [EU Authorization Resource Server](ActorDefinition-eu-authorization-resource-server-eu-api.html) roles. The Authorization Server remains a distinct participant; the selected IUA or SMART protocol roles and details are in [Authorization](authorization.html#national-interoperability-infrastructure).

@@ -57,7 +57,7 @@ Xt-EHR Deliverable 5.1 interpreted 2.1 and 2.2 as two sides of a query-based arc
 | EHDS Annex II §2.2 "be able to receive" | Consumer: Initiate queries and receive responses | **Consumer** |
 
 <div style="max-width: 70%; margin: 0 auto;">
-{% include img.html img="5-1_exchange.png" caption="Figure 2: Query-Based Exchange Model" %}
+{% include img.html img="5-1_exchange.png" caption="Query-Based Exchange Model" %}
 </div>
 
 This interpretation is grounded in the following rationale:
@@ -154,7 +154,7 @@ D8.1 defines what conformant health data looks like: the fields a Patient Summar
 > Note: [D8.1](https://www.xt-ehr.eu/deliverables/) is published on the Xt-EHR deliverables page. This section summarizes the concepts this IG builds upon.
 
 <div style="max-width: 70%; margin: 0 auto;">
-{% include img.html img="ContentExchangeXtEhr.png" caption="Figure 3: Relationship between Xt-EHR deliverables and this IG. D5.1 exchange requirements are implemented by MHD (document exchange) and IPA (resource exchange). D8.1 data content profiles are implemented by HL7 EU Priority Category IGs and HL7 EU Core Resources." %}
+{% include img.html img="ContentExchangeXtEhr.png" caption="Relationship between Xt-EHR deliverables and this IG. D5.1 exchange requirements are implemented by MHD (document exchange) and IPA (resource exchange). D8.1 data content profiles are implemented by HL7 EU Priority Category IGs and HL7 EU Core Resources." %}
 </div>
 
 #### D8.1 Conformance Paths

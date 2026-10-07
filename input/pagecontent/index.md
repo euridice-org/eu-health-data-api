@@ -34,6 +34,22 @@ This IG does not define clinical data models. Separate Content IGs maintained by
 
 This IG excludes ePrescription and eDispensation workflow transactions, user-level authorization, audit logging formats, and bulk data export. See [Regulatory Anchors](regulatoryAnchors.html) for requirements traceability.
 
+### Conformance Language
+
+The uppercase key words in this IG have the meanings defined in [RFC 2119][rfc2119],
+as clarified by [RFC 8174][rfc8174] (BCP 14). These meanings apply only when
+the keywords appear in uppercase.
+
+- **SHALL** states an absolute requirement.
+- **SHOULD** and **RECOMMENDED** express a recommendation. Valid reasons may
+  justify a departure in particular circumstances, after the implications are
+  understood and carefully weighed. **RECOMMENDED** has the same strength as
+  **SHOULD**.
+- **MAY** indicates that a choice is truly optional.
+
+[rfc2119]: https://www.rfc-editor.org/rfc/rfc2119
+[rfc8174]: https://www.rfc-editor.org/rfc/rfc8174
+
 ### Audience
 
 The intended audiences of this Implementation Guide are:
@@ -69,7 +85,7 @@ We define composite actors that inherit and combine actors defined in these exis
 At a high level, the following actors are specified:
 
 <div style="max-width: 80%; margin: 0 auto;">
-{% include img.html img="actors_overall.png" caption="Figure 1: Actor Overview" %}
+{% include img.html img="actors_overall.png" caption="Actor Overview" %}
 </div>
 
 ### Document Exchange Actors

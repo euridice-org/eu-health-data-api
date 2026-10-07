@@ -57,6 +57,18 @@ p, li {
 table.grid td {
   font-size: 13px;
 }
+
+body {
+  counter-reset: ig-figure;
+}
+
+figure.figure[data-section-number] {
+  counter-increment: ig-figure;
+}
+
+figcaption.figure-caption[data-section-number]::before {
+  content: "Figure " attr(data-section-number) "-" counter(ig-figure) ": ";
+}
 h1, h2, h3, h4, h5, h6 {
   margin: 1em 0 0.4em 0;
   color: #2d457e;

@@ -20,7 +20,7 @@ This IG defines the Interoperability Component API surface the access service us
 
 ### Authorization
 
-The patient's identity and authorization are established at the access service. At the Interoperability Component API surface, the consumer is an authorized system-to-system caller; the mechanism is described in [Authorization](authorization.html). Patient consent preferences and app-linking rules are established by the access service or Member State infrastructure; this IG describes only the EHR-facing system-to-system exchange.
+The patient's identity and authorization are established at the access service. At the Interoperability Component API surface, the access service acts as the [EU Authorization Client](ActorDefinition-eu-authorization-client-eu-api.html), and the protected EHR endpoint acts as the [EU Authorization Resource Server](ActorDefinition-eu-authorization-resource-server-eu-api.html). The [EU Authorization Server](ActorDefinition-eu-authorization-server-eu-api.html) is a distinct participant. The selected protocol and flow for the EHR-facing exchange are described in [Authorization](authorization.html). Patient consent preferences and app-linking rules remain the responsibility of the access service or Member State infrastructure.
 
 ### Art. 5: Insertion of Patient-Provided Data (Informative)
 

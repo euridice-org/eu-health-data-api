@@ -26,6 +26,9 @@
 <artifact id="CapabilityStatement/resource-access-provider-eu-api" key="CapabilityStatement-EEHRxF-ResourceAccessProvider" name="EEHRxF Resource Access Provider CapabilityStatement"/>
 <artifact id="ActorDefinition/resource-consumer-actor-eu-api" key="ActorDefinition-EEHRxF-ResourceConsumer-Actor" name="EEHRxF Resource Consumer"/>
 <artifact id="CapabilityStatement/resource-consumer-eu-api" key="CapabilityStatement-EEHRxF-ResourceConsumer" name="EEHRxF Resource Consumer CapabilityStatement"/>
+<artifact id="ActorDefinition/eu-authorization-client-eu-api" key="ActorDefinition-eu-authorization-client-eu-api" name="EU Authorization Client"/>
+<artifact id="ActorDefinition/eu-authorization-resource-server-eu-api" key="ActorDefinition-eu-authorization-resource-server-eu-api" name="EU Authorization Resource Server"/>
+<artifact id="ActorDefinition/eu-authorization-server-eu-api" key="ActorDefinition-eu-authorization-server-eu-api" name="EU Authorization Server"/>
 <artifact id="DocumentReference/example-documentreference-eps" key="DocumentReference-ExampleDocumentReferenceEPS" name="Example - European Patient Summary DocumentReference"/>
 <artifact id="DocumentReference/example-documentreference-hdr" key="DocumentReference-ExampleDocumentReferenceHDR" name="Example - Hospital Discharge Report DocumentReference"/>
 <artifact id="DocumentReference/example-documentreference-imaging-report" key="DocumentReference-ExampleDocumentReferenceImagingReport" name="Example - Imaging Report DocumentReference"/>

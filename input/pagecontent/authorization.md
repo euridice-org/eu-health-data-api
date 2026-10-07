@@ -53,23 +53,15 @@ presentation format, credential schema, or Wallet-to-Authorization-Server profil
 applicable eIDAS assurance, health-professional status, and local authorization policy remain
 separate from the OAuth grant and access-token scopes.
 
-<div>
-  <figure class="figure">
-    {% include authorization-eidas-sequence.svg %}
-    <figcaption class="figure-caption"><strong>eIDAS authentication in an authorization flow</strong></figcaption>
-  </figure>
-</div>
+{% include img.html svg="authorization-eidas-sequence.svg"
+    caption="eIDAS authentication in an authorization flow" %}
 
 ### Environment-Specific Requirements
 
 The figure below described the European interoperability landscape.
 
-<div>
-  <figure class="figure">
-    {% include EHDS-overview.drawio.svg %}
-    <figcaption class="figure-caption"><em>Figure: European Interoperability Landscape</em></figcaption>
-  </figure>
-</div>
+{% include img.html svg="EHDS-overview.drawio.svg"
+    caption="European Interoperability Landscape" %}
 
 Within this box, the white/grey boxes represents different environments. The authorization requirements in this
 specification are environment specific. The different environment used are :
@@ -90,13 +82,19 @@ IHE IUA is recommended for MyHealth@EU. This IG gives no additional explicit aut
 
 #### National Interoperability Infrastructure
 
-IHE IUA is recommended where the established national environment preconfigures the participants and requires user or patient claims. Those are IUA token claims, not OAuth scopes. The applicable IUA actors, transaction scopes, and metadata are selected by the deployed MHD transactions.
+IHE IUA is RECOMMENDED where the established national environment preconfigures the participants and requires user or patient claims. Those are IUA token claims, not OAuth scopes. The applicable IUA actors, transaction scopes, and metadata are selected by the deployed MHD transactions.
 
 #### Wellness Applications
 
-Wellness Applications SHALL use SMART. A Wellness Application connecting to a Health Data Access Service (HDAS) SHALL use SMART App Launch, with the authorization endpoint discovered from the FHIR endpoint. A preconfigured, server-side Wellness Application connecting to a provider-hosted EHR MAY use SMART Backend Services only when it is pre-authorized, uses asymmetric confidential-client authentication, and does not require runtime end-user authorization.
+Wellness Applications SHALL use SMART App Launch. 
 
-A clinician-launched Wellness Application SHALL use SMART App Launch, with the Wellness Application hosting the FHIR server from which the EHR retrieves information. It SHALL support current-patient launch context and use Clinician Access for EHR Launch, or Clinician Access for Standalone when not launched by an EHR. A patient-launched Wellness Application SHALL use SMART App Launch with the EHR as FHIR server, use the applicable Patient Access for EHR Launch or Patient Access for Standalone Apps capability set, and follow the applicable Argonaut Write successor for write workflows.
+A Wellness Application connecting to a Health Data Access Service (HDAS) SHALL use SMART App Launch. It is RECOMMENDED that it discovers  the authorization endpoint using the SMART App Launch discovery mechanism. As this app will access confidential information, it is RECOMMENDED to use the confidential client profile.
+
+A clinician-launched Wellness Application SHALL use SMART App Launch. It is RECOMMENDED that the target if the launch is a FHIR server hosted by the Wellness Application allowsing the EHR to retrieve relevant information. The Wellness Application SHALL support current-patient launch context and use Clinician Access for EHR Launch, or Clinician Access for Standalone when not launched by an EHR. 
+
+A patient-launched Wellness Application typically will use SMART App Launch with the EHR as FHIR server, use the applicable Patient Access for EHR Launch or Patient Access for Standalone Apps capability set, and follow the applicable Argonaut Write successor for write workflows.
+
+A Wellness Application connecting to a preconfigured, server-side provider-hosted EHR-system SHOULD use SMART Backend Services. 
 
 #### Healthcare Provider
 

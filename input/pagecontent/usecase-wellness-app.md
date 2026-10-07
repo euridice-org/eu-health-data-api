@@ -19,6 +19,8 @@ responsibilities; an access token does not replace them.
 - **EHR system** — [Document Access Provider](actors.html#document-access-provider) and/or [Resource Access Provider](actors.html#resource-access-provider); may support the [Document Submission Option](actors.html#document-submission-option) for patient-written data
 - **Health data access service** — Patient-facing access service that may authenticate the patient, establish consent, and link the wellness application; outside this IG's scope
 
+For a protected API exchange, the consuming application has the [EU Authorization Client](ActorDefinition-eu-authorization-client-eu-api.html) role and the protected endpoint has the [EU Authorization Resource Server](ActorDefinition-eu-authorization-resource-server-eu-api.html) role. The [EU Authorization Server](ActorDefinition-eu-authorization-server-eu-api.html) remains distinct; detailed SMART roles and requirements are in [Authorization](authorization.html#wellness-applications).
+
 EHDS does not specify whether the wellness application sends data through the health data access service or directly to an EHR system after linkage and authorization have been established.
 
 #### Wellness Application Exchange Patterns
@@ -34,6 +36,10 @@ uses the applicable Clinician Access capability set and current-patient launch c
 preconfigured server-side wellness application MAY use Backend Services only when it is
 pre-authorized, uses asymmetric confidential-client authentication, and has no runtime
 end-user authorization.
+
+These flows use the generic EU Authorization Client, EU Authorization Server, and EU Authorization
+Resource Server roles; the applicable SMART App or SMART Backend Service and SMART server roles
+provide the protocol-specific conformance details.
 
 ### Accessing Patient Data
 

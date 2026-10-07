@@ -4,15 +4,7 @@ Provider-internal exchange describes how a healthcare provider can use the same 
 
 This page is informative. EHDS does not dictate how a provider exchanges data internally. Healthcare providers already use many interoperability standards and local integration patterns that are not covered here. This page does not model all provider-internal exchange; it focuses on where the Interoperability Component capabilities defined in this IG can be used within a healthcare provider environment to **support** internal exchange.
 
-<div>
-  <figure class="figure">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 816 442" class="figure-img img-responsive img-rounded center-block" style="max-width:80%; height:auto;" role="img" >
-      <image href="usecase-provider-internal-exchange.drawio.svg" width="816" height="442" preserveAspectRatio="xMidYMid meet" />
-    </svg>
-    <figcaption class="figure-caption"><em>Figure: Provider-Internal Exchange</em></figcaption>
-  </figure>
-  <p></p>
-</div>
+{% include img.html img="usecase-provider-internal-exchange.drawio.svg" caption="Provider-Internal Exchange" width="80%" %}
 
 A healthcare provider commonly deploys multiple EHR systems. Those systems may expose document or resource access directly, or the provider may use a gateway, facade, aggregator, or registry-style deployment to present a single EHR system boundary. See [EHR System Composition Patterns](ehr-system-composition.html).
 
@@ -42,7 +34,8 @@ Considerations related to this environment include:
 
 * Authorization
   * The Healthcare Provider environment SHALL use SMART. Gateway system-to-system uploads use SMART Backend Services; interactive clinician access uses SMART App Launch with the applicable Clinician Access capability set.
-  * A protected Document/Resource Access Provider is a SMART FHIR Resource Server. Its Authorization Server is independent and MAY be co-located or organization-level.
+  * A protected Document/Resource Access Provider has the [EU Authorization Resource Server](ActorDefinition-eu-authorization-resource-server-eu-api.html) role, realized as a SMART FHIR Resource Server. The consuming EHR system has the [EU Authorization Client](ActorDefinition-eu-authorization-client-eu-api.html) role, realized as a SMART Backend Service or SMART App according to the flow.
+  * The [EU Authorization Server](ActorDefinition-eu-authorization-server-eu-api.html) is independent and MAY be co-located or organization-level. SMART-specific requirements are in [Authorization](authorization.html#healthcare-provider).
   * EHR systems are **not** required to use eIDAS wallet-based authorization for provider-internal exchange.
 
 * Patient Identity

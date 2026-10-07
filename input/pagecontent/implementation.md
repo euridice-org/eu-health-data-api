@@ -6,8 +6,7 @@ This page provides *informative* guidance for how EHR systems supporting the Int
 
 The diagram below shows the EHDS actors and the boundaries between them. The blue boxes represent use cases: contexts where the API surface of the Interoperability Component is deployed or consumed.
 
-<div>
-  <figure class="figure">
+{% capture landscape_figure %}
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 816 442" class="figure-img img-responsive img-rounded center-block" style="max-width:100%; height:auto;" role="img" aria-labelledby="ehds-overview-title ehds-overview-desc">
       <title id="ehds-overview-title">European Interoperability Landscape</title>
       <desc id="ehds-overview-desc">Overview diagram of the European interoperability landscape, showing deployment scenarios with links to related implementation pages.</desc>
@@ -26,10 +25,8 @@ The diagram below shows the EHDS actors and the boundaries between them. The blu
       <a href="usecase-wellness-app.html"><title>Wellness (HDAS)</title><rect x="446" y="339" width="99" height="22" fill="transparent" pointer-events="all" /></a>
       <a href="usecase-wellness-app.html"><title>Wellness (Direct)</title><rect x="305" y="384" width="88" height="32" fill="transparent" pointer-events="all" /></a>
     </svg>
-    <figcaption class="figure-caption"><em>Figure: European Interoperability Landscape</em></figcaption>
-  </figure>
-  <p></p>
-</div>
+{% endcapture %}
+{% include img.html content=landscape_figure caption="European Interoperability Landscape" %}
 
 The figure shows different elements:
 * **Environments** (white/grey boxes), different environments within the European interoperability landscape with specific rules and deployment options.
@@ -38,6 +35,8 @@ The figure shows different elements:
 * **Use cases** (blue boxes), contexts where the API surface of the Interoperability Component is deployed or consumed.
 
 This Implementation Guide describes the API surface of the EHDS Interoperability Component: document exchange, resource access, patient lookup, authorization, and document publication. The use cases outlined in this section show where the Interoperability Component can be deployed in the European interoperability landscape. Some use cases directly involve data exchange with EHRs; others indirectly make use of data that has previously been consumed via data exchange with EHRs.
+
+Authorization in these use cases is described using the generic [EU Authorization Client](ActorDefinition-eu-authorization-client-eu-api.html), [EU Authorization Server](ActorDefinition-eu-authorization-server-eu-api.html), and [EU Authorization Resource Server](ActorDefinition-eu-authorization-resource-server-eu-api.html) roles. Each flow's selected SMART or IHE IUA roles and detailed requirements are described in [Authorization](authorization.html).
 
 Each use case and environment might have its own rules and requirements, which are outside the scope of this Implementation Guide; here, we focus on how the Interoperability Component as described in this Implementation Guide can **support** actors across the use cases.
 

@@ -24,6 +24,64 @@ for technical requirements.
 * type = #system
 * capabilities = Canonical(document-publisher-eu-api)
 
+Instance: eu-authorization-client-eu-api
+InstanceOf: ActorDefinition
+Title: "EU Authorization Client"
+Usage: #definition
+Description: """
+The EU Authorization Client obtains an access token from the selected Authorization Server
+and presents it to a protected API. Client authentication, grants, scopes, discovery, and
+launch context depend on the selected environment and protocol; public SMART interactive
+clients do not authenticate at the token endpoint. This generic role does not by itself
+claim IHE IUA or SMART conformance. See the applicable [IHE IUA Authorization Client](https://profiles.ihe.net/ITI/IUA/index.html#34111-authorization-client),
+[SMART App](ActorDefinition-smart-app-eu-api.html), or [SMART Backend Service](ActorDefinition-smart-backend-service-eu-api.html)
+definition and the relevant [Authorization](authorization.html) requirements.
+"""
+* name = "EuAuthorizationClientEuApi"
+* title = "EU Authorization Client"
+* status = #active
+* experimental = false
+* type = #system
+
+Instance: eu-authorization-server-eu-api
+InstanceOf: ActorDefinition
+Title: "EU Authorization Server"
+Usage: #definition
+Description: """
+The EU Authorization Server issues access tokens after applying the authentication and
+authorization requirements of the selected environment and protocol. Client assertion
+validation applies only when the selected flow uses asymmetric client authentication. The
+Authorization Server remains responsibility-distinct from a Resource Server, including when
+the two are co-located. This generic role does not by itself claim IHE IUA or SMART conformance.
+See the applicable [IHE IUA Authorization Server](https://profiles.ihe.net/ITI/IUA/index.html#34112-authorization-server)
+or [SMART Authorization Server](ActorDefinition-smart-authorization-server-eu-api.html)
+definition and the relevant [Authorization](authorization.html) requirements.
+"""
+* name = "EuAuthorizationServerEuApi"
+* title = "EU Authorization Server"
+* status = #active
+* experimental = false
+* type = #system
+
+Instance: eu-authorization-resource-server-eu-api
+InstanceOf: ActorDefinition
+Title: "EU Authorization Resource Server"
+Usage: #definition
+Description: """
+The EU Authorization Resource Server hosts a protected API, validates or introspects access
+tokens as applicable, and enforces granted authorization and local policy. It does not issue
+access tokens or validate client assertions for an independent Authorization Server. This
+generic role does not by itself claim IHE IUA or SMART conformance. See the applicable
+[IHE IUA Resource Server](https://profiles.ihe.net/ITI/IUA/index.html#34113-resource-server)
+or [SMART FHIR Resource Server](ActorDefinition-smart-fhir-resource-server-eu-api.html)
+definition and the relevant [Authorization](authorization.html) requirements.
+"""
+* name = "EuAuthorizationResourceServerEuApi"
+* title = "EU Authorization Resource Server"
+* status = #active
+* experimental = false
+* type = #system
+
 Instance: document-access-provider-actor-eu-api
 InstanceOf: ActorDefinition
 Title: "EEHRxF Document Access Provider"

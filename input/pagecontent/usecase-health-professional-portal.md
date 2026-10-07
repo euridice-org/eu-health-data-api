@@ -22,4 +22,4 @@ The service may query EHR systems directly, through national infrastructure that
 
 ### Authorization
 
-The professional's identity and authorization are established at the access service. At the Interoperability Component API surface, the consumer is an authorized system-to-system caller; the mechanism — for example SMART Backend Services credentials issued by a national authorization server — is described in [Authorization](authorization.html).
+The professional's identity and authorization are established at the access service. At the Interoperability Component API surface, the access service acts as the [EU Authorization Client](ActorDefinition-eu-authorization-client-eu-api.html), and the protected EHR endpoint acts as the [EU Authorization Resource Server](ActorDefinition-eu-authorization-resource-server-eu-api.html). The [EU Authorization Server](ActorDefinition-eu-authorization-server-eu-api.html) is a distinct participant. The selected protocol and flow — for example SMART Backend Services where applicable — are described in [Authorization](authorization.html).

@@ -4,12 +4,7 @@ Document exchange using IHE MHD (Mobile Health Documents) transactions. This IG 
 
 For how different server backends (FHIR-native on-demand vs persisted/XDS-bridge) implement these transactions, see [Relationship to XDS/FHIR Document Sharing](background-xds-fhir.html).
 
-<div>
-<figure class="figure">
-<img src="docExchange_1.png" class="figure-img img-responsive img-rounded center-block" alt="Document Exchange Overview" style="width:50%">
-<figcaption class="figure-caption"><strong>Figure 11: Document Exchange Overview</strong></figcaption>
-</figure>
-</div>
+{% include img.html img="docExchange_1.png" caption="Document Exchange Overview" width="50%" %}
 
 ### Actors and Transactions
 
