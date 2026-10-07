@@ -29,8 +29,9 @@ The [EU Authorization Server](ActorDefinition-eu-authorization-server-eu-api.htm
 is a distinct participant.
 
 The technology for the EHR-facing exchange depends on its deployment environment.
-For MyHealth@EU, [IHE IUA](https://profiles.ihe.net/ITI/IUA/index.html) is
-recommended (see [environment guidance](authorization.html#myhealth-eu)). For
+For MyHealth@EU, authorization is outside this IG's scope; deployments should
+align with [IHE IUA](https://profiles.ihe.net/ITI/IUA/index.html), as noted in
+[environment guidance](authorization.html#myhealth-eu). For
 the [National Interoperability Infrastructure](authorization.html#national-interoperability-infrastructure),
 [IHE IUA](https://profiles.ihe.net/ITI/IUA/index.html) is recommended where
 participants are preconfigured and user or patient claims are needed. In

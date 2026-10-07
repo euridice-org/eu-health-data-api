@@ -62,11 +62,12 @@ body {
   counter-reset: ig-figure;
 }
 
-figure.figure[data-section-number] {
+figure.figure[data-section-number],
+.figure-caption-standalone[data-section-number] {
   counter-increment: ig-figure;
 }
 
-figcaption.figure-caption[data-section-number]::before {
+.figure-caption[data-section-number]::before {
   content: "Figure " attr(data-section-number) "-" counter(ig-figure) ": ";
 }
 h1, h2, h3, h4, h5, h6 {

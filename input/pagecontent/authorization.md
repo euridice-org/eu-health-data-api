@@ -66,7 +66,7 @@ The figure below described the European interoperability landscape.
 Within this box, the white/grey boxes represents different environments. The authorization requirements in this
 specification are environment specific. The different environment used are :
 
-- **MyHealth@EU:** established cross-border infrastructure. [IHE IUA](https://profiles.ihe.net/ITI/IUA/index.html) is recommended.
+- **MyHealth@EU:** authorization is outside the scope of this IG. Alignment with [IHE IUA](https://profiles.ihe.net/ITI/IUA/index.html) is recommended.
 - **National Interoperability Infrastructure:** established Member State infrastructure with
     preconfigured participants. [IHE IUA](https://profiles.ihe.net/ITI/IUA/index.html) is recommended where
     [user or patient claims](https://profiles.ihe.net/ITI/IUA/index.html#3714221-json-web-token-option) are needed.
@@ -80,8 +80,8 @@ specification are environment specific. The different environment used are :
 
 #### MyHealth@EU
 
-[IHE IUA](https://profiles.ihe.net/ITI/IUA/index.html) is recommended for MyHealth@EU.
-This IG gives no additional explicit authorization guidance for this environment.
+Authorization for MyHealth@EU is outside the scope of this IG. Deployments should align with
+[IHE IUA](https://profiles.ihe.net/ITI/IUA/index.html).
 
 #### National Interoperability Infrastructure
 
