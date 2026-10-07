@@ -77,6 +77,7 @@
 <page key="patient-match" name="Patient Lookup"/>
 <page key="priority-area-eps" name="Patient Summary (EPS)"/>
 <page key="priority-categories" name="Priority Categories"/>
+<page key="authorization-ticket-resolutions" name="Proposed Authorization Ticket Resolutions"/>
 <page key="usecase-provider-internal-exchange" name="Provider-Internal Exchange"/>
 <page deprecated="true" key="references" name="References"/>
 <page key="regulatoryAnchors" name="Regulatory Anchors"/>
