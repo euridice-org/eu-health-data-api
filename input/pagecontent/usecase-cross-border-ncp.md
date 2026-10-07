@@ -15,10 +15,29 @@ NCP-to-NCP exchange over MyHealth@EU is governed by the [NCPeH API specification
 
 ### Architecture
 
+```mermaid
+flowchart LR
+    Facility["Country B facility"]
+    subgraph NCPeH["NCPeH API"]
+        NCPB["NCP-B"]
+        Network["MyHealth@EU"]
+        NCPA["NCP-A"]
+    end
+    subgraph MemberState["MS choice"]
+        Infrastructure["National infrastructure"]
+    end
+    subgraph IG["This IG"]
+        EHR["EHR system"]
+    end
+
+    Facility --> NCPB
+    NCPB --> Network
+    Network --> NCPA
+    NCPA --> Infrastructure
+    Infrastructure --> EHR
 ```
-Country B facility → NCP-B → MyHealth@EU → NCP-A → National infrastructure →  EHR system
-                       └──── NCPeH API ────┘        └──── MS choice ────┘     └ This IG ┘
-```
+
+{% include figure-caption.html caption="Cross-border architecture" %}
 
 All layers exchange EEHRxF-formatted data.
 

@@ -12,7 +12,7 @@ alt Pre-authorized Backend Service
     App -> AS++: Token request
     App <-- AS--: Access token
 else Interactive user or patient launch
-    App -> AS++: Authorization request\n(authorization code)
+    App -> AS++: Authorization request
     AS -> eIDAS++: Authenticate user when required\nby the environment
     AS <-- eIDAS--: Authentication result / presentation
     note right of AS
