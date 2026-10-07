@@ -4,23 +4,6 @@ Member States across the European Union have diverse healthcare system architect
 
 This page describes the two primary national architectural patterns and how EHR systems fit within each. For how EHR systems are deployed internally within healthcare organizations, see [Use Case — Provider-Internal Exchange](usecase-provider-internal-exchange.html). For how EHR systems connect externally, see [Use Case — Cross-Organization via National Infrastructure](usecase-cross-org.html).
 
-### 4.0.1 The European Interoperability Landscape
-
-This section is the authorization environment classifier for this IG. It does not prescribe
-national infrastructure design.
-
-- **MyHealth@EU:** established cross-border infrastructure. IHE IUA is recommended.
-- **National Interoperability Infrastructure:** established Member State infrastructure with
-    preconfigured participants. IHE IUA is recommended where user or patient claims are needed.
-- **Wellness Applications:** patient or clinician applications connecting to health data access
-    services or EHR systems. SMART App Launch is required; SMART Backend Services is permitted
-    only for the separately defined pre-authorized server-to-server flow.
-- **Healthcare Provider:** internal clinical and gateway-facing deployments. SMART is required:
-    Backend Services applies to system-to-system uploads and interactive SMART App Launch applies
-    to clinician access.
-
-The resulting authorization requirements are defined in [Authorization](authorization.html).
-
 ### National Infrastructure is Out of Scope
 
 The EHDS Regulation places the obligation to build and operate national health data interoperability infrastructure on **Member States** (Arts 4, 12, 23). This IG defines the API surface at the EHR system boundary and provides informative examples of how it can be used across Member States. How Member States structure their national infrastructure is their decision; this IG does not prescribe it.

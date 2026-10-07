@@ -62,6 +62,28 @@ separate from the OAuth grant and access-token scopes.
 
 ### Environment-Specific Requirements
 
+The figure below described the European interoperability landscape.
+
+<div>
+  <figure class="figure">
+    {% include EHDS-overview.drawio.svg %}
+    <figcaption class="figure-caption"><em>Figure: European Interoperability Landscape</em></figcaption>
+  </figure>
+</div>
+
+Within this box, the white/grey boxes represents different environments. The authorization requirements in this
+specification are environment specific. The different environment used are :
+
+- **MyHealth@EU:** established cross-border infrastructure. IHE IUA is recommended.
+- **National Interoperability Infrastructure:** established Member State infrastructure with
+    preconfigured participants. IHE IUA is recommended where user or patient claims are needed.
+- **Wellness Applications:** patient or clinician applications connecting to health data access
+    services or EHR systems. SMART App Launch is required; SMART Backend Services is permitted
+    only for the separately defined pre-authorized server-to-server flow.
+- **Healthcare Provider:** internal clinical and gateway-facing deployments. SMART is required:
+    Backend Services applies to system-to-system uploads and interactive SMART App Launch applies
+    to clinician access.
+
 #### MyHealth@EU
 
 IHE IUA is recommended for MyHealth@EU. This IG gives no additional explicit authorization guidance for this environment.

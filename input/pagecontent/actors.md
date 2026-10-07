@@ -5,8 +5,8 @@ This is similar to the approach taken in the MHDS specification, but with a more
 ### Relevant Specifications:
 
 - Authorization
-  - [HL7 SMART App Launch 2.2](https://hl7.org/fhir/smart-app-launch/STU2.2/) - Defines interactive App Launch and Backend Services authorization for FHIR. The applicable mode is selected by environment and use case.
-  - [IHE IUA](https://profiles.ihe.net/ITI/IUA/index.html) - Defines authorization and access control actors and mechanisms. IUA is selected where required or recommended by the environment.
+  - [HL7 SMART App Launch 2.2](https://hl7.org/fhir/smart-app-launch/STU2.2/) - Defines Standalone, Launch and Backend Services authorization for FHIR. Whether SMART App Launch is required depends on the environment and use case.
+  - [IHE IUA](https://profiles.ihe.net/ITI/IUA/index.html) - Defines authorization and access control actors and mechanisms. Wether IUA is required depends on the environment and use case.
 - Patient Identity Matching
   - [IHE PDQm](https://profiles.ihe.net/ITI/PDQm/index.html) - Defines how a client can perform patient lookup given demographics against a server.
 - Document Exchange
@@ -22,23 +22,18 @@ This is similar to the approach taken in the MHDS specification, but with a more
 Document exchange is defined with 3 actors:
 
 <div style="text-align: center;">
-{% include img.html img="docExchange_1.png" caption="Figure 4: Document Exchange Actors" %}
+{% include img.html img="docExchange_1.drawio.svg" caption="Figure 4: Document Exchange Actors" %}
 </div>
 
-<a name="document-publisher"></a>
-1. **Document Publisher (client)** - Produces EEHRxF FHIR Documents, publishes those documents to a Document Access Provider. Can be grouped with Access Provider, in which case the publishing transactions are internalized.
-
-<a name="document-access-provider"></a>
-2. **Document Access Provider (server)** - Provides access to EEHRxF FHIR Documents by offering query APIs to Document Consumers. See **Document Submission Option** below for systems that accept document publication from external producers.
-
-<a name="document-consumer"></a>
-3. **Document Consumer (client)** - Consumes EEHRxF FHIR documents by querying a Document Access Provider.
+1. **Document Publisher (client)** <a name="document-publisher"></a>- Produces EEHRxF FHIR Documents, publishes those documents to a Document Access Provider. Can be grouped with Access Provider, in which case the publishing transactions are internalized.
+2. **Document Access Provider (server)**<a name="document-access-provider"></a> - Provides access to EEHRxF FHIR Documents by offering query APIs to Document Consumers. See **Document Submission Option** below for systems that accept document publication from external producers.
+3. **Document Consumer (client)**<a name="document-consumer"></a> - Consumes EEHRxF FHIR documents by querying a Document Access Provider.
 
 These composite actors inherit existing actors from the selected IUA or SMART authorization
 profile and from the PDQm and MHD specifications:
 
 <div style="text-align: center;">
-{% include img.html img="docExchange_2.png" caption="Figure 5: Document Exchange - Actor Groupings" %}
+{% include img.html img="docExchange_2.drawio.svg" caption="Figure 5: Document Exchange - Actor Groupings" %}
 </div>
 
 **Document Publisher**
@@ -103,7 +98,7 @@ This can be combined with content profiles defined by each EHDS Priority Categor
 It is also useful in many cases to transact with individual FHIR resources. For this purpose, two resource-based actors are defined:
 
 <div style="text-align: center;">
-{% include img.html img="resExchange_1.png" caption="Figure 6: Resource Exchange Actors" %}
+{% include img.html img="resExchange_1.drawio.svg" caption="Figure 6: Resource Exchange Actors" %}
 </div>
 
 
@@ -127,7 +122,7 @@ profile, PDQm, and [International Patient Access (IPA)](https://hl7.org/fhir/uv/
 specifications (with QEDm alignment where compatible):
 
 <div style="text-align: center;">
-{% include img.html img="resExchange_2.png" caption="Figure 7: Resource Access - Actor Groupings" %}
+{% include img.html img="resExchange_2.drawio.svg" caption="Figure 7: Resource Access - Actor Groupings" %}
 </div>
 
 **Resource Access Provider**
@@ -171,15 +166,15 @@ sequenceDiagram
 
 
 <div style="text-align: center;">
-{% include img.html img="ExGroup_Doc.png" caption="Figure 8: Example Grouping - Document" %}
+{% include img.html img="ExGroup_Doc.drawio.svg" caption="Figure 8: Example Grouping - Document" %}
 </div>
 
 <div style="text-align: center;">
-{% include img.html img="ExGroup_Group.png" caption="Figure 9: Example Grouping - Group" %}
+{% include img.html img="ExGroup_Group.drawio.svg" caption="Figure 9: Example Grouping - Group" %}
 </div>
 
 <div style="text-align: center;">
-{% include img.html img="ExGroup_DocAssembly.png" caption="Figure 10: Example Grouping - Document Assembly from Distributed Resources" %}
+{% include img.html img="ExGroup_DocAssembly.drawio.svg" caption="Figure 10: Example Grouping - Document Assembly from Distributed Resources" %}
 </div>
 
 
