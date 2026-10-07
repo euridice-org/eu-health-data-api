@@ -26,6 +26,7 @@ allows clients to implement targeted use cases without requiring support for all
 - Practitioner, Organization: Reference resolution
 - Condition, AllergyIntolerance: Patient safety data
 - Observation, DiagnosticReport: Clinical results
+- ImagingStudy: Imaging results
 - MedicationRequest, MedicationDispense, MedicationStatement: Medication data
 - Immunization: Vaccination records
 - Encounter: Visit context
@@ -43,7 +44,7 @@ Consumers SHOULD expect resources conforming to EU Core profiles where available
 * title = "EEHRxF Resource Consumer CapabilityStatement"
 * status = #active
 * experimental = false
-* date = "2026-02-02"
+* date = "2026-09-28"
 * publisher = "HL7 Europe"
 * kind = #requirements
 * fhirVersion = #4.0.1
@@ -83,6 +84,7 @@ Clients SHALL request scopes for the resources they need:
 - system/AllergyIntolerance.rs (if AllergyIntolerance needed)
 - system/Observation.rs (if Observation needed)
 - system/DiagnosticReport.rs (if DiagnosticReport needed)
+- system/ImagingStudy.rs (if ImagingStudy needed)
 - system/MedicationRequest.rs (if MedicationRequest needed)
 - system/MedicationDispense.rs (if MedicationDispense needed)
 - system/Immunization.rs (if Immunization needed)
@@ -438,6 +440,37 @@ Clients MAY omit this resource based on their needs.
 * rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
 * rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHOULD
 * rest[=].resource[=].searchParam[=].documentation = "The status of the report"
+
+// ============================================================================
+// ImagingStudy Resource - Imaging Results (Optional)
+// ============================================================================
+* rest[=].resource[+].type = #ImagingStudy
+* rest[=].resource[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].extension[=].valueCode = #SHOULD
+* rest[=].resource[=].documentation = """
+ImagingStudy resources represent imaging studies available for a patient. Consumers SHOULD
+expect resources conforming to the HL7 Europe Imaging ImagingStudy profile
+(http://hl7.eu/fhir/imaging/StructureDefinition/ImagingStudyEuImaging).
+If supported, clients SHALL support search by patient.
+Clients MAY omit this resource based on their needs.
+"""
+
+* rest[=].resource[=].interaction[+].code = #read
+* rest[=].resource[=].interaction[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].interaction[=].extension[=].valueCode = #SHALL
+* rest[=].resource[=].interaction[=].documentation = "Read ImagingStudy by logical ID"
+
+* rest[=].resource[=].interaction[+].code = #search-type
+* rest[=].resource[=].interaction[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].interaction[=].extension[=].valueCode = #SHALL
+* rest[=].resource[=].interaction[=].documentation = "Search for ImagingStudy resources"
+
+* rest[=].resource[=].searchParam[+].name = "patient"
+* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/clinical-patient"
+* rest[=].resource[=].searchParam[=].type = #reference
+* rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHALL
+* rest[=].resource[=].searchParam[=].documentation = "The patient the imaging study is about (SHALL support)"
 
 // ============================================================================
 // MedicationRequest Resource - Medication Orders and Prescriptions (Optional)
