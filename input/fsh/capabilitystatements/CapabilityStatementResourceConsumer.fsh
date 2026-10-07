@@ -34,7 +34,10 @@ environment and use case. The Authorization Server is a separate participant; se
 
 * rest[=].security.description = """
 This abstract requirements statement does not advertise a fixed security service. A concrete
-deployment SHALL select the protocol required for its environment and advertise only that service.
+deployment SHALL declare exactly one security-service coding from the [EU Health Data API
+Authorization Security Service ValueSet](ValueSet-eu-api-authorization-security-service.html),
+selected for its environment. It SHALL NOT advertise both services unless a future profile defines
+dual conformance.
 
 ### IHE IUA
 

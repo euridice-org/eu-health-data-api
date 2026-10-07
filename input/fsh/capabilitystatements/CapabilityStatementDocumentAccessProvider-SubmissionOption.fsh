@@ -33,7 +33,10 @@ embedded document, making them available via ITI-67 and ITI-68.
 
 * rest[=].security.description = """
 This abstract requirements option does not advertise a fixed security service. A concrete deployment
-inherits the protocol selected for the base Document Access Provider and advertises only that service.
+inherits the protocol selected for the base Document Access Provider and SHALL declare exactly one
+security-service coding from the [EU Health Data API Authorization Security Service ValueSet](ValueSet-eu-api-authorization-security-service.html),
+selected for its environment. It SHALL NOT advertise both services unless a future profile defines
+dual conformance.
 
 For SMART Backend Services, the additional scope is `system/DocumentReference.c`. For interactive
 SMART, use the corresponding `patient/DocumentReference.c` or `user/DocumentReference.c` scope when

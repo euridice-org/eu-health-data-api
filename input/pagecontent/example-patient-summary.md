@@ -8,7 +8,7 @@ A patient presents to a care provider, but his data is in another system. The cu
 
 - **[Document Consumer](actors.html#document-consumer)** - The healthcare provider's system acting as the [EU Authorization Client](ActorDefinition-eu-authorization-client-eu-api.html), with the selected SMART or IUA protocol role
 - **[Document Access Provider](actors.html#document-access-provider)** - The system holding the patient's health data and acting as the [EU Authorization Resource Server](ActorDefinition-eu-authorization-resource-server-eu-api.html)
-- **[EU Authorization Server](ActorDefinition-eu-authorization-server-eu-api.html)** - Issues the access token under the selected protocol and remains distinct from the Document Access Provider; optional co-location is a deployment choice
+- **[EU Authorization Server](ActorDefinition-eu-authorization-server-eu-api.html)** - Issues the access token under the selected protocol and remains distinct from the Document Access Provider; optional co-location is a deployment choice.
 
 ### Prerequisites
 
@@ -18,36 +18,10 @@ A patient presents to a care provider, but his data is in another system. The cu
 
 ### Sequence Diagram
 
-```mermaid
-sequenceDiagram
-    participant Consumer as Document Consumer (EU Authorization Client)
-    participant AuthZ as EU Authorization Server
-    participant Provider as Document Access Provider (EU Authorization Resource Server)
+{% include img.html svg="patient-summary-auth-sequence.svg"
+  caption="<a href='https://hl7.org/fhir/smart-app-launch/STU2.2/backend-services.html'>SMART Backend Services</a> or <a href='https://profiles.ihe.net/ITI/IUA/index.html'>IHE IUA</a> authorization sequence" %}
 
-    rect rgb(240, 248, 255)
-    Note over Consumer,AuthZ: Authorization (SMART Backend Services)
-    Consumer->>Provider: GET /metadata
-    Provider-->>Consumer: CapabilityStatement
-    Consumer->>AuthZ: POST /auth/token (JWT assertion)
-    AuthZ-->>Consumer: access_token
-    end
-
-    rect rgb(240, 255, 240)
-    Note over Consumer,Provider: Patient Lookup (PDQm ITI-78)
-    Consumer->>Provider: GET /Patient?identifier=...
-    Provider-->>Consumer: Patient Bundle
-    end
-
-    rect rgb(255, 248, 240)
-    Note over Consumer,Provider: Document Exchange (MHD ITI-67, ITI-68)
-    Consumer->>Provider: GET /DocumentReference?patient=...&type=60591-5
-    Provider-->>Consumer: DocumentReference Bundle
-    Consumer->>Provider: GET [DocumentReference.content.attachment.url]
-    Provider-->>Consumer: Patient Summary (FHIR Document)
-    end
-```
-
-*Note: The Authorization Server is a separate participant and MAY be co-located with the Document Access Provider as an optional deployment choice. The sequence shows the SMART Backend Services flow described below.*
+*Note: The Authorization Server is a separate participant and MAY be co-located with the Document Access Provider as an optional deployment choice. The diagram contrasts SMART Backend Services and IHE IUA authorization; the steps below describe SMART Backend Services.*
 
 ### Step-by-Step Flow
 

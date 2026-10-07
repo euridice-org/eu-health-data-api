@@ -29,6 +29,8 @@
 <artifact id="ActorDefinition/eu-authorization-client-eu-api" key="ActorDefinition-eu-authorization-client-eu-api" name="EU Authorization Client"/>
 <artifact id="ActorDefinition/eu-authorization-resource-server-eu-api" key="ActorDefinition-eu-authorization-resource-server-eu-api" name="EU Authorization Resource Server"/>
 <artifact id="ActorDefinition/eu-authorization-server-eu-api" key="ActorDefinition-eu-authorization-server-eu-api" name="EU Authorization Server"/>
+<artifact id="ValueSet/eu-api-authorization-security-service" key="ValueSet-eu-api-authorization-security-service" name="EU Health Data API Authorization Security Service ValueSet"/>
+<artifact id="StructureDefinition/eu-api-deployment-capabilitystatement" key="StructureDefinition-eu-api-deployment-capabilitystatement" name="EU Health Data API Deployment CapabilityStatement"/>
 <artifact id="DocumentReference/example-documentreference-eps" key="DocumentReference-ExampleDocumentReferenceEPS" name="Example - European Patient Summary DocumentReference"/>
 <artifact id="DocumentReference/example-documentreference-hdr" key="DocumentReference-ExampleDocumentReferenceHDR" name="Example - Hospital Discharge Report DocumentReference"/>
 <artifact id="DocumentReference/example-documentreference-imaging-report" key="DocumentReference-ExampleDocumentReferenceImagingReport" name="Example - Imaging Report DocumentReference"/>

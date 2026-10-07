@@ -20,7 +20,33 @@ This IG defines the Interoperability Component API surface the access service us
 
 ### Authorization
 
-The patient's identity and authorization are established at the access service. At the Interoperability Component API surface, the access service acts as the [EU Authorization Client](ActorDefinition-eu-authorization-client-eu-api.html), and the protected EHR endpoint acts as the [EU Authorization Resource Server](ActorDefinition-eu-authorization-resource-server-eu-api.html). The [EU Authorization Server](ActorDefinition-eu-authorization-server-eu-api.html) is a distinct participant. The selected protocol and flow for the EHR-facing exchange are described in [Authorization](authorization.html). Patient consent preferences and app-linking rules remain the responsibility of the access service or Member State infrastructure.
+The patient's identity and authorization are established at the access service.
+At the Interoperability Component API surface, the access service acts as the
+[EU Authorization Client](ActorDefinition-eu-authorization-client-eu-api.html),
+and the protected EHR endpoint acts as the
+[EU Authorization Resource Server](ActorDefinition-eu-authorization-resource-server-eu-api.html).
+The [EU Authorization Server](ActorDefinition-eu-authorization-server-eu-api.html)
+is a distinct participant.
+
+The technology for the EHR-facing exchange depends on its deployment environment.
+For MyHealth@EU, [IHE IUA](https://profiles.ihe.net/ITI/IUA/index.html) is
+recommended (see [environment guidance](authorization.html#myhealth-eu)). For
+the [National Interoperability Infrastructure](authorization.html#national-interoperability-infrastructure),
+[IHE IUA](https://profiles.ihe.net/ITI/IUA/index.html) is recommended where
+participants are preconfigured and user or patient claims are needed. In
+[Wellness Applications](authorization.html#wellness-applications) and
+[Healthcare Provider](authorization.html#healthcare-provider) environments,
+[SMART](https://hl7.org/fhir/smart-app-launch/STU2.2/) is required. Use
+[SMART App Launch](https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html)
+when a clinician or patient must authorize the EHR-facing request at runtime. A
+server-side exchange may use
+[SMART Backend Services](https://hl7.org/fhir/smart-app-launch/STU2.2/backend-services.html#use-this-profile-when-the-following-conditions-all-apply)
+only when the client is pre-authorized, uses asymmetric confidential-client
+authentication, and requires no runtime end-user authorization. This use case
+does not select one environment, so the applicable protocol and flow must be
+determined for the deployment; see [Authorization](authorization.html). Patient
+consent preferences and app-linking rules remain the responsibility of the access
+service or Member State infrastructure.
 
 ### Art. 5: Insertion of Patient-Provided Data (Informative)
 

@@ -33,7 +33,10 @@ see [Authorization](authorization.html#environment-specific-requirements).
 
 * rest[=].security.description = """
 This abstract requirements statement does not advertise a fixed security service. A concrete
-deployment SHALL select the protocol required for its environment and advertise only that service.
+deployment SHALL declare exactly one security-service coding from the [EU Health Data API
+Authorization Security Service ValueSet](ValueSet-eu-api-authorization-security-service.html),
+selected for its environment. It SHALL NOT advertise both services unless a future profile defines
+dual conformance.
 The Resource Server validates access tokens and granted authorization; the independent Authorization
 Server performs token issuance and any client-assertion validation.
 

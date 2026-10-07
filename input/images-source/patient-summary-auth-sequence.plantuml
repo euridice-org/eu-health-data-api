@@ -1,0 +1,32 @@
+@startuml patient-summary-auth-sequence
+skinparam svgDimensionStyle false
+
+participant "Document Consumer (EU Authorization Client)" as Consumer
+participant "EU Authorization Server" as AuthZ
+participant "Document Access Provider (EU Authorization Resource Server)" as Provider
+
+Consumer -> Provider: GET /metadata
+Provider --> Consumer: CapabilityStatement
+
+alt 
+else SMART Backend Services
+    Consumer -> Provider: GET /.well-known/smart-configuration
+    Provider --> Consumer: SMART endpoints and capabilities
+    Consumer -> AuthZ: POST token_endpoint\nclient_credentials + signed JWT assertion
+    AuthZ --> Consumer: access_token
+else IHE IUA
+    note over Consumer, AuthZ: Authorization Server location is preconfigured
+    Consumer -> AuthZ: Request access token\nIUA client authentication + ITI-67 and ITI-68 scopes
+    AuthZ --> Consumer: access_token + selected claims
+end
+
+note over Consumer, Provider: Patient Lookup (PDQm ITI-78)
+Consumer -> Provider: GET /Patient?identifier=...
+Provider --> Consumer: Patient Bundle
+
+note over Consumer, Provider: Document Exchange (MHD ITI-67, ITI-68)
+Consumer -> Provider: GET /DocumentReference?patient=...&type=60591-5
+Provider --> Consumer: DocumentReference Bundle
+Consumer -> Provider: GET [DocumentReference.content.attachment.url]
+Provider --> Consumer: Patient Summary (FHIR Document)
+@enduml

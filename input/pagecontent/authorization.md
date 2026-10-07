@@ -66,55 +66,78 @@ The figure below described the European interoperability landscape.
 Within this box, the white/grey boxes represents different environments. The authorization requirements in this
 specification are environment specific. The different environment used are :
 
-- **MyHealth@EU:** established cross-border infrastructure. IHE IUA is recommended.
+- **MyHealth@EU:** established cross-border infrastructure. [IHE IUA](https://profiles.ihe.net/ITI/IUA/index.html) is recommended.
 - **National Interoperability Infrastructure:** established Member State infrastructure with
-    preconfigured participants. IHE IUA is recommended where user or patient claims are needed.
+    preconfigured participants. [IHE IUA](https://profiles.ihe.net/ITI/IUA/index.html) is recommended where
+    [user or patient claims](https://profiles.ihe.net/ITI/IUA/index.html#3714221-json-web-token-option) are needed.
 - **Wellness Applications:** patient or clinician applications connecting to health data access
-    services or EHR systems. SMART App Launch is required; SMART Backend Services is permitted
-    only for the separately defined pre-authorized server-to-server flow.
-- **Healthcare Provider:** internal clinical and gateway-facing deployments. SMART is required:
-    Backend Services applies to system-to-system uploads and interactive SMART App Launch applies
+    services or EHR systems. [SMART App Launch](https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html)
+    is required; [SMART Backend Services](https://hl7.org/fhir/smart-app-launch/STU2.2/backend-services.html#profile-audience-and-scope)
+    is permitted only for the separately defined pre-authorized server-to-server flow.
+- **Healthcare Provider:** internal clinical and gateway-facing deployments. [SMART](https://hl7.org/fhir/smart-app-launch/STU2.2/) is required:
+    [Backend Services](https://hl7.org/fhir/smart-app-launch/STU2.2/backend-services.html#use-this-profile-when-the-following-conditions-all-apply) applies to system-to-system uploads and interactive [SMART App Launch](https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html) applies
     to clinician access.
 
 #### MyHealth@EU
 
-IHE IUA is recommended for MyHealth@EU. This IG gives no additional explicit authorization guidance for this environment.
+[IHE IUA](https://profiles.ihe.net/ITI/IUA/index.html) is recommended for MyHealth@EU.
+This IG gives no additional explicit authorization guidance for this environment.
 
 #### National Interoperability Infrastructure
 
-IHE IUA is RECOMMENDED where the established national environment preconfigures the participants and requires user or patient claims. Those are IUA token claims, not OAuth scopes. The applicable IUA actors, transaction scopes, and metadata are selected by the deployed MHD transactions.
+[IHE IUA](https://profiles.ihe.net/ITI/IUA/index.html) is RECOMMENDED where the established
+national environment preconfigures the participants and requires user or patient claims.
+Those are [IUA token claims](https://profiles.ihe.net/ITI/IUA/index.html#3714221-json-web-token-option), not OAuth scopes.
+The applicable [IUA actors](https://profiles.ihe.net/ITI/IUA/index.html#341-iua-actors-transactions-and-content-modules),
+[transaction scopes](https://profiles.ihe.net/ITI/IUA/index.html#3364-use-with-the-internet-user-authorization-iua-profile),
+and [metadata](https://profiles.ihe.net/ITI/IUA/index.html#3103-get-authorization-server-metadata-iti-103)
+are selected by the deployed MHD transactions.
 
 #### Wellness Applications
 
-Wellness Applications SHALL use SMART App Launch. 
+Wellness Applications SHALL use [SMART App Launch](https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html).
 
-A Wellness Application connecting to a Health Data Access Service (HDAS) SHALL use SMART App Launch. It is RECOMMENDED that it discovers  the authorization endpoint using the SMART App Launch discovery mechanism. As this app will access confidential information, it is RECOMMENDED to use the confidential client profile.
+A Wellness Application connecting to a Health Data Access Service (HDAS) SHALL
+use [SMART App Launch](https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html).
+It is RECOMMENDED that it discovers the authorization endpoint using the
+[SMART App Launch discovery mechanism](https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html#retrieve-well-known-smart-configuration).
+As this app will access confidential information, it is RECOMMENDED to use the
+[confidential client profile](https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html#support-for-public-and-confidential-apps).
 
-A clinician-launched Wellness Application SHALL use SMART App Launch. It is RECOMMENDED that the target if the launch is a FHIR server hosted by the Wellness Application allowsing the EHR to retrieve relevant information. The Wellness Application SHALL support current-patient launch context and use Clinician Access for EHR Launch, or Clinician Access for Standalone when not launched by an EHR. 
+A clinician-launched Wellness Application SHALL use
+[SMART App Launch EHR Launch](https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html#launch-app-ehr-launch).
+It is RECOMMENDED that the target if the launch is a FHIR server hosted by the
+Wellness Application allowsing the EHR to retrieve relevant information. The
+Wellness Application SHALL support [current-patient launch context](https://hl7.org/fhir/smart-app-launch/STU2.2/scopes-and-launch-context.html#apps-that-launch-from-the-ehr)
+and use [Clinician Access for EHR Launch](https://hl7.org/fhir/smart-app-launch/STU2.2/conformance.html#clinician-access-for-ehr-launch),
+or [Clinician Access for Standalone](https://hl7.org/fhir/smart-app-launch/STU2.2/conformance.html#clinician-access-for-standalone)
+when not launched by an EHR.
 
-A patient-launched Wellness Application typically will use SMART App Launch with the EHR as FHIR server, use the applicable Patient Access for EHR Launch or Patient Access for Standalone Apps capability set, and follow the applicable Argonaut Write successor for write workflows.
+A patient-launched Wellness Application typically will use
+[SMART App Launch](https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html)
+with the EHR as FHIR server, use the applicable [Patient Access for EHR Launch](https://hl7.org/fhir/smart-app-launch/STU2.2/conformance.html#capability-sets)
+or [Patient Access for Standalone Apps](https://hl7.org/fhir/smart-app-launch/STU2.2/conformance.html#patient-access-for-standalone-apps)
+capability set, and follow the applicable Argonaut Write successor for write workflows.
 
-A Wellness Application connecting to a preconfigured, server-side provider-hosted EHR-system SHOULD use SMART Backend Services. 
+A Wellness Application connecting to a preconfigured, server-side provider-hosted
+EHR-system SHOULD use [SMART Backend Services](https://hl7.org/fhir/smart-app-launch/STU2.2/backend-services.html#use-this-profile-when-the-following-conditions-all-apply).
 
 #### Healthcare Provider
 
-Healthcare Provider deployments SHALL use SMART. A system-to-system upload through a gateway to national infrastructure SHALL use SMART Backend Services. Interactive clinician access SHALL use SMART App Launch and select Clinician Access for Standalone or Clinician Access for EHR Launch according to launch mode. Each use case SHALL state the selected subset; this IG does not infer a backend profile for an interactive flow.
+Healthcare Provider deployments SHALL use [SMART App Launch](https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html).
 
-For every flow, the client, independent Authorization Server, Resource Server/FHIR server, user type, launch mode, data direction, and discovery model SHALL be identified. The authorization diagrams and use-case pages apply these selections; HDAS refers to the Health Data Access Service.
-
-The ActorDefinition and `kind = requirements` CapabilityStatement resources in this IG describe
-cross-environment requirements. Provider actors pair with the Resource Server role selected for the
-environment; consumers and other token-obtaining actors pair with the selected authorization-client
-role. These abstract CapabilityStatements do not advertise one fixed security-service coding. A
-concrete deployment CapabilityStatement SHALL advertise only its selected service: `SMART-on-FHIR`
-for SMART or the IHE `IUA` coding for IUA, unless a future profile explicitly defines dual
-conformance. The Resource Server role is implemented by the protected FHIR endpoint and remains
-distinct from the Authorization Server, including when both are co-located.
+A system-to-system uploading of EERxF data to a gateway in order to provide the information
+to the national infrastructure SHOULD use [SMART Backend Services](https://hl7.org/fhir/smart-app-launch/STU2.2/backend-services.html#use-this-profile-when-the-following-conditions-all-apply).
+Clinician webpages hosted by EHR systems SHALL use [SMART App Launch](https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html)
+utilizing the [Clinician Access for Standalone](https://hl7.org/fhir/smart-app-launch/STU2.2/conformance.html#clinician-access-for-standalone)
+or [Clinician Access for EHR Launch](https://hl7.org/fhir/smart-app-launch/STU2.2/conformance.html#clinician-access-for-ehr-launch)
+profiles according to systems requirements and deployment models.
 
 <a name="authorization-server-discovery"></a>
 <a name="get-access-token"></a>
 <a name="incorporate-access-token"></a>
 <a name="authorization-server-deployment"></a>
+
 ### SMART App Launch
 
 The SMART roles used by this IG are [SMART App](ActorDefinition-smart-app-eu-api.html), [SMART Backend Service](ActorDefinition-smart-backend-service-eu-api.html), [SMART FHIR Resource Server](ActorDefinition-smart-fhir-resource-server-eu-api.html), [SMART Authorization Server](ActorDefinition-smart-authorization-server-eu-api.html), and [SMART Launching System](ActorDefinition-smart-launching-system-eu-api.html). Registration and client-key exchange are out of band.

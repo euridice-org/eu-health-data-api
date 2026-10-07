@@ -30,12 +30,21 @@ EHDS does not specify whether the wellness application sends data through the he
 
 #### Authorizing Patient Data Exchange
 
-A wellness application acting for a patient SHALL use SMART App Launch. HDAS-linked access uses
-FHIR-endpoint SMART discovery and the applicable Patient Access capability set. Clinician launch
-uses the applicable Clinician Access capability set and current-patient launch context. A direct,
-preconfigured server-side wellness application MAY use Backend Services only when it is
-pre-authorized, uses asymmetric confidential-client authentication, and has no runtime
-end-user authorization.
+The [Wellness Applications section of Authorization](authorization.html#wellness-applications)
+defines the normative flow selection and conformance requirements. The relevant flows are:
+
+- **HDAS-linked access** SHALL use SMART App Launch. Discovering the authorization endpoint from
+	the FHIR endpoint and using a confidential-client profile are RECOMMENDED.
+- **Clinician-launched access** SHALL use SMART App Launch EHR Launch with current-patient context.
+	It is RECOMMENDED that the launch target be a FHIR server hosted by the Wellness Application so
+	the EHR can retrieve relevant information. Use Clinician Access for EHR Launch, or Clinician
+	Access for Standalone when not launched by an EHR.
+- **Patient-launched access** typically uses SMART App Launch with the EHR as FHIR server, allowing
+	information to be uploaded to the EHR. Select Patient Access for EHR Launch or Patient Access for
+	Standalone Apps as applicable; write workflows follow the applicable Argonaut Write successor.
+- **Preconfigured, server-side access to a provider-hosted EHR** SHOULD use SMART Backend Services
+	when its conditions all apply: pre-authorized access, asymmetric confidential-client
+	authentication, and no runtime end-user authorization.
 
 These flows use the generic EU Authorization Client, EU Authorization Server, and EU Authorization
 Resource Server roles; the applicable SMART App or SMART Backend Service and SMART server roles
