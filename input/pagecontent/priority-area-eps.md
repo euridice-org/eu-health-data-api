@@ -40,4 +40,4 @@ FHIR servers can assemble Patient Summary documents on demand from clinical reso
 GET /Patient/[id]/$summary
 ```
 
-A server can also expose the same on-demand Patient Summary through MHD. In that pattern, ITI-67 returns an on-demand DocumentReference whose `content.attachment.url` points to `Patient/[id]/$summary`. Per MHD on-demand semantics, the DocumentReference omits `content.attachment.hash` and `content.attachment.size`.
+A server can also expose the same on-demand Patient Summary through MHD: ITI-67 returns an on-demand DocumentReference whose `content.attachment.url` points to `Patient/[id]/$summary` (see [On-Demand Documents](document-exchange.html#on-demand-documents)).
