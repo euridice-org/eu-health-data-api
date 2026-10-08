@@ -53,6 +53,31 @@ presentation format, credential schema, or Wallet-to-Authorization-Server profil
 applicable eIDAS assurance, health-professional status, and local authorization policy remain
 separate from the OAuth grant and access-token scopes.
 
+Implementer notes on the EUDI Wallet:
+
+- **Binding sources.** The [ARF](https://eudi.dev/3.0.0/) is informative
+  ([§1.3](https://eudi.dev/3.0.0/main/01-introduction/#13-purpose-scope-and-audience)).
+  Binding rules come from the eIDAS Regulation and its implementing acts, notably
+  [2024/2982](https://eur-lex.europa.eu/eli/reg_impl/2024/2982/oj) (protocols and interfaces) and
+  [2025/848](https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=OJ%3AL_202500848) (Relying Party registration).
+  The ARF is not a legal basis for any requirement in this IG.
+- **User choice.** Using the Wallet to authenticate is at the User's
+  [voluntary request and limited to the minimum data necessary](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02014R0910-20241018#art_5f).
+  This does not relax the environment-conditioned requirement for electronic identification above.
+- **Relying Party role.** An Authorization Server is a Wallet Relying Party only if it
+  requests Wallet attributes. It then needs the registration and Wallet-facing
+  authentication required by the implementing acts above, and SHOULD verify device
+  binding where it relies on a PID or device-bound attestation.
+- **Protocol.** For remote presentation the ARF describes
+  [OpenID4VP with HAIP](https://eudi.dev/3.0.0/main/05-data-model-and-data-exchange-protocols/#574-remote-attestation-presentation-using-openid4vp-and-haip).
+  Level of Assurance High applies to PID, not to all attestations.
+- **Separation.** Wallet authentication, attribute-release approval (not a legal basis for
+  processing), and the service's own session are distinct. Mapping the result to a local
+  account or patient, and the authorization decision, remain deployment policy.
+- **SMART.** No Wallet-to-SMART profile exists. Treat the validated Wallet result as an upstream
+  authentication input, then continue the normal authorization-code flow with PKCE. A Wallet
+  presentation is not a SMART grant or access token and does not change scopes.
+
 {% include img.html svg="authorization-eidas-sequence.svg"
     caption="eIDAS authentication in an authorization flow" %}
 
