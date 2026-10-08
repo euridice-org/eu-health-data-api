@@ -4,7 +4,7 @@ being addressed. This is an editorial checklist, not additional conformance
 requirements.
 
 - [ ] Add a reference to https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202602099 as the source of the EIDAS wallet requirements
-- [ ] Add a comment to the Wellness App related section stating: "Wellness App - multiple countries => discover authorization server - as that is different per country"
+- [x] Add a comment to the Wellness App related section stating: "Wellness App - multiple countries => discover authorization server - as that is different per country"
 - [ ] Identify the authoritative released MyHealth@EU authorization and security documents, confirm the applicable deployment profile, and add only the references and requirements that apply to this IG's MyHealth@EU environment.
 - [ ] Review the authoritative eIDAS and European Digital Identity Wallet documents, including relevant implementing acts and technical specifications, and add references only where they establish an applicable API authorization or assurance requirement.
 - [ ] Reassess the EHDS Article 16 implementing acts when published, including any cross-border identification and authentication requirements for natural persons and health professionals.

@@ -95,10 +95,11 @@ are selected by the deployed MHD transactions.
 
 #### Wellness Applications
 
-Wellness Applications SHALL use [SMART App Launch](https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html).
+Many Wellness Applications will developed to work in different member states or with differnet HDAS deployments in a member state. This requires such applications to discover th authorization infrastruture for this HDAS. In order to support this use case, Wellness Applications SHALL use [SMART App Launch](https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html).
 
 A Wellness Application connecting to a Health Data Access Service (HDAS) SHALL
 use [SMART App Launch](https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html).
+
 It is RECOMMENDED that it discovers the authorization endpoint using the
 [SMART App Launch discovery mechanism](https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html#retrieve-well-known-smart-configuration).
 As this app will access confidential information, it is RECOMMENDED to use the
