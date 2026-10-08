@@ -177,7 +177,9 @@ GET /MedicationRequest?patient=123&status=active
 
 ### Resource Content
 
-Resources served through resource access SHOULD reflect the current state of the serving system's record, however that system came by the data (see the preconditions in [Resource Exchange Patterns](resourceExchange.html#current-scope)). A document represents the patient's data at a defined moment, so a resource and a document covering the same data are not necessarily identical: an on-demand document matches the resources it is assembled from only at the moment of assembly, and a persisted document represents a snapshot in time, while the resources move on (see [On-Demand Documents](document-exchange.html#on-demand-documents) for how to differentiate on-demand and persisted documents).
+Resources served through resource access SHOULD reflect the current state of the serving system's record. This data could have been received from any source: entered by the system's own users, queried from another system, extracted from a received document, or translated from another exchange format (see [Current Scope](resourceExchange.html#current-scope)).
+
+A resource and a document covering the same data are not necessarily identical. An [on-demand document](document-exchange.html#on-demand-documents) is assembled from current data when it is retrieved, so it should match the resource content at that moment. A [persistent document](document-exchange.html#on-demand-documents) represents a snapshot in time, so resource access can return more recent data different from what the document contains. For example, a Condition resolved after a discharge report was signed shows as resolved in a Condition search but stays active in the persistent discharge report document.
 
 ### Derived Resources
 <!--
