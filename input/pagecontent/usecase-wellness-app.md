@@ -8,10 +8,14 @@ Article 5 allows patients to insert information into their EHR through electroni
 
 ### Scope
 
+<div class="auth-change" markdown="1">
+
 This page is informative about the exchange workflow. Its authorization selection is normative:
 Wellness Applications SHALL use SMART as defined in [Authorization](authorization.html#wellness-applications).
 Patient identity, consent management, and eIDAS assurance remain deployment and Member State
 responsibilities; an access token does not replace them.
+
+</div>
 
 ### Participants
 
@@ -19,7 +23,11 @@ responsibilities; an access token does not replace them.
 - **EHR system** — [Document Access Provider](actors.html#document-access-provider) and/or [Resource Access Provider](actors.html#resource-access-provider); may support the [Document Submission Option](actors.html#document-submission-option) for patient-written data
 - **Health data access service** — Patient-facing access service that may authenticate the patient, establish consent, and link the wellness application; outside this IG's scope
 
+<div class="auth-change" markdown="1">
+
 For a protected API exchange, the consuming application has the [EU Authorization Client](ActorDefinition-eu-authorization-client-eu-api.html) role and the protected endpoint has the [EU Authorization Resource Server](ActorDefinition-eu-authorization-resource-server-eu-api.html) role. The [EU Authorization Server](ActorDefinition-eu-authorization-server-eu-api.html) remains distinct; detailed SMART roles and requirements are in [Authorization](authorization.html#wellness-applications).
+
+</div>
 
 EHDS does not specify whether the wellness application sends data through the health data access service or directly to an EHR system after linkage and authorization have been established.
 
@@ -29,6 +37,8 @@ EHDS does not specify whether the wellness application sends data through the he
 - **Direct EHR wellness integration** — a wellness application exchanges EEHRxF data directly with an EHR system under an authorization model accepted by that deployment. This IG does not require EHR systems to implement health data access service app-linking or national patient-consent workflows locally.
 
 #### Authorizing Patient Data Exchange
+
+<div class="auth-change" markdown="1">
 
 The [Wellness Applications section of Authorization](authorization.html#wellness-applications)
 defines the normative flow selection and conformance requirements. The relevant flows are:
@@ -46,9 +56,15 @@ defines the normative flow selection and conformance requirements. The relevant 
 	when its conditions all apply: pre-authorized access, asymmetric confidential-client
 	authentication, and no runtime end-user authorization.
 
+</div>
+
+<div class="auth-change" markdown="1">
+
 These flows use the generic EU Authorization Client, EU Authorization Server, and EU Authorization
 Resource Server roles; the applicable SMART App or SMART Backend Service and SMART server roles
 provide the protocol-specific conformance details.
+
+</div>
 
 ### Accessing Patient Data
 

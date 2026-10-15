@@ -278,6 +278,7 @@ The SMART Backend Service is a pre-authorized confidential server-side client us
 client credentials, asymmetric client authentication, and applicable system scopes.
 See [SMART Backend Services](https://hl7.org/fhir/smart-app-launch/STU2.2/backend-services.html)
 and [Authorization](authorization.html#smart-app-launch).
+
 """
 * name = "SmartBackendServiceEuApi"
 * title = "SMART Backend Service"

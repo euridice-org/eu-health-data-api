@@ -130,6 +130,8 @@ pages:
       title: Provider-Internal Exchange
     ehr-system-composition.md:
       title: EHR System Composition Patterns
+  artifacts-overview.md:
+    title: Artifacts Overview
   about.md:
     title: About
     contributors.md:
@@ -202,7 +204,9 @@ menu:
     Cross-Organization via National Infrastructure: usecase-cross-org.html
     Provider-Internal Exchange: usecase-provider-internal-exchange.html
     EHR System Composition Patterns: ehr-system-composition.html
-  Artifacts: artifacts.html
+  Artifacts:
+    Overview: artifacts-overview.html
+    All Artifacts: artifacts.html
   About: about.html
 
 #   Functional:

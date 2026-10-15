@@ -4,7 +4,7 @@ This CapabilityStatement defines the requirements for the EEHRxF Document Publis
 
 This composite actor groups the following roles:
 
-- The IUA Authorization Client, SMART App, or SMART Backend Service selected by the environment and use case
+- <span class="auth-change">The IUA Authorization Client, SMART App, or SMART Backend Service selected by the environment and use case</span>
 - [PDQm Patient Demographics Consumer](https://profiles.ihe.net/ITI/PDQm/volume-1.html)
 - [MHD Document Source](https://profiles.ihe.net/ITI/MHD/1331_actors_and_transactions.html)
 
@@ -18,7 +18,11 @@ This composite actor groups the following roles:
 
 ### Security
 
+<div class="auth-change" markdown="1">
+
 This requirements CapabilityStatement supports the IUA or SMART client role selected by the environment and use case. A deployment instance advertises only its selected protocol; see [Authorization](authorization.html#environment-specific-requirements).
+
+</div>
 
 ### Deployment
 

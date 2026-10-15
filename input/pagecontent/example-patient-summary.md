@@ -6,9 +6,13 @@ A patient presents to a care provider, but his data is in another system. The cu
 
 ### Actors
 
+<div class="auth-change" markdown="1">
+
 - **[Document Consumer](actors.html#document-consumer)** - The healthcare provider's system acting as the [EU Authorization Client](ActorDefinition-eu-authorization-client-eu-api.html), with the selected SMART or IUA protocol role
 - **[Document Access Provider](actors.html#document-access-provider)** - The system holding the patient's health data and acting as the [EU Authorization Resource Server](ActorDefinition-eu-authorization-resource-server-eu-api.html)
 - **[EU Authorization Server](ActorDefinition-eu-authorization-server-eu-api.html)** - Issues the access token under the selected protocol and remains distinct from the Document Access Provider; optional co-location is a deployment choice.
+
+</div>
 
 ### Prerequisites
 
@@ -21,7 +25,11 @@ A patient presents to a care provider, but his data is in another system. The cu
 {% include img.html svg="patient-summary-auth-sequence.svg"
   caption="<a href='https://hl7.org/fhir/smart-app-launch/STU2.2/backend-services.html'>SMART Backend Services</a> or <a href='https://profiles.ihe.net/ITI/IUA/index.html'>IHE IUA</a> authorization sequence" %}
 
+<div class="auth-change" markdown="1">
+
 *Note: The Authorization Server is a separate participant and MAY be co-located with the Document Access Provider as an optional deployment choice. The diagram contrasts SMART Backend Services and IHE IUA authorization; the steps below describe SMART Backend Services.*
+
+</div>
 
 ### Step-by-Step Flow
 
@@ -37,7 +45,11 @@ The CapabilityStatement confirms support for IHE MHD document exchange, PDQm pat
 
 #### Step 2: Obtain Authorization Token
 
+<div class="auth-change" markdown="1">
+
 The EU Authorization Client role is realized here by the SMART Backend Service. The Document Consumer requests an access token using SMART Backend Services ([Authorization](authorization.html#smart-app-launch)); the EU Authorization Server and EU Authorization Resource Server roles remain distinct.
+
+</div>
 
 ```
 POST https://provider.example.org/auth/token

@@ -14,6 +14,8 @@
   </div>
 </div>
 
+{% include worknote.html text="Work in progress: This build includes authorization-related changes being developed on the eu-health-data-api-ballot-recon-auth branch. They have been merged into this build to show progress and reduce the risk of larger merge conflicts later. Where practicable, authorization changes are marked in purple text with a vertical purple bar to the left." %}
+
 ### Regulatory Basis
 
 The European Health Data Space (EHDS) regulation describes an obligation for EHR systems to include an Interoperability Component that does the following:

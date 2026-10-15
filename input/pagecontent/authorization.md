@@ -1,4 +1,6 @@
 
+<div class="auth-change" markdown="1">
+
 ### Introduction
 
 Authentication and authorization are required by the EHDS. This IG applies [SMART App Launch 2.2](https://hl7.org/fhir/smart-app-launch/STU2.2/) and [IHE IUA Revision 2.5](https://profiles.ihe.net/ITI/IUA/index.html), as selected for each environment in [4.0.1 The European Interoperability Landscape](member-state-architectures.html#401-the-european-interoperability-landscape). This page summarizes the EHDS evidence, compares the two specifications, selects a conformance target for each environment, and then defines the applicable actors, discovery, token, scope, and enforcement requirements. Potential hybrid rules remain future work.
@@ -53,33 +55,49 @@ presentation format, credential schema, or Wallet-to-Authorization-Server profil
 applicable eIDAS assurance, health-professional status, and local authorization policy remain
 separate from the OAuth grant and access-token scopes.
 
-Implementer notes on the EUDI Wallet:
 
-- **Binding sources.** The [ARF](https://eudi.dev/3.0.0/) is informative
-  ([§1.3](https://eudi.dev/3.0.0/main/01-introduction/#13-purpose-scope-and-audience)).
-  Binding rules come from the eIDAS Regulation and its implementing acts, notably
-  [2024/2982](https://eur-lex.europa.eu/eli/reg_impl/2024/2982/oj) (protocols and interfaces) and
-  [2025/848](https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=OJ%3AL_202500848) (Relying Party registration).
-  The ARF is not a legal basis for any requirement in this IG.
-- **User choice.** Using the Wallet to authenticate is at the User's
-  [voluntary request and limited to the minimum data necessary](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02014R0910-20241018#art_5f).
-  This does not relax the environment-conditioned requirement for electronic identification above.
-- **Relying Party role.** An Authorization Server is a Wallet Relying Party only if it
-  requests Wallet attributes. It then needs the registration and Wallet-facing
-  authentication required by the implementing acts above, and SHOULD verify device
-  binding where it relies on a PID or device-bound attestation.
-- **Protocol.** For remote presentation the ARF describes
-  [OpenID4VP with HAIP](https://eudi.dev/3.0.0/main/05-data-model-and-data-exchange-protocols/#574-remote-attestation-presentation-using-openid4vp-and-haip).
-  Level of Assurance High applies to PID, not to all attestations.
-- **Separation.** Wallet authentication, attribute-release approval (not a legal basis for
-  processing), and the service's own session are distinct. Mapping the result to a local
-  account or patient, and the authorization decision, remain deployment policy.
-- **SMART.** No Wallet-to-SMART profile exists. Treat the validated Wallet result as an upstream
-  authentication input, then continue the normal authorization-code flow with PKCE. A Wallet
-  presentation is not a SMART grant or access token and does not change scopes.
 
 {% include img.html svg="authorization-eidas-sequence.svg"
     caption="eIDAS authentication in an authorization flow" %}
+
+The [EUDI Wallet Architecture and Reference Framework (ARF) v3.0.0](https://eudi.dev/3.0.0/)
+is an informative guide to harmonised Wallet implementation, not a replacement
+for binding eIDAS requirements ([§1.3](https://eudi.dev/3.0.0/main/01-introduction/#13-purpose-scope-and-audience)).
+Its Annex 2 requirements apply to named actors, not Users
+([A.2.1.1](https://eudi.dev/3.0.0/annexes/annex-2/annex-2.02-high-level-requirements-by-topic/#a2211-overview),
+[A.2.1.2](https://eudi.dev/3.0.0/annexes/annex-2/annex-2.02-high-level-requirements-by-topic/#a2212-key-words)).
+For implementation guidance, see the [reference architecture](https://eudi.dev/3.0.0/main/04-high-level-architecture/#43-reference-architecture),
+[presentation flows](https://eudi.dev/3.0.0/main/04-high-level-architecture/#44-data-presentation-flows),
+[OpenID4VP with HAIP](https://eudi.dev/3.0.0/main/05-data-model-and-data-exchange-protocols/#574-remote-attestation-presentation-using-openid4vp-and-haip),
+and [trust model](https://eudi.dev/3.0.0/main/06-trust-model/).
+
+Under eIDAS, using the Wallet for user authentication is at the User's
+[voluntary request and limited to the minimum data necessary](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02014R0910-20241018#art_5f);
+this does not remove an applicable environment-conditioned identification
+requirement. A service provider is a Wallet Relying Party when it requests
+Wallet attributes; an Authorization Server is not automatically one. For
+Relying Party registration and Wallet authentication, including request replay
+protection, see [ARF §6.4.2](https://eudi.dev/3.0.0/main/06-trust-model/#642-relying-party-registration)
+for registration, and [§6.6.3.2](https://eudi.dev/3.0.0/main/06-trust-model/#6632-wallet-unit-authenticates-the-relying-party-instance)
+with [Annex 2 RPA_01](https://eudi.dev/3.0.0/annexes/annex-2/annex-2.02-high-level-requirements-by-topic/#RPA_01)
+for Wallet authentication of the Relying Party and replay protection.
+The Wallet authenticates its User and obtains approval before releasing
+attributes ([§6.6.3.5](https://eudi.dev/3.0.0/main/06-trust-model/#6635-wallet-unit-obtains-user-approval-for-presenting-selected-attributes));
+that approval is not a legal basis for processing
+([§6.6.3.5.1](https://eudi.dev/3.0.0/main/06-trust-model/#66351-introduction)). If a Relying Party relies on
+Wallet-side authentication to bind a presenter to a PID or device-bound
+attestation, it verifies device binding; the ARF also describes other
+[user-binding methods](https://eudi.dev/3.0.0/main/06-trust-model/#6639-relying-party-instance-verifies-or-trusts-user-binding).
+LoA High concerns PID authentication, not all attestations
+([§2.2](https://eudi.dev/3.0.0/main/02-eudi-wallet-functionalities/#22-identification-and-authentication)).
+
+The ARF does not define a Wallet-to-Authorization-Server integration profile
+or how a deployment maps Wallet results to local accounts or patients and makes
+authorization decisions. A validated result may be used as upstream user
+authentication before continuing the selected SMART or IUA authorization-code
+flow with local policy. A Wallet presentation is not an access token or grant
+and does not itself confer API authorization or determine the protocol's scopes
+or claims.
 
 ### Environment-Specific Requirements
 
@@ -202,5 +220,7 @@ Authentication failures use `401 Unauthorized`; authenticated requests lacking a
 ### Potential Future Work
 
 Future work may define a hybrid IHE IUA/SMART profile, including claim and scope mappings, discovery precedence, token-context precedence, error semantics, audit identity, and same-endpoint dual-conformance rules. These topics are not normative for this release.
+
+</div>
 
 {% include auth-todo.md %}

@@ -1,6 +1,10 @@
 This page describes common patterns for constructing an EHR system boundary that exposes the Interoperability Component API surface defined in this IG. These are implementation patterns, not separate conformance targets.
 
+<div class="auth-change" markdown="1">
+
 The exposed protected API has the [EU Authorization Resource Server](ActorDefinition-eu-authorization-resource-server-eu-api.html) role and uses the protocol-specific IUA or SMART Resource Server role selected for its environment. Its clients use the [EU Authorization Client](ActorDefinition-eu-authorization-client-eu-api.html) role; the [EU Authorization Server](ActorDefinition-eu-authorization-server-eu-api.html) remains distinct and MAY be co-located as a deployment choice. See [Authorization](authorization.html) for protocol details.
+
+</div>
 
 ### Direct implementation
 

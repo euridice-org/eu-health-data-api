@@ -83,11 +83,15 @@ See the [Resource Access Provider CapabilityStatement](CapabilityStatement-resou
 
 ### Scopes
 
+<div class="auth-change" markdown="1">
+
 The following are **SMART App Launch 2.2 FHIR Resource Scopes** for the separately
 classified SMART Backend Services/direct-system use case. Interactive patient and clinician
 uses instead select the applicable `patient/` and `user/` scopes as defined in
 [Authorization](authorization.html#tokens-scopes-enforcement-and-errors). These SMART scopes
 are not IUA transaction scopes.
+
+</div>
 
 ```
 system/AllergyIntolerance.rs

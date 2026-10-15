@@ -20,6 +20,8 @@ This IG defines the Interoperability Component API surface the access service us
 
 ### Authorization
 
+<div class="auth-change" markdown="1">
+
 The patient's identity and authorization are established at the access service.
 At the Interoperability Component API surface, the access service acts as the
 [EU Authorization Client](ActorDefinition-eu-authorization-client-eu-api.html),
@@ -48,6 +50,8 @@ does not select one environment, so the applicable protocol and flow must be
 determined for the deployment; see [Authorization](authorization.html). Patient
 consent preferences and app-linking rules remain the responsibility of the access
 service or Member State infrastructure.
+
+</div>
 
 ### Art. 5: Insertion of Patient-Provided Data (Informative)
 

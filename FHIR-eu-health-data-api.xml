@@ -50,6 +50,7 @@
 <page key="many" name="(many)"/>
 <page key="about" name="About"/>
 <page key="actors" name="Actors and Transactions"/>
+<page key="artifacts-overview" name="Artifacts Overview"/>
 <page key="artifacts" name="Artifacts Summary"/>
 <page key="authorization" name="Authorization"/>
 <page key="contributors" name="Authors and contributors"/>

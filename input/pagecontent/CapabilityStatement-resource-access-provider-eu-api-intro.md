@@ -17,7 +17,11 @@ The server's CapabilityStatement declares which resources it actually supports.
 
 ### Security
 
+<div class="auth-change" markdown="1">
+
 This requirements CapabilityStatement supports the IUA or SMART Resource Server role selected by the environment and use case. A deployment instance advertises only its selected protocol; see [Authorization](authorization.html#environment-specific-requirements).
+
+</div>
 
 ### Profile Inheritance
 
