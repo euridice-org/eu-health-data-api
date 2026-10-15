@@ -1,0 +1,33 @@
+@startuml authorization-eidas-sequence
+skinparam svgDimensionStyle false
+
+participant App
+participant "FHIR Server\n(EU Resource Server)" as FHIR
+participant "EU Authorization Server" as AS
+participant "eIDAS / EUDI Wallet" as eIDAS
+
+== Get Access Token ==
+
+alt Pre-authorized Backend Service
+    App -> AS++: Token request
+    App <-- AS--: Access token
+else Interactive user or patient launch
+    App -> AS++: Authorization request
+    AS -> eIDAS++: Authenticate user when required\nby the environment
+    AS <-- eIDAS--: Authentication result / presentation
+    note right of AS
+        Validate result
+        Establish user session
+        Apply authorization policy
+    end note
+    App <-- AS--: Redirect with authorization code
+    App -> AS++: Token request\n(code)
+    App <-- AS--: Access token and applicable launch context
+end
+
+== Access Content ==
+
+App -> FHIR++: Protected resource request (access token)
+App <-- FHIR--: Authorized response
+
+@enduml

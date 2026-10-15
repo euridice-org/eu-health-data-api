@@ -57,6 +57,103 @@ p, li {
 table.grid td {
   font-size: 13px;
 }
+
+body {
+  counter-reset: ig-figure;
+}
+
+figure.figure[data-section-number],
+.figure-caption-standalone[data-section-number] {
+  counter-increment: ig-figure;
+}
+
+.figure-caption[data-section-number]::before {
+  content: "Figure " attr(data-section-number) "-" counter(ig-figure) ": ";
+}
+
+.auth-change {
+  color: #6f2da8;
+}
+
+.auth-change a {
+  color: #5a238a;
+}
+
+.auth-change p,
+.auth-change li,
+.auth-change table,
+span.auth-change {
+  border-left: 4px solid #7b2cbf;
+  padding-left: 0.75em;
+}
+
+span.auth-change {
+  display: block;
+}
+
+body:has(a[name^="hcdocument-"]) #segment-content .panel-body > blockquote,
+body:has(a[name^="hcresource-"]) #segment-content .panel-body > blockquote,
+body:has(a[name="hcexample-capabilitystatement-document-access-provider"]) #segment-content .panel-body > blockquote {
+  color: #6f2da8;
+}
+
+body:has(a[name^="hcdocument-"]) #segment-content .panel-body > blockquote p,
+body:has(a[name^="hcdocument-"]) #segment-content .panel-body > blockquote li,
+body:has(a[name^="hcresource-"]) #segment-content .panel-body > blockquote p,
+body:has(a[name^="hcresource-"]) #segment-content .panel-body > blockquote li,
+body:has(a[name="hcexample-capabilitystatement-document-access-provider"]) #segment-content .panel-body > blockquote p,
+body:has(a[name="hcexample-capabilitystatement-document-access-provider"]) #segment-content .panel-body > blockquote li {
+  border-left: 4px solid #7b2cbf;
+  padding-left: 0.75em;
+}
+
+body:has(a[name="hcdocument-publisher-eu-api"]) #segment-content .panel-body > div:first-of-type p,
+body:has(a[name="hcdocument-consumer-eu-api"]) #segment-content .panel-body > div:first-of-type p,
+body:has(a[name="hcexample-capabilitystatement-document-access-provider"]) #segment-content .panel-body > div:first-of-type p,
+body:has(a[name="hcdocument-access-provider-eu-api"]) #segment-content .panel-body > div:first-of-type p + p,
+body:has(a[name="hcdocument-publisher-access-provider-eu-api"]) #segment-content .panel-body > div:first-of-type p + p,
+body:has(a[name="hcresource-access-provider-eu-api"]) #segment-content .panel-body > div:first-of-type p + p,
+body:has(a[name="hcresource-consumer-eu-api"]) #segment-content .panel-body > div:first-of-type p + p {
+  color: #6f2da8;
+  border-left: 4px solid #7b2cbf;
+  padding-left: 0.75em;
+}
+
+body:has(a[name="hcdocument-publisher-actor-eu-api"]) #segment-content table.colsi + div[data-fhir="generated"] > p:first-child,
+body:has(a[name="hceu-authorization-client-eu-api"]) #segment-content table.colsi + div[data-fhir="generated"] > p:first-child,
+body:has(a[name="hceu-authorization-server-eu-api"]) #segment-content table.colsi + div[data-fhir="generated"] > p:first-child,
+body:has(a[name="hceu-authorization-resource-server-eu-api"]) #segment-content table.colsi + div[data-fhir="generated"] > p:first-child,
+body:has(a[name="hcdocument-access-provider-actor-eu-api"]) #segment-content table.colsi + div[data-fhir="generated"] > p:first-child,
+body:has(a[name="hcdocument-consumer-actor-eu-api"]) #segment-content table.colsi + div[data-fhir="generated"] > p:first-child,
+body:has(a[name="hcdocument-publisher-access-provider-actor-eu-api"]) #segment-content table.colsi + div[data-fhir="generated"] > p:first-child,
+body:has(a[name="hcresource-access-provider-actor-eu-api"]) #segment-content table.colsi + div[data-fhir="generated"] > p:first-child,
+body:has(a[name="hcresource-consumer-actor-eu-api"]) #segment-content table.colsi + div[data-fhir="generated"] > p:first-child,
+body:has(a[name^="hciua-"]) #segment-content table.colsi + div[data-fhir="generated"] > p:first-child,
+body:has(a[name^="hcsmart-"]) #segment-content table.colsi + div[data-fhir="generated"] > p:first-child {
+  color: #6f2da8;
+  border-left: 4px solid #7b2cbf;
+  padding-left: 0.75em;
+}
+
+body:has(a[name="hceu-api-authorization-security-service"]) #segment-content table.colsi + div[data-fhir="generated"] > p:first-child,
+body:has(a[name="hceu-api-deployment-capabilitystatement"]) #segment-content table.colsi + div[data-fhir="generated"] > p:first-child {
+  color: #6f2da8;
+  border-left: 4px solid #7b2cbf;
+  padding-left: 0.75em;
+}
+
+body:has(a[href="StructureDefinition-eu-api-deployment-capabilitystatement.profile.json.html"]) #segment-content table.colsi + div[data-fhir="generated"] > p:first-child {
+  color: #6f2da8;
+  border-left: 4px solid #7b2cbf;
+  padding-left: 0.75em;
+}
+
+body:has(a[name="hcexample-capabilitystatement-document-access-provider"]) #segment-content table.colsi + div[data-fhir="generated"] > p:first-child {
+  color: #6f2da8;
+  border-left: 4px solid #7b2cbf;
+  padding-left: 0.75em;
+}
+
 h1, h2, h3, h4, h5, h6 {
   margin: 1em 0 0.4em 0;
   color: #2d457e;

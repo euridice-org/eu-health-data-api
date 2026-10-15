@@ -19,10 +19,20 @@ The patterns below are illustrative; Member States may combine them or use other
 
 A national "record location" service holds references to where patient data resides. A consumer queries the record locator to identify which EHR systems hold data for a patient, then uses this information to query those systems directly or through a proxy. The record locator is national infrastructure and is not specified by this IG.
 
+```mermaid
+flowchart LR
+    Consumer["Consumer"]
+    RecordLocator["Record Locator"]
+    A["EHR System A"]
+    B["EHR System B"]
+
+    Consumer --> RecordLocator
+    RecordLocator --> A
+    RecordLocator --> B
 ```
-Consumer → Record Locator ──→ EHR System A
-                          └──→ EHR System B
-```
+
+{% include figure-caption.html
+   caption="Federated deployment — record discovery and direct data access." %}
 
 In this scenario, data-holding EHR systems acting as Document/Resource Access Providers offer query access to their data to destination EHR systems acting as Document/Resource Consumers.
 
@@ -30,9 +40,19 @@ In this scenario, data-holding EHR systems acting as Document/Resource Access Pr
 
 In this model, source EHR systems publish documents to a central national repository (or repositories), which enables access to this data by offering query access to consuming systems.
 
+```mermaid
+flowchart LR
+    Source["EHR System (source)"]
+    Repository["National Repository"]
+    Consumer["Consumer"]
+
+    Source -->|Publish documents| Repository
+    Repository --> Consumer
 ```
-EHR System (source) ──[publish]──→ National Repository ──→ Consumer
-```
+
+{% include figure-caption.html
+   caption="Central repository deployment — document publication and retrieval."
+%}
 
 The source EHR acts as [Document Publisher](actors.html#document-publisher) towards the central repository (Document Access Provider), which enables EHRs acting as Document Consumers to query.
 
@@ -44,4 +64,12 @@ In both patterns, a consumer needs to identify which patient data to retrieve. O
 
 ### Authorization
 
-Authorization methods to secure cross-organization exchange are a national architecture choice outside the scope of this IG. Member States choosing to align with SMART Backend Services client credentials can use the EHR system support defined in [Authorization](authorization.html).
+<div class="auth-change" markdown="1">
+
+The National Interoperability Infrastructure environment recommends IHE IUA where participants
+and the Authorization Server are preconfigured and user or patient claims are needed. The
+applicable IUA transaction and MHD transaction-scope requirements are selected per deployment.
+SMART Backend Services is a separate direct-system profile, not automatic dual conformance.
+The consumer and protected EHR or repository endpoint have the generic [EU Authorization Client](ActorDefinition-eu-authorization-client-eu-api.html) and [EU Authorization Resource Server](ActorDefinition-eu-authorization-resource-server-eu-api.html) roles. The Authorization Server remains a distinct participant; the selected IUA or SMART protocol roles and details are in [Authorization](authorization.html#national-interoperability-infrastructure).
+
+</div>

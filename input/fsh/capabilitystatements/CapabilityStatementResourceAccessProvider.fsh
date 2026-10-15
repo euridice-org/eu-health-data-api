@@ -1,49 +1,12 @@
 // CapabilityStatement for EEHRxF Resource Access Provider Actor (IPA server)
-// Based on IPA Server with SMART Backend Services security
+// Based on IPA Server with environment-selected IUA or SMART security
 
 Instance: resource-access-provider-eu-api
 InstanceOf: CapabilityStatement
 Title: "EEHRxF Resource Access Provider CapabilityStatement"
 Usage: #definition
 Description: """
-CapabilityStatement for the EEHRxF Resource Access Provider actor. This actor serves
-clinical data resources following the International Patient Access (IPA) patterns.
-
-This CapabilityStatement defines the capabilities for systems providing direct resource
-access (beyond document-based exchange) in the EU EHR Exchange Format (EEHRxF) ecosystem.
-It inherits patterns from:
-- **IPA (International Patient Access)**: Resource profiles and search parameter patterns
-
-### Resource Flexibility (IPA Alignment)
-
-Following IPA's approach, servers are not required to support all clinical resources listed
-below. Servers MAY choose which resources to implement based on their capabilities and use
-cases. The only required resource is Patient (for lookup context). This flexibility
-encourages partial implementations, allowing more servers to participate even if they only
-support EU Core for certain resource types.
-
-**Required**: Patient (for lookup context)
-**Recommended (choose based on capabilities)**:
-- Practitioner, Organization: Reference resolution
-- Condition, AllergyIntolerance: Patient safety data
-- Observation, DiagnosticReport: Clinical results
-- ImagingStudy: Imaging results
-- MedicationRequest, MedicationDispense, MedicationStatement: Medication data
-- Immunization: Vaccination records
-- Encounter: Visit context
-
-The server's CapabilityStatement declares which resources are actually supported.
-
-### Security
-Systems SHALL support SMART Backend Services authorization for all transactions.
-
-### Profile Inheritance
-Resources SHOULD conform to EU Core profiles where available.
-
-### Search Parameter Combinations
-Where a resource declares search parameter combinations, the SHALL combinations follow IPA,
-with additions from IHE QEDm where the IPA has no requirement (DiagnosticReport, Encounter).
-Data type-specific implementation guides MAY extend these requirements.
+Requirements for an EEHRxF Resource Access Provider that serves clinical FHIR resources using IPA patterns.
 """
 
 * name = "ResourceAccessProviderEuApi"
@@ -67,18 +30,38 @@ The Resource Access Provider actor responds to queries for clinical data resourc
 following IPA patterns. This enables direct resource access complementing
 document-based exchange via MHD.
 
-All transactions require SMART Backend Services authorization.
+The protected API groups with the IUA Resource Server or SMART FHIR Resource Server selected by the
+environment and use case. Its Authorization Server remains an independent participant.
 """
 
-* rest[=].security.cors = false
-* rest[=].security.service = http://hl7.org/fhir/restful-security-service#SMART-on-FHIR
 * rest[=].security.description = """
-SMART Backend Services authorization is REQUIRED for all transactions.
-Systems SHALL:
-- Validate JWT client credentials (RFC 7523)
-- Verify appropriate scopes for resource access
-- Use TLS 1.2 or higher for all communications
-- Return HTTP 401, 403, or 404 for unauthorized requests
+This abstract requirements statement does not advertise a fixed security service. A concrete
+deployment SHALL declare exactly one security-service coding from the [EU Health Data API
+Authorization Security Service ValueSet](ValueSet-eu-api-authorization-security-service.html),
+selected for its environment. It SHALL NOT advertise both services unless a future profile defines
+dual conformance.
+The Resource Server validates access tokens and granted authorization; the independent Authorization
+Server performs token issuance and any client-assertion validation.
+
+### IHE IUA
+
+The provider groups with the IUA Resource Server. The IPA and PDQm interactions in this statement
+have no IUA MHD transaction scopes; the deployment applies the IUA authorization policy defined for
+its environment.
+
+### SMART Backend Services
+
+For a pre-authorized system-to-system use case, the provider groups with the SMART FHIR Resource
+Server and accepts `system/` scopes for the resources it supports.
+
+### Interactive SMART
+
+Where an interactive use case applies, the provider groups with the SMART FHIR Resource Server and
+accepts the corresponding `patient/` or `user/` scopes for the resources it supports. Browser CORS
+requirements apply only to deployments supporting browser-based clients.
+
+All modes use TLS 1.2 or higher and return HTTP 401, 403, or a deliberately selected 404 according
+to the authorization policy.
 
 ### Resource Flexibility
 
@@ -89,7 +72,7 @@ actually supported.
 
 ### Scopes for Supported Resources
 
-Servers SHALL accept scopes for the resources they support:
+For SMART Backend Services, servers SHALL accept scopes for the resources they support:
 - system/Patient.rs (REQUIRED - read + search Patient)
 - system/Condition.rs (if Condition supported)
 - system/AllergyIntolerance.rs (if AllergyIntolerance supported)
@@ -103,6 +86,10 @@ Servers SHALL accept scopes for the resources they support:
 - system/Encounter.rs (if Encounter supported)
 - system/Practitioner.r (if Practitioner supported)
 - system/Organization.r (if Organization supported)
+
+These are **SMART App Launch 2.2 Backend Services FHIR Resource Scopes**, not IUA transaction scopes.
+Interactive SMART uses the corresponding `patient/` or `user/` forms. See
+[Authorization](authorization.html#tokens-scopes-enforcement-and-errors).
 """
 
 // ============================================================================

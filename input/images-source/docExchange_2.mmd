@@ -1,0 +1,41 @@
+%% Document Exchange - Actor Groupings (Figure 5, actors.html)
+%% Regenerate: mmdc -i docExchange_2.mmd -o ../images/docExchange_2.png -b white -s 3 -p /tmp/pptr.json
+%%{init: {'flowchart': {'nodeSpacing': 18, 'rankSpacing': 28, 'padding': 6}}}%%
+flowchart LR
+    subgraph Publisher["Document Publisher"]
+        direction TB
+        P1("Selected authorization<br/>client role")
+        P2("PDQm Patient<br/>Demographics Consumer")
+        P3("MHD Document Source")
+        P1 ~~~ P2 ~~~ P3
+    end
+    subgraph Provider["Document Access Provider"]
+        direction TB
+        R1("Selected Resource<br/>Server role")
+        R2("PDQm Patient<br/>Demographics Supplier")
+        R3("MHD Document Responder")
+        R1 ~~~ R2 ~~~ R3
+    end
+    subgraph Consumer["Document Consumer"]
+        direction TB
+        C1("Selected authorization<br/>client role")
+        C2("PDQm Patient<br/>Demographics Consumer")
+        C3("MHD Document Consumer")
+        C1 ~~~ C2 ~~~ C3
+    end
+    AS("Independent IUA or SMART<br/>Authorization Server")
+
+    Publisher ~~~ Provider ~~~ Consumer
+    AS -. "issues tokens" .-> P1
+    AS -. "issues tokens" .-> C1
+    AS -. "supports validation" .-> R1
+
+    classDef auth fill:#f8cecc,stroke:#b85450,color:#000000;
+    classDef pdqm fill:#e1d5e7,stroke:#9673a6,color:#000000;
+    classDef mhd fill:#d5e8d4,stroke:#82b366,color:#000000;
+    class P1,R1,C1,AS auth;
+    class P2,R2,C2 pdqm;
+    class P3,R3,C3 mhd;
+    style Publisher fill:#f5f5f5,stroke:#999999,color:#333333;
+    style Provider fill:#f5f5f5,stroke:#999999,color:#333333;
+    style Consumer fill:#f5f5f5,stroke:#999999,color:#333333;

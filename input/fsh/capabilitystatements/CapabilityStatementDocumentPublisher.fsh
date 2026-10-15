@@ -1,37 +1,12 @@
 // CapabilityStatement for EEHRxF Document Publisher Actor
-// Composite actor grouping MHD Document Source + PDQm Consumer + IUA Authorization Client
+// Composite actor grouping MHD Document Source + PDQm Consumer + selected authorization client
 
 Instance: document-publisher-eu-api
 InstanceOf: CapabilityStatement
 Title: "EEHRxF Document Publisher CapabilityStatement"
 Usage: #definition
 Description: """
-CapabilityStatement for the EEHRxF Document Publisher actor. This composite actor produces
-EEHRxF FHIR Documents and publishes them to a Document Access Provider.
-
-### Actor Grouping
-
-This composite actor groups the following IHE actors:
-- [IUA Authorization Client](https://profiles.ihe.net/ITI/IUA/index.html#34111-authorization-client)
-- [PDQm Patient Demographics Consumer](https://profiles.ihe.net/ITI/PDQm/volume-1.html)
-- [MHD Document Source](https://profiles.ihe.net/ITI/MHD/1331_actors_and_transactions.html)
-
-### Transactions
-
-| Transaction | Description | Optionality |
-|-------------|-------------|-------------|
-| ITI-105 Simplified Publish | Submit document with embedded content to a Document Access Provider | R |
-| ITI-78 Patient Demographics Query | Query for patient demographics to establish patient context | R |
-| Get Access Token | Obtain authorization token for API access | R |
-
-### Security
-Systems SHALL support SMART Backend Services authorization for all transactions.
-
-### Deployment
-The Document Publisher may be grouped with Document Access Provider, in which case the
-ITI-105 transaction becomes internal and is not exposed externally. See the
-[grouped Document Publisher/Access Provider CapabilityStatement](CapabilityStatement-document-publisher-access-provider-eu-api.html)
-for this deployment pattern.
+Requirements for an EEHRxF Document Publisher that submits FHIR Documents to a Document Access Provider.
 """
 
 * name = "DocumentPublisherEuApi"
@@ -45,25 +20,41 @@ for this deployment pattern.
 * format[+] = #json
 * format[+] = #xml
 
-// Security requirements - SMART Backend Services
+// Security requirements - protocol selected by environment and use case
 * rest[+].mode = #client
 * rest[=].documentation = """
 The Document Publisher actor initiates transactions to publish documents and query for
-patient context. All transactions require SMART Backend Services authorization.
+patient context. It groups with the selected IUA Authorization Client, SMART App, or SMART
+Backend Service role. The Authorization Server is a separate participant.
 """
 
-* rest[=].security.cors = false
-* rest[=].security.service = http://hl7.org/fhir/restful-security-service#SMART-on-FHIR
 * rest[=].security.description = """
-SMART Backend Services authorization is REQUIRED for all transactions.
-Systems SHALL:
-- Authenticate using JWT client credentials (RFC 7523)
-- Request appropriate scopes for document submission and patient lookup
-- Use TLS 1.2 or higher for all communications
+This abstract requirements statement does not advertise a fixed security service. A concrete
+deployment SHALL declare exactly one security-service coding from the [EU Health Data API
+Authorization Security Service ValueSet](ValueSet-eu-api-authorization-security-service.html),
+selected for its environment. It SHALL NOT advertise both services unless a future profile defines
+dual conformance.
 
-Required scopes for document publication:
+### IHE IUA
+
+The publisher groups with the IUA Authorization Client. ITI-105 and PDQm ITI-78 have no IUA MHD
+transaction scope; the deployment applies the IUA authorization policy defined for its environment.
+
+### SMART Backend Services
+
+For a pre-authorized system-to-system use case, the publisher groups with the SMART Backend Service,
+uses `client_credentials` and `private_key_jwt`, and requests:
 - system/DocumentReference.c (create DocumentReference - ITI-105)
-- system/Patient.rs (read + search Patient for context)
+- system/Patient.rs (read + search Patient - ITI-78)
+
+### Interactive SMART
+
+Where an interactive use case applies, the publisher groups with the SMART App, uses authorization
+code with PKCE, and replaces the `system/` prefix above with the applicable `patient/` or `user/`
+scope prefix. Browser CORS requirements apply only to deployments supporting browser-based clients.
+
+All modes use TLS 1.2 or higher. See [Authorization](authorization.html#smart-app-launch) for the
+selected capability set, discovery, token, scope, and CORS rules.
 """
 
 // ============================================================================

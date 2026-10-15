@@ -12,7 +12,11 @@ Systems use FHIR CapabilityStatement to discover what priority categories and ex
 
 #### Authorization
 
-System-to-system authorization using SMART Backend Services and IHE IUA. Required for all transactions. See [Authorization](authorization.html).
+<div class="auth-change" markdown="1">
+
+Authorization using SMART Backend Services or IHE IUA. Required for all transactions. See [Authorization](authorization.html).
+
+</div>
 
 #### Patient Identification
 

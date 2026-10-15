@@ -10,7 +10,8 @@ Description: """
 European Patient Summaries and Laboratory Reports.
 
 Shows how a deployment declares actor conformance via `instantiates` and
-content IG support via `implementationGuide`.
+content IG support via `implementationGuide`. This concrete deployment selects
+SMART Backend Services and therefore advertises only `SMART-on-FHIR`.
 
 See [Capability Discovery](capability-discovery.html) for guidance.
 """
@@ -43,10 +44,18 @@ See [Capability Discovery](capability-discovery.html) for guidance.
 This server provides document exchange for European Patient Summaries and
 Laboratory Reports. It supports MHD ITI-67 (Find Document References),
 ITI-68 (Retrieve Document), and PDQm ITI-78 (Patient Demographics Query).
+It implements the SMART FHIR Resource Server role for a pre-authorized
+system-to-system deployment; its Authorization Server is a separate participant.
 """
 
+* rest[=].security.cors = false
 * rest[=].security.service = http://hl7.org/fhir/restful-security-service#SMART-on-FHIR
-* rest[=].security.description = "SMART Backend Services authorization required."
+* rest[=].security.description = """
+This deployment selects SMART Backend Services, validates access tokens, and enforces its granted
+`system/DocumentReference.rs`, `system/Binary.r`, `system/Bundle.r`, and `system/Patient.rs` scopes.
+Its SMART metadata advertises `client_credentials` and asymmetric client authentication. CORS is not
+required for this server-side client architecture. See [Authorization](authorization.html#smart-app-launch).
+"""
 
 // ============================================================================
 // DocumentReference — ITI-67 returns base FHIR DocumentReference resources
