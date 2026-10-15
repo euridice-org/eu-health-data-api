@@ -11,6 +11,7 @@ Recommended resources, chosen according to capabilities, are:
 - Observation and DiagnosticReport for clinical results
 - MedicationRequest, MedicationDispense, and MedicationStatement for medication data
 - Immunization for vaccination records
+- ImagingStudy for imaging results
 - Encounter for visit context
 
 The server's CapabilityStatement declares which resources it actually supports.

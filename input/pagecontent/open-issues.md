@@ -79,3 +79,23 @@ This approach was agreed by the API working group. However, alternative approach
 - Does the dual-DocumentReference pattern work for your imaging infrastructure?
 - Would a single-DocumentReference with multiple `content` entries be preferable?
 - How does your system currently handle FHIR/DICOM content negotiation for imaging manifests?
+
+---
+
+### Issue 13: Advanced Search Capabilities for Resource Access
+
+<!-- TODO: create the GitHub issue and replace the link below -->
+[GitHub Issue](https://github.com/euridice-org/eu-health-data-api/issues) | **Priority:** Medium
+
+[Resource Access](resource-access.html) defines the minimum search parameters and combinations that Resource Access Providers support, following IPA. It does not currently define support for more advanced FHIR search features: the `:not` modifier, `_include`/`_revinclude`, and chained parameters.
+
+**Current Approach (going to ballot)**
+
+Not defined by this IG. Servers MAY support these features. Clients SHOULD check the server's CapabilityStatement before relying on them.
+
+**Seeking Input On**
+
+- Should support for the `:not` modifier be required on some token parameters (e.g. `status:not=entered-in-error`)?
+- Should `_include` be required for resolving referenced resources (e.g. `MedicationRequest?patient=123&_include=MedicationRequest:requester`), or `_revinclude` for Provenance (e.g. `_revinclude=Provenance:target`)?
+- Should chained search be required (e.g. `Condition?patient.identifier=http://example.org/nid|123`)? The German ISiK Basismodul implementation guide <!-- TODO: add link to ISiK Basis Module IG --> is one example of an IG that defines chaining requirements.
+- Which of these features do your existing systems support today?

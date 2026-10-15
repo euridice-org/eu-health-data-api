@@ -11,6 +11,7 @@ Optional resources, requested according to need and server support, are:
 - Observation and DiagnosticReport for clinical results
 - MedicationRequest, MedicationDispense, and MedicationStatement for medication data
 - Immunization for vaccination records
+- ImagingStudy for imaging results
 - Encounter for visit context
 
 Clients should check the server's CapabilityStatement to discover available resources.

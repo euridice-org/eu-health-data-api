@@ -9,6 +9,9 @@
 {% assign ihePDQm           = "[IHE-PDQm](https://profiles.ihe.net/ITI/PDQm/)" %}
 {% assign iheQEDm           = "[IHE-QEDm](https://profiles.ihe.net/PCC/QEDm/)" %}
 {% assign iheQEDm-PCC44     = "[PCC-44](https://profiles.ihe.net/PCC/QEDm/3.0.0-comment1/PCC-44.html)" %}
+{% assign ipaVersion        = "1.1.0" %}
+{% assign ipa               = "[HL7 International Patient Access (IPA)](https://hl7.org/fhir/uv/ipa/)" %}
+{% assign ipaCS             = "https://hl7.org/fhir/uv/ipa/CapabilityStatement-ipa-server.html" %}
 {% assign iheITI-1          = "[ITI-1](https://profiles.ihe.net/ITI/TF/Volume2/ITI-1.html)" %}
 {% assign iheITI-67         = "[ITI-67](https://profiles.ihe.net/ITI/TF/Volume2/ITI-67.html)" %}
 {% assign iheITI-66         = "[ITI-66](https://profiles.ihe.net/ITI/TF/Volume2/ITI-66.html)" %}
