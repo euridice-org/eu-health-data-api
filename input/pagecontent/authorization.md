@@ -114,12 +114,12 @@ specification are environment specific. The different environment used are :
     preconfigured participants. [IHE IUA](https://profiles.ihe.net/ITI/IUA/index.html) is recommended where
     [user or patient claims](https://profiles.ihe.net/ITI/IUA/index.html#3714221-json-web-token-option) are needed.
 - **Wellness Applications:** patient or clinician applications connecting to health data access
-    services or EHR systems. [SMART App Launch](https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html)
-    is required; [SMART Backend Services](https://hl7.org/fhir/smart-app-launch/STU2.2/backend-services.html#profile-audience-and-scope)
-    is permitted only for the separately defined pre-authorized server-to-server flow.
-- **Healthcare Provider:** internal clinical and gateway-facing deployments. [SMART](https://hl7.org/fhir/smart-app-launch/STU2.2/) is required:
-    [Backend Services](https://hl7.org/fhir/smart-app-launch/STU2.2/backend-services.html#use-this-profile-when-the-following-conditions-all-apply) applies to system-to-system uploads and interactive [SMART App Launch](https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html) applies
-    to clinician access.
+    services or EHR systems. For interactive third-party app access, see the
+    [recommendation below](#wellness-applications). [SMART Backend Services](https://hl7.org/fhir/smart-app-launch/STU2.2/backend-services.html#profile-audience-and-scope)
+    applies to the separately defined pre-authorized server-to-server flow.
+- **Healthcare Provider:** internal clinical and gateway-facing deployments. See the
+    [recommendations below](#healthcare-provider) for system-to-system uploads and
+    interactive third-party app access.
 
 #### MyHealth@EU
 
@@ -138,44 +138,18 @@ are selected by the deployed MHD transactions.
 
 #### Wellness Applications
 
-Many Wellness Applications will developed to work in different member states or with differnet HDAS deployments in a member state. This requires such applications to discover th authorization infrastruture for this HDAS. In order to support this use case, Wellness Applications SHALL use [SMART App Launch](https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html).
-
-A Wellness Application connecting to a Health Data Access Service (HDAS) SHALL
-use [SMART App Launch](https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html).
-
-It is RECOMMENDED that it discovers the authorization endpoint using the
-[SMART App Launch discovery mechanism](https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html#retrieve-well-known-smart-configuration).
-As this app will access confidential information, it is RECOMMENDED to use the
-[confidential client profile](https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html#support-for-public-and-confidential-apps).
-
-A clinician-launched Wellness Application SHALL use
-[SMART App Launch EHR Launch](https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html#launch-app-ehr-launch).
-It is RECOMMENDED that the target if the launch is a FHIR server hosted by the
-Wellness Application allowsing the EHR to retrieve relevant information. The
-Wellness Application SHALL support [current-patient launch context](https://hl7.org/fhir/smart-app-launch/STU2.2/scopes-and-launch-context.html#apps-that-launch-from-the-ehr)
-and use [Clinician Access for EHR Launch](https://hl7.org/fhir/smart-app-launch/STU2.2/conformance.html#clinician-access-for-ehr-launch),
-or [Clinician Access for Standalone](https://hl7.org/fhir/smart-app-launch/STU2.2/conformance.html#clinician-access-for-standalone)
-when not launched by an EHR.
-
-A patient-launched Wellness Application typically will use
-[SMART App Launch](https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html)
-with the EHR as FHIR server, use the applicable [Patient Access for EHR Launch](https://hl7.org/fhir/smart-app-launch/STU2.2/conformance.html#capability-sets)
-or [Patient Access for Standalone Apps](https://hl7.org/fhir/smart-app-launch/STU2.2/conformance.html#patient-access-for-standalone-apps)
-capability set, and follow the applicable Argonaut Write successor for write workflows.
+Where a system offers third-party applications interactive access to its FHIR API, it SHOULD support [SMART App Launch](https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html) using the applicable [Patient or Clinician Access capability set](https://hl7.org/fhir/smart-app-launch/STU2.2/conformance.html#capability-sets).
 
 A Wellness Application connecting to a preconfigured, server-side provider-hosted
 EHR-system SHOULD use [SMART Backend Services](https://hl7.org/fhir/smart-app-launch/STU2.2/backend-services.html#use-this-profile-when-the-following-conditions-all-apply).
 
 #### Healthcare Provider
 
-Healthcare Provider deployments SHALL use [SMART App Launch](https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html).
+Where a system offers third-party applications interactive access to its FHIR API, it SHOULD support [SMART App Launch](https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html) using the applicable [Patient or Clinician Access capability set](https://hl7.org/fhir/smart-app-launch/STU2.2/conformance.html#capability-sets).
 
-A system-to-system uploading of EERxF data to a gateway in order to provide the information
+A system-to-system uploading of EEHRxF data to a gateway in order to provide the information
 to the national infrastructure SHOULD use [SMART Backend Services](https://hl7.org/fhir/smart-app-launch/STU2.2/backend-services.html#use-this-profile-when-the-following-conditions-all-apply).
-Clinician webpages hosted by EHR systems SHALL use [SMART App Launch](https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html)
-utilizing the [Clinician Access for Standalone](https://hl7.org/fhir/smart-app-launch/STU2.2/conformance.html#clinician-access-for-standalone)
-or [Clinician Access for EHR Launch](https://hl7.org/fhir/smart-app-launch/STU2.2/conformance.html#clinician-access-for-ehr-launch)
-profiles according to systems requirements and deployment models.
+
 
 <a name="authorization-server-discovery"></a>
 <a name="get-access-token"></a>
