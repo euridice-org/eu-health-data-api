@@ -37,7 +37,7 @@ SMART App Launch is best suited to context-aware application launch or authoriza
 
 SMART deployments SHOULD use IUA-formatted JWT access tokens only where the deployment separately adopts the IUA JWT claim profile; token formatting alone does not claim IUA protocol conformance.
 
-### Using eIDAS for User Authorization
+### Using eIDAS for User Authentication
 
 Where the selected environment requires electronic identification under the EHDS, the
 Authorization Server SHALL use an eIDAS-recognised electronic-identification means to
@@ -47,13 +47,18 @@ SMART or IUA authorization-code flows, not to a pre-authorized SMART Backend Ser
 the user session, applies the applicable authorization policy, and issues a code or token only
 after successful authorization.
 
-The [European Digital Identity Wallet](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32014R0910#art_6)
+The [European Digital Identity Wallet](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02014R0910-20241018#art_6)
 can provide that electronic-identification result where applicable. A deployment MAY use
 [OpenID for Verifiable Presentations 1.0](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html)
 to obtain and validate a verifiable presentation from a Wallet, but this IG does not select a
 presentation format, credential schema, or Wallet-to-Authorization-Server profile. The
 applicable eIDAS assurance, health-professional status, and local authorization policy remain
-separate from the OAuth grant and access-token scopes.
+separate from the OAuth grant and access-token scopes. Where an applicable rule or deployment
+specifies an eID assurance level, [eIDAS Article 8](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02014R0910-20241018#art_8)
+and [Commission Implementing Regulation (EU) 2015/1502](https://eur-lex.europa.eu/eli/reg_impl/2015/1502/oj/eng)
+address assurance levels for electronic-identification schemes and means. The EHDS does not
+select a universal assurance level for health API access, and an eID assurance level does not
+itself authorize access to an API resource.
 
 
 

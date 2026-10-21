@@ -14,6 +14,7 @@ Source: Regulation (EU) 2025/327 (European Health Data Space). Grounded in the e
 
 - The EHDS anchors electronic identification on Regulation (EU) No 910/2014 (eIDAS) throughout (Articles 12, 16; Article 2 imports the eIDAS definitions of "electronic identification" and "electronic identification means").
 - **Recital 7** states that digital/proxy solutions "should be aligned with Regulation (EU) No 910/2014 … and the technical specifications of the European Digital Identity Wallet." The Wallet is not given separate operative articles; it functions as an eID means recognised under Article 6 of eIDAS, which Articles 12 and 16 rely on. Detailed alignment is left to the implementing acts under Article 16(2).
+- [eIDAS Article 8](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02014R0910-20241018#art_8) and [Commission Implementing Regulation (EU) 2015/1502](https://eur-lex.europa.eu/eli/reg_impl/2015/1502/oj/eng) establish assurance levels and related technical requirements for electronic-identification schemes and means. EHDS Articles 12 and 16 do not select a particular assurance level, so these provisions do not establish a universal assurance threshold for API access. An assurance level concerns confidence in electronic identification; it does not itself grant access to an API resource.
 
 ## Authorisation (proxy / representation)
 
