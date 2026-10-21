@@ -16,12 +16,7 @@ Data models for resource access inherit from [HL7 Europe Core](https://build.fhi
 
 See [Actors and Transactions](actors.html) for detailed actor groupings.
 
-<details>
-<summary><i>Note: What about Resource Publisher? Click for more</i></summary>
-
-Resource publication is more complex than document publication, and in many cases has resource and use-case specific considerations. Within the scope of this version of the IG, we assume a precondition that the Resource Access Provider has access to resources and focus on defining how the Resource Access Provider enables a consumer to search and read those resources. For more details and possible approaches, see the <a href="resourceExchange.html">Resource Exchange</a> page.
-
-</details>
+This version of the IG defines resource search and read access. How resources are supplied to a Resource Access Provider is outside its scope. See [Resource Exchange Patterns](resourceExchange.html) for background and possible future approaches.
 
 ### Specifications
 
@@ -39,7 +34,7 @@ sequenceDiagram
     participant Consumer as Resource Consumer
     participant Provider as Resource Access Provider
 
-    Consumer->>Provider: GET /Condition?patient=123&clinical-status=active
+    Consumer->>Provider: GET /Condition?patient=123
     Provider-->>Consumer: Bundle of Conditions
 
     Consumer->>Provider: GET /Observation?patient=123&category=vital-signs
@@ -65,7 +60,7 @@ KAR 2026-09-28 Review follow-ups:
 
 ### Supported Resources
 
-Following [International Patient Access (IPA)](https://hl7.org/fhir/uv/ipa/CapabilityStatement-ipa-server.html), Resource Access Providers are **not required to support all clinical resources**. Servers MAY choose which resources to implement based on their capabilities, use cases, and the regulatory context.
+Following [International Patient Access (IPA)](https://hl7.org/fhir/uv/ipa/STU1.1/CapabilityStatement-ipa-server.html), Resource Access Providers are **not required to support all clinical resources**. Servers MAY choose which resources to implement based on their capabilities, use cases, and the regulatory context.
 
 Servers declare which resources they support in their CapabilityStatement (see [Capability Discovery](capability-discovery.html)). Clients MAY check the server's CapabilityStatement to discover available resources before making requests.
 
@@ -167,12 +162,14 @@ This IG does not currently define requirements for advanced search features such
 
 ### Example Queries
 
+These examples use search combinations that providers support when they support the corresponding resource type. Additional filters depend on the capabilities declared by the server.
+
 ```
 GET /AllergyIntolerance?patient=123
-GET /Condition?patient=123&clinical-status=active
+GET /Condition?patient=123
 GET /Observation?patient=123&category=vital-signs&date=ge2024-01-01
 GET /DiagnosticReport?patient=123&category=LAB
-GET /MedicationRequest?patient=123&status=active
+GET /MedicationRequest?patient=123
 ```
 
 ### Derived Resources
@@ -204,10 +201,10 @@ Derived resources SHOULD include a reference to their source, which may be a Doc
 }
 ```
 
-The [IHE mXDE](https://profiles.ihe.net/ITI/mXDE/index.html) profile provides more detail on how to extract resources from documents while maintaining provenance.
+The [IHE mXDE](https://profiles.ihe.net/ITI/mXDE/index.html) profile is an informative reference for extracting resources from documents while maintaining provenance. This IG does not require conformance to mXDE.
 
 ### References
 
-- [HL7 International Patient Access (IPA)](https://hl7.org/fhir/uv/ipa/)
-- [IHE mXDE](https://profiles.ihe.net/ITI/mXDE/index.html)
+- [HL7 International Patient Access (IPA)](https://hl7.org/fhir/uv/ipa/STU1.1/)
+- [IHE mXDE](https://profiles.ihe.net/ITI/mXDE/index.html) (informative)
 - [Actors and Transactions](actors.html)
