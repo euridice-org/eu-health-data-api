@@ -25,7 +25,7 @@ responsibilities; an access token does not replace them.
 
 <div class="auth-change" markdown="1">
 
-For a protected API exchange, the consuming application has the [Health Data API Authorization Client](ActorDefinition-eu-authorization-client-eu-api.html) role and the protected endpoint has the [Health Data API Resource Server](ActorDefinition-eu-authorization-resource-server-eu-api.html) role. The [Health Data API Authorization Server](ActorDefinition-eu-authorization-server-eu-api.html) remains distinct; detailed SMART roles and requirements are in [Authorization](authorization.html#wellness-applications).
+For each protected API hop, the consuming application has the [Health Data API Authorization Client](ActorDefinition-eu-authorization-client-eu-api.html) role, the protected endpoint has the [Health Data API Resource Server](ActorDefinition-eu-authorization-resource-server-eu-api.html) role, and the [Health Data API Authorization Server](ActorDefinition-eu-authorization-server-eu-api.html) remains distinct. The selected SMART roles and flow depend on the hop described below.
 
 For interactive access, the [Authentication Service](ActorDefinition-authentication-service-eu-api.html)
 authenticates the user, potentially using a Wallet. It may be grouped with the Authorization Server
@@ -51,20 +51,13 @@ EHDS does not specify whether the wellness application sends data through the he
 <div class="auth-change" markdown="1">
 
 The [Wellness Applications section of Authorization](authorization.html#wellness-applications)
-describes the applicable authorization recommendations and conformance requirements. The relevant flows are:
+owns the authorization requirements. The following mappings identify the flow and participants
+for each hop without adding separate conformance rules:
 
-- **HDAS-linked access**: where the HDAS offers interactive third-party FHIR API access, it SHOULD support SMART App Launch using the applicable Patient or Clinician Access capability set. Discovering the authorization endpoint from
-	the FHIR endpoint and using a confidential-client profile are RECOMMENDED.
-- **Clinician-launched access**: where interactive third-party app access is offered, SMART App Launch EHR Launch with current-patient context SHOULD be supported.
-	It is RECOMMENDED that the launch target be a FHIR server hosted by the Wellness Application so
-	the EHR can retrieve relevant information. Use Clinician Access for EHR Launch, or Clinician
-	Access for Standalone when not launched by an EHR.
-- **Patient-launched access** typically uses SMART App Launch with the EHR as FHIR server, allowing
-	information to be uploaded to the EHR. Select Patient Access for EHR Launch or Patient Access for
-	Standalone Apps as applicable; write workflows follow the applicable Argonaut Write successor.
-- **Preconfigured, server-side access to a provider-hosted EHR** SHOULD use SMART Backend Services
-	when its conditions all apply: pre-authorized access, asymmetric confidential-client
-	authentication, and no runtime end-user authorization.
+- **Wellness application to HDAS**: SMART App Launch. The wellness application is the [SMART App](ActorDefinition-smart-app-eu-api.html); the protected HDAS endpoint is a [SMART FHIR Resource Server](ActorDefinition-smart-fhir-resource-server-eu-api.html); and the [SMART Authorization Server](ActorDefinition-smart-authorization-server-eu-api.html) is distinct. The applicable Patient or Clinician Access capability set follows the user's role and the launch pattern.
+- **Clinician-launched wellness application**: interactive SMART App Launch EHR Launch, with a [SMART Launching System](ActorDefinition-smart-launching-system-eu-api.html), SMART App, SMART Authorization Server, and protected SMART FHIR Resource Server. The applicable profile is Clinician Access for EHR Launch with current-patient context, or Clinician Access for Standalone when the app is not launched by an EHR.
+- **Patient-launched wellness application**: interactive SMART App Launch with the EHR as FHIR server. The applicable profile is Patient Access for EHR Launch or Patient Access for Standalone Apps according to how the app is started. Write workflows follow the applicable Argonaut Write successor.
+- **Preconfigured server-side access to a provider-hosted EHR**: SMART Backend Services, with the client realized as a [SMART Backend Service](ActorDefinition-smart-backend-service-eu-api.html). This flow requires pre-authorized access, asymmetric confidential-client authentication, and no runtime end-user authorization; the protected endpoint is a SMART FHIR Resource Server and the SMART Authorization Server remains distinct.
 
 </div>
 

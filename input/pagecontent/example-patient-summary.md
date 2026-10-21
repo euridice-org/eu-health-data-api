@@ -1,22 +1,23 @@
-This example walks through a complete workflow for accessing a Patient Summary document for a known patient.
+This page presents an example showing a complete workflow for accessing a Patient Summary document for a known patient.
 
 ### Scenario
 
-A patient presents to a care provider, but his data is in another system. The current care provider is a **Document Consumer**, and the system with his data is a **Document Access Provider**.
+A patient visits a care provider, but his data is in another system. The current care provider is a **Document Consumer**, and the system with his data is a **Document Access Provider**. The **Document Consumer** uses the EU Health API to access the patient summary stored at the **Document Access Provider**.
 
 ### Actors
 
 <div class="auth-change" markdown="1">
 
-- **[Document Consumer](actors.html#document-consumer)** - The healthcare provider's system acting as the [Health Data API Authorization Client](ActorDefinition-eu-authorization-client-eu-api.html), with the selected SMART or IUA protocol role
-- **[Document Access Provider](actors.html#document-access-provider)** - The system holding the patient's health data and acting as the [Health Data API Resource Server](ActorDefinition-eu-authorization-resource-server-eu-api.html)
-- **[Health Data API Authorization Server](ActorDefinition-eu-authorization-server-eu-api.html)** - Issues the access token under the selected protocol and remains distinct from the Document Access Provider; optional co-location is a deployment choice.
+- **[Document Consumer](actors.html#document-consumer)** - The healthcare provider's system acting as the [Health Data API Authorization Client](ActorDefinition-eu-authorization-client-eu-api.html), realized as either a [SMART Backend Service](ActorDefinition-smart-backend-service-eu-api.html) or an [IHE IUA Authorization Client](ActorDefinition-iua-authorization-client-eu-api.html), according to the selected deployment flow
+- **[Document Access Provider](actors.html#document-access-provider)** - The system holding the patient's health data and acting as the [Health Data API Resource Server](ActorDefinition-eu-authorization-resource-server-eu-api.html), realized as either a [SMART FHIR Resource Server](ActorDefinition-smart-fhir-resource-server-eu-api.html) or an [IHE IUA Resource Server](ActorDefinition-iua-resource-server-eu-api.html)
+- **[Health Data API Authorization Server](ActorDefinition-eu-authorization-server-eu-api.html)** - The distinct participant that issues the token, realized as either a [SMART Authorization Server](ActorDefinition-smart-authorization-server-eu-api.html) or an [IHE IUA Authorization Server](ActorDefinition-iua-authorization-server-eu-api.html); optional co-location is a deployment choice.
 
 </div>
 
 ### Prerequisites
 
 - Document Consumer has registered with Document Access Provider and obtained authorization credentials
+- For each protected endpoint, select one applicable profile according to the environment-specific requirements in [Authorization](authorization.html#environment-specific-requirements); this example does not define dual conformance. The detailed token-request sequence below illustrates [SMART Backend Services](https://hl7.org/fhir/smart-app-launch/STU2.2/backend-services.html) for pre-authorized access using asymmetric confidential-client authentication, with no runtime end-user authorization. An IUA deployment uses the applicable IUA actors and flow described in [Authorization](authorization.html#national-interoperability-infrastructure).
 - Patient has a known identifier in the Document Access Provider system
 - Document Access Provider supports European Patient Summary priority category
 
@@ -27,7 +28,7 @@ A patient presents to a care provider, but his data is in another system. The cu
 
 <div class="auth-change" markdown="1">
 
-*Note: The Authorization Server is a separate participant and MAY be co-located with the Document Access Provider as an optional deployment choice. The diagram contrasts SMART Backend Services and IHE IUA authorization; the steps below describe SMART Backend Services.*
+*Note: The Authorization Server is a separate participant and MAY be co-located with the Document Access Provider as an optional deployment choice. The diagram shows alternative SMART Backend Services and IHE IUA authorization branches; select one profile for the protected endpoint. The token-request details below illustrate only the SMART Backend Services branch. For IUA, use the [IHE IUA Authorization Client](ActorDefinition-iua-authorization-client-eu-api.html), [IHE IUA Authorization Server](ActorDefinition-iua-authorization-server-eu-api.html), and [IHE IUA Resource Server](ActorDefinition-iua-resource-server-eu-api.html) flow described in [Authorization](authorization.html#national-interoperability-infrastructure).*
 
 </div>
 
@@ -47,7 +48,7 @@ The CapabilityStatement confirms support for IHE MHD document exchange, PDQm pat
 
 <div class="auth-change" markdown="1">
 
-The Health Data API Authorization Client role is realized here by the SMART Backend Service. The Document Consumer requests an access token using SMART Backend Services ([Authorization](authorization.html#smart-app-launch)); the Health Data API Authorization Server and Health Data API Resource Server roles remain distinct.
+This token-request example uses SMART Backend Services: the Document Consumer's Health Data API Authorization Client role is realized by the SMART Backend Service. Its pre-authorization and client-authentication prerequisites are listed above; the Health Data API Authorization Server and Health Data API Resource Server roles remain distinct. An IUA deployment instead uses its selected IUA actors and flow as described in [Authorization](authorization.html#national-interoperability-infrastructure).
 
 </div>
 
@@ -135,7 +136,7 @@ Response is the Patient Summary as a FHIR Document (Bundle of type `document`) i
 
 ### Key Points
 
-- All resource access requires [authorization](authorization.html)
+- The authorization flow and its prerequisites are selected as described in [Authorization](authorization.html)
 - Patient identification precedes health data queries
 - DocumentReference contains metadata about documents
 - FHIR Documents (IPS, etc.) are retrieved as Bundle resources; DICOM KOS imaging manifests ([IHE MADO](priority-area-imaging-manifest.html#ihe-mado)) are retrieved as Binary resources

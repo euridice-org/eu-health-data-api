@@ -15,7 +15,7 @@ the EHR system boundary or require a central identity service; see
 
 In a direct implementation, the EHR system exposes the API surface without relying on another component.
 
-{% include img.html img="deployment-options-straight.drawio.svg" caption="Direct implementation" width="40%" %}
+{% include img.html img="deployment-options-straight.drawio.svg" caption="Direct implementation" width="300px" %}
 
 Functionally this is equivalent to the options below, although the internal implementation differs.
 
@@ -23,7 +23,7 @@ Functionally this is equivalent to the options below, although the internal impl
 
 A facade can expose the API surface in front of a base EHR system.
 
-{% include img.html img="deployment-options-facade.drawio.svg" caption="Facade implementation" width="50%" %}
+{% include img.html img="deployment-options-facade.drawio.svg" caption="Facade implementation" width="300px" %}
 
 In this approach, the base EHR system is not updated. The facade uses proprietary APIs or internal integration points to provide the Interoperability Component API surface. The boundary of the EHR system is still the grey box, so the facade is treated as part of the deployed EHR system.
 

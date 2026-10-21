@@ -34,6 +34,8 @@ Cross-border patient consent, health-professional authentication in the requesti
 
 <div class="auth-change" markdown="1">
 
-At those API boundaries, the consumer and protected EHR endpoint have the generic [Health Data API Authorization Client](ActorDefinition-eu-authorization-client-eu-api.html) and [Health Data API Resource Server](ActorDefinition-eu-authorization-resource-server-eu-api.html) roles. Any Authorization Server is a distinct participant; the applicable protocol roles and MyHealth@EU recommendation are described in [Authorization](authorization.html).
+At those API boundaries, the consumer is the [Health Data API Authorization Client](ActorDefinition-eu-authorization-client-eu-api.html), and the protected EHR endpoint is the [Health Data API Resource Server](ActorDefinition-eu-authorization-resource-server-eu-api.html). The [Health Data API Authorization Server](ActorDefinition-eu-authorization-server-eu-api.html) is a distinct participant.
+
+The final infrastructure-to-EHR hop is separate from NCP-to-NCP exchange. For MyHealth@EU, authorization remains outside this IG; [Authorization](authorization.html#myhealth-eu) recommends alignment with IHE IUA. If a deployment selects IUA, these generic roles are realized by the [IHE IUA Authorization Client](ActorDefinition-iua-authorization-client-eu-api.html), [IHE IUA Resource Server](ActorDefinition-iua-resource-server-eu-api.html), and a distinct [IHE IUA Authorization Server](ActorDefinition-iua-authorization-server-eu-api.html). This use case does not select an IUA transaction or authorization flow; the applicable MyHealth@EU and deployment requirements govern that choice. The NCPeH API remains the specification for NCP-to-NCP exchange.
 
 </div>

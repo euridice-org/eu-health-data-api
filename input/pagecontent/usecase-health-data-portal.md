@@ -35,26 +35,35 @@ supplies user authentication and may be grouped with the Authorization Server or
 Portal sign-in alone does not authorize a downstream EHR request; see
 [authentication and API authorization](authorization.html#authentication-and-api-authorization).
 
-The technology for the EHR-facing exchange depends on its deployment environment.
-For MyHealth@EU, authorization is outside this IG's scope; deployments should
-align with [IHE IUA](https://profiles.ihe.net/ITI/IUA/index.html), as noted in
-[environment guidance](authorization.html#myhealth-eu). For
-the [National Interoperability Infrastructure](authorization.html#national-interoperability-infrastructure),
-[IHE IUA](https://profiles.ihe.net/ITI/IUA/index.html) is recommended where
-participants are preconfigured and user or patient claims are needed. In
-[Wellness Applications](authorization.html#wellness-applications) and
-[Healthcare Provider](authorization.html#healthcare-provider) environments,
-[SMART](https://hl7.org/fhir/smart-app-launch/STU2.2/) is required. Use
-[SMART App Launch](https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html)
-when a clinician or patient must authorize the EHR-facing request at runtime. A
-server-side exchange may use
-[SMART Backend Services](https://hl7.org/fhir/smart-app-launch/STU2.2/backend-services.html#use-this-profile-when-the-following-conditions-all-apply)
-only when the client is pre-authorized, uses asymmetric confidential-client
-authentication, and requires no runtime end-user authorization. This use case
-does not select one environment, so the applicable protocol and flow must be
-determined for the deployment; see [Authorization](authorization.html). Patient
-consent preferences and app-linking rules remain the responsibility of the access
-service or Member State infrastructure.
+This use case spans deployment environments and does not select one flow for every EHR-facing hop.
+Use the environment mapping in [Authorization](authorization.html#environment-specific-requirements):
+
+- For a MyHealth@EU hop, authorization remains outside this IG; deployment guidance recommends
+  alignment with [IHE IUA](authorization.html#myhealth-eu).
+- For a National Interoperability Infrastructure hop, IHE IUA is recommended when participants
+  and the Authorization Server are preconfigured and user or patient claims are needed. When
+  selected, the generic roles map to the [IHE IUA Authorization Client](ActorDefinition-iua-authorization-client-eu-api.html),
+  [IHE IUA Resource Server](ActorDefinition-iua-resource-server-eu-api.html), and
+  [IHE IUA Authorization Server](ActorDefinition-iua-authorization-server-eu-api.html); the
+  deployment selects applicable transactions and MHD scopes.
+- For a wellness application-to-HDAS hop, the interactive client is a [SMART App](ActorDefinition-smart-app-eu-api.html),
+  the protected HDAS endpoint is a [SMART FHIR Resource Server](ActorDefinition-smart-fhir-resource-server-eu-api.html),
+  and the [SMART Authorization Server](ActorDefinition-smart-authorization-server-eu-api.html)
+  is distinct. This is SMART App Launch; an EHR Launch also involves a
+  [SMART Launching System](ActorDefinition-smart-launching-system-eu-api.html).
+- For a separate Healthcare Provider hop, an interactive request uses a SMART App and the
+  applicable SMART FHIR Resource Server and SMART Authorization Server roles. A server-side
+  request uses a [SMART Backend Service](ActorDefinition-smart-backend-service-eu-api.html) only
+  under the Backend Services prerequisites below; the protected endpoint remains the SMART FHIR
+  Resource Server and the SMART Authorization Server remains distinct.
+
+Interactive clinician or patient authorization uses the applicable SMART App Launch capability
+set. SMART Backend Services describes a separate server-side flow whose prerequisites include
+pre-authorized access, asymmetric confidential-client authentication, and no runtime end-user
+authorization. The applicable SMART roles and requirements are described in
+[Authorization](authorization.html#smart-app-launch). The specific environment and flow for each
+downstream hop remain deployment-dependent. Patient consent preferences and app-linking rules
+remain the responsibility of the access service or Member State infrastructure.
 
 </div>
 
