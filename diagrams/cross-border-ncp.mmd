@@ -1,23 +1,22 @@
 sequenceDiagram
+    box rgb(240, 248, 255) This IG
     participant Requester as Requesting EHR<br/>(Country B)
+    participant NationalB as National infrastructure<br/>(Country B)
+    end
     participant NCPB as Requesting NCP<br/>(Country B)
     participant NCPA as Responding NCP<br/>(Country A)
-    participant National as National infrastructure<br/>component
+    box rgb(240, 248, 255) This IG
+    participant NationalA as National infrastructure<br/>(Country A)
     participant EHR as Data-holding EHR<br/>(Country A)
+    end
 
-    rect rgb(240, 248, 255)
-    Note over Requester,NCPB: This IG
-    Requester->>NCPB: Query patient data
-    end
+    Requester->>NationalB: Query patient data
+    NationalB->>NCPB: Query
     NCPB->>NCPA: Query
-    NCPA->>National: Query
-    rect rgb(240, 248, 255)
-    Note over National,EHR: This IG
-    National->>EHR: Query
-    EHR-->>National: Patient data
-    end
-    National-->>NCPA: Patient data
+    NCPA->>NationalA: Query
+    NationalA->>EHR: Query
+    EHR-->>NationalA: Patient data
+    NationalA-->>NCPA: Patient data
     NCPA-->>NCPB: Patient data
-    rect rgb(240, 248, 255)
-    NCPB-->>Requester: Patient data
-    end
+    NCPB-->>NationalB: Patient data
+    NationalB-->>Requester: Patient data
