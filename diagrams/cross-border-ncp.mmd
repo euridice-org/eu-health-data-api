@@ -5,14 +5,19 @@ sequenceDiagram
     participant National as National infrastructure<br/>component
     participant EHR as Data-holding EHR<br/>(Country A)
 
+    rect rgb(240, 248, 255)
+    Note over Requester,NCPB: This IG
     Requester->>NCPB: Query patient data
+    end
     NCPB->>NCPA: Query
     NCPA->>National: Query
     rect rgb(240, 248, 255)
-    Note over National,EHR: EHR-facing API (this IG)
+    Note over National,EHR: This IG
     National->>EHR: Query
     EHR-->>National: Patient data
     end
     National-->>NCPA: Patient data
     NCPA-->>NCPB: Patient data
+    rect rgb(240, 248, 255)
     NCPB-->>Requester: Patient data
+    end
