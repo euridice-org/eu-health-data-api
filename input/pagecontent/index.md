@@ -14,6 +14,8 @@
   </div>
 </div>
 
+{% include worknote.html text="Work in progress: This build includes authorization-related changes being developed on the eu-health-data-api-ballot-recon-auth branch. They have been merged into this build to show progress and reduce the risk of larger merge conflicts later. Where practicable, authorization changes are marked in purple text with a vertical purple bar to the left." %}
+
 ### Regulatory Basis
 
 The European Health Data Space (EHDS) regulation describes an obligation for EHR systems to include an Interoperability Component that does the following:
@@ -33,6 +35,22 @@ This IG defines exchange patterns — actors, transactions, and security — tha
 This IG does not define clinical data models. Separate Content IGs maintained by HL7 Europe define the structure and content of each priority category: what fields a Patient Summary contains, what codes a Laboratory Report uses (see [Priority Categories](priority-categories.html)). An implementable system combines this IG for transport with a Content IG for the data model.
 
 This IG excludes ePrescription and eDispensation workflow transactions, user-level authorization, audit logging formats, and bulk data export. See [Regulatory Anchors](regulatoryAnchors.html) for requirements traceability.
+
+### Conformance Language
+
+The uppercase key words in this IG have the meanings defined in [RFC 2119][rfc2119],
+as clarified by [RFC 8174][rfc8174] (BCP 14). These meanings apply only when
+the keywords appear in uppercase.
+
+- **SHALL** states an absolute requirement.
+- **SHOULD** and **RECOMMENDED** express a recommendation. Valid reasons may
+  justify a departure in particular circumstances, after the implications are
+  understood and carefully weighed. **RECOMMENDED** has the same strength as
+  **SHOULD**.
+- **MAY** indicates that a choice is truly optional.
+
+[rfc2119]: https://www.rfc-editor.org/rfc/rfc2119
+[rfc8174]: https://www.rfc-editor.org/rfc/rfc8174
 
 ### Audience
 
@@ -69,23 +87,23 @@ We define composite actors that inherit and combine actors defined in these exis
 At a high level, the following actors are specified:
 
 <div style="max-width: 80%; margin: 0 auto;">
-{% include img.html img="actors_overall.png" caption="Figure 1: Actor Overview" %}
+{% include img.html img="actors_overall.png" caption="Actor Overview" %}
 </div>
 
-## Document Exchange Actors
+### Document Exchange Actors
 
 - **Document Publisher** - Produces EEHRxF FHIR Documents and publishes to Document Access Providers
 - **Document Access Provider** - Serves EEHRxF FHIR Documents via query API. Optionally accepts documents from Document Publisher (Document Submission Option).
 - **Document Consumer** - Queries and retrieves EEHRxF documents from Document Access Providers
 
-## Resource Exchange Actors
+### Resource Exchange Actors
 
 - **Resource Access Provider** - Provides query access to individual FHIR resources
 - **Resource Consumer** - Queries FHIR resources from Resource Access Providers
 
 These resource actors are initially scoped for search + read. See [Resource Access](resource-access.html) for detailed discussion and possible approaches for resource exchange patterns.
 
-## Priority Categories
+### Priority Categories
 
 EHDS defines priority categories of health data for interoperability. Each pairs a Content IG (data model) with an exchange pattern (this IG). See [Priority Categories](priority-categories.html) for details.
 

@@ -1,43 +1,12 @@
 // CapabilityStatement for EEHRxF Resource Consumer Actor (IPA client)
-// Based on IPA Client with SMART Backend Services security
+// Based on IPA Client with environment-selected IUA or SMART security
 
 Instance: resource-consumer-eu-api
 InstanceOf: CapabilityStatement
 Title: "EEHRxF Resource Consumer CapabilityStatement"
 Usage: #definition
 Description: """
-CapabilityStatement for the EEHRxF Resource Consumer actor. This actor queries for
-clinical data resources following the International Patient Access (IPA) patterns.
-
-This CapabilityStatement defines the requirements for systems consuming direct resource
-access (beyond document-based exchange) in the EU EHR Exchange Format (EEHRxF) ecosystem.
-It inherits patterns from:
-- **IPA (International Patient Access)**: Resource profiles and search parameter patterns
-
-### Resource Flexibility (IPA Alignment)
-
-Following IPA's approach, clients are not required to consume all clinical resources listed
-below. Clients MAY choose which resources to query based on their needs and the server's
-declared capabilities. The only required capability is Patient lookup. This flexibility
-allows clients to implement targeted use cases without requiring support for all resource types.
-
-**Required**: Patient (for lookup context)
-**Optional (request based on needs and server support)**:
-- Practitioner, Organization: Reference resolution
-- Condition, AllergyIntolerance: Patient safety data
-- Observation, DiagnosticReport: Clinical results
-- ImagingStudy: Imaging results
-- MedicationRequest, MedicationDispense, MedicationStatement: Medication data
-- Immunization: Vaccination records
-- Encounter: Visit context
-
-Clients should check the server's CapabilityStatement to discover which resources are available.
-
-### Security
-Systems SHALL support SMART Backend Services authorization for all transactions.
-
-### Profile Inheritance
-Consumers SHOULD expect resources conforming to EU Core profiles where available.
+Requirements for an EEHRxF Resource Consumer that queries clinical FHIR resources using IPA patterns.
 """
 
 * name = "ResourceConsumerEuApi"
@@ -58,17 +27,36 @@ The Resource Consumer actor queries for clinical data resources from a Resource 
 Provider following IPA patterns. This enables direct resource access complementing
 document-based exchange via MHD.
 
-All transactions require SMART Backend Services authorization.
+It groups with the IUA Authorization Client, SMART App, or SMART Backend Service selected by the
+environment and use case. The Authorization Server is a separate participant; see
+[Authorization](authorization.html#environment-specific-requirements).
 """
 
-* rest[=].security.cors = false
-* rest[=].security.service = http://hl7.org/fhir/restful-security-service#SMART-on-FHIR
 * rest[=].security.description = """
-SMART Backend Services authorization is REQUIRED for all transactions.
-Systems SHALL:
-- Authenticate using JWT client credentials (RFC 7523)
-- Request appropriate scopes for resource access
-- Use TLS 1.2 or higher for all communications
+This abstract requirements statement does not advertise a fixed security service. A concrete
+deployment SHALL declare exactly one security-service coding from the [EU Health Data API
+Authorization Security Service ValueSet](ValueSet-eu-api-authorization-security-service.html),
+selected for its environment. It SHALL NOT advertise both services unless a future profile defines
+dual conformance.
+
+### IHE IUA
+
+The consumer groups with the IUA Authorization Client. The IPA and PDQm interactions in this
+statement have no IUA MHD transaction scopes; the deployment applies the IUA authorization policy
+defined for its environment.
+
+### SMART Backend Services
+
+For a pre-authorized system-to-system use case, the consumer groups with the SMART Backend Service,
+uses `client_credentials` and `private_key_jwt`, and requests `system/` scopes for needed resources.
+
+### Interactive SMART
+
+Where an interactive use case applies, the consumer groups with the SMART App, uses authorization
+code with PKCE, and requests the applicable `patient/` or `user/` scopes. Browser CORS requirements
+apply only to deployments supporting browser-based clients.
+
+All modes use TLS 1.2 or higher.
 
 ### Resource Flexibility
 
@@ -78,7 +66,7 @@ lookup is required; other resources are requested as needed.
 
 ### Scopes for Desired Resources
 
-Clients SHALL request scopes for the resources they need:
+For SMART Backend Services, clients SHALL request scopes for the resources they need:
 - system/Patient.rs (REQUIRED - read + search Patient)
 - system/Condition.rs (if Condition needed)
 - system/AllergyIntolerance.rs (if AllergyIntolerance needed)
@@ -92,6 +80,10 @@ Clients SHALL request scopes for the resources they need:
 - system/Encounter.rs (if Encounter needed)
 - system/Practitioner.r (if Practitioner needed)
 - system/Organization.r (if Organization needed)
+
+These are **SMART App Launch 2.2 Backend Services FHIR Resource Scopes**, not IUA transaction scopes.
+Interactive SMART uses the corresponding `patient/` or `user/` forms. See
+[Authorization](authorization.html#tokens-scopes-enforcement-and-errors).
 """
 
 // ============================================================================

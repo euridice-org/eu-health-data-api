@@ -20,7 +20,43 @@ This IG defines the Interoperability Component API surface the access service us
 
 ### Authorization
 
-The patient's identity and authorization are established at the access service. At the Interoperability Component API surface, the consumer is an authorized system-to-system caller; the mechanism is described in [Authorization](authorization.html). Patient consent preferences and app-linking rules are established by the access service or Member State infrastructure; this IG describes only the EHR-facing system-to-system exchange.
+<div class="auth-change" markdown="1">
+
+The patient's identity and authorization are established at the access service.
+At the Interoperability Component API surface, the access service acts as the
+[Health Data API Authorization Client](ActorDefinition-eu-authorization-client-eu-api.html),
+and the protected EHR endpoint acts as the
+[Health Data API Resource Server](ActorDefinition-eu-authorization-resource-server-eu-api.html).
+The [Health Data API Authorization Server](ActorDefinition-eu-authorization-server-eu-api.html)
+is a distinct participant.
+
+For interactive access, the [Authentication Service](ActorDefinition-authentication-service-eu-api.html)
+supplies user authentication and may be grouped with the Authorization Server or separately deployed.
+Portal sign-in alone does not authorize a downstream EHR request; see
+[authentication and API authorization](authorization.html#authentication-and-api-authorization).
+
+The technology for the EHR-facing exchange depends on its deployment environment.
+For MyHealth@EU, authorization is outside this IG's scope; deployments should
+align with [IHE IUA](https://profiles.ihe.net/ITI/IUA/index.html), as noted in
+[environment guidance](authorization.html#myhealth-eu). For
+the [National Interoperability Infrastructure](authorization.html#national-interoperability-infrastructure),
+[IHE IUA](https://profiles.ihe.net/ITI/IUA/index.html) is recommended where
+participants are preconfigured and user or patient claims are needed. In
+[Wellness Applications](authorization.html#wellness-applications) and
+[Healthcare Provider](authorization.html#healthcare-provider) environments,
+[SMART](https://hl7.org/fhir/smart-app-launch/STU2.2/) is required. Use
+[SMART App Launch](https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html)
+when a clinician or patient must authorize the EHR-facing request at runtime. A
+server-side exchange may use
+[SMART Backend Services](https://hl7.org/fhir/smart-app-launch/STU2.2/backend-services.html#use-this-profile-when-the-following-conditions-all-apply)
+only when the client is pre-authorized, uses asymmetric confidential-client
+authentication, and requires no runtime end-user authorization. This use case
+does not select one environment, so the applicable protocol and flow must be
+determined for the deployment; see [Authorization](authorization.html). Patient
+consent preferences and app-linking rules remain the responsibility of the access
+service or Member State infrastructure.
+
+</div>
 
 ### Art. 5: Insertion of Patient-Provided Data (Informative)
 

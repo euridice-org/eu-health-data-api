@@ -22,4 +22,18 @@ The service may query EHR systems directly, through national infrastructure that
 
 ### Authorization
 
-The professional's identity and authorization are established at the access service. At the Interoperability Component API surface, the consumer is an authorized system-to-system caller; the mechanism — for example SMART Backend Services credentials issued by a national authorization server — is described in [Authorization](authorization.html).
+<div class="auth-change" markdown="1">
+
+For API requests from a server-side access service to EHR systems, [SMART Backend Services](https://hl7.org/fhir/smart-app-launch/STU2.2/backend-services.html#use-this-profile-when-the-following-conditions-all-apply) is recommended only when the client is pre-authorized, uses asymmetric confidential-client authentication, and does not require runtime end-user authorization. Where a system offers third-party applications interactive access to its FHIR API, it SHOULD support SMART App Launch using the applicable Patient or Clinician Access capability set. The professional's identity and authorization are established at the access service; this does not by itself authorize access to every matching resource. At the Interoperability Component API surface, the access service acts as the [Health Data API Authorization Client](ActorDefinition-eu-authorization-client-eu-api.html), and the protected EHR endpoint acts as the [Health Data API Resource Server](ActorDefinition-eu-authorization-resource-server-eu-api.html). The [Health Data API Authorization Server](ActorDefinition-eu-authorization-server-eu-api.html) is a distinct participant. See [Authorization](authorization.html) for the normative requirements.
+
+</div>
+
+<div class="auth-change" markdown="1">
+
+For interactive access, the [Authentication Service](ActorDefinition-authentication-service-eu-api.html)
+authenticates the professional, directly or through an upstream identity service, and may be grouped
+with the Authorization Server or separately deployed. This does not grant downstream API access
+or add runtime user authentication to a pre-authorized Backend Service. See
+[authentication and API authorization](authorization.html#authentication-and-api-authorization).
+
+</div>

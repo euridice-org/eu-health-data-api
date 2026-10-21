@@ -17,6 +17,31 @@ The server returns a CapabilityStatement resource that declares:
 - Supported search parameters
 - Actor conformance and priority category support (see below)
 
+### Authorization Discovery
+
+<div class="auth-change" markdown="1">
+
+FHIR capability discovery at `[base]/metadata` declares the API interactions and security
+service coding. It is not OAuth endpoint metadata. Where SMART is selected by
+[Authorization](authorization.html#environment-specific-requirements), the client discovers
+the authorization configuration from `[base]/.well-known/smart-configuration`, which publishes
+absolute endpoints, supported grants, capabilities, client-authentication methods, signing
+algorithms, and scopes. Interactive SMART modes additionally publish the authorization endpoint,
+PKCE and launch capabilities; Backend Services publishes `client_credentials`, asymmetric
+authentication, and applicable `system/` scopes.
+
+The discovered Authorization Server need not be co-located with the FHIR server. Its
+[Authentication Service](ActorDefinition-authentication-service-eu-api.html) may be grouped with it
+or separately deployed; this does not create an additional SMART discovery endpoint or FHIR
+security-service code. See [authentication and API authorization](authorization.html#authentication-and-api-authorization).
+
+Where IUA is selected, the established deployment preconfigures the Authorization Server and
+the client applies the selected IUA metadata and transaction requirements. A CapabilityStatement
+does not replace either SMART or IUA metadata. See [SMART conformance](https://hl7.org/fhir/smart-app-launch/STU2.2/conformance.html)
+and [IHE IUA ITI-103](https://profiles.ihe.net/ITI/TF/Volume2/ITI-103.html).
+
+</div>
+
 ### Provider Actors
 
 Different provider actors advertise different capabilities:
@@ -68,6 +93,8 @@ sequenceDiagram
 
     Note over Consumer: Consumer inspects:<br/>- instantiates (actor conformance)<br/>- implementationGuide (content IGs)<br/>- rest.resource.supportedProfile (profiles)<br/>- rest.resource (supported resources)
 ```
+
+  {% include figure-caption.html caption="Capability discovery flow" %}
 
 ### Example: Server Supporting Multiple Priority Categories
 

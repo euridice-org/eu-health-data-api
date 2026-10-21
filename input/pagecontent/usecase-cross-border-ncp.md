@@ -31,3 +31,9 @@ All layers exchange EEHRxF-formatted data.
 ### Authorization
 
 Cross-border patient consent, health-professional authentication in the requesting country, and authorization at the NCP and national-infrastructure layers are governed by MyHealth@EU and Member State infrastructure — not by this IG. At the highlighted API boundaries, the consumer is an authorized EHR system or national-infrastructure component; how that authorization was established is out of scope here.
+
+<div class="auth-change" markdown="1">
+
+At those API boundaries, the consumer and protected EHR endpoint have the generic [Health Data API Authorization Client](ActorDefinition-eu-authorization-client-eu-api.html) and [Health Data API Resource Server](ActorDefinition-eu-authorization-resource-server-eu-api.html) roles. Any Authorization Server is a distinct participant; the applicable protocol roles and MyHealth@EU recommendation are described in [Authorization](authorization.html).
+
+</div>

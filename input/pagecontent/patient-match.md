@@ -223,6 +223,8 @@ sequenceDiagram
     Note over Consumer: Consumer uses Patient.id<br/>for subsequent queries
 ```
 
+  {% include figure-caption.html caption="Patient lookup by identifier" %}
+
 *Patient lookup applies to both [Document Exchange](document-exchange.html) and [Resource Access](resource-access.html) patterns.*
 
 ### Design Rationale

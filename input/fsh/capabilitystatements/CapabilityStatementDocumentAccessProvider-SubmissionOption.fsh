@@ -6,33 +6,7 @@ InstanceOf: CapabilityStatement
 Title: "EEHRxF Document Access Provider - Document Submission Option"
 Usage: #definition
 Description: """
-CapabilityStatement for the Document Submission Option on the EEHRxF Document Access Provider.
-
-This option enables the Access Provider to receive documents from external Document
-Publishers via [ITI-105 Simplified Publish](https://profiles.ihe.net/ITI/MHD/ITI-105.html).
-
-Systems implementing this option:
-- SHALL also implement the base [Document Access Provider](CapabilityStatement-document-access-provider-eu-api.html) capabilities
-- SHALL accept ITI-105 transactions from authorized Document Publishers
-- SHALL make received documents available via ITI-67 and ITI-68
-- SHALL validate documents against EEHRxF content profiles
-
-This option is REQUIRED when acting as a delegated access provider for external
-Document Publishers (e.g., integration engines, national infrastructure).
-
-### Actor Grouping
-
-Adds to base Document Access Provider:
-- [MHD Document Recipient](https://profiles.ihe.net/ITI/MHD/1331_actors_and_transactions.html) - Simplified Publish Option ([CapabilityStatement](https://profiles.ihe.net/ITI/MHD/CapabilityStatement-IHE.MHD.DocumentRecipient.html))
-
-### Transaction
-
-| Transaction | Description | Optionality |
-|-------------|-------------|-------------|
-| ITI-105 Simplified Publish | Accept document publication from Document Publishers | R |
-
-### Security
-Systems SHALL support SMART Backend Services authorization for document submission.
+Requirements for the Document Submission Option on an EEHRxF Document Access Provider.
 """
 
 * name = "DocumentAccessProviderSubmissionOptionEuApi"
@@ -57,13 +31,20 @@ The server extracts and persists both the DocumentReference metadata and the
 embedded document, making them available via ITI-67 and ITI-68.
 """
 
-* rest[=].security.service = http://hl7.org/fhir/restful-security-service#SMART-on-FHIR
 * rest[=].security.description = """
-Additional scope required for document submission:
-- system/DocumentReference.c (create DocumentReference via ITI-105)
+This abstract requirements option does not advertise a fixed security service. A concrete deployment
+inherits the protocol selected for the base Document Access Provider and SHALL declare exactly one
+security-service coding from the [EU Health Data API Authorization Security Service ValueSet](ValueSet-eu-api-authorization-security-service.html),
+selected for its environment. It SHALL NOT advertise both services unless a future profile defines
+dual conformance.
+
+For SMART Backend Services, the additional scope is `system/DocumentReference.c`. For interactive
+SMART, use the corresponding `patient/DocumentReference.c` or `user/DocumentReference.c` scope when
+that mode and context apply. ITI-105 has no IUA-defined transaction scope; an IUA deployment applies
+the authorization policy defined for its environment without inventing an ITI-105 scope.
 
 The Document Publisher must be authorized to submit documents on behalf of the
-patient's care team.
+patient's care team. See [Authorization](authorization.html#environment-specific-requirements).
 """
 
 // ============================================================================

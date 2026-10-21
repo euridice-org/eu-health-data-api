@@ -12,7 +12,11 @@ Systems use FHIR CapabilityStatement to discover what priority categories and ex
 
 #### Authorization
 
-System-to-system authorization using SMART Backend Services and IHE IUA. Required for all transactions. See [Authorization](authorization.html).
+<div class="auth-change" markdown="1">
+
+Authorization using SMART or IHE IUA, with the applicable flow. Required for all transactions. See [Authorization](authorization.html).
+
+</div>
 
 #### Patient Identification
 
@@ -31,7 +35,7 @@ Query individual FHIR resources (Observations, Conditions, Medications, etc.) us
 All exchange patterns follow a common flow:
 
 1. **Discover** capabilities via CapabilityStatement
-2. **Authorize** using SMART Backend Services
+2. **Authorize** using SMART or IHE IUA, with the applicable flow
 3. **Identify** the patient using PDQm
 4. **Access** data via Document Exchange or Resource Access
 
