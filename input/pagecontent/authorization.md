@@ -39,16 +39,15 @@ SMART deployments SHOULD use IUA-formatted JWT access tokens only where the depl
 
 ### Using eIDAS for User Authorization
 
-Where the selected environment requires electronic identification under the EHDS, the
-Authorization Server SHALL use an eIDAS-recognised electronic-identification means to
-authenticate the end user before making its authorization decision. This applies to interactive
+The [European Digital Identity Wallet](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32014R0910#art_6) (under eIDAS) can work alongside a SMART authorization flow. The Authorization Server can use the Wallet as one way to authenticate the user, while SMART handles the application’s authorization to access health data.
+
+Where the selected environment requires support for eIDAS-recognised electronic identification—for example, electronic health data access services under [EHDS Article 16(1)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_16)—the Authorization Server SHALL support authentication using those means, directly or through an identity provider. This applies to interactive
 SMART or IUA authorization-code flows, not to a pre-authorized SMART Backend Service using
 `client_credentials`. The Authorization Server validates the authentication result, establishes
 the user session, applies the applicable authorization policy, and issues a code or token only
 after successful authorization.
 
-The [European Digital Identity Wallet](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32014R0910#art_6)
-can provide that electronic-identification result where applicable. A deployment MAY use
+A deployment MAY use
 [OpenID for Verifiable Presentations 1.0](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html)
 to obtain and validate a verifiable presentation from a Wallet, but this IG does not select a
 presentation format, credential schema, or Wallet-to-Authorization-Server profile. The
