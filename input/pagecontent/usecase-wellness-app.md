@@ -10,8 +10,8 @@ Article 5 allows patients to insert information into their EHR through electroni
 
 <div class="auth-change" markdown="1">
 
-This page is informative. Authorization recommendations are described in
-[Authorization](authorization.html#wellness-applications).
+This page is informative about the exchange workflow. For interactive third-party app access,
+see the recommendation in [Authorization](authorization.html#wellness-applications).
 Patient identity, consent management, and eIDAS assurance remain deployment and Member State
 responsibilities; an access token does not replace them.
 
@@ -40,12 +40,21 @@ EHDS does not specify whether the wellness application sends data through the he
 
 <div class="auth-change" markdown="1">
 
-Where a system offers third-party applications interactive access to its FHIR API, it SHOULD support SMART App Launch using the applicable Patient or Clinician Access capability set.
-See [Authorization](authorization.html#wellness-applications).
+The [Wellness Applications section of Authorization](authorization.html#wellness-applications)
+describes the applicable authorization recommendations and conformance requirements. The relevant flows are:
 
-Preconfigured, server-side access to a provider-hosted EHR SHOULD use SMART Backend Services
-when its conditions all apply: pre-authorized access, asymmetric confidential-client
-authentication, and no runtime end-user authorization.
+- **HDAS-linked access**: where the HDAS offers interactive third-party FHIR API access, it SHOULD support SMART App Launch using the applicable Patient or Clinician Access capability set. Discovering the authorization endpoint from
+	the FHIR endpoint and using a confidential-client profile are RECOMMENDED.
+- **Clinician-launched access**: where interactive third-party app access is offered, SMART App Launch EHR Launch with current-patient context SHOULD be supported.
+	It is RECOMMENDED that the launch target be a FHIR server hosted by the Wellness Application so
+	the EHR can retrieve relevant information. Use Clinician Access for EHR Launch, or Clinician
+	Access for Standalone when not launched by an EHR.
+- **Patient-launched access** typically uses SMART App Launch with the EHR as FHIR server, allowing
+	information to be uploaded to the EHR. Select Patient Access for EHR Launch or Patient Access for
+	Standalone Apps as applicable; write workflows follow the applicable Argonaut Write successor.
+- **Preconfigured, server-side access to a provider-hosted EHR** SHOULD use SMART Backend Services
+	when its conditions all apply: pre-authorized access, asymmetric confidential-client
+	authentication, and no runtime end-user authorization.
 
 </div>
 
