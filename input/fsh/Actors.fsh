@@ -43,16 +43,41 @@ definition and the relevant [Authorization](authorization.html) requirements.
 * experimental = false
 * type = #system
 
+Instance: authentication-service-eu-api
+InstanceOf: ActorDefinition
+Title: "Authentication Service"
+Usage: #definition
+Description: """
+The Authentication Service authenticates an end user, directly or through a Wallet or upstream
+identity provider, and supplies an authentication result trusted by the EU Authorization Server.
+It does not grant API access or issue API access tokens in this role. This IG-defined role is not
+a formal IHE IUA or SMART actor. It MAY be grouped with the
+[EU Authorization Server](ActorDefinition-eu-authorization-server-eu-api.html) in one implementation;
+the interface between separate implementations is deployment-defined, not an interoperable
+transaction specified by this IG. No ID token or token exchange is required by the actor split.
+See [authentication and authorization groupings](actors.html#authentication-and-authorization-groupings)
+and [Authorization](authorization.html#authentication-and-api-authorization).
+"""
+* name = "AuthenticationServiceEuApi"
+* title = "Authentication Service"
+* status = #active
+* experimental = false
+* type = #system
+
 Instance: eu-authorization-server-eu-api
 InstanceOf: ActorDefinition
 Title: "EU Authorization Server"
 Usage: #definition
 Description: """
 The EU Authorization Server issues access tokens after applying the authentication and
-authorization requirements of the selected environment and protocol. Client assertion
+authorization requirements of the selected environment and protocol. When user authentication
+is required, it relies on an acceptable result from the
+[Authentication Service](ActorDefinition-authentication-service-eu-api.html), with which it MAY
+be grouped. Authentication alone does not establish API access entitlement. Client assertion
 validation applies only when the selected flow uses asymmetric client authentication. The
 Authorization Server remains responsibility-distinct from a Resource Server, including when
 the two are co-located. This generic role does not by itself claim IHE IUA or SMART conformance.
+The EU prefix identifies this IG's role, not a central EU-operated service.
 See the applicable [IHE IUA Authorization Server](https://profiles.ihe.net/ITI/IUA/index.html#34112-authorization-server)
 or [SMART Authorization Server](ActorDefinition-smart-authorization-server-eu-api.html)
 definition and the relevant [Authorization](authorization.html) requirements.
@@ -227,6 +252,8 @@ Usage: #definition
 Description: """
 The independent IHE IUA Authorization Server authenticates clients, validates client
 assertions when selected, applies issuance policy, prevents replay, and issues tokens.
+Where user authentication is required, it may use the IG-defined Authentication Service;
+this does not remove any applicable IUA Authorization Server conformance obligation.
 It does not provide protected-resource enforcement. See the
 [IHE IUA Authorization Server](https://profiles.ihe.net/ITI/IUA/index.html#34112-authorization-server)
 and [Authorization](authorization.html#ihe-iua).
@@ -308,6 +335,9 @@ Usage: #definition
 Description: """
 The SMART Authorization Server authenticates clients as applicable, authorizes requests,
 and issues tokens. It remains a distinct participant from the protected FHIR Resource Server.
+For interactive flows it may rely on the IG-defined Authentication Service for user
+authentication without transferring its SMART conformance obligations. Backend Services does
+not require runtime end-user authentication.
 See [SMART App Launch](https://hl7.org/fhir/smart-app-launch/STU2.2/)
 and [Authorization](authorization.html#smart-app-launch).
 """

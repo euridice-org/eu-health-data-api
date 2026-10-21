@@ -30,6 +30,11 @@ and the protected EHR endpoint acts as the
 The [EU Authorization Server](ActorDefinition-eu-authorization-server-eu-api.html)
 is a distinct participant.
 
+For interactive access, the [Authentication Service](ActorDefinition-authentication-service-eu-api.html)
+supplies user authentication and may be grouped with the Authorization Server or separately deployed.
+Portal sign-in alone does not authorize a downstream EHR request; see
+[authentication and API authorization](authorization.html#authentication-and-api-authorization).
+
 The technology for the EHR-facing exchange depends on its deployment environment.
 For MyHealth@EU, authorization is outside this IG's scope; deployments should
 align with [IHE IUA](https://profiles.ihe.net/ITI/IUA/index.html), as noted in

@@ -40,6 +40,12 @@ This Implementation Guide describes the API surface of the EHDS Interoperability
 
 Authorization in these use cases is described using the generic [EU Authorization Client](ActorDefinition-eu-authorization-client-eu-api.html), [EU Authorization Server](ActorDefinition-eu-authorization-server-eu-api.html), and [EU Authorization Resource Server](ActorDefinition-eu-authorization-resource-server-eu-api.html) roles. Each flow's selected SMART or IHE IUA roles and detailed requirements are described in [Authorization](authorization.html).
 
+Where end-user authentication is required, the
+[Authentication Service](ActorDefinition-authentication-service-eu-api.html) supplies that
+responsibility and may be grouped with the Authorization Server or separately deployed.
+These logical roles do not prescribe central EU-operated services or common hosting; see
+[actor groupings](actors.html#authentication-and-authorization-groupings).
+
 </div>
 
 Each use case and environment might have its own rules and requirements, which are outside the scope of this Implementation Guide; here, we focus on how the Interoperability Component as described in this Implementation Guide can **support** actors across the use cases.

@@ -1,0 +1,43 @@
+@startuml docExchange_2
+skinparam svgDimensionStyle false
+skinparam shadowing false
+skinparam defaultFontName Arial
+left to right direction
+
+rectangle "Document Publisher" {
+    rectangle "Selected authorization\nclient role" as Publisher #F3BFD0
+    rectangle "PDQm Patient\nDemographics Consumer" as PP #E7C2EB
+    rectangle "MHD Document Source" as PS #ADD7F2
+    Publisher -[hidden]down- PP
+    PP -[hidden]down- PS
+}
+rectangle "Document Access Provider" {
+    rectangle "Selected Resource\nServer role" as Resource #F3BFD0
+    rectangle "PDQm Patient\nDemographics Supplier" as RP #E7C2EB
+    rectangle "MHD Document Responder" as RR #ADD7F2
+    rectangle "MHD Document Recipient\n(Submission Option)" as RS #ADD7F2
+    Resource -[hidden]down- RP
+    RP -[hidden]down- RR
+    RR -[hidden]down- RS
+}
+rectangle "Document Consumer" {
+    rectangle "Selected authorization\nclient role" as Consumer #F3BFD0
+    rectangle "PDQm Patient\nDemographics Consumer" as CP #E7C2EB
+    rectangle "MHD Document Consumer" as CC #ADD7F2
+    Consumer -[hidden]down- CP
+    CP -[hidden]down- CC
+}
+rectangle "Independent IUA or SMART\nAuthorization Server" as AS #F3BFD0
+rectangle "Authentication Service\n(when user authentication is required)" as AuthN #F3BFD0
+Publisher --> AS : obtains access token
+Consumer --> AS : obtains access token
+Publisher --> Resource : protected publication
+Consumer --> Resource : protected query / retrieval
+AS .. AuthN : deployment-defined\nuser authentication
+note bottom of AS
+  Authentication Service + Authorization Server:
+  optional grouping in one implementation.
+  AS / Resource Server co-location is independently optional.
+  No universal shared Authorization Server is implied.
+end note
+@enduml

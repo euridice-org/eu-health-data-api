@@ -30,6 +30,11 @@ algorithms, and scopes. Interactive SMART modes additionally publish the authori
 PKCE and launch capabilities; Backend Services publishes `client_credentials`, asymmetric
 authentication, and applicable `system/` scopes.
 
+The discovered Authorization Server need not be co-located with the FHIR server. Its
+[Authentication Service](ActorDefinition-authentication-service-eu-api.html) may be grouped with it
+or separately deployed; this does not create an additional SMART discovery endpoint or FHIR
+security-service code. See [authentication and API authorization](authorization.html#authentication-and-api-authorization).
+
 Where IUA is selected, the established deployment preconfigures the Authorization Server and
 the client applies the selected IUA metadata and transaction requirements. A CapabilityStatement
 does not replace either SMART or IUA metadata. See [SMART conformance](https://hl7.org/fhir/smart-app-launch/STU2.2/conformance.html)

@@ -27,3 +27,13 @@ The service may query EHR systems directly, through national infrastructure that
 Healthcare Provider deployments SHALL use [SMART](authorization.html#healthcare-provider). For API requests from a server-side access service to EHR systems, [SMART Backend Services](https://hl7.org/fhir/smart-app-launch/STU2.2/backend-services.html#use-this-profile-when-the-following-conditions-all-apply) is recommended only when the client is pre-authorized, uses asymmetric confidential-client authentication, and does not require runtime end-user authorization. If the API request instead requires interactive clinician authorization, use the applicable [SMART Clinician Access flow](authorization.html#healthcare-provider). The professional's identity and authorization are established at the access service; this does not by itself authorize access to every matching resource. At the Interoperability Component API surface, the access service acts as the [EU Authorization Client](ActorDefinition-eu-authorization-client-eu-api.html), and the protected EHR endpoint acts as the [EU Authorization Resource Server](ActorDefinition-eu-authorization-resource-server-eu-api.html). The [EU Authorization Server](ActorDefinition-eu-authorization-server-eu-api.html) is a distinct participant. See [Authorization](authorization.html) for the normative requirements.
 
 </div>
+
+<div class="auth-change" markdown="1">
+
+For interactive access, the [Authentication Service](ActorDefinition-authentication-service-eu-api.html)
+authenticates the professional, directly or through an upstream identity service, and may be grouped
+with the Authorization Server or separately deployed. This does not grant downstream API access
+or add runtime user authentication to a pre-authorized Backend Service. See
+[authentication and API authorization](authorization.html#authentication-and-api-authorization).
+
+</div>

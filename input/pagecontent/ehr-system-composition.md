@@ -4,6 +4,11 @@ This page describes common patterns for constructing an EHR system boundary that
 
 The exposed protected API has the [EU Authorization Resource Server](ActorDefinition-eu-authorization-resource-server-eu-api.html) role and uses the protocol-specific IUA or SMART Resource Server role selected for its environment. Its clients use the [EU Authorization Client](ActorDefinition-eu-authorization-client-eu-api.html) role; the [EU Authorization Server](ActorDefinition-eu-authorization-server-eu-api.html) remains distinct and MAY be co-located as a deployment choice. See [Authorization](authorization.html) for protocol details.
 
+The [Authentication Service](ActorDefinition-authentication-service-eu-api.html) may separately be
+grouped with the Authorization Server or independently deployed. That choice does not determine
+the EHR system boundary or require a central identity service; see
+[authentication and authorization groupings](actors.html#authentication-and-authorization-groupings).
+
 </div>
 
 ### Direct implementation

@@ -17,6 +17,36 @@ This is similar to the approach taken in the MHDS specification, but with a more
   - [IHE Consistent Time](https://profiles.ihe.net/ITI/TF/Volume1/ch-7.html) - Defines the use of Network Time Protocol (NTP) to provide consistent time across systems.
   - [IHE ATNA](https://profiles.ihe.net/ITI/TF/Volume1/ch-9.html) - Referenced for secure transport requirements (TLS 1.2 Floor using BCP195 Option).
 
+<div class="auth-change" markdown="1">
+
+### Authentication And Authorization Groupings
+
+The generic roles are [EU Authorization Client](ActorDefinition-eu-authorization-client-eu-api.html),
+[Authentication Service](ActorDefinition-authentication-service-eu-api.html),
+[EU Authorization Server](ActorDefinition-eu-authorization-server-eu-api.html), and
+[EU Authorization Resource Server](ActorDefinition-eu-authorization-resource-server-eu-api.html).
+The EU prefix identifies roles in this IG, not centrally operated EU services.
+
+The Authentication Service authenticates end users, directly or using a Wallet or upstream
+identity provider. The Authorization Server relies on an acceptable authentication result where
+required, applies authorization policy, and issues API access tokens. The Resource Server validates
+or introspects those tokens and enforces granted authorization and local policy.
+
+**Optional grouping:** an Authentication Service MAY be grouped with an EU Authorization Server in
+one implementation. Separate implementations require deployment-defined trust and an authentication
+interface; this IG does not define an interoperable transaction between them. Grouping does not
+require an OIDC ID token or app-mediated token exchange. These are logical roles, not a required
+number of physical servers.
+
+Independently, an Authorization Server MAY be co-located with a Resource Server. Neither grouping
+is required of a Document Access Provider or Resource Access Provider. The Authentication Service
+is IG-defined, not an additional formal IUA or SMART actor; the selected protocol's Authorization
+Server retains its conformance obligations. Pre-authorized Backend Services does not require
+runtime end-user authentication. See [Authentication and API authorization](authorization.html#authentication-and-api-authorization)
+for the flow and trust boundaries.
+
+</div>
+
 ### Document Exchange
 
 Document exchange is defined with 3 actors:
@@ -37,8 +67,12 @@ profile and from the PDQm and MHD specifications:
 </div>
 
 <div style="text-align: center;">
-{% include img.html img="docExchange_2.drawio.svg" caption="Document Exchange - Actor Groupings" %}
+{% include img.html img="docExchange_2.svg" caption="Document Exchange - Actor Groupings" %}
 </div>
+
+<span class="auth-change">The diagram shows logical roles for one exchange, not a universal shared
+Authorization Server. User authentication may be supplied by a separate Authentication Service or
+the optional grouping described above.</span>
 
 **Document Publisher**
 
@@ -133,8 +167,12 @@ specifications (with QEDm alignment where compatible):
 </div>
 
 <div style="text-align: center;">
-{% include img.html img="resExchange_2.drawio.svg" caption="Resource Access - Actor Groupings" %}
+{% include img.html img="resExchange_2.svg" caption="Resource Access - Actor Groupings" %}
 </div>
+
+<span class="auth-change">The Authorization Server is independent of the provider grouping.
+Authentication Service grouping and Authorization Server / Resource Server co-location are
+separate optional deployment choices.</span>
 
 **Resource Access Provider**
 
@@ -189,6 +227,4 @@ sequenceDiagram
 <div style="text-align: center;">
 {% include img.html img="ExGroup_DocAssembly.drawio.svg" caption="Example Grouping - Document Assembly from Distributed Resources" %}
 </div>
-
-
 

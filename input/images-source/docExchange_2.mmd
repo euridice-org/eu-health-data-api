@@ -1,5 +1,5 @@
 %% Document Exchange - Actor Groupings (Figure 5, actors.html)
-%% Regenerate: mmdc -i docExchange_2.mmd -o ../images/docExchange_2.png -b white -s 3 -p /tmp/pptr.json
+%% Alternative Mermaid view; the published SVG is generated from docExchange_2.plantuml.
 %%{init: {'flowchart': {'nodeSpacing': 18, 'rankSpacing': 28, 'padding': 6}}}%%
 flowchart LR
     subgraph Publisher["Document Publisher"]
@@ -14,7 +14,8 @@ flowchart LR
         R1("Selected Resource<br/>Server role")
         R2("PDQm Patient<br/>Demographics Supplier")
         R3("MHD Document Responder")
-        R1 ~~~ R2 ~~~ R3
+        R4("MHD Document Recipient<br/>(Submission Option)")
+        R1 ~~~ R2 ~~~ R3 ~~~ R4
     end
     subgraph Consumer["Document Consumer"]
         direction TB
@@ -24,18 +25,21 @@ flowchart LR
         C1 ~~~ C2 ~~~ C3
     end
     AS("Independent IUA or SMART<br/>Authorization Server")
+    AuthN("Authentication Service<br/>(when user authentication is required)")
+    Note["Authentication Service + AS: optional grouping.<br/>AS / Resource Server co-location is independently optional.<br/>No universal shared AS is implied."]
 
     Publisher ~~~ Provider ~~~ Consumer
     AS -. "issues tokens" .-> P1
     AS -. "issues tokens" .-> C1
-    AS -. "supports validation" .-> R1
+    AS -.-|"deployment-defined user authentication"| AuthN
+    AS ~~~ Note
 
     classDef auth fill:#f8cecc,stroke:#b85450,color:#000000;
     classDef pdqm fill:#e1d5e7,stroke:#9673a6,color:#000000;
     classDef mhd fill:#d5e8d4,stroke:#82b366,color:#000000;
-    class P1,R1,C1,AS auth;
+    class P1,R1,C1,AS,AuthN auth;
     class P2,R2,C2 pdqm;
-    class P3,R3,C3 mhd;
+    class P3,R3,R4,C3 mhd;
     style Publisher fill:#f5f5f5,stroke:#999999,color:#333333;
     style Provider fill:#f5f5f5,stroke:#999999,color:#333333;
     style Consumer fill:#f5f5f5,stroke:#999999,color:#333333;

@@ -5,6 +5,7 @@
 <artifactPageExtension value="-definitions"/>
 <artifactPageExtension value="-examples"/>
 <artifactPageExtension value="-mappings"/>
+<artifact id="ActorDefinition/authentication-service-eu-api" key="ActorDefinition-authentication-service-eu-api" name="Authentication Service"/>
 <artifact id="ActorDefinition/document-access-provider-actor-eu-api" key="ActorDefinition-EEHRxF-DocumentAccessProvider-Actor" name="EEHRxF Document Access Provider"/>
 <artifact id="CapabilityStatement/document-access-provider-submission-option-eu-api" key="CapabilityStatement-EEHRxF-DocumentAccessProvider-SubmissionOption" name="EEHRxF Document Access Provider - Document Submission Option"/>
 <artifact id="CapabilityStatement/document-access-provider-eu-api" key="CapabilityStatement-EEHRxF-DocumentAccessProvider" name="EEHRxF Document Access Provider CapabilityStatement"/>

@@ -16,10 +16,10 @@ Both build on OAuth 2.1. Neither is a subset of the other.
 | Relationship to the other | — | "Not based on SMART-on-FHIR, but does strive to not conflict with that standard" |
 | Discovery anchored at | FHIR server, `{fhir base}/.well-known/smart-configuration` | Authorization Server, `https://{host}/.well-known/oauth-authorization-server` (ITI-103, optional) |
 | Finding the Authorization Server | Advertised by the FHIR server | Explicitly out of scope; the client must already know it |
-| Scope model | Resource-level, `patient/Observation.rs` | None defined in core IUA; the MHD integration adds transaction scopes `ITI-65` to `ITI-68` |
+| Scope model | Resource-level, `patient/Observation.rs` | No API-specific vocabulary in core IUA; MHD integration adds `ITI-65` to `ITI-68` only for corresponding MHD transactions grouped with IUA |
 | Launch context | `launch`, `launch/patient`, `launch/encounter`, `fhirContext` | None, deliberately rejected |
 | User identity | `openid` + `fhirUser`, returned in an `id_token` | Optional JWT claims `subject_name`, `subject_role`, `person_id` |
-| Context delivery | Parameters alongside the access token | Claims inside the token; the Resource Server matches them against the request |
+| Context delivery | Launch context and token-response parameters | User identity, clinical context and consent-related claims under the applicable token option and integration |
 | Purpose of use and roles | Not defined | `purpose_of_use`, `subject_role`, XUA-aligned |
 | Consent data | Not defined | BPPC extension: `patient_id`, `doc_id`, `acp` |
 | System-to-system | SMART Backend Services | Client credentials grant |
@@ -29,7 +29,9 @@ Both build on OAuth 2.1. Neither is a subset of the other.
 ## Key takeaways
 
 - **Neither is "the healthcare one".** Both cover interactive and system-to-system flows.
-- **The real split is architectural.** SMART couples the FHIR server to the Authorization Server; IUA keeps them independent.
+- **Discovery is architectural, not co-location.** SMART discovers the Authorization Server from the FHIR base; IUA leaves its location to the deployment. Either can use independently hosted authorization and resource servers.
+- **Authentication and API authorization are separate responsibilities.** This IG's Authentication Service may be grouped with its Authorization Server or separately deployed. The between-service interface is deployment-defined; neither an ID token nor token exchange is required. See [actor decision](decisions.md#authorization-related-actors).
+- **Claims and scopes are orthogonal.** Claims convey context; scopes express permitted interactions and may themselves be represented as a token claim.
 - **Scopes are the incompatibility.** `ITI-67` authorizes a transaction; `patient/DocumentReference.rs` authorizes a resource plus interaction. They overlap without being equivalent, and neither is a machine-checkable subset of the other.
 - **IUA has no app-launch framework.** SMART has no purpose-of-use, role, or consent claims.
 - **Combining both is permitted but undefined.** IUA ITI TF-2: 3.72.4.3 requires the Resource Server to verify that the scope covers the transaction, so a SMART-only token fails with HTTP 401 unless the guide defines precedence.

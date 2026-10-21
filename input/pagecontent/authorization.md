@@ -3,7 +3,7 @@
 
 ### Introduction
 
-Authentication and authorization are required by the EHDS. This IG applies [SMART App Launch 2.2](https://hl7.org/fhir/smart-app-launch/STU2.2/) and [IHE IUA Revision 2.5](https://profiles.ihe.net/ITI/IUA/index.html), as selected for each environment in [4.0.1 The European Interoperability Landscape](member-state-architectures.html#401-the-european-interoperability-landscape). This page summarizes the EHDS evidence, compares the two specifications, selects a conformance target for each environment, and then defines the applicable actors, discovery, token, scope, and enforcement requirements. Potential hybrid rules remain future work.
+Authentication and authorization are required by the EHDS. This IG applies [SMART App Launch 2.2](https://hl7.org/fhir/smart-app-launch/STU2.2/) and [IHE IUA Revision 2.5](https://profiles.ihe.net/ITI/IUA/index.html), as selected for each environment in [The European Interoperability Landscape](implementation.html#the-european-interoperability-landscape). This page summarizes the EHDS evidence, compares the two specifications, selects a conformance target for each environment, and then defines the applicable actors, discovery, token, scope, and enforcement requirements. Potential hybrid rules remain future work.
 
 ### EHDS Requirements
 
@@ -21,13 +21,13 @@ Consent, patient matching, audit, identity proofing, client registration, trust 
 
 ### IHE IUA And SMART App Launch
 
-SMART and IUA both apply OAuth-based authorization to healthcare APIs, but neither is a subset of the other. SMART couples authorization discovery to the FHIR endpoint and supplies application-launch context and FHIR resource scopes. IUA supports preconfigured, cross-community deployments and can carry user and patient claims in a token.
+SMART and IUA both apply OAuth-based authorization to healthcare APIs, but neither is a subset of the other. SMART couples authorization discovery to the FHIR endpoint and supplies application-launch context and FHIR resource scopes. [IUA](https://profiles.ihe.net/ITI/IUA/index.html#3442-use-cases) supports direct access and access through intermediaries using OAuth-based authorization. Its [JWT option](https://profiles.ihe.net/ITI/IUA/index.html#3714221-json-web-token-option) profiles claims for user identity, clinical context, and consent-related information where applicable; other supported token options do not require JWT format. Cross-community use still requires agreed trust and authorization policy.
 
 | Aspect | SMART App Launch | IHE IUA |
 |---|---|---|
 | Discovery | FHIR server at `{base}/.well-known/smart-configuration` | Authorization Server metadata; locating the server is out of scope |
-| Scope model | FHIR resource scopes such as `patient/Observation.rs` | Core IUA has no scopes; MHD integration defines `ITI-65` through `ITI-68` transaction scopes |
-| Context | Launch context and token-response parameters | Optional user, patient, role, purpose-of-use, and consent-related claims |
+| Scope model | FHIR resource scopes such as `patient/Observation.rs` | Core IUA defines no API-specific scope vocabulary; MHD integration defines `ITI-65` through `ITI-68` when the corresponding MHD actors are grouped with IUA |
+| Context | Launch context and token-response parameters | Profiles user identity, clinical context, and consent-related claims under the applicable token option and integration |
 | Interactive use | App launch is a core use case | Authorization-code grant is supported, without an app-launch framework |
 | System-to-system use | Backend Services with client credentials, asymmetric authentication, and `system/` scopes | Client credentials with IUA actors and selected integration requirements |
 
@@ -37,11 +37,62 @@ SMART App Launch is best suited to context-aware application launch or authoriza
 
 SMART deployments SHOULD use IUA-formatted JWT access tokens only where the deployment separately adopts the IUA JWT claim profile; token formatting alone does not claim IUA protocol conformance.
 
+Claims and scopes are orthogonal: scopes express permitted interactions, while claims convey
+identity or authorization context used in policy decisions. Granted scopes can themselves be
+represented in a token claim. Core IUA does not choose an API-specific scope vocabulary; the
+[MHD integration](https://profiles.ihe.net/ITI/IUA/index.html#3364-use-with-the-internet-user-authorization-iua-profile)
+adds scopes only for the corresponding MHD transactions grouped with IUA. Neither contextual
+claims nor scopes alone establish consent or entitlement to every matching resource.
+
+<a name="authorization-server-deployment"></a>
+#### Authentication And API Authorization
+
+The [Authentication Service](ActorDefinition-authentication-service-eu-api.html) authenticates an
+end user, directly or through a Wallet or upstream identity provider. The
+[EU Authorization Server](ActorDefinition-eu-authorization-server-eu-api.html) relies on an
+acceptable authentication result when user authentication is required, applies authorization
+policy, and issues API access tokens. The
+[EU Authorization Resource Server](ActorDefinition-eu-authorization-resource-server-eu-api.html)
+validates or introspects tokens and enforces granted authorization. These are logical roles:
+the EU prefix does not designate centrally operated EU infrastructure.
+
+The Authentication Service MAY be grouped with the Authorization Server in one implementation,
+or they may be separately deployed. In the latter case, their trust relationship and authentication
+interface are deployment-defined, not an interoperable transaction specified by this IG. The
+deployment must establish trusted authentication sources, intended recipients, freshness and replay
+controls, applicable assurance, and mapping to local users and patients. Authentication alone
+does not grant API access. The Authentication Service is IG-defined; using it does not transfer
+the formal [IUA Authorization Server](https://profiles.ihe.net/ITI/IUA/index.html#34112-authorization-server)
+or [SMART Authorization Server](https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html)
+conformance obligations.
+
+Authorization Server / Resource Server co-location is a separate optional deployment choice, not
+a required provider grouping. A Resource Server accepts tokens only under its established issuer
+trust, token-validation arrangements, audience or resource binding, granted scopes, and local policy.
+SMART discovery can publish absolute authorization endpoints on a different host; it does not
+require common hosting or a common operator. Each illustrated Authorization Server serves the
+illustrated API trust relationship, not all APIs or all Member States.
+
+An [OIDC ID token](https://openid.net/specs/openid-connect-core-1_0.html#IDToken) describes an
+authentication event for its intended client; it is not an API access token. A Wallet presentation
+is likewise not an API access token. A deployment could separately profile
+[OAuth Token Exchange](https://www.rfc-editor.org/rfc/rfc8693.html#section-2), but neither this actor
+separation nor Wallet support requires an app to exchange identity evidence for an API token.
+Acceptance of such evidence, its audience, trust and authorization semantics would need a separate
+profile; no such exchange is claimed here.
+
+[IUA's grant discussion](https://profiles.ihe.net/ITI/IUA/index.html#34411-authorization-grant-types)
+also describes optional SAML and JWT assertion grants for federation. These are distinct from
+RFC 8693 token exchange and from an OIDC ID token; accepting a particular assertion still requires
+the deployment's trust and protocol agreements. This IG does not select one of those interfaces
+for the Authentication Service.
+
 ### Using eIDAS for User Authentication
 
 Where the selected environment requires electronic identification under the EHDS, the
-Authorization Server SHALL use an eIDAS-recognised electronic-identification means to
-authenticate the end user before making its authorization decision. This applies to interactive
+Authorization Server SHALL rely on an Authentication Service result using an eIDAS-recognised
+electronic-identification means before making its authorization decision. The Authentication
+Service may be grouped with it or separately deployed. This applies to interactive
 SMART or IUA authorization-code flows, not to a pre-authorized SMART Backend Service using
 `client_credentials`. The Authorization Server validates the authentication result, establishes
 the user session, applies the applicable authorization policy, and issues a code or token only
@@ -104,6 +155,18 @@ flow with local policy. A Wallet presentation is not an access token or grant
 and does not itself confer API authorization or determine the protocol's scopes
 or claims.
 
+For example, a patient can sign in to a Wellness Application using a Wallet without yet granting
+that app access to an EHR. The app initiates the selected
+[SMART authorization-code flow](https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html)
+for the target EHR API. Its Authorization Server arranges authentication through the Authentication
+Service, which may reuse a trusted existing session or request another Wallet presentation.
+After applying access policy, the Authorization Server returns an authorization code; the app
+redeems it with PKCE and receives an API access token. The app does not send its Wallet presentation
+or an ID token to the FHIR API in place of that access token. Wallet request routing, including
+same-device interaction, is deployment-specific; an EHR-hosted login page is not required.
+Uploading data additionally requires granted write permissions and a supported receiving interaction;
+sign-in does not create either.
+
 ### Environment-Specific Requirements
 
 The figure below described the European interoperability landscape.
@@ -135,7 +198,8 @@ Authorization for MyHealth@EU is outside the scope of this IG. Deployments shoul
 
 [IHE IUA](https://profiles.ihe.net/ITI/IUA/index.html) is RECOMMENDED where the established
 national environment preconfigures the participants and requires user or patient claims.
-Those are [IUA token claims](https://profiles.ihe.net/ITI/IUA/index.html#3714221-json-web-token-option), not OAuth scopes.
+Those [IUA token claims](https://profiles.ihe.net/ITI/IUA/index.html#3714221-json-web-token-option)
+carry context; scopes separately express permitted interactions.
 The applicable [IUA actors](https://profiles.ihe.net/ITI/IUA/index.html#341-iua-actors-transactions-and-content-modules),
 [transaction scopes](https://profiles.ihe.net/ITI/IUA/index.html#3364-use-with-the-internet-user-authorization-iua-profile),
 and [metadata](https://profiles.ihe.net/ITI/IUA/index.html#3103-get-authorization-server-metadata-iti-103)
@@ -155,8 +219,8 @@ As this app will access confidential information, it is RECOMMENDED to use the
 
 A clinician-launched Wellness Application SHALL use
 [SMART App Launch EHR Launch](https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html#launch-app-ehr-launch).
-It is RECOMMENDED that the target if the launch is a FHIR server hosted by the
-Wellness Application allowsing the EHR to retrieve relevant information. The
+For the recommended Wellness-hosted-data pattern, the launch target is an application and the
+FHIR server is hosted by the Wellness Application, allowing data to be retrieved into the EHR. The
 Wellness Application SHALL support [current-patient launch context](https://hl7.org/fhir/smart-app-launch/STU2.2/scopes-and-launch-context.html#apps-that-launch-from-the-ehr)
 and use [Clinician Access for EHR Launch](https://hl7.org/fhir/smart-app-launch/STU2.2/conformance.html#clinician-access-for-ehr-launch),
 or [Clinician Access for Standalone](https://hl7.org/fhir/smart-app-launch/STU2.2/conformance.html#clinician-access-for-standalone)
@@ -175,7 +239,13 @@ EHR-system SHOULD use [SMART Backend Services](https://hl7.org/fhir/smart-app-la
 
 Healthcare Provider deployments SHALL use [SMART App Launch](https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html).
 
-A system-to-system uploading of EERxF data to a gateway in order to provide the information
+This is this IG's environment-specific choice, not an EHDS requirement to use SMART and not a
+claim that IUA cannot support clinician access. SMART provides FHIR-based endpoint discovery and
+standalone or EHR-launch context; its Backend Services profile separately supports pre-authorized
+system-to-system access. A provider's own user interface does not become a third-party SMART App
+merely because a clinician signs in.
+
+A system-to-system uploading of EEHRxF data to a gateway in order to provide the information
 to the national infrastructure SHOULD use [SMART Backend Services](https://hl7.org/fhir/smart-app-launch/STU2.2/backend-services.html#use-this-profile-when-the-following-conditions-all-apply).
 Clinician webpages hosted by EHR systems SHALL use [SMART App Launch](https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html)
 utilizing the [Clinician Access for Standalone](https://hl7.org/fhir/smart-app-launch/STU2.2/conformance.html#clinician-access-for-standalone)
@@ -185,7 +255,27 @@ profiles according to systems requirements and deployment models.
 <a name="authorization-server-discovery"></a>
 <a name="get-access-token"></a>
 <a name="incorporate-access-token"></a>
-<a name="authorization-server-deployment"></a>
+
+#### Flow Classification
+
+Environment and flow are separate dimensions. "Application-guided authentication" is not an
+alternative to patient or clinician access: either user type may authenticate through an app-guided
+flow, and [IUA supports interactive access](https://profiles.ihe.net/ITI/IUA/index.html#3442-use-cases)
+as well as system-to-system exchange. The existing environment selections above remain applicable.
+
+| Flow | Client and user | Protected FHIR endpoint / data direction | Authorization and authentication | Endpoint location |
+|---|---|---|---|---|
+| Wellness to HDAS | SMART App; patient or clinician | HDAS API; supported reads or writes | Selected Patient or Clinician Access capability set; API Authorization Server uses Authentication Service for user authentication | SMART discovery from the target FHIR base |
+| Patient Wellness to EHR | SMART App; patient, standalone or EHR launch | EHR API; access or supported patient-provided submission | Applicable Patient Access capability set, authorization code and PKCE; Authentication Service may use Wallet | SMART discovery from EHR FHIR base |
+| Clinician accessing Wellness-hosted data | SMART App; clinician, standalone or EHR launch | Wellness-hosted API; data retrieved into EHR | Applicable Clinician Access capability set and current-patient context where required; launch target is an application, not the FHIR API itself | SMART discovery from Wellness FHIR base |
+| Pre-authorized Wellness backend to EHR | SMART Backend Service; no runtime authorizing user | Provider-hosted EHR API; supported exchange | Client credentials and asymmetric client authentication; no runtime Authentication Service step | Preconfigured deployment; required SMART metadata remains applicable |
+| Provider system to gateway | SMART Backend Service; no runtime authorizing user | Gateway API; EEHRxF upload | Pre-authorized Backend Services; no runtime Authentication Service step | Configured gateway FHIR base and SMART metadata |
+| Interactive provider access | SMART App; clinician, standalone or EHR launch | Selected EHR API; permitted clinician interactions | Applicable Clinician Access capability set; API Authorization Server relies on Authentication Service | SMART discovery from target FHIR base |
+| Established national exchange | Selected IUA Authorization Client; user context if applicable | Configured protected API; selected transactions | IUA recommendation above; Authentication Service only when the selected flow requires user authentication | Authorization Server location preconfigured; selected IUA metadata |
+
+In each row, the API Authorization Server is the server selected for that endpoint and trust
+relationship; it need not be hosted by the FHIR server. See the
+[optional actor groupings](actors.html#authentication-and-authorization-groupings).
 
 ### SMART App Launch
 

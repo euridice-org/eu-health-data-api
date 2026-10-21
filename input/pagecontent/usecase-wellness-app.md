@@ -27,13 +27,23 @@ responsibilities; an access token does not replace them.
 
 For a protected API exchange, the consuming application has the [EU Authorization Client](ActorDefinition-eu-authorization-client-eu-api.html) role and the protected endpoint has the [EU Authorization Resource Server](ActorDefinition-eu-authorization-resource-server-eu-api.html) role. The [EU Authorization Server](ActorDefinition-eu-authorization-server-eu-api.html) remains distinct; detailed SMART roles and requirements are in [Authorization](authorization.html#wellness-applications).
 
+For interactive access, the [Authentication Service](ActorDefinition-authentication-service-eu-api.html)
+authenticates the user, potentially using a Wallet. It may be grouped with the Authorization Server
+or separately deployed under an agreed trust relationship. Logging into the Wellness Application
+does not authorize it to use an EHR API: the app must complete the selected API authorization flow,
+which may reuse trusted authentication or request another sign-in. Neither an EHR-hosted login page
+nor app-mediated identity-token exchange is required. The resulting API access token, not the Wallet
+presentation or an OIDC ID token, accompanies the protected request. See the
+[Wallet example](authorization.html#using-eidas-for-user-authentication) and
+[optional groupings](actors.html#authentication-and-authorization-groupings).
+
 </div>
 
 EHDS does not specify whether the wellness application sends data through the health data access service or directly to an EHR system after linkage and authorization have been established.
 
 #### Wellness Application Exchange Patterns
 
-- **HDAS-linked wellness exchange** — the patient identity, consent, and app-linking context is established through the health data access service or Member State access-service infrastructure. The EHR-facing interaction remains a system-to-system exchange.
+- **HDAS-linked wellness exchange** — the patient identity, consent, and app-linking context is established through the health data access service or Member State access-service infrastructure. Classify the EHR-facing interaction separately: an interactive authorization uses Patient or Clinician Access; a server-side hop uses Backend Services only when all its applicability conditions hold.
 - **Direct EHR wellness integration** — a wellness application exchanges EEHRxF data directly with an EHR system under an authorization model accepted by that deployment. This IG does not require EHR systems to implement health data access service app-linking or national patient-consent workflows locally.
 
 #### Authorizing Patient Data Exchange
@@ -46,8 +56,9 @@ defines the normative flow selection and conformance requirements. The relevant 
 - **HDAS-linked access** SHALL use SMART App Launch. Discovering the authorization endpoint from
 	the FHIR endpoint and using a confidential-client profile are RECOMMENDED.
 - **Clinician-launched access** SHALL use SMART App Launch EHR Launch with current-patient context.
-	It is RECOMMENDED that the launch target be a FHIR server hosted by the Wellness Application so
-	the EHR can retrieve relevant information. Use Clinician Access for EHR Launch, or Clinician
+	The launch target is an application; for the recommended Wellness-hosted-data pattern, the
+	FHIR API is hosted by the Wellness Application so data can be retrieved into the EHR.
+	Use Clinician Access for EHR Launch, or Clinician
 	Access for Standalone when not launched by an EHR.
 - **Patient-launched access** typically uses SMART App Launch with the EHR as FHIR server, allowing
 	information to be uploaded to the EHR. Select Patient Access for EHR Launch or Patient Access for
