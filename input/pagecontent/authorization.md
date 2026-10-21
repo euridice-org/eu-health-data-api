@@ -49,12 +49,13 @@ claims nor scopes alone establish consent or entitlement to every matching resou
 
 The [Authentication Service](ActorDefinition-authentication-service-eu-api.html) authenticates an
 end user, directly or through a Wallet or upstream identity provider. The
-[EU Authorization Server](ActorDefinition-eu-authorization-server-eu-api.html) relies on an
+[Health Data API Authorization Server](ActorDefinition-eu-authorization-server-eu-api.html) relies on an
 acceptable authentication result when user authentication is required, applies authorization
 policy, and issues API access tokens. The
-[EU Authorization Resource Server](ActorDefinition-eu-authorization-resource-server-eu-api.html)
-validates or introspects tokens and enforces granted authorization. These are logical roles:
-the EU prefix does not designate centrally operated EU infrastructure.
+[Health Data API Resource Server](ActorDefinition-eu-authorization-resource-server-eu-api.html)
+validates or introspects tokens and enforces granted authorization. See
+[Authentication and Authorization Groupings](actors.html#authentication-and-authorization-groupings)
+for the logical roles and deployment boundaries.
 
 The Authentication Service MAY be grouped with the Authorization Server in one implementation,
 or they may be separately deployed. In the latter case, their trust relationship and authentication

@@ -21,18 +21,19 @@ This is similar to the approach taken in the MHDS specification, but with a more
 
 ### Authentication And Authorization Groupings
 
-The generic roles are [EU Authorization Client](ActorDefinition-eu-authorization-client-eu-api.html),
+The generic roles are [Health Data API Authorization Client](ActorDefinition-eu-authorization-client-eu-api.html),
 [Authentication Service](ActorDefinition-authentication-service-eu-api.html),
-[EU Authorization Server](ActorDefinition-eu-authorization-server-eu-api.html), and
-[EU Authorization Resource Server](ActorDefinition-eu-authorization-resource-server-eu-api.html).
-The EU prefix identifies roles in this IG, not centrally operated EU services.
+[Health Data API Authorization Server](ActorDefinition-eu-authorization-server-eu-api.html), and
+[Health Data API Resource Server](ActorDefinition-eu-authorization-resource-server-eu-api.html).
+The Health Data API qualifier identifies logical roles in this specification, not centrally
+operated EU services. Their deployment and operation are determined by the applicable architecture.
 
 The Authentication Service authenticates end users, directly or using a Wallet or upstream
 identity provider. The Authorization Server relies on an acceptable authentication result where
 required, applies authorization policy, and issues API access tokens. The Resource Server validates
 or introspects those tokens and enforces granted authorization and local policy.
 
-**Optional grouping:** an Authentication Service MAY be grouped with an EU Authorization Server in
+**Optional grouping:** an Authentication Service MAY be grouped with a Health Data API Authorization Server in
 one implementation. Separate implementations require deployment-defined trust and an authentication
 interface; this IG does not define an interoperable transaction between them. Grouping does not
 require an OIDC ID token or app-mediated token exchange. These are logical roles, not a required
@@ -227,4 +228,3 @@ sequenceDiagram
 <div style="text-align: center;">
 {% include img.html img="ExGroup_DocAssembly.drawio.svg" caption="Example Grouping - Document Assembly from Distributed Resources" %}
 </div>
-

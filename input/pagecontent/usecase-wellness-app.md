@@ -25,7 +25,7 @@ responsibilities; an access token does not replace them.
 
 <div class="auth-change" markdown="1">
 
-For a protected API exchange, the consuming application has the [EU Authorization Client](ActorDefinition-eu-authorization-client-eu-api.html) role and the protected endpoint has the [EU Authorization Resource Server](ActorDefinition-eu-authorization-resource-server-eu-api.html) role. The [EU Authorization Server](ActorDefinition-eu-authorization-server-eu-api.html) remains distinct; detailed SMART roles and requirements are in [Authorization](authorization.html#wellness-applications).
+For a protected API exchange, the consuming application has the [Health Data API Authorization Client](ActorDefinition-eu-authorization-client-eu-api.html) role and the protected endpoint has the [Health Data API Resource Server](ActorDefinition-eu-authorization-resource-server-eu-api.html) role. The [Health Data API Authorization Server](ActorDefinition-eu-authorization-server-eu-api.html) remains distinct; detailed SMART roles and requirements are in [Authorization](authorization.html#wellness-applications).
 
 For interactive access, the [Authentication Service](ActorDefinition-authentication-service-eu-api.html)
 authenticates the user, potentially using a Wallet. It may be grouped with the Authorization Server
@@ -71,8 +71,8 @@ defines the normative flow selection and conformance requirements. The relevant 
 
 <div class="auth-change" markdown="1">
 
-These flows use the generic EU Authorization Client, EU Authorization Server, and EU Authorization
-Resource Server roles; the applicable SMART App or SMART Backend Service and SMART server roles
+These flows use the generic Health Data API Authorization Client, Health Data API Authorization Server,
+and Health Data API Resource Server roles; the applicable SMART App or SMART Backend Service and SMART server roles
 provide the protocol-specific conformance details.
 
 </div>

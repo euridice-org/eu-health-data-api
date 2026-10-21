@@ -47,6 +47,6 @@ Cross-border patient consent, health-professional authentication in the requesti
 
 <div class="auth-change" markdown="1">
 
-At that API boundary, the consumer and protected EHR endpoint have the generic [EU Authorization Client](ActorDefinition-eu-authorization-client-eu-api.html) and [EU Authorization Resource Server](ActorDefinition-eu-authorization-resource-server-eu-api.html) roles. Any Authorization Server is a distinct participant; the applicable protocol roles and MyHealth@EU recommendation are described in [Authorization](authorization.html).
+At that API boundary, the consumer and protected EHR endpoint have the generic [Health Data API Authorization Client](ActorDefinition-eu-authorization-client-eu-api.html) and [Health Data API Resource Server](ActorDefinition-eu-authorization-resource-server-eu-api.html) roles. Any Authorization Server is a distinct participant; the applicable protocol roles and MyHealth@EU recommendation are described in [Authorization](authorization.html).
 
 </div>

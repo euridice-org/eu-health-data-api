@@ -8,9 +8,9 @@ A patient presents to a care provider, but his data is in another system. The cu
 
 <div class="auth-change" markdown="1">
 
-- **[Document Consumer](actors.html#document-consumer)** - The healthcare provider's system acting as the [EU Authorization Client](ActorDefinition-eu-authorization-client-eu-api.html), with the selected SMART or IUA protocol role
-- **[Document Access Provider](actors.html#document-access-provider)** - The system holding the patient's health data and acting as the [EU Authorization Resource Server](ActorDefinition-eu-authorization-resource-server-eu-api.html)
-- **[EU Authorization Server](ActorDefinition-eu-authorization-server-eu-api.html)** - Issues the access token under the selected protocol and remains distinct from the Document Access Provider; optional co-location is a deployment choice.
+- **[Document Consumer](actors.html#document-consumer)** - The healthcare provider's system acting as the [Health Data API Authorization Client](ActorDefinition-eu-authorization-client-eu-api.html), with the selected SMART or IUA protocol role
+- **[Document Access Provider](actors.html#document-access-provider)** - The system holding the patient's health data and acting as the [Health Data API Resource Server](ActorDefinition-eu-authorization-resource-server-eu-api.html)
+- **[Health Data API Authorization Server](ActorDefinition-eu-authorization-server-eu-api.html)** - Issues the access token under the selected protocol and remains distinct from the Document Access Provider; optional co-location is a deployment choice.
 
 </div>
 
@@ -47,7 +47,7 @@ The CapabilityStatement confirms support for IHE MHD document exchange, PDQm pat
 
 <div class="auth-change" markdown="1">
 
-The EU Authorization Client role is realized here by the SMART Backend Service. The Document Consumer requests an access token using SMART Backend Services ([Authorization](authorization.html#smart-app-launch)); the EU Authorization Server and EU Authorization Resource Server roles remain distinct.
+The Health Data API Authorization Client role is realized here by the SMART Backend Service. The Document Consumer requests an access token using SMART Backend Services ([Authorization](authorization.html#smart-app-launch)); the Health Data API Authorization Server and Health Data API Resource Server roles remain distinct.
 
 </div>
 

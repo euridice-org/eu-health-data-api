@@ -2,8 +2,8 @@
 skinparam svgDimensionStyle false
 
 participant App
-participant "FHIR Server\n(EU Authorization Resource Server)" as FHIR
-participant "EU Authorization Server" as AS
+participant "FHIR Server\n(Health Data API\nResource Server)" as FHIR
+participant "Health Data API\nAuthorization Server" as AS
 participant "Authentication Service" as AuthN
 participant "eIDAS / EUDI Wallet" as eIDAS
 

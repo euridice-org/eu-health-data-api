@@ -24,10 +24,10 @@ This IG defines the Interoperability Component API surface the access service us
 
 The patient's identity and authorization are established at the access service.
 At the Interoperability Component API surface, the access service acts as the
-[EU Authorization Client](ActorDefinition-eu-authorization-client-eu-api.html),
+[Health Data API Authorization Client](ActorDefinition-eu-authorization-client-eu-api.html),
 and the protected EHR endpoint acts as the
-[EU Authorization Resource Server](ActorDefinition-eu-authorization-resource-server-eu-api.html).
-The [EU Authorization Server](ActorDefinition-eu-authorization-server-eu-api.html)
+[Health Data API Resource Server](ActorDefinition-eu-authorization-resource-server-eu-api.html).
+The [Health Data API Authorization Server](ActorDefinition-eu-authorization-server-eu-api.html)
 is a distinct participant.
 
 For interactive access, the [Authentication Service](ActorDefinition-authentication-service-eu-api.html)

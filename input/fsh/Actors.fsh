@@ -26,10 +26,10 @@ for technical requirements.
 
 Instance: eu-authorization-client-eu-api
 InstanceOf: ActorDefinition
-Title: "EU Authorization Client"
+Title: "Health Data API Authorization Client"
 Usage: #definition
 Description: """
-The EU Authorization Client obtains an access token from the selected Authorization Server
+The Health Data API Authorization Client obtains an access token from the selected Authorization Server
 and presents it to a protected API. Client authentication, grants, scopes, discovery, and
 launch context depend on the selected environment and protocol; public SMART interactive
 clients do not authenticate at the token endpoint. This generic role does not by itself
@@ -38,7 +38,7 @@ claim IHE IUA or SMART conformance. See the applicable [IHE IUA Authorization Cl
 definition and the relevant [Authorization](authorization.html) requirements.
 """
 * name = "EuAuthorizationClientEuApi"
-* title = "EU Authorization Client"
+* title = "Health Data API Authorization Client"
 * status = #active
 * experimental = false
 * type = #system
@@ -49,10 +49,10 @@ Title: "Authentication Service"
 Usage: #definition
 Description: """
 The Authentication Service authenticates an end user, directly or through a Wallet or upstream
-identity provider, and supplies an authentication result trusted by the EU Authorization Server.
+identity provider, and supplies an authentication result trusted by the Health Data API Authorization Server.
 It does not grant API access or issue API access tokens in this role. This IG-defined role is not
 a formal IHE IUA or SMART actor. It MAY be grouped with the
-[EU Authorization Server](ActorDefinition-eu-authorization-server-eu-api.html) in one implementation;
+[Health Data API Authorization Server](ActorDefinition-eu-authorization-server-eu-api.html) in one implementation;
 the interface between separate implementations is deployment-defined, not an interoperable
 transaction specified by this IG. No ID token or token exchange is required by the actor split.
 See [authentication and authorization groupings](actors.html#authentication-and-authorization-groupings)
@@ -66,10 +66,10 @@ and [Authorization](authorization.html#authentication-and-api-authorization).
 
 Instance: eu-authorization-server-eu-api
 InstanceOf: ActorDefinition
-Title: "EU Authorization Server"
+Title: "Health Data API Authorization Server"
 Usage: #definition
 Description: """
-The EU Authorization Server issues access tokens after applying the authentication and
+The Health Data API Authorization Server issues access tokens after applying the authentication and
 authorization requirements of the selected environment and protocol. When user authentication
 is required, it relies on an acceptable result from the
 [Authentication Service](ActorDefinition-authentication-service-eu-api.html), with which it MAY
@@ -77,23 +77,23 @@ be grouped. Authentication alone does not establish API access entitlement. Clie
 validation applies only when the selected flow uses asymmetric client authentication. The
 Authorization Server remains responsibility-distinct from a Resource Server, including when
 the two are co-located. This generic role does not by itself claim IHE IUA or SMART conformance.
-The EU prefix identifies this IG's role, not a central EU-operated service.
+The Health Data API qualifier identifies this IG's role, not a central EU-operated service.
 See the applicable [IHE IUA Authorization Server](https://profiles.ihe.net/ITI/IUA/index.html#34112-authorization-server)
 or [SMART Authorization Server](ActorDefinition-smart-authorization-server-eu-api.html)
 definition and the relevant [Authorization](authorization.html) requirements.
 """
 * name = "EuAuthorizationServerEuApi"
-* title = "EU Authorization Server"
+* title = "Health Data API Authorization Server"
 * status = #active
 * experimental = false
 * type = #system
 
 Instance: eu-authorization-resource-server-eu-api
 InstanceOf: ActorDefinition
-Title: "EU Authorization Resource Server"
+Title: "Health Data API Resource Server"
 Usage: #definition
 Description: """
-The EU Authorization Resource Server hosts a protected API, validates or introspects access
+The Health Data API Resource Server hosts a protected API, validates or introspects access
 tokens as applicable, and enforces granted authorization and local policy. It does not issue
 access tokens or validate client assertions for an independent Authorization Server. This
 generic role does not by itself claim IHE IUA or SMART conformance. See the applicable
@@ -102,7 +102,7 @@ or [SMART FHIR Resource Server](ActorDefinition-smart-fhir-resource-server-eu-ap
 definition and the relevant [Authorization](authorization.html) requirements.
 """
 * name = "EuAuthorizationResourceServerEuApi"
-* title = "EU Authorization Resource Server"
+* title = "Health Data API Resource Server"
 * status = #active
 * experimental = false
 * type = #system

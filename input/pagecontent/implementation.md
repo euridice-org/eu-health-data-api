@@ -38,7 +38,7 @@ This Implementation Guide describes the API surface of the EHDS Interoperability
 
 <div class="auth-change" markdown="1">
 
-Authorization in these use cases is described using the generic [EU Authorization Client](ActorDefinition-eu-authorization-client-eu-api.html), [EU Authorization Server](ActorDefinition-eu-authorization-server-eu-api.html), and [EU Authorization Resource Server](ActorDefinition-eu-authorization-resource-server-eu-api.html) roles. Each flow's selected SMART or IHE IUA roles and detailed requirements are described in [Authorization](authorization.html).
+Authorization in these use cases is described using the generic [Health Data API Authorization Client](ActorDefinition-eu-authorization-client-eu-api.html), [Health Data API Authorization Server](ActorDefinition-eu-authorization-server-eu-api.html), and [Health Data API Resource Server](ActorDefinition-eu-authorization-resource-server-eu-api.html) roles. Each flow's selected SMART or IHE IUA roles and detailed requirements are described in [Authorization](authorization.html).
 
 Where end-user authentication is required, the
 [Authentication Service](ActorDefinition-authentication-service-eu-api.html) supplies that

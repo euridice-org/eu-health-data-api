@@ -1,9 +1,9 @@
 @startuml patient-summary-auth-sequence
 skinparam svgDimensionStyle false
 
-participant "Document Consumer (EU Authorization Client)" as Consumer
-participant "EU Authorization Server" as AuthZ
-participant "Document Access Provider (EU Authorization Resource Server)" as Provider
+participant "Document Consumer\n(Health Data API\nAuthorization Client)" as Consumer
+participant "Health Data API\nAuthorization Server" as AuthZ
+participant "Document Access Provider\n(Health Data API\nResource Server)" as Provider
 
 Consumer -> Provider: GET /metadata
 Provider --> Consumer: CapabilityStatement

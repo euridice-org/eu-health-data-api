@@ -34,8 +34,8 @@ Considerations related to this environment include:
 
 * Authorization
   * <span class="auth-change">The Healthcare Provider environment SHALL use SMART. Gateway system-to-system uploads use SMART Backend Services; interactive clinician access uses SMART App Launch with the applicable Clinician Access capability set.</span>
-  * <span class="auth-change">A protected Document/Resource Access Provider has the [EU Authorization Resource Server](ActorDefinition-eu-authorization-resource-server-eu-api.html) role, realized as a SMART FHIR Resource Server. The consuming EHR system has the [EU Authorization Client](ActorDefinition-eu-authorization-client-eu-api.html) role, realized as a SMART Backend Service or SMART App according to the flow.</span>
-  * <span class="auth-change">The [EU Authorization Server](ActorDefinition-eu-authorization-server-eu-api.html) is independent and MAY be co-located or organization-level. SMART-specific requirements are in [Authorization](authorization.html#healthcare-provider).</span>
+  * <span class="auth-change">A protected Document/Resource Access Provider has the [Health Data API Resource Server](ActorDefinition-eu-authorization-resource-server-eu-api.html) role, realized as a SMART FHIR Resource Server. The consuming EHR system has the [Health Data API Authorization Client](ActorDefinition-eu-authorization-client-eu-api.html) role, realized as a SMART Backend Service or SMART App according to the flow.</span>
+  * <span class="auth-change">The [Health Data API Authorization Server](ActorDefinition-eu-authorization-server-eu-api.html) is independent and MAY be co-located or organization-level. SMART-specific requirements are in [Authorization](authorization.html#healthcare-provider).</span>
   * EHR systems are **not** required to use eIDAS wallet-based authorization for provider-internal exchange.
 
 * Patient Identity
