@@ -1,11 +1,23 @@
-flowchart TB
-    subgraph B["Country B — country of treatment"]
-        Facility["Healthcare facility"] --> NCPB["NCP"]
+sequenceDiagram
+    participant Requester as Requesting EHR<br/>(Country B)
+    participant NCPB as Requesting NCP<br/>(Country B)
+    participant NCPA as Responding NCP<br/>(Country A)
+    participant National as National infrastructure<br/>component
+    participant EHR as Data-holding EHR<br/>(Country A)
+
+    rect rgb(240, 248, 255)
+    Note over Requester,NCPB: This IG
+    Requester->>NCPB: Query patient data
     end
-    subgraph A["Country A — country of affiliation"]
-        NCPA["NCP"] -->|"National routing — Member State choice"| NI["National gateway / coordination component"]
-        NI -->|"EU Health Data API — this IG"| EHR["EHR system"]
+    NCPB->>NCPA: Query
+    NCPA->>National: Query
+    rect rgb(240, 248, 255)
+    Note over National,EHR: This IG
+    National->>EHR: Query
+    EHR-->>National: Patient data
     end
-    NCPB -->|"MyHealth@EU — NCPeH API"| NCPA
-    classDef endpoint fill:#e8f0fe,stroke:#1a4d8f,stroke-width:2px
-    class EHR,NI endpoint
+    National-->>NCPA: Patient data
+    NCPA-->>NCPB: Patient data
+    rect rgb(240, 248, 255)
+    NCPB-->>Requester: Patient data
+    end
