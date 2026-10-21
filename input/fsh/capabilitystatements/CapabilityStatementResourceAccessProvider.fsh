@@ -60,8 +60,7 @@ Where an interactive use case applies, the provider groups with the SMART FHIR R
 accepts the corresponding `patient/` or `user/` scopes for the resources it supports. Browser CORS
 requirements apply only to deployments supporting browser-based clients.
 
-All modes use TLS 1.2 or higher and return HTTP 401, 403, or a deliberately selected 404 according
-to the authorization policy.
+All modes use TLS 1.2 or higher and return errors according to the selected authorization specification.
 
 ### Resource Flexibility
 

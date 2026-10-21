@@ -49,7 +49,7 @@ system-to-system deployment; its Authorization Server is a separate participant.
 """
 
 * rest[=].security.cors = false
-* rest[=].security.service = http://hl7.org/fhir/restful-security-service#SMART-on-FHIR
+* rest[=].security.service = http://terminology.hl7.org/CodeSystem/restful-security-service#SMART-on-FHIR
 * rest[=].security.description = """
 This deployment selects SMART Backend Services, validates access tokens, and enforces its granted
 `system/DocumentReference.rs`, `system/Binary.r`, `system/Bundle.r`, and `system/Patient.rs` scopes.
