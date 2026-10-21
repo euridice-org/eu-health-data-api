@@ -47,7 +47,7 @@ These are local dispositions; no GitHub reply or thread resolution is implied.
 | Separate identity and API-token issuance | Accept distinct Authentication Service and Authorization Server responsibilities. The interface between separate implementations is deployment-defined. Neither an ID token nor an app-mediated token exchange is mandatory; a concrete exchange profile is deferred. See Authentication And API Authorization. |
 | Wallet login followed by EHR upload | App sign-in does not grant EHR API access. The API authorization flow can rely on Wallet-backed authentication directly or through an upstream service; write scopes and a supported receiving interaction are still required. See Wallet example and Wellness use case. |
 | Why SMART for provider access | Preserve the IG's current environment choice and explain discovery/launch rationale; this is not an EHDS protocol mandate or an assertion that IUA cannot support clinicians. Backend Services and interactive Clinician Access remain distinct. |
-| Suggested flow segmentation | Add an environment/flow matrix rather than replace environments with "application-guided authentication" versus patient/clinician access. These are overlapping dimensions. No protocol-selection mandate changes are adopted. |
+| Suggested flow segmentation | Add an environment/flow matrix rather than replace environments with "application-guided authentication" versus patient/clinician access. These are overlapping dimensions. At that earlier disposition, no protocol-selection change was adopted from this comment; see the later Patrick disposition for the NII endpoint rule. |
 
 **Boundary:** This release does not standardize an independently interoperable Authentication Service
 interface, federation profile, or identity-token-to-API-access-token exchange. Separate implementations
@@ -88,11 +88,13 @@ are separate from contextual token claims. Neither scope syntax nor claims alone
 
 IHE-IUA documents elements like the current user and organization as claims in the JWT-token (using identifiers), SMART App Launch adds them as additional parameters (using logical Ids and possibly identifiers) next to the token when the access-token is provided.
 
-These (and likely other) differences make a situation where both IHE-IUA and SMART App Launch are combined possible but but requiring additional specification which is infeasible in the current scope and timeframe of this specification.
+These differences permit a deployment to use SMART App Launch and IHE IUA on distinct protected
+endpoints. Supporting both on the same endpoint requires additional specification, including
+discovery, scope mapping, and token-context precedence, and is deferred.
 
-**Conclusion:** Allowing both SMART App Launch and IHE-IUA on the same deployment should be allowed but deferred to future versions of the spec.
-
-**Conclusion:** For each deployment a decision has be made to what flavour of OAuth to support.
+**Decision:** Select one OAuth authorization profile for each concrete Resource Server endpoint.
+A deployment may contain different endpoints using different profiles; the IG does not define
+same-endpoint dual conformance.
 
 ## Support of EIDASH user authentication
 
@@ -116,7 +118,32 @@ The launch and discovery mechanism also benifits application deployed within Hea
 * (Internet based) Clinician applications operating in healtcare providers
 * Application that are launched with context.
 
-Other deployments might benifit from one or the other but no clear preference can be identified.
+For the National Interoperability Infrastructure, see the endpoint-level decision below. No
+additional profile preference is established here for other environments.
+
+### PR 99: patrick-werner Review Disposition
+
+Source: [review comment](https://github.com/euridice-org/eu-health-data-api/pull/99#discussion_r4272470695).
+This local disposition records the conformance policy selected for this IG; it does not resolve the
+GitHub thread.
+
+**Decision (2026-10-21):** In the National Interoperability Infrastructure, recommend IHE IUA for
+preconfigured system-to-system endpoints where IUA actors and transactions or the IUA JWT Token
+Option are selected. Interactive Wellness Application access to an HDAS or HPAS SHALL use SMART App
+Launch. A distinct system-to-system endpoint MAY use SMART Backend Services when all its
+applicability conditions are met. Select exactly one profile per concrete Resource Server endpoint;
+a deployment may operate distinct endpoints using different profiles. Same-endpoint dual
+conformance remains undefined and is not claimed by this IG.
+
+SMART endpoints use the applicable SMART FHIR resource scopes (`patient/`, `user/`, or `system/` for
+the selected flow). IUA transaction scopes are added only where IUA is selected and the corresponding
+MHD transactions ITI-65 through ITI-68 are supported; ITI-105 has no IUA-defined scope. Scopes
+express requested or granted access, while claims convey token context used with scope and local
+policy. The IUA JWT Token Option applies only when explicitly selected for an IUA endpoint. This IG
+does not adopt IUA JWT claims as a protocol-independent overlay for SMART; equivalent SMART claims
+would require a separately defined profile. This decision narrows the earlier broad NII IUA
+recommendation without changing the separate SMART requirements for interactive Wellness or
+Healthcare Provider use cases.
 
 ## Client registration
 

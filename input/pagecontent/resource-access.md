@@ -73,29 +73,18 @@ See the [Resource Access Provider CapabilityStatement](CapabilityStatement-resou
 
 #### Core Resources
 
-<<<<<<< HEAD
 <div class="auth-change" markdown="1">
 
-The following are **SMART App Launch 2.2 FHIR Resource Scopes** for the separately
-classified SMART Backend Services/direct-system use case. Interactive patient and clinician
-uses instead select the applicable `patient/` and `user/` scopes as defined in
-[Authorization](authorization.html#tokens-scopes-enforcement-and-errors). These SMART scopes
-are not IUA transaction scopes.
+Resource Access uses SMART App Launch 2.2 FHIR resource scopes selected for the endpoint's
+authorization flow: interactive Patient or Clinician Access uses the applicable `patient/` or
+`user/` scopes, and Backend Services uses applicable `system/` scopes. These are SMART scopes, not
+generic FHIR scopes or IUA transaction scopes. Core IUA defines no API-specific scope vocabulary;
+the IPA and PDQm interactions on this page are not IUA MHD transactions and have no IUA MHD
+transaction scopes. IUA deployments apply their selected authorization policy to these interactions.
+See [Authorization](authorization.html#tokens-scopes-enforcement-and-errors).
 
 </div>
 
-```
-system/AllergyIntolerance.rs
-system/Condition.rs
-system/Observation.rs
-system/DiagnosticReport.rs
-system/MedicationRequest.rs
-system/MedicationDispense.rs
-system/MedicationStatement.rs
-system/Immunization.rs
-system/Encounter.rs
-```
-=======
 In the regulatory context of EHDS, the following resources represent individual data entries included in the priority data categories, so should be made available for read/search access if the system claims support for the corresponding priority data category. Data models inherit from [HL7 Europe Core](https://build.fhir.org/ig/hl7-eu/base/). Required search parameters are from {{ipa}} version {{ipaVersion}}, supplemented by {{iheQEDm}} where IPA does not define them.
 
 **Resources by priority data category**
@@ -187,7 +176,7 @@ This is a core subset of resources for ballot. Ballot feedback is requested on w
 This IG does not currently define requirements for advanced search features such as the `:not` modifier, `_include`/`_revinclude`, or chained parameters. Ballot feedback is requested. See [Open Issue #13](open-issues.html#issue-13-advanced-search-capabilities-for-resource-access).
 
 </div>
->>>>>>> origin/main
+
 
 ### Example Queries
 

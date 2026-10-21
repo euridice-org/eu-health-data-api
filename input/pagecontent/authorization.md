@@ -33,16 +33,20 @@ SMART and IUA both apply OAuth-based authorization to healthcare APIs, but neith
 
 Same-endpoint dual support is not claimed because the two specifications do not define scope, discovery, or token-context precedence.
 
-SMART App Launch is best suited to context-aware application launch or authorization-endpoint discovery from a FHIR server URL. IUA is best suited to established environments where actor locations, including the Authorization Server, are preconfigured, or where user and patient information must be carried in the access token. This IG selects one profile per endpoint and environment; it does not claim same-endpoint dual conformance. Future versions may define hybrid deployments.
+SMART App Launch is best suited to context-aware application launch or authorization-endpoint discovery from a FHIR server URL. IUA is suited to established environments where actor locations, including the Authorization Server, are preconfigured, and the deployment requires IUA transaction integration or its JWT claim profile. This IG selects one profile per concrete endpoint; a deployment may expose distinct endpoints using different profiles, but it does not claim same-endpoint dual conformance. Future versions may define hybrid deployments.
 
-SMART deployments SHOULD use IUA-formatted JWT access tokens only where the deployment separately adopts the IUA JWT claim profile; token formatting alone does not claim IUA protocol conformance.
+SMART deployments do not automatically use the IUA JWT claim profile. That is an IUA token
+option, not a protocol-independent overlay. A deployment that needs equivalent claims with SMART
+must separately define their issuance, validation, and semantics; this IG defines no
+cross-protocol claim profile.
 
-Claims and scopes are orthogonal: scopes express permitted interactions, while claims convey
-identity or authorization context used in policy decisions. Granted scopes can themselves be
-represented in a token claim. Core IUA does not choose an API-specific scope vocabulary; the
-[MHD integration](https://profiles.ihe.net/ITI/IUA/index.html#3364-use-with-the-internet-user-authorization-iua-profile)
-adds scopes only for the corresponding MHD transactions grouped with IUA. Neither contextual
-claims nor scopes alone establish consent or entitlement to every matching resource.
+Claims and scopes are orthogonal. Scopes express requested or granted access to interactions;
+claims convey identity or other context that an Authorization Server issues and a Resource Server
+may use with the granted scope and local policy. A scope may itself be represented as a token claim,
+but that does not make the concepts interchangeable. Core IUA defines no API-specific scope
+vocabulary; the [MHD integration](https://profiles.ihe.net/ITI/IUA/index.html#3364-use-with-the-internet-user-authorization-iua-profile)
+defines transaction scopes only for the corresponding MHD transactions grouped with IUA. Neither
+contextual claims nor scopes alone establish consent or entitlement to every matching resource.
 
 <a name="authorization-server-deployment"></a>
 #### Authentication And API Authorization
@@ -197,14 +201,26 @@ Authorization for MyHealth@EU is outside the scope of this IG. Deployments shoul
 
 #### National Interoperability Infrastructure
 
-[IHE IUA](https://profiles.ihe.net/ITI/IUA/index.html) is RECOMMENDED where the established
-national environment preconfigures the participants and requires user or patient claims.
-Those [IUA token claims](https://profiles.ihe.net/ITI/IUA/index.html#3714221-json-web-token-option)
-carry context; scopes separately express permitted interactions.
-The applicable [IUA actors](https://profiles.ihe.net/ITI/IUA/index.html#341-iua-actors-transactions-and-content-modules),
-[transaction scopes](https://profiles.ihe.net/ITI/IUA/index.html#3364-use-with-the-internet-user-authorization-iua-profile),
-and [metadata](https://profiles.ihe.net/ITI/IUA/index.html#3103-get-authorization-server-metadata-iti-103)
-are selected by the deployed MHD transactions.
+For preconfigured system-to-system endpoints in the national infrastructure,
+[IHE IUA](https://profiles.ihe.net/ITI/IUA/index.html) is RECOMMENDED where national policy requires
+IUA transaction integration or its [JWT Token Option](https://profiles.ihe.net/ITI/IUA/index.html#3714221-json-web-token-option).
+This recommendation is limited to those endpoints; it does not require every endpoint in the
+National Interoperability Infrastructure to use IUA. A system-to-system endpoint MAY instead use
+[SMART Backend Services](https://hl7.org/fhir/smart-app-launch/STU2.2/backend-services.html#use-this-profile-when-the-following-conditions-all-apply)
+when all of its applicability conditions are met. The deployment selects one profile per
+Resource Server endpoint; distinct endpoints may select different profiles, but this IG does not
+define dual conformance on one endpoint.
+
+Interactive Wellness Application access to an HDAS or HPAS SHALL use
+[SMART App Launch](https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html), including the
+applicable Patient or Clinician Access flow. This interactive selection does not change the
+separate profile choice for preconfigured system-to-system endpoints.
+
+For endpoints selecting IUA, use the applicable [IUA actors](https://profiles.ihe.net/ITI/IUA/index.html#341-iua-actors-transactions-and-content-modules)
+and metadata. Add [IUA MHD transaction scopes](https://profiles.ihe.net/ITI/IUA/index.html#3364-use-with-the-internet-user-authorization-iua-profile)
+only for supported ITI-65 through ITI-68 transactions whose MHD actors are grouped with IUA.
+Core IUA defines no API-specific scope vocabulary, and ITI-105 has no IUA-defined transaction
+scope. SMART endpoints use the applicable SMART FHIR resource scopes instead.
 
 #### Wellness Applications
 

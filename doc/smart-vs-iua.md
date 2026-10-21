@@ -31,10 +31,10 @@ Both build on OAuth 2.1. Neither is a subset of the other.
 - **Neither is "the healthcare one".** Both cover interactive and system-to-system flows.
 - **Discovery is architectural, not co-location.** SMART discovers the Authorization Server from the FHIR base; IUA leaves its location to the deployment. Either can use independently hosted authorization and resource servers.
 - **Authentication and API authorization are separate responsibilities.** This IG's Authentication Service may be grouped with its Authorization Server or separately deployed. The between-service interface is deployment-defined; neither an ID token nor token exchange is required. See [actor decision](decisions.md#authorization-related-actors).
-- **Claims and scopes are orthogonal.** Claims convey context; scopes express permitted interactions and may themselves be represented as a token claim.
-- **Scopes are the incompatibility.** `ITI-67` authorizes a transaction; `patient/DocumentReference.rs` authorizes a resource plus interaction. They overlap without being equivalent, and neither is a machine-checkable subset of the other.
+- **Claims and scopes are orthogonal, but profiles still matter.** Scopes express requested or granted access; claims convey token context that may be considered with scopes and local policy. A scope may be encoded as a claim, but the concepts are not interchangeable. The IUA JWT Token Option applies when selected for IUA; it is not a protocol-independent SMART token profile.
+- **Scope vocabularies are not interchangeable on one endpoint.** SMART uses FHIR resource scopes such as `patient/DocumentReference.rs`; IUA core defines no API-specific scopes, while the MHD integration defines transaction scopes `ITI-65` through `ITI-68` only for the corresponding MHD transactions grouped with IUA. Neither vocabulary is a general crosswalk for the other.
+- **A deployment can use both on distinct endpoints.** This IG selects one profile per concrete Resource Server endpoint. Same-endpoint dual support remains undefined and is not claimed; it would need explicit rules for discovery, scope evaluation, token context, and enforcement.
 - **IUA has no app-launch framework.** SMART has no purpose-of-use, role, or consent claims.
-- **Combining both is permitted but undefined.** IUA ITI TF-2: 3.72.4.3 requires the Resource Server to verify that the scope covers the transaction, so a SMART-only token fails with HTTP 401 unless the guide defines precedence.
 
 ## What each is good at
 
@@ -58,7 +58,10 @@ Both build on OAuth 2.1. Neither is a subset of the other.
 | "SMART scopes are `user-type/Resource/cruds`" | The separator before the permissions is a dot: `patient/Observation.rs`. Since v2, scopes may also carry search-parameter constraints. |
 | "IUA is looking to align with SMART, which makes it volatile" | Harmonisation comment is invited through Closed Issues 11 and 13, which are closed in Rev 2.5. The declared volatility lies elsewhere: Open Issue 15 (OAuth 2.1 draft tracking) and Open Issue 14 (possible adoption of Rich Authorization Requests). |
 
-## Decisions required to support both in one deployment
+## Decisions required to support both on one endpoint
+
+This IG allows different endpoints in one deployment to select different profiles, but does not claim
+same-endpoint dual support. If a future version defines it, it must resolve:
 
 ### Discovery and binding
 
