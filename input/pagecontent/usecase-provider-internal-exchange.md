@@ -33,7 +33,7 @@ Considerations related to this environment include:
   * Registry or repository deployments define which component retains published EEHRxF document versions and makes them available for later access.
 
 * Authorization
-  * <span class="auth-change">The Healthcare Provider environment SHALL use SMART. Gateway system-to-system uploads use SMART Backend Services; interactive clinician access uses SMART App Launch with the applicable Clinician Access capability set.</span>
+  * <span class="auth-change">Where a system offers third-party applications interactive access to its FHIR API, it SHOULD support SMART App Launch using the applicable Patient or Clinician Access capability set. Gateway system-to-system uploads use SMART Backend Services; interactive clinician access can use SMART App Launch with the applicable Clinician Access capability set.</span>
   * <span class="auth-change">A protected Document/Resource Access Provider has the [Health Data API Resource Server](ActorDefinition-eu-authorization-resource-server-eu-api.html) role, realized as a SMART FHIR Resource Server. The consuming EHR system has the [Health Data API Authorization Client](ActorDefinition-eu-authorization-client-eu-api.html) role, realized as a SMART Backend Service or SMART App according to the flow.</span>
   * <span class="auth-change">The [Health Data API Authorization Server](ActorDefinition-eu-authorization-server-eu-api.html) is independent and MAY be co-located or organization-level. SMART-specific requirements are in [Authorization](authorization.html#healthcare-provider).</span>
   * EHR systems are **not** required to use eIDAS wallet-based authorization for provider-internal exchange.

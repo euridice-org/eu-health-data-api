@@ -10,8 +10,8 @@ Article 5 allows patients to insert information into their EHR through electroni
 
 <div class="auth-change" markdown="1">
 
-This page is informative about the exchange workflow. Its authorization selection is normative:
-Wellness Applications SHALL use SMART as defined in [Authorization](authorization.html#wellness-applications).
+This page is informative about the exchange workflow. For interactive third-party app access,
+see the recommendation in [Authorization](authorization.html#wellness-applications).
 Patient identity, consent management, and eIDAS assurance remain deployment and Member State
 responsibilities; an access token does not replace them.
 
@@ -51,14 +51,13 @@ EHDS does not specify whether the wellness application sends data through the he
 <div class="auth-change" markdown="1">
 
 The [Wellness Applications section of Authorization](authorization.html#wellness-applications)
-defines the normative flow selection and conformance requirements. The relevant flows are:
+describes the applicable authorization recommendations and conformance requirements. The relevant flows are:
 
-- **HDAS-linked access** SHALL use SMART App Launch. Discovering the authorization endpoint from
+- **HDAS-linked access**: where the HDAS offers interactive third-party FHIR API access, it SHOULD support SMART App Launch using the applicable Patient or Clinician Access capability set. Discovering the authorization endpoint from
 	the FHIR endpoint and using a confidential-client profile are RECOMMENDED.
-- **Clinician-launched access** SHALL use SMART App Launch EHR Launch with current-patient context.
-	The launch target is an application; for the recommended Wellness-hosted-data pattern, the
-	FHIR API is hosted by the Wellness Application so data can be retrieved into the EHR.
-	Use Clinician Access for EHR Launch, or Clinician
+- **Clinician-launched access**: where interactive third-party app access is offered, SMART App Launch EHR Launch with current-patient context SHOULD be supported.
+	It is RECOMMENDED that the launch target be a FHIR server hosted by the Wellness Application so
+	the EHR can retrieve relevant information. Use Clinician Access for EHR Launch, or Clinician
 	Access for Standalone when not launched by an EHR.
 - **Patient-launched access** typically uses SMART App Launch with the EHR as FHIR server, allowing
 	information to be uploaded to the EHR. Select Patient Access for EHR Launch or Patient Access for

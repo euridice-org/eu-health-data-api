@@ -12,7 +12,7 @@ The EHDS requires identification and authentication of natural persons and healt
 | EHDS topic | Enacted evidence |
 |---|---|
 | Identification and login | [Article 16](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_16) establishes electronic identification for access services and future interoperable cross-border mechanisms. [Article 12](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_12) and [Annex II section 3.1](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#anx_2) address health-professional identification and authentication. |
-| European Digital Identity Wallet (EIDAS) | [Recital 7](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#rct_7) states that digital and proxy solutions should align with European Digital Identity Wallet technical specifications. The Wallet is an electronic-identification means recognised under [Article 6 of eIDAS](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32014R0910#art_6), on which [Articles 12](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_12) and [16](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_16) rely; detailed cross-border alignment remains subject to Article 16 implementing acts. |
+| European Digital Identity Wallet (EIDAS) | [Recital 21](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#rct_21) states that digital proxy solutions should align with European Digital Identity Wallet technical specifications. The Wallet is an electronic-identification means recognised under [Article 6 of eIDAS](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32014R0910#art_6), on which [Articles 12](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_12) and [16](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_16) rely; detailed cross-border alignment remains subject to Article 16 implementing acts. |
 | Proxy and representation | [Article 4(2)-(3)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_4) and [Recital 21](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#rct_21) require transparent proxy services and representation arrangements. |
 | Security | [Article 30](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_30), [Article 36(3)(e)-(f)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_36), [Recital 112](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#rct_112), and [Annex II section 3](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#anx_2) address security, confidentiality, integrity, and EHR security controls. |
 | Logging | [Annex II sections 3.2-3.3](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#anx_2) require identified access-event logging and review tooling; [Article 73(1)(e)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_73) requires identifiable logs for secure secondary-use processing. |
@@ -94,17 +94,15 @@ for the Authentication Service.
 
 ### Using eIDAS for User Authentication
 
-Where the selected environment requires electronic identification under the EHDS, the
-Authorization Server SHALL rely on an Authentication Service result using an eIDAS-recognised
-electronic-identification means before making its authorization decision. The Authentication
-Service may be grouped with it or separately deployed. This applies to interactive
+The [European Digital Identity Wallet](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32014R0910#art_6) (under eIDAS) can work alongside a SMART authorization flow. The Authorization Server can use the Wallet as one way to authenticate the user, while SMART handles the application’s authorization to access health data.
+
+Where the selected environment requires support for eIDAS-recognised electronic identification—for example, electronic health data access services under [EHDS Article 16(1)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_16)—the Authorization Server SHALL support authentication using those means, directly or through an identity provider. This applies to interactive
 SMART or IUA authorization-code flows, not to a pre-authorized SMART Backend Service using
 `client_credentials`. The Authorization Server validates the authentication result, establishes
 the user session, applies the applicable authorization policy, and issues a code or token only
 after successful authorization.
 
-The [European Digital Identity Wallet](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02014R0910-20241018#art_6)
-can provide that electronic-identification result where applicable. A deployment MAY use
+A deployment MAY use
 [OpenID for Verifiable Presentations 1.0](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html)
 to obtain and validate a verifiable presentation from a Wallet, but this IG does not select a
 presentation format, credential schema, or Wallet-to-Authorization-Server profile. The
@@ -188,9 +186,9 @@ specification are environment specific. The different environment used are :
     [user or patient claims](https://profiles.ihe.net/ITI/IUA/index.html#3714221-json-web-token-option) are needed.
 - **Wellness Applications:** patient or clinician applications connecting to health data access
     services or EHR systems. [SMART App Launch](https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html)
-    is required; [SMART Backend Services](https://hl7.org/fhir/smart-app-launch/STU2.2/backend-services.html#profile-audience-and-scope)
+    is recommended where interactive third-party FHIR API access is offered; [SMART Backend Services](https://hl7.org/fhir/smart-app-launch/STU2.2/backend-services.html#profile-audience-and-scope)
     is permitted only for the separately defined pre-authorized server-to-server flow.
-- **Healthcare Provider:** internal clinical and gateway-facing deployments. [SMART](https://hl7.org/fhir/smart-app-launch/STU2.2/) is required:
+- **Healthcare Provider:** internal clinical and gateway-facing deployments. [SMART App Launch](https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html) is recommended where interactive third-party FHIR API access is offered:
     [Backend Services](https://hl7.org/fhir/smart-app-launch/STU2.2/backend-services.html#use-this-profile-when-the-following-conditions-all-apply) applies to system-to-system uploads and interactive [SMART App Launch](https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html) applies
     to clinician access.
 
@@ -224,17 +222,16 @@ scope. SMART endpoints use the applicable SMART FHIR resource scopes instead.
 
 #### Wellness Applications
 
-Many Wellness Applications will developed to work in different member states or with differnet HDAS deployments in a member state. This requires such applications to discover th authorization infrastruture for this HDAS. In order to support this use case, Wellness Applications SHALL use [SMART App Launch](https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html).
+Many Wellness Applications will developed to work in different member states or with differnet HDAS deployments in a member state. This requires such applications to discover th authorization infrastruture for this HDAS. Where a system offers third-party applications interactive access to its FHIR API, it SHOULD support [SMART App Launch](https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html) using the applicable Patient or Clinician Access capability set.
 
-A Wellness Application connecting to a Health Data Access Service (HDAS) SHALL
-use [SMART App Launch](https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html).
+Where a Health Data Access Service (HDAS) offers third-party applications interactive access to its FHIR API, it SHOULD support [SMART App Launch](https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html) using the applicable Patient or Clinician Access capability set.
 
 It is RECOMMENDED that it discovers the authorization endpoint using the
 [SMART App Launch discovery mechanism](https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html#retrieve-well-known-smart-configuration).
 As this app will access confidential information, it is RECOMMENDED to use the
 [confidential client profile](https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html#support-for-public-and-confidential-apps).
 
-A clinician-launched Wellness Application SHALL use
+Where interactive third-party app access is offered, a clinician-launched Wellness Application SHOULD use
 [SMART App Launch EHR Launch](https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html#launch-app-ehr-launch).
 For the recommended Wellness-hosted-data pattern, the launch target is an application and the
 FHIR server is hosted by the Wellness Application, allowing data to be retrieved into the EHR. The
@@ -254,7 +251,7 @@ EHR-system SHOULD use [SMART Backend Services](https://hl7.org/fhir/smart-app-la
 
 #### Healthcare Provider
 
-Healthcare Provider deployments SHALL use [SMART App Launch](https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html).
+Where a system offers third-party applications interactive access to its FHIR API, it SHOULD support [SMART App Launch](https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html) using the applicable Patient or Clinician Access capability set.
 
 This is this IG's environment-specific choice, not an EHDS requirement to use SMART and not a
 claim that IUA cannot support clinician access. SMART provides FHIR-based endpoint discovery and
@@ -264,10 +261,6 @@ merely because a clinician signs in.
 
 A system-to-system uploading of EEHRxF data to a gateway in order to provide the information
 to the national infrastructure SHOULD use [SMART Backend Services](https://hl7.org/fhir/smart-app-launch/STU2.2/backend-services.html#use-this-profile-when-the-following-conditions-all-apply).
-Clinician webpages hosted by EHR systems SHALL use [SMART App Launch](https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html)
-utilizing the [Clinician Access for Standalone](https://hl7.org/fhir/smart-app-launch/STU2.2/conformance.html#clinician-access-for-standalone)
-or [Clinician Access for EHR Launch](https://hl7.org/fhir/smart-app-launch/STU2.2/conformance.html#clinician-access-for-ehr-launch)
-profiles according to systems requirements and deployment models.
 
 <a name="authorization-server-discovery"></a>
 <a name="get-access-token"></a>
@@ -316,7 +309,7 @@ The IUA roles used by this IG are [IUA Authorization Client](ActorDefinition-iua
 
 The Authorization Client authenticates to the Authorization Server, requests least-privilege scopes, and presents its bearer token. The Authorization Server authenticates the client, validates any client assertion, applies issuance policy, limits scopes to authorized scopes, prevents assertion replay, and issues tokens. The Resource Server validates token activity, expiry, issuer/signature or introspection, audience/resource binding where applicable, granted scope, request/claim consistency, and local policy. A Resource Server does not validate a client assertion for an independent Authorization Server.
 
-IUA does not define a universal CORS requirement. System-to-system IUA does not require CORS. A deployment supporting browser IUA Authorization Clients SHALL define an explicit IG CORS policy: public metadata may be cross-origin, while token and protected-resource endpoints allow only explicitly authorized client origins.
+IUA does not define a universal CORS requirement. System-to-system IUA does not require CORS. A deployment supporting browser IUA Authorization Clients SHALL define an explicit CORS policy: public metadata may be cross-origin, while token and protected-resource endpoints allow only explicitly authorized client origins.
 
 <a name="transport-security"></a>
 ### Tokens, Scopes, Enforcement, And Errors
@@ -327,7 +320,7 @@ Requested and granted scopes are distinct. Resource Servers SHALL enforce grante
 
 For IUA-protected MHD transactions, the separate transaction scopes are `ITI-65`, `ITI-66`, `ITI-67`, and `ITI-68`, only when the corresponding transaction is supported. ITI-105 has no IUA-defined transaction scope and uses the applicable SMART scope or a future explicitly IG-defined extension. No scope family is a substitute for the other.
 
-Authentication failures use `401 Unauthorized`; authenticated requests lacking authority use `403 Forbidden`. A deployment MAY use `404 Not Found` to conceal resource existence only when it documents that policy consistently. Consent and audit remain separate responsibilities.
+Protected-resource error responses follow the selected authorization specification. IUA token verification, scope matching, and access-policy failures return `401 Unauthorized` as specified in [ITI-72](https://profiles.ihe.net/ITI/IUA/index.html#37243-expected-actions). SMART requests may return `403 Forbidden` when access is denied by underlying permissions, as described in [SMART scopes](https://hl7.org/fhir/smart-app-launch/STU2.2/scopes-and-launch-context.html#smarts-scopes-are-used-to-delegate-access). A deployment MAY use `404 Not Found` to conceal resource existence only where permitted by the selected specification and when it documents that policy consistently. Consent and audit remain separate responsibilities.
 
 ### Potential Future Work
 
