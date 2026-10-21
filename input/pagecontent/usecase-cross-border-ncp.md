@@ -12,8 +12,9 @@ This example illustrates the Document Query and Retrieve interaction pattern wit
 
 ### Participants
 
+- **Requesting EHR system** — requests patient data through its national NCP, as shown for context in the example
 - **NCP or national infrastructure component** — acts as [Document Consumer](actors.html#document-consumer) and/or [Resource Consumer](actors.html#resource-consumer) of the Interoperability Component API surface
-- **EHR system** — [Document Access Provider](actors.html#document-access-provider) and/or [Resource Access Provider](actors.html#resource-access-provider); the conformance target of this IG
+- **Data-holding EHR system** — [Document Access Provider](actors.html#document-access-provider) and/or [Resource Access Provider](actors.html#resource-access-provider); the conformance target of this IG
 
 ### National Infrastructure
 
@@ -21,9 +22,9 @@ National infrastructure is a logical grouping of systems, including EHR systems 
 
 ### Architecture
 
-{% include img.html img="cross-border-ncp.svg" caption="Cross-border query and retrieve. The final arrow identifies the API defined by this IG." %}
+{% include img.html img="cross-border-ncp.svg" caption="Illustrative cross-border query and response. The highlighted EHR-facing exchange can use the API defined by this IG." %}
 
-The diagram simplifies national infrastructure to its gateway or coordination component. Member States may use other routing arrangements, including direct access from the NCP to an EHR system. These arrangements use the same EHR API boundary.
+The diagram shows a general query and response through the chain; it does not prescribe the transactions used by each intermediary. The highlighted exchange between a national infrastructure component and the data-holding EHR can use the API defined by this IG. National infrastructure is simplified to its gateway or coordination component. Member States may use other routing arrangements, including direct access from the NCP to an EHR system. These arrangements use the same EHR API boundary.
 
 All layers exchange EEHRxF-formatted data.
 
