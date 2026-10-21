@@ -1,0 +1,1 @@
+The editable Mermaid source is cross-border-ncp.mmd. Render it to input/images/cross-border-ncp.svg with Mermaid CLI, using a transparent background and neutral theme. The generated SVG is embedded in the cross-border use case.

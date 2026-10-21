@@ -1,24 +1,29 @@
 ### Overview
 
-Cross-border exchange routes through National Contact Points (NCPs) over the MyHealth@EU network ([Art. 23(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_23)). When a patient from Country A receives care in Country B, Country B's NCP requests the patient's data from Country A's NCP, which then queries national infrastructure to retrieve it.
+Cross-border exchange routes through National Contact Points for eHealth (NCPeHs), called NCPs below, over the MyHealth@EU infrastructure ([Art. 23(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_23)). When a patient from Country A receives care in Country B, Country B's NCP requests the patient's data from Country A's NCP, which then queries national infrastructure to retrieve it.
 
 This IG defines the Interoperability Component API surface used at the **final step** — how national infrastructure (or the NCP itself) queries EHR systems for the patient's data.
 
 ### Scope
 
-NCP-to-NCP exchange over MyHealth@EU is governed by the [NCPeH API specification](https://build-fhir.ehdsi.eu/ncp-api/), not by this IG. National infrastructure design — how a Member State routes an NCP query to the holding EHR systems — is a Member State choice (see [Cross-Organization via National Infrastructure](usecase-cross-org.html)).
+NCP-to-NCP exchange over MyHealth@EU is governed by the [NCPeH API specification](https://fhir.ehdsi.eu/ncp-api/), not by this IG. National infrastructure design — how a Member State routes an NCP query to the holding EHR systems — is a Member State choice (see [Cross-Organization via National Infrastructure](usecase-cross-org.html)).
+
+This example illustrates the Document Query and Retrieve interaction pattern within MyHealth@EU. Other patterns, such as push-based exchange, are not illustrated here.
 
 ### Participants
 
-- **NCP or national infrastructure** — acts as [Document Consumer](actors.html#document-consumer) and/or [Resource Consumer](actors.html#resource-consumer) of the Interoperability Component API surface
+- **NCP or national infrastructure component** — acts as [Document Consumer](actors.html#document-consumer) and/or [Resource Consumer](actors.html#resource-consumer) of the Interoperability Component API surface
 - **EHR system** — [Document Access Provider](actors.html#document-access-provider) and/or [Resource Access Provider](actors.html#resource-access-provider); the conformance target of this IG
+
+### National Infrastructure
+
+National infrastructure is a logical grouping of systems, including EHR systems and national services such as registries and gateways. Its gateway or coordination components interface with one or more underlying EHR systems; the grouping does not imply a single monolithic system or replace those EHR systems.
 
 ### Architecture
 
-```
-Country B facility → NCP-B → MyHealth@EU → NCP-A → National infrastructure →  EHR system
-                       └──── NCPeH API ────┘        └──── MS choice ────┘     └ This IG ┘
-```
+{% include img.html img="cross-border-ncp.svg" caption="Cross-border query and retrieve. The final arrow identifies the API defined by this IG." %}
+
+The diagram simplifies national infrastructure to its gateway or coordination component. Member States may use other routing arrangements, including direct access from the NCP to an EHR system. These arrangements use the same EHR API boundary.
 
 All layers exchange EEHRxF-formatted data.
 
