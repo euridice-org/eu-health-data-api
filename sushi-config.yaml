@@ -130,6 +130,8 @@ pages:
       title: Provider-Internal Exchange
     ehr-system-composition.md:
       title: EHR System Composition Patterns
+    logging-audit-considerations.md:
+      title: Logging and Audit Considerations (Informative)
   artifacts-overview.md:
     title: Artifacts Overview
   about.md:
@@ -204,6 +206,7 @@ menu:
     Cross-Organization via National Infrastructure: usecase-cross-org.html
     Provider-Internal Exchange: usecase-provider-internal-exchange.html
     EHR System Composition Patterns: ehr-system-composition.html
+    Logging and Audit Considerations (Informative): logging-audit-considerations.html
   Artifacts:
     Overview: artifacts-overview.html
     All Artifacts: artifacts.html
