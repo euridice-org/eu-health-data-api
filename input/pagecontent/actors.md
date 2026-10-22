@@ -27,6 +27,8 @@ The generic roles are [Health Data API Authorization Client](ActorDefinition-eu-
 [Health Data API Resource Server](ActorDefinition-eu-authorization-resource-server-eu-api.html).
 The Health Data API qualifier identifies logical roles in this specification, not centrally
 operated EU services. Their deployment and operation are determined by the applicable architecture.
+Note that these technical roles do not intend to determine the parties' status as controller, joint controller, or
+processor under GDPR.
 
 The Authentication Service authenticates end users, directly or using a Wallet or upstream
 identity provider. The Authorization Server relies on an acceptable authentication result where

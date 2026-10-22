@@ -14,7 +14,7 @@ This IG defines the Interoperability Component API surface the access service us
 ### Workflow
 
 1. Patient authenticates to the access service (e.g., national eID, EU Digital Identity Wallet)
-2. Patient reviews and manages consent preferences within the service
+2. Patient reviews and manages consent preferences within the service. The patient's preferences in the service are separate from the legal basis for processing under GDPR, which this IG does not define.
 3. Service queries EHR systems for the patient's [documents](document-exchange.html) and/or [resources](resource-access.html)
 4. Service presents data to the patient
 
