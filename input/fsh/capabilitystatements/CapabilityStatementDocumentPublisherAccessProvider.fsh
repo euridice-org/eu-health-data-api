@@ -57,8 +57,7 @@ Server and accepts:
 ### Interactive SMART
 
 Where an interactive use case applies, the endpoint groups with the SMART FHIR Resource Server and
-enforces the corresponding `patient/` or `user/` forms of the supported resource scopes. Browser CORS
-requirements apply only to deployments supporting browser-based clients.
+enforces the corresponding `patient/` or `user/` forms of the supported resource scopes.
 
 All modes use TLS 1.2 or higher. See
 [Authorization](authorization.html#tokens-scopes-enforcement-and-errors).

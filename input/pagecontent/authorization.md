@@ -299,19 +299,15 @@ Patient Access for Standalone Apps requires `launch-standalone`, `client-public`
 
 SMART Backend Services requires pre-authorized access, `client_credentials`, `private_key_jwt`, and normally `system/` scopes, as specified by [SMART Backend Services](https://hl7.org/fhir/smart-app-launch/STU2.2/backend-services.html) and [asymmetric client authentication](https://hl7.org/fhir/smart-app-launch/STU2.2/client-confidential-asymmetric.html). Client assertions SHALL use an appropriate `typ`, `alg`, `kid`, `iss`, `sub`, `aud`, `exp`, and `jti`; the Authorization Server SHALL validate the signature, short expiry, audience, and replay protection. These requirements do not apply to public interactive clients.
 
-#### SMART Discovery And CORS
+#### SMART Discovery
 
 FHIR capabilities are discovered from `[base]/metadata`; SMART metadata is discovered from `[base]/.well-known/smart-configuration`. SMART discovery SHALL publish absolute endpoint URLs and align its `token_endpoint`, grant types, capabilities, token-endpoint authentication methods, signing algorithms, and scopes with the selected flow. Interactive modes additionally publish the authorization endpoint, authorization-code and PKCE support, launch capabilities, and the selected Patient or Clinician capability set. Backend Services publishes `client_credentials`, asymmetric authentication, and supported system scopes. `jwks_uri` is for server-key discovery only; client keys are registered out of band.
-
-Backend Services uses confidential server-side clients and does not itself require browser CORS. Where a deployment supports browser SMART Apps, `metadata` and `.well-known/smart-configuration` SHALL be available cross-origin; token and protected FHIR endpoints SHALL allow only registered client origins.
 
 ### IHE IUA
 
 The IUA roles used by this IG are [IUA Authorization Client](ActorDefinition-iua-authorization-client-eu-api.html), [IUA Authorization Server](ActorDefinition-iua-authorization-server-eu-api.html), and [IUA Resource Server](ActorDefinition-iua-resource-server-eu-api.html). IUA mode uses the applicable [Authorization Client](https://profiles.ihe.net/ITI/IUA/index.html#34111-authorization-client), [Authorization Server](https://profiles.ihe.net/ITI/IUA/index.html#34112-authorization-server), and [Resource Server](https://profiles.ihe.net/ITI/IUA/index.html#34113-resource-server) requirements. Core IUA requirements are separate from this IG's MHD transaction integration and from the additional recommendations here.
 
 The Authorization Client authenticates to the Authorization Server, requests least-privilege scopes, and presents its bearer token. The Authorization Server authenticates the client, validates any client assertion, applies issuance policy, limits scopes to authorized scopes, prevents assertion replay, and issues tokens. The Resource Server validates token activity, expiry, issuer/signature or introspection, audience/resource binding where applicable, granted scope, request/claim consistency, and local policy. A Resource Server does not validate a client assertion for an independent Authorization Server.
-
-IUA does not define a universal CORS requirement. System-to-system IUA does not require CORS. A deployment supporting browser IUA Authorization Clients SHALL define an explicit CORS policy: public metadata may be cross-origin, while token and protected-resource endpoints allow only explicitly authorized client origins.
 
 <a name="transport-security"></a>
 ### Tokens, Scopes, Enforcement, And Errors

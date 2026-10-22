@@ -48,13 +48,12 @@ It implements the SMART FHIR Resource Server role for a pre-authorized
 system-to-system deployment; its Authorization Server is a separate participant.
 """
 
-* rest[=].security.cors = false
 * rest[=].security.service = http://terminology.hl7.org/CodeSystem/restful-security-service#SMART-on-FHIR
 * rest[=].security.description = """
 This deployment selects SMART Backend Services, validates access tokens, and enforces its granted
 `system/DocumentReference.rs`, `system/Binary.r`, `system/Bundle.r`, and `system/Patient.rs` scopes.
-Its SMART metadata advertises `client_credentials` and asymmetric client authentication. CORS is not
-required for this server-side client architecture. See [Authorization](authorization.html#smart-app-launch).
+Its SMART metadata advertises `client_credentials` and asymmetric client authentication. See
+[Authorization](authorization.html#smart-app-launch).
 """
 
 // ============================================================================

@@ -53,8 +53,7 @@ uses `client_credentials` and `private_key_jwt`, and requests `system/` scopes f
 ### Interactive SMART
 
 Where an interactive use case applies, the consumer groups with the SMART App, uses authorization
-code with PKCE, and requests the applicable `patient/` or `user/` scopes. Browser CORS requirements
-apply only to deployments supporting browser-based clients.
+code with PKCE, and requests the applicable `patient/` or `user/` scopes.
 
 All modes use TLS 1.2 or higher.
 

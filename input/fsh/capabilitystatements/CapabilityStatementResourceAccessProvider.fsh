@@ -57,8 +57,7 @@ Server and accepts `system/` scopes for the resources it supports.
 ### Interactive SMART
 
 Where an interactive use case applies, the provider groups with the SMART FHIR Resource Server and
-accepts the corresponding `patient/` or `user/` scopes for the resources it supports. Browser CORS
-requirements apply only to deployments supporting browser-based clients.
+accepts the corresponding `patient/` or `user/` scopes for the resources it supports.
 
 All modes use TLS 1.2 or higher and return errors according to the selected authorization specification.
 

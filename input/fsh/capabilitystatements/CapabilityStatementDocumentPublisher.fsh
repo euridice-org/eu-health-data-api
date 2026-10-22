@@ -51,10 +51,10 @@ uses `client_credentials` and `private_key_jwt`, and requests:
 
 Where an interactive use case applies, the publisher groups with the SMART App, uses authorization
 code with PKCE, and replaces the `system/` prefix above with the applicable `patient/` or `user/`
-scope prefix. Browser CORS requirements apply only to deployments supporting browser-based clients.
+scope prefix.
 
 All modes use TLS 1.2 or higher. See [Authorization](authorization.html#smart-app-launch) for the
-selected capability set, discovery, token, scope, and CORS rules.
+selected capability set, discovery, token, and scope rules.
 """
 
 // ============================================================================
