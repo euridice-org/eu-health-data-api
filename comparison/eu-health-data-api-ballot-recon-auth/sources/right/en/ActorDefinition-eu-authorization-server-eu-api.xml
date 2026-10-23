@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Basic xmlns="http://hl7.org/fhir">
+  <id value="eu-authorization-server-eu-api"/>
+  <language value="en"/>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: ActorDefinition eu-authorization-server-eu-api</b></p><a name="eu-authorization-server-eu-api"> </a><a name="hceu-authorization-server-eu-api"> </a><table class="grid"><tr><td><b>Actor: EuAuthorizationServerEuApi </b></td><td>Health Data API Authorization Server</td><td>Type: system </td></tr><tr><td colspan="3"/></tr></table></div>
+  </text>
+  <extension url="http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.url">
+    <valueUri value="http://hl7.eu/fhir/health-data-api/ActorDefinition/eu-authorization-server-eu-api"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.version">
+    <valueString value="1.0.0-ballot"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.name">
+    <valueString value="EuAuthorizationServerEuApi"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.title">
+    <valueString value="Health Data API Authorization Server"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.status">
+    <valueCode value="active"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.experimental">
+    <valueBoolean value="false"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.date">
+    <valueDateTime value="2026-10-23T12:01:58+02:00"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.publisher">
+    <valueString value="HL7 Europe"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.contact">
+    <valueContactDetail>
+      <name value="HL7 Europe"/>
+      <telecom>
+        <system value="url"/>
+        <value value="http://hl7.eu"/>
+      </telecom>
+    </valueContactDetail>
+  </extension>
+  <extension url="http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.description">
+    <valueMarkdown value="The Health Data API Authorization Server issues access tokens after applying the authentication and&#xA;authorization requirements of the selected environment and protocol. When user authentication&#xA;is required, it relies on an acceptable result from the&#xA;[Authentication Service](ActorDefinition-authentication-service-eu-api.html), with which it MAY&#xA;be grouped. Authentication alone does not establish API access entitlement. Client assertion&#xA;validation applies only when the selected flow uses asymmetric client authentication. The&#xA;Authorization Server remains responsibility-distinct from a Resource Server, including when&#xA;the two are co-located. This generic role does not by itself claim IHE IUA or SMART conformance.&#xA;The Health Data API qualifier identifies this IG's role, not a central EU-operated service.&#xA;See the applicable [IHE IUA Authorization Server](https://profiles.ihe.net/ITI/IUA/index.html#34112-authorization-server)&#xA;or [SMART Authorization Server](ActorDefinition-smart-authorization-server-eu-api.html)&#xA;definition and the relevant [Authorization](authorization.html) requirements."/>
+  </extension>
+  <extension url="http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.jurisdiction">
+    <valueCodeableConcept>
+      <coding>
+        <system value="http://unstats.un.org/unsd/methods/m49/m49.htm"/>
+        <code value="150"/>
+        <display value="Europe"/>
+      </coding>
+    </valueCodeableConcept>
+  </extension>
+  <extension url="http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.copyright">
+    <valueMarkdown value="Copyright HL7 Europe. Licensed under Creative Commons public domain (CC0 1.0)."/>
+  </extension>
+  <extension url="http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.type">
+    <valueCode value="system"/>
+  </extension>
+  <code>
+    <coding>
+      <system value="http://hl7.org/fhir/fhir-types"/>
+      <code value="ActorDefinition"/>
+    </coding>
+  </code>
+</Basic>

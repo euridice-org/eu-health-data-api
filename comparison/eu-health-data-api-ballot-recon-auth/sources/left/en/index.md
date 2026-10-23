@@ -1,0 +1,93 @@
+# Home - EU Health Data API v1.0.0-ballot
+
+## Home
+
+**Acknowledgment**
+
+The development of this Implementation Guide version has been supported by the
+**Xt-EHR Joint Action**. Xt-EHR provided expertise, alignment with European health policy priorities, and validation of specifications to enable consistency with EHDS requirements.
+
+### Regulatory Basis
+
+The European Health Data Space (EHDS) regulation describes an obligation for EHR systems to include an Interoperability Component that does the following:
+
+* [EHDS Annex II §2.1](https://eur-lex.europa.eu/eli/reg/2025/327/oj/eng#anx_II): "SHALL provide an **interface enabling access** to the personal electronic health data [formatted in EEHRxF]"
+* [EHDS Annex II §2.2](https://eur-lex.europa.eu/eli/reg/2025/327/oj/eng#anx_II): "SHALL **be able to receive** personal electronic health data [formatted in EEHRxF]"
+
+This Implementation Guide:
+
+1. **Defines a set of EHR functionalities that meet the Interoperability Component requirements:**describes how existing IHE profiles and other specifications can be used to provide secure access and enable secure exchange of EEHRxF data between systems.
+1. **Shows how these EHR functionalities can be used in real-world data exchange for EHDS use cases:**outlines how these EHR functionalities can be used to provide patients access to their own data, to allow providers access to patient data, and to support the cross-border data exchange in the myHealth@EU network.
+
+See [Regulatory Anchors](regulatoryAnchors.md) for more detail on the link to the EHDS regulation requirements, and the technical interpretation of those requirements used here.
+
+### Scope
+
+This IG defines exchange patterns — actors, transactions, and security — that systems use to find, retrieve, and publish EEHRxF health data via FHIR APIs. It covers authorization, patient matching, document exchange, resource access, and capability discovery.
+
+This IG does not define clinical data models. Separate Content IGs maintained by HL7 Europe define the structure and content of each priority category: what fields a Patient Summary contains, what codes a Laboratory Report uses (see [Priority Categories](priority-categories.md)). An implementable system combines this IG for transport with a Content IG for the data model.
+
+This IG excludes ePrescription and eDispensation workflow transactions, user-level authorization, audit logging formats, and bulk data export. See [Regulatory Anchors](regulatoryAnchors.md) for requirements traceability.
+
+### Audience
+
+The intended audiences of this Implementation Guide are:
+
+* **Manufacturers of EHR systems:** EHR vendors looking to support the Interoperability Component capabilities required by EHDS should refer to the [Functional Requirements](functional.md) for a list of functional specifications EHRs should support.
+* **Architects of national infrastructures:** National eHealth agencies looking to understand how to use the Interoperability Component capabilities required by EHDS should refer to the [Implementation](implementation.md) for examples of how those capabilities can support EHDS use cases.
+* **Healthcare providers and healthcare organizations:** Organizations deploying EHDS interoperability need to understand the use cases and how they map to national infrastructure requirements, in order to evaluate whether their EHR system's Interoperability Component supports their Member State's obligations. See [Functional Requirements](functional.md) and [Implementation](implementation.md).
+* **Manufacturers of wellness applications:** Vendors of wellness applications claiming interoperability with an EHR system (EHDS Articles 47–48), looking to either access data from EHR systems or write data into an EHR system. See the [Wellness App](usecase-wellness-app.md) use case and [Implementation](implementation.md) page.
+
+### Summary of Functional Components
+
+* **[Capability Discovery](capability-discovery.md)** - Discover which priority categories a server supports
+* **[Authorization](authorization.md)** - SMART Backend Services (IUA actor model)
+* **[Patient Lookup](patient-match.md)** - PDQm Patient Demographics Query
+* **[Document Exchange](document-exchange.md)** - MHD transactions (ITI-67, ITI-68, ITI-105)
+* **[Resource Access](resource-access.md)** - International Patient Access (IPA) resource query patterns
+
+### Approach
+
+We define exchange patterns by inheriting and defining transactions, system actors, and associated capability statements from existing IHE and HL7 specifications:
+
+* [IHE MHD](https://profiles.ihe.net/ITI/MHD/) - Defines exchange of Documents, which we use to exchange FHIR document content.
+* [HL7 SMART App Launch - Backend Services](https://hl7.org/fhir/smart-app-launch/backend-services.html) - Defines authorization in FHIR. We use the SMART Backend Services profile for system-system authorization, including the FHIR scopes defined in this specification.
+* [IHE IUA](https://profiles.ihe.net/ITI/IUA/index.html) - Defines authorization and access control actors and mechanisms. Aligned with SMART. We use the actors and transactions model from this specification.
+* [IHE PDQm](https://profiles.ihe.net/ITI/PDQm/index.html) - Defines how a client can perform patient lookup against a server.
+* [HL7 International Patient Access (IPA)](https://hl7.org/fhir/uv/ipa/) - Defines how an application accesses patient information using SMART authorization and resource query. International Patient Access is the primary reference for resource access patterns in this IG.
+
+We define composite actors that inherit and combine actors defined in these existing specifications. See [Actors and Transactions](actors.md) for detailed actor definitions, transactions, and actor grouping.
+
+At a high level, the following actors are specified:
+
+**Figure 1: Actor Overview**
+
+## Document Exchange Actors
+
+* **Document Publisher** - Produces EEHRxF FHIR Documents and publishes to Document Access Providers
+* **Document Access Provider** - Serves EEHRxF FHIR Documents via query API. Optionally accepts documents from Document Publisher (Document Submission Option).
+* **Document Consumer** - Queries and retrieves EEHRxF documents from Document Access Providers
+
+## Resource Exchange Actors
+
+* **Resource Access Provider** - Provides query access to individual FHIR resources
+* **Resource Consumer** - Queries FHIR resources from Resource Access Providers
+
+These resource actors are initially scoped for search + read. See [Resource Access](resource-access.md) for detailed discussion and possible approaches for resource exchange patterns.
+
+## Priority Categories
+
+EHDS defines priority categories of health data for interoperability. Each pairs a Content IG (data model) with an exchange pattern (this IG). See [Priority Categories](priority-categories.md) for details.
+
+| | | |
+| :--- | :--- | :--- |
+| Patient Summary | [HL7 Europe Patient Summary](https://build.fhir.org/ig/hl7-eu/eps/) | [Document Exchange (MHD)](document-exchange.md) |
+| Medical Test Results | [HL7 Europe Laboratory Report](https://hl7.eu/fhir/laboratory) | [Document Exchange (MHD)](document-exchange.md) |
+| Hospital Discharge Report | [HL7 Europe Hospital Discharge Report](https://hl7.eu/fhir/hdr/) | [Document Exchange (MHD)](document-exchange.md) |
+| Medical Imaging | [HL7 Europe Imaging Study/Report](https://build.fhir.org/ig/hl7-eu/imaging-r5/)/[Imaging Manifest](https://hl7.eu/fhir/imaging-manifest-r5/) | [Document Exchange (MHD)](document-exchange.md) |
+| Individual clinical resources | [HL7 Europe Core](https://build.fhir.org/ig/hl7-eu/base/) | [Resource Access (IPA)](resource-access.md) |
+
+For medication data, this IG covers reading medication resources (MedicationRequest, MedicationStatement) as [resource access](resource-access.md) — e.g., "what medications is this patient taking?" The ePrescription and eDispensation workflow transactions (prescribing, dispensing) are out of scope and handled by [IHE MPD](https://profiles.ihe.net/PHARM/MPD/index.html).
+
+See the [HL7 Europe Implementation Guides registry](https://confluence.hl7.org/spaces/HEU/pages/358255737/Implementation+Guides) for the canonical list of Content IGs and their current publication URLs.
+

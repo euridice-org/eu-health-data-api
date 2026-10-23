@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="eu-api-authorization-security-service"/>
+  <text>
+    <status value="extensions"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: ValueSet eu-api-authorization-security-service</b></p><a name="eu-api-authorization-security-service"> </a><a name="hceu-api-authorization-security-service"> </a><p>This value set includes codes based on the following rules:</p><ul><li>Include these codes as defined in <a href="http://hl7.org/fhir/R4/codesystem-restful-security-service.html"><code>http://terminology.hl7.org/CodeSystem/restful-security-service</code></a><span title="Version is not explicitly stated, which means it is fixed to 4.0.1, the version found through the package references"> version &#x1F4E6;4.0.1</span><table class="none"><tr><td style="white-space:nowrap"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td><a href="http://hl7.org/fhir/R4/codesystem-restful-security-service.html#restful-security-service-SMART-on-FHIR">SMART-on-FHIR</a></td><td style="color: #cccccc">SMART-on-FHIR</td><td>OAuth2 using SMART-on-FHIR profile (see http://docs.smarthealthit.org/).</td></tr></table></li><li>Include these codes as defined in <code>http://profiles.ihe.net/fhir/ihe.securityTypes/CodeSystem/securityTypes</code><span title="Version is not explicitly stated. No matching Code System found"> version Not Stated (use latest from terminology server)</span><table class="none"><tr><td style="white-space:nowrap"><b>Code</b></td><td><b>Display</b></td></tr><tr><td>IUA</td><td/></tr></table></li></ul></div>
+  </text>
+  <url value="http://hl7.eu/fhir/health-data-api/ValueSet/eu-api-authorization-security-service"/>
+  <version value="1.0.0-ballot"/>
+  <name value="EuApiAuthorizationSecurityServiceVS"/>
+  <title value="EU Health Data API Authorization Security Service ValueSet"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2026-10-23T12:01:58+02:00"/>
+  <publisher value="HL7 Europe"/>
+  <contact>
+    <name value="HL7 Europe"/>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.eu"/>
+    </telecom>
+  </contact>
+  <description value="Security services that a concrete EU Health Data API deployment may select for its protected FHIR interface."/>
+  <jurisdiction>
+    <coding>
+      <system value="http://unstats.un.org/unsd/methods/m49/m49.htm"/>
+      <code value="150"/>
+      <display value="Europe"/>
+    </coding>
+  </jurisdiction>
+  <copyright value="Copyright HL7 Europe. Licensed under Creative Commons public domain (CC0 1.0)."/>
+  <compose>
+    <include>
+      <system value="http://terminology.hl7.org/CodeSystem/restful-security-service"/>
+      <concept>
+        <code value="SMART-on-FHIR"/>
+      </concept>
+    </include>
+    <include>
+      <system value="http://profiles.ihe.net/fhir/ihe.securityTypes/CodeSystem/securityTypes"/>
+      <concept>
+        <code value="IUA"/>
+      </concept>
+    </include>
+  </compose>
+</ValueSet>

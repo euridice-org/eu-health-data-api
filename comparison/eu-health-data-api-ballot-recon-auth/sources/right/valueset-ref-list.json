@@ -1,0 +1,72 @@
+{
+  "codeSystems" : [{
+    "url" : "http://hl7.eu/fhir/health-data-api/ValueSet/document-type-discharge-report-eu-api",
+    "version" : "1.0.0-ballot",
+    "status" : "draft",
+    "name" : "DocumentTypeDischargeReportEuApiVS",
+    "title" : "EEHRxF Document Type ValueSet for Discharge Reports",
+    "description" : "ValueSet for specific document types within the Discharge Report priority category.",
+    "systems" : ["http://loinc.org"],
+    "uses" : {
+    },
+    "ValueSet-document-type-eu-api.html" : "EEHRxF Document Type ValueSet"
+  },
+  {
+    "url" : "http://hl7.eu/fhir/health-data-api/ValueSet/document-type-eu-api",
+    "version" : "1.0.0-ballot",
+    "status" : "draft",
+    "name" : "DocumentTypeEuApiVS",
+    "title" : "EEHRxF Document Type ValueSet",
+    "description" : "Document type codes for clinical precision in document identification.",
+    "systems" : ["http://loinc.org"]
+  },
+  {
+    "url" : "http://hl7.eu/fhir/health-data-api/ValueSet/document-type-laboratory-report-eu-api",
+    "version" : "1.0.0-ballot",
+    "status" : "draft",
+    "name" : "DocumentTypeLaboratoryReportEuApiVS",
+    "title" : "EEHRxF Document Type ValueSet for Laboratory Reports",
+    "description" : "ValueSet for specific document types within the Laboratory Report priority category.",
+    "systems" : ["http://loinc.org"],
+    "uses" : {
+    },
+    "ValueSet-document-type-eu-api.html" : "EEHRxF Document Type ValueSet"
+  },
+  {
+    "url" : "http://hl7.eu/fhir/health-data-api/ValueSet/document-type-medical-imaging-eu-api",
+    "version" : "1.0.0-ballot",
+    "status" : "draft",
+    "name" : "DocumentTypeMedicalImagingEuApiVS",
+    "title" : "EEHRxF Document Type ValueSet for Medical Imaging",
+    "description" : "ValueSet for specific document types within the Medical Imaging priority category.",
+    "systems" : ["http://loinc.org"],
+    "uses" : {
+    },
+    "ValueSet-document-type-eu-api.html" : "EEHRxF Document Type ValueSet"
+  },
+  {
+    "url" : "http://hl7.eu/fhir/health-data-api/ValueSet/document-type-patient-summary-eu-api",
+    "version" : "1.0.0-ballot",
+    "status" : "draft",
+    "name" : "DocumentTypePatientSummaryEuApiVS",
+    "title" : "EEHRxF Document Type ValueSet for Patient Summaries",
+    "description" : "ValueSet for specific document types within the Patient Summary priority category.",
+    "systems" : ["http://loinc.org"],
+    "uses" : {
+    },
+    "ValueSet-document-type-eu-api.html" : "EEHRxF Document Type ValueSet"
+  },
+  {
+    "url" : "http://hl7.eu/fhir/health-data-api/ValueSet/eu-api-authorization-security-service",
+    "version" : "1.0.0-ballot",
+    "status" : "draft",
+    "name" : "EuApiAuthorizationSecurityServiceVS",
+    "title" : "EU Health Data API Authorization Security Service ValueSet",
+    "description" : "Security services that a concrete EU Health Data API deployment may select for its protected FHIR interface.",
+    "systems" : ["http://terminology.hl7.org/CodeSystem/restful-security-service",
+    "http://profiles.ihe.net/fhir/ihe.securityTypes/CodeSystem/securityTypes"],
+    "uses" : {
+    },
+    "StructureDefinition-eu-api-deployment-capabilitystatement.html" : "EU Health Data API Deployment CapabilityStatement"
+  }]
+}

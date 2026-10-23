@@ -1,0 +1,65 @@
+{
+  "resourceType" : "CodeSystem",
+  "id" : "document-priority-category-eu-api",
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: CodeSystem document-priority-category-eu-api</b></p><a name=\"document-priority-category-eu-api\"> </a><a name=\"hcdocument-priority-category-eu-api\"> </a><p>This case-sensitive code system <code>http://hl7.eu/fhir/health-data-api/CodeSystem/document-priority-category-eu-api</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">Patient-Summaries<a name=\"document-priority-category-eu-api-Patient-Summaries\"> </a></td><td>patient summaries</td><td><div><p>Electronic health data that include significant clinical facts related to an identified natural person and that are essential for the provision of safe and efficient healthcare to that person. The following information is part of a patient summary:</p>\n<ol>\n<li>Personal details.</li>\n<li>Contact information.</li>\n<li>Information on insurance.</li>\n<li>Allergies.</li>\n<li>Medical alerts.</li>\n<li>Vaccination/prophylaxis information, possibly in the form of a vaccination card.</li>\n<li>Current, resolved, closed or inactive problems, including in an international classification coding.</li>\n<li>Textual information related to medical history.</li>\n<li>Medical devices and implants.</li>\n<li>Medical or care procedures.</li>\n<li>Functional status.</li>\n<li>Current and relevant past medicines.</li>\n<li>Social history observations related to health.</li>\n<li>Pregnancy history.</li>\n<li>Patient-provided data.</li>\n<li>Observation results pertaining to the health condition.</li>\n<li>Plan of care.</li>\n<li>Information on a rare disease, such as details about the impact or characteristics of the disease.</li>\n</ol>\n</div></td></tr><tr><td style=\"white-space:nowrap\">Electronic-Prescriptions<a name=\"document-priority-category-eu-api-Electronic-Prescriptions\"> </a></td><td>electronic prescriptions</td><td><div><p>Electronic health data constituting a prescription for a medicinal product as defined in Article 3, point (k), of Directive 2011/24/EU.</p>\n</div></td></tr><tr><td style=\"white-space:nowrap\">Electronic-Dispensations<a name=\"document-priority-category-eu-api-Electronic-Dispensations\"> </a></td><td>electronic dispensations</td><td><div><p>Information on the supply of a medicinal product to a natural person by a pharmacy based on an electronic prescription.</p>\n</div></td></tr><tr><td style=\"white-space:nowrap\">Medical-Imaging<a name=\"document-priority-category-eu-api-Medical-Imaging\"> </a></td><td>medical imaging studies and related imaging reports</td><td><div><p>Electronic health data related to the use of or produced by technologies that are used to view the human body in order to prevent, diagnose, monitor or treat medical conditions.</p>\n</div></td></tr><tr><td style=\"white-space:nowrap\">Laboratory-Reports<a name=\"document-priority-category-eu-api-Laboratory-Reports\"> </a></td><td>medical test results, including laboratory and other diagnostic results and related reports</td><td><div><p>Electronic health data representing results of studies performed in particular through in vitro diagnostics such as clinical biochemistry, haematology, transfusion medicine, microbiology, immunology and others, and including, where relevant, reports supporting the interpretation of the results.</p>\n</div></td></tr><tr><td style=\"white-space:nowrap\">Discharge-Reports<a name=\"document-priority-category-eu-api-Discharge-Reports\"> </a></td><td>discharge reports</td><td><div><p>Electronic health data related to a healthcare encounter or episode of care and including essential information about admission, treatment and discharge of a natural person.</p>\n</div></td></tr></table></div>"
+  },
+  "url" : "http://hl7.eu/fhir/health-data-api/CodeSystem/document-priority-category-eu-api",
+  "version" : "1.0.0-ballot",
+  "name" : "DocumentPriorityCategoryEuApiCS",
+  "title" : "EEHRxF Document Priority Category CodeSystem",
+  "status" : "draft",
+  "experimental" : false,
+  "date" : "2026-10-23T12:03:51+02:00",
+  "publisher" : "HL7 Europe",
+  "contact" : [{
+    "name" : "HL7 Europe",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "http://hl7.eu"
+    }]
+  }],
+  "description" : "CodeSystem for priority document categories in EEHRxF as the document categories as defined in the EHDS regulation.",
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "http://unstats.un.org/unsd/methods/m49/m49.htm",
+      "code" : "150",
+      "display" : "Europe"
+    }]
+  }],
+  "copyright" : "Copyright HL7 Europe. Licensed under Creative Commons public domain (CC0 1.0).",
+  "caseSensitive" : true,
+  "content" : "complete",
+  "count" : 6,
+  "concept" : [{
+    "code" : "Patient-Summaries",
+    "display" : "patient summaries",
+    "definition" : "Electronic health data that include significant clinical facts related to an identified natural person and that are essential for the provision of safe and efficient healthcare to that person. The following information is part of a patient summary:\n\n1. Personal details.\n2. Contact information.\n3. Information on insurance.\n4. Allergies.\n5. Medical alerts.\n6. Vaccination/prophylaxis information, possibly in the form of a vaccination card.\n7. Current, resolved, closed or inactive problems, including in an international classification coding.\n8. Textual information related to medical history.\n9. Medical devices and implants.\n10. Medical or care procedures.\n11. Functional status.\n12. Current and relevant past medicines.\n13. Social history observations related to health.\n14. Pregnancy history.\n15. Patient-provided data.\n16. Observation results pertaining to the health condition.\n17. Plan of care.\n18. Information on a rare disease, such as details about the impact or characteristics of the disease."
+  },
+  {
+    "code" : "Electronic-Prescriptions",
+    "display" : "electronic prescriptions",
+    "definition" : "Electronic health data constituting a prescription for a medicinal product as defined in Article 3, point (k), of Directive 2011/24/EU."
+  },
+  {
+    "code" : "Electronic-Dispensations",
+    "display" : "electronic dispensations",
+    "definition" : "Information on the supply of a medicinal product to a natural person by a pharmacy based on an electronic prescription."
+  },
+  {
+    "code" : "Medical-Imaging",
+    "display" : "medical imaging studies and related imaging reports",
+    "definition" : "Electronic health data related to the use of or produced by technologies that are used to view the human body in order to prevent, diagnose, monitor or treat medical conditions."
+  },
+  {
+    "code" : "Laboratory-Reports",
+    "display" : "medical test results, including laboratory and other diagnostic results and related reports",
+    "definition" : "Electronic health data representing results of studies performed in particular through in vitro diagnostics such as clinical biochemistry, haematology, transfusion medicine, microbiology, immunology and others, and including, where relevant, reports supporting the interpretation of the results."
+  },
+  {
+    "code" : "Discharge-Reports",
+    "display" : "discharge reports",
+    "definition" : "Electronic health data related to a healthcare encounter or episode of care and including essential information about admission, treatment and discharge of a natural person."
+  }]
+}

@@ -1,0 +1,96 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://hl7.eu/fhir/health-data-api/Basic/eu-authorization-client-eu-api> a fhir:Basic ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:Resource.id [ fhir:value "eu-authorization-client-eu-api"] ;
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ] ;
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: ActorDefinition eu-authorization-client-eu-api</b></p><a name=\"eu-authorization-client-eu-api\"> </a><a name=\"hceu-authorization-client-eu-api\"> </a><table class=\"grid\"><tr><td><b>Actor: EuAuthorizationClientEuApi </b></td><td>Health Data API Authorization Client</td><td>Type: system </td></tr><tr><td colspan=\"3\"/></tr></table></div>"
+  ] ;
+  fhir:DomainResource.extension [
+     fhir:index 0 ;
+     fhir:Extension.url [ fhir:value "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.url" ] ;
+     fhir:Extension.valueUri [ fhir:value "http://hl7.eu/fhir/health-data-api/ActorDefinition/eu-authorization-client-eu-api" ]
+  ], [
+     fhir:index 1 ;
+     fhir:Extension.url [ fhir:value "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.version" ] ;
+     fhir:Extension.valueString [ fhir:value "1.0.0-ballot" ]
+  ], [
+     fhir:index 2 ;
+     fhir:Extension.url [ fhir:value "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.name" ] ;
+     fhir:Extension.valueString [ fhir:value "EuAuthorizationClientEuApi" ]
+  ], [
+     fhir:index 3 ;
+     fhir:Extension.url [ fhir:value "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.title" ] ;
+     fhir:Extension.valueString [ fhir:value "Health Data API Authorization Client" ]
+  ], [
+     fhir:index 4 ;
+     fhir:Extension.url [ fhir:value "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.status" ] ;
+     fhir:Extension.valueCode [ fhir:value "active" ]
+  ], [
+     fhir:index 5 ;
+     fhir:Extension.url [ fhir:value "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.experimental" ] ;
+     fhir:Extension.valueBoolean [ fhir:value "false"^^xsd:boolean ]
+  ], [
+     fhir:index 6 ;
+     fhir:Extension.url [ fhir:value "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.date" ] ;
+     fhir:Extension.valueDateTime [ fhir:value "2026-10-23T12:01:58+02:00"^^xsd:dateTime ]
+  ], [
+     fhir:index 7 ;
+     fhir:Extension.url [ fhir:value "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.publisher" ] ;
+     fhir:Extension.valueString [ fhir:value "HL7 Europe" ]
+  ], [
+     fhir:index 8 ;
+     fhir:Extension.url [ fhir:value "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.contact" ] ;
+     fhir:Extension.valueContactDetail [
+       fhir:ContactDetail.name [ fhir:value "HL7 Europe" ] ;
+       fhir:ContactDetail.telecom [
+         fhir:index 0 ;
+         fhir:ContactPoint.system [ fhir:value "url" ] ;
+         fhir:ContactPoint.value [ fhir:value "http://hl7.eu" ]
+       ]
+     ]
+  ], [
+     fhir:index 9 ;
+     fhir:Extension.url [ fhir:value "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.description" ] ;
+     fhir:Extension.valueMarkdown [ fhir:value "The Health Data API Authorization Client obtains an access token from the selected Authorization Server\nand presents it to a protected API. Client authentication, grants, scopes, discovery, and\nlaunch context depend on the selected environment and protocol; public SMART interactive\nclients do not authenticate at the token endpoint. This generic role does not by itself\nclaim IHE IUA or SMART conformance. See the applicable [IHE IUA Authorization Client](https://profiles.ihe.net/ITI/IUA/index.html#34111-authorization-client),\n[SMART App](ActorDefinition-smart-app-eu-api.html), or [SMART Backend Service](ActorDefinition-smart-backend-service-eu-api.html)\ndefinition and the relevant [Authorization](authorization.html) requirements." ]
+  ], [
+     fhir:index 10 ;
+     fhir:Extension.url [ fhir:value "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.jurisdiction" ] ;
+     fhir:Extension.valueCodeableConcept [
+       fhir:CodeableConcept.coding [
+         fhir:index 0 ;
+         fhir:Coding.system [ fhir:value "http://unstats.un.org/unsd/methods/m49/m49.htm" ] ;
+         fhir:Coding.code [ fhir:value "150" ] ;
+         fhir:Coding.display [ fhir:value "Europe" ]
+       ]
+     ]
+  ], [
+     fhir:index 11 ;
+     fhir:Extension.url [ fhir:value "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.copyright" ] ;
+     fhir:Extension.valueMarkdown [ fhir:value "Copyright HL7 Europe. Licensed under Creative Commons public domain (CC0 1.0)." ]
+  ], [
+     fhir:index 12 ;
+     fhir:Extension.url [ fhir:value "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.type" ] ;
+     fhir:Extension.valueCode [ fhir:value "system" ]
+  ] ;
+  fhir:Basic.code [
+     fhir:CodeableConcept.coding [
+       fhir:index 0 ;
+       fhir:Coding.system [ fhir:value "http://hl7.org/fhir/fhir-types" ] ;
+       fhir:Coding.code [ fhir:value "ActorDefinition" ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://hl7.eu/fhir/health-data-api/Basic/eu-authorization-client-eu-api.ttl> a owl:Ontology ;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

@@ -1,0 +1,269 @@
+# Document Exchange - EU Health Data API v1.0.0-ballot
+
+## Document Exchange
+
+### Overview
+
+Document exchange using IHE MHD (Mobile Health Documents) transactions. This IG inherits MHD transactions as-is, with constraints specific to EEHRxF content.
+
+For how different server backends (FHIR-native on-demand vs persisted/XDS-bridge) implement these transactions, see [Relationship to XDS/FHIR Document Sharing](background-xds-fhir.md).
+
+**Figure 11: Document Exchange Overview**
+
+### Actors and Transactions
+
+This IG defines three document exchange actors. See [Actors](actors.md) for detailed actor groupings.
+
+| | | | |
+| :--- | :--- | :--- | :--- |
+| [Document Consumer](actors.md#document-consumer) | [Document Consumer](https://profiles.ihe.net/ITI/MHD/1331_actors_and_transactions.html#133112-document-consumer) | [ITI-67](https://profiles.ihe.net/ITI/MHD/ITI-67.html)Find Document References | R |
+| [Document Consumer](actors.md#document-consumer) | [Document Consumer](https://profiles.ihe.net/ITI/MHD/1331_actors_and_transactions.html#133112-document-consumer) | [ITI-68](https://profiles.ihe.net/ITI/MHD/ITI-68.html)Retrieve Document | R |
+| [Document Access Provider](actors.md#document-access-provider) | [Document Responder](https://profiles.ihe.net/ITI/MHD/1331_actors_and_transactions.html#133114-document-responder) | [ITI-67](https://profiles.ihe.net/ITI/MHD/ITI-67.html)Find Document References | R |
+| [Document Access Provider](actors.md#document-access-provider) | [Document Responder](https://profiles.ihe.net/ITI/MHD/1331_actors_and_transactions.html#133114-document-responder) | [ITI-68](https://profiles.ihe.net/ITI/MHD/ITI-68.html)Retrieve Document | R |
+| [Document Access Provider](actors.md#document-access-provider) | [Document Recipient](https://profiles.ihe.net/ITI/MHD/1331_actors_and_transactions.html#133113-document-recipient) | [ITI-105: Simplified Publish](https://profiles.ihe.net/ITI/MHD/ITI-105.html) | O |
+| [Document Publisher](actors.md#document-publisher) | [Document Source](https://profiles.ihe.net/ITI/MHD/1331_actors_and_transactions.html#133111-document-source) | [ITI-105: Simplified Publish](https://profiles.ihe.net/ITI/MHD/ITI-105.html) | R |
+
+-------
+
+### Document Consumption
+
+The primary workflow is **query and retrieve**: Document Consumers find documents via ITI-67, then retrieve content via ITI-68.
+
+#### Sequence Diagram
+
+```
+sequenceDiagram
+    participant Consumer as Document Consumer
+    participant Provider as Document Access Provider
+
+    rect rgb(240, 248, 255)
+    Note over Consumer,Provider: Find Document References (ITI-67)
+    Consumer->>Provider: GET /DocumentReference?patient=...&type=...
+    Provider-->>Consumer: Bundle of DocumentReferences
+    end
+
+    rect rgb(240, 255, 240)
+    Note over Consumer,Provider: Retrieve Document (ITI-68)
+    Consumer->>Provider: GET [attachment.url from DocumentReference]
+    Provider-->>Consumer: FHIR Document Bundle
+    end
+
+    alt Imaging Manifest (DICOM KOS)
+    Note over Consumer,Provider: See IHE MADO / Imaging Manifest
+    Consumer->>Provider: GET [attachment.url from KOS DocumentReference]
+    Provider-->>Consumer: DICOM KOS
+    end
+
+```
+
+#### Document Content
+
+[ITI-68](https://profiles.ihe.net/ITI/MHD/ITI-68.html) retrieves the document from the URL in `DocumentReference.content.attachment.url`. Consumers identify the content using two DocumentReference elements:
+
+* **`type`** (LOINC code) — identifies the clinical document type and which [content IG](priority-categories.md) applies.
+* **`attachment.contentType`** — identifies the technical format.
+
+Together, these tell the consumer what the retrieved document contains.
+
+| | | | |
+| :--- | :--- | :--- | :--- |
+| FHIR Document | `application/fhir+json`or`application/fhir+xml` | FHIR Document Bundle (`Bundle.type = "document"`) | `/Bundle/[id]` |
+| Non-FHIR | `application/dicom` | Binary content (DICOM KOS) | `/Binary/[id]` |
+
+Servers SHALL return content conforming to FHIR Document content profiles as a native FHIR Document Bundle, not wrapped in Binary. For DICOM KOS imaging manifests ([IHE MADO](priority-area-imaging-manifest.md#ihe-mado)), standard MHD behavior applies.
+
+`attachment.url` is an opaque retrieval URL — its format is unconstrained. Servers host content at any endpoint they choose. The examples above (`/Bundle/[id]`, `/Binary/[id]`) illustrate common patterns, not requirements.
+
+Human-readable representations (e.g. PDF narrative) are part of the FHIR Document as defined by the relevant [content IG](priority-categories.md) — not exposed at metadata level as separate DocumentReferences.
+
+#### Search Capabilities
+
+The [Document Access Provider](CapabilityStatement-document-access-provider-eu-api.md) and [Document Consumer](CapabilityStatement-document-consumer-eu-api.md) use the same DocumentReference search parameter menu with different expectations:
+
+| | | | |
+| :--- | :--- | :--- | :--- |
+| Document Access Provider | `patient`,`patient.identifier`,`_id`,`type`,`category`,`creation` | `status`,`date` | All others, including`period`,`_lastUpdated`, and the remaining MHD parameters |
+| Document Consumer | `patient`,`patient.identifier`,`_id` | — | All others |
+
+These are capability requirements. A SHALL means that an actor SHALL be able to issue or process the parameter; it does not require every query to contain that parameter or every returned DocumentReference to populate the corresponding element. `patient` and `patient.identifier` are alternative ways to identify the subject.
+
+Content IGs may require additional search parameters. A Provider claiming conformance to several content IGs supports the union of their requirements.
+
+The date parameters have distinct meanings:
+
+| | |
+| :--- | :--- |
+| `creation` | `DocumentReference.content.attachment.creation`: when the document content was created |
+| `date` | `DocumentReference.date`: when the DocumentReference was created |
+| `period` | The clinical period documented |
+| `_lastUpdated` | When the DocumentReference resource version last changed |
+
+The `format` parameter searches `DocumentReference.content.format`, which identifies document format and content rules. It is distinct from `content.attachment.contentType`, which identifies the MIME type.
+
+##### Option: Chained Identifier Search
+
+FHIR also supports querying resources directly by patient identifier via [chained search](https://hl7.org/fhir/R4/search.html#chaining), where the corresponding patient identifier is either known in advance or was received during a [patient lookup transaction](patient-match.md). This applies to both clinical resource queries and document searches (ITI-67):
+
+```
+GET [base]/AllergyIntolerance?patient.identifier=[system]|[value]
+GET [base]/DocumentReference?patient.identifier=[system]|[value]&type=http://loinc.org|60591-5
+
+```
+
+Chained search can be used to minimize round trips, for example with national aggregating gateways. The Access Provider SHALL support chained search on `patient.identifier` for this to work. Chaining is however not possible if [logical references](https://hl7.org/fhir/R4/references.html#logical) are used.
+
+#### Search Response
+
+An ITI-67 response contains base FHIR DocumentReference resources. This guide defines no EU DocumentReference return profile and does not require returned resources to conform to an MHD metadata profile. The Provider SHOULD return the metadata it has. Base FHIR therefore governs element cardinalities, including `date` and `custodian` at 0..1 and `category` at 0..*.
+
+Implementers that need XDS compatibility should use the applicable MHD on FHIR profiles and mappings in addition to this guide.
+
+#### Document Search Strategy
+
+[IHE Document Sharing](https://profiles.ihe.net/ITI/HIE-Whitepaper/index.html) distinguishes `type` (specific document types, typically LOINC codes) from `category` (broad classification) on DocumentReference. This IG constrains `type` for document discovery but leaves the `category` vocabulary to [content IGs](priority-categories.md) and implementations. Providers still support the `category` search parameter.
+
+##### EHDS Priority Categories and Type Codes
+
+[Article 14](https://eur-lex.europa.eu/eli/reg/2025/327/oj#d1e2289-1-1) of the EHDS regulation defines six priority categories of electronic health data. [EEHRxFDocumentPriorityCategoryCS](CodeSystem-document-priority-category-eu-api.md) provides informative codes for these categories, organizing them by the LOINC `type` codes consumers use for document search.
+
+Each priority category has a ValueSet of known LOINC type codes:
+
+* `Patient-Summaries` → [EEHRxFDocumentTypePatientSummaryVS](ValueSet-document-type-patient-summary-eu-api.md)
+* `Discharge-Reports` → [EEHRxFDocumentTypeDischargeReportVS](ValueSet-document-type-discharge-report-eu-api.md)
+* `Laboratory-Reports` → [EEHRxFDocumentTypeLaboratoryReportVS](ValueSet-document-type-laboratory-report-eu-api.md)
+* `Medical-Imaging` → [EEHRxFDocumentTypeMedicalImagingVS](ValueSet-document-type-medical-imaging-eu-api.md) `Electronic-Prescriptions` and `Electronic-Dispensations` fall outside the document exchange model and have no type codes.
+
+[EEHRxFDocumentTypeVS](ValueSet-document-type-eu-api.md) aggregates the per-category type codes. A [ConceptMap](ConceptMap-document-reference-category-type-eu-api.md) provides the same mapping in machine-readable form.
+
+| | | |
+| :--- | :--- | :--- |
+| Patient-Summaries | 60591-5 | [Europe Patient Summary](https://build.fhir.org/ig/hl7-eu/eps/) |
+| Discharge-Reports | 18842-5, 100719-4 | [Hospital Discharge Report](https://build.fhir.org/ig/hl7-eu/hdr/) |
+| Laboratory-Reports | 11502-2 | [Europe Laboratory Report](https://hl7.eu/fhir/laboratory/) |
+| Medical-Imaging | 85430-7, 18748-4 | [Europe Imaging Reports](https://build.fhir.org/ig/hl7-eu/imaging-r5/en/) |
+
+**Feedback requested on `category` and document differentiation in search.** This IG uses `DocumentReference.type` with LOINC codes as the primary search parameter for distinguishing priority categories. The use of `.category` is left to the needs of the implementation.
+
+The EHDS priority categories (Patient Summary, Laboratory Report, etc.) are regulatory groupings that no established code system defines today. A coarse-grained search parameter grouping documents by `category` — independent of their specific LOINC `type` code — could simplify consumer logic, especially as code sets evolve. For example, the `category` field could represent priority categories or another classification scheme for search.
+
+Implementers: Does your system use or plan to use `category` for document classification? Would constraining `category` to the EHDS priority categories be useful for your search workflows, or conflict with other category schemes? Are there other good code sets for differentiating, for example, laboratory reports from imaging reports?
+
+#### On-Demand Documents
+
+Some servers assemble documents on demand from operational data rather than serving pre-stored Bundles. MHD supports this: an on-demand DocumentReference has no `content.attachment.hash` or `content.attachment.size`. The `content.attachment.url` may invoke any endpoint that returns a valid Document Bundle, including FHIR operations (e.g., `Patient/[id]/$summary`).
+
+Consumers treat on-demand and persisted DocumentReferences identically — both are retrieved via ITI-68. Servers assembling on demand are not required to version or persist past renderings.
+
+#### Search Examples
+
+Search by `type` (LOINC) for the most accurate results. To find the relevant `type` codes for a priority category, consult the per-category ValueSet or the ConceptMap. When multiple `type` codes apply, include all of them.
+
+These examples assume the consumer has resolved the patient to a FHIR reference (e.g., `Patient/123`) via [Patient Lookup](patient-match.md). Alternatively, use [chained identifier search](document-exchange.md#option-chained-identifier-search) (e.g., `patient.identifier=[system]|[value]`).
+
+##### Patient Summary
+
+By type (LOINC):
+
+```
+GET [base]/DocumentReference?patient=Patient/123&type=http://loinc.org|60591-5&status=current
+
+```
+
+##### Medical Test Results (Laboratory)
+
+By type (LOINC):
+
+```
+GET [base]/DocumentReference?patient=Patient/123&type=http://loinc.org|11502-2&status=current
+
+```
+
+##### Imaging Reports and Manifests
+
+By type (LOINC — imaging reports):
+
+```
+GET [base]/DocumentReference?patient=Patient/123&type=http://loinc.org|85430-7&status=current
+
+```
+
+By type (LOINC — imaging study manifests):
+
+```
+GET [base]/DocumentReference?patient=Patient/123&type=http://loinc.org|18748-4&status=current
+
+```
+
+> Imaging manifests may use the [dual-DocumentReference pattern](priority-area-imaging-manifest.md#dual-documentreference-pattern-mado): two DocumentReferences (FHIR and DICOM KOS) linked via `relatesTo.transforms`. Consumers select the representation they support based on `contentType`.
+
+##### Hospital Discharge Reports
+
+By type (LOINC):
+
+```
+GET [base]/DocumentReference?patient=Patient/123&type=http://loinc.org|18842-5,http://loinc.org|100719-4&status=current
+
+```
+
+-------
+
+### Document Publication
+
+When Document Publisher and Document Access Provider are **separate systems**, the Publisher submits documents using [ITI-105 Simplified Publish](https://profiles.ihe.net/ITI/MHD/ITI-105.html) per the [MHD Simplified Publish Option](https://profiles.ihe.net/ITI/MHD/1332_actor_options.html#13324-simplified-publish-option). When they are **grouped** (co-located), publication is internal.
+
+#### Document Submission Option
+
+The Document Access Provider MAY support receiving documents from external Publishers by implementing the [MHD Simplified Publish Option](https://profiles.ihe.net/ITI/MHD/1332_actor_options.html#13324-simplified-publish-option). This is the **Document Submission Option**.
+
+Systems implementing this option declare it via [document-access-provider-submission-option-eu-api](CapabilityStatement-document-access-provider-submission-option-eu-api.md). See [Actors - Document Submission Option](actors.md#document-submission-option) for actor groupings.
+
+#### ITI-105 Simplified Publish
+
+```
+POST [base]/DocumentReference
+Content-Type: application/fhir+json
+
+{
+  "resourceType": "DocumentReference",
+  "status": "current",
+  "type": { ... },
+  "subject": { "reference": "Patient/123" },
+  "content": [{
+    "attachment": {
+      "contentType": "application/fhir+json",
+      "data": "[base64-encoded document]"
+    }
+  }]
+}
+
+```
+
+The server validates, extracts, and persists the document, returning the created DocumentReference with server-assigned IDs. See [IHE MHD ITI-105](https://profiles.ihe.net/ITI/MHD/ITI-105.html) for details.
+
+> **Document content:** Per MHD ITI-105, the server extracts the document from `attachment.data` and persists it so that consumers can retrieve it via `attachment.url`. This IG requires that servers SHALL return FHIR Documents as native FHIR Document Bundles — not wrapped in Binary. The `attachment.url` format is unconstrained; servers host documents at any endpoint they choose.
+
+#### Other Publication Transactions
+
+This IG specifies ITI-105 as the publication mechanism for Document Publishers that submit to external Access Providers. ITI-105 gives publishers a single publication pattern for content conforming to EHDS priority category content profiles. The Document Access Provider handles persistence on ingest, so consumers retrieve documents in their native format via ITI-67/ITI-68.
+
+Member states or local deployments MAY additionally support:
+
+* **[ITI-65 Provide Document Bundle](https://profiles.ihe.net/ITI/MHD/ITI-65.html)**: For XDS-centric ecosystems requiring explicit SubmissionSet metadata or multi-document submission.
+* **[ITI-106 Generate Metadata](https://profiles.ihe.net/ITI/MHD/ITI-106.html)**: For structured document publishers wanting server-generated DocumentReference.
+
+These are not required for conformance to the actors within the scope of this implementation guide.
+
+#### Patient Identity in Document Publication
+
+This specification does not require a patient lookup step before publication — how the publisher obtains the patient identifier is up to the implementer. Per [MHD ITI-105 §Patient Identity](https://profiles.ihe.net/ITI/MHD/ITI-105.html#231054122-patient-identity):
+
+> A Patient Reference to a commonly accessible server may be obtained through use of PDQm, PIXm, PMIR, or by some other means. A commonly accessible logical reference using Patient Identifier, instead of a literal reference, may be acceptable where there is a common Identifier, such as a national individual identifier.
+
+-------
+
+### References
+
+* [IHE MHD Specification](https://profiles.ihe.net/ITI/MHD/)
+* [IHE Document Sharing](https://profiles.ihe.net/ITI/HIE-Whitepaper/index.html)
+* [Actors and Transactions](actors.md)
+

@@ -1,0 +1,107 @@
+﻿{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "EEHRxF Document Publisher CapabilityStatement",
+    "description": "CapabilityStatement for the EEHRxF Document Publisher actor. This composite actor produces\nEEHRxF FHIR Documents and publishes them to a Document Access Provider.\n\n### Actor Grouping\n\nThis composite actor groups the following IHE actors:\n- [IUA Authorization Client](https://profiles.ihe.net/ITI/IUA/index.html#34111-authorization-client)\n- [PDQm Patient Demographics Consumer](https://profiles.ihe.net/ITI/PDQm/volume-1.html)\n- [MHD Document Source](https://profiles.ihe.net/ITI/MHD/1331_actors_and_transactions.html)\n\n### Transactions\n\n| Transaction | Description | Optionality |\n|-------------|-------------|-------------|\n| ITI-105 Simplified Publish | Submit document with embedded content to a Document Access Provider | R |\n| ITI-78 Patient Demographics Query | Query for patient demographics to establish patient context | R |\n| Get Access Token | Obtain authorization token for API access | R |\n\n### Security\nSystems SHALL support SMART Backend Services authorization for all transactions.\n\n### Deployment\nThe Document Publisher may be grouped with Document Access Provider, in which case the\nITI-105 transaction becomes internal and is not exposed externally. See the\n[grouped Document Publisher/Access Provider CapabilityStatement](CapabilityStatement-document-publisher-access-provider-eu-api.html)\nfor this deployment pattern.",
+    "license": {
+      "name": "Creative Commons Zero v1.0 Universal",
+      "url": "http://spdx.org/licenses/CC0-1.0.html"
+    },
+    "version": "1.0.0-ballot",
+    "contact": {
+      "name": "HL7 Europe",
+      "url": "http://hl7.eu"
+    }
+  },
+  "externalDocs": {
+    "url": "http://hl7.eu/fhir/health-data-api/CapabilityStatement/document-publisher-eu-api",
+    "description": "FHIR CapabilityStatement"
+  },
+  "components": {
+    "parameters": {
+      "rid": {
+        "name": "rid",
+        "in": "path",
+        "description": "id of the resource (\u003dResource.id)",
+        "required": true,
+        "allowEmptyValue": false,
+        "style": "simple",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "hid": {
+        "name": "hid",
+        "in": "path",
+        "description": "id of the history entry (\u003dResource.meta.versionId)",
+        "required": true,
+        "allowEmptyValue": false,
+        "style": "simple",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "summary": {
+        "name": "_summary",
+        "in": "query",
+        "description": "Requests the server to return a designated subset of the resource",
+        "allowEmptyValue": true,
+        "style": "form",
+        "schema": {
+          "type": "string",
+          "enum": [
+            "true",
+            "text",
+            "data",
+            "count",
+            "false"
+          ]
+        }
+      },
+      "format": {
+        "name": "_format",
+        "in": "query",
+        "description": "Specify alternative response formats by their MIME-types (when a client is unable acccess accept: header)",
+        "allowEmptyValue": true,
+        "style": "form",
+        "schema": {
+          "type": "string",
+          "format": "mime-type"
+        }
+      },
+      "pretty": {
+        "name": "_pretty",
+        "in": "query",
+        "description": "Ask for a pretty printed response for human convenience",
+        "allowEmptyValue": true,
+        "style": "form",
+        "schema": {
+          "type": "boolean"
+        }
+      },
+      "elements": {
+        "name": "_elements",
+        "in": "query",
+        "description": "Requests the server to return a collection of elements from the resource",
+        "allowEmptyValue": true,
+        "style": "form",
+        "explode": false,
+        "schema": {
+          "type": "array",
+          "format": "string",
+          "items": {
+            "format": "string"
+          }
+        }
+      },
+      "count": {
+        "name": "_count",
+        "in": "query",
+        "description": "The maximum number of search results on a page. The server is not bound to return the number requested, but cannot return more",
+        "schema": {
+          "type": "number"
+        }
+      }
+    }
+  }
+}

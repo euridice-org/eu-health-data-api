@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Basic xmlns="http://hl7.org/fhir">
+  <id value="smart-backend-service-eu-api"/>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: ActorDefinition smart-backend-service-eu-api</b></p><a name="smart-backend-service-eu-api"> </a><a name="hcsmart-backend-service-eu-api"> </a><table class="grid"><tr><td><b>Actor: SmartBackendServiceEuApi </b></td><td>SMART Backend Service</td><td>Type: system </td></tr><tr><td colspan="3"/></tr></table></div>
+  </text>
+  <extension url="http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.url">
+    <valueUri value="http://hl7.eu/fhir/health-data-api/ActorDefinition/smart-backend-service-eu-api"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.version">
+    <valueString value="1.0.0-ballot"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.name">
+    <valueString value="SmartBackendServiceEuApi"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.title">
+    <valueString value="SMART Backend Service"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.status">
+    <valueCode value="active"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.experimental">
+    <valueBoolean value="false"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.date">
+    <valueDateTime value="2026-10-23T12:01:58+02:00"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.publisher">
+    <valueString value="HL7 Europe"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.contact">
+    <valueContactDetail>
+      <name value="HL7 Europe"/>
+      <telecom>
+        <system value="url"/>
+        <value value="http://hl7.eu"/>
+      </telecom>
+    </valueContactDetail>
+  </extension>
+  <extension url="http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.description">
+    <valueMarkdown value="The SMART Backend Service is a pre-authorized confidential server-side client using&#xA;client credentials, asymmetric client authentication, and applicable system scopes.&#xA;See [SMART Backend Services](https://hl7.org/fhir/smart-app-launch/STU2.2/backend-services.html)&#xA;and [Authorization](authorization.html#smart-app-launch).&#xA;"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.jurisdiction">
+    <valueCodeableConcept>
+      <coding>
+        <system value="http://unstats.un.org/unsd/methods/m49/m49.htm"/>
+        <code value="150"/>
+        <display value="Europe"/>
+      </coding>
+    </valueCodeableConcept>
+  </extension>
+  <extension url="http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.copyright">
+    <valueMarkdown value="Copyright HL7 Europe. Licensed under Creative Commons public domain (CC0 1.0)."/>
+  </extension>
+  <extension url="http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.type">
+    <valueCode value="system"/>
+  </extension>
+  <code>
+    <coding>
+      <system value="http://hl7.org/fhir/fhir-types"/>
+      <code value="ActorDefinition"/>
+    </coding>
+  </code>
+</Basic>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ConceptMap xmlns="http://hl7.org/fhir">
+  <id value="document-reference-category-type-eu-api"/>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: ConceptMap document-reference-category-type-eu-api</b></p><a name="document-reference-category-type-eu-api"> </a><a name="hcdocument-reference-category-type-eu-api"> </a><p>This mapping does not specify any particular context of use.</p><br/><p>Mapping from <a href="CodeSystem-document-priority-category-eu-api.html">EEHRxF Document Priority Category CodeSystem</a> to <a href="http://terminology.hl7.org/6.5.0/CodeSystem-v3-loinc.html">Logical Observation Identifiers, Names and Codes (LOINC)</a></p><table class="grid"><tr><td colspan="2"><b>Source Concept Details</b></td><td><b>Relationship</b></td><td colspan="2"><b>Target Concept Details</b></td></tr><tr><td colspan="2"><b>Codes</b> from <a href="CodeSystem-document-priority-category-eu-api.html" title="http://hl7.eu/fhir/health-data-api/CodeSystem/document-priority-category-eu-api">EEHRxF Document Priority Category CodeSystem</a></td><td/><td colspan="2"><b>Codes</b> from <a href="http://terminology.hl7.org/6.5.0/CodeSystem-v3-loinc.html" title="http://loinc.org">Logical Observation Identifiers, Names and Codes (LOINC)</a></td></tr><tr><td style="border-right-width: 0px">Patient-Summaries</td><td style="border-left-width: 0px">patient summaries</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#specializes" title="specializes">has specialization</a></td><td style="border-right-width: 0px">60591-5</td><td style="border-left-width: 0px">Patient summary Document</td></tr><tr><td style="border-right-width: 0px; border-bottom-style: none">Discharge-Reports</td><td style="border-left-width: 0px; border-bottom-style: none">discharge reports</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#specializes" title="specializes">has specialization</a></td><td style="border-right-width: 0px">18842-5</td><td style="border-left-width: 0px">Discharge summary</td></tr><tr><td style="border-right-width: 0px; border-top-style: none"/><td style="border-top-style: none; border-left-width: 0px"/><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#specializes" title="specializes">has specialization</a></td><td style="border-right-width: 0px">100719-4</td><td style="border-left-width: 0px">Surgical oncology Discharge summary</td></tr><tr><td style="border-right-width: 0px">Laboratory-Reports</td><td style="border-left-width: 0px">medical test results, including laboratory and other diagnostic results and related reports</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#specializes" title="specializes">has specialization</a></td><td style="border-right-width: 0px">11502-2</td><td style="border-left-width: 0px">Laboratory report</td></tr><tr><td style="border-right-width: 0px; border-bottom-style: none">Medical-Imaging</td><td style="border-left-width: 0px; border-bottom-style: none">medical imaging studies and related imaging reports</td><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#specializes" title="specializes">has specialization</a></td><td style="border-right-width: 0px">85430-7</td><td style="border-left-width: 0px">Diagnostic imaging report</td></tr><tr><td style="border-right-width: 0px; border-top-style: none"/><td style="border-top-style: none; border-left-width: 0px"/><td><a href="http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#specializes" title="specializes">has specialization</a></td><td style="border-right-width: 0px">18748-4</td><td style="border-left-width: 0px">Diagnostic imaging study</td></tr></table></div>
+  </text>
+  <url value="http://hl7.eu/fhir/health-data-api/ConceptMap/document-reference-category-type-eu-api"/>
+  <version value="1.0.0-ballot"/>
+  <name value="DocumentReferenceCategoryTypeEuApi"/>
+  <title value="EEHRxF MHD DocumentReference ConceptMap"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2026-10-23T12:01:58+02:00"/>
+  <publisher value="HL7 Europe"/>
+  <contact>
+    <name value="HL7 Europe"/>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.eu"/>
+    </telecom>
+  </contact>
+  <description value="mapping from the EHDS regulatory priority categories to the LOINC document category codes for clinical precision in document identification."/>
+  <jurisdiction>
+    <coding>
+      <system value="http://unstats.un.org/unsd/methods/m49/m49.htm"/>
+      <code value="150"/>
+      <display value="Europe"/>
+    </coding>
+  </jurisdiction>
+  <purpose value="Guide implementers in understanding how the coarse-grained priority categories defined in the EHDS regulation relate to specific document categories identified by LOINC codes, and it may evolve over time as clinical practice changes and new document categories become relevant for cross-border exchange."/>
+  <copyright value="Copyright HL7 Europe. Licensed under Creative Commons public domain (CC0 1.0)."/>
+  <group>
+    <source value="http://hl7.eu/fhir/health-data-api/CodeSystem/document-priority-category-eu-api"/>
+    <target value="http://loinc.org"/>
+    <element>
+      <code value="Patient-Summaries"/>
+      <target>
+        <code value="60591-5"/>
+        <display value="Patient summary Document"/>
+        <equivalence value="specializes"/>
+      </target>
+    </element>
+    <element>
+      <code value="Discharge-Reports"/>
+      <target>
+        <code value="18842-5"/>
+        <display value="Discharge summary"/>
+        <equivalence value="specializes"/>
+      </target>
+      <target>
+        <code value="100719-4"/>
+        <display value="Surgical oncology Discharge summary"/>
+        <equivalence value="specializes"/>
+      </target>
+    </element>
+    <element>
+      <code value="Laboratory-Reports"/>
+      <target>
+        <code value="11502-2"/>
+        <display value="Laboratory report"/>
+        <equivalence value="specializes"/>
+      </target>
+    </element>
+    <element>
+      <code value="Medical-Imaging"/>
+      <target>
+        <code value="85430-7"/>
+        <display value="Diagnostic imaging report"/>
+        <equivalence value="specializes"/>
+      </target>
+      <target>
+        <code value="18748-4"/>
+        <display value="Diagnostic imaging study"/>
+        <equivalence value="specializes"/>
+      </target>
+    </element>
+  </group>
+</ConceptMap>

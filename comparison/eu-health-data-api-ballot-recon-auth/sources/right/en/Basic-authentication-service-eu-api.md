@@ -1,0 +1,83 @@
+# Resource authentication-service-eu-api
+
+
+
+## Resource Content
+
+```json
+{
+  "resourceType" : "Basic",
+  "id" : "authentication-service-eu-api",
+  "extension" : [{
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.url",
+    "valueUri" : "http://hl7.eu/fhir/health-data-api/ActorDefinition/authentication-service-eu-api"
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.version",
+    "valueString" : "1.0.0-ballot"
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.name",
+    "valueString" : "AuthenticationServiceEuApi"
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.title",
+    "valueString" : "Authentication Service"
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.status",
+    "valueCode" : "active"
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.experimental",
+    "valueBoolean" : false
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.date",
+    "valueDateTime" : "2026-10-23T12:01:58+02:00"
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.publisher",
+    "valueString" : "HL7 Europe"
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.contact",
+    "valueContactDetail" : {
+      "name" : "HL7 Europe",
+      "telecom" : [{
+        "system" : "url",
+        "value" : "http://hl7.eu"
+      }]
+    }
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.description",
+    "valueMarkdown" : "The Authentication Service authenticates an end user, directly or through a Wallet or upstream\nidentity provider, and supplies an authentication result trusted by the Health Data API Authorization Server.\nIt does not grant API access or issue API access tokens in this role. This IG-defined role is not\na formal IHE IUA or SMART actor. It MAY be grouped with the\n[Health Data API Authorization Server](ActorDefinition-eu-authorization-server-eu-api.html) in one implementation;\nthe interface between separate implementations is deployment-defined, not an interoperable\ntransaction specified by this IG. No ID token or token exchange is required by the actor split.\nSee [authentication and authorization groupings](actors.html#authentication-and-authorization-groupings)\nand [Authorization](authorization.html#authentication-and-api-authorization)."
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.jurisdiction",
+    "valueCodeableConcept" : {
+      "coding" : [{
+        "system" : "http://unstats.un.org/unsd/methods/m49/m49.htm",
+        "code" : "150",
+        "display" : "Europe"
+      }]
+    }
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.copyright",
+    "valueMarkdown" : "Copyright HL7 Europe. Licensed under Creative Commons public domain (CC0 1.0)."
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.type",
+    "valueCode" : "system"
+  }],
+  "code" : {
+    "coding" : [{
+      "system" : "http://hl7.org/fhir/fhir-types",
+      "code" : "ActorDefinition"
+    }]
+  }
+}
+
+```

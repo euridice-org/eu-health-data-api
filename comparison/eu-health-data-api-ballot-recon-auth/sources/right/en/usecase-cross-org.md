@@ -1,0 +1,73 @@
+# Cross-Organization via National Infrastructure - EU Health Data API v1.0.0-ballot
+
+## Cross-Organization via National Infrastructure
+
+### Overview
+
+An EHR system acts as a participant in a Member State's national interoperability infrastructure, enabling cross-organization data exchange.
+
+### Scope
+
+National infrastructure design is a Member State choice and is not prescribed by EHDS or this IG. This IG defines the Interoperability Component API surface at the EHR system boundary, and this deployment scenario shows how EHR systems conforming to this IG can support data exchange in different Member State architectures.
+
+The patterns below are illustrative; Member States may combine them or use other national infrastructure designs.
+
+### Participants
+
+* **EHR system** — [Document Publisher](actors.md#document-publisher), [Document Access Provider](actors.md#document-access-provider), and/or [Resource Access Provider](actors.md#resource-access-provider); the conformance target of this IG
+* **National interoperability infrastructure** — [Document Consumer](actors.md#document-consumer) and/or [Resource Consumer](actors.md#resource-consumer); informative, not specified here
+
+### Example Deployment Patterns
+
+#### Federated
+
+A national "record location" service holds references to where patient data resides. A consumer queries the record locator to identify which EHR systems hold data for a patient, then uses this information to query those systems directly or through a proxy. The record locator is national infrastructure and is not specified by this IG.
+
+```
+flowchart LR
+    Consumer["Consumer"]
+    RecordLocator["Record Locator"]
+    A["EHR System A"]
+    B["EHR System B"]
+
+    Consumer --> RecordLocator
+    RecordLocator --> A
+    RecordLocator --> B
+
+```
+
+ **Federated deployment — record discovery and direct data access.** 
+
+In this scenario, data-holding EHR systems acting as Document/Resource Access Providers offer query access to their data to destination EHR systems acting as Document/Resource Consumers.
+
+#### Central Repository
+
+In this model, source EHR systems publish documents to a central national repository (or repositories), which enables access to this data by offering query access to consuming systems.
+
+```
+flowchart LR
+    Source["EHR System (source)"]
+    Repository["National Repository"]
+    Consumer["Consumer"]
+
+    Source -->|Publish documents| Repository
+    Repository --> Consumer
+
+```
+
+ **Central repository deployment — document publication and retrieval.** 
+
+The source EHR acts as [Document Publisher](actors.md#document-publisher) towards the central repository (Document Access Provider), which enables EHRs acting as Document Consumers to query.
+
+Both patterns use the same Interoperability Component API surface defined in this IG. See [Member State Architectures](member-state-architectures.md) for more detail.
+
+### Patient Lookup
+
+In both patterns, a consumer needs to identify which patient data to retrieve. One approach is a national patient identity service that resolves a set of identity attributes to a national patient identifier, which the consumer then uses to query EHR systems.
+
+### Authorization
+
+For the National Interoperability Infrastructure environment, [Authorization](authorization.md#national-interoperability-infrastructure) recommends IHE IUA when participants and the Authorization Server are preconfigured and user or patient claims are needed. The consumer is the [Health Data API Authorization Client](ActorDefinition-eu-authorization-client-eu-api.md), the protected EHR or repository endpoint is the [Health Data API Resource Server](ActorDefinition-eu-authorization-resource-server-eu-api.md), and the [Health Data API Authorization Server](ActorDefinition-eu-authorization-server-eu-api.md) is distinct.
+
+When a deployment selects IUA, these roles are realized by the [IHE IUA Authorization Client](ActorDefinition-iua-authorization-client-eu-api.md), [IHE IUA Resource Server](ActorDefinition-iua-resource-server-eu-api.md), and [IHE IUA Authorization Server](ActorDefinition-iua-authorization-server-eu-api.md). The client obtains a token with [ITI-71](https://profiles.ihe.net/ITI/TF/Volume2/ITI-71.html) and presents it to the protected endpoint using [ITI-72](https://profiles.ihe.net/ITI/TF/Volume2/ITI-72.html). Any MHD transaction scope depends on the supported interaction and deployment, as described in [Authorization](authorization.md#national-interoperability-infrastructure). A direct-system SMART Backend Services deployment is a separate profile and does not imply dual conformance.
+

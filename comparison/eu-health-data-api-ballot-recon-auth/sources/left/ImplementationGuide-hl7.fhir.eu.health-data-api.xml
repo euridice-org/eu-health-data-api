@@ -1,0 +1,1286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ImplementationGuide xmlns="http://hl7.org/fhir">
+  <id value="hl7.fhir.eu.health-data-api"/>
+  <language value="en"/>
+  <text>
+    <status value="generated"/><div xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><p class="res-header-id"><b>Generated Narrative: ImplementationGuide hl7.fhir.eu.health-data-api</b></p><a name="hl7.fhir.eu.health-data-api"> </a><a name="hchl7.fhir.eu.health-data-api"> </a><div style="display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%"><p style="margin-bottom: 0px">Language: en</p></div><h2>EuHealthDataApi</h2><p>The official URL for this implementation guide is: </p><pre>http://hl7.eu/fhir/health-data-api/ImplementationGuide/hl7.fhir.eu.health-data-api</pre><div><p>This Implementation Guide defines FHIR-based APIs for accessing and exchanging health data in the European Health Data Space (EHDS). It composes existing IHE and HL7 specifications — MHD for document exchange, SMART Backend Services for authorization, PDQm for patient matching, and IPA for resource access — into a unified conformance target for EHR systems across Europe.</p>
+</div></div>
+  </text>
+  <url value="http://hl7.eu/fhir/health-data-api/ImplementationGuide/hl7.fhir.eu.health-data-api"/>
+  <version value="1.0.0-ballot"/>
+  <name value="EuHealthDataApi"/>
+  <title value="EU Health Data API"/>
+  <status value="draft"/>
+  <date value="2026-10-23T12:03:51+02:00"/>
+  <publisher value="HL7 Europe"/>
+  <contact>
+    <name value="HL7 Europe"/>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.eu"/>
+    </telecom>
+  </contact>
+  <description value="This Implementation Guide defines FHIR-based APIs for accessing and exchanging health data in the European Health Data Space (EHDS). It composes existing IHE and HL7 specifications — MHD for document exchange, SMART Backend Services for authorization, PDQm for patient matching, and IPA for resource access — into a unified conformance target for EHR systems across Europe."/>
+  <jurisdiction>
+    <coding>
+      <system value="http://unstats.un.org/unsd/methods/m49/m49.htm"/>
+      <code value="150"/>
+      <display value="Europe"/>
+    </coding>
+  </jurisdiction>
+  <copyright value="Copyright HL7 Europe. Licensed under Creative Commons public domain (CC0 1.0)."/>
+  <packageId value="hl7.fhir.eu.health-data-api"/>
+  <license value="CC0-1.0"/>
+  <fhirVersion value="4.0.1"/>
+  <dependsOn id="hl7tx">
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/implementationguide-dependency-comment">
+      <valueMarkdown value="Automatically added as a dependency - all IGs depend on HL7 Terminology"/>
+    </extension>
+    <uri value="http://terminology.hl7.org/ImplementationGuide/hl7.terminology"/>
+    <packageId value="hl7.terminology.r4"/>
+    <version value="7.4.0"/>
+  </dependsOn>
+  <dependsOn id="hl7ext">
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/implementationguide-dependency-comment">
+      <valueMarkdown value="Automatically added as a dependency - all IGs depend on the HL7 Extension Pack"/>
+    </extension>
+    <uri value="http://hl7.org/fhir/extensions/ImplementationGuide/hl7.fhir.uv.extensions"/>
+    <packageId value="hl7.fhir.uv.extensions.r4"/>
+    <version value="5.3.0"/>
+  </dependsOn>
+  <dependsOn id="hl7_fhir_eu_base">
+    <uri value="http://hl7.eu/fhir/base/ImplementationGuide/hl7.fhir.eu.base"/>
+    <packageId value="hl7.fhir.eu.base"/>
+    <version value="2.0.0-ballot"/>
+  </dependsOn>
+  <dependsOn id="ihe_iti_pdqm">
+    <uri value="https://profiles.ihe.net/ITI/PDQm/ImplementationGuide/ihe.iti.pdqm"/>
+    <packageId value="ihe.iti.pdqm"/>
+    <version value="3.2.x"/>
+  </dependsOn>
+  <dependsOn id="ihe_iti_mhd">
+    <uri value="https://profiles.ihe.net/ITI/MHD/ImplementationGuide/ihe.iti.mhd"/>
+    <packageId value="ihe.iti.mhd"/>
+    <version value="4.2.x"/>
+  </dependsOn>
+  <dependsOn id="hl7_fhir_uv_ipa">
+    <uri value="http://hl7.org/fhir/uv/ipa/ImplementationGuide/hl7.fhir.uv.ipa"/>
+    <packageId value="hl7.fhir.uv.ipa"/>
+    <version value="1.1.x"/>
+  </dependsOn>
+  <definition>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="copyrightyear"/>
+      </extension>
+      <extension url="value">
+        <valueString value="2025+"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="releaselabel"/>
+      </extension>
+      <extension url="value">
+        <valueString value="ballot"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="apply-contact"/>
+      </extension>
+      <extension url="value">
+        <valueString value="false"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="default-contact"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="default-copyright"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="apply-copyright"/>
+      </extension>
+      <extension url="value">
+        <valueString value="false"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="apply-jurisdiction"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="apply-license"/>
+      </extension>
+      <extension url="value">
+        <valueString value="false"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="default-license"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="apply-publisher"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="apply-version"/>
+      </extension>
+      <extension url="value">
+        <valueString value="false"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="default-version"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="show-inherited-invariants"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="usage-stats-opt-out"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="releaselabel"/>
+      </extension>
+      <extension url="value">
+        <valueString value="0.1.0-build"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="shownav"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="pin-canonicals"/>
+      </extension>
+      <extension url="value">
+        <valueString value="pin-multiples"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="autoload-resources"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="path-liquid-template"/>
+      </extension>
+      <extension url="value">
+        <valueString value="template/liquid"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="path-liquid-template"/>
+      </extension>
+      <extension url="value">
+        <valueString value="input/liquid"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="path-qa"/>
+      </extension>
+      <extension url="value">
+        <valueString value="temp/qa"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="path-temp"/>
+      </extension>
+      <extension url="value">
+        <valueString value="temp/pages"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="path-output"/>
+      </extension>
+      <extension url="value">
+        <valueString value="output"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="path-suppressed-warnings"/>
+      </extension>
+      <extension url="value">
+        <valueString value="input/ignoreWarnings.txt"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="path-history"/>
+      </extension>
+      <extension url="value">
+        <valueString value="http://hl7.eu/fhir/health-data-api/history.html"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="template-html"/>
+      </extension>
+      <extension url="value">
+        <valueString value="template-page.html"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="template-md"/>
+      </extension>
+      <extension url="value">
+        <valueString value="template-page-md.html"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="apply-context"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="apply-wg"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="active-tables"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="fmm-definition"/>
+      </extension>
+      <extension url="value">
+        <valueString value="http://hl7.org/fhir/versions.html#maturity"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="propagate-status"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="excludelogbinaryformat"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="tabbed-snapshots"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="i18n-default-lang"/>
+      </extension>
+      <extension url="value">
+        <valueString value="en"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-internal-dependency">
+      <valueCode value="hl7.fhir.uv.tools.r4#1.1.2"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="copyrightyear"/>
+      </extension>
+      <extension url="value">
+        <valueString value="2025+"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="releaselabel"/>
+      </extension>
+      <extension url="value">
+        <valueString value="ballot"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="apply-contact"/>
+      </extension>
+      <extension url="value">
+        <valueString value="false"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="default-contact"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="default-copyright"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="apply-copyright"/>
+      </extension>
+      <extension url="value">
+        <valueString value="false"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="apply-jurisdiction"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="apply-license"/>
+      </extension>
+      <extension url="value">
+        <valueString value="false"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="default-license"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="apply-publisher"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="apply-version"/>
+      </extension>
+      <extension url="value">
+        <valueString value="false"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="default-version"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="show-inherited-invariants"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="usage-stats-opt-out"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="releaselabel"/>
+      </extension>
+      <extension url="value">
+        <valueString value="0.1.0-build"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="shownav"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="pin-canonicals"/>
+      </extension>
+      <extension url="value">
+        <valueString value="pin-multiples"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="autoload-resources"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="path-liquid-template"/>
+      </extension>
+      <extension url="value">
+        <valueString value="template/liquid"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="path-liquid-template"/>
+      </extension>
+      <extension url="value">
+        <valueString value="input/liquid"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="path-qa"/>
+      </extension>
+      <extension url="value">
+        <valueString value="temp/qa"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="path-temp"/>
+      </extension>
+      <extension url="value">
+        <valueString value="temp/pages"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="path-output"/>
+      </extension>
+      <extension url="value">
+        <valueString value="output"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="path-suppressed-warnings"/>
+      </extension>
+      <extension url="value">
+        <valueString value="input/ignoreWarnings.txt"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="path-history"/>
+      </extension>
+      <extension url="value">
+        <valueString value="http://hl7.eu/fhir/health-data-api/history.html"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="template-html"/>
+      </extension>
+      <extension url="value">
+        <valueString value="template-page.html"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="template-md"/>
+      </extension>
+      <extension url="value">
+        <valueString value="template-page-md.html"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="apply-context"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="apply-wg"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="active-tables"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="fmm-definition"/>
+      </extension>
+      <extension url="value">
+        <valueString value="http://hl7.org/fhir/versions.html#maturity"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="propagate-status"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="excludelogbinaryformat"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="tabbed-snapshots"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="i18n-default-lang"/>
+      </extension>
+      <extension url="value">
+        <valueString value="en"/>
+      </extension>
+    </extension>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ActorDefinition"/>
+      </extension>
+      <reference>
+        <reference value="ActorDefinition/document-access-provider-actor-eu-api"/>
+      </reference>
+      <name value="EEHRxF Document Access Provider"/>
+      <description value="The Document Access Provider actor provides access to EEHRxF FHIR Documents by receiving&#xA;documents from Document Publishers and serving them to Document Consumers. This composite&#xA;actor groups MHD Document Recipient, MHD Document Responder, PDQm Patient Demographics&#xA;Supplier, and IUA Authorization Server/Resource Server.&#xA;&#xA;See [Document Access Provider CapabilityStatement](CapabilityStatement-document-access-provider-eu-api.html)&#xA;for technical requirements."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CapabilityStatement"/>
+      </extension>
+      <reference>
+        <reference value="CapabilityStatement/document-access-provider-submission-option-eu-api"/>
+      </reference>
+      <name value="EEHRxF Document Access Provider - Document Submission Option"/>
+      <description value="CapabilityStatement for the Document Submission Option on the EEHRxF Document Access Provider.&#xA;&#xA;This option enables the Access Provider to receive documents from external Document&#xA;Publishers via [ITI-105 Simplified Publish](https://profiles.ihe.net/ITI/MHD/ITI-105.html).&#xA;&#xA;Systems implementing this option:&#xA;- SHALL also implement the base [Document Access Provider](CapabilityStatement-document-access-provider-eu-api.html) capabilities&#xA;- SHALL accept ITI-105 transactions from authorized Document Publishers&#xA;- SHALL make received documents available via ITI-67 and ITI-68&#xA;- SHALL validate documents against EEHRxF content profiles&#xA;&#xA;This option is REQUIRED when acting as a delegated access provider for external&#xA;Document Publishers (e.g., integration engines, national infrastructure).&#xA;&#xA;### Actor Grouping&#xA;&#xA;Adds to base Document Access Provider:&#xA;- [MHD Document Recipient](https://profiles.ihe.net/ITI/MHD/1331_actors_and_transactions.html) - Simplified Publish Option ([CapabilityStatement](https://profiles.ihe.net/ITI/MHD/CapabilityStatement-IHE.MHD.DocumentRecipient.html))&#xA;&#xA;### Transaction&#xA;&#xA;| Transaction | Description | Optionality |&#xA;|-------------|-------------|-------------|&#xA;| ITI-105 Simplified Publish | Accept document publication from Document Publishers | R |&#xA;&#xA;### Security&#xA;Systems SHALL support SMART Backend Services authorization for document submission."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CapabilityStatement"/>
+      </extension>
+      <reference>
+        <reference value="CapabilityStatement/document-access-provider-eu-api"/>
+      </reference>
+      <name value="EEHRxF Document Access Provider CapabilityStatement"/>
+      <description value="CapabilityStatement for the EEHRxF Document Access Provider actor. This composite actor&#xA;provides access to EEHRxF FHIR Documents by serving them to Document Consumers via query APIs.&#xA;&#xA;### Actor Grouping&#xA;&#xA;This composite actor groups the following IHE actors:&#xA;- [IUA Authorization Server](https://profiles.ihe.net/ITI/IUA/index.html#34112-authorization-server)&#xA;- [IUA Resource Server](https://profiles.ihe.net/ITI/IUA/index.html#34113-resource-server)&#xA;- [PDQm Patient Demographics Supplier](https://profiles.ihe.net/ITI/PDQm/volume-1.html)&#xA;- [MHD Document Responder](https://profiles.ihe.net/ITI/MHD/1331_actors_and_transactions.html)&#xA;&#xA;### Transactions&#xA;&#xA;| Transaction | Description | Optionality |&#xA;|-------------|-------------|-------------|&#xA;| ITI-67 Find Document References | Respond to document metadata queries from Document Consumers | R |&#xA;| ITI-68 Retrieve Document | Serve document content to Document Consumers | R |&#xA;| ITI-78 Patient Demographics Query | Respond to patient demographics queries | O |&#xA;| Get Access Token | Issue authorization tokens to clients | R |&#xA;&#xA;### Security&#xA;Systems SHALL support SMART Backend Services authorization for all transactions.&#xA;&#xA;### Document Submission Option&#xA;To accept document publication from external Document Publishers, implement the&#xA;[Document Submission Option](CapabilityStatement-document-access-provider-submission-option-eu-api.html).&#xA;&#xA;### Deployment&#xA;The Document Access Provider may be grouped with Document Publisher, in which case&#xA;document publication is internal. See the&#xA;[grouped Document Publisher/Access Provider CapabilityStatement](CapabilityStatement-document-publisher-access-provider-eu-api.html)&#xA;for this deployment pattern."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ActorDefinition"/>
+      </extension>
+      <reference>
+        <reference value="ActorDefinition/document-consumer-actor-eu-api"/>
+      </reference>
+      <name value="EEHRxF Document Consumer"/>
+      <description value="The Document Consumer actor consumes EEHRxF FHIR Documents by querying a Document Access&#xA;Provider. This composite actor groups MHD Document Consumer, PDQm Patient Demographics&#xA;Consumer, and IUA Authorization Client.&#xA;&#xA;See [Document Consumer CapabilityStatement](CapabilityStatement-document-consumer-eu-api.html)&#xA;for technical requirements."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CapabilityStatement"/>
+      </extension>
+      <reference>
+        <reference value="CapabilityStatement/document-consumer-eu-api"/>
+      </reference>
+      <name value="EEHRxF Document Consumer CapabilityStatement"/>
+      <description value="CapabilityStatement for the EEHRxF Document Consumer actor. This composite actor&#xA;consumes EEHRxF FHIR Documents by querying a Document Access Provider.&#xA;&#xA;### Actor Grouping&#xA;&#xA;This composite actor groups the following IHE actors:&#xA;- [IUA Authorization Client](https://profiles.ihe.net/ITI/IUA/index.html#34111-authorization-client)&#xA;- [PDQm Patient Demographics Consumer](https://profiles.ihe.net/ITI/PDQm/volume-1.html)&#xA;- [MHD Document Consumer](https://profiles.ihe.net/ITI/MHD/1331_actors_and_transactions.html)&#xA;&#xA;### Transactions&#xA;&#xA;| Transaction | Description | Optionality |&#xA;|-------------|-------------|-------------|&#xA;| ITI-67 Find Document References | Query for document metadata from Document Access Provider | R |&#xA;| ITI-68 Retrieve Document | Retrieve document content from Document Access Provider | R |&#xA;| ITI-78 Patient Demographics Query | Query for patient demographics to establish patient context | R |&#xA;| Get Access Token | Obtain authorization token for API access | R |&#xA;&#xA;### Security&#xA;Systems SHALL support SMART Backend Services authorization for all transactions."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CodeSystem"/>
+      </extension>
+      <reference>
+        <reference value="CodeSystem/document-priority-category-eu-api"/>
+      </reference>
+      <name value="EEHRxF Document Priority Category CodeSystem"/>
+      <description value="CodeSystem for priority document categories in EEHRxF as the document categories as defined in the EHDS regulation."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ActorDefinition"/>
+      </extension>
+      <reference>
+        <reference value="ActorDefinition/document-publisher-actor-eu-api"/>
+      </reference>
+      <name value="EEHRxF Document Publisher"/>
+      <description value="The Document Publisher actor produces EEHRxF FHIR Documents and publishes them to a&#xA;Document Access Provider. This composite actor groups MHD Document Source, PDQm&#xA;Patient Demographics Consumer, and IUA Authorization Client.&#xA;&#xA;See [Document Publisher CapabilityStatement](CapabilityStatement-document-publisher-eu-api.html)&#xA;for technical requirements."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CapabilityStatement"/>
+      </extension>
+      <reference>
+        <reference value="CapabilityStatement/document-publisher-eu-api"/>
+      </reference>
+      <name value="EEHRxF Document Publisher CapabilityStatement"/>
+      <description value="CapabilityStatement for the EEHRxF Document Publisher actor. This composite actor produces&#xA;EEHRxF FHIR Documents and publishes them to a Document Access Provider.&#xA;&#xA;### Actor Grouping&#xA;&#xA;This composite actor groups the following IHE actors:&#xA;- [IUA Authorization Client](https://profiles.ihe.net/ITI/IUA/index.html#34111-authorization-client)&#xA;- [PDQm Patient Demographics Consumer](https://profiles.ihe.net/ITI/PDQm/volume-1.html)&#xA;- [MHD Document Source](https://profiles.ihe.net/ITI/MHD/1331_actors_and_transactions.html)&#xA;&#xA;### Transactions&#xA;&#xA;| Transaction | Description | Optionality |&#xA;|-------------|-------------|-------------|&#xA;| ITI-105 Simplified Publish | Submit document with embedded content to a Document Access Provider | R |&#xA;| ITI-78 Patient Demographics Query | Query for patient demographics to establish patient context | R |&#xA;| Get Access Token | Obtain authorization token for API access | R |&#xA;&#xA;### Security&#xA;Systems SHALL support SMART Backend Services authorization for all transactions.&#xA;&#xA;### Deployment&#xA;The Document Publisher may be grouped with Document Access Provider, in which case the&#xA;ITI-105 transaction becomes internal and is not exposed externally. See the&#xA;[grouped Document Publisher/Access Provider CapabilityStatement](CapabilityStatement-document-publisher-access-provider-eu-api.html)&#xA;for this deployment pattern."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/document-type-eu-api"/>
+      </reference>
+      <name value="EEHRxF Document Type ValueSet"/>
+      <description value="Document type codes for clinical precision in document identification."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/document-type-discharge-report-eu-api"/>
+      </reference>
+      <name value="EEHRxF Document Type ValueSet for Discharge Reports"/>
+      <description value="ValueSet for specific document types within the Discharge Report priority category."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/document-type-laboratory-report-eu-api"/>
+      </reference>
+      <name value="EEHRxF Document Type ValueSet for Laboratory Reports"/>
+      <description value="ValueSet for specific document types within the Laboratory Report priority category."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/document-type-medical-imaging-eu-api"/>
+      </reference>
+      <name value="EEHRxF Document Type ValueSet for Medical Imaging"/>
+      <description value="ValueSet for specific document types within the Medical Imaging priority category."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/document-type-patient-summary-eu-api"/>
+      </reference>
+      <name value="EEHRxF Document Type ValueSet for Patient Summaries"/>
+      <description value="ValueSet for specific document types within the Patient Summary priority category."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ActorDefinition"/>
+      </extension>
+      <reference>
+        <reference value="ActorDefinition/document-publisher-access-provider-actor-eu-api"/>
+      </reference>
+      <name value="EEHRxF Grouped Document Publisher/Access Provider"/>
+      <description value="The grouped Document Publisher/Access Provider actor represents a deployment where document&#xA;production and access provision are co-located in the same system. In this configuration,&#xA;document submission (ITI-105) is internal and only document query/retrieval (ITI-67, ITI-68)&#xA;is exposed externally.&#xA;&#xA;This is common for hospital EHR systems that produce and serve their own documents.&#xA;&#xA;See [Grouped Document Publisher/Access Provider CapabilityStatement](CapabilityStatement-document-publisher-access-provider-eu-api.html)&#xA;for technical requirements."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CapabilityStatement"/>
+      </extension>
+      <reference>
+        <reference value="CapabilityStatement/document-publisher-access-provider-eu-api"/>
+      </reference>
+      <name value="EEHRxF Grouped Document Publisher/Access Provider CapabilityStatement"/>
+      <description value="CapabilityStatement for the grouped EEHRxF Document Publisher and Document Access Provider&#xA;actors. This represents a deployment where document production and access provision are&#xA;co-located in the same system.&#xA;&#xA;### Deployment Pattern&#xA;&#xA;This CapabilityStatement applies when:&#xA;- An EHR system both produces documents AND provides access to them&#xA;- Document publication is handled internally&#xA;- External clients only need to query and retrieve documents&#xA;&#xA;In this grouped deployment, document publication is internal to the system and not exposed&#xA;externally. The external API provides only document discovery (ITI-67) and retrieval (ITI-68)&#xA;capabilities.&#xA;&#xA;### Actor Grouping&#xA;&#xA;This grouped actor combines:&#xA;- **Document Publisher** (internal) - Produces and stores documents internally&#xA;- **Document Access Provider** (external-facing) - Serves documents to Document Consumers&#xA;&#xA;The underlying IHE actors are:&#xA;- [IUA Authorization Server](https://profiles.ihe.net/ITI/IUA/index.html#34112-authorization-server)&#xA;- [IUA Resource Server](https://profiles.ihe.net/ITI/IUA/index.html#34113-resource-server)&#xA;- [PDQm Patient Demographics Supplier](https://profiles.ihe.net/ITI/PDQm/volume-1.html)&#xA;- [MHD Document Responder](https://profiles.ihe.net/ITI/MHD/1331_actors_and_transactions.html)&#xA;&#xA;Note: MHD Document Recipient is not listed because publication is internal.&#xA;&#xA;### External Transactions&#xA;&#xA;| Transaction | Description | Optionality |&#xA;|-------------|-------------|-------------|&#xA;| ITI-67 Find Document References | Respond to document metadata queries from Document Consumers | R |&#xA;| ITI-68 Retrieve Document | Serve document content to Document Consumers | R |&#xA;| ITI-78 Patient Demographics Query | Respond to patient demographics queries | O |&#xA;| Get Access Token | Issue authorization tokens to clients | R |&#xA;&#xA;### Security&#xA;Systems SHALL support SMART Backend Services authorization for all transactions.&#xA;&#xA;### When to Use This CapabilityStatement&#xA;&#xA;Use this CapabilityStatement when implementing:&#xA;- Hospital EHR systems that produce and serve their own documents&#xA;- Regional health information exchanges with integrated document repositories&#xA;- Any system where document creation and access are tightly coupled&#xA;&#xA;For systems that need to receive documents from external sources, use the&#xA;[Document Access Provider with Document Submission Option](CapabilityStatement-document-access-provider-submission-option-eu-api.html)."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ConceptMap"/>
+      </extension>
+      <reference>
+        <reference value="ConceptMap/document-reference-category-type-eu-api"/>
+      </reference>
+      <name value="EEHRxF MHD DocumentReference ConceptMap"/>
+      <description value="mapping from the EHDS regulatory priority categories to the LOINC document category codes for clinical precision in document identification."/>
+      <exampleBoolean value="true"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ActorDefinition"/>
+      </extension>
+      <reference>
+        <reference value="ActorDefinition/resource-access-provider-actor-eu-api"/>
+      </reference>
+      <name value="EEHRxF Resource Access Provider"/>
+      <description value="The Resource Access Provider actor provides access to FHIR resources following IPA patterns.&#xA;This enables direct resource access complementing document-based exchange.&#xA;This composite actor groups IPA Server, PDQm Patient Demographics&#xA;Supplier, and IUA Authorization Server/Resource Server.&#xA;&#xA;See [Resource Access Provider CapabilityStatement](CapabilityStatement-resource-access-provider-eu-api.html)&#xA;for technical requirements."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CapabilityStatement"/>
+      </extension>
+      <reference>
+        <reference value="CapabilityStatement/resource-access-provider-eu-api"/>
+      </reference>
+      <name value="EEHRxF Resource Access Provider CapabilityStatement"/>
+      <description value="CapabilityStatement for the EEHRxF Resource Access Provider actor. This actor serves&#xA;clinical data resources following the International Patient Access (IPA) patterns.&#xA;&#xA;This CapabilityStatement defines the capabilities for systems providing direct resource&#xA;access (beyond document-based exchange) in the EU EHR Exchange Format (EEHRxF) ecosystem.&#xA;It inherits patterns from:&#xA;- **IPA (International Patient Access)**: Resource profiles and search parameter patterns&#xA;&#xA;### Resource Flexibility (IPA Alignment)&#xA;&#xA;Following IPA's approach, servers are not required to support all clinical resources listed&#xA;below. Servers MAY choose which resources to implement based on their capabilities and use&#xA;cases. The only required resource is Patient (for lookup context). This flexibility&#xA;encourages partial implementations, allowing more servers to participate even if they only&#xA;support EU Core for certain resource types.&#xA;&#xA;**Required**: Patient (for lookup context)&#xA;**Recommended (choose based on capabilities)**:&#xA;- Practitioner, Organization: Reference resolution&#xA;- Condition, AllergyIntolerance: Patient safety data&#xA;- Observation, DiagnosticReport: Clinical results&#xA;- ImagingStudy: Imaging results&#xA;- MedicationRequest, MedicationDispense, MedicationStatement: Medication data&#xA;- Immunization: Vaccination records&#xA;- Encounter: Visit context&#xA;&#xA;The server's CapabilityStatement declares which resources are actually supported.&#xA;&#xA;### Security&#xA;Systems SHALL support SMART Backend Services authorization for all transactions.&#xA;&#xA;### Profile Inheritance&#xA;Resources SHOULD conform to EU Core profiles where available.&#xA;&#xA;### Search Parameter Combinations&#xA;Where a resource declares search parameter combinations, the SHALL combinations follow IPA,&#xA;with additions from IHE QEDm where the IPA has no requirement (DiagnosticReport, Encounter).&#xA;Data type-specific implementation guides MAY extend these requirements."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ActorDefinition"/>
+      </extension>
+      <reference>
+        <reference value="ActorDefinition/resource-consumer-actor-eu-api"/>
+      </reference>
+      <name value="EEHRxF Resource Consumer"/>
+      <description value="The Resource Consumer actor queries for clinical data resources from a Resource Access&#xA;Provider following IPA patterns. This composite actor groups IPA Client,&#xA;PDQm Patient Demographics Consumer, and IUA Authorization Client.&#xA;&#xA;See [Resource Consumer CapabilityStatement](CapabilityStatement-resource-consumer-eu-api.html)&#xA;for technical requirements."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CapabilityStatement"/>
+      </extension>
+      <reference>
+        <reference value="CapabilityStatement/resource-consumer-eu-api"/>
+      </reference>
+      <name value="EEHRxF Resource Consumer CapabilityStatement"/>
+      <description value="CapabilityStatement for the EEHRxF Resource Consumer actor. This actor queries for&#xA;clinical data resources following the International Patient Access (IPA) patterns.&#xA;&#xA;This CapabilityStatement defines the requirements for systems consuming direct resource&#xA;access (beyond document-based exchange) in the EU EHR Exchange Format (EEHRxF) ecosystem.&#xA;It inherits patterns from:&#xA;- **IPA (International Patient Access)**: Resource profiles and search parameter patterns&#xA;&#xA;### Resource Flexibility (IPA Alignment)&#xA;&#xA;Following IPA's approach, clients are not required to consume all clinical resources listed&#xA;below. Clients MAY choose which resources to query based on their needs and the server's&#xA;declared capabilities. The only required capability is Patient lookup. This flexibility&#xA;allows clients to implement targeted use cases without requiring support for all resource types.&#xA;&#xA;**Required**: Patient (for lookup context)&#xA;**Optional (request based on needs and server support)**:&#xA;- Practitioner, Organization: Reference resolution&#xA;- Condition, AllergyIntolerance: Patient safety data&#xA;- Observation, DiagnosticReport: Clinical results&#xA;- ImagingStudy: Imaging results&#xA;- MedicationRequest, MedicationDispense, MedicationStatement: Medication data&#xA;- Immunization: Vaccination records&#xA;- Encounter: Visit context&#xA;&#xA;Clients should check the server's CapabilityStatement to discover which resources are available.&#xA;&#xA;### Security&#xA;Systems SHALL support SMART Backend Services authorization for all transactions.&#xA;&#xA;### Profile Inheritance&#xA;Consumers SHOULD expect resources conforming to EU Core profiles where available."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="DocumentReference"/>
+      </extension>
+      <reference>
+        <reference value="DocumentReference/example-documentreference-eps"/>
+      </reference>
+      <name value="Example - European Patient Summary DocumentReference"/>
+      <description value="Example DocumentReference showing an EPS document with EEHRxF category coding.&#xA;&#xA;This example demonstrates the recommended search strategy:&#xA;- `category` = Patient-Summaries (EHDS priority category for coarse filtering)&#xA;- `type` = 60591-5 (LOINC code for clinical precision)&#xA;&#xA;**Example query to find this document by priority category:**&#xA;```&#xA;GET [base]/DocumentReference?patient=Patient/example-patient&amp;category=https://euridice.ec.europa.eu/fhir/eehrxf/CodeSystem/document-priority-category-eu-api|Patient-Summaries&#xA;```&#xA;&#xA;**Example query to find this document by type:**&#xA;```&#xA;GET [base]/DocumentReference?patient=Patient/example-patient&amp;type=http://loinc.org|60591-5&#xA;```"/>
+      <exampleBoolean value="true"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="DocumentReference"/>
+      </extension>
+      <reference>
+        <reference value="DocumentReference/example-documentreference-hdr"/>
+      </reference>
+      <name value="Example - Hospital Discharge Report DocumentReference"/>
+      <description value="Example DocumentReference for a hospital discharge report.&#xA;&#xA;**Example query:**&#xA;```&#xA;GET [base]/DocumentReference?patient.identifier=http://example.org/national-id|123456789&amp;type=http://loinc.org|18842-5&#xA;```"/>
+      <exampleBoolean value="true"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="DocumentReference"/>
+      </extension>
+      <reference>
+        <reference value="DocumentReference/example-documentreference-imaging-report"/>
+      </reference>
+      <name value="Example - Imaging Report DocumentReference"/>
+      <description value="Example DocumentReference for a diagnostic imaging report.&#xA;&#xA;**Example query:**&#xA;```&#xA;GET [base]/DocumentReference?patient.identifier=http://example.org/national-id|123456789&amp;type=http://loinc.org|85430-7&#xA;```"/>
+      <exampleBoolean value="true"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="DocumentReference"/>
+      </extension>
+      <reference>
+        <reference value="DocumentReference/example-documentreference-imaging-manifest-kos"/>
+      </reference>
+      <name value="Example - Imaging Study Manifest (DICOM KOS)"/>
+      <description value="Example DocumentReference for a DICOM KOS-encoded imaging study manifest.&#xA;&#xA;This is one half of the dual-DocumentReference pattern for imaging manifests.&#xA;The DICOM KOS DocumentReference is linked to its FHIR manifest counterpart&#xA;via `relatesTo.code = transforms`."/>
+      <exampleBoolean value="true"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="DocumentReference"/>
+      </extension>
+      <reference>
+        <reference value="DocumentReference/example-documentreference-imaging-manifest-fhir"/>
+      </reference>
+      <name value="Example - Imaging Study Manifest (FHIR)"/>
+      <description value="Example DocumentReference for a FHIR-encoded imaging study manifest.&#xA;&#xA;This is one half of the dual-DocumentReference pattern for imaging manifests.&#xA;The FHIR manifest DocumentReference is linked to its DICOM KOS counterpart&#xA;via `relatesTo.code = transforms`.&#xA;&#xA;**Example query to find imaging manifests by type:**&#xA;```&#xA;GET [base]/DocumentReference?patient.identifier=http://example.org/national-id|123456789&amp;type=http://loinc.org|18748-4&amp;status=current&#xA;```"/>
+      <exampleBoolean value="true"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="DocumentReference"/>
+      </extension>
+      <reference>
+        <reference value="DocumentReference/example-documentreference-laboratory"/>
+      </reference>
+      <name value="Example - Laboratory Report DocumentReference"/>
+      <description value="Example DocumentReference for a laboratory report.&#xA;&#xA;**Example query:**&#xA;```&#xA;GET [base]/DocumentReference?patient.identifier=http://example.org/national-id|123456789&amp;type=http://loinc.org|11502-2&#xA;```"/>
+      <exampleBoolean value="true"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CapabilityStatement"/>
+      </extension>
+      <reference>
+        <reference value="CapabilityStatement/example-capabilitystatement-document-access-provider"/>
+      </reference>
+      <name value="Example: Document Access Provider Supporting EPS and Laboratory"/>
+      <description value="**Example** CapabilityStatement for a Document Access Provider that supports&#xA;European Patient Summaries and Laboratory Reports.&#xA;&#xA;Shows how a deployment declares actor conformance via `instantiates` and&#xA;content IG support via `implementationGuide`.&#xA;&#xA;See [Capability Discovery](capability-discovery.html) for guidance."/>
+      <exampleBoolean value="true"/>
+    </resource>
+    <page>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+        <valueUrl value="toc.html"/>
+      </extension>
+      <nameUrl value="toc.html"/>
+      <title value="Table of Contents"/>
+      <generation value="html"/>
+      <page>
+        <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+          <valueUrl value="index.html"/>
+        </extension>
+        <nameUrl value="index.html"/>
+        <title value="Home"/>
+        <generation value="markdown"/>
+      </page>
+      <page>
+        <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+          <valueUrl value="background.html"/>
+        </extension>
+        <nameUrl value="background.html"/>
+        <title value="Background"/>
+        <generation value="markdown"/>
+        <page>
+          <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+            <valueUrl value="regulatoryAnchors.html"/>
+          </extension>
+          <nameUrl value="regulatoryAnchors.html"/>
+          <title value="Regulatory Anchors"/>
+          <generation value="markdown"/>
+        </page>
+        <page>
+          <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+            <valueUrl value="actors.html"/>
+          </extension>
+          <nameUrl value="actors.html"/>
+          <title value="Actors and Transactions"/>
+          <generation value="markdown"/>
+        </page>
+        <page>
+          <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+            <valueUrl value="priority-categories.html"/>
+          </extension>
+          <nameUrl value="priority-categories.html"/>
+          <title value="Priority Categories"/>
+          <generation value="markdown"/>
+          <page>
+            <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+              <valueUrl value="priority-area-eps.html"/>
+            </extension>
+            <nameUrl value="priority-area-eps.html"/>
+            <title value="Patient Summary (EPS)"/>
+            <generation value="markdown"/>
+          </page>
+          <page>
+            <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+              <valueUrl value="priority-area-mpd.html"/>
+            </extension>
+            <nameUrl value="priority-area-mpd.html"/>
+            <title value="ePrescription / eDispensation (MPD)"/>
+            <generation value="markdown"/>
+          </page>
+          <page>
+            <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+              <valueUrl value="priority-area-laboratory.html"/>
+            </extension>
+            <nameUrl value="priority-area-laboratory.html"/>
+            <title value="Medical Test Results (Laboratory)"/>
+            <generation value="markdown"/>
+          </page>
+          <page>
+            <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+              <valueUrl value="priority-area-imaging-report.html"/>
+            </extension>
+            <nameUrl value="priority-area-imaging-report.html"/>
+            <title value="Medical Imaging Report"/>
+            <generation value="markdown"/>
+          </page>
+          <page>
+            <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+              <valueUrl value="priority-area-imaging-manifest.html"/>
+            </extension>
+            <nameUrl value="priority-area-imaging-manifest.html"/>
+            <title value="Medical Imaging Manifest"/>
+            <generation value="markdown"/>
+          </page>
+          <page>
+            <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+              <valueUrl value="priority-area-hdr.html"/>
+            </extension>
+            <nameUrl value="priority-area-hdr.html"/>
+            <title value="Hospital Discharge Report"/>
+            <generation value="markdown"/>
+          </page>
+        </page>
+        <page>
+          <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+            <valueUrl value="member-state-architectures.html"/>
+          </extension>
+          <nameUrl value="member-state-architectures.html"/>
+          <title value="Member State Architectures"/>
+          <generation value="markdown"/>
+          <page>
+            <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+              <valueUrl value="fhir-documents-vs-resources.html"/>
+            </extension>
+            <nameUrl value="fhir-documents-vs-resources.html"/>
+            <title value="FHIR Documents and Resources"/>
+            <generation value="markdown"/>
+          </page>
+        </page>
+        <page>
+          <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+            <valueUrl value="background-xds-fhir.html"/>
+          </extension>
+          <nameUrl value="background-xds-fhir.html"/>
+          <title value="Relationship to XDS/FHIR Document Sharing"/>
+          <generation value="markdown"/>
+        </page>
+        <page>
+          <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+            <valueUrl value="changes.html"/>
+          </extension>
+          <nameUrl value="changes.html"/>
+          <title value="Change Log"/>
+          <generation value="markdown"/>
+        </page>
+        <page>
+          <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+            <valueUrl value="open-issues.html"/>
+          </extension>
+          <nameUrl value="open-issues.html"/>
+          <title value="Open Issues"/>
+          <generation value="markdown"/>
+        </page>
+      </page>
+      <page>
+        <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+          <valueUrl value="functional.html"/>
+        </extension>
+        <nameUrl value="functional.html"/>
+        <title value="Functional Requirements"/>
+        <generation value="markdown"/>
+        <page>
+          <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+            <valueUrl value="capability-discovery.html"/>
+          </extension>
+          <nameUrl value="capability-discovery.html"/>
+          <title value="Capability Discovery"/>
+          <generation value="markdown"/>
+        </page>
+        <page>
+          <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+            <valueUrl value="authorization.html"/>
+          </extension>
+          <nameUrl value="authorization.html"/>
+          <title value="Authorization"/>
+          <generation value="markdown"/>
+        </page>
+        <page>
+          <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+            <valueUrl value="patient-match.html"/>
+          </extension>
+          <nameUrl value="patient-match.html"/>
+          <title value="Patient Lookup"/>
+          <generation value="markdown"/>
+        </page>
+        <page>
+          <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+            <valueUrl value="document-exchange.html"/>
+          </extension>
+          <nameUrl value="document-exchange.html"/>
+          <title value="Document Exchange"/>
+          <generation value="markdown"/>
+        </page>
+        <page>
+          <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+            <valueUrl value="resource-access.html"/>
+          </extension>
+          <nameUrl value="resource-access.html"/>
+          <title value="Resource Access"/>
+          <generation value="markdown"/>
+        </page>
+        <page>
+          <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+            <valueUrl value="resourceExchange.html"/>
+          </extension>
+          <nameUrl value="resourceExchange.html"/>
+          <title value="Resource Exchange Patterns"/>
+          <generation value="markdown"/>
+        </page>
+      </page>
+      <page>
+        <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+          <valueUrl value="implementation.html"/>
+        </extension>
+        <nameUrl value="implementation.html"/>
+        <title value="Implementation"/>
+        <generation value="markdown"/>
+        <page>
+          <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+            <valueUrl value="example-patient-summary.html"/>
+          </extension>
+          <nameUrl value="example-patient-summary.html"/>
+          <title value="Retrieve a European Patient Summary"/>
+          <generation value="markdown"/>
+        </page>
+        <page>
+          <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+            <valueUrl value="usecase-cross-border-ncp.html"/>
+          </extension>
+          <nameUrl value="usecase-cross-border-ncp.html"/>
+          <title value="Cross-Border Exchange via NCP"/>
+          <generation value="markdown"/>
+        </page>
+        <page>
+          <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+            <valueUrl value="usecase-health-professional-portal.html"/>
+          </extension>
+          <nameUrl value="usecase-health-professional-portal.html"/>
+          <title value="Health Professional Access Service"/>
+          <generation value="markdown"/>
+        </page>
+        <page>
+          <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+            <valueUrl value="usecase-health-data-portal.html"/>
+          </extension>
+          <nameUrl value="usecase-health-data-portal.html"/>
+          <title value="Health Data Access Service"/>
+          <generation value="markdown"/>
+        </page>
+        <page>
+          <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+            <valueUrl value="usecase-wellness-app.html"/>
+          </extension>
+          <nameUrl value="usecase-wellness-app.html"/>
+          <title value="Wellness Apps"/>
+          <generation value="markdown"/>
+        </page>
+        <page>
+          <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+            <valueUrl value="usecase-cross-org.html"/>
+          </extension>
+          <nameUrl value="usecase-cross-org.html"/>
+          <title value="Cross-Organization via National Infrastructure"/>
+          <generation value="markdown"/>
+        </page>
+        <page>
+          <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+            <valueUrl value="usecase-provider-internal-exchange.html"/>
+          </extension>
+          <nameUrl value="usecase-provider-internal-exchange.html"/>
+          <title value="Provider-Internal Exchange"/>
+          <generation value="markdown"/>
+        </page>
+        <page>
+          <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+            <valueUrl value="ehr-system-composition.html"/>
+          </extension>
+          <nameUrl value="ehr-system-composition.html"/>
+          <title value="EHR System Composition Patterns"/>
+          <generation value="markdown"/>
+        </page>
+      </page>
+      <page>
+        <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+          <valueUrl value="about.html"/>
+        </extension>
+        <nameUrl value="about.html"/>
+        <title value="About"/>
+        <generation value="markdown"/>
+        <page>
+          <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+            <valueUrl value="contributors.html"/>
+          </extension>
+          <nameUrl value="contributors.html"/>
+          <title value="Authors and contributors"/>
+          <generation value="markdown"/>
+        </page>
+        <page>
+          <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+            <valueUrl value="copyright.html"/>
+          </extension>
+          <nameUrl value="copyright.html"/>
+          <title value="Copyright"/>
+          <generation value="markdown"/>
+        </page>
+      </page>
+    </page>
+    <parameter>
+      <code value="path-resource"/>
+      <value value="input/capabilities"/>
+    </parameter>
+    <parameter>
+      <code value="path-resource"/>
+      <value value="input/examples"/>
+    </parameter>
+    <parameter>
+      <code value="path-resource"/>
+      <value value="input/extensions"/>
+    </parameter>
+    <parameter>
+      <code value="path-resource"/>
+      <value value="input/models"/>
+    </parameter>
+    <parameter>
+      <code value="path-resource"/>
+      <value value="input/operations"/>
+    </parameter>
+    <parameter>
+      <code value="path-resource"/>
+      <value value="input/profiles"/>
+    </parameter>
+    <parameter>
+      <code value="path-resource"/>
+      <value value="input/resources"/>
+    </parameter>
+    <parameter>
+      <code value="path-resource"/>
+      <value value="input/vocabulary"/>
+    </parameter>
+    <parameter>
+      <code value="path-resource"/>
+      <value value="input/maps"/>
+    </parameter>
+    <parameter>
+      <code value="path-resource"/>
+      <value value="input/testing"/>
+    </parameter>
+    <parameter>
+      <code value="path-resource"/>
+      <value value="input/history"/>
+    </parameter>
+    <parameter>
+      <code value="path-resource"/>
+      <value value="fsh-generated/resources"/>
+    </parameter>
+    <parameter>
+      <code value="path-pages"/>
+      <value value="template/config"/>
+    </parameter>
+    <parameter>
+      <code value="path-pages"/>
+      <value value="input/assets"/>
+    </parameter>
+    <parameter>
+      <code value="path-pages"/>
+      <value value="input/images"/>
+    </parameter>
+    <parameter>
+      <code value="path-tx-cache"/>
+      <value value="input-cache/txcache"/>
+    </parameter>
+  </definition>
+</ImplementationGuide>

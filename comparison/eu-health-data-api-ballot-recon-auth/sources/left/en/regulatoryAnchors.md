@@ -1,0 +1,183 @@
+# Regulatory Anchors - EU Health Data API v1.0.0-ballot
+
+## Regulatory Anchors
+
+### EHDS Regulation
+
+This Implementation Guide addresses technical requirements from the European Health Data Space (EHDS) regulation, specifically focusing on the interoperability requirements placed on EHR systems.
+
+The regulatory basis is primarily found in EHDS ANNEX II - Essential Requirements for EHR Systems ([EUR-Lex](https://eur-lex.europa.eu/eli/reg/2025/327/oj/eng#anx_II)), which describes an obligation for EHR systems to include an **Interoperability Component** that does the following:
+
+* [EHDS Annex II §2.1](https://eur-lex.europa.eu/eli/reg/2025/327/oj/eng#anx_II): "SHALL provide an **interface enabling access** to the personal electronic health data [formatted in EEHRxF]"
+* [EHDS Annex II §2.2](https://eur-lex.europa.eu/eli/reg/2025/327/oj/eng#anx_II): "SHALL **be able to receive** personal electronic health data [formatted in EEHRxF]"
+
+Note that this IG does NOT create legal obligations on EHR Systems unless adopted by the European Commission.
+
+### Xt-EHR Joint Action
+
+This IG inherits and builds upon the work of the Xt-EHR Joint Action, which has created deliverables drafting the EHDS Implementing Acts. Two deliverables are central: D5.1 defines exchange requirements — how data flows between systems — and D8.1 defines the data model and conformance framework — what conformant data looks like. This IG implements D5.1 as FHIR actors and transactions for **exchange**, and references D8.1 **content** profiles carried by those exchanges.
+
+These requirements have also been adjusted to harmonize with Xt-EHR Work Packages 6 and 7, which define requirements for each priority category.
+
+For more details on the Xt-EHR work, see [the Xt-EHR Website](https://www.xt-ehr.eu/work-packages/). The Xt-EHR deliverables, including D5.1, D5.2, and D8.1, are available on the [Xt-EHR deliverables page](https://www.xt-ehr.eu/deliverables/).
+
+### Requirements Framework
+
+The EHDS regulation defines the Interoperability Component at a high level, but interoperability needs to be defined with technical precision in order for two systems to effectively achieve interoperability.
+
+This table describes the bridge between the regulation text and precise and implementable specifications.
+
+| | | | |
+| :--- | :--- | :--- | :--- |
+| **Description** | Law. High-level description of interoperability goals. | EHDS Implementing acts. System roles and capabilities, requirements on EHR systems to achieve those goals. | Strictly defined interoperability technical rules. Implementable guide describing use of FHIR (or other) specifications.**Basis of interoperability conformance.** |
+| **Level of Technical Detail** | Low | Medium | High |
+| **Example** | EHDS Annex II §2.1: The EHR system shall provide access to data in the EEHRxF format. | **api-access-doc**: The EHR system Interoperability Software Component SHALL offer an API that enables an external system to access and retrieve its priority category data modelled as FHIR Documents. | The**api-access-doc**requirement is met by implementing MHD ITI-67 and ITI-68 as Document Responder. Example:`GET [base]/DocumentReference?patient=123&type=...` |
+| **Owner** | European Commission | European Commission (drafted by Xt-EHR), Member States | **To be decided**by the European Commission and Member States. SDOs (HL7 EU, IHE Europe) propose a draft with this Implementation Guide. |
+
+Legal authority flows from left to right on this diagram. Self-testing of an EHR system in the EHDS Digital Testing Environment is best enabled by the right-most technical specification layer.
+
+### Scope of This IG
+
+The Xt-EHR Work Packages, notably WP 5.1, have drafted the middle layer: EHR Functional Requirements.
+
+We inherit and evolve that work, focusing on the **technical specification layer** of these interoperability requirements, using off the shelf IHE and HL7 standards. The requirements themselves and how they are applied to EHR products are not defined in this IG. These are ultimately owned by the European Commission to be finalized in the EHDS Implementing Acts.
+
+D5.1 defined **26 requirements** across three categories (see Xt-EHR D5.1 Annex for complete list):
+
+* **[In Scope] 15 Interoperability Component requirements:** This implementation guide primarily focuses on the technical implementation of these requirements.
+* **[Out of Scope] 6 Logging Component Requirements:** This Implementation Guide does not specify the logging component format or the interoperability of logs from EHR systems. EHDS ANNEX II requires the generation of local audit logs for review, but does not specify the data format or require interoperability of those logs. Implementers needing standardized audit logging should consider [IHE ATNA](https://profiles.ihe.net/ITI/TF/Volume1/ch-9.html) and [IHE BALP](https://profiles.ihe.net/ITI/BALP/index.html) (Basic Audit Log Patterns), which define FHIR AuditEvent-based audit log profiles. The IHE profiles used in this IG (MHD, PDQm, IUA) recommend but do not require ATNA grouping.
+* **[Out of Scope] 5 General requirements:** D5.1 also defines general requirements covering software installation, documentation, performance, and safety of EHR systems. These are not testable API specifications and are therefore out of scope for this IG.
+
+-------
+
+### Xt-EHR Deliverable 5.1
+
+Xt-EHR Deliverable 5.1 interpreted 2.1 and 2.2 as two sides of a query-based architecture:
+
+| | | |
+| :--- | :--- | :--- |
+| EHDS Annex II §2.1 "provide interface enabling access" | Producer: Serve queries for EEHRxF data | **Access Provider** |
+| EHDS Annex II §2.2 "be able to receive" | Consumer: Initiate queries and receive responses | **Consumer** |
+
+**Figure 2: Query-Based Exchange Model**
+
+This interpretation is grounded in the following rationale:
+
+* **Clinical workflow fit**: When a patient arrives at a new care setting, their health data often resides elsewhere. Query-based exchange allows the treating provider to retrieve patient data **at the point of care**, rather than requiring precoordination with the data source to transmit the patient's data.
+* **MyHealth@EU alignment**: EU Cross-border services are primarily modeled as query-based exchanges. The requesting country's National Contact Point queries the responding National Contact Point, which queries the providing country's systems.
+* **Data availability**: Healthcare is 24/7. An API endpoint can serve requests at any time, ensuring data is accessible when needed for care. With a push architecture, data availability depends on the receiver being online and the sender initiating data transmission.
+
+### EHDS Annex II §2.1: Provide Access
+
+The **Access Provider** actors ([Document Access Provider](actors.md#document-access-provider), [Resource Access Provider](actors.md#resource-access-provider)) satisfy [EHDS Annex II §2.1](https://eur-lex.europa.eu/eli/reg/2025/327/oj/eng#anx_II) by serving Document and Resource FHIR queries.
+
+#### Delegated Access Option
+
+Alternatively, this IG proposes a path for EHR systems to delegate their [EHDS Annex II §2.1](https://eur-lex.europa.eu/eli/reg/2025/327/oj/eng#anx_II) obligations to another system.
+
+The EHR system implements the [Document Publisher](actors.md#document-publisher) role, publishing data to an Access Provider that serves queries on its behalf.
+
+This pathway addresses real-world deployment scenarios:
+
+* **Systems not suited for 24/7 API hosting**: Not every EHR system is well-suited to serving APIs. For example - an iPad clinician app may create clinical documents but cannot practically act as a server. Such systems "provide access" by publishing to an Access Provider.
+* **Aggregation at hospital scale**: A hospital document management system (Access Provider) aggregates data from departmental modules (Publishers) to offer a unified access point for the healthcare organization. This provides a single "digital front door" and improved security benefits.
+* **Aggregation at national scale**: Healthcare organization EHRs (Publishers) submit documents to a national repository (Access Provider), which provides access across the region.
+
+See [Actors](actors.md) for complete definitions and [Example Groupings](actors.md#example-groupings) for deployment illustrations.
+
+-------
+
+### EHDS Annex II §2.2: Receive Data
+
+The **Consumer** actors ([Document Consumer](actors.md#document-consumer), [Resource Consumer](actors.md#resource-consumer)) satisfy [EHDS Annex II §2.2](https://eur-lex.europa.eu/eli/reg/2025/327/oj/eng#anx_II) by initiating Document and Resource queries to retrieve and receive data from Access Providers.
+
+#### Accepting Published Documents
+
+Systems that need to accept documents pushed from Publishers (e.g., national infrastructure, regional repositories, integration engines) may implement the **[Document Submission Option](actors.md#document-submission-option)** on the Document Access Provider actor. This is an **additional** capability for systems acting as aggregation points—it is not required to satisfy [EHDS Annex II §2.2](https://eur-lex.europa.eu/eli/reg/2025/327/oj/eng#anx_II).
+
+-------
+
+### Requirements Table
+
+The following table maps each D5.1 interoperability requirement to its implementation in this IG:
+
+#### API Requirements (Access Provider)
+
+> **Terminology note:** D5.1 uses "Producer" to describe the system serving the query API. This IG uses "Access Provider" to make the API-serving role explicit and avoid confusion with content creation.
+
+| | | | | | |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `api-provider-general` | The EHR system acting as a provider SHALL provide access to its priority category data by offering an API that complies to the EHDS API specification. | Annex II §2.1 | Access Provider | [Document Access Provider](actors.md#document-access-provider),[Resource Access Provider](actors.md#resource-access-provider) | This IG |
+| `api-provider-backendAuthDiscovery` | The EHR system Interoperability Software Component SHALL enable discovery of its authorization server information to enable a consumer to retrieve authorization. | Annex II §1.4, Art. 36(3)(e) | Access Provider | [Authorization - Discovery](authorization.md#authorization-server-discovery) | SMART .well-known/smart-configuration, IHE IUA |
+| `api-provider-backendAuthProvideToken` | The EHR system Interoperability Software Component SHALL support issuing authorization tokens to consumer EHR systems. | Annex II §1.4, Art. 36(3)(e) | Access Provider [1] | [Get Access Token (ITI-71)](authorization.md#get-access-token) | SMART Backend Services token endpoint, IHE IUA |
+| `api-provider-backendAuthRequireToken` | The EHR system Interoperability Software Component SHALL require a valid authorization token from the Consumer EHR on Interoperability Component exchange. | Annex II §1.4, Art. 36(3)(e) | Access Provider | [Incorporate Access Token (ITI-72)](authorization.md#incorporate-access-token) | Bearer token validation, IHE IUA |
+| `api-provider-patient` | The EHR system Interoperability Software Component SHOULD offer a patient lookup API. | Annex II §2.1 | Access Provider | [Patient Demographics Supplier](patient-match.md) | PDQm ITI-78 |
+| `api-provider-doc` | The EHR system Interoperability Software Component SHALL offer an API that enables an external system to access and retrieve its priority category data modelled as FHIR Documents. | Annex II §2.1 | Access Provider | [Document Responder](document-exchange.md) | MHD ITI-67, ITI-68 |
+| `api-provider-resource` | The EHR system Interoperability Software Component SHALL offer search and read access via individual FHIR Resource API(s). | Annex II §2.1 | Access Provider | [Clinical Data Source](resource-access.md) | IPA Server |
+
+[1] **Note on Authorization Server:** The EHR system may or may not be bundled with its own authorization server. See [Authorization Server Deployment](authorization.md#authorization-server-deployment) for details.
+
+#### API Requirements (Consumer)
+
+| | | | | | |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `api-consumer-general` | The EHR system Interoperability Software Component acting as a consumer SHALL consume external priority category data via an API conforming to the EHDS API specification. | Annex II §2.2 | Consumer | [Document Consumer](actors.md#document-consumer),[Resource Consumer](actors.md#resource-consumer) | This IG |
+| `api-consumer-backendAuthObtainToken` | The EHR system Interoperability Software Component SHALL obtain an authorization token from the provider's designated authorization server. | Annex II §1.4, Art. 36(3)(e) | Consumer | [Get Access Token (ITI-71)](authorization.md#get-access-token) | SMART Backend Services client credentials grant, IHE IUA |
+| `api-consumer-backendAuthPresentToken` | The EHR system Interoperability Software Component SHALL present a valid token to the Provider EHR on Interoperability Component Exchange. | Annex II §1.4, Art. 36(3)(e) | Consumer | [Incorporate Access Token (ITI-72)](authorization.md#incorporate-access-token) | Bearer token in Authorization header |
+| `api-consumer-patient` | The EHR system Interoperability Software Component SHALL support an external patient lookup query API. | Annex II §2.2 | Consumer | [Patient Demographics Consumer](patient-match.md) | PDQm Consumer |
+| `api-consumer-doc` | The EHR system Interoperability Software Component SHALL support an external document query API. | Annex II §2.2 | Consumer | [Document Consumer](document-exchange.md) | MHD Document Consumer |
+| `api-consumer-resource` | The EHR system Interoperability Software Component SHALL support an external resource query API. | Annex II §2.2 | Consumer | [Clinical Data Consumer](resource-access.md) | IPA Client |
+
+### Content Format Requirements
+
+These requirements apply regardless of which pathway is used to provide or receive data. The content must be valid EEHRxF whether served directly by an Access Provider or published via ITI-105.
+
+| | | | | | |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `api-producer-data` | The EHR system SHALL be capable of providing priority category data that conforms to the EEHRxF data format. | Annex II §2.1, §2.4 | Any system providing data | Priority Category Content Profiles | HL7 EU Content IGs |
+| `api-consumer-data` | The EHR system SHALL be able to receive and handle data conforming to the EEHRxF data format. | Annex II §2.2 | Any system receiving data | Priority Category Content Profiles | HL7 EU Content IGs |
+
+### Security Requirements
+
+| | | | | | |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `api-backendEncryption` | The EHR system Interoperability Component SHALL be capable of transport-encrypted data exchange. | Annex II §1.4, Art. 36(3)(e) | All | [Transport Security](authorization.md#transport-security) | TLS 1.2+ |
+
+-------
+
+### Xt-EHR Deliverable 8.1: Data Model and Conformance Framework
+
+The preceding sections describe how this IG implements D5.1's exchange requirements. This section describes the relationship to D8.1, which defines the data model and conformance framework for the content that flows through those exchanges.
+
+D8.1 defines what conformant health data looks like: the fields a Patient Summary must contain, the obligations on systems that create or consume that data, and the scope of conformance a system can claim. This IG implements D5.1's exchange requirements as FHIR actors and transactions. The Content IGs implement D8.1's data requirements as FHIR profiles. Together, they provide a complete interoperability specification.
+
+> Note: [D8.1](https://www.xt-ehr.eu/deliverables/) is published on the Xt-EHR deliverables page. This section summarizes the concepts this IG builds upon.
+
+**Figure 3: Relationship between Xt-EHR deliverables and this IG. D5.1 exchange requirements are implemented by MHD (document exchange) and IPA (resource exchange). D8.1 data content profiles are implemented by HL7 EU Priority Category IGs and HL7 EU Core Resources.**
+
+#### D8.1 Conformance Paths
+
+D8.1 defines two types of Interoperability Profile that a system can claim conformance to:
+
+**Priority Interoperability Profiles** apply to systems that produce or consume a complete priority dataset — a Patient Summary, a Discharge Report, a Laboratory Report, an Imaging Report, an ePrescription, or an eDispensation. Patient Summary, Discharge Report, Laboratory Report, and Imaging Report are structured as FHIR Documents.
+
+**Resource Interoperability Profiles** apply to systems that support individual clinical resources — allergies, conditions, immunizations, medications, observations, and others — without producing or consuming complete priority datasets. D8.1 calls this **scoped conformance**: a system is assessed only for the resources it claims to support.
+
+These are separate conformance paths. A vaccination registry that serves Immunization resources claims conformance to the Immunization Resource Interoperability Profile. A hospital EHR that produces full Patient Summaries claims conformance to the Patient Summary Priority Interoperability Profile. Both are valid under D8.1.
+
+#### Content vs Exchange
+
+D8.1 defines **content**: data structure and obligations. D8.1's Producer and Consumer roles describe content creation and consumption — a Producer populates conformant data; a Consumer processes received data. The Content IGs fulfill these obligations as FHIR profiles.
+
+D5.1 defines **exchange**: how conformant data moves between systems via APIs. This IG implements D5.1 as FHIR actors and transactions (see [Xt-EHR Deliverable 5.1](#xt-ehr-deliverable-51) above).
+
+Neither deliverable states which exchange pattern serves which content profile type. This IG bridges that gap: [Priority Categories](priority-categories.md) maps each priority category to its content specification and exchange pattern. A conformant implementation combines both — for example, the [Retrieve a Patient Summary](example-patient-summary.md) use case requires the EU Patient Summary IG for content and this IG's document exchange for transport.
+
+For medication data, this IG covers reading MedicationRequest and MedicationStatement as individual resources via resource exchange. The ePrescription and eDispensation workflow transactions (prescribing, dispensing) are out of scope and handled by [IHE MPD](https://profiles.ihe.net/PHARM/MPD/index.html).
+
+#### D8.1 Profile Dependencies
+
+D8.1 specifies that when a Priority Interoperability Profile references another profile (e.g., a Patient Summary references the EHDS Patient profile), the referenced profile's data obligations also apply. This is a data model requirement: the Patient resource inside a Patient Summary must conform to the EHDS Patient profile. It does not by itself mandate independent resource-level exchange for that resource. Data model conformance is the Content IGs' domain; exchange is this IG's domain, based on the system's declared conformance path.
+
+-------
+

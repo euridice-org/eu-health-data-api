@@ -1,0 +1,108 @@
+{
+  "package": "hl7.fhir.eu.health-data-api",
+  "version": "1.0.0-ballot",
+  "fhirVersion": "4.0.1",
+  "jurisdiction": "150",
+  "extensions": [],
+  "profiles": {
+    "CapabilityStatement": [
+      {
+        "url": "http://hl7.eu/fhir/health-data-api/StructureDefinition/eu-api-deployment-capabilitystatement",
+        "title": "EU Health Data API Deployment CapabilityStatement"
+      }
+    ]
+  },
+  "usage": {
+    "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.capabilities": [
+      "Basic"
+    ],
+    "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.contact": [
+      "Basic"
+    ],
+    "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.copyright": [
+      "Basic"
+    ],
+    "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.date": [
+      "Basic"
+    ],
+    "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.description": [
+      "Basic"
+    ],
+    "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.experimental": [
+      "Basic"
+    ],
+    "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.jurisdiction": [
+      "Basic"
+    ],
+    "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.name": [
+      "Basic"
+    ],
+    "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.publisher": [
+      "Basic"
+    ],
+    "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.status": [
+      "Basic"
+    ],
+    "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.title": [
+      "Basic"
+    ],
+    "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.type": [
+      "Basic"
+    ],
+    "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.url": [
+      "Basic"
+    ],
+    "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.version": [
+      "Basic"
+    ],
+    "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation": [
+      "CapabilityStatement.rest.interaction",
+      "CapabilityStatement.rest.resource",
+      "CapabilityStatement.rest.resource.interaction",
+      "CapabilityStatement.rest.resource.operation",
+      "CapabilityStatement.rest.resource.searchParam"
+    ],
+    "http://hl7.org/fhir/StructureDefinition/capabilitystatement-search-parameter-combination": [
+      "CapabilityStatement.rest.resource"
+    ],
+    "http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice": [
+      "StructureDefinition.snapshot.element.constraint"
+    ],
+    "http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice-explanation": [
+      "StructureDefinition.snapshot.element.constraint"
+    ],
+    "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName": [
+      "StructureDefinition.snapshot.element.binding"
+    ],
+    "http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet": [
+      "StructureDefinition.snapshot.element.binding"
+    ],
+    "http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable": [
+      "StructureDefinition.snapshot.element"
+    ],
+    "http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type": [
+      "StructureDefinition.snapshot.element.type"
+    ],
+    "http://hl7.org/fhir/tools/StructureDefinition/ig-internal-dependency": [
+      "ImplementationGuide.definition"
+    ],
+    "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name": [
+      "ImplementationGuide.definition.page",
+      "ImplementationGuide.definition.page.page",
+      "ImplementationGuide.definition.page.page.page",
+      "ImplementationGuide.definition.page.page.page.page"
+    ],
+    "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter": [
+      "ImplementationGuide.definition"
+    ],
+    "http://hl7.org/fhir/tools/StructureDefinition/implementationguide-dependency-comment": [
+      "ImplementationGuide.dependsOn"
+    ],
+    "http://hl7.org/fhir/tools/StructureDefinition/resource-information": [
+      "ImplementationGuide.definition.resource"
+    ],
+    "http://hl7.org/fhir/tools/StructureDefinition/snapshot-base-version": [
+      "StructureDefinition.snapshot"
+    ]
+  }
+}

@@ -1,0 +1,103 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://hl7.eu/fhir/health-data-api/Basic/document-publisher-access-provider-actor-eu-api> a fhir:Basic ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:Resource.id [ fhir:value "document-publisher-access-provider-actor-eu-api"] ;
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ] ;
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: ActorDefinition document-publisher-access-provider-actor-eu-api</b></p><a name=\"document-publisher-access-provider-actor-eu-api\"> </a><a name=\"hcdocument-publisher-access-provider-actor-eu-api\"> </a><table class=\"grid\"><tr><td><b>Actor: DocumentPublisherAccessProviderEuApi </b></td><td>EEHRxF Grouped Document Publisher/Access Provider</td><td>Type: system </td></tr><tr><td colspan=\"3\"/></tr><tr><td>Capabilities:</td><td colspan=\"2\"><a href=\"CapabilityStatement-document-publisher-access-provider-eu-api.html\">EEHRxF Grouped Document Publisher/Access Provider CapabilityStatement</a></td></tr></table></div>"
+  ] ;
+  fhir:DomainResource.extension [
+     fhir:index 0 ;
+     fhir:Extension.url [ fhir:value "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.url" ] ;
+     fhir:Extension.valueUri [ fhir:value "http://hl7.eu/fhir/health-data-api/ActorDefinition/document-publisher-access-provider-actor-eu-api" ]
+  ], [
+     fhir:index 1 ;
+     fhir:Extension.url [ fhir:value "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.version" ] ;
+     fhir:Extension.valueString [ fhir:value "1.0.0-ballot" ]
+  ], [
+     fhir:index 2 ;
+     fhir:Extension.url [ fhir:value "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.name" ] ;
+     fhir:Extension.valueString [ fhir:value "DocumentPublisherAccessProviderEuApi" ]
+  ], [
+     fhir:index 3 ;
+     fhir:Extension.url [ fhir:value "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.title" ] ;
+     fhir:Extension.valueString [ fhir:value "EEHRxF Grouped Document Publisher/Access Provider" ]
+  ], [
+     fhir:index 4 ;
+     fhir:Extension.url [ fhir:value "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.status" ] ;
+     fhir:Extension.valueCode [ fhir:value "active" ]
+  ], [
+     fhir:index 5 ;
+     fhir:Extension.url [ fhir:value "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.experimental" ] ;
+     fhir:Extension.valueBoolean [ fhir:value "false"^^xsd:boolean ]
+  ], [
+     fhir:index 6 ;
+     fhir:Extension.url [ fhir:value "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.date" ] ;
+     fhir:Extension.valueDateTime [ fhir:value "2026-10-23T12:03:51+02:00"^^xsd:dateTime ]
+  ], [
+     fhir:index 7 ;
+     fhir:Extension.url [ fhir:value "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.publisher" ] ;
+     fhir:Extension.valueString [ fhir:value "HL7 Europe" ]
+  ], [
+     fhir:index 8 ;
+     fhir:Extension.url [ fhir:value "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.contact" ] ;
+     fhir:Extension.valueContactDetail [
+       fhir:ContactDetail.name [ fhir:value "HL7 Europe" ] ;
+       fhir:ContactDetail.telecom [
+         fhir:index 0 ;
+         fhir:ContactPoint.system [ fhir:value "url" ] ;
+         fhir:ContactPoint.value [ fhir:value "http://hl7.eu" ]
+       ]
+     ]
+  ], [
+     fhir:index 9 ;
+     fhir:Extension.url [ fhir:value "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.description" ] ;
+     fhir:Extension.valueMarkdown [ fhir:value "The grouped Document Publisher/Access Provider actor represents a deployment where document\nproduction and access provision are co-located in the same system. In this configuration,\ndocument submission (ITI-105) is internal and only document query/retrieval (ITI-67, ITI-68)\nis exposed externally.\n\nThis is common for hospital EHR systems that produce and serve their own documents.\n\nSee [Grouped Document Publisher/Access Provider CapabilityStatement](CapabilityStatement-document-publisher-access-provider-eu-api.html)\nfor technical requirements." ]
+  ], [
+     fhir:index 10 ;
+     fhir:Extension.url [ fhir:value "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.jurisdiction" ] ;
+     fhir:Extension.valueCodeableConcept [
+       fhir:CodeableConcept.coding [
+         fhir:index 0 ;
+         fhir:Coding.system [ fhir:value "http://unstats.un.org/unsd/methods/m49/m49.htm" ] ;
+         fhir:Coding.code [ fhir:value "150" ] ;
+         fhir:Coding.display [ fhir:value "Europe" ]
+       ]
+     ]
+  ], [
+     fhir:index 11 ;
+     fhir:Extension.url [ fhir:value "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.copyright" ] ;
+     fhir:Extension.valueMarkdown [ fhir:value "Copyright HL7 Europe. Licensed under Creative Commons public domain (CC0 1.0)." ]
+  ], [
+     fhir:index 12 ;
+     fhir:Extension.url [ fhir:value "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.type" ] ;
+     fhir:Extension.valueCode [ fhir:value "system" ]
+  ], [
+     fhir:index 13 ;
+     fhir:Extension.url [ fhir:value "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.capabilities" ] ;
+     fhir:Extension.valueCanonical [
+       fhir:value "http://hl7.eu/fhir/health-data-api/CapabilityStatement/document-publisher-access-provider-eu-api" ;
+       fhir:link <http://hl7.eu/fhir/health-data-api/CapabilityStatement/document-publisher-access-provider-eu-api>
+     ]
+  ] ;
+  fhir:Basic.code [
+     fhir:CodeableConcept.coding [
+       fhir:index 0 ;
+       fhir:Coding.system [ fhir:value "http://hl7.org/fhir/fhir-types" ] ;
+       fhir:Coding.code [ fhir:value "ActorDefinition" ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://hl7.eu/fhir/health-data-api/Basic/document-publisher-access-provider-actor-eu-api.ttl> a owl:Ontology ;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

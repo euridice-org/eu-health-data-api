@@ -1,0 +1,86 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <http://loinc.org/rdf#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://hl7.eu/fhir/health-data-api/DocumentReference/example-documentreference-imaging-manifest-fhir> a fhir:DocumentReference ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:Resource.id [ fhir:value "example-documentreference-imaging-manifest-fhir"] ;
+  fhir:Resource.language [ fhir:value "en"] ;
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ] ;
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: DocumentReference example-documentreference-imaging-manifest-fhir</b></p><a name=\"example-documentreference-imaging-manifest-fhir\"> </a><a name=\"hcexample-documentreference-imaging-manifest-fhir\"> </a><p><b>masterIdentifier</b>: <code>urn:oid:2.999.3.4.5.6.7.8.9</code>/urn:uuid:a1b2c3d4-e5f6-7890-abcd-ef1234567890</p><p><b>status</b>: Current</p><p><b>type</b>: <span title=\"Codes:{http://loinc.org 18748-4}\">Diagnostic imaging study</span></p><p><b>category</b>: <span title=\"Codes:{http://hl7.eu/fhir/health-data-api/CodeSystem/document-priority-category-eu-api Medical-Imaging}\">medical imaging studies and related imaging reports</span></p><p><b>subject</b>: <a href=\"http://example.org/fhir/Patient/example-patient\">Jan Jansen</a></p><p><b>date</b>: 2026-02-20 14:00:00+0100</p><p><b>author</b>: <a href=\"http://example.org/fhir/Organization/example-radiology-dept\">Radiology Department, Amsterdam UMC</a></p><p><b>custodian</b>: <a href=\"http://example.org/fhir/Organization/example-hospital\">Amsterdam University Medical Center</a></p><h3>RelatesTos</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Code</b></td><td><b>Target</b></td></tr><tr><td style=\"display: none\">*</td><td>Transforms</td><td><a href=\"DocumentReference-example-documentreference-imaging-manifest-kos.html\">DocumentReference: masterIdentifier = urn:oid:2.999.3.4.5.6.7.8.9#urn:uuid:b2c3d4e5-f6a7-8901-bcde-f12345678901; status = current; type = Diagnostic imaging study; category = medical imaging studies and related imaging reports; date = 2026-02-20 14:00:00+0100; description = DICOM KOS manifest for CT Chest study</a></td></tr></table><p><b>description</b>: FHIR ImagingStudy manifest for CT Chest study</p><blockquote><p><b>content</b></p><h3>Attachments</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>ContentType</b></td><td><b>Url</b></td><td><b>Title</b></td><td><b>Creation</b></td></tr><tr><td style=\"display: none\">*</td><td>application/fhir+json</td><td><a href=\"http://example.org/fhir/ImagingStudy/ct-chest-study\">http://example.org/fhir/ImagingStudy/ct-chest-study</a></td><td>CT Chest - FHIR Manifest</td><td>2026-02-20 14:00:00+0100</td></tr></table><p><b>format</b>: unknown: http://hl7.eu/fhir/imaging-r5/StructureDefinition/ImagingStudyEu (http://hl7.eu/fhir/imaging-r5/StructureDefinition/ImagingStudyEu)</p></blockquote></div>"
+  ] ;
+  fhir:DocumentReference.masterIdentifier [
+     fhir:Identifier.system [ fhir:value "urn:oid:2.999.3.4.5.6.7.8.9" ] ;
+     fhir:Identifier.value [ fhir:value "urn:uuid:a1b2c3d4-e5f6-7890-abcd-ef1234567890" ]
+  ] ;
+  fhir:DocumentReference.status [ fhir:value "current"] ;
+  fhir:DocumentReference.type [
+     fhir:CodeableConcept.coding [
+       fhir:index -1 ;
+       a loinc:18748-4 ;
+       fhir:Coding.system [ fhir:value "http://loinc.org" ] ;
+       fhir:Coding.code [ fhir:value "18748-4" ] ;
+       fhir:Coding.display [ fhir:value "Diagnostic imaging study" ]
+     ]
+  ] ;
+  fhir:DocumentReference.category [
+     fhir:index -1 ;
+     fhir:CodeableConcept.coding [
+       fhir:index -1 ;
+       fhir:Coding.system [ fhir:value "http://hl7.eu/fhir/health-data-api/CodeSystem/document-priority-category-eu-api" ] ;
+       fhir:Coding.code [ fhir:value "Medical-Imaging" ] ;
+       fhir:Coding.display [ fhir:value "medical imaging studies and related imaging reports" ]
+     ]
+  ] ;
+  fhir:DocumentReference.subject [
+     fhir:link <http://example.org/fhir/Patient/example-patient> ;
+     fhir:Reference.reference [ fhir:value "http://example.org/fhir/Patient/example-patient" ] ;
+     fhir:Reference.display [ fhir:value "Jan Jansen" ]
+  ] ;
+  fhir:DocumentReference.date [ fhir:value "2026-02-20T14:00:00+01:00"^^xsd:dateTime] ;
+  fhir:DocumentReference.author [
+     fhir:index -1 ;
+     fhir:link <http://example.org/fhir/Organization/example-radiology-dept> ;
+     fhir:Reference.reference [ fhir:value "http://example.org/fhir/Organization/example-radiology-dept" ] ;
+     fhir:Reference.display [ fhir:value "Radiology Department, Amsterdam UMC" ]
+  ] ;
+  fhir:DocumentReference.custodian [
+     fhir:link <http://example.org/fhir/Organization/example-hospital> ;
+     fhir:Reference.reference [ fhir:value "http://example.org/fhir/Organization/example-hospital" ] ;
+     fhir:Reference.display [ fhir:value "Amsterdam University Medical Center" ]
+  ] ;
+  fhir:DocumentReference.relatesTo [
+     fhir:index -1 ;
+     fhir:DocumentReference.relatesTo.code [ fhir:value "transforms" ] ;
+     fhir:DocumentReference.relatesTo.target [
+       fhir:link <http://hl7.eu/fhir/health-data-api/DocumentReference/example-documentreference-imaging-manifest-kos> ;
+       fhir:Reference.reference [ fhir:value "DocumentReference/example-documentreference-imaging-manifest-kos" ]
+     ]
+  ] ;
+  fhir:DocumentReference.description [ fhir:value "FHIR ImagingStudy manifest for CT Chest study"] ;
+  fhir:DocumentReference.content [
+     fhir:index -1 ;
+     fhir:DocumentReference.content.attachment [
+       fhir:Attachment.contentType [ fhir:value "application/fhir+json" ] ;
+       fhir:Attachment.url [ fhir:value "http://example.org/fhir/ImagingStudy/ct-chest-study" ] ;
+       fhir:Attachment.title [ fhir:value "CT Chest - FHIR Manifest" ] ;
+       fhir:Attachment.creation [ fhir:value "2026-02-20T14:00:00+01:00"^^xsd:dateTime ]
+     ] ;
+     fhir:DocumentReference.content.format [
+       fhir:Coding.system [ fhir:value "urn:ietf:rfc:3986" ] ;
+       fhir:Coding.code [ fhir:value "http://hl7.eu/fhir/imaging-r5/StructureDefinition/ImagingStudyEu" ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://hl7.eu/fhir/health-data-api/DocumentReference/example-documentreference-imaging-manifest-fhir.ttl> a owl:Ontology ;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

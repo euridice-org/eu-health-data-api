@@ -1,0 +1,875 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<CapabilityStatement xmlns="http://hl7.org/fhir">
+  <id value="resource-consumer-eu-api"/>
+  <text>
+    <status value="extensions"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: CapabilityStatement resource-consumer-eu-api</b></p><a name="resource-consumer-eu-api"> </a><a name="hcresource-consumer-eu-api"> </a><h2 id="title">EEHRxF Resource Consumer CapabilityStatement</h2><ul><li>Implementation Guide Version: 1.0.0-ballot </li><li>FHIR Version: 4.0.1 </li><li>Supported Formats: <code>json</code>, <code>xml</code></li><li>Published on: 2026-09-28 </li><li>Published by: HL7 Europe </li></ul><blockquote class="impl-note"><p><strong>Note to Implementers: FHIR Capabilities</strong></p><p>Any FHIR capability may be 'allowed' by the system unless explicitly marked as 'SHALL NOT'. A few items are marked as MAY in the Implementation Guide to highlight their potential relevance to the use case.</p></blockquote><h2 id="rest">FHIR RESTful Capabilities</h2><div class="panel panel-default"><div class="panel-heading"><h3 id="mode1" class="panel-title">Mode: <code>client</code></h3></div><div class="panel-body"><div><p>The Resource Consumer actor queries for clinical data resources from a Resource Access
+Provider following IPA patterns. This enables direct resource access complementing
+document-based exchange via MHD.</p>
+<p>All transactions require SMART Backend Services authorization.</p>
+</div><div class="lead"><em>Security</em></div><div class="row"><div class="col-lg-6">Enable CORS: no</div><div class="col-lg-6">Security services supported: <code>SMART-on-FHIR</code></div></div><blockquote><div><p>SMART Backend Services authorization is REQUIRED for all transactions.
+Systems SHALL:</p>
+<ul>
+<li>Authenticate using JWT client credentials (RFC 7523)</li>
+<li>Request appropriate scopes for resource access</li>
+<li>Use TLS 1.2 or higher for all communications</li>
+</ul>
+<h3>Resource Flexibility</h3>
+<p>Following IPA's approach, clients MAY choose which clinical resources to request based on their
+needs and the server's capabilities (as declared in the server's CapabilityStatement). Patient
+lookup is required; other resources are requested as needed.</p>
+<h3>Scopes for Desired Resources</h3>
+<p>Clients SHALL request scopes for the resources they need:</p>
+<ul>
+<li>system/Patient.rs (REQUIRED - read + search Patient)</li>
+<li>system/Condition.rs (if Condition needed)</li>
+<li>system/AllergyIntolerance.rs (if AllergyIntolerance needed)</li>
+<li>system/Observation.rs (if Observation needed)</li>
+<li>system/DiagnosticReport.rs (if DiagnosticReport needed)</li>
+<li>system/ImagingStudy.rs (if ImagingStudy needed)</li>
+<li>system/MedicationRequest.rs (if MedicationRequest needed)</li>
+<li>system/MedicationDispense.rs (if MedicationDispense needed)</li>
+<li>system/Immunization.rs (if Immunization needed)</li>
+<li>system/MedicationStatement.rs (if MedicationStatement needed)</li>
+<li>system/Encounter.rs (if Encounter needed)</li>
+<li>system/Practitioner.r (if Practitioner needed)</li>
+<li>system/Organization.r (if Organization needed)</li>
+</ul>
+</div></blockquote></div></div><h3 id="resourcesCap1">Capabilities by Resource/Profile</h3><h4 id="resourcesSummary1">Summary</h4><p>The summary table lists the resources that are part of this configuration, and for each resource it lists:</p><ul><li>The relevant profiles (if any)</li><li>The interactions supported by each resource (<b><span class="bg-info">R</span></b>ead, <b><span class="bg-info">S</span></b>earch, <b><span class="bg-info">U</span></b>pdate, and <b><span class="bg-info">C</span></b>reate, are always shown, while <b><span class="bg-info">VR</span></b>ead, <b><span class="bg-info">P</span></b>atch, <b><span class="bg-info">D</span></b>elete, <b><span class="bg-info">H</span></b>istory on <b><span class="bg-info">I</span></b>nstance, or <b><span class="bg-info">H</span></b>istory on <b><span class="bg-info">T</span></b>ype are only present if at least one of the resources has support for them.</li><li><span>The required, recommended, and some optional search parameters (if any). </span></li><li>The linked resources enabled for <code>_include</code></li><li>The other resources enabled for <code>_revinclude</code></li><li>The operations on the resource (if any)</li></ul><div class="table-responsive"><table class="table table-condensed table-hover"><thead><tr><th><b>Resource Type</b></th><th><b>Profile</b></th><th class="text-center"><b title="GET a resource (read interaction)">R</b></th><th class="text-center"><b title="GET all set of resources of the type (search interaction)">S</b></th><th class="text-center"><b title="PUT a new resource version (update interaction)">U</b></th><th class="text-center"><b title="POST a new resource (create interaction)">C</b></th><th><b title="Required and recommended search parameters">Searches</b></th><th><code><b>_include</b></code></th><th><code><b>_revinclude</b></code></th><th><b>Operations</b></th></tr></thead><tbody><tr><td><a href="#Patient1-1">Patient</a></td><td>Supported Profiles<br/>  <a href="http://hl7.eu/fhir/base/2.0.0-ballot/StructureDefinition-patient-eu-core.html">Patient (EU core)</a></td><td class="text-center"><span title="SHALL"><b>Y</b></span></td><td class="text-center"><span title="SHALL"><b>Y</b></span></td><td class="text-center"/><td class="text-center"/><td>identifier, _id, active, family, given, telecom, birthdate, address, address-city, address-country, address-postalcode, address-state, gender</td><td/><td/><td/></tr><tr><td><a href="#Practitioner1-2">Practitioner</a></td><td> </td><td class="text-center"><span title="SHALL"><b>Y</b></span></td><td class="text-center"/><td class="text-center"/><td class="text-center"/><td/><td/><td/><td/></tr><tr><td><a href="#Organization1-3">Organization</a></td><td> </td><td class="text-center"><span title="SHALL"><b>Y</b></span></td><td class="text-center"/><td class="text-center"/><td class="text-center"/><td/><td/><td/><td/></tr><tr><td><a href="#Condition1-4">Condition</a></td><td> </td><td class="text-center"><span title="SHALL"><b>Y</b></span></td><td class="text-center"><span title="SHALL"><b>Y</b></span></td><td class="text-center"/><td class="text-center"/><td>patient, clinical-status, category, code</td><td/><td/><td/></tr><tr><td><a href="#AllergyIntolerance1-5">AllergyIntolerance</a></td><td> </td><td class="text-center"><span title="SHALL"><b>Y</b></span></td><td class="text-center"><span title="SHALL"><b>Y</b></span></td><td class="text-center"/><td class="text-center"/><td>patient, clinical-status</td><td/><td/><td/></tr><tr><td><a href="#Observation1-6">Observation</a></td><td> </td><td class="text-center"><span title="SHALL"><b>Y</b></span></td><td class="text-center"><span title="SHALL"><b>Y</b></span></td><td class="text-center"/><td class="text-center"/><td>patient, category, code, date, status</td><td/><td/><td/></tr><tr><td><a href="#DiagnosticReport1-7">DiagnosticReport</a></td><td> </td><td class="text-center"><span title="SHALL"><b>Y</b></span></td><td class="text-center"><span title="SHALL"><b>Y</b></span></td><td class="text-center"/><td class="text-center"/><td>patient, category, code, date, status</td><td/><td/><td/></tr><tr><td><a href="#ImagingStudy1-8">ImagingStudy</a></td><td> </td><td class="text-center"><span title="SHALL"><b>Y</b></span></td><td class="text-center"><span title="SHALL"><b>Y</b></span></td><td class="text-center"/><td class="text-center"/><td>patient</td><td/><td/><td/></tr><tr><td><a href="#MedicationRequest1-9">MedicationRequest</a></td><td> </td><td class="text-center"><span title="SHALL"><b>Y</b></span></td><td class="text-center"><span title="SHALL"><b>Y</b></span></td><td class="text-center"/><td class="text-center"/><td>patient, status, intent, authoredon</td><td/><td/><td/></tr><tr><td><a href="#MedicationDispense1-10">MedicationDispense</a></td><td> </td><td class="text-center"><span title="SHALL"><b>Y</b></span></td><td class="text-center"><span title="SHALL"><b>Y</b></span></td><td class="text-center"/><td class="text-center"/><td>patient, status, whenhandedover</td><td/><td/><td/></tr><tr><td><a href="#Immunization1-11">Immunization</a></td><td> </td><td class="text-center"><span title="SHALL"><b>Y</b></span></td><td class="text-center"><span title="SHALL"><b>Y</b></span></td><td class="text-center"/><td class="text-center"/><td>patient, date, status</td><td/><td/><td/></tr><tr><td><a href="#MedicationStatement1-12">MedicationStatement</a></td><td> </td><td class="text-center"><span title="SHALL"><b>Y</b></span></td><td class="text-center"><span title="SHALL"><b>Y</b></span></td><td class="text-center"/><td class="text-center"/><td>patient, status, effective</td><td/><td/><td/></tr><tr><td><a href="#Encounter1-13">Encounter</a></td><td> </td><td class="text-center"><span title="SHALL"><b>Y</b></span></td><td class="text-center"><span title="SHALL"><b>Y</b></span></td><td class="text-center"/><td class="text-center"/><td>patient, date, status, class</td><td/><td/><td/></tr></tbody></table></div><hr/><div class="panel panel-default"><div class="panel-heading"><h4 id="Patient1-1" class="panel-title"><span style="float: right;">Resource Conformance: SHALL </span>Patient</h4></div><div class="panel-body"><div class="container"><div class="row"><div class="col-lg-4"><span class="lead">Core FHIR Resource</span><br/><a href="http://hl7.org/fhir/R4/patient.html">Patient</a></div><div class="col-lg-4"><span class="lead">Reference Policy</span><br/></div><div class="col-lg-4"><span class="lead">Interaction summary</span><br/><ul><li><strong>SHALL</strong> support <br/><code>read</code><div><p>Read Patient by logical ID</p>
+</div><code>search-type</code><div><p>Search for patients for lookup purposes</p>
+</div></li></ul></div></div><p/><div class="row"><div class="col-6"><span class="lead">Supported Profiles</span><p><a href="http://hl7.eu/fhir/base/2.0.0-ballot/StructureDefinition-patient-eu-core.html">Patient (EU core)</a></p></div></div><p/><div class="row"><div class="col-12"><span class="lead">Documentation</span><blockquote><div><p>Patient resources are queried for patient lookup per PDQm [ITI-78] with identifier
+as a required search parameter. Note: Patient is used for lookup context, not as
+a primary clinical data resource in this actor.</p>
+</div></blockquote></div></div><div class="row"><div class="col-lg-7"><span class="lead">Search Parameters</span><table class="table table-condensed table-hover"><thead><tr><th>Conformance</th><th>Parameter</th><th>Type</th><th>Documentation</th></tr></thead><tbody><tr><td><b>SHALL</b></td><td><a href="http://hl7.org/fhir/R4/patient.html#search">identifier</a></td><td><code>token</code></td><td><div><p>Patient identifier (e.g., national ID, MRN) - required for patient lookup</p>
+</div></td></tr><tr><td><b>SHOULD</b></td><td><a href="http://hl7.org/fhir/R4/resource.html#search">_id</a></td><td><code>token</code></td><td><div><p>Patient logical ID</p>
+</div></td></tr><tr><td><b>SHOULD</b></td><td><a href="http://hl7.org/fhir/R4/patient.html#search">active</a></td><td><code>token</code></td><td><div><p>Whether the patient record is active</p>
+</div></td></tr><tr><td><b>SHOULD</b></td><td><a href="http://hl7.org/fhir/R4/patient.html#search">family</a></td><td><code>string</code></td><td><div><p>Patient family name</p>
+</div></td></tr><tr><td><b>SHOULD</b></td><td><a href="http://hl7.org/fhir/R4/patient.html#search">given</a></td><td><code>string</code></td><td><div><p>Patient given name</p>
+</div></td></tr><tr><td><b>SHOULD</b></td><td><a href="http://hl7.org/fhir/R4/patient.html#search">telecom</a></td><td><code>token</code></td><td><div><p>Telecom details of the patient</p>
+</div></td></tr><tr><td><b>SHOULD</b></td><td><a href="http://hl7.org/fhir/R4/patient.html#search">birthdate</a></td><td><code>date</code></td><td><div><p>Patient date of birth</p>
+</div></td></tr><tr><td><b>SHOULD</b></td><td><a href="http://hl7.org/fhir/R4/patient.html#search">address</a></td><td><code>string</code></td><td><div><p>A server defined search that may match any of the string fields in the Address, including line, city, district, state, country, postalCode, and/or text</p>
+</div></td></tr><tr><td><b>SHOULD</b></td><td><a href="http://hl7.org/fhir/R4/patient.html#search">address-city</a></td><td><code>string</code></td><td><div><p>A city specified in an address</p>
+</div></td></tr><tr><td><b>SHOULD</b></td><td><a href="http://hl7.org/fhir/R4/patient.html#search">address-country</a></td><td><code>string</code></td><td><div><p>A country specified in an address</p>
+</div></td></tr><tr><td><b>SHOULD</b></td><td><a href="http://hl7.org/fhir/R4/patient.html#search">address-postalcode</a></td><td><code>string</code></td><td><div><p>A postal code specified in an address</p>
+</div></td></tr><tr><td><b>SHOULD</b></td><td><a href="http://hl7.org/fhir/R4/patient.html#search">address-state</a></td><td><code>string</code></td><td><div><p>A state specified in an address</p>
+</div></td></tr><tr><td><b>SHOULD</b></td><td><a href="http://hl7.org/fhir/R4/patient.html#search">gender</a></td><td><code>token</code></td><td><div><p>Administrative gender of the patient</p>
+</div></td></tr></tbody></table></div><div class="col-lg-5"> </div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h4 id="Practitioner1-2" class="panel-title"><span style="float: right;">Resource Conformance: SHOULD </span>Practitioner</h4></div><div class="panel-body"><div class="container"><div class="row"><div class="col-lg-4"><span class="lead">Core FHIR Resource</span><br/><a href="http://hl7.org/fhir/R4/practitioner.html">Practitioner</a></div><div class="col-lg-4"><span class="lead">Reference Policy</span><br/></div><div class="col-lg-4"><span class="lead">Interaction summary</span><br/><ul><li><strong>SHALL</strong> support <br/><code>read</code><div><p>Read Practitioner by logical ID</p>
+</div></li></ul></div></div><p/><p/><div class="row"><div class="col-12"><span class="lead">Documentation</span><blockquote><div><p>Practitioner resources are read to resolve clinical context for referenced healthcare providers.
+Clients SHOULD support this resource but MAY omit it based on their needs.</p>
+</div></blockquote></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h4 id="Organization1-3" class="panel-title"><span style="float: right;">Resource Conformance: SHOULD </span>Organization</h4></div><div class="panel-body"><div class="container"><div class="row"><div class="col-lg-4"><span class="lead">Core FHIR Resource</span><br/><a href="http://hl7.org/fhir/R4/organization.html">Organization</a></div><div class="col-lg-4"><span class="lead">Reference Policy</span><br/></div><div class="col-lg-4"><span class="lead">Interaction summary</span><br/><ul><li><strong>SHALL</strong> support <br/><code>read</code><div><p>Read Organization by logical ID</p>
+</div></li></ul></div></div><p/><p/><div class="row"><div class="col-12"><span class="lead">Documentation</span><blockquote><div><p>Organization resources are read to resolve context for referenced healthcare organizations.
+Clients SHOULD support this resource but MAY omit it based on their needs.</p>
+</div></blockquote></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h4 id="Condition1-4" class="panel-title"><span style="float: right;">Resource Conformance: SHOULD </span>Condition</h4></div><div class="panel-body"><div class="container"><div class="row"><div class="col-lg-4"><span class="lead">Core FHIR Resource</span><br/><a href="http://hl7.org/fhir/R4/condition.html">Condition</a></div><div class="col-lg-4"><span class="lead">Reference Policy</span><br/></div><div class="col-lg-4"><span class="lead">Interaction summary</span><br/><ul><li><strong>SHALL</strong> support <br/><code>read</code><div><p>Read Condition by logical ID</p>
+</div><code>search-type</code><div><p>Search for Condition resources</p>
+</div></li></ul></div></div><p/><p/><div class="row"><div class="col-12"><span class="lead">Documentation</span><blockquote><div><p>Condition resources represent problems, diagnoses, and health concerns.
+If supported, clients SHALL support search by patient and SHOULD support additional filters.
+Clients MAY omit this resource based on their needs.</p>
+</div></blockquote></div></div><div class="row"><div class="col-lg-7"><span class="lead">Search Parameters</span><table class="table table-condensed table-hover"><thead><tr><th>Conformance</th><th>Parameter</th><th>Type</th><th>Documentation</th></tr></thead><tbody><tr><td><b>SHALL</b></td><td><a href="http://hl7.org/fhir/R4/condition.html#search">patient</a></td><td><code>reference</code></td><td><div><p>The patient who has the condition (SHALL support)</p>
+</div></td></tr><tr><td><b>SHOULD</b></td><td><a href="http://hl7.org/fhir/R4/condition.html#search">clinical-status</a></td><td><code>token</code></td><td><div><p>The clinical status of the condition</p>
+</div></td></tr><tr><td><b>SHOULD</b></td><td><a href="http://hl7.org/fhir/R4/condition.html#search">category</a></td><td><code>token</code></td><td><div><p>The category of condition</p>
+</div></td></tr><tr><td><b>SHOULD</b></td><td><a href="http://hl7.org/fhir/R4/condition.html#search">code</a></td><td><code>token</code></td><td><div><p>Code for the condition</p>
+</div></td></tr></tbody></table></div><div class="col-lg-5"> </div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h4 id="AllergyIntolerance1-5" class="panel-title"><span style="float: right;">Resource Conformance: SHOULD </span>AllergyIntolerance</h4></div><div class="panel-body"><div class="container"><div class="row"><div class="col-lg-4"><span class="lead">Core FHIR Resource</span><br/><a href="http://hl7.org/fhir/R4/allergyintolerance.html">AllergyIntolerance</a></div><div class="col-lg-4"><span class="lead">Reference Policy</span><br/></div><div class="col-lg-4"><span class="lead">Interaction summary</span><br/><ul><li><strong>SHALL</strong> support <br/><code>read</code><div><p>Read AllergyIntolerance by logical ID</p>
+</div><code>search-type</code><div><p>Search for AllergyIntolerance resources</p>
+</div></li></ul></div></div><p/><p/><div class="row"><div class="col-12"><span class="lead">Documentation</span><blockquote><div><p>AllergyIntolerance resources represent patient allergies and intolerances.
+If supported, clients SHALL support search by patient.
+Clients MAY omit this resource based on their needs.</p>
+</div></blockquote></div></div><div class="row"><div class="col-lg-7"><span class="lead">Search Parameters</span><table class="table table-condensed table-hover"><thead><tr><th>Conformance</th><th>Parameter</th><th>Type</th><th>Documentation</th></tr></thead><tbody><tr><td><b>SHALL</b></td><td><a href="http://hl7.org/fhir/R4/allergyintolerance.html#search">patient</a></td><td><code>reference</code></td><td><div><p>The patient who has the allergy or intolerance (SHALL support)</p>
+</div></td></tr><tr><td><b>SHOULD</b></td><td><a href="http://hl7.org/fhir/R4/allergyintolerance.html#search">clinical-status</a></td><td><code>token</code></td><td><div><p>The clinical status of the allergy or intolerance</p>
+</div></td></tr></tbody></table></div><div class="col-lg-5"> </div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h4 id="Observation1-6" class="panel-title"><span style="float: right;">Resource Conformance: SHOULD </span>Observation</h4></div><div class="panel-body"><div class="container"><div class="row"><div class="col-lg-4"><span class="lead">Core FHIR Resource</span><br/><a href="http://hl7.org/fhir/R4/observation.html">Observation</a></div><div class="col-lg-4"><span class="lead">Reference Policy</span><br/></div><div class="col-lg-4"><span class="lead">Interaction summary</span><br/><ul><li><strong>SHALL</strong> support <br/><code>read</code><div><p>Read Observation by logical ID</p>
+</div><code>search-type</code><div><p>Search for Observation resources</p>
+</div></li></ul></div></div><p/><p/><div class="row"><div class="col-12"><span class="lead">Documentation</span><blockquote><div><p>Observation resources represent clinical observations including vital signs,
+laboratory results, and other measurements. If supported, clients SHALL support
+search by patient and category. Clients MAY omit this resource based on their needs.</p>
+</div></blockquote></div></div><div class="row"><div class="col-lg-7"><span class="lead">Search Parameters</span><table class="table table-condensed table-hover"><thead><tr><th>Conformance</th><th>Parameter</th><th>Type</th><th>Documentation</th></tr></thead><tbody><tr><td><b>SHALL</b></td><td><a href="http://hl7.org/fhir/R4/observation.html#search">patient</a></td><td><code>reference</code></td><td><div><p>The patient the observation is about (SHALL support)</p>
+</div></td></tr><tr><td><b>SHALL</b></td><td><a href="http://hl7.org/fhir/R4/observation.html#search">category</a></td><td><code>token</code></td><td><div><p>Category of observation (e.g., vital-signs, laboratory)</p>
+</div></td></tr><tr><td><b>SHOULD</b></td><td><a href="http://hl7.org/fhir/R4/observation.html#search">code</a></td><td><code>token</code></td><td><div><p>The code of the observation type</p>
+</div></td></tr><tr><td><b>SHOULD</b></td><td><a href="http://hl7.org/fhir/R4/observation.html#search">date</a></td><td><code>date</code></td><td><div><p>Obtained date/time. Date modifiers ge, le, gt, lt SHOULD be supported.</p>
+</div></td></tr><tr><td><b>SHOULD</b></td><td><a href="http://hl7.org/fhir/R4/observation.html#search">status</a></td><td><code>token</code></td><td><div><p>The status of the observation</p>
+</div></td></tr></tbody></table></div><div class="col-lg-5"> </div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h4 id="DiagnosticReport1-7" class="panel-title"><span style="float: right;">Resource Conformance: SHOULD </span>DiagnosticReport</h4></div><div class="panel-body"><div class="container"><div class="row"><div class="col-lg-4"><span class="lead">Core FHIR Resource</span><br/><a href="http://hl7.org/fhir/R4/diagnosticreport.html">DiagnosticReport</a></div><div class="col-lg-4"><span class="lead">Reference Policy</span><br/></div><div class="col-lg-4"><span class="lead">Interaction summary</span><br/><ul><li><strong>SHALL</strong> support <br/><code>read</code><div><p>Read DiagnosticReport by logical ID</p>
+</div><code>search-type</code><div><p>Search for DiagnosticReport resources</p>
+</div></li></ul></div></div><p/><p/><div class="row"><div class="col-12"><span class="lead">Documentation</span><blockquote><div><p>DiagnosticReport resources represent laboratory results and imaging reports.
+If supported, clients SHALL support search by patient and category.
+Clients MAY omit this resource based on their needs.</p>
+</div></blockquote></div></div><div class="row"><div class="col-lg-7"><span class="lead">Search Parameters</span><table class="table table-condensed table-hover"><thead><tr><th>Conformance</th><th>Parameter</th><th>Type</th><th>Documentation</th></tr></thead><tbody><tr><td><b>SHALL</b></td><td><a href="http://hl7.org/fhir/R4/diagnosticreport.html#search">patient</a></td><td><code>reference</code></td><td><div><p>The patient the report is about (SHALL support)</p>
+</div></td></tr><tr><td><b>SHALL</b></td><td><a href="http://hl7.org/fhir/R4/diagnosticreport.html#search">category</a></td><td><code>token</code></td><td><div><p>Category of report (e.g., LAB, RAD)</p>
+</div></td></tr><tr><td><b>SHOULD</b></td><td><a href="http://hl7.org/fhir/R4/diagnosticreport.html#search">code</a></td><td><code>token</code></td><td><div><p>The code for the report type</p>
+</div></td></tr><tr><td><b>SHOULD</b></td><td><a href="http://hl7.org/fhir/R4/diagnosticreport.html#search">date</a></td><td><code>date</code></td><td><div><p>The clinically relevant time of the report</p>
+</div></td></tr><tr><td><b>SHOULD</b></td><td><a href="http://hl7.org/fhir/R4/diagnosticreport.html#search">status</a></td><td><code>token</code></td><td><div><p>The status of the report</p>
+</div></td></tr></tbody></table></div><div class="col-lg-5"> </div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h4 id="ImagingStudy1-8" class="panel-title"><span style="float: right;">Resource Conformance: SHOULD </span>ImagingStudy</h4></div><div class="panel-body"><div class="container"><div class="row"><div class="col-lg-4"><span class="lead">Core FHIR Resource</span><br/><a href="http://hl7.org/fhir/R4/imagingstudy.html">ImagingStudy</a></div><div class="col-lg-4"><span class="lead">Reference Policy</span><br/></div><div class="col-lg-4"><span class="lead">Interaction summary</span><br/><ul><li><strong>SHALL</strong> support <br/><code>read</code><div><p>Read ImagingStudy by logical ID</p>
+</div><code>search-type</code><div><p>Search for ImagingStudy resources</p>
+</div></li></ul></div></div><p/><p/><div class="row"><div class="col-12"><span class="lead">Documentation</span><blockquote><div><p>ImagingStudy resources represent imaging studies available for a patient. Consumers SHOULD
+expect resources conforming to the HL7 Europe Imaging ImagingStudy profile
+(http://hl7.eu/fhir/imaging/StructureDefinition/ImagingStudyEuImaging).
+If supported, clients SHALL support search by patient.
+Clients MAY omit this resource based on their needs.</p>
+</div></blockquote></div></div><div class="row"><div class="col-lg-7"><span class="lead">Search Parameters</span><table class="table table-condensed table-hover"><thead><tr><th>Conformance</th><th>Parameter</th><th>Type</th><th>Documentation</th></tr></thead><tbody><tr><td><b>SHALL</b></td><td><a href="http://hl7.org/fhir/R4/imagingstudy.html#search">patient</a></td><td><code>reference</code></td><td><div><p>The patient the imaging study is about (SHALL support)</p>
+</div></td></tr></tbody></table></div><div class="col-lg-5"> </div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h4 id="MedicationRequest1-9" class="panel-title"><span style="float: right;">Resource Conformance: SHOULD </span>MedicationRequest</h4></div><div class="panel-body"><div class="container"><div class="row"><div class="col-lg-4"><span class="lead">Core FHIR Resource</span><br/><a href="http://hl7.org/fhir/R4/medicationrequest.html">MedicationRequest</a></div><div class="col-lg-4"><span class="lead">Reference Policy</span><br/></div><div class="col-lg-4"><span class="lead">Interaction summary</span><br/><ul><li><strong>SHALL</strong> support <br/><code>read</code><div><p>Read MedicationRequest by logical ID</p>
+</div><code>search-type</code><div><p>Search for MedicationRequest resources</p>
+</div></li></ul></div></div><p/><p/><div class="row"><div class="col-12"><span class="lead">Documentation</span><blockquote><div><p>MedicationRequest resources represent medication orders and prescriptions.
+If supported, clients SHALL support search by patient.
+Clients MAY omit this resource based on their needs.</p>
+</div></blockquote></div></div><div class="row"><div class="col-lg-7"><span class="lead">Search Parameters</span><table class="table table-condensed table-hover"><thead><tr><th>Conformance</th><th>Parameter</th><th>Type</th><th>Documentation</th></tr></thead><tbody><tr><td><b>SHALL</b></td><td><a href="http://hl7.org/fhir/R4/medicationrequest.html#search">patient</a></td><td><code>reference</code></td><td><div><p>The patient for whom the medication was ordered (SHALL support)</p>
+</div></td></tr><tr><td><b>SHOULD</b></td><td><a href="http://hl7.org/fhir/R4/medicationrequest.html#search">status</a></td><td><code>token</code></td><td><div><p>Status of the prescription</p>
+</div></td></tr><tr><td><b>SHOULD</b></td><td><a href="http://hl7.org/fhir/R4/medicationrequest.html#search">intent</a></td><td><code>token</code></td><td><div><p>The intent of the medication request</p>
+</div></td></tr><tr><td><b>SHOULD</b></td><td><a href="http://hl7.org/fhir/R4/medicationrequest.html#search">authoredon</a></td><td><code>date</code></td><td><div><p>Return prescriptions written on this date</p>
+</div></td></tr></tbody></table></div><div class="col-lg-5"> </div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h4 id="MedicationDispense1-10" class="panel-title"><span style="float: right;">Resource Conformance: SHOULD </span>MedicationDispense</h4></div><div class="panel-body"><div class="container"><div class="row"><div class="col-lg-4"><span class="lead">Core FHIR Resource</span><br/><a href="http://hl7.org/fhir/R4/medicationdispense.html">MedicationDispense</a></div><div class="col-lg-4"><span class="lead">Reference Policy</span><br/></div><div class="col-lg-4"><span class="lead">Interaction summary</span><br/><ul><li><strong>SHALL</strong> support <br/><code>read</code><div><p>Read MedicationDispense by logical ID</p>
+</div><code>search-type</code><div><p>Search for MedicationDispense resources</p>
+</div></li></ul></div></div><p/><p/><div class="row"><div class="col-12"><span class="lead">Documentation</span><blockquote><div><p>MedicationDispense resources represent medication dispensing events.
+If supported, clients SHALL support search by patient.
+Clients MAY omit this resource based on their needs.</p>
+</div></blockquote></div></div><div class="row"><div class="col-lg-7"><span class="lead">Search Parameters</span><table class="table table-condensed table-hover"><thead><tr><th>Conformance</th><th>Parameter</th><th>Type</th><th>Documentation</th></tr></thead><tbody><tr><td><b>SHALL</b></td><td><a href="http://hl7.org/fhir/R4/medicationdispense.html#search">patient</a></td><td><code>reference</code></td><td><div><p>The patient for whom the medication was dispensed (SHALL support)</p>
+</div></td></tr><tr><td><b>SHOULD</b></td><td><a href="http://hl7.org/fhir/R4/medicationdispense.html#search">status</a></td><td><code>token</code></td><td><div><p>Status of the dispense</p>
+</div></td></tr><tr><td><b>SHOULD</b></td><td><a href="http://hl7.org/fhir/R4/medicationdispense.html#search">whenhandedover</a></td><td><code>date</code></td><td><div><p>When the medication was handed over</p>
+</div></td></tr></tbody></table></div><div class="col-lg-5"> </div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h4 id="Immunization1-11" class="panel-title"><span style="float: right;">Resource Conformance: SHOULD </span>Immunization</h4></div><div class="panel-body"><div class="container"><div class="row"><div class="col-lg-4"><span class="lead">Core FHIR Resource</span><br/><a href="http://hl7.org/fhir/R4/immunization.html">Immunization</a></div><div class="col-lg-4"><span class="lead">Reference Policy</span><br/></div><div class="col-lg-4"><span class="lead">Interaction summary</span><br/><ul><li><strong>SHALL</strong> support <br/><code>read</code><div><p>Read Immunization by logical ID</p>
+</div><code>search-type</code><div><p>Search for Immunization resources</p>
+</div></li></ul></div></div><p/><p/><div class="row"><div class="col-12"><span class="lead">Documentation</span><blockquote><div><p>Immunization resources represent vaccination records.
+If supported, clients SHALL support search by patient.
+Clients MAY omit this resource based on their needs.</p>
+</div></blockquote></div></div><div class="row"><div class="col-lg-7"><span class="lead">Search Parameters</span><table class="table table-condensed table-hover"><thead><tr><th>Conformance</th><th>Parameter</th><th>Type</th><th>Documentation</th></tr></thead><tbody><tr><td><b>SHALL</b></td><td><a href="http://hl7.org/fhir/R4/immunization.html#search">patient</a></td><td><code>reference</code></td><td><div><p>The patient for the vaccination record (SHALL support)</p>
+</div></td></tr><tr><td><b>SHOULD</b></td><td><a href="http://hl7.org/fhir/R4/immunization.html#search">date</a></td><td><code>date</code></td><td><div><p>Vaccination date</p>
+</div></td></tr><tr><td><b>SHOULD</b></td><td><a href="http://hl7.org/fhir/R4/immunization.html#search">status</a></td><td><code>token</code></td><td><div><p>Status of the immunization</p>
+</div></td></tr></tbody></table></div><div class="col-lg-5"> </div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h4 id="MedicationStatement1-12" class="panel-title"><span style="float: right;">Resource Conformance: SHOULD </span>MedicationStatement</h4></div><div class="panel-body"><div class="container"><div class="row"><div class="col-lg-4"><span class="lead">Core FHIR Resource</span><br/><a href="http://hl7.org/fhir/R4/medicationstatement.html">MedicationStatement</a></div><div class="col-lg-4"><span class="lead">Reference Policy</span><br/></div><div class="col-lg-4"><span class="lead">Interaction summary</span><br/><ul><li><strong>SHALL</strong> support <br/><code>read</code><div><p>Read MedicationStatement by logical ID</p>
+</div><code>search-type</code><div><p>Search for MedicationStatement resources</p>
+</div></li></ul></div></div><p/><p/><div class="row"><div class="col-12"><span class="lead">Documentation</span><blockquote><div><p>MedicationStatement resources represent a patient's medication usage, including
+self-reported medications. If supported, clients SHALL support search by patient.
+Clients MAY omit this resource based on their needs.</p>
+</div></blockquote></div></div><div class="row"><div class="col-lg-7"><span class="lead">Search Parameters</span><table class="table table-condensed table-hover"><thead><tr><th>Conformance</th><th>Parameter</th><th>Type</th><th>Documentation</th></tr></thead><tbody><tr><td><b>SHALL</b></td><td><a href="http://hl7.org/fhir/R4/medicationstatement.html#search">patient</a></td><td><code>reference</code></td><td><div><p>The patient for the medication statement (SHALL support)</p>
+</div></td></tr><tr><td><b>SHOULD</b></td><td><a href="http://hl7.org/fhir/R4/medicationstatement.html#search">status</a></td><td><code>token</code></td><td><div><p>Status of the medication statement</p>
+</div></td></tr><tr><td><b>SHOULD</b></td><td><a href="http://hl7.org/fhir/R4/medicationstatement.html#search">effective</a></td><td><code>date</code></td><td><div><p>Date when patient was taking the medication</p>
+</div></td></tr></tbody></table></div><div class="col-lg-5"> </div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h4 id="Encounter1-13" class="panel-title"><span style="float: right;">Resource Conformance: SHOULD </span>Encounter</h4></div><div class="panel-body"><div class="container"><div class="row"><div class="col-lg-4"><span class="lead">Core FHIR Resource</span><br/><a href="http://hl7.org/fhir/R4/encounter.html">Encounter</a></div><div class="col-lg-4"><span class="lead">Reference Policy</span><br/></div><div class="col-lg-4"><span class="lead">Interaction summary</span><br/><ul><li><strong>SHALL</strong> support <br/><code>read</code><div><p>Read Encounter by logical ID</p>
+</div><code>search-type</code><div><p>Search for Encounter resources</p>
+</div></li></ul></div></div><p/><p/><div class="row"><div class="col-12"><span class="lead">Documentation</span><blockquote><div><p>Encounter resources represent patient encounters (visits, admissions, etc.).
+If supported, clients SHALL support search by patient.
+Clients MAY omit this resource based on their needs.</p>
+</div></blockquote></div></div><div class="row"><div class="col-lg-7"><span class="lead">Search Parameters</span><table class="table table-condensed table-hover"><thead><tr><th>Conformance</th><th>Parameter</th><th>Type</th><th>Documentation</th></tr></thead><tbody><tr><td><b>SHALL</b></td><td><a href="http://hl7.org/fhir/R4/encounter.html#search">patient</a></td><td><code>reference</code></td><td><div><p>The patient present at the encounter (SHALL support)</p>
+</div></td></tr><tr><td><b>SHOULD</b></td><td><a href="http://hl7.org/fhir/R4/encounter.html#search">date</a></td><td><code>date</code></td><td><div><p>A date within the encounter period</p>
+</div></td></tr><tr><td><b>SHOULD</b></td><td><a href="http://hl7.org/fhir/R4/encounter.html#search">status</a></td><td><code>token</code></td><td><div><p>Status of the encounter</p>
+</div></td></tr><tr><td><b>SHOULD</b></td><td><a href="http://hl7.org/fhir/R4/encounter.html#search">class</a></td><td><code>token</code></td><td><div><p>Classification of the encounter (e.g., inpatient, outpatient)</p>
+</div></td></tr></tbody></table></div><div class="col-lg-5"> </div></div></div></div></div></div>
+  </text>
+  <url value="http://hl7.eu/fhir/health-data-api/CapabilityStatement/resource-consumer-eu-api"/>
+  <version value="1.0.0-ballot"/>
+  <name value="ResourceConsumerEuApi"/>
+  <title value="EEHRxF Resource Consumer CapabilityStatement"/>
+  <status value="active"/>
+  <experimental value="false"/>
+  <date value="2026-09-28"/>
+  <publisher value="HL7 Europe"/>
+  <contact>
+    <name value="HL7 Europe"/>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.eu"/>
+    </telecom>
+  </contact>
+  <description value="CapabilityStatement for the EEHRxF Resource Consumer actor. This actor queries for&#xA;clinical data resources following the International Patient Access (IPA) patterns.&#xA;&#xA;This CapabilityStatement defines the requirements for systems consuming direct resource&#xA;access (beyond document-based exchange) in the EU EHR Exchange Format (EEHRxF) ecosystem.&#xA;It inherits patterns from:&#xA;- **IPA (International Patient Access)**: Resource profiles and search parameter patterns&#xA;&#xA;### Resource Flexibility (IPA Alignment)&#xA;&#xA;Following IPA's approach, clients are not required to consume all clinical resources listed&#xA;below. Clients MAY choose which resources to query based on their needs and the server's&#xA;declared capabilities. The only required capability is Patient lookup. This flexibility&#xA;allows clients to implement targeted use cases without requiring support for all resource types.&#xA;&#xA;**Required**: Patient (for lookup context)&#xA;**Optional (request based on needs and server support)**:&#xA;- Practitioner, Organization: Reference resolution&#xA;- Condition, AllergyIntolerance: Patient safety data&#xA;- Observation, DiagnosticReport: Clinical results&#xA;- ImagingStudy: Imaging results&#xA;- MedicationRequest, MedicationDispense, MedicationStatement: Medication data&#xA;- Immunization: Vaccination records&#xA;- Encounter: Visit context&#xA;&#xA;Clients should check the server's CapabilityStatement to discover which resources are available.&#xA;&#xA;### Security&#xA;Systems SHALL support SMART Backend Services authorization for all transactions.&#xA;&#xA;### Profile Inheritance&#xA;Consumers SHOULD expect resources conforming to EU Core profiles where available."/>
+  <jurisdiction>
+    <coding>
+      <system value="http://unstats.un.org/unsd/methods/m49/m49.htm"/>
+      <code value="150"/>
+      <display value="Europe"/>
+    </coding>
+  </jurisdiction>
+  <copyright value="Copyright HL7 Europe. Licensed under Creative Commons public domain (CC0 1.0)."/>
+  <kind value="requirements"/>
+  <fhirVersion value="4.0.1"/>
+  <format value="json"/>
+  <format value="xml"/>
+  <rest>
+    <mode value="client"/>
+    <documentation value="The Resource Consumer actor queries for clinical data resources from a Resource Access&#xA;Provider following IPA patterns. This enables direct resource access complementing&#xA;document-based exchange via MHD.&#xA;&#xA;All transactions require SMART Backend Services authorization."/>
+    <security>
+      <cors value="false"/>
+      <service>
+        <coding>
+          <system value="http://hl7.org/fhir/restful-security-service"/>
+          <code value="SMART-on-FHIR"/>
+        </coding>
+      </service>
+      <description value="SMART Backend Services authorization is REQUIRED for all transactions.&#xA;Systems SHALL:&#xA;- Authenticate using JWT client credentials (RFC 7523)&#xA;- Request appropriate scopes for resource access&#xA;- Use TLS 1.2 or higher for all communications&#xA;&#xA;### Resource Flexibility&#xA;&#xA;Following IPA's approach, clients MAY choose which clinical resources to request based on their&#xA;needs and the server's capabilities (as declared in the server's CapabilityStatement). Patient&#xA;lookup is required; other resources are requested as needed.&#xA;&#xA;### Scopes for Desired Resources&#xA;&#xA;Clients SHALL request scopes for the resources they need:&#xA;- system/Patient.rs (REQUIRED - read + search Patient)&#xA;- system/Condition.rs (if Condition needed)&#xA;- system/AllergyIntolerance.rs (if AllergyIntolerance needed)&#xA;- system/Observation.rs (if Observation needed)&#xA;- system/DiagnosticReport.rs (if DiagnosticReport needed)&#xA;- system/ImagingStudy.rs (if ImagingStudy needed)&#xA;- system/MedicationRequest.rs (if MedicationRequest needed)&#xA;- system/MedicationDispense.rs (if MedicationDispense needed)&#xA;- system/Immunization.rs (if Immunization needed)&#xA;- system/MedicationStatement.rs (if MedicationStatement needed)&#xA;- system/Encounter.rs (if Encounter needed)&#xA;- system/Practitioner.r (if Practitioner needed)&#xA;- system/Organization.r (if Organization needed)"/>
+    </security>
+    <resource>
+      <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+        <valueCode value="SHALL"/>
+      </extension>
+      <type value="Patient"/>
+      <supportedProfile value="http://hl7.eu/fhir/base/StructureDefinition/patient-eu-core"/>
+      <documentation value="Patient resources are queried for patient lookup per PDQm [ITI-78] with identifier&#xA;as a required search parameter. Note: Patient is used for lookup context, not as&#xA;a primary clinical data resource in this actor."/>
+      <interaction>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHALL"/>
+        </extension>
+        <code value="read"/>
+        <documentation value="Read Patient by logical ID"/>
+      </interaction>
+      <interaction>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHALL"/>
+        </extension>
+        <code value="search-type"/>
+        <documentation value="Search for patients for lookup purposes"/>
+      </interaction>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHALL"/>
+        </extension>
+        <name value="identifier"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/Patient-identifier"/>
+        <type value="token"/>
+        <documentation value="Patient identifier (e.g., national ID, MRN) - required for patient lookup"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHOULD"/>
+        </extension>
+        <name value="_id"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/Resource-id"/>
+        <type value="token"/>
+        <documentation value="Patient logical ID"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHOULD"/>
+        </extension>
+        <name value="active"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/Patient-active"/>
+        <type value="token"/>
+        <documentation value="Whether the patient record is active"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHOULD"/>
+        </extension>
+        <name value="family"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/individual-family"/>
+        <type value="string"/>
+        <documentation value="Patient family name"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHOULD"/>
+        </extension>
+        <name value="given"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/individual-given"/>
+        <type value="string"/>
+        <documentation value="Patient given name"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHOULD"/>
+        </extension>
+        <name value="telecom"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/individual-telecom"/>
+        <type value="token"/>
+        <documentation value="Telecom details of the patient"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHOULD"/>
+        </extension>
+        <name value="birthdate"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/individual-birthdate"/>
+        <type value="date"/>
+        <documentation value="Patient date of birth"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHOULD"/>
+        </extension>
+        <name value="address"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/individual-address"/>
+        <type value="string"/>
+        <documentation value="A server defined search that may match any of the string fields in the Address, including line, city, district, state, country, postalCode, and/or text"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHOULD"/>
+        </extension>
+        <name value="address-city"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/individual-address-city"/>
+        <type value="string"/>
+        <documentation value="A city specified in an address"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHOULD"/>
+        </extension>
+        <name value="address-country"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/individual-address-country"/>
+        <type value="string"/>
+        <documentation value="A country specified in an address"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHOULD"/>
+        </extension>
+        <name value="address-postalcode"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/individual-address-postalcode"/>
+        <type value="string"/>
+        <documentation value="A postal code specified in an address"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHOULD"/>
+        </extension>
+        <name value="address-state"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/individual-address-state"/>
+        <type value="string"/>
+        <documentation value="A state specified in an address"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHOULD"/>
+        </extension>
+        <name value="gender"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/individual-gender"/>
+        <type value="token"/>
+        <documentation value="Administrative gender of the patient"/>
+      </searchParam>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+        <valueCode value="SHOULD"/>
+      </extension>
+      <type value="Practitioner"/>
+      <documentation value="Practitioner resources are read to resolve clinical context for referenced healthcare providers.&#xA;Clients SHOULD support this resource but MAY omit it based on their needs."/>
+      <interaction>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHALL"/>
+        </extension>
+        <code value="read"/>
+        <documentation value="Read Practitioner by logical ID"/>
+      </interaction>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+        <valueCode value="SHOULD"/>
+      </extension>
+      <type value="Organization"/>
+      <documentation value="Organization resources are read to resolve context for referenced healthcare organizations.&#xA;Clients SHOULD support this resource but MAY omit it based on their needs."/>
+      <interaction>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHALL"/>
+        </extension>
+        <code value="read"/>
+        <documentation value="Read Organization by logical ID"/>
+      </interaction>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+        <valueCode value="SHOULD"/>
+      </extension>
+      <type value="Condition"/>
+      <documentation value="Condition resources represent problems, diagnoses, and health concerns.&#xA;If supported, clients SHALL support search by patient and SHOULD support additional filters.&#xA;Clients MAY omit this resource based on their needs."/>
+      <interaction>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHALL"/>
+        </extension>
+        <code value="read"/>
+        <documentation value="Read Condition by logical ID"/>
+      </interaction>
+      <interaction>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHALL"/>
+        </extension>
+        <code value="search-type"/>
+        <documentation value="Search for Condition resources"/>
+      </interaction>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHALL"/>
+        </extension>
+        <name value="patient"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/clinical-patient"/>
+        <type value="reference"/>
+        <documentation value="The patient who has the condition (SHALL support)"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHOULD"/>
+        </extension>
+        <name value="clinical-status"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/Condition-clinical-status"/>
+        <type value="token"/>
+        <documentation value="The clinical status of the condition"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHOULD"/>
+        </extension>
+        <name value="category"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/Condition-category"/>
+        <type value="token"/>
+        <documentation value="The category of condition"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHOULD"/>
+        </extension>
+        <name value="code"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/clinical-code"/>
+        <type value="token"/>
+        <documentation value="Code for the condition"/>
+      </searchParam>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+        <valueCode value="SHOULD"/>
+      </extension>
+      <type value="AllergyIntolerance"/>
+      <documentation value="AllergyIntolerance resources represent patient allergies and intolerances.&#xA;If supported, clients SHALL support search by patient.&#xA;Clients MAY omit this resource based on their needs."/>
+      <interaction>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHALL"/>
+        </extension>
+        <code value="read"/>
+        <documentation value="Read AllergyIntolerance by logical ID"/>
+      </interaction>
+      <interaction>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHALL"/>
+        </extension>
+        <code value="search-type"/>
+        <documentation value="Search for AllergyIntolerance resources"/>
+      </interaction>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHALL"/>
+        </extension>
+        <name value="patient"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/clinical-patient"/>
+        <type value="reference"/>
+        <documentation value="The patient who has the allergy or intolerance (SHALL support)"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHOULD"/>
+        </extension>
+        <name value="clinical-status"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/AllergyIntolerance-clinical-status"/>
+        <type value="token"/>
+        <documentation value="The clinical status of the allergy or intolerance"/>
+      </searchParam>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+        <valueCode value="SHOULD"/>
+      </extension>
+      <type value="Observation"/>
+      <documentation value="Observation resources represent clinical observations including vital signs,&#xA;laboratory results, and other measurements. If supported, clients SHALL support&#xA;search by patient and category. Clients MAY omit this resource based on their needs."/>
+      <interaction>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHALL"/>
+        </extension>
+        <code value="read"/>
+        <documentation value="Read Observation by logical ID"/>
+      </interaction>
+      <interaction>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHALL"/>
+        </extension>
+        <code value="search-type"/>
+        <documentation value="Search for Observation resources"/>
+      </interaction>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHALL"/>
+        </extension>
+        <name value="patient"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/clinical-patient"/>
+        <type value="reference"/>
+        <documentation value="The patient the observation is about (SHALL support)"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHALL"/>
+        </extension>
+        <name value="category"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/Observation-category"/>
+        <type value="token"/>
+        <documentation value="Category of observation (e.g., vital-signs, laboratory)"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHOULD"/>
+        </extension>
+        <name value="code"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/clinical-code"/>
+        <type value="token"/>
+        <documentation value="The code of the observation type"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHOULD"/>
+        </extension>
+        <name value="date"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/clinical-date"/>
+        <type value="date"/>
+        <documentation value="Obtained date/time. Date modifiers ge, le, gt, lt SHOULD be supported."/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHOULD"/>
+        </extension>
+        <name value="status"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/Observation-status"/>
+        <type value="token"/>
+        <documentation value="The status of the observation"/>
+      </searchParam>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+        <valueCode value="SHOULD"/>
+      </extension>
+      <type value="DiagnosticReport"/>
+      <documentation value="DiagnosticReport resources represent laboratory results and imaging reports.&#xA;If supported, clients SHALL support search by patient and category.&#xA;Clients MAY omit this resource based on their needs."/>
+      <interaction>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHALL"/>
+        </extension>
+        <code value="read"/>
+        <documentation value="Read DiagnosticReport by logical ID"/>
+      </interaction>
+      <interaction>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHALL"/>
+        </extension>
+        <code value="search-type"/>
+        <documentation value="Search for DiagnosticReport resources"/>
+      </interaction>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHALL"/>
+        </extension>
+        <name value="patient"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/clinical-patient"/>
+        <type value="reference"/>
+        <documentation value="The patient the report is about (SHALL support)"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHALL"/>
+        </extension>
+        <name value="category"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/DiagnosticReport-category"/>
+        <type value="token"/>
+        <documentation value="Category of report (e.g., LAB, RAD)"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHOULD"/>
+        </extension>
+        <name value="code"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/clinical-code"/>
+        <type value="token"/>
+        <documentation value="The code for the report type"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHOULD"/>
+        </extension>
+        <name value="date"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/clinical-date"/>
+        <type value="date"/>
+        <documentation value="The clinically relevant time of the report"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHOULD"/>
+        </extension>
+        <name value="status"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/DiagnosticReport-status"/>
+        <type value="token"/>
+        <documentation value="The status of the report"/>
+      </searchParam>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+        <valueCode value="SHOULD"/>
+      </extension>
+      <type value="ImagingStudy"/>
+      <documentation value="ImagingStudy resources represent imaging studies available for a patient. Consumers SHOULD&#xA;expect resources conforming to the HL7 Europe Imaging ImagingStudy profile&#xA;(http://hl7.eu/fhir/imaging/StructureDefinition/ImagingStudyEuImaging).&#xA;If supported, clients SHALL support search by patient.&#xA;Clients MAY omit this resource based on their needs."/>
+      <interaction>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHALL"/>
+        </extension>
+        <code value="read"/>
+        <documentation value="Read ImagingStudy by logical ID"/>
+      </interaction>
+      <interaction>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHALL"/>
+        </extension>
+        <code value="search-type"/>
+        <documentation value="Search for ImagingStudy resources"/>
+      </interaction>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHALL"/>
+        </extension>
+        <name value="patient"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/clinical-patient"/>
+        <type value="reference"/>
+        <documentation value="The patient the imaging study is about (SHALL support)"/>
+      </searchParam>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+        <valueCode value="SHOULD"/>
+      </extension>
+      <type value="MedicationRequest"/>
+      <documentation value="MedicationRequest resources represent medication orders and prescriptions.&#xA;If supported, clients SHALL support search by patient.&#xA;Clients MAY omit this resource based on their needs."/>
+      <interaction>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHALL"/>
+        </extension>
+        <code value="read"/>
+        <documentation value="Read MedicationRequest by logical ID"/>
+      </interaction>
+      <interaction>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHALL"/>
+        </extension>
+        <code value="search-type"/>
+        <documentation value="Search for MedicationRequest resources"/>
+      </interaction>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHALL"/>
+        </extension>
+        <name value="patient"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/clinical-patient"/>
+        <type value="reference"/>
+        <documentation value="The patient for whom the medication was ordered (SHALL support)"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHOULD"/>
+        </extension>
+        <name value="status"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/medications-status"/>
+        <type value="token"/>
+        <documentation value="Status of the prescription"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHOULD"/>
+        </extension>
+        <name value="intent"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/MedicationRequest-intent"/>
+        <type value="token"/>
+        <documentation value="The intent of the medication request"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHOULD"/>
+        </extension>
+        <name value="authoredon"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/MedicationRequest-authoredon"/>
+        <type value="date"/>
+        <documentation value="Return prescriptions written on this date"/>
+      </searchParam>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+        <valueCode value="SHOULD"/>
+      </extension>
+      <type value="MedicationDispense"/>
+      <documentation value="MedicationDispense resources represent medication dispensing events.&#xA;If supported, clients SHALL support search by patient.&#xA;Clients MAY omit this resource based on their needs."/>
+      <interaction>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHALL"/>
+        </extension>
+        <code value="read"/>
+        <documentation value="Read MedicationDispense by logical ID"/>
+      </interaction>
+      <interaction>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHALL"/>
+        </extension>
+        <code value="search-type"/>
+        <documentation value="Search for MedicationDispense resources"/>
+      </interaction>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHALL"/>
+        </extension>
+        <name value="patient"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/clinical-patient"/>
+        <type value="reference"/>
+        <documentation value="The patient for whom the medication was dispensed (SHALL support)"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHOULD"/>
+        </extension>
+        <name value="status"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/medications-status"/>
+        <type value="token"/>
+        <documentation value="Status of the dispense"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHOULD"/>
+        </extension>
+        <name value="whenhandedover"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/MedicationDispense-whenhandedover"/>
+        <type value="date"/>
+        <documentation value="When the medication was handed over"/>
+      </searchParam>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+        <valueCode value="SHOULD"/>
+      </extension>
+      <type value="Immunization"/>
+      <documentation value="Immunization resources represent vaccination records.&#xA;If supported, clients SHALL support search by patient.&#xA;Clients MAY omit this resource based on their needs."/>
+      <interaction>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHALL"/>
+        </extension>
+        <code value="read"/>
+        <documentation value="Read Immunization by logical ID"/>
+      </interaction>
+      <interaction>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHALL"/>
+        </extension>
+        <code value="search-type"/>
+        <documentation value="Search for Immunization resources"/>
+      </interaction>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHALL"/>
+        </extension>
+        <name value="patient"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/clinical-patient"/>
+        <type value="reference"/>
+        <documentation value="The patient for the vaccination record (SHALL support)"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHOULD"/>
+        </extension>
+        <name value="date"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/clinical-date"/>
+        <type value="date"/>
+        <documentation value="Vaccination date"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHOULD"/>
+        </extension>
+        <name value="status"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/Immunization-status"/>
+        <type value="token"/>
+        <documentation value="Status of the immunization"/>
+      </searchParam>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+        <valueCode value="SHOULD"/>
+      </extension>
+      <type value="MedicationStatement"/>
+      <documentation value="MedicationStatement resources represent a patient's medication usage, including&#xA;self-reported medications. If supported, clients SHALL support search by patient.&#xA;Clients MAY omit this resource based on their needs."/>
+      <interaction>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHALL"/>
+        </extension>
+        <code value="read"/>
+        <documentation value="Read MedicationStatement by logical ID"/>
+      </interaction>
+      <interaction>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHALL"/>
+        </extension>
+        <code value="search-type"/>
+        <documentation value="Search for MedicationStatement resources"/>
+      </interaction>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHALL"/>
+        </extension>
+        <name value="patient"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/clinical-patient"/>
+        <type value="reference"/>
+        <documentation value="The patient for the medication statement (SHALL support)"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHOULD"/>
+        </extension>
+        <name value="status"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/medications-status"/>
+        <type value="token"/>
+        <documentation value="Status of the medication statement"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHOULD"/>
+        </extension>
+        <name value="effective"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/MedicationStatement-effective"/>
+        <type value="date"/>
+        <documentation value="Date when patient was taking the medication"/>
+      </searchParam>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+        <valueCode value="SHOULD"/>
+      </extension>
+      <type value="Encounter"/>
+      <documentation value="Encounter resources represent patient encounters (visits, admissions, etc.).&#xA;If supported, clients SHALL support search by patient.&#xA;Clients MAY omit this resource based on their needs."/>
+      <interaction>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHALL"/>
+        </extension>
+        <code value="read"/>
+        <documentation value="Read Encounter by logical ID"/>
+      </interaction>
+      <interaction>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHALL"/>
+        </extension>
+        <code value="search-type"/>
+        <documentation value="Search for Encounter resources"/>
+      </interaction>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHALL"/>
+        </extension>
+        <name value="patient"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/clinical-patient"/>
+        <type value="reference"/>
+        <documentation value="The patient present at the encounter (SHALL support)"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHOULD"/>
+        </extension>
+        <name value="date"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/clinical-date"/>
+        <type value="date"/>
+        <documentation value="A date within the encounter period"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHOULD"/>
+        </extension>
+        <name value="status"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/Encounter-status"/>
+        <type value="token"/>
+        <documentation value="Status of the encounter"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHOULD"/>
+        </extension>
+        <name value="class"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/Encounter-class"/>
+        <type value="token"/>
+        <documentation value="Classification of the encounter (e.g., inpatient, outpatient)"/>
+      </searchParam>
+    </resource>
+  </rest>
+</CapabilityStatement>

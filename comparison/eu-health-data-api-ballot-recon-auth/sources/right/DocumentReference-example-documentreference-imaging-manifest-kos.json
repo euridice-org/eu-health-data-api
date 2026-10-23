@@ -1,0 +1,60 @@
+{
+  "resourceType" : "DocumentReference",
+  "id" : "example-documentreference-imaging-manifest-kos",
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: DocumentReference example-documentreference-imaging-manifest-kos</b></p><a name=\"example-documentreference-imaging-manifest-kos\"> </a><a name=\"hcexample-documentreference-imaging-manifest-kos\"> </a><p><b>masterIdentifier</b>: <code>urn:oid:2.999.3.4.5.6.7.8.9</code>/urn:uuid:b2c3d4e5-f6a7-8901-bcde-f12345678901</p><p><b>status</b>: Current</p><p><b>type</b>: <span title=\"Codes:{http://loinc.org 18748-4}\">Diagnostic imaging study</span></p><p><b>category</b>: <span title=\"Codes:{http://hl7.eu/fhir/health-data-api/CodeSystem/document-priority-category-eu-api Medical-Imaging}\">medical imaging studies and related imaging reports</span></p><p><b>subject</b>: <a href=\"http://example.org/fhir/Patient/example-patient\">Jan Jansen</a></p><p><b>date</b>: 2026-02-20 14:00:00+0100</p><p><b>author</b>: <a href=\"http://example.org/fhir/Organization/example-radiology-dept\">Radiology Department, Amsterdam UMC</a></p><p><b>custodian</b>: <a href=\"http://example.org/fhir/Organization/example-hospital\">Amsterdam University Medical Center</a></p><h3>RelatesTos</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Code</b></td><td><b>Target</b></td></tr><tr><td style=\"display: none\">*</td><td>Transforms</td><td><a href=\"DocumentReference-example-documentreference-imaging-manifest-fhir.html\">DocumentReference: masterIdentifier = urn:oid:2.999.3.4.5.6.7.8.9#urn:uuid:a1b2c3d4-e5f6-7890-abcd-ef1234567890; status = current; type = Diagnostic imaging study; category = medical imaging studies and related imaging reports; date = 2026-02-20 14:00:00+0100; description = FHIR ImagingStudy manifest for CT Chest study</a></td></tr></table><p><b>description</b>: DICOM KOS manifest for CT Chest study</p><blockquote><p><b>content</b></p><h3>Attachments</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>ContentType</b></td><td><b>Url</b></td><td><b>Title</b></td><td><b>Creation</b></td></tr><tr><td style=\"display: none\">*</td><td>application/dicom</td><td><a href=\"http://example.org/wado-rs/studies/1.2.840.113619.2.55.3.604688119.969.1234567890.123/series/1.2.840.113619.2.55.3.604688119.969.1234567890.124/instances/1.2.840.113619.2.55.3.604688119.969.1234567890.125\">http://example.org/wado-rs/studies/1.2.840.113619.2.55.3.604688119.969.1234567890.123/series/1.2.840.113619.2.55.3.604688119.969.1234567890.124/instances/1.2.840.113619.2.55.3.604688119.969.1234567890.125</a></td><td>CT Chest - DICOM KOS</td><td>2026-02-20 14:00:00+0100</td></tr></table><p><b>format</b>: DCMUID: 1.2.840.10008.5.1.4.1.1.88.59 (Key Object Selection Document)</p></blockquote></div>"
+  },
+  "masterIdentifier" : {
+    "system" : "urn:oid:2.999.3.4.5.6.7.8.9",
+    "value" : "urn:uuid:b2c3d4e5-f6a7-8901-bcde-f12345678901"
+  },
+  "status" : "current",
+  "type" : {
+    "coding" : [{
+      "system" : "http://loinc.org",
+      "code" : "18748-4",
+      "display" : "Diagnostic imaging study"
+    }]
+  },
+  "category" : [{
+    "coding" : [{
+      "system" : "http://hl7.eu/fhir/health-data-api/CodeSystem/document-priority-category-eu-api",
+      "code" : "Medical-Imaging",
+      "display" : "medical imaging studies and related imaging reports"
+    }]
+  }],
+  "subject" : {
+    "reference" : "http://example.org/fhir/Patient/example-patient",
+    "display" : "Jan Jansen"
+  },
+  "date" : "2026-02-20T14:00:00+01:00",
+  "author" : [{
+    "reference" : "http://example.org/fhir/Organization/example-radiology-dept",
+    "display" : "Radiology Department, Amsterdam UMC"
+  }],
+  "custodian" : {
+    "reference" : "http://example.org/fhir/Organization/example-hospital",
+    "display" : "Amsterdam University Medical Center"
+  },
+  "relatesTo" : [{
+    "code" : "transforms",
+    "target" : {
+      "reference" : "DocumentReference/example-documentreference-imaging-manifest-fhir"
+    }
+  }],
+  "description" : "DICOM KOS manifest for CT Chest study",
+  "content" : [{
+    "attachment" : {
+      "contentType" : "application/dicom",
+      "url" : "http://example.org/wado-rs/studies/1.2.840.113619.2.55.3.604688119.969.1234567890.123/series/1.2.840.113619.2.55.3.604688119.969.1234567890.124/instances/1.2.840.113619.2.55.3.604688119.969.1234567890.125",
+      "title" : "CT Chest - DICOM KOS",
+      "creation" : "2026-02-20T14:00:00+01:00"
+    },
+    "format" : {
+      "system" : "http://dicom.nema.org/resources/ontology/DCMUID",
+      "code" : "1.2.840.10008.5.1.4.1.1.88.59",
+      "display" : "Key Object Selection Document"
+    }
+  }]
+}

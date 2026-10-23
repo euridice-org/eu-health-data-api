@@ -1,0 +1,178 @@
+# Actors and Transactions - EU Health Data API v1.0.0-ballot
+
+## Actors and Transactions
+
+The actor model defined here is an orchestration of existing IHE actors and specifications, combined together into high-level composite actors. Actors and transactions are inherited from dependent IHE profiles, and those actors are stacked, constrained and potentially modified.
+
+This is similar to the approach taken in the MHDS specification, but with a more narrow subset of specifications fit to the European situation.
+
+### Relevant Specifications:
+
+* Authorization 
+* [HL7 SMART App Launch 2.2](https://hl7.org/fhir/smart-app-launch/STU2.2/) - Defines Standalone, Launch and Backend Services authorization for FHIR. Whether SMART App Launch is required depends on the environment and use case.
+* [IHE IUA](https://profiles.ihe.net/ITI/IUA/index.html) - Defines authorization and access control actors and mechanisms. Wether IUA is required depends on the environment and use case.
+ 
+* Patient Identity Matching 
+* [IHE PDQm](https://profiles.ihe.net/ITI/PDQm/index.html) - Defines how a client can perform patient lookup given demographics against a server.
+ 
+* Document Exchange 
+* [IHE MHD](https://profiles.ihe.net/ITI/MHD/) - Defines exchange of Documents, which we use to exchange FHIR document content.
+ 
+* Resource Exchange 
+* [HL7 International Patient Access (IPA)](https://hl7.org/fhir/uv/ipa/) - Defines how an application can access FHIR information using SMART authorization and resource access. IPA is the primary reference for resource access patterns.
+ 
+* Foundational 
+* [IHE Consistent Time](https://profiles.ihe.net/ITI/TF/Volume1/ch-7.html) - Defines the use of Network Time Protocol (NTP) to provide consistent time across systems. See [SMART Server Time Synchronization](authorization.md#smart-server-time-synchronization) for this IG's recommendation for SMART server roles.
+* [IHE ATNA](https://profiles.ihe.net/ITI/TF/Volume1/ch-9.html) - Referenced for secure transport requirements (TLS 1.2 Floor using BCP195 Option).
+ 
+
+### Authentication And Authorization Groupings
+
+The generic roles are [Health Data API Authorization Client](ActorDefinition-eu-authorization-client-eu-api.md), [Authentication Service](ActorDefinition-authentication-service-eu-api.md), [Health Data API Authorization Server](ActorDefinition-eu-authorization-server-eu-api.md), and [Health Data API Resource Server](ActorDefinition-eu-authorization-resource-server-eu-api.md). The Health Data API qualifier identifies logical roles in this specification, not centrally operated EU services. Their deployment and operation are determined by the applicable architecture. Note that these technical roles do not intend to determine the parties' status as controller, joint controller, or processor under GDPR.
+
+The Authentication Service authenticates end users, directly or using a Wallet or upstream identity provider. The Authorization Server relies on an acceptable authentication result where required, applies authorization policy, and issues API access tokens. The Resource Server validates or introspects those tokens and enforces granted authorization and local policy.
+
+**Optional grouping:** an Authentication Service MAY be grouped with a Health Data API Authorization Server in one implementation. Separate implementations require deployment-defined trust and an authentication interface; this IG does not define an interoperable transaction between them. Grouping does not require an OIDC ID token or app-mediated token exchange. These are logical roles, not a required number of physical servers.
+
+Independently, an Authorization Server MAY be co-located with a Resource Server. Neither grouping is required of a Document Access Provider or Resource Access Provider. The Authentication Service is IG-defined, not an additional formal IUA or SMART actor; the selected protocol's Authorization Server retains its conformance obligations. Pre-authorized Backend Services does not require runtime end-user authentication. See [Authentication and API authorization](authorization.md#authentication-and-api-authorization) for the flow and trust boundaries.
+
+### Document Exchange
+
+Document exchange is defined with 3 actors:
+
+**Document Exchange Actors**
+
+1. **Document Publisher (client)**- Produces EEHRxF FHIR Documents, publishes those documents to a Document Access Provider. Can be grouped with Access Provider, in which case the publishing transactions are internalized.
+1. **Document Access Provider (server)**- Provides access to EEHRxF FHIR Documents by offering query APIs to Document Consumers. See**Document Submission Option**below for systems that accept document publication from external producers.
+1. **Document Consumer (client)**- Consumes EEHRxF FHIR documents by querying a Document Access Provider.
+
+These composite actors inherit existing actors from the selected IUA or SMART authorization profile and from the PDQm and MHD specifications:
+
+**Document Exchange - Actor Groupings**
+
+The diagram shows logical roles for one exchange, not a universal shared Authorization Server. User authentication may be supplied by a separate Authentication Service or the optional grouping described above.
+
+**Document Publisher**
+
+* The selected [IUA Authorization Client](ActorDefinition-iua-authorization-client-eu-api.md), [SMART App](ActorDefinition-smart-app-eu-api.md), or [SMART Backend Service](ActorDefinition-smart-backend-service-eu-api.md); see [Authorization](authorization.md#environment-specific-requirements).
+* [PDQm Patient Demographics Consumer](https://profiles.ihe.net/ITI/PDQm/volume-1.html) ([CapabilityStatement](https://profiles.ihe.net/ITI/PDQm/CapabilityStatement-IHE.PDQm.PatientDemographicsConsumerQuery.html))
+* [MHD Document Source](https://profiles.ihe.net/ITI/MHD/1331_actors_and_transactions.html) with [Simplified Publish Option](https://profiles.ihe.net/ITI/MHD/1332_actor_options.html#13324-simplified-publish-option) ([CapabilityStatement](https://profiles.ihe.net/ITI/MHD/CapabilityStatement-IHE.MHD.DocumentSource.html))
+
+**Document Access Provider**
+
+* The selected [IUA Resource Server](ActorDefinition-iua-resource-server-eu-api.md) or [SMART FHIR Resource Server](ActorDefinition-smart-fhir-resource-server-eu-api.md); see [Authorization](authorization.md#environment-specific-requirements).
+* An IUA or SMART Authorization Server is an independent actor. It MAY be co-located with the provider, but is not a required provider grouping.
+* [PDQm Patient Demographics Supplier](https://profiles.ihe.net/ITI/PDQm/volume-1.html) ([CapabilityStatement](https://profiles.ihe.net/ITI/PDQm/CapabilityStatement-IHE.PDQm.PatientDemographicsSupplier.html))
+* [MHD Document Responder](https://profiles.ihe.net/ITI/MHD/1331_actors_and_transactions.html) ([CapabilityStatement](https://profiles.ihe.net/ITI/MHD/CapabilityStatement-IHE.MHD.DocumentResponder.html))
+
+ **Document Submission Option** (when accepting external publication):
+
+* [MHD Document Recipient](https://profiles.ihe.net/ITI/MHD/1331_actors_and_transactions.html) with [Simplified Publish Option](https://profiles.ihe.net/ITI/MHD/1332_actor_options.html#13324-simplified-publish-option) ([CapabilityStatement](https://profiles.ihe.net/ITI/MHD/CapabilityStatement-IHE.MHD.DocumentRecipient.html))
+
+**Document Consumer**
+
+* The selected [IUA Authorization Client](ActorDefinition-iua-authorization-client-eu-api.md), [SMART App](ActorDefinition-smart-app-eu-api.md), or [SMART Backend Service](ActorDefinition-smart-backend-service-eu-api.md); see [Authorization](authorization.md#environment-specific-requirements).
+* [PDQm Patient Demographics Consumer](https://profiles.ihe.net/ITI/PDQm/volume-1.html) ([CapabilityStatement](https://profiles.ihe.net/ITI/PDQm/CapabilityStatement-IHE.PDQm.PatientDemographicsConsumerQuery.html))
+* [MHD Document Consumer](https://profiles.ihe.net/ITI/MHD/1331_actors_and_transactions.html) ([CapabilityStatement](https://profiles.ihe.net/ITI/MHD/CapabilityStatement-IHE.MHD.DocumentConsumer.html))
+
+This leads to the following required transactions between these actors:
+
+```
+sequenceDiagram
+    participant Publisher as Document Publisher
+  participant Authorization as Authorization Server
+    participant Provider as Document Access Provider
+    participant Consumer as Document Consumer
+
+  Publisher->>Authorization: Get Access Token (selected IUA or SMART flow)
+  Authorization-->>Publisher: access_token
+    Publisher->>Provider: Patient Lookup (PDQm ITI-78)
+    Provider-->>Publisher: Patient Bundle
+    Publisher->>Provider: Simplified Publish (MHD ITI-105)
+    Provider-->>Publisher: Response
+
+    Consumer->>Authorization: Get Access Token (selected IUA or SMART flow)
+    Authorization-->>Consumer: access_token
+    Consumer->>Provider: Patient Lookup (PDQm ITI-78)
+    Provider-->>Consumer: Patient Bundle
+    Consumer->>Provider: Find Document References (MHD ITI-67)
+    Provider-->>Consumer: DocumentReference Bundle
+    Consumer->>Provider: Retrieve Document (MHD ITI-68)
+    Provider-->>Consumer: Document Content
+
+```
+
+ **Document publication and consumption transactions** 
+
+See the following functional pages for detailed transaction information:
+
+* [Authorization](authorization.md) - Authentication and authorization flows
+* [Patient Lookup](patient-match.md) - Patient identification transactions
+* [Document Exchange](document-exchange.md) - Document query and retrieval transactions
+
+This can be combined with content profiles defined by each EHDS Priority Category, for those categories that are primarily represented as a FHIR Document. For example, a system can be a **Lab Result Document Publisher**, a **Patient Summary Document Consumer**, or a **Imaging Manifest Document Access Provider**.
+
+### Resource Exchange
+
+It is also useful in many cases to transact with individual FHIR resources. For this purpose, two resource-based actors are defined:
+
+**Resource Exchange Actors**
+
+1. **Resource Access Provider (server)**- A FHIR server providing access to FHIR resources by hosting search + read query API's.
+
+1. **Resource Consumer (client)**- A FHIR client that consumes external FHIR resources by querying a Resource Access Provider.
+
+This version of the IG defines resource search and read access. How resources are supplied to a Resource Access Provider is outside its scope. See [Resource Exchange Patterns](resourceExchange.md) for background and possible future approaches.
+
+These composite actors inherit existing actors from the selected IUA or SMART authorization profile, PDQm, and [International Patient Access (IPA)](https://hl7.org/fhir/uv/ipa/) specifications (with QEDm alignment where compatible):
+
+**Resource Access - Actor Groupings**
+
+The Authorization Server is independent of the provider grouping. Authentication Service grouping and Authorization Server / Resource Server co-location are separate optional deployment choices.
+
+**Resource Access Provider**
+
+* The selected [IUA Resource Server](ActorDefinition-iua-resource-server-eu-api.md) or [SMART FHIR Resource Server](ActorDefinition-smart-fhir-resource-server-eu-api.md); see [Authorization](authorization.md#environment-specific-requirements).
+* An IUA or SMART Authorization Server is an independent actor. It MAY be co-located with the provider, but is not a required provider grouping.
+* [PDQm Patient Demographics Supplier](https://profiles.ihe.net/ITI/PDQm/volume-1.html) ([CapabilityStatement](https://profiles.ihe.net/ITI/PDQm/CapabilityStatement-IHE.PDQm.PatientDemographicsSupplier.html))
+* Resource Access 
+* [HL7 International Patient Access Server](https://hl7.org/fhir/uv/ipa/) ([CapabilityStatement](https://hl7.org/fhir/uv/ipa/CapabilityStatement-ipa-server.html))
+ 
+
+**Resource Consumer**
+
+* The selected [IUA Authorization Client](ActorDefinition-iua-authorization-client-eu-api.md), [SMART App](ActorDefinition-smart-app-eu-api.md), or [SMART Backend Service](ActorDefinition-smart-backend-service-eu-api.md); see [Authorization](authorization.md#environment-specific-requirements).
+* [PDQm Patient Demographics Consumer](https://profiles.ihe.net/ITI/PDQm/volume-1.html) ([CapabilityStatement](https://profiles.ihe.net/ITI/PDQm/CapabilityStatement-IHE.PDQm.PatientDemographicsConsumerQuery.html))
+* Resource Access 
+* [HL7 International Patient Access Client](https://hl7.org/fhir/uv/ipa/) ([CapabilityStatement](https://hl7.org/fhir/uv/ipa/CapabilityStatement-ipa-client.html))
+ 
+
+This leads to the following required transactions between these actors:
+
+```
+sequenceDiagram
+    participant Provider as Resource Access Provider
+  participant Authorization as Authorization Server
+    participant Consumer as Resource Consumer
+
+  Consumer->>Authorization: Get Access Token (selected IUA or SMART flow)
+  Authorization-->>Consumer: access_token
+    Consumer->>Provider: Patient Lookup (PDQm ITI-78)
+    Provider-->>Consumer: Patient Bundle
+    Consumer->>Provider: Resource Query (IPA)
+    Provider-->>Consumer: Resource Bundle
+
+```
+
+ **Resource access transactions** 
+
+> **Note:** The Authorization Server is a separate protocol participant. It MAY be co-located with a provider as a deployment choice, but co-location does not merge its responsibilities with the Resource Server. See [Authorization Server Deployment](authorization.md#authorization-server-deployment).
+
+### Example Groupings
+
+**Example Grouping - Document**
+
+**Example Grouping - Group**
+
+**Example Grouping - Document Assembly from Distributed Resources**
+

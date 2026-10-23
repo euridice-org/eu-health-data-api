@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Basic xmlns="http://hl7.org/fhir">
+  <id value="iua-authorization-server-eu-api"/>
+  <language value="en"/>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: ActorDefinition iua-authorization-server-eu-api</b></p><a name="iua-authorization-server-eu-api"> </a><a name="hciua-authorization-server-eu-api"> </a><table class="grid"><tr><td><b>Actor: IuaAuthorizationServerEuApi </b></td><td>IHE IUA Authorization Server</td><td>Type: system </td></tr><tr><td colspan="3"/></tr></table></div>
+  </text>
+  <extension url="http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.url">
+    <valueUri value="http://hl7.eu/fhir/health-data-api/ActorDefinition/iua-authorization-server-eu-api"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.version">
+    <valueString value="1.0.0-ballot"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.name">
+    <valueString value="IuaAuthorizationServerEuApi"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.title">
+    <valueString value="IHE IUA Authorization Server"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.status">
+    <valueCode value="active"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.experimental">
+    <valueBoolean value="false"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.date">
+    <valueDateTime value="2026-10-23T12:01:58+02:00"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.publisher">
+    <valueString value="HL7 Europe"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.contact">
+    <valueContactDetail>
+      <name value="HL7 Europe"/>
+      <telecom>
+        <system value="url"/>
+        <value value="http://hl7.eu"/>
+      </telecom>
+    </valueContactDetail>
+  </extension>
+  <extension url="http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.description">
+    <valueMarkdown value="The independent IHE IUA Authorization Server authenticates clients, validates client&#xA;assertions when selected, applies issuance policy, prevents replay, and issues tokens.&#xA;Where user authentication is required, it may use the IG-defined Authentication Service;&#xA;this does not remove any applicable IUA Authorization Server conformance obligation.&#xA;It does not provide protected-resource enforcement. See the&#xA;[IHE IUA Authorization Server](https://profiles.ihe.net/ITI/IUA/index.html#34112-authorization-server)&#xA;and [Authorization](authorization.html#ihe-iua).&#xA;IUA requires this role to be grouped with a CT Time Client; see&#xA;[required actor groupings](https://profiles.ihe.net/ITI/IUA/index.html#343-iua-required-actor-groupings)&#xA;and the shared [Time Synchronization](authorization.html#time-synchronization) deployment guidance."/>
+  </extension>
+  <extension url="http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.jurisdiction">
+    <valueCodeableConcept>
+      <coding>
+        <system value="http://unstats.un.org/unsd/methods/m49/m49.htm"/>
+        <code value="150"/>
+        <display value="Europe"/>
+      </coding>
+    </valueCodeableConcept>
+  </extension>
+  <extension url="http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.copyright">
+    <valueMarkdown value="Copyright HL7 Europe. Licensed under Creative Commons public domain (CC0 1.0)."/>
+  </extension>
+  <extension url="http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.type">
+    <valueCode value="system"/>
+  </extension>
+  <code>
+    <coding>
+      <system value="http://hl7.org/fhir/fhir-types"/>
+      <code value="ActorDefinition"/>
+    </coding>
+  </code>
+</Basic>

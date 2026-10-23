@@ -1,0 +1,103 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://hl7.eu/fhir/health-data-api/ConceptMap/document-reference-category-type-eu-api> a fhir:ConceptMap ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:Resource.id [ fhir:value "document-reference-category-type-eu-api"] ;
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ] ;
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: ConceptMap document-reference-category-type-eu-api</b></p><a name=\"document-reference-category-type-eu-api\"> </a><a name=\"hcdocument-reference-category-type-eu-api\"> </a><p>This mapping does not specify any particular context of use.</p><br/><p>Mapping from <a href=\"CodeSystem-document-priority-category-eu-api.html\">EEHRxF Document Priority Category CodeSystem</a> to <a href=\"http://terminology.hl7.org/6.5.0/CodeSystem-v3-loinc.html\">Logical Observation Identifiers, Names and Codes (LOINC)</a></p><table class=\"grid\"><tr><td colspan=\"2\"><b>Source Concept Details</b></td><td><b>Relationship</b></td><td colspan=\"2\"><b>Target Concept Details</b></td></tr><tr><td colspan=\"2\"><b>Codes</b> from <a href=\"CodeSystem-document-priority-category-eu-api.html\" title=\"http://hl7.eu/fhir/health-data-api/CodeSystem/document-priority-category-eu-api\">EEHRxF Document Priority Category CodeSystem</a></td><td/><td colspan=\"2\"><b>Codes</b> from <a href=\"http://terminology.hl7.org/6.5.0/CodeSystem-v3-loinc.html\" title=\"http://loinc.org\">Logical Observation Identifiers, Names and Codes (LOINC)</a></td></tr><tr><td style=\"border-right-width: 0px\">Patient-Summaries</td><td style=\"border-left-width: 0px\">patient summaries</td><td><a href=\"http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#specializes\" title=\"specializes\">has specialization</a></td><td style=\"border-right-width: 0px\">60591-5</td><td style=\"border-left-width: 0px\">Patient summary Document</td></tr><tr><td style=\"border-right-width: 0px; border-bottom-style: none\">Discharge-Reports</td><td style=\"border-left-width: 0px; border-bottom-style: none\">discharge reports</td><td><a href=\"http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#specializes\" title=\"specializes\">has specialization</a></td><td style=\"border-right-width: 0px\">18842-5</td><td style=\"border-left-width: 0px\">Discharge summary</td></tr><tr><td style=\"border-right-width: 0px; border-top-style: none\"/><td style=\"border-top-style: none; border-left-width: 0px\"/><td><a href=\"http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#specializes\" title=\"specializes\">has specialization</a></td><td style=\"border-right-width: 0px\">100719-4</td><td style=\"border-left-width: 0px\">Surgical oncology Discharge summary</td></tr><tr><td style=\"border-right-width: 0px\">Laboratory-Reports</td><td style=\"border-left-width: 0px\">medical test results, including laboratory and other diagnostic results and related reports</td><td><a href=\"http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#specializes\" title=\"specializes\">has specialization</a></td><td style=\"border-right-width: 0px\">11502-2</td><td style=\"border-left-width: 0px\">Laboratory report</td></tr><tr><td style=\"border-right-width: 0px; border-bottom-style: none\">Medical-Imaging</td><td style=\"border-left-width: 0px; border-bottom-style: none\">medical imaging studies and related imaging reports</td><td><a href=\"http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#specializes\" title=\"specializes\">has specialization</a></td><td style=\"border-right-width: 0px\">85430-7</td><td style=\"border-left-width: 0px\">Diagnostic imaging report</td></tr><tr><td style=\"border-right-width: 0px; border-top-style: none\"/><td style=\"border-top-style: none; border-left-width: 0px\"/><td><a href=\"http://hl7.org/fhir/R4/codesystem-concept-map-equivalence.html#specializes\" title=\"specializes\">has specialization</a></td><td style=\"border-right-width: 0px\">18748-4</td><td style=\"border-left-width: 0px\">Diagnostic imaging study</td></tr></table></div>"
+  ] ;
+  fhir:ConceptMap.url [ fhir:value "http://hl7.eu/fhir/health-data-api/ConceptMap/document-reference-category-type-eu-api"] ;
+  fhir:ConceptMap.version [ fhir:value "1.0.0-ballot"] ;
+  fhir:ConceptMap.name [ fhir:value "DocumentReferenceCategoryTypeEuApi"] ;
+  fhir:ConceptMap.title [ fhir:value "EEHRxF MHD DocumentReference ConceptMap"] ;
+  fhir:ConceptMap.status [ fhir:value "draft"] ;
+  fhir:ConceptMap.experimental [ fhir:value "false"^^xsd:boolean] ;
+  fhir:ConceptMap.date [ fhir:value "2026-10-23T12:01:58+02:00"^^xsd:dateTime] ;
+  fhir:ConceptMap.publisher [ fhir:value "HL7 Europe"] ;
+  fhir:ConceptMap.contact [
+     fhir:index 0 ;
+     fhir:ContactDetail.name [ fhir:value "HL7 Europe" ] ;
+     fhir:ContactDetail.telecom [
+       fhir:index 0 ;
+       fhir:ContactPoint.system [ fhir:value "url" ] ;
+       fhir:ContactPoint.value [ fhir:value "http://hl7.eu" ]
+     ]
+  ] ;
+  fhir:ConceptMap.description [ fhir:value "mapping from the EHDS regulatory priority categories to the LOINC document category codes for clinical precision in document identification."] ;
+  fhir:ConceptMap.jurisdiction [
+     fhir:index 0 ;
+     fhir:CodeableConcept.coding [
+       fhir:index 0 ;
+       fhir:Coding.system [ fhir:value "http://unstats.un.org/unsd/methods/m49/m49.htm" ] ;
+       fhir:Coding.code [ fhir:value "150" ] ;
+       fhir:Coding.display [ fhir:value "Europe" ]
+     ]
+  ] ;
+  fhir:ConceptMap.purpose [ fhir:value "Guide implementers in understanding how the coarse-grained priority categories defined in the EHDS regulation relate to specific document categories identified by LOINC codes, and it may evolve over time as clinical practice changes and new document categories become relevant for cross-border exchange."] ;
+  fhir:ConceptMap.copyright [ fhir:value "Copyright HL7 Europe. Licensed under Creative Commons public domain (CC0 1.0)."] ;
+  fhir:ConceptMap.group [
+     fhir:index 0 ;
+     fhir:ConceptMap.group.source [ fhir:value "http://hl7.eu/fhir/health-data-api/CodeSystem/document-priority-category-eu-api" ] ;
+     fhir:ConceptMap.group.target [ fhir:value "http://loinc.org" ] ;
+     fhir:ConceptMap.group.element [
+       fhir:index 0 ;
+       fhir:ConceptMap.group.element.code [ fhir:value "Patient-Summaries" ] ;
+       fhir:ConceptMap.group.element.target [
+         fhir:index 0 ;
+         fhir:ConceptMap.group.element.target.code [ fhir:value "60591-5" ] ;
+         fhir:ConceptMap.group.element.target.display [ fhir:value "Patient summary Document" ] ;
+         fhir:ConceptMap.group.element.target.equivalence [ fhir:value "specializes" ]
+       ]
+     ], [
+       fhir:index 1 ;
+       fhir:ConceptMap.group.element.code [ fhir:value "Discharge-Reports" ] ;
+       fhir:ConceptMap.group.element.target [
+         fhir:index 0 ;
+         fhir:ConceptMap.group.element.target.code [ fhir:value "18842-5" ] ;
+         fhir:ConceptMap.group.element.target.display [ fhir:value "Discharge summary" ] ;
+         fhir:ConceptMap.group.element.target.equivalence [ fhir:value "specializes" ]
+       ], [
+         fhir:index 1 ;
+         fhir:ConceptMap.group.element.target.code [ fhir:value "100719-4" ] ;
+         fhir:ConceptMap.group.element.target.display [ fhir:value "Surgical oncology Discharge summary" ] ;
+         fhir:ConceptMap.group.element.target.equivalence [ fhir:value "specializes" ]
+       ]
+     ], [
+       fhir:index 2 ;
+       fhir:ConceptMap.group.element.code [ fhir:value "Laboratory-Reports" ] ;
+       fhir:ConceptMap.group.element.target [
+         fhir:index 0 ;
+         fhir:ConceptMap.group.element.target.code [ fhir:value "11502-2" ] ;
+         fhir:ConceptMap.group.element.target.display [ fhir:value "Laboratory report" ] ;
+         fhir:ConceptMap.group.element.target.equivalence [ fhir:value "specializes" ]
+       ]
+     ], [
+       fhir:index 3 ;
+       fhir:ConceptMap.group.element.code [ fhir:value "Medical-Imaging" ] ;
+       fhir:ConceptMap.group.element.target [
+         fhir:index 0 ;
+         fhir:ConceptMap.group.element.target.code [ fhir:value "85430-7" ] ;
+         fhir:ConceptMap.group.element.target.display [ fhir:value "Diagnostic imaging report" ] ;
+         fhir:ConceptMap.group.element.target.equivalence [ fhir:value "specializes" ]
+       ], [
+         fhir:index 1 ;
+         fhir:ConceptMap.group.element.target.code [ fhir:value "18748-4" ] ;
+         fhir:ConceptMap.group.element.target.display [ fhir:value "Diagnostic imaging study" ] ;
+         fhir:ConceptMap.group.element.target.equivalence [ fhir:value "specializes" ]
+       ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://hl7.eu/fhir/health-data-api/ConceptMap/document-reference-category-type-eu-api.ttl> a owl:Ontology ;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

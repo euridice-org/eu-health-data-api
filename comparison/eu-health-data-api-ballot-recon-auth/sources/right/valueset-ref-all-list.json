@@ -1,0 +1,326 @@
+{
+  "codeSystems" : [{
+    "url" : "http://hl7.eu/fhir/health-data-api/ValueSet/document-type-discharge-report-eu-api",
+    "version" : "1.0.0-ballot",
+    "status" : "draft",
+    "name" : "DocumentTypeDischargeReportEuApiVS",
+    "title" : "EEHRxF Document Type ValueSet for Discharge Reports",
+    "description" : "ValueSet for specific document types within the Discharge Report priority category.",
+    "systems" : ["http://loinc.org"],
+    "uses" : {
+    },
+    "ValueSet-document-type-eu-api.html" : "EEHRxF Document Type ValueSet"
+  },
+  {
+    "url" : "http://hl7.eu/fhir/health-data-api/ValueSet/document-type-eu-api",
+    "version" : "1.0.0-ballot",
+    "status" : "draft",
+    "name" : "DocumentTypeEuApiVS",
+    "title" : "EEHRxF Document Type ValueSet",
+    "description" : "Document type codes for clinical precision in document identification.",
+    "systems" : ["http://loinc.org"]
+  },
+  {
+    "url" : "http://hl7.eu/fhir/health-data-api/ValueSet/document-type-laboratory-report-eu-api",
+    "version" : "1.0.0-ballot",
+    "status" : "draft",
+    "name" : "DocumentTypeLaboratoryReportEuApiVS",
+    "title" : "EEHRxF Document Type ValueSet for Laboratory Reports",
+    "description" : "ValueSet for specific document types within the Laboratory Report priority category.",
+    "systems" : ["http://loinc.org"],
+    "uses" : {
+    },
+    "ValueSet-document-type-eu-api.html" : "EEHRxF Document Type ValueSet"
+  },
+  {
+    "url" : "http://hl7.eu/fhir/health-data-api/ValueSet/document-type-medical-imaging-eu-api",
+    "version" : "1.0.0-ballot",
+    "status" : "draft",
+    "name" : "DocumentTypeMedicalImagingEuApiVS",
+    "title" : "EEHRxF Document Type ValueSet for Medical Imaging",
+    "description" : "ValueSet for specific document types within the Medical Imaging priority category.",
+    "systems" : ["http://loinc.org"],
+    "uses" : {
+    },
+    "ValueSet-document-type-eu-api.html" : "EEHRxF Document Type ValueSet"
+  },
+  {
+    "url" : "http://hl7.eu/fhir/health-data-api/ValueSet/document-type-patient-summary-eu-api",
+    "version" : "1.0.0-ballot",
+    "status" : "draft",
+    "name" : "DocumentTypePatientSummaryEuApiVS",
+    "title" : "EEHRxF Document Type ValueSet for Patient Summaries",
+    "description" : "ValueSet for specific document types within the Patient Summary priority category.",
+    "systems" : ["http://loinc.org"],
+    "uses" : {
+    },
+    "ValueSet-document-type-eu-api.html" : "EEHRxF Document Type ValueSet"
+  },
+  {
+    "url" : "http://hl7.eu/fhir/health-data-api/ValueSet/eu-api-authorization-security-service",
+    "version" : "1.0.0-ballot",
+    "status" : "draft",
+    "name" : "EuApiAuthorizationSecurityServiceVS",
+    "title" : "EU Health Data API Authorization Security Service ValueSet",
+    "description" : "Security services that a concrete EU Health Data API deployment may select for its protected FHIR interface.",
+    "systems" : ["http://terminology.hl7.org/CodeSystem/restful-security-service",
+    "http://profiles.ihe.net/fhir/ihe.securityTypes/CodeSystem/securityTypes"],
+    "uses" : {
+    },
+    "StructureDefinition-eu-api-deployment-capabilitystatement.html" : "EU Health Data API Deployment CapabilityStatement"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/FHIR-version",
+    "version" : "4.0.1",
+    "status" : "active",
+    "name" : "FHIRVersion",
+    "title" : "FHIRVersion",
+    "description" : "All published FHIR Versions.",
+    "systems" : ["http://hl7.org/fhir/FHIR-version"],
+    "oids" : ["2.16.840.1.113883.4.642.3.1309"],
+    "sources" : ["2.16.840.1.113883.4.642.3.1309"],
+    "uses" : {
+    },
+    "StructureDefinition-eu-api-deployment-capabilitystatement.html" : "EU Health Data API Deployment CapabilityStatement"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/capability-statement-kind",
+    "version" : "4.0.1",
+    "status" : "active",
+    "name" : "CapabilityStatementKind",
+    "title" : "CapabilityStatementKind",
+    "description" : "How a capability statement is intended to be used.",
+    "systems" : ["http://hl7.org/fhir/capability-statement-kind"],
+    "oids" : ["2.16.840.1.113883.4.642.3.198"],
+    "sources" : ["2.16.840.1.113883.4.642.3.198"],
+    "uses" : {
+    },
+    "StructureDefinition-eu-api-deployment-capabilitystatement.html" : "EU Health Data API Deployment CapabilityStatement"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/conditional-delete-status",
+    "version" : "4.0.1",
+    "status" : "active",
+    "name" : "ConditionalDeleteStatus",
+    "title" : "ConditionalDeleteStatus",
+    "description" : "A code that indicates how the server supports conditional delete.",
+    "systems" : ["http://hl7.org/fhir/conditional-delete-status"],
+    "oids" : ["2.16.840.1.113883.4.642.3.194"],
+    "sources" : ["2.16.840.1.113883.4.642.3.194"],
+    "uses" : {
+    },
+    "StructureDefinition-eu-api-deployment-capabilitystatement.html" : "EU Health Data API Deployment CapabilityStatement"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/conditional-read-status",
+    "version" : "4.0.1",
+    "status" : "active",
+    "name" : "ConditionalReadStatus",
+    "title" : "ConditionalReadStatus",
+    "description" : "A code that indicates how the server supports conditional read.",
+    "systems" : ["http://hl7.org/fhir/conditional-read-status"],
+    "oids" : ["2.16.840.1.113883.4.642.3.200"],
+    "sources" : ["2.16.840.1.113883.4.642.3.200"],
+    "uses" : {
+    },
+    "StructureDefinition-eu-api-deployment-capabilitystatement.html" : "EU Health Data API Deployment CapabilityStatement"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/document-mode",
+    "version" : "4.0.1",
+    "status" : "active",
+    "name" : "DocumentMode",
+    "title" : "DocumentMode",
+    "description" : "Whether the application produces or consumes documents.",
+    "systems" : ["http://hl7.org/fhir/document-mode"],
+    "oids" : ["2.16.840.1.113883.4.642.3.186"],
+    "sources" : ["2.16.840.1.113883.4.642.3.186"],
+    "uses" : {
+    },
+    "StructureDefinition-eu-api-deployment-capabilitystatement.html" : "EU Health Data API Deployment CapabilityStatement"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/event-capability-mode",
+    "version" : "4.0.1",
+    "status" : "active",
+    "name" : "EventCapabilityMode",
+    "title" : "EventCapabilityMode",
+    "description" : "The mode of a message capability statement.",
+    "systems" : ["http://hl7.org/fhir/event-capability-mode"],
+    "oids" : ["2.16.840.1.113883.4.642.3.182"],
+    "sources" : ["2.16.840.1.113883.4.642.3.182"],
+    "uses" : {
+    },
+    "StructureDefinition-eu-api-deployment-capabilitystatement.html" : "EU Health Data API Deployment CapabilityStatement"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/jurisdiction",
+    "version" : "4.0.1",
+    "status" : "active",
+    "name" : "Jurisdiction ValueSet",
+    "title" : "Jurisdiction",
+    "description" : "This value set defines a base set of codes for country, country subdivision and region    for indicating where a resource is intended to be used.   \r\n   \r\n   Note: The codes for countries and country subdivisions are taken from    [ISO 3166](https://www.iso.org/iso-3166-country-codes.html)    while the codes for \"supra-national\" regions are from    [UN Standard country or area codes for statistical use (M49)](http://unstats.un.org/unsd/methods/m49/m49.htm).",
+    "systems" : ["http://unstats.un.org/unsd/methods/m49/m49.htm",
+    "urn:iso:std:iso:3166",
+    "urn:iso:std:iso:3166:-2"],
+    "oids" : ["2.16.840.1.113883.4.642.3.48"],
+    "sources" : ["2.16.840.1.113883.4.642.3.48"],
+    "uses" : {
+    },
+    "StructureDefinition-eu-api-deployment-capabilitystatement.html" : "EU Health Data API Deployment CapabilityStatement"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/languages",
+    "version" : "4.0.1",
+    "status" : "draft",
+    "name" : "CommonLanguages",
+    "title" : "Common Languages",
+    "description" : "This value set includes common codes from BCP-47 (http://tools.ietf.org/html/bcp47)",
+    "systems" : ["urn:ietf:bcp:47"],
+    "oids" : ["2.16.840.1.113883.4.642.3.20"],
+    "sources" : ["2.16.840.1.113883.4.642.3.20"],
+    "uses" : {
+    },
+    "StructureDefinition-eu-api-deployment-capabilitystatement.html" : "EU Health Data API Deployment CapabilityStatement"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/message-transport",
+    "version" : "4.0.1",
+    "status" : "active",
+    "name" : "MessageTransport",
+    "title" : "MessageTransport",
+    "description" : "The protocol used for message transport.",
+    "systems" : ["http://terminology.hl7.org/CodeSystem/message-transport"],
+    "oids" : ["2.16.840.1.113883.4.642.3.184"],
+    "sources" : ["2.16.840.1.113883.4.642.3.184"],
+    "uses" : {
+    },
+    "StructureDefinition-eu-api-deployment-capabilitystatement.html" : "EU Health Data API Deployment CapabilityStatement"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/mimetypes",
+    "version" : "4.0.1",
+    "status" : "active",
+    "name" : "Mime Types",
+    "title" : "MimeType",
+    "description" : "This value set includes all possible codes from BCP-13 (http://tools.ietf.org/html/bcp13)",
+    "systems" : ["urn:ietf:bcp:13"],
+    "oids" : ["2.16.840.1.113883.4.642.3.1024"],
+    "sources" : ["2.16.840.1.113883.4.642.3.1024"],
+    "uses" : {
+    },
+    "StructureDefinition-eu-api-deployment-capabilitystatement.html" : "EU Health Data API Deployment CapabilityStatement"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/publication-status",
+    "version" : "4.0.1",
+    "status" : "active",
+    "name" : "PublicationStatus",
+    "title" : "PublicationStatus",
+    "description" : "The lifecycle status of an artifact.",
+    "systems" : ["http://hl7.org/fhir/publication-status"],
+    "oids" : ["2.16.840.1.113883.4.642.3.3"],
+    "sources" : ["2.16.840.1.113883.4.642.3.3"],
+    "uses" : {
+    },
+    "StructureDefinition-eu-api-deployment-capabilitystatement.html" : "EU Health Data API Deployment CapabilityStatement"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/reference-handling-policy",
+    "version" : "4.0.1",
+    "status" : "active",
+    "name" : "ReferenceHandlingPolicy",
+    "title" : "ReferenceHandlingPolicy",
+    "description" : "A set of flags that defines how references are supported.",
+    "systems" : ["http://hl7.org/fhir/reference-handling-policy"],
+    "oids" : ["2.16.840.1.113883.4.642.3.202"],
+    "sources" : ["2.16.840.1.113883.4.642.3.202"],
+    "uses" : {
+    },
+    "StructureDefinition-eu-api-deployment-capabilitystatement.html" : "EU Health Data API Deployment CapabilityStatement"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/resource-types",
+    "version" : "4.0.1",
+    "status" : "active",
+    "name" : "ResourceType",
+    "title" : "ResourceType",
+    "description" : "One of the resource types defined as part of this version of FHIR.",
+    "systems" : ["http://hl7.org/fhir/resource-types"],
+    "oids" : ["2.16.840.1.113883.4.642.3.27"],
+    "sources" : ["2.16.840.1.113883.4.642.3.27"],
+    "uses" : {
+    },
+    "StructureDefinition-eu-api-deployment-capabilitystatement.html" : "EU Health Data API Deployment CapabilityStatement"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/restful-capability-mode",
+    "version" : "4.0.1",
+    "status" : "active",
+    "name" : "RestfulCapabilityMode",
+    "title" : "RestfulCapabilityMode",
+    "description" : "The mode of a RESTful capability statement.",
+    "systems" : ["http://hl7.org/fhir/restful-capability-mode"],
+    "oids" : ["2.16.840.1.113883.4.642.3.176"],
+    "sources" : ["2.16.840.1.113883.4.642.3.176"],
+    "uses" : {
+    },
+    "StructureDefinition-eu-api-deployment-capabilitystatement.html" : "EU Health Data API Deployment CapabilityStatement"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/search-param-type",
+    "version" : "4.0.1",
+    "status" : "active",
+    "name" : "SearchParamType",
+    "title" : "SearchParamType",
+    "description" : "Data types allowed to be used for search parameters.",
+    "systems" : ["http://hl7.org/fhir/search-param-type"],
+    "oids" : ["2.16.840.1.113883.4.642.3.11"],
+    "sources" : ["2.16.840.1.113883.4.642.3.11"],
+    "uses" : {
+    },
+    "StructureDefinition-eu-api-deployment-capabilitystatement.html" : "EU Health Data API Deployment CapabilityStatement"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/system-restful-interaction",
+    "version" : "4.0.1",
+    "status" : "active",
+    "name" : "SystemRestfulInteraction",
+    "title" : "SystemRestfulInteraction",
+    "description" : "Operations supported by REST at the system level.",
+    "systems" : ["http://hl7.org/fhir/restful-interaction"],
+    "oids" : ["2.16.840.1.113883.4.642.3.181"],
+    "sources" : ["2.16.840.1.113883.4.642.3.181"],
+    "uses" : {
+    },
+    "StructureDefinition-eu-api-deployment-capabilitystatement.html" : "EU Health Data API Deployment CapabilityStatement"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/type-restful-interaction",
+    "version" : "4.0.1",
+    "status" : "active",
+    "name" : "TypeRestfulInteraction",
+    "title" : "TypeRestfulInteraction",
+    "description" : "Operations supported by REST at the type or instance level.",
+    "systems" : ["http://hl7.org/fhir/restful-interaction"],
+    "oids" : ["2.16.840.1.113883.4.642.3.180"],
+    "sources" : ["2.16.840.1.113883.4.642.3.180"],
+    "uses" : {
+    },
+    "StructureDefinition-eu-api-deployment-capabilitystatement.html" : "EU Health Data API Deployment CapabilityStatement"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/versioning-policy",
+    "version" : "4.0.1",
+    "status" : "active",
+    "name" : "ResourceVersionPolicy",
+    "title" : "ResourceVersionPolicy",
+    "description" : "How the system supports versioning for a resource.",
+    "systems" : ["http://hl7.org/fhir/versioning-policy"],
+    "oids" : ["2.16.840.1.113883.4.642.3.190"],
+    "sources" : ["2.16.840.1.113883.4.642.3.190"],
+    "uses" : {
+    },
+    "StructureDefinition-eu-api-deployment-capabilitystatement.html" : "EU Health Data API Deployment CapabilityStatement"
+  }]
+}

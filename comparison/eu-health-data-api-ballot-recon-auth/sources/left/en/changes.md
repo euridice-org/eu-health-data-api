@@ -1,0 +1,36 @@
+# Change Log - EU Health Data API v1.0.0-ballot
+
+## Change Log
+
+This page tracks significant changes to the EU Health Data API Implementation Guide. Target: wide review ballot opening March 20, 2026.
+
+**May 19, 2026** — Deployment scenario framing: added Provider-Internal Exchange, Cross-Organization via National Infrastructure, and Wellness App Access use cases. Reworked the Implementation landing page to define the EHDS data exchange chain and scope boundaries for EHR systems, healthcare organizations, national infrastructure, access services, and cross-border NCP exchange. Added Relationship to XDS/FHIR Document Sharing background and tightened Member State Architecture examples around centralized repository, federated query, and hybrid patterns.
+
+**March 10, 2026** — Ballot preparation: added supportedProfile declarations to CapabilityStatements (#66). Dependency cleanup — removed QEDm and EU Laboratory hard dependencies (narrative-only references retained), pinned EU Base to 2.0.0-recon, spelled out IPA references with published URLs. Fixed actor definition names for SUSHI compliance. Updated open-issues page for ballot: refreshed Issue 1 (document categorization) to reflect current `.type`/LOINC approach, removed resolved issues (#14, #15, #20, #21), added MADO dual-encoding as ballot feedback question. Removed stale open-issue cross-references from MPD, FHIR documents, and priority categories pages. Added QA warning suppressions for MHD version and conformance statement phrasing.
+
+**March 4, 2026** — Document categorization: merged PR #65 (category-to-clinical-code ConceptMap). Category (`.category`) left unconstrained; `.type` with LOINC codes is the search parameter. Converted ValueSets to proper FSH, removed category binding and priority category ValueSet. Added STU note clarifying LOINC codes are informative and content IGs are authoritative. Content negotiation and imaging: merged PR #77 — clarified FHIR Document retrieval model (#75), added CapabilityStatement resources for Immunization and MedicationStatement (#63), implemented imaging dual-DocumentReference pattern for MADO content negotiation (#50), reworked document content table (#76), resolved PDF/presentedForm direction (#70, #71). Fixed imaging IG links (R4 → R5). Added HL7 EU Confluence registry link to index page. Added Andries to contributors. Added document exchange diagram.
+
+**February 25, 2026** — Patient lookup refinements: added design rationale, chained identifier search option, publication identity guidance. Clarified query examples (#12, #23, #67). Merged PR #69 (patient lookup clarifications from #68).
+
+**February 5-6, 2026** — Restructured regulatory anchors with D5.1 query-based exchange interpretation. Replaced broken SVG actor diagrams with PNGs and Mermaid. Added priority categories table with content IG links to front page. Incorporated Euridice meeting feedback.
+
+**February 4, 2026** — Aligned authorization with SMART Backend Services. Added MHD Simplified Publish Option references (#13). Renamed IG from `euridice-api` to `eu-health-data-api`. Added IUA/SMART interoperability STU note (#55).
+
+**February 2, 2026** — Implemented Authorization Server deployment flexibility (#16). Added DocumentReference example instance for EPS (#49). Changed primary resource access reference from QEDm to IPA. Merged PR #52 (Bas review: authorization, category, layout improvements).
+
+**January 26-28, 2026** — Implemented "Receive" interpretation and ITI-105 publication model with Document Submission Option. Implemented Spencer review quick fixes (18 items). Removed unused dependencies (PIXm, bulk data). Updated EHDS Priority Category CodeSystem references.
+
+**January 23, 2026** — Various quick fixes. Improved document category approach.
+
+**January 14, 2026** — Simplified patient lookup to two options: ITI-78 (identifier required) + ITI-119 ($match optional). Reorganized CapabilityStatements around composite actors. Established IPA as primary resource access reference. Improved sequence diagrams with IHE transaction labels.
+
+**January 12, 2026** — Added open issues page with ballot feedback questions. Moved open issues into IG. Changed EU Base to EU Core for resource access data models.
+
+**January 8, 2026** — Consolidated open issues into single tracking page. Added MHD and Resource Access CapabilityStatements. Restructured IG per review feedback. Replaced ASCII diagrams with Mermaid. Fixed heading levels across all pages.
+
+**July 2026** — Ballot reconciliation: aligned ITI-67 DocumentReference search capabilities for Providers and Consumers (FHIR-56694, FHIR-56695, FHIR-56851, FHIR-56853). Search responses now use base FHIR DocumentReference resources without an EU return profile (FHIR-56714, FHIR-56847, FHIR-56700, FHIR-56711, FHIR-56710, FHIR-56846, FHIR-56856).
+
+**January 7, 2026** — Initial draft for wide review. Composite actor model built on IHE MHD, PDQm, IUA and HL7 SMART Backend Services. Functional requirements for authorization, patient matching, document exchange, resource access, and capability discovery. Use cases for health professional portals, patient portals, and cross-border NCP exchange. EPS priority area fully specified.
+
+**January 3, 2026** — Major IG restructure. New page hierarchy with Introduction, Functional, Implementation, and Priority Areas sections. Simplified use case pages. Enhanced patient summary example walkthrough. Removed 15 deprecated files.
+

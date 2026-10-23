@@ -1,0 +1,66 @@
+{
+  "comparisonDirectory": "comparison/eu-health-data-api-ballot-recon-auth/",
+  "expectedUrl": "https://euridice-org.github.io/eu-health-data-api/comparison/eu-health-data-api-ballot-recon-auth/",
+  "generatedAt": "2026-10-23T10:09:36.507Z",
+  "left": {
+    "branch": "main",
+    "note": "Explicit left branch main",
+    "localSha": "4023f5cf1b7c18fc1ee8501ba7acd96ef75f97cc",
+    "originSha": "4023f5cf1b7c18fc1ee8501ba7acd96ef75f97cc",
+    "ahead": 0,
+    "behind": 0,
+    "dirtyInputs": false,
+    "inputFingerprint": "4e07d741f54512a8a62a551b351c7c8c7168ab333f07e69241a419f260a1d23f",
+    "buildStart": "2026-10-23T12:03:50+02:00",
+    "buildEnd": "2026-10-23T12:04:58+02:00",
+    "qa": {
+      "errors": 1,
+      "warnings": 7,
+      "info": 30
+    },
+    "originRef": "origin/main"
+  },
+  "right": {
+    "branch": "eu-health-data-api-ballot-recon-auth",
+    "localSha": "6b2e89e8e53cad5913b9a976f406825bbf3b3cfb",
+    "originSha": "c0e4af73c30331136bf3df722e988cfd3cc48d38",
+    "ahead": 6,
+    "behind": 0,
+    "dirtyInputs": true,
+    "dirtyFiles": [
+      "input/includes/auth-todo.md",
+      "input/includes/proposed-ticket-resolutions.md",
+      "FHIR-eu-health-data-api.xml (build-modified)"
+    ],
+    "approvedException": "User approved comparing unpublished local snapshot (6 ahead of origin, dirty inputs)",
+    "inputFingerprint": "e45497f12e479a3f3213f5c96ef6cd815e978375e1bcea2d292537bbfbc77021",
+    "buildStart": "2026-10-23T12:01:57+02:00",
+    "buildEnd": "2026-10-23T12:03:20+02:00",
+    "qa": {
+      "errors": 0,
+      "warnings": 12,
+      "info": 45
+    },
+    "originRef": "origin/eu-health-data-api-ballot-recon-auth"
+  },
+  "ghPages": {
+    "localSha": "4023f5cf1b7c18fc1ee8501ba7acd96ef75f97cc",
+    "originSha": "4023f5cf1b7c18fc1ee8501ba7acd96ef75f97cc",
+    "ahead": 0,
+    "behind": 0
+  },
+  "snapshotCapturedAt": "2026-10-23T12:05:09+02:00",
+  "stale": true,
+  "staleReason": "Right-side input/includes/proposed-ticket-resolutions.md was modified after the 12:05:09+02:00 snapshot (observed 12:09:38 and again 12:11:17 +02:00); right-side source no longer matches the built fingerprint. Installed by user decision.",
+  "pages": {
+    "total": 242,
+    "both": 167,
+    "rightOnly": 75,
+    "leftOnly": 0,
+    "missingBoth": 0
+  },
+  "notes": [
+    "Generated with a 404-correct static server (WebsiteComparer serve:static returns 200 for missing paths)",
+    "61 HTML pages not reached by crawl (.change.history, .ai, searchform, 2 deployment CapabilityStatement subpages)"
+  ]
+}

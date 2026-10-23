@@ -1,0 +1,1459 @@
+{
+  "left": "sources/left/en/",
+  "right": "sources/right/en/",
+  "generatedAt": "2026-10-23T10:09:36.507Z",
+  "pages": [
+    {
+      "path": "/",
+      "file": "index.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-authentication-service-eu-api-testing.html",
+      "file": "ActorDefinition-authentication-service-eu-api-testing.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-authentication-service-eu-api.html",
+      "file": "ActorDefinition-authentication-service-eu-api.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-authentication-service-eu-api.json.html",
+      "file": "ActorDefinition-authentication-service-eu-api.json.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-authentication-service-eu-api.ttl.html",
+      "file": "ActorDefinition-authentication-service-eu-api.ttl.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-authentication-service-eu-api.xml.html",
+      "file": "ActorDefinition-authentication-service-eu-api.xml.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-document-access-provider-actor-eu-api-testing.html",
+      "file": "ActorDefinition-document-access-provider-actor-eu-api-testing.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-document-access-provider-actor-eu-api.html",
+      "file": "ActorDefinition-document-access-provider-actor-eu-api.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-document-access-provider-actor-eu-api.json.html",
+      "file": "ActorDefinition-document-access-provider-actor-eu-api.json.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-document-access-provider-actor-eu-api.ttl.html",
+      "file": "ActorDefinition-document-access-provider-actor-eu-api.ttl.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-document-access-provider-actor-eu-api.xml.html",
+      "file": "ActorDefinition-document-access-provider-actor-eu-api.xml.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-document-consumer-actor-eu-api-testing.html",
+      "file": "ActorDefinition-document-consumer-actor-eu-api-testing.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-document-consumer-actor-eu-api.html",
+      "file": "ActorDefinition-document-consumer-actor-eu-api.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-document-consumer-actor-eu-api.json.html",
+      "file": "ActorDefinition-document-consumer-actor-eu-api.json.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-document-consumer-actor-eu-api.ttl.html",
+      "file": "ActorDefinition-document-consumer-actor-eu-api.ttl.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-document-consumer-actor-eu-api.xml.html",
+      "file": "ActorDefinition-document-consumer-actor-eu-api.xml.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-document-publisher-access-provider-actor-eu-api-testing.html",
+      "file": "ActorDefinition-document-publisher-access-provider-actor-eu-api-testing.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-document-publisher-access-provider-actor-eu-api.html",
+      "file": "ActorDefinition-document-publisher-access-provider-actor-eu-api.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-document-publisher-access-provider-actor-eu-api.json.html",
+      "file": "ActorDefinition-document-publisher-access-provider-actor-eu-api.json.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-document-publisher-access-provider-actor-eu-api.ttl.html",
+      "file": "ActorDefinition-document-publisher-access-provider-actor-eu-api.ttl.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-document-publisher-access-provider-actor-eu-api.xml.html",
+      "file": "ActorDefinition-document-publisher-access-provider-actor-eu-api.xml.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-document-publisher-actor-eu-api-testing.html",
+      "file": "ActorDefinition-document-publisher-actor-eu-api-testing.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-document-publisher-actor-eu-api.html",
+      "file": "ActorDefinition-document-publisher-actor-eu-api.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-document-publisher-actor-eu-api.json.html",
+      "file": "ActorDefinition-document-publisher-actor-eu-api.json.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-document-publisher-actor-eu-api.ttl.html",
+      "file": "ActorDefinition-document-publisher-actor-eu-api.ttl.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-document-publisher-actor-eu-api.xml.html",
+      "file": "ActorDefinition-document-publisher-actor-eu-api.xml.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-eu-authorization-client-eu-api-testing.html",
+      "file": "ActorDefinition-eu-authorization-client-eu-api-testing.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-eu-authorization-client-eu-api.html",
+      "file": "ActorDefinition-eu-authorization-client-eu-api.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-eu-authorization-client-eu-api.json.html",
+      "file": "ActorDefinition-eu-authorization-client-eu-api.json.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-eu-authorization-client-eu-api.ttl.html",
+      "file": "ActorDefinition-eu-authorization-client-eu-api.ttl.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-eu-authorization-client-eu-api.xml.html",
+      "file": "ActorDefinition-eu-authorization-client-eu-api.xml.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-eu-authorization-resource-server-eu-api-testing.html",
+      "file": "ActorDefinition-eu-authorization-resource-server-eu-api-testing.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-eu-authorization-resource-server-eu-api.html",
+      "file": "ActorDefinition-eu-authorization-resource-server-eu-api.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-eu-authorization-resource-server-eu-api.json.html",
+      "file": "ActorDefinition-eu-authorization-resource-server-eu-api.json.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-eu-authorization-resource-server-eu-api.ttl.html",
+      "file": "ActorDefinition-eu-authorization-resource-server-eu-api.ttl.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-eu-authorization-resource-server-eu-api.xml.html",
+      "file": "ActorDefinition-eu-authorization-resource-server-eu-api.xml.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-eu-authorization-server-eu-api-testing.html",
+      "file": "ActorDefinition-eu-authorization-server-eu-api-testing.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-eu-authorization-server-eu-api.html",
+      "file": "ActorDefinition-eu-authorization-server-eu-api.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-eu-authorization-server-eu-api.json.html",
+      "file": "ActorDefinition-eu-authorization-server-eu-api.json.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-eu-authorization-server-eu-api.ttl.html",
+      "file": "ActorDefinition-eu-authorization-server-eu-api.ttl.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-eu-authorization-server-eu-api.xml.html",
+      "file": "ActorDefinition-eu-authorization-server-eu-api.xml.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-iua-authorization-client-eu-api-testing.html",
+      "file": "ActorDefinition-iua-authorization-client-eu-api-testing.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-iua-authorization-client-eu-api.html",
+      "file": "ActorDefinition-iua-authorization-client-eu-api.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-iua-authorization-client-eu-api.json.html",
+      "file": "ActorDefinition-iua-authorization-client-eu-api.json.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-iua-authorization-client-eu-api.ttl.html",
+      "file": "ActorDefinition-iua-authorization-client-eu-api.ttl.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-iua-authorization-client-eu-api.xml.html",
+      "file": "ActorDefinition-iua-authorization-client-eu-api.xml.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-iua-authorization-server-eu-api-testing.html",
+      "file": "ActorDefinition-iua-authorization-server-eu-api-testing.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-iua-authorization-server-eu-api.html",
+      "file": "ActorDefinition-iua-authorization-server-eu-api.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-iua-authorization-server-eu-api.json.html",
+      "file": "ActorDefinition-iua-authorization-server-eu-api.json.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-iua-authorization-server-eu-api.ttl.html",
+      "file": "ActorDefinition-iua-authorization-server-eu-api.ttl.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-iua-authorization-server-eu-api.xml.html",
+      "file": "ActorDefinition-iua-authorization-server-eu-api.xml.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-iua-resource-server-eu-api-testing.html",
+      "file": "ActorDefinition-iua-resource-server-eu-api-testing.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-iua-resource-server-eu-api.html",
+      "file": "ActorDefinition-iua-resource-server-eu-api.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-iua-resource-server-eu-api.json.html",
+      "file": "ActorDefinition-iua-resource-server-eu-api.json.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-iua-resource-server-eu-api.ttl.html",
+      "file": "ActorDefinition-iua-resource-server-eu-api.ttl.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-iua-resource-server-eu-api.xml.html",
+      "file": "ActorDefinition-iua-resource-server-eu-api.xml.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-resource-access-provider-actor-eu-api-testing.html",
+      "file": "ActorDefinition-resource-access-provider-actor-eu-api-testing.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-resource-access-provider-actor-eu-api.html",
+      "file": "ActorDefinition-resource-access-provider-actor-eu-api.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-resource-access-provider-actor-eu-api.json.html",
+      "file": "ActorDefinition-resource-access-provider-actor-eu-api.json.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-resource-access-provider-actor-eu-api.ttl.html",
+      "file": "ActorDefinition-resource-access-provider-actor-eu-api.ttl.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-resource-access-provider-actor-eu-api.xml.html",
+      "file": "ActorDefinition-resource-access-provider-actor-eu-api.xml.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-resource-consumer-actor-eu-api-testing.html",
+      "file": "ActorDefinition-resource-consumer-actor-eu-api-testing.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-resource-consumer-actor-eu-api.html",
+      "file": "ActorDefinition-resource-consumer-actor-eu-api.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-resource-consumer-actor-eu-api.json.html",
+      "file": "ActorDefinition-resource-consumer-actor-eu-api.json.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-resource-consumer-actor-eu-api.ttl.html",
+      "file": "ActorDefinition-resource-consumer-actor-eu-api.ttl.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-resource-consumer-actor-eu-api.xml.html",
+      "file": "ActorDefinition-resource-consumer-actor-eu-api.xml.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-smart-app-eu-api-testing.html",
+      "file": "ActorDefinition-smart-app-eu-api-testing.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-smart-app-eu-api.html",
+      "file": "ActorDefinition-smart-app-eu-api.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-smart-app-eu-api.json.html",
+      "file": "ActorDefinition-smart-app-eu-api.json.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-smart-app-eu-api.ttl.html",
+      "file": "ActorDefinition-smart-app-eu-api.ttl.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-smart-app-eu-api.xml.html",
+      "file": "ActorDefinition-smart-app-eu-api.xml.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-smart-authorization-server-eu-api-testing.html",
+      "file": "ActorDefinition-smart-authorization-server-eu-api-testing.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-smart-authorization-server-eu-api.html",
+      "file": "ActorDefinition-smart-authorization-server-eu-api.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-smart-authorization-server-eu-api.json.html",
+      "file": "ActorDefinition-smart-authorization-server-eu-api.json.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-smart-authorization-server-eu-api.ttl.html",
+      "file": "ActorDefinition-smart-authorization-server-eu-api.ttl.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-smart-authorization-server-eu-api.xml.html",
+      "file": "ActorDefinition-smart-authorization-server-eu-api.xml.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-smart-backend-service-eu-api-testing.html",
+      "file": "ActorDefinition-smart-backend-service-eu-api-testing.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-smart-backend-service-eu-api.html",
+      "file": "ActorDefinition-smart-backend-service-eu-api.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-smart-backend-service-eu-api.json.html",
+      "file": "ActorDefinition-smart-backend-service-eu-api.json.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-smart-backend-service-eu-api.ttl.html",
+      "file": "ActorDefinition-smart-backend-service-eu-api.ttl.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-smart-backend-service-eu-api.xml.html",
+      "file": "ActorDefinition-smart-backend-service-eu-api.xml.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-smart-fhir-resource-server-eu-api-testing.html",
+      "file": "ActorDefinition-smart-fhir-resource-server-eu-api-testing.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-smart-fhir-resource-server-eu-api.html",
+      "file": "ActorDefinition-smart-fhir-resource-server-eu-api.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-smart-fhir-resource-server-eu-api.json.html",
+      "file": "ActorDefinition-smart-fhir-resource-server-eu-api.json.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-smart-fhir-resource-server-eu-api.ttl.html",
+      "file": "ActorDefinition-smart-fhir-resource-server-eu-api.ttl.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-smart-fhir-resource-server-eu-api.xml.html",
+      "file": "ActorDefinition-smart-fhir-resource-server-eu-api.xml.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-smart-launching-system-eu-api-testing.html",
+      "file": "ActorDefinition-smart-launching-system-eu-api-testing.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-smart-launching-system-eu-api.html",
+      "file": "ActorDefinition-smart-launching-system-eu-api.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-smart-launching-system-eu-api.json.html",
+      "file": "ActorDefinition-smart-launching-system-eu-api.json.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-smart-launching-system-eu-api.ttl.html",
+      "file": "ActorDefinition-smart-launching-system-eu-api.ttl.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ActorDefinition-smart-launching-system-eu-api.xml.html",
+      "file": "ActorDefinition-smart-launching-system-eu-api.xml.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/CapabilityStatement-document-access-provider-eu-api-testing.html",
+      "file": "CapabilityStatement-document-access-provider-eu-api-testing.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/CapabilityStatement-document-access-provider-eu-api.html",
+      "file": "CapabilityStatement-document-access-provider-eu-api.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/CapabilityStatement-document-access-provider-eu-api.json.html",
+      "file": "CapabilityStatement-document-access-provider-eu-api.json.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/CapabilityStatement-document-access-provider-eu-api.ttl.html",
+      "file": "CapabilityStatement-document-access-provider-eu-api.ttl.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/CapabilityStatement-document-access-provider-eu-api.xml.html",
+      "file": "CapabilityStatement-document-access-provider-eu-api.xml.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/CapabilityStatement-document-access-provider-submission-option-eu-api-testing.html",
+      "file": "CapabilityStatement-document-access-provider-submission-option-eu-api-testing.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/CapabilityStatement-document-access-provider-submission-option-eu-api.html",
+      "file": "CapabilityStatement-document-access-provider-submission-option-eu-api.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/CapabilityStatement-document-access-provider-submission-option-eu-api.json.html",
+      "file": "CapabilityStatement-document-access-provider-submission-option-eu-api.json.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/CapabilityStatement-document-access-provider-submission-option-eu-api.ttl.html",
+      "file": "CapabilityStatement-document-access-provider-submission-option-eu-api.ttl.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/CapabilityStatement-document-access-provider-submission-option-eu-api.xml.html",
+      "file": "CapabilityStatement-document-access-provider-submission-option-eu-api.xml.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/CapabilityStatement-document-consumer-eu-api-testing.html",
+      "file": "CapabilityStatement-document-consumer-eu-api-testing.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/CapabilityStatement-document-consumer-eu-api.html",
+      "file": "CapabilityStatement-document-consumer-eu-api.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/CapabilityStatement-document-consumer-eu-api.json.html",
+      "file": "CapabilityStatement-document-consumer-eu-api.json.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/CapabilityStatement-document-consumer-eu-api.ttl.html",
+      "file": "CapabilityStatement-document-consumer-eu-api.ttl.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/CapabilityStatement-document-consumer-eu-api.xml.html",
+      "file": "CapabilityStatement-document-consumer-eu-api.xml.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/CapabilityStatement-document-publisher-access-provider-eu-api-testing.html",
+      "file": "CapabilityStatement-document-publisher-access-provider-eu-api-testing.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/CapabilityStatement-document-publisher-access-provider-eu-api.html",
+      "file": "CapabilityStatement-document-publisher-access-provider-eu-api.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/CapabilityStatement-document-publisher-access-provider-eu-api.json.html",
+      "file": "CapabilityStatement-document-publisher-access-provider-eu-api.json.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/CapabilityStatement-document-publisher-access-provider-eu-api.ttl.html",
+      "file": "CapabilityStatement-document-publisher-access-provider-eu-api.ttl.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/CapabilityStatement-document-publisher-access-provider-eu-api.xml.html",
+      "file": "CapabilityStatement-document-publisher-access-provider-eu-api.xml.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/CapabilityStatement-document-publisher-eu-api-testing.html",
+      "file": "CapabilityStatement-document-publisher-eu-api-testing.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/CapabilityStatement-document-publisher-eu-api.html",
+      "file": "CapabilityStatement-document-publisher-eu-api.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/CapabilityStatement-document-publisher-eu-api.json.html",
+      "file": "CapabilityStatement-document-publisher-eu-api.json.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/CapabilityStatement-document-publisher-eu-api.ttl.html",
+      "file": "CapabilityStatement-document-publisher-eu-api.ttl.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/CapabilityStatement-document-publisher-eu-api.xml.html",
+      "file": "CapabilityStatement-document-publisher-eu-api.xml.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/CapabilityStatement-example-capabilitystatement-document-access-provider-testing.html",
+      "file": "CapabilityStatement-example-capabilitystatement-document-access-provider-testing.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/CapabilityStatement-example-capabilitystatement-document-access-provider.html",
+      "file": "CapabilityStatement-example-capabilitystatement-document-access-provider.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/CapabilityStatement-example-capabilitystatement-document-access-provider.json.html",
+      "file": "CapabilityStatement-example-capabilitystatement-document-access-provider.json.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/CapabilityStatement-example-capabilitystatement-document-access-provider.ttl.html",
+      "file": "CapabilityStatement-example-capabilitystatement-document-access-provider.ttl.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/CapabilityStatement-example-capabilitystatement-document-access-provider.xml.html",
+      "file": "CapabilityStatement-example-capabilitystatement-document-access-provider.xml.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/CapabilityStatement-resource-access-provider-eu-api-testing.html",
+      "file": "CapabilityStatement-resource-access-provider-eu-api-testing.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/CapabilityStatement-resource-access-provider-eu-api.html",
+      "file": "CapabilityStatement-resource-access-provider-eu-api.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/CapabilityStatement-resource-access-provider-eu-api.json.html",
+      "file": "CapabilityStatement-resource-access-provider-eu-api.json.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/CapabilityStatement-resource-access-provider-eu-api.ttl.html",
+      "file": "CapabilityStatement-resource-access-provider-eu-api.ttl.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/CapabilityStatement-resource-access-provider-eu-api.xml.html",
+      "file": "CapabilityStatement-resource-access-provider-eu-api.xml.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/CapabilityStatement-resource-consumer-eu-api-testing.html",
+      "file": "CapabilityStatement-resource-consumer-eu-api-testing.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/CapabilityStatement-resource-consumer-eu-api.html",
+      "file": "CapabilityStatement-resource-consumer-eu-api.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/CapabilityStatement-resource-consumer-eu-api.json.html",
+      "file": "CapabilityStatement-resource-consumer-eu-api.json.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/CapabilityStatement-resource-consumer-eu-api.ttl.html",
+      "file": "CapabilityStatement-resource-consumer-eu-api.ttl.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/CapabilityStatement-resource-consumer-eu-api.xml.html",
+      "file": "CapabilityStatement-resource-consumer-eu-api.xml.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/CodeSystem-document-priority-category-eu-api-testing.html",
+      "file": "CodeSystem-document-priority-category-eu-api-testing.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/CodeSystem-document-priority-category-eu-api.html",
+      "file": "CodeSystem-document-priority-category-eu-api.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/CodeSystem-document-priority-category-eu-api.json.html",
+      "file": "CodeSystem-document-priority-category-eu-api.json.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/CodeSystem-document-priority-category-eu-api.ttl.html",
+      "file": "CodeSystem-document-priority-category-eu-api.ttl.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/CodeSystem-document-priority-category-eu-api.xml.html",
+      "file": "CodeSystem-document-priority-category-eu-api.xml.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ConceptMap-document-reference-category-type-eu-api-testing.html",
+      "file": "ConceptMap-document-reference-category-type-eu-api-testing.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ConceptMap-document-reference-category-type-eu-api.html",
+      "file": "ConceptMap-document-reference-category-type-eu-api.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ConceptMap-document-reference-category-type-eu-api.json.html",
+      "file": "ConceptMap-document-reference-category-type-eu-api.json.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ConceptMap-document-reference-category-type-eu-api.ttl.html",
+      "file": "ConceptMap-document-reference-category-type-eu-api.ttl.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ConceptMap-document-reference-category-type-eu-api.xml.html",
+      "file": "ConceptMap-document-reference-category-type-eu-api.xml.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/DocumentReference-example-documentreference-eps.html",
+      "file": "DocumentReference-example-documentreference-eps.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/DocumentReference-example-documentreference-eps.json.html",
+      "file": "DocumentReference-example-documentreference-eps.json.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/DocumentReference-example-documentreference-eps.ttl.html",
+      "file": "DocumentReference-example-documentreference-eps.ttl.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/DocumentReference-example-documentreference-eps.xml.html",
+      "file": "DocumentReference-example-documentreference-eps.xml.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/DocumentReference-example-documentreference-hdr.html",
+      "file": "DocumentReference-example-documentreference-hdr.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/DocumentReference-example-documentreference-hdr.json.html",
+      "file": "DocumentReference-example-documentreference-hdr.json.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/DocumentReference-example-documentreference-hdr.ttl.html",
+      "file": "DocumentReference-example-documentreference-hdr.ttl.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/DocumentReference-example-documentreference-hdr.xml.html",
+      "file": "DocumentReference-example-documentreference-hdr.xml.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/DocumentReference-example-documentreference-imaging-manifest-fhir.html",
+      "file": "DocumentReference-example-documentreference-imaging-manifest-fhir.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/DocumentReference-example-documentreference-imaging-manifest-fhir.json.html",
+      "file": "DocumentReference-example-documentreference-imaging-manifest-fhir.json.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/DocumentReference-example-documentreference-imaging-manifest-fhir.ttl.html",
+      "file": "DocumentReference-example-documentreference-imaging-manifest-fhir.ttl.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/DocumentReference-example-documentreference-imaging-manifest-fhir.xml.html",
+      "file": "DocumentReference-example-documentreference-imaging-manifest-fhir.xml.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/DocumentReference-example-documentreference-imaging-manifest-kos.html",
+      "file": "DocumentReference-example-documentreference-imaging-manifest-kos.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/DocumentReference-example-documentreference-imaging-manifest-kos.json.html",
+      "file": "DocumentReference-example-documentreference-imaging-manifest-kos.json.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/DocumentReference-example-documentreference-imaging-manifest-kos.ttl.html",
+      "file": "DocumentReference-example-documentreference-imaging-manifest-kos.ttl.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/DocumentReference-example-documentreference-imaging-manifest-kos.xml.html",
+      "file": "DocumentReference-example-documentreference-imaging-manifest-kos.xml.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/DocumentReference-example-documentreference-imaging-report.html",
+      "file": "DocumentReference-example-documentreference-imaging-report.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/DocumentReference-example-documentreference-imaging-report.json.html",
+      "file": "DocumentReference-example-documentreference-imaging-report.json.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/DocumentReference-example-documentreference-imaging-report.ttl.html",
+      "file": "DocumentReference-example-documentreference-imaging-report.ttl.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/DocumentReference-example-documentreference-imaging-report.xml.html",
+      "file": "DocumentReference-example-documentreference-imaging-report.xml.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/DocumentReference-example-documentreference-laboratory.html",
+      "file": "DocumentReference-example-documentreference-laboratory.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/DocumentReference-example-documentreference-laboratory.json.html",
+      "file": "DocumentReference-example-documentreference-laboratory.json.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/DocumentReference-example-documentreference-laboratory.ttl.html",
+      "file": "DocumentReference-example-documentreference-laboratory.ttl.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/DocumentReference-example-documentreference-laboratory.xml.html",
+      "file": "DocumentReference-example-documentreference-laboratory.xml.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/StructureDefinition-eu-api-deployment-capabilitystatement-definitions.html",
+      "file": "StructureDefinition-eu-api-deployment-capabilitystatement-definitions.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/StructureDefinition-eu-api-deployment-capabilitystatement-mappings.html",
+      "file": "StructureDefinition-eu-api-deployment-capabilitystatement-mappings.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/StructureDefinition-eu-api-deployment-capabilitystatement-testing.html",
+      "file": "StructureDefinition-eu-api-deployment-capabilitystatement-testing.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/StructureDefinition-eu-api-deployment-capabilitystatement.html",
+      "file": "StructureDefinition-eu-api-deployment-capabilitystatement.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/StructureDefinition-eu-api-deployment-capabilitystatement.profile.json.html",
+      "file": "StructureDefinition-eu-api-deployment-capabilitystatement.profile.json.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/StructureDefinition-eu-api-deployment-capabilitystatement.profile.ttl.html",
+      "file": "StructureDefinition-eu-api-deployment-capabilitystatement.profile.ttl.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/StructureDefinition-eu-api-deployment-capabilitystatement.profile.xml.html",
+      "file": "StructureDefinition-eu-api-deployment-capabilitystatement.profile.xml.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ValueSet-document-type-discharge-report-eu-api-testing.html",
+      "file": "ValueSet-document-type-discharge-report-eu-api-testing.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ValueSet-document-type-discharge-report-eu-api.html",
+      "file": "ValueSet-document-type-discharge-report-eu-api.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ValueSet-document-type-discharge-report-eu-api.json.html",
+      "file": "ValueSet-document-type-discharge-report-eu-api.json.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ValueSet-document-type-discharge-report-eu-api.ttl.html",
+      "file": "ValueSet-document-type-discharge-report-eu-api.ttl.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ValueSet-document-type-discharge-report-eu-api.xml.html",
+      "file": "ValueSet-document-type-discharge-report-eu-api.xml.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ValueSet-document-type-eu-api-testing.html",
+      "file": "ValueSet-document-type-eu-api-testing.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ValueSet-document-type-eu-api.html",
+      "file": "ValueSet-document-type-eu-api.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ValueSet-document-type-eu-api.json.html",
+      "file": "ValueSet-document-type-eu-api.json.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ValueSet-document-type-eu-api.ttl.html",
+      "file": "ValueSet-document-type-eu-api.ttl.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ValueSet-document-type-eu-api.xml.html",
+      "file": "ValueSet-document-type-eu-api.xml.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ValueSet-document-type-laboratory-report-eu-api-testing.html",
+      "file": "ValueSet-document-type-laboratory-report-eu-api-testing.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ValueSet-document-type-laboratory-report-eu-api.html",
+      "file": "ValueSet-document-type-laboratory-report-eu-api.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ValueSet-document-type-laboratory-report-eu-api.json.html",
+      "file": "ValueSet-document-type-laboratory-report-eu-api.json.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ValueSet-document-type-laboratory-report-eu-api.ttl.html",
+      "file": "ValueSet-document-type-laboratory-report-eu-api.ttl.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ValueSet-document-type-laboratory-report-eu-api.xml.html",
+      "file": "ValueSet-document-type-laboratory-report-eu-api.xml.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ValueSet-document-type-medical-imaging-eu-api-testing.html",
+      "file": "ValueSet-document-type-medical-imaging-eu-api-testing.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ValueSet-document-type-medical-imaging-eu-api.html",
+      "file": "ValueSet-document-type-medical-imaging-eu-api.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ValueSet-document-type-medical-imaging-eu-api.json.html",
+      "file": "ValueSet-document-type-medical-imaging-eu-api.json.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ValueSet-document-type-medical-imaging-eu-api.ttl.html",
+      "file": "ValueSet-document-type-medical-imaging-eu-api.ttl.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ValueSet-document-type-medical-imaging-eu-api.xml.html",
+      "file": "ValueSet-document-type-medical-imaging-eu-api.xml.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ValueSet-document-type-patient-summary-eu-api-testing.html",
+      "file": "ValueSet-document-type-patient-summary-eu-api-testing.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ValueSet-document-type-patient-summary-eu-api.html",
+      "file": "ValueSet-document-type-patient-summary-eu-api.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ValueSet-document-type-patient-summary-eu-api.json.html",
+      "file": "ValueSet-document-type-patient-summary-eu-api.json.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ValueSet-document-type-patient-summary-eu-api.ttl.html",
+      "file": "ValueSet-document-type-patient-summary-eu-api.ttl.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ValueSet-document-type-patient-summary-eu-api.xml.html",
+      "file": "ValueSet-document-type-patient-summary-eu-api.xml.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ValueSet-eu-api-authorization-security-service-testing.html",
+      "file": "ValueSet-eu-api-authorization-security-service-testing.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ValueSet-eu-api-authorization-security-service.html",
+      "file": "ValueSet-eu-api-authorization-security-service.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ValueSet-eu-api-authorization-security-service.json.html",
+      "file": "ValueSet-eu-api-authorization-security-service.json.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ValueSet-eu-api-authorization-security-service.ttl.html",
+      "file": "ValueSet-eu-api-authorization-security-service.ttl.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/ValueSet-eu-api-authorization-security-service.xml.html",
+      "file": "ValueSet-eu-api-authorization-security-service.xml.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/about.html",
+      "file": "about.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/actors.html",
+      "file": "actors.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/artifacts-overview.html",
+      "file": "artifacts-overview.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/artifacts.html",
+      "file": "artifacts.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/authorization-ticket-resolutions.html",
+      "file": "authorization-ticket-resolutions.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/authorization.html",
+      "file": "authorization.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/background-xds-fhir.html",
+      "file": "background-xds-fhir.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/background.html",
+      "file": "background.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/capability-discovery.html",
+      "file": "capability-discovery.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/changes.html",
+      "file": "changes.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/contributors.html",
+      "file": "contributors.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/copyright.html",
+      "file": "copyright.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/document-exchange.html",
+      "file": "document-exchange.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/ehr-system-composition.html",
+      "file": "ehr-system-composition.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/example-patient-summary.html",
+      "file": "example-patient-summary.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/fhir-documents-vs-resources.html",
+      "file": "fhir-documents-vs-resources.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/functional.html",
+      "file": "functional.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/implementation.html",
+      "file": "implementation.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/index.html",
+      "file": "index.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/logging-audit-considerations.html",
+      "file": "logging-audit-considerations.html.html",
+      "left": false,
+      "right": true
+    },
+    {
+      "path": "/member-state-architectures.html",
+      "file": "member-state-architectures.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/open-issues.html",
+      "file": "open-issues.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/patient-match.html",
+      "file": "patient-match.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/priority-area-eps.html",
+      "file": "priority-area-eps.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/priority-area-hdr.html",
+      "file": "priority-area-hdr.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/priority-area-imaging-manifest.html",
+      "file": "priority-area-imaging-manifest.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/priority-area-imaging-report.html",
+      "file": "priority-area-imaging-report.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/priority-area-laboratory.html",
+      "file": "priority-area-laboratory.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/priority-area-mpd.html",
+      "file": "priority-area-mpd.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/priority-categories.html",
+      "file": "priority-categories.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/regulatoryAnchors.html",
+      "file": "regulatoryAnchors.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/resource-access.html",
+      "file": "resource-access.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/resourceExchange.html",
+      "file": "resourceExchange.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/toc.html",
+      "file": "toc.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/usecase-cross-border-ncp.html",
+      "file": "usecase-cross-border-ncp.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/usecase-cross-org.html",
+      "file": "usecase-cross-org.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/usecase-health-data-portal.html",
+      "file": "usecase-health-data-portal.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/usecase-health-professional-portal.html",
+      "file": "usecase-health-professional-portal.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/usecase-provider-internal-exchange.html",
+      "file": "usecase-provider-internal-exchange.html.html",
+      "left": true,
+      "right": true
+    },
+    {
+      "path": "/usecase-wellness-app.html",
+      "file": "usecase-wellness-app.html.html",
+      "left": true,
+      "right": true
+    }
+  ]
+}

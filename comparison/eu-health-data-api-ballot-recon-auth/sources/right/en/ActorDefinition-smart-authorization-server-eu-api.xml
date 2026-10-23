@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Basic xmlns="http://hl7.org/fhir">
+  <id value="smart-authorization-server-eu-api"/>
+  <language value="en"/>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: ActorDefinition smart-authorization-server-eu-api</b></p><a name="smart-authorization-server-eu-api"> </a><a name="hcsmart-authorization-server-eu-api"> </a><table class="grid"><tr><td><b>Actor: SmartAuthorizationServerEuApi </b></td><td>SMART Authorization Server</td><td>Type: system </td></tr><tr><td colspan="3"/></tr></table></div>
+  </text>
+  <extension url="http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.url">
+    <valueUri value="http://hl7.eu/fhir/health-data-api/ActorDefinition/smart-authorization-server-eu-api"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.version">
+    <valueString value="1.0.0-ballot"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.name">
+    <valueString value="SmartAuthorizationServerEuApi"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.title">
+    <valueString value="SMART Authorization Server"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.status">
+    <valueCode value="active"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.experimental">
+    <valueBoolean value="false"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.date">
+    <valueDateTime value="2026-10-23T12:01:58+02:00"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.publisher">
+    <valueString value="HL7 Europe"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.contact">
+    <valueContactDetail>
+      <name value="HL7 Europe"/>
+      <telecom>
+        <system value="url"/>
+        <value value="http://hl7.eu"/>
+      </telecom>
+    </valueContactDetail>
+  </extension>
+  <extension url="http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.description">
+    <valueMarkdown value="The SMART Authorization Server authenticates clients as applicable, authorizes requests,&#xA;and issues tokens. It remains a distinct participant from the protected FHIR Resource Server.&#xA;For interactive flows it may rely on the IG-defined Authentication Service for user&#xA;authentication without transferring its SMART conformance obligations. Backend Services does&#xA;not require runtime end-user authentication.&#xA;See [SMART App Launch](https://hl7.org/fhir/smart-app-launch/STU2.2/)&#xA;and [Authorization](authorization.html#smart-app-launch). This IG recommends CT Time Client grouping&#xA;for this server role in both interactive and Backend Services modes; see&#xA;[SMART Server Time Synchronization](authorization.html#smart-server-time-synchronization)&#xA;and the shared [Time Synchronization](authorization.html#time-synchronization) deployment guidance."/>
+  </extension>
+  <extension url="http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.jurisdiction">
+    <valueCodeableConcept>
+      <coding>
+        <system value="http://unstats.un.org/unsd/methods/m49/m49.htm"/>
+        <code value="150"/>
+        <display value="Europe"/>
+      </coding>
+    </valueCodeableConcept>
+  </extension>
+  <extension url="http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.copyright">
+    <valueMarkdown value="Copyright HL7 Europe. Licensed under Creative Commons public domain (CC0 1.0)."/>
+  </extension>
+  <extension url="http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.type">
+    <valueCode value="system"/>
+  </extension>
+  <code>
+    <coding>
+      <system value="http://hl7.org/fhir/fhir-types"/>
+      <code value="ActorDefinition"/>
+    </coding>
+  </code>
+</Basic>

@@ -1,0 +1,78 @@
+{
+  "resourceType" : "Basic",
+  "id" : "iua-resource-server-eu-api",
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: ActorDefinition iua-resource-server-eu-api</b></p><a name=\"iua-resource-server-eu-api\"> </a><a name=\"hciua-resource-server-eu-api\"> </a><table class=\"grid\"><tr><td><b>Actor: IuaResourceServerEuApi </b></td><td>IHE IUA Resource Server</td><td>Type: system </td></tr><tr><td colspan=\"3\"/></tr></table></div>"
+  },
+  "extension" : [{
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.url",
+    "valueUri" : "http://hl7.eu/fhir/health-data-api/ActorDefinition/iua-resource-server-eu-api"
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.version",
+    "valueString" : "1.0.0-ballot"
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.name",
+    "valueString" : "IuaResourceServerEuApi"
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.title",
+    "valueString" : "IHE IUA Resource Server"
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.status",
+    "valueCode" : "active"
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.experimental",
+    "valueBoolean" : false
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.date",
+    "valueDateTime" : "2026-10-23T12:01:58+02:00"
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.publisher",
+    "valueString" : "HL7 Europe"
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.contact",
+    "valueContactDetail" : {
+      "name" : "HL7 Europe",
+      "telecom" : [{
+        "system" : "url",
+        "value" : "http://hl7.eu"
+      }]
+    }
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.description",
+    "valueMarkdown" : "The IHE IUA Resource Server validates or introspects access tokens and enforces granted\nauthorization and local policy for protected resources. It does not validate client\nassertions for an independent Authorization Server. See the\n[IHE IUA Resource Server](https://profiles.ihe.net/ITI/IUA/index.html#34113-resource-server)\nand [Authorization](authorization.html#ihe-iua).\nIUA requires this role to be grouped with a CT Time Client; see\n[required actor groupings](https://profiles.ihe.net/ITI/IUA/index.html#343-iua-required-actor-groupings)\nand the shared [Time Synchronization](authorization.html#time-synchronization) deployment guidance."
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.jurisdiction",
+    "valueCodeableConcept" : {
+      "coding" : [{
+        "system" : "http://unstats.un.org/unsd/methods/m49/m49.htm",
+        "code" : "150",
+        "display" : "Europe"
+      }]
+    }
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.copyright",
+    "valueMarkdown" : "Copyright HL7 Europe. Licensed under Creative Commons public domain (CC0 1.0)."
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.type",
+    "valueCode" : "system"
+  }],
+  "code" : {
+    "coding" : [{
+      "system" : "http://hl7.org/fhir/fhir-types",
+      "code" : "ActorDefinition"
+    }]
+  }
+}

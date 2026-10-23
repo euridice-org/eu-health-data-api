@@ -1,0 +1,1779 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://hl7.eu/fhir/health-data-api/ImplementationGuide/hl7.fhir.eu.health-data-api> a fhir:ImplementationGuide ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:Resource.id [ fhir:value "hl7.fhir.eu.health-data-api"] ;
+  fhir:Resource.language [ fhir:value "en"] ;
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ] ;
+     fhir:Narrative.div "<div xml:lang=\"en\" xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"en\"><p class=\"res-header-id\"><b>Generated Narrative: ImplementationGuide hl7.fhir.eu.health-data-api</b></p><a name=\"hl7.fhir.eu.health-data-api\"> </a><a name=\"hchl7.fhir.eu.health-data-api\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Language: en</p></div><h2>EuHealthDataApi</h2><p>The official URL for this implementation guide is: </p><pre>http://hl7.eu/fhir/health-data-api/ImplementationGuide/hl7.fhir.eu.health-data-api</pre><div><p>This Implementation Guide defines FHIR-based APIs for accessing and exchanging health data in the European Health Data Space (EHDS). It composes existing IHE and HL7 specifications — MHD for document exchange, SMART Backend Services for authorization, PDQm for patient matching, and IPA for resource access — into a unified conformance target for EHR systems across Europe.</p>\n</div></div>"
+  ] ;
+  fhir:ImplementationGuide.url [ fhir:value "http://hl7.eu/fhir/health-data-api/ImplementationGuide/hl7.fhir.eu.health-data-api"] ;
+  fhir:ImplementationGuide.version [ fhir:value "1.0.0-ballot"] ;
+  fhir:ImplementationGuide.name [ fhir:value "EuHealthDataApi"] ;
+  fhir:ImplementationGuide.title [ fhir:value "EU Health Data API"] ;
+  fhir:ImplementationGuide.status [ fhir:value "draft"] ;
+  fhir:ImplementationGuide.date [ fhir:value "2026-10-23T12:03:51+02:00"^^xsd:dateTime] ;
+  fhir:ImplementationGuide.publisher [ fhir:value "HL7 Europe"] ;
+  fhir:ImplementationGuide.contact [
+     fhir:index -1 ;
+     fhir:ContactDetail.name [ fhir:value "HL7 Europe" ] ;
+     fhir:ContactDetail.telecom [
+       fhir:index -1 ;
+       fhir:ContactPoint.system [ fhir:value "url" ] ;
+       fhir:ContactPoint.value [ fhir:value "http://hl7.eu" ]
+     ]
+  ] ;
+  fhir:ImplementationGuide.description [ fhir:value "This Implementation Guide defines FHIR-based APIs for accessing and exchanging health data in the European Health Data Space (EHDS). It composes existing IHE and HL7 specifications — MHD for document exchange, SMART Backend Services for authorization, PDQm for patient matching, and IPA for resource access — into a unified conformance target for EHR systems across Europe."] ;
+  fhir:ImplementationGuide.jurisdiction [
+     fhir:index -1 ;
+     fhir:CodeableConcept.coding [
+       fhir:index -1 ;
+       fhir:Coding.system [ fhir:value "http://unstats.un.org/unsd/methods/m49/m49.htm" ] ;
+       fhir:Coding.code [ fhir:value "150" ] ;
+       fhir:Coding.display [ fhir:value "Europe" ]
+     ]
+  ] ;
+  fhir:ImplementationGuide.copyright [ fhir:value "Copyright HL7 Europe. Licensed under Creative Commons public domain (CC0 1.0)."] ;
+  fhir:ImplementationGuide.packageId [ fhir:value "hl7.fhir.eu.health-data-api"] ;
+  fhir:ImplementationGuide.license [ fhir:value "CC0-1.0"] ;
+  fhir:ImplementationGuide.fhirVersion [
+     fhir:value "4.0.1" ;
+     fhir:index -1
+  ] ;
+  fhir:ImplementationGuide.dependsOn [
+     fhir:index -1 ;
+     fhir:Element.id [ fhir:value "hl7tx" ] ;
+     fhir:Element.extension [
+       fhir:index -1 ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/implementationguide-dependency-comment" ] ;
+       fhir:Extension.valueMarkdown [ fhir:value "Automatically added as a dependency - all IGs depend on HL7 Terminology" ]
+     ] ;
+     fhir:ImplementationGuide.dependsOn.uri [
+       fhir:value "http://terminology.hl7.org/ImplementationGuide/hl7.terminology" ;
+       fhir:link <http://terminology.hl7.org/ImplementationGuide/hl7.terminology>
+     ] ;
+     fhir:ImplementationGuide.dependsOn.packageId [ fhir:value "hl7.terminology.r4" ] ;
+     fhir:ImplementationGuide.dependsOn.version [ fhir:value "7.4.0" ]
+  ], [
+     fhir:index -1 ;
+     fhir:Element.id [ fhir:value "hl7ext" ] ;
+     fhir:Element.extension [
+       fhir:index -1 ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/implementationguide-dependency-comment" ] ;
+       fhir:Extension.valueMarkdown [ fhir:value "Automatically added as a dependency - all IGs depend on the HL7 Extension Pack" ]
+     ] ;
+     fhir:ImplementationGuide.dependsOn.uri [
+       fhir:value "http://hl7.org/fhir/extensions/ImplementationGuide/hl7.fhir.uv.extensions" ;
+       fhir:link <http://hl7.org/fhir/extensions/ImplementationGuide/hl7.fhir.uv.extensions>
+     ] ;
+     fhir:ImplementationGuide.dependsOn.packageId [ fhir:value "hl7.fhir.uv.extensions.r4" ] ;
+     fhir:ImplementationGuide.dependsOn.version [ fhir:value "5.3.0" ]
+  ], [
+     fhir:index -1 ;
+     fhir:Element.id [ fhir:value "hl7_fhir_eu_base" ] ;
+     fhir:ImplementationGuide.dependsOn.uri [
+       fhir:value "http://hl7.eu/fhir/base/ImplementationGuide/hl7.fhir.eu.base" ;
+       fhir:link <http://hl7.eu/fhir/base/ImplementationGuide/hl7.fhir.eu.base>
+     ] ;
+     fhir:ImplementationGuide.dependsOn.packageId [ fhir:value "hl7.fhir.eu.base" ] ;
+     fhir:ImplementationGuide.dependsOn.version [ fhir:value "2.0.0-ballot" ]
+  ], [
+     fhir:index -1 ;
+     fhir:Element.id [ fhir:value "ihe_iti_pdqm" ] ;
+     fhir:ImplementationGuide.dependsOn.uri [
+       fhir:value "https://profiles.ihe.net/ITI/PDQm/ImplementationGuide/ihe.iti.pdqm" ;
+       fhir:link <https://profiles.ihe.net/ITI/PDQm/ImplementationGuide/ihe.iti.pdqm>
+     ] ;
+     fhir:ImplementationGuide.dependsOn.packageId [ fhir:value "ihe.iti.pdqm" ] ;
+     fhir:ImplementationGuide.dependsOn.version [ fhir:value "3.2.x" ]
+  ], [
+     fhir:index -1 ;
+     fhir:Element.id [ fhir:value "ihe_iti_mhd" ] ;
+     fhir:ImplementationGuide.dependsOn.uri [
+       fhir:value "https://profiles.ihe.net/ITI/MHD/ImplementationGuide/ihe.iti.mhd" ;
+       fhir:link <https://profiles.ihe.net/ITI/MHD/ImplementationGuide/ihe.iti.mhd>
+     ] ;
+     fhir:ImplementationGuide.dependsOn.packageId [ fhir:value "ihe.iti.mhd" ] ;
+     fhir:ImplementationGuide.dependsOn.version [ fhir:value "4.2.x" ]
+  ], [
+     fhir:index -1 ;
+     fhir:Element.id [ fhir:value "hl7_fhir_uv_ipa" ] ;
+     fhir:ImplementationGuide.dependsOn.uri [
+       fhir:value "http://hl7.org/fhir/uv/ipa/ImplementationGuide/hl7.fhir.uv.ipa" ;
+       fhir:link <http://hl7.org/fhir/uv/ipa/ImplementationGuide/hl7.fhir.uv.ipa>
+     ] ;
+     fhir:ImplementationGuide.dependsOn.packageId [ fhir:value "hl7.fhir.uv.ipa" ] ;
+     fhir:ImplementationGuide.dependsOn.version [ fhir:value "1.1.x" ]
+  ] ;
+  fhir:ImplementationGuide.definition [
+     fhir:Element.extension [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueString [ fhir:value "copyrightyear" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "2025+" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueString [ fhir:value "releaselabel" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "ballot" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueString [ fhir:value "apply-contact" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "false" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueString [ fhir:value "default-contact" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueString [ fhir:value "default-copyright" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueString [ fhir:value "apply-copyright" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "false" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueString [ fhir:value "apply-jurisdiction" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueString [ fhir:value "apply-license" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "false" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueString [ fhir:value "default-license" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueString [ fhir:value "apply-publisher" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueString [ fhir:value "apply-version" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "false" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueString [ fhir:value "default-version" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueString [ fhir:value "show-inherited-invariants" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueString [ fhir:value "usage-stats-opt-out" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueString [ fhir:value "releaselabel" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "0.1.0-build" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueString [ fhir:value "shownav" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueString [ fhir:value "pin-canonicals" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "pin-multiples" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueString [ fhir:value "autoload-resources" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueString [ fhir:value "path-liquid-template" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "template/liquid" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueString [ fhir:value "path-liquid-template" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "input/liquid" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueString [ fhir:value "path-qa" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "temp/qa" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueString [ fhir:value "path-temp" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "temp/pages" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueString [ fhir:value "path-output" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "output" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueString [ fhir:value "path-suppressed-warnings" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "input/ignoreWarnings.txt" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueString [ fhir:value "path-history" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "http://hl7.eu/fhir/health-data-api/history.html" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueString [ fhir:value "template-html" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "template-page.html" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueString [ fhir:value "template-md" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "template-page-md.html" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueString [ fhir:value "apply-context" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueString [ fhir:value "apply-wg" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueString [ fhir:value "active-tables" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueString [ fhir:value "fmm-definition" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "http://hl7.org/fhir/versions.html#maturity" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueString [ fhir:value "propagate-status" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueString [ fhir:value "excludelogbinaryformat" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueString [ fhir:value "tabbed-snapshots" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueString [ fhir:value "i18n-default-lang" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "en" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-internal-dependency" ] ;
+       fhir:Extension.valueCode [ fhir:value "hl7.fhir.uv.tools.r4#1.1.2" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueCode [ fhir:value "copyrightyear" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "2025+" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueCode [ fhir:value "releaselabel" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "ballot" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueCode [ fhir:value "apply-contact" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "false" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueCode [ fhir:value "default-contact" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueCode [ fhir:value "default-copyright" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueCode [ fhir:value "apply-copyright" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "false" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueCode [ fhir:value "apply-jurisdiction" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueCode [ fhir:value "apply-license" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "false" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueCode [ fhir:value "default-license" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueCode [ fhir:value "apply-publisher" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueCode [ fhir:value "apply-version" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "false" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueCode [ fhir:value "default-version" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueCode [ fhir:value "show-inherited-invariants" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueCode [ fhir:value "usage-stats-opt-out" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueCode [ fhir:value "releaselabel" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "0.1.0-build" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueCode [ fhir:value "shownav" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueCode [ fhir:value "pin-canonicals" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "pin-multiples" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueCode [ fhir:value "autoload-resources" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueCode [ fhir:value "path-liquid-template" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "template/liquid" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueCode [ fhir:value "path-liquid-template" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "input/liquid" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueCode [ fhir:value "path-qa" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "temp/qa" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueCode [ fhir:value "path-temp" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "temp/pages" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueCode [ fhir:value "path-output" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "output" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueCode [ fhir:value "path-suppressed-warnings" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "input/ignoreWarnings.txt" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueCode [ fhir:value "path-history" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "http://hl7.eu/fhir/health-data-api/history.html" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueCode [ fhir:value "template-html" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "template-page.html" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueCode [ fhir:value "template-md" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "template-page-md.html" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueCode [ fhir:value "apply-context" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueCode [ fhir:value "apply-wg" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueCode [ fhir:value "active-tables" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueCode [ fhir:value "fmm-definition" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "http://hl7.org/fhir/versions.html#maturity" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueCode [ fhir:value "propagate-status" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueCode [ fhir:value "excludelogbinaryformat" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueCode [ fhir:value "tabbed-snapshots" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "code" ] ;
+         fhir:Extension.valueCode [ fhir:value "i18n-default-lang" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "value" ] ;
+         fhir:Extension.valueString [ fhir:value "en" ]
+       ] ;
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ] ;
+     fhir:ImplementationGuide.definition.resource [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
+         fhir:Extension.valueString [ fhir:value "ActorDefinition" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://hl7.eu/fhir/health-data-api/ActorDefinition/document-access-provider-actor-eu-api> ;
+         fhir:Reference.reference [ fhir:value "ActorDefinition/document-access-provider-actor-eu-api" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "EEHRxF Document Access Provider" ] ;
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "The Document Access Provider actor provides access to EEHRxF FHIR Documents by receiving\ndocuments from Document Publishers and serving them to Document Consumers. This composite\nactor groups MHD Document Recipient, MHD Document Responder, PDQm Patient Demographics\nSupplier, and IUA Authorization Server/Resource Server.\n\nSee [Document Access Provider CapabilityStatement](CapabilityStatement-document-access-provider-eu-api.html)\nfor technical requirements." ] ;
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
+         fhir:Extension.valueString [ fhir:value "CapabilityStatement" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://hl7.eu/fhir/health-data-api/CapabilityStatement/document-access-provider-submission-option-eu-api> ;
+         fhir:Reference.reference [ fhir:value "CapabilityStatement/document-access-provider-submission-option-eu-api" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "EEHRxF Document Access Provider - Document Submission Option" ] ;
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "CapabilityStatement for the Document Submission Option on the EEHRxF Document Access Provider.\n\nThis option enables the Access Provider to receive documents from external Document\nPublishers via [ITI-105 Simplified Publish](https://profiles.ihe.net/ITI/MHD/ITI-105.html).\n\nSystems implementing this option:\n- SHALL also implement the base [Document Access Provider](CapabilityStatement-document-access-provider-eu-api.html) capabilities\n- SHALL accept ITI-105 transactions from authorized Document Publishers\n- SHALL make received documents available via ITI-67 and ITI-68\n- SHALL validate documents against EEHRxF content profiles\n\nThis option is REQUIRED when acting as a delegated access provider for external\nDocument Publishers (e.g., integration engines, national infrastructure).\n\n### Actor Grouping\n\nAdds to base Document Access Provider:\n- [MHD Document Recipient](https://profiles.ihe.net/ITI/MHD/1331_actors_and_transactions.html) - Simplified Publish Option ([CapabilityStatement](https://profiles.ihe.net/ITI/MHD/CapabilityStatement-IHE.MHD.DocumentRecipient.html))\n\n### Transaction\n\n| Transaction | Description | Optionality |\n|-------------|-------------|-------------|\n| ITI-105 Simplified Publish | Accept document publication from Document Publishers | R |\n\n### Security\nSystems SHALL support SMART Backend Services authorization for document submission." ] ;
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
+         fhir:Extension.valueString [ fhir:value "CapabilityStatement" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://hl7.eu/fhir/health-data-api/CapabilityStatement/document-access-provider-eu-api> ;
+         fhir:Reference.reference [ fhir:value "CapabilityStatement/document-access-provider-eu-api" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "EEHRxF Document Access Provider CapabilityStatement" ] ;
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "CapabilityStatement for the EEHRxF Document Access Provider actor. This composite actor\nprovides access to EEHRxF FHIR Documents by serving them to Document Consumers via query APIs.\n\n### Actor Grouping\n\nThis composite actor groups the following IHE actors:\n- [IUA Authorization Server](https://profiles.ihe.net/ITI/IUA/index.html#34112-authorization-server)\n- [IUA Resource Server](https://profiles.ihe.net/ITI/IUA/index.html#34113-resource-server)\n- [PDQm Patient Demographics Supplier](https://profiles.ihe.net/ITI/PDQm/volume-1.html)\n- [MHD Document Responder](https://profiles.ihe.net/ITI/MHD/1331_actors_and_transactions.html)\n\n### Transactions\n\n| Transaction | Description | Optionality |\n|-------------|-------------|-------------|\n| ITI-67 Find Document References | Respond to document metadata queries from Document Consumers | R |\n| ITI-68 Retrieve Document | Serve document content to Document Consumers | R |\n| ITI-78 Patient Demographics Query | Respond to patient demographics queries | O |\n| Get Access Token | Issue authorization tokens to clients | R |\n\n### Security\nSystems SHALL support SMART Backend Services authorization for all transactions.\n\n### Document Submission Option\nTo accept document publication from external Document Publishers, implement the\n[Document Submission Option](CapabilityStatement-document-access-provider-submission-option-eu-api.html).\n\n### Deployment\nThe Document Access Provider may be grouped with Document Publisher, in which case\ndocument publication is internal. See the\n[grouped Document Publisher/Access Provider CapabilityStatement](CapabilityStatement-document-publisher-access-provider-eu-api.html)\nfor this deployment pattern." ] ;
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
+         fhir:Extension.valueString [ fhir:value "ActorDefinition" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://hl7.eu/fhir/health-data-api/ActorDefinition/document-consumer-actor-eu-api> ;
+         fhir:Reference.reference [ fhir:value "ActorDefinition/document-consumer-actor-eu-api" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "EEHRxF Document Consumer" ] ;
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "The Document Consumer actor consumes EEHRxF FHIR Documents by querying a Document Access\nProvider. This composite actor groups MHD Document Consumer, PDQm Patient Demographics\nConsumer, and IUA Authorization Client.\n\nSee [Document Consumer CapabilityStatement](CapabilityStatement-document-consumer-eu-api.html)\nfor technical requirements." ] ;
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
+         fhir:Extension.valueString [ fhir:value "CapabilityStatement" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://hl7.eu/fhir/health-data-api/CapabilityStatement/document-consumer-eu-api> ;
+         fhir:Reference.reference [ fhir:value "CapabilityStatement/document-consumer-eu-api" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "EEHRxF Document Consumer CapabilityStatement" ] ;
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "CapabilityStatement for the EEHRxF Document Consumer actor. This composite actor\nconsumes EEHRxF FHIR Documents by querying a Document Access Provider.\n\n### Actor Grouping\n\nThis composite actor groups the following IHE actors:\n- [IUA Authorization Client](https://profiles.ihe.net/ITI/IUA/index.html#34111-authorization-client)\n- [PDQm Patient Demographics Consumer](https://profiles.ihe.net/ITI/PDQm/volume-1.html)\n- [MHD Document Consumer](https://profiles.ihe.net/ITI/MHD/1331_actors_and_transactions.html)\n\n### Transactions\n\n| Transaction | Description | Optionality |\n|-------------|-------------|-------------|\n| ITI-67 Find Document References | Query for document metadata from Document Access Provider | R |\n| ITI-68 Retrieve Document | Retrieve document content from Document Access Provider | R |\n| ITI-78 Patient Demographics Query | Query for patient demographics to establish patient context | R |\n| Get Access Token | Obtain authorization token for API access | R |\n\n### Security\nSystems SHALL support SMART Backend Services authorization for all transactions." ] ;
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
+         fhir:Extension.valueString [ fhir:value "CodeSystem" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://hl7.eu/fhir/health-data-api/CodeSystem/document-priority-category-eu-api> ;
+         fhir:Reference.reference [ fhir:value "CodeSystem/document-priority-category-eu-api" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "EEHRxF Document Priority Category CodeSystem" ] ;
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "CodeSystem for priority document categories in EEHRxF as the document categories as defined in the EHDS regulation." ] ;
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
+         fhir:Extension.valueString [ fhir:value "ActorDefinition" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://hl7.eu/fhir/health-data-api/ActorDefinition/document-publisher-actor-eu-api> ;
+         fhir:Reference.reference [ fhir:value "ActorDefinition/document-publisher-actor-eu-api" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "EEHRxF Document Publisher" ] ;
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "The Document Publisher actor produces EEHRxF FHIR Documents and publishes them to a\nDocument Access Provider. This composite actor groups MHD Document Source, PDQm\nPatient Demographics Consumer, and IUA Authorization Client.\n\nSee [Document Publisher CapabilityStatement](CapabilityStatement-document-publisher-eu-api.html)\nfor technical requirements." ] ;
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
+         fhir:Extension.valueString [ fhir:value "CapabilityStatement" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://hl7.eu/fhir/health-data-api/CapabilityStatement/document-publisher-eu-api> ;
+         fhir:Reference.reference [ fhir:value "CapabilityStatement/document-publisher-eu-api" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "EEHRxF Document Publisher CapabilityStatement" ] ;
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "CapabilityStatement for the EEHRxF Document Publisher actor. This composite actor produces\nEEHRxF FHIR Documents and publishes them to a Document Access Provider.\n\n### Actor Grouping\n\nThis composite actor groups the following IHE actors:\n- [IUA Authorization Client](https://profiles.ihe.net/ITI/IUA/index.html#34111-authorization-client)\n- [PDQm Patient Demographics Consumer](https://profiles.ihe.net/ITI/PDQm/volume-1.html)\n- [MHD Document Source](https://profiles.ihe.net/ITI/MHD/1331_actors_and_transactions.html)\n\n### Transactions\n\n| Transaction | Description | Optionality |\n|-------------|-------------|-------------|\n| ITI-105 Simplified Publish | Submit document with embedded content to a Document Access Provider | R |\n| ITI-78 Patient Demographics Query | Query for patient demographics to establish patient context | R |\n| Get Access Token | Obtain authorization token for API access | R |\n\n### Security\nSystems SHALL support SMART Backend Services authorization for all transactions.\n\n### Deployment\nThe Document Publisher may be grouped with Document Access Provider, in which case the\nITI-105 transaction becomes internal and is not exposed externally. See the\n[grouped Document Publisher/Access Provider CapabilityStatement](CapabilityStatement-document-publisher-access-provider-eu-api.html)\nfor this deployment pattern." ] ;
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://hl7.eu/fhir/health-data-api/ValueSet/document-type-eu-api> ;
+         fhir:Reference.reference [ fhir:value "ValueSet/document-type-eu-api" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "EEHRxF Document Type ValueSet" ] ;
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Document type codes for clinical precision in document identification." ] ;
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://hl7.eu/fhir/health-data-api/ValueSet/document-type-discharge-report-eu-api> ;
+         fhir:Reference.reference [ fhir:value "ValueSet/document-type-discharge-report-eu-api" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "EEHRxF Document Type ValueSet for Discharge Reports" ] ;
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "ValueSet for specific document types within the Discharge Report priority category." ] ;
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://hl7.eu/fhir/health-data-api/ValueSet/document-type-laboratory-report-eu-api> ;
+         fhir:Reference.reference [ fhir:value "ValueSet/document-type-laboratory-report-eu-api" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "EEHRxF Document Type ValueSet for Laboratory Reports" ] ;
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "ValueSet for specific document types within the Laboratory Report priority category." ] ;
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://hl7.eu/fhir/health-data-api/ValueSet/document-type-medical-imaging-eu-api> ;
+         fhir:Reference.reference [ fhir:value "ValueSet/document-type-medical-imaging-eu-api" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "EEHRxF Document Type ValueSet for Medical Imaging" ] ;
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "ValueSet for specific document types within the Medical Imaging priority category." ] ;
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://hl7.eu/fhir/health-data-api/ValueSet/document-type-patient-summary-eu-api> ;
+         fhir:Reference.reference [ fhir:value "ValueSet/document-type-patient-summary-eu-api" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "EEHRxF Document Type ValueSet for Patient Summaries" ] ;
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "ValueSet for specific document types within the Patient Summary priority category." ] ;
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
+         fhir:Extension.valueString [ fhir:value "ActorDefinition" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://hl7.eu/fhir/health-data-api/ActorDefinition/document-publisher-access-provider-actor-eu-api> ;
+         fhir:Reference.reference [ fhir:value "ActorDefinition/document-publisher-access-provider-actor-eu-api" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "EEHRxF Grouped Document Publisher/Access Provider" ] ;
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "The grouped Document Publisher/Access Provider actor represents a deployment where document\nproduction and access provision are co-located in the same system. In this configuration,\ndocument submission (ITI-105) is internal and only document query/retrieval (ITI-67, ITI-68)\nis exposed externally.\n\nThis is common for hospital EHR systems that produce and serve their own documents.\n\nSee [Grouped Document Publisher/Access Provider CapabilityStatement](CapabilityStatement-document-publisher-access-provider-eu-api.html)\nfor technical requirements." ] ;
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
+         fhir:Extension.valueString [ fhir:value "CapabilityStatement" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://hl7.eu/fhir/health-data-api/CapabilityStatement/document-publisher-access-provider-eu-api> ;
+         fhir:Reference.reference [ fhir:value "CapabilityStatement/document-publisher-access-provider-eu-api" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "EEHRxF Grouped Document Publisher/Access Provider CapabilityStatement" ] ;
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "CapabilityStatement for the grouped EEHRxF Document Publisher and Document Access Provider\nactors. This represents a deployment where document production and access provision are\nco-located in the same system.\n\n### Deployment Pattern\n\nThis CapabilityStatement applies when:\n- An EHR system both produces documents AND provides access to them\n- Document publication is handled internally\n- External clients only need to query and retrieve documents\n\nIn this grouped deployment, document publication is internal to the system and not exposed\nexternally. The external API provides only document discovery (ITI-67) and retrieval (ITI-68)\ncapabilities.\n\n### Actor Grouping\n\nThis grouped actor combines:\n- **Document Publisher** (internal) - Produces and stores documents internally\n- **Document Access Provider** (external-facing) - Serves documents to Document Consumers\n\nThe underlying IHE actors are:\n- [IUA Authorization Server](https://profiles.ihe.net/ITI/IUA/index.html#34112-authorization-server)\n- [IUA Resource Server](https://profiles.ihe.net/ITI/IUA/index.html#34113-resource-server)\n- [PDQm Patient Demographics Supplier](https://profiles.ihe.net/ITI/PDQm/volume-1.html)\n- [MHD Document Responder](https://profiles.ihe.net/ITI/MHD/1331_actors_and_transactions.html)\n\nNote: MHD Document Recipient is not listed because publication is internal.\n\n### External Transactions\n\n| Transaction | Description | Optionality |\n|-------------|-------------|-------------|\n| ITI-67 Find Document References | Respond to document metadata queries from Document Consumers | R |\n| ITI-68 Retrieve Document | Serve document content to Document Consumers | R |\n| ITI-78 Patient Demographics Query | Respond to patient demographics queries | O |\n| Get Access Token | Issue authorization tokens to clients | R |\n\n### Security\nSystems SHALL support SMART Backend Services authorization for all transactions.\n\n### When to Use This CapabilityStatement\n\nUse this CapabilityStatement when implementing:\n- Hospital EHR systems that produce and serve their own documents\n- Regional health information exchanges with integrated document repositories\n- Any system where document creation and access are tightly coupled\n\nFor systems that need to receive documents from external sources, use the\n[Document Access Provider with Document Submission Option](CapabilityStatement-document-access-provider-submission-option-eu-api.html)." ] ;
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
+         fhir:Extension.valueString [ fhir:value "ConceptMap" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://hl7.eu/fhir/health-data-api/ConceptMap/document-reference-category-type-eu-api> ;
+         fhir:Reference.reference [ fhir:value "ConceptMap/document-reference-category-type-eu-api" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "EEHRxF MHD DocumentReference ConceptMap" ] ;
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "mapping from the EHDS regulatory priority categories to the LOINC document category codes for clinical precision in document identification." ] ;
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "true"^^xsd:boolean ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
+         fhir:Extension.valueString [ fhir:value "ActorDefinition" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://hl7.eu/fhir/health-data-api/ActorDefinition/resource-access-provider-actor-eu-api> ;
+         fhir:Reference.reference [ fhir:value "ActorDefinition/resource-access-provider-actor-eu-api" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "EEHRxF Resource Access Provider" ] ;
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "The Resource Access Provider actor provides access to FHIR resources following IPA patterns.\nThis enables direct resource access complementing document-based exchange.\nThis composite actor groups IPA Server, PDQm Patient Demographics\nSupplier, and IUA Authorization Server/Resource Server.\n\nSee [Resource Access Provider CapabilityStatement](CapabilityStatement-resource-access-provider-eu-api.html)\nfor technical requirements." ] ;
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
+         fhir:Extension.valueString [ fhir:value "CapabilityStatement" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://hl7.eu/fhir/health-data-api/CapabilityStatement/resource-access-provider-eu-api> ;
+         fhir:Reference.reference [ fhir:value "CapabilityStatement/resource-access-provider-eu-api" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "EEHRxF Resource Access Provider CapabilityStatement" ] ;
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "CapabilityStatement for the EEHRxF Resource Access Provider actor. This actor serves\nclinical data resources following the International Patient Access (IPA) patterns.\n\nThis CapabilityStatement defines the capabilities for systems providing direct resource\naccess (beyond document-based exchange) in the EU EHR Exchange Format (EEHRxF) ecosystem.\nIt inherits patterns from:\n- **IPA (International Patient Access)**: Resource profiles and search parameter patterns\n\n### Resource Flexibility (IPA Alignment)\n\nFollowing IPA's approach, servers are not required to support all clinical resources listed\nbelow. Servers MAY choose which resources to implement based on their capabilities and use\ncases. The only required resource is Patient (for lookup context). This flexibility\nencourages partial implementations, allowing more servers to participate even if they only\nsupport EU Core for certain resource types.\n\n**Required**: Patient (for lookup context)\n**Recommended (choose based on capabilities)**:\n- Practitioner, Organization: Reference resolution\n- Condition, AllergyIntolerance: Patient safety data\n- Observation, DiagnosticReport: Clinical results\n- ImagingStudy: Imaging results\n- MedicationRequest, MedicationDispense, MedicationStatement: Medication data\n- Immunization: Vaccination records\n- Encounter: Visit context\n\nThe server's CapabilityStatement declares which resources are actually supported.\n\n### Security\nSystems SHALL support SMART Backend Services authorization for all transactions.\n\n### Profile Inheritance\nResources SHOULD conform to EU Core profiles where available.\n\n### Search Parameter Combinations\nWhere a resource declares search parameter combinations, the SHALL combinations follow IPA,\nwith additions from IHE QEDm where the IPA has no requirement (DiagnosticReport, Encounter).\nData type-specific implementation guides MAY extend these requirements." ] ;
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
+         fhir:Extension.valueString [ fhir:value "ActorDefinition" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://hl7.eu/fhir/health-data-api/ActorDefinition/resource-consumer-actor-eu-api> ;
+         fhir:Reference.reference [ fhir:value "ActorDefinition/resource-consumer-actor-eu-api" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "EEHRxF Resource Consumer" ] ;
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "The Resource Consumer actor queries for clinical data resources from a Resource Access\nProvider following IPA patterns. This composite actor groups IPA Client,\nPDQm Patient Demographics Consumer, and IUA Authorization Client.\n\nSee [Resource Consumer CapabilityStatement](CapabilityStatement-resource-consumer-eu-api.html)\nfor technical requirements." ] ;
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
+         fhir:Extension.valueString [ fhir:value "CapabilityStatement" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://hl7.eu/fhir/health-data-api/CapabilityStatement/resource-consumer-eu-api> ;
+         fhir:Reference.reference [ fhir:value "CapabilityStatement/resource-consumer-eu-api" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "EEHRxF Resource Consumer CapabilityStatement" ] ;
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "CapabilityStatement for the EEHRxF Resource Consumer actor. This actor queries for\nclinical data resources following the International Patient Access (IPA) patterns.\n\nThis CapabilityStatement defines the requirements for systems consuming direct resource\naccess (beyond document-based exchange) in the EU EHR Exchange Format (EEHRxF) ecosystem.\nIt inherits patterns from:\n- **IPA (International Patient Access)**: Resource profiles and search parameter patterns\n\n### Resource Flexibility (IPA Alignment)\n\nFollowing IPA's approach, clients are not required to consume all clinical resources listed\nbelow. Clients MAY choose which resources to query based on their needs and the server's\ndeclared capabilities. The only required capability is Patient lookup. This flexibility\nallows clients to implement targeted use cases without requiring support for all resource types.\n\n**Required**: Patient (for lookup context)\n**Optional (request based on needs and server support)**:\n- Practitioner, Organization: Reference resolution\n- Condition, AllergyIntolerance: Patient safety data\n- Observation, DiagnosticReport: Clinical results\n- ImagingStudy: Imaging results\n- MedicationRequest, MedicationDispense, MedicationStatement: Medication data\n- Immunization: Vaccination records\n- Encounter: Visit context\n\nClients should check the server's CapabilityStatement to discover which resources are available.\n\n### Security\nSystems SHALL support SMART Backend Services authorization for all transactions.\n\n### Profile Inheritance\nConsumers SHOULD expect resources conforming to EU Core profiles where available." ] ;
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
+         fhir:Extension.valueString [ fhir:value "DocumentReference" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://hl7.eu/fhir/health-data-api/DocumentReference/example-documentreference-eps> ;
+         fhir:Reference.reference [ fhir:value "DocumentReference/example-documentreference-eps" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Example - European Patient Summary DocumentReference" ] ;
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example DocumentReference showing an EPS document with EEHRxF category coding.\n\nThis example demonstrates the recommended search strategy:\n- `category` = Patient-Summaries (EHDS priority category for coarse filtering)\n- `type` = 60591-5 (LOINC code for clinical precision)\n\n**Example query to find this document by priority category:**\n```\nGET [base]/DocumentReference?patient=Patient/example-patient&category=https://euridice.ec.europa.eu/fhir/eehrxf/CodeSystem/document-priority-category-eu-api|Patient-Summaries\n```\n\n**Example query to find this document by type:**\n```\nGET [base]/DocumentReference?patient=Patient/example-patient&type=http://loinc.org|60591-5\n```" ] ;
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "true"^^xsd:boolean ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
+         fhir:Extension.valueString [ fhir:value "DocumentReference" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://hl7.eu/fhir/health-data-api/DocumentReference/example-documentreference-hdr> ;
+         fhir:Reference.reference [ fhir:value "DocumentReference/example-documentreference-hdr" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Example - Hospital Discharge Report DocumentReference" ] ;
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example DocumentReference for a hospital discharge report.\n\n**Example query:**\n```\nGET [base]/DocumentReference?patient.identifier=http://example.org/national-id|123456789&type=http://loinc.org|18842-5\n```" ] ;
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "true"^^xsd:boolean ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
+         fhir:Extension.valueString [ fhir:value "DocumentReference" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://hl7.eu/fhir/health-data-api/DocumentReference/example-documentreference-imaging-report> ;
+         fhir:Reference.reference [ fhir:value "DocumentReference/example-documentreference-imaging-report" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Example - Imaging Report DocumentReference" ] ;
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example DocumentReference for a diagnostic imaging report.\n\n**Example query:**\n```\nGET [base]/DocumentReference?patient.identifier=http://example.org/national-id|123456789&type=http://loinc.org|85430-7\n```" ] ;
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "true"^^xsd:boolean ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
+         fhir:Extension.valueString [ fhir:value "DocumentReference" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://hl7.eu/fhir/health-data-api/DocumentReference/example-documentreference-imaging-manifest-kos> ;
+         fhir:Reference.reference [ fhir:value "DocumentReference/example-documentreference-imaging-manifest-kos" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Example - Imaging Study Manifest (DICOM KOS)" ] ;
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example DocumentReference for a DICOM KOS-encoded imaging study manifest.\n\nThis is one half of the dual-DocumentReference pattern for imaging manifests.\nThe DICOM KOS DocumentReference is linked to its FHIR manifest counterpart\nvia `relatesTo.code = transforms`." ] ;
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "true"^^xsd:boolean ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
+         fhir:Extension.valueString [ fhir:value "DocumentReference" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://hl7.eu/fhir/health-data-api/DocumentReference/example-documentreference-imaging-manifest-fhir> ;
+         fhir:Reference.reference [ fhir:value "DocumentReference/example-documentreference-imaging-manifest-fhir" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Example - Imaging Study Manifest (FHIR)" ] ;
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example DocumentReference for a FHIR-encoded imaging study manifest.\n\nThis is one half of the dual-DocumentReference pattern for imaging manifests.\nThe FHIR manifest DocumentReference is linked to its DICOM KOS counterpart\nvia `relatesTo.code = transforms`.\n\n**Example query to find imaging manifests by type:**\n```\nGET [base]/DocumentReference?patient.identifier=http://example.org/national-id|123456789&type=http://loinc.org|18748-4&status=current\n```" ] ;
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "true"^^xsd:boolean ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
+         fhir:Extension.valueString [ fhir:value "DocumentReference" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://hl7.eu/fhir/health-data-api/DocumentReference/example-documentreference-laboratory> ;
+         fhir:Reference.reference [ fhir:value "DocumentReference/example-documentreference-laboratory" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Example - Laboratory Report DocumentReference" ] ;
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example DocumentReference for a laboratory report.\n\n**Example query:**\n```\nGET [base]/DocumentReference?patient.identifier=http://example.org/national-id|123456789&type=http://loinc.org|11502-2\n```" ] ;
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "true"^^xsd:boolean ]
+     ], [
+       fhir:index -1 ;
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
+         fhir:Extension.valueString [ fhir:value "CapabilityStatement" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://hl7.eu/fhir/health-data-api/CapabilityStatement/example-capabilitystatement-document-access-provider> ;
+         fhir:Reference.reference [ fhir:value "CapabilityStatement/example-capabilitystatement-document-access-provider" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Example: Document Access Provider Supporting EPS and Laboratory" ] ;
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "**Example** CapabilityStatement for a Document Access Provider that supports\nEuropean Patient Summaries and Laboratory Reports.\n\nShows how a deployment declares actor conformance via `instantiates` and\ncontent IG support via `implementationGuide`.\n\nSee [Capability Discovery](capability-discovery.html) for guidance." ] ;
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "true"^^xsd:boolean ]
+     ] ;
+     fhir:ImplementationGuide.definition.page [
+       fhir:Element.extension [
+         fhir:index -1 ;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name" ] ;
+         fhir:Extension.valueUrl [ fhir:value "toc.html" ]
+       ] ;
+       fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "toc.html" ] ;
+       fhir:ImplementationGuide.definition.page.title [ fhir:value "Table of Contents" ] ;
+       fhir:ImplementationGuide.definition.page.generation [ fhir:value "html" ] ;
+       fhir:ImplementationGuide.definition.page.page [
+         fhir:index -1 ;
+         fhir:Element.extension [
+           fhir:index -1 ;
+           fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name" ] ;
+           fhir:Extension.valueUrl [ fhir:value "index.html" ]
+         ] ;
+         fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "index.html" ] ;
+         fhir:ImplementationGuide.definition.page.title [ fhir:value "Home" ] ;
+         fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+       ], [
+         fhir:index -1 ;
+         fhir:Element.extension [
+           fhir:index -1 ;
+           fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name" ] ;
+           fhir:Extension.valueUrl [ fhir:value "background.html" ]
+         ] ;
+         fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "background.html" ] ;
+         fhir:ImplementationGuide.definition.page.title [ fhir:value "Background" ] ;
+         fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ] ;
+         fhir:ImplementationGuide.definition.page.page [
+           fhir:index -1 ;
+           fhir:Element.extension [
+             fhir:index -1 ;
+             fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name" ] ;
+             fhir:Extension.valueUrl [ fhir:value "regulatoryAnchors.html" ]
+           ] ;
+           fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "regulatoryAnchors.html" ] ;
+           fhir:ImplementationGuide.definition.page.title [ fhir:value "Regulatory Anchors" ] ;
+           fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+         ], [
+           fhir:index -1 ;
+           fhir:Element.extension [
+             fhir:index -1 ;
+             fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name" ] ;
+             fhir:Extension.valueUrl [ fhir:value "actors.html" ]
+           ] ;
+           fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "actors.html" ] ;
+           fhir:ImplementationGuide.definition.page.title [ fhir:value "Actors and Transactions" ] ;
+           fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+         ], [
+           fhir:index -1 ;
+           fhir:Element.extension [
+             fhir:index -1 ;
+             fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name" ] ;
+             fhir:Extension.valueUrl [ fhir:value "priority-categories.html" ]
+           ] ;
+           fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "priority-categories.html" ] ;
+           fhir:ImplementationGuide.definition.page.title [ fhir:value "Priority Categories" ] ;
+           fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ] ;
+           fhir:ImplementationGuide.definition.page.page [
+             fhir:index -1 ;
+             fhir:Element.extension [
+               fhir:index -1 ;
+               fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name" ] ;
+               fhir:Extension.valueUrl [ fhir:value "priority-area-eps.html" ]
+             ] ;
+             fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "priority-area-eps.html" ] ;
+             fhir:ImplementationGuide.definition.page.title [ fhir:value "Patient Summary (EPS)" ] ;
+             fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+           ], [
+             fhir:index -1 ;
+             fhir:Element.extension [
+               fhir:index -1 ;
+               fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name" ] ;
+               fhir:Extension.valueUrl [ fhir:value "priority-area-mpd.html" ]
+             ] ;
+             fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "priority-area-mpd.html" ] ;
+             fhir:ImplementationGuide.definition.page.title [ fhir:value "ePrescription / eDispensation (MPD)" ] ;
+             fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+           ], [
+             fhir:index -1 ;
+             fhir:Element.extension [
+               fhir:index -1 ;
+               fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name" ] ;
+               fhir:Extension.valueUrl [ fhir:value "priority-area-laboratory.html" ]
+             ] ;
+             fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "priority-area-laboratory.html" ] ;
+             fhir:ImplementationGuide.definition.page.title [ fhir:value "Medical Test Results (Laboratory)" ] ;
+             fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+           ], [
+             fhir:index -1 ;
+             fhir:Element.extension [
+               fhir:index -1 ;
+               fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name" ] ;
+               fhir:Extension.valueUrl [ fhir:value "priority-area-imaging-report.html" ]
+             ] ;
+             fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "priority-area-imaging-report.html" ] ;
+             fhir:ImplementationGuide.definition.page.title [ fhir:value "Medical Imaging Report" ] ;
+             fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+           ], [
+             fhir:index -1 ;
+             fhir:Element.extension [
+               fhir:index -1 ;
+               fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name" ] ;
+               fhir:Extension.valueUrl [ fhir:value "priority-area-imaging-manifest.html" ]
+             ] ;
+             fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "priority-area-imaging-manifest.html" ] ;
+             fhir:ImplementationGuide.definition.page.title [ fhir:value "Medical Imaging Manifest" ] ;
+             fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+           ], [
+             fhir:index -1 ;
+             fhir:Element.extension [
+               fhir:index -1 ;
+               fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name" ] ;
+               fhir:Extension.valueUrl [ fhir:value "priority-area-hdr.html" ]
+             ] ;
+             fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "priority-area-hdr.html" ] ;
+             fhir:ImplementationGuide.definition.page.title [ fhir:value "Hospital Discharge Report" ] ;
+             fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+           ]
+         ], [
+           fhir:index -1 ;
+           fhir:Element.extension [
+             fhir:index -1 ;
+             fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name" ] ;
+             fhir:Extension.valueUrl [ fhir:value "member-state-architectures.html" ]
+           ] ;
+           fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "member-state-architectures.html" ] ;
+           fhir:ImplementationGuide.definition.page.title [ fhir:value "Member State Architectures" ] ;
+           fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ] ;
+           fhir:ImplementationGuide.definition.page.page [
+             fhir:index -1 ;
+             fhir:Element.extension [
+               fhir:index -1 ;
+               fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name" ] ;
+               fhir:Extension.valueUrl [ fhir:value "fhir-documents-vs-resources.html" ]
+             ] ;
+             fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "fhir-documents-vs-resources.html" ] ;
+             fhir:ImplementationGuide.definition.page.title [ fhir:value "FHIR Documents and Resources" ] ;
+             fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+           ]
+         ], [
+           fhir:index -1 ;
+           fhir:Element.extension [
+             fhir:index -1 ;
+             fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name" ] ;
+             fhir:Extension.valueUrl [ fhir:value "background-xds-fhir.html" ]
+           ] ;
+           fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "background-xds-fhir.html" ] ;
+           fhir:ImplementationGuide.definition.page.title [ fhir:value "Relationship to XDS/FHIR Document Sharing" ] ;
+           fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+         ], [
+           fhir:index -1 ;
+           fhir:Element.extension [
+             fhir:index -1 ;
+             fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name" ] ;
+             fhir:Extension.valueUrl [ fhir:value "changes.html" ]
+           ] ;
+           fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "changes.html" ] ;
+           fhir:ImplementationGuide.definition.page.title [ fhir:value "Change Log" ] ;
+           fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+         ], [
+           fhir:index -1 ;
+           fhir:Element.extension [
+             fhir:index -1 ;
+             fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name" ] ;
+             fhir:Extension.valueUrl [ fhir:value "open-issues.html" ]
+           ] ;
+           fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "open-issues.html" ] ;
+           fhir:ImplementationGuide.definition.page.title [ fhir:value "Open Issues" ] ;
+           fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+         ]
+       ], [
+         fhir:index -1 ;
+         fhir:Element.extension [
+           fhir:index -1 ;
+           fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name" ] ;
+           fhir:Extension.valueUrl [ fhir:value "functional.html" ]
+         ] ;
+         fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "functional.html" ] ;
+         fhir:ImplementationGuide.definition.page.title [ fhir:value "Functional Requirements" ] ;
+         fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ] ;
+         fhir:ImplementationGuide.definition.page.page [
+           fhir:index -1 ;
+           fhir:Element.extension [
+             fhir:index -1 ;
+             fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name" ] ;
+             fhir:Extension.valueUrl [ fhir:value "capability-discovery.html" ]
+           ] ;
+           fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "capability-discovery.html" ] ;
+           fhir:ImplementationGuide.definition.page.title [ fhir:value "Capability Discovery" ] ;
+           fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+         ], [
+           fhir:index -1 ;
+           fhir:Element.extension [
+             fhir:index -1 ;
+             fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name" ] ;
+             fhir:Extension.valueUrl [ fhir:value "authorization.html" ]
+           ] ;
+           fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "authorization.html" ] ;
+           fhir:ImplementationGuide.definition.page.title [ fhir:value "Authorization" ] ;
+           fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+         ], [
+           fhir:index -1 ;
+           fhir:Element.extension [
+             fhir:index -1 ;
+             fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name" ] ;
+             fhir:Extension.valueUrl [ fhir:value "patient-match.html" ]
+           ] ;
+           fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "patient-match.html" ] ;
+           fhir:ImplementationGuide.definition.page.title [ fhir:value "Patient Lookup" ] ;
+           fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+         ], [
+           fhir:index -1 ;
+           fhir:Element.extension [
+             fhir:index -1 ;
+             fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name" ] ;
+             fhir:Extension.valueUrl [ fhir:value "document-exchange.html" ]
+           ] ;
+           fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "document-exchange.html" ] ;
+           fhir:ImplementationGuide.definition.page.title [ fhir:value "Document Exchange" ] ;
+           fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+         ], [
+           fhir:index -1 ;
+           fhir:Element.extension [
+             fhir:index -1 ;
+             fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name" ] ;
+             fhir:Extension.valueUrl [ fhir:value "resource-access.html" ]
+           ] ;
+           fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "resource-access.html" ] ;
+           fhir:ImplementationGuide.definition.page.title [ fhir:value "Resource Access" ] ;
+           fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+         ], [
+           fhir:index -1 ;
+           fhir:Element.extension [
+             fhir:index -1 ;
+             fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name" ] ;
+             fhir:Extension.valueUrl [ fhir:value "resourceExchange.html" ]
+           ] ;
+           fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "resourceExchange.html" ] ;
+           fhir:ImplementationGuide.definition.page.title [ fhir:value "Resource Exchange Patterns" ] ;
+           fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+         ]
+       ], [
+         fhir:index -1 ;
+         fhir:Element.extension [
+           fhir:index -1 ;
+           fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name" ] ;
+           fhir:Extension.valueUrl [ fhir:value "implementation.html" ]
+         ] ;
+         fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "implementation.html" ] ;
+         fhir:ImplementationGuide.definition.page.title [ fhir:value "Implementation" ] ;
+         fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ] ;
+         fhir:ImplementationGuide.definition.page.page [
+           fhir:index -1 ;
+           fhir:Element.extension [
+             fhir:index -1 ;
+             fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name" ] ;
+             fhir:Extension.valueUrl [ fhir:value "example-patient-summary.html" ]
+           ] ;
+           fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "example-patient-summary.html" ] ;
+           fhir:ImplementationGuide.definition.page.title [ fhir:value "Retrieve a European Patient Summary" ] ;
+           fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+         ], [
+           fhir:index -1 ;
+           fhir:Element.extension [
+             fhir:index -1 ;
+             fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name" ] ;
+             fhir:Extension.valueUrl [ fhir:value "usecase-cross-border-ncp.html" ]
+           ] ;
+           fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "usecase-cross-border-ncp.html" ] ;
+           fhir:ImplementationGuide.definition.page.title [ fhir:value "Cross-Border Exchange via NCP" ] ;
+           fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+         ], [
+           fhir:index -1 ;
+           fhir:Element.extension [
+             fhir:index -1 ;
+             fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name" ] ;
+             fhir:Extension.valueUrl [ fhir:value "usecase-health-professional-portal.html" ]
+           ] ;
+           fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "usecase-health-professional-portal.html" ] ;
+           fhir:ImplementationGuide.definition.page.title [ fhir:value "Health Professional Access Service" ] ;
+           fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+         ], [
+           fhir:index -1 ;
+           fhir:Element.extension [
+             fhir:index -1 ;
+             fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name" ] ;
+             fhir:Extension.valueUrl [ fhir:value "usecase-health-data-portal.html" ]
+           ] ;
+           fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "usecase-health-data-portal.html" ] ;
+           fhir:ImplementationGuide.definition.page.title [ fhir:value "Health Data Access Service" ] ;
+           fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+         ], [
+           fhir:index -1 ;
+           fhir:Element.extension [
+             fhir:index -1 ;
+             fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name" ] ;
+             fhir:Extension.valueUrl [ fhir:value "usecase-wellness-app.html" ]
+           ] ;
+           fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "usecase-wellness-app.html" ] ;
+           fhir:ImplementationGuide.definition.page.title [ fhir:value "Wellness Apps" ] ;
+           fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+         ], [
+           fhir:index -1 ;
+           fhir:Element.extension [
+             fhir:index -1 ;
+             fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name" ] ;
+             fhir:Extension.valueUrl [ fhir:value "usecase-cross-org.html" ]
+           ] ;
+           fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "usecase-cross-org.html" ] ;
+           fhir:ImplementationGuide.definition.page.title [ fhir:value "Cross-Organization via National Infrastructure" ] ;
+           fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+         ], [
+           fhir:index -1 ;
+           fhir:Element.extension [
+             fhir:index -1 ;
+             fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name" ] ;
+             fhir:Extension.valueUrl [ fhir:value "usecase-provider-internal-exchange.html" ]
+           ] ;
+           fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "usecase-provider-internal-exchange.html" ] ;
+           fhir:ImplementationGuide.definition.page.title [ fhir:value "Provider-Internal Exchange" ] ;
+           fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+         ], [
+           fhir:index -1 ;
+           fhir:Element.extension [
+             fhir:index -1 ;
+             fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name" ] ;
+             fhir:Extension.valueUrl [ fhir:value "ehr-system-composition.html" ]
+           ] ;
+           fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "ehr-system-composition.html" ] ;
+           fhir:ImplementationGuide.definition.page.title [ fhir:value "EHR System Composition Patterns" ] ;
+           fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+         ]
+       ], [
+         fhir:index -1 ;
+         fhir:Element.extension [
+           fhir:index -1 ;
+           fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name" ] ;
+           fhir:Extension.valueUrl [ fhir:value "about.html" ]
+         ] ;
+         fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "about.html" ] ;
+         fhir:ImplementationGuide.definition.page.title [ fhir:value "About" ] ;
+         fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ] ;
+         fhir:ImplementationGuide.definition.page.page [
+           fhir:index -1 ;
+           fhir:Element.extension [
+             fhir:index -1 ;
+             fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name" ] ;
+             fhir:Extension.valueUrl [ fhir:value "contributors.html" ]
+           ] ;
+           fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "contributors.html" ] ;
+           fhir:ImplementationGuide.definition.page.title [ fhir:value "Authors and contributors" ] ;
+           fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+         ], [
+           fhir:index -1 ;
+           fhir:Element.extension [
+             fhir:index -1 ;
+             fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name" ] ;
+             fhir:Extension.valueUrl [ fhir:value "copyright.html" ]
+           ] ;
+           fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "copyright.html" ] ;
+           fhir:ImplementationGuide.definition.page.title [ fhir:value "Copyright" ] ;
+           fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+         ]
+       ]
+     ] ;
+     fhir:ImplementationGuide.definition.parameter [
+       fhir:index -1 ;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ] ;
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/capabilities" ]
+     ], [
+       fhir:index -1 ;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ] ;
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/examples" ]
+     ], [
+       fhir:index -1 ;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ] ;
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/extensions" ]
+     ], [
+       fhir:index -1 ;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ] ;
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/models" ]
+     ], [
+       fhir:index -1 ;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ] ;
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/operations" ]
+     ], [
+       fhir:index -1 ;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ] ;
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/profiles" ]
+     ], [
+       fhir:index -1 ;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ] ;
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/resources" ]
+     ], [
+       fhir:index -1 ;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ] ;
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/vocabulary" ]
+     ], [
+       fhir:index -1 ;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ] ;
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/maps" ]
+     ], [
+       fhir:index -1 ;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ] ;
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/testing" ]
+     ], [
+       fhir:index -1 ;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ] ;
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/history" ]
+     ], [
+       fhir:index -1 ;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ] ;
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "fsh-generated/resources" ]
+     ], [
+       fhir:index -1 ;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-pages" ] ;
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "template/config" ]
+     ], [
+       fhir:index -1 ;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-pages" ] ;
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/assets" ]
+     ], [
+       fhir:index -1 ;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-pages" ] ;
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/images" ]
+     ], [
+       fhir:index -1 ;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-tx-cache" ] ;
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input-cache/txcache" ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://hl7.eu/fhir/health-data-api/ImplementationGuide/hl7.fhir.eu.health-data-api.ttl> a owl:Ontology ;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

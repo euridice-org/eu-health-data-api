@@ -1,0 +1,83 @@
+# Resource iua-authorization-server-eu-api
+
+
+
+## Resource Content
+
+```json
+{
+  "resourceType" : "Basic",
+  "id" : "iua-authorization-server-eu-api",
+  "extension" : [{
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.url",
+    "valueUri" : "http://hl7.eu/fhir/health-data-api/ActorDefinition/iua-authorization-server-eu-api"
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.version",
+    "valueString" : "1.0.0-ballot"
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.name",
+    "valueString" : "IuaAuthorizationServerEuApi"
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.title",
+    "valueString" : "IHE IUA Authorization Server"
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.status",
+    "valueCode" : "active"
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.experimental",
+    "valueBoolean" : false
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.date",
+    "valueDateTime" : "2026-10-23T12:01:58+02:00"
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.publisher",
+    "valueString" : "HL7 Europe"
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.contact",
+    "valueContactDetail" : {
+      "name" : "HL7 Europe",
+      "telecom" : [{
+        "system" : "url",
+        "value" : "http://hl7.eu"
+      }]
+    }
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.description",
+    "valueMarkdown" : "The independent IHE IUA Authorization Server authenticates clients, validates client\nassertions when selected, applies issuance policy, prevents replay, and issues tokens.\nWhere user authentication is required, it may use the IG-defined Authentication Service;\nthis does not remove any applicable IUA Authorization Server conformance obligation.\nIt does not provide protected-resource enforcement. See the\n[IHE IUA Authorization Server](https://profiles.ihe.net/ITI/IUA/index.html#34112-authorization-server)\nand [Authorization](authorization.html#ihe-iua).\nIUA requires this role to be grouped with a CT Time Client; see\n[required actor groupings](https://profiles.ihe.net/ITI/IUA/index.html#343-iua-required-actor-groupings)\nand the shared [Time Synchronization](authorization.html#time-synchronization) deployment guidance."
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.jurisdiction",
+    "valueCodeableConcept" : {
+      "coding" : [{
+        "system" : "http://unstats.un.org/unsd/methods/m49/m49.htm",
+        "code" : "150",
+        "display" : "Europe"
+      }]
+    }
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.copyright",
+    "valueMarkdown" : "Copyright HL7 Europe. Licensed under Creative Commons public domain (CC0 1.0)."
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.type",
+    "valueCode" : "system"
+  }],
+  "code" : {
+    "coding" : [{
+      "system" : "http://hl7.org/fhir/fhir-types",
+      "code" : "ActorDefinition"
+    }]
+  }
+}
+
+```

@@ -1,0 +1,79 @@
+{
+  "resourceType" : "Basic",
+  "id" : "eu-authorization-resource-server-eu-api",
+  "language" : "en",
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: ActorDefinition eu-authorization-resource-server-eu-api</b></p><a name=\"eu-authorization-resource-server-eu-api\"> </a><a name=\"hceu-authorization-resource-server-eu-api\"> </a><table class=\"grid\"><tr><td><b>Actor: EuAuthorizationResourceServerEuApi </b></td><td>Health Data API Resource Server</td><td>Type: system </td></tr><tr><td colspan=\"3\"/></tr></table></div>"
+  },
+  "extension" : [{
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.url",
+    "valueUri" : "http://hl7.eu/fhir/health-data-api/ActorDefinition/eu-authorization-resource-server-eu-api"
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.version",
+    "valueString" : "1.0.0-ballot"
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.name",
+    "valueString" : "EuAuthorizationResourceServerEuApi"
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.title",
+    "valueString" : "Health Data API Resource Server"
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.status",
+    "valueCode" : "active"
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.experimental",
+    "valueBoolean" : false
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.date",
+    "valueDateTime" : "2026-10-23T12:01:58+02:00"
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.publisher",
+    "valueString" : "HL7 Europe"
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.contact",
+    "valueContactDetail" : {
+      "name" : "HL7 Europe",
+      "telecom" : [{
+        "system" : "url",
+        "value" : "http://hl7.eu"
+      }]
+    }
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.description",
+    "valueMarkdown" : "The Health Data API Resource Server hosts a protected API, validates or introspects access\ntokens as applicable, and enforces granted authorization and local policy. It does not issue\naccess tokens or validate client assertions for an independent Authorization Server. This\ngeneric role does not by itself claim IHE IUA or SMART conformance. See the applicable\n[IHE IUA Resource Server](https://profiles.ihe.net/ITI/IUA/index.html#34113-resource-server)\nor [SMART FHIR Resource Server](ActorDefinition-smart-fhir-resource-server-eu-api.html)\ndefinition and the relevant [Authorization](authorization.html) requirements."
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.jurisdiction",
+    "valueCodeableConcept" : {
+      "coding" : [{
+        "system" : "http://unstats.un.org/unsd/methods/m49/m49.htm",
+        "code" : "150",
+        "display" : "Europe"
+      }]
+    }
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.copyright",
+    "valueMarkdown" : "Copyright HL7 Europe. Licensed under Creative Commons public domain (CC0 1.0)."
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.type",
+    "valueCode" : "system"
+  }],
+  "code" : {
+    "coding" : [{
+      "system" : "http://hl7.org/fhir/fhir-types",
+      "code" : "ActorDefinition"
+    }]
+  }
+}

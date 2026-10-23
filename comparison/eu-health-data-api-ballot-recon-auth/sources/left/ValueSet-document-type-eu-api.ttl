@@ -1,0 +1,81 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://hl7.eu/fhir/health-data-api/ValueSet/document-type-eu-api> a fhir:ValueSet ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:Resource.id [ fhir:value "document-type-eu-api"] ;
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ] ;
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: ValueSet document-type-eu-api</b></p><a name=\"document-type-eu-api\"> </a><a name=\"hcdocument-type-eu-api\"> </a><p>This value set includes codes based on the following rules:</p><ul><li>Import all the codes that are contained in <a href=\"ValueSet-document-type-patient-summary-eu-api.html\">EEHRxF Document Type ValueSet for Patient Summaries</a></li><li>Import all the codes that are contained in <a href=\"ValueSet-document-type-discharge-report-eu-api.html\">EEHRxF Document Type ValueSet for Discharge Reports</a></li><li>Import all the codes that are contained in <a href=\"ValueSet-document-type-laboratory-report-eu-api.html\">EEHRxF Document Type ValueSet for Laboratory Reports</a></li><li>Import all the codes that are contained in <a href=\"ValueSet-document-type-medical-imaging-eu-api.html\">EEHRxF Document Type ValueSet for Medical Imaging</a></li></ul></div>"
+  ] ;
+  fhir:ValueSet.url [ fhir:value "http://hl7.eu/fhir/health-data-api/ValueSet/document-type-eu-api"] ;
+  fhir:ValueSet.version [ fhir:value "1.0.0-ballot"] ;
+  fhir:ValueSet.name [ fhir:value "DocumentTypeEuApiVS"] ;
+  fhir:ValueSet.title [ fhir:value "EEHRxF Document Type ValueSet"] ;
+  fhir:ValueSet.status [ fhir:value "draft"] ;
+  fhir:ValueSet.experimental [ fhir:value "false"^^xsd:boolean] ;
+  fhir:ValueSet.date [ fhir:value "2026-10-23T12:03:51+02:00"^^xsd:dateTime] ;
+  fhir:ValueSet.publisher [ fhir:value "HL7 Europe"] ;
+  fhir:ValueSet.contact [
+     fhir:index 0 ;
+     fhir:ContactDetail.name [ fhir:value "HL7 Europe" ] ;
+     fhir:ContactDetail.telecom [
+       fhir:index 0 ;
+       fhir:ContactPoint.system [ fhir:value "url" ] ;
+       fhir:ContactPoint.value [ fhir:value "http://hl7.eu" ]
+     ]
+  ] ;
+  fhir:ValueSet.description [ fhir:value "Document type codes for clinical precision in document identification."] ;
+  fhir:ValueSet.jurisdiction [
+     fhir:index 0 ;
+     fhir:CodeableConcept.coding [
+       fhir:index 0 ;
+       fhir:Coding.system [ fhir:value "http://unstats.un.org/unsd/methods/m49/m49.htm" ] ;
+       fhir:Coding.code [ fhir:value "150" ] ;
+       fhir:Coding.display [ fhir:value "Europe" ]
+     ]
+  ] ;
+  fhir:ValueSet.copyright [ fhir:value "This material contains content from LOINC (http://loinc.org). LOINC is copyright © 1995-2020, Regenstrief Institute, Inc. and the Logical Observation Identifiers Names and Codes (LOINC) Committee and is available at no cost under the license at http://loinc.org/license. LOINC® is a registered United States trademark of Regenstrief Institute, Inc"] ;
+  fhir:ValueSet.compose [
+     fhir:ValueSet.compose.include [
+       fhir:index 0 ;
+       fhir:ValueSet.compose.include.valueSet [
+         fhir:value "http://hl7.eu/fhir/health-data-api/ValueSet/document-type-patient-summary-eu-api" ;
+         fhir:index 0 ;
+         fhir:link <http://hl7.eu/fhir/health-data-api/ValueSet/document-type-patient-summary-eu-api>
+       ]
+     ], [
+       fhir:index 1 ;
+       fhir:ValueSet.compose.include.valueSet [
+         fhir:value "http://hl7.eu/fhir/health-data-api/ValueSet/document-type-discharge-report-eu-api" ;
+         fhir:index 0 ;
+         fhir:link <http://hl7.eu/fhir/health-data-api/ValueSet/document-type-discharge-report-eu-api>
+       ]
+     ], [
+       fhir:index 2 ;
+       fhir:ValueSet.compose.include.valueSet [
+         fhir:value "http://hl7.eu/fhir/health-data-api/ValueSet/document-type-laboratory-report-eu-api" ;
+         fhir:index 0 ;
+         fhir:link <http://hl7.eu/fhir/health-data-api/ValueSet/document-type-laboratory-report-eu-api>
+       ]
+     ], [
+       fhir:index 3 ;
+       fhir:ValueSet.compose.include.valueSet [
+         fhir:value "http://hl7.eu/fhir/health-data-api/ValueSet/document-type-medical-imaging-eu-api" ;
+         fhir:index 0 ;
+         fhir:link <http://hl7.eu/fhir/health-data-api/ValueSet/document-type-medical-imaging-eu-api>
+       ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://hl7.eu/fhir/health-data-api/ValueSet/document-type-eu-api.ttl> a owl:Ontology ;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

@@ -1,0 +1,19 @@
+{
+  "url" : "http://hl7.eu/fhir/health-data-api/ImplementationGuide/hl7.fhir.eu.health-data-api",
+  "name" : "EuHealthDataApi",
+  "title" : "EU Health Data API",
+  "description" : "This Implementation Guide defines FHIR-based APIs for accessing and exchanging health data in the European Health Data Space (EHDS). It composes existing IHE and HL7 specifications — MHD for document exchange, SMART Backend Services for authorization, PDQm for patient matching, and IPA for resource access — into a unified conformance target for EHR systems across Europe.",
+  "status" : "draft",
+  "package-id" : "hl7.fhir.eu.health-data-api",
+  "ig-ver" : "1.0.0-ballot",
+  "date" : "Fri, 23 Oct, 2026 12:03:51 +0200",
+  "dateISO8601" : "2026-10-23T12:03:51+02:00",
+  "errs" : 1,
+  "warnings" : 7,
+  "hints" : 30,
+  "suppressed-hints" : 19,
+  "suppressed-warnings" : 4,
+  "version" : "4.0.1",
+  "tool" : "5.0.0 (3)",
+  "maxMemory" : 1945902504
+}

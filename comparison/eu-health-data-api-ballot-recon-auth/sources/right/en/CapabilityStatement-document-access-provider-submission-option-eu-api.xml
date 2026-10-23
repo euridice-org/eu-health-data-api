@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<CapabilityStatement xmlns="http://hl7.org/fhir">
+  <id value="document-access-provider-submission-option-eu-api"/>
+  <language value="en"/>
+  <text>
+    <status value="extensions"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: CapabilityStatement document-access-provider-submission-option-eu-api</b></p><a name="document-access-provider-submission-option-eu-api"> </a><a name="hcdocument-access-provider-submission-option-eu-api"> </a><h2 id="title">EEHRxF Document Access Provider - Document Submission Option</h2><ul><li>Implementation Guide Version: 1.0.0-ballot </li><li>FHIR Version: 4.0.1 </li><li>Supported Formats: <code>json</code>, <code>xml</code></li><li>Published on: 2026-01-26 </li><li>Published by: HL7 Europe </li></ul><blockquote class="impl-note"><p><strong>Note to Implementers: FHIR Capabilities</strong></p><p>Any FHIR capability may be 'allowed' by the system unless explicitly marked as 'SHALL NOT'. A few items are marked as MAY in the Implementation Guide to highlight their potential relevance to the use case.</p></blockquote><p>This CapabilityStatement imports the CapabilityStatement <a href="CapabilityStatement-document-access-provider-eu-api.html">EEHRxF Document Access Provider CapabilityStatement</a></p><h2 id="rest">FHIR RESTful Capabilities</h2><div class="panel panel-default"><div class="panel-heading"><h3 id="mode1" class="panel-title">Mode: <code>server</code></h3></div><div class="panel-body"><div><p>The Document Submission Option adds ITI-105 Simplified Publish capability.
+Document Publishers POST a DocumentReference with embedded document content.
+The server extracts and persists both the DocumentReference metadata and the
+embedded document, making them available via ITI-67 and ITI-68.</p>
+</div><div class="lead"><em>Security</em></div><blockquote><div><p>This abstract requirements option does not advertise a fixed security service. A concrete deployment
+inherits the protocol selected for the base Document Access Provider and SHALL declare exactly one
+security-service coding from the <a href="ValueSet-eu-api-authorization-security-service.html">EU Health Data API Authorization Security Service ValueSet</a>,
+selected for its environment. It SHALL NOT advertise both services unless a future profile defines
+dual conformance.</p>
+<p>For SMART Backend Services, the additional scope is <code>system/DocumentReference.c</code>. For interactive
+SMART, use the corresponding <code>patient/DocumentReference.c</code> or <code>user/DocumentReference.c</code> scope when
+that mode and context apply. ITI-105 has no IUA-defined transaction scope; an IUA deployment applies
+the authorization policy defined for its environment without inventing an ITI-105 scope.</p>
+<p>The Document Publisher must be authorized to submit documents on behalf of the
+patient's care team. See <a href="authorization.html#environment-specific-requirements">Authorization</a>.</p>
+</div></blockquote></div></div><h3 id="resourcesCap1">Capabilities by Resource/Profile</h3><h4 id="resourcesSummary1">Summary</h4><p>The summary table lists the resources that are part of this configuration, and for each resource it lists:</p><ul><li>The relevant profiles (if any)</li><li>The interactions supported by each resource (<b><span class="bg-info">R</span></b>ead, <b><span class="bg-info">S</span></b>earch, <b><span class="bg-info">U</span></b>pdate, and <b><span class="bg-info">C</span></b>reate, are always shown, while <b><span class="bg-info">VR</span></b>ead, <b><span class="bg-info">P</span></b>atch, <b><span class="bg-info">D</span></b>elete, <b><span class="bg-info">H</span></b>istory on <b><span class="bg-info">I</span></b>nstance, or <b><span class="bg-info">H</span></b>istory on <b><span class="bg-info">T</span></b>ype are only present if at least one of the resources has support for them.</li><li><span>The required, recommended, and some optional search parameters (if any). </span></li><li>The linked resources enabled for <code>_include</code></li><li>The other resources enabled for <code>_revinclude</code></li><li>The operations on the resource (if any)</li></ul><div class="table-responsive"><table class="table table-condensed table-hover"><thead><tr><th><b>Resource Type</b></th><th><b>Profile</b></th><th class="text-center"><b title="GET a resource (read interaction)">R</b></th><th class="text-center"><b title="GET all set of resources of the type (search interaction)">S</b></th><th class="text-center"><b title="PUT a new resource version (update interaction)">U</b></th><th class="text-center"><b title="POST a new resource (create interaction)">C</b></th><th><b title="Required and recommended search parameters">Searches</b></th><th><code><b>_include</b></code></th><th><code><b>_revinclude</b></code></th><th><b>Operations</b></th></tr></thead><tbody><tr><td><a href="#DocumentReference1-1">DocumentReference</a></td><td>Supported Profiles<br/>  <a href="https://profiles.ihe.net/ITI/MHD/4.2.5/StructureDefinition-IHE.MHD.SimplifiedPublish.DocumentReference.html">MHD DocumentReference for Simplified Publish</a><br/>  <a href="https://profiles.ihe.net/ITI/MHD/4.2.5/StructureDefinition-IHE.MHD.Minimal.DocumentReference.html">MHD DocumentReference Minimal</a></td><td class="text-center"/><td class="text-center"/><td class="text-center"/><td class="text-center"><span title="SHALL"><b>Y</b></span></td><td/><td/><td/><td><code>$validate</code></td></tr></tbody></table></div><hr/><div class="panel panel-default"><div class="panel-heading"><h4 id="DocumentReference1-1" class="panel-title"><span style="float: right;">Resource Conformance: SHALL </span>DocumentReference</h4></div><div class="panel-body"><div class="container"><div class="row"><div class="col-lg-4"><span class="lead">Core FHIR Resource</span><br/><a href="http://hl7.org/fhir/R4/documentreference.html">DocumentReference</a></div><div class="col-lg-4"><span class="lead">Reference Policy</span><br/></div><div class="col-lg-4"><span class="lead">Interaction summary</span><br/><ul><li><strong>SHALL</strong> support <br/><code>create</code><div><p>Accept DocumentReference with embedded document (ITI-105 Simplified Publish).</p>
+<p>The DocumentReference SHALL include:</p>
+<ul>
+<li>status (required)</li>
+<li>type (required - LOINC document type)</li>
+<li>subject (required - Patient reference)</li>
+<li>content.attachment.contentType (required)</li>
+<li>content.attachment.data (required - base64-encoded document content)</li>
+</ul>
+<p>The server SHALL:</p>
+<ul>
+<li>Validate against the MHD Simplified Publish DocumentReference profile</li>
+<li>Extract and persist the document</li>
+<li>For FHIR Documents, ensure the content is retrievable as a native FHIR Document Bundle (not wrapped in Binary)</li>
+<li>Assign server-generated IDs</li>
+<li>Return 201 Created with the persisted DocumentReference</li>
+</ul>
+</div></li></ul></div></div><p/><div class="row"><div class="col-6"><span class="lead">Supported Profiles</span><p><a href="https://profiles.ihe.net/ITI/MHD/4.2.5/StructureDefinition-IHE.MHD.SimplifiedPublish.DocumentReference.html">MHD DocumentReference for Simplified Publish</a><br/><a href="https://profiles.ihe.net/ITI/MHD/4.2.5/StructureDefinition-IHE.MHD.Minimal.DocumentReference.html">MHD DocumentReference Minimal</a></p></div></div><p/><div class="row"><div class="col-12"><span class="lead">Documentation</span><blockquote><div><p>DocumentReference resources with embedded document content are accepted via
+ITI-105 Simplified Publish. The server:</p>
+<ol>
+<li>Validates the DocumentReference against the MHD Simplified Publish profile</li>
+<li>Extracts the embedded document from content.attachment.data</li>
+<li>Persists both the DocumentReference and the document</li>
+<li>Returns the created DocumentReference with server-assigned IDs</li>
+</ol>
+</div></blockquote></div></div><div class="row"><div class="col-12"><span class="lead">Extended Operations</span><table class="table table-condensed table-hover"><thead><tr><th>Conformance</th><th>Operation</th><th>Documentation</th></tr></thead><tbody><tr><td><b>MAY</b></td><td>$validate</td><td><div><p>Pre-validation of DocumentReference before submission</p>
+</div></td></tr></tbody></table></div></div></div></div></div></div>
+  </text>
+  <url value="http://hl7.eu/fhir/health-data-api/CapabilityStatement/document-access-provider-submission-option-eu-api"/>
+  <version value="1.0.0-ballot"/>
+  <name value="DocumentAccessProviderSubmissionOptionEuApi"/>
+  <title value="EEHRxF Document Access Provider - Document Submission Option"/>
+  <status value="active"/>
+  <experimental value="false"/>
+  <date value="2026-01-26"/>
+  <publisher value="HL7 Europe"/>
+  <contact>
+    <name value="HL7 Europe"/>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.eu"/>
+    </telecom>
+  </contact>
+  <description value="Requirements for the Document Submission Option on an EEHRxF Document Access Provider."/>
+  <jurisdiction>
+    <coding>
+      <system value="http://unstats.un.org/unsd/methods/m49/m49.htm"/>
+      <code value="150"/>
+      <display value="Europe"/>
+    </coding>
+  </jurisdiction>
+  <copyright value="Copyright HL7 Europe. Licensed under Creative Commons public domain (CC0 1.0)."/>
+  <kind value="requirements"/>
+  <imports value="http://hl7.eu/fhir/health-data-api/CapabilityStatement/document-access-provider-eu-api"/>
+  <fhirVersion value="4.0.1"/>
+  <format value="json"/>
+  <format value="xml"/>
+  <rest>
+    <mode value="server"/>
+    <documentation value="The Document Submission Option adds ITI-105 Simplified Publish capability.&#xA;Document Publishers POST a DocumentReference with embedded document content.&#xA;The server extracts and persists both the DocumentReference metadata and the&#xA;embedded document, making them available via ITI-67 and ITI-68."/>
+    <security>
+      <description value="This abstract requirements option does not advertise a fixed security service. A concrete deployment&#xA;inherits the protocol selected for the base Document Access Provider and SHALL declare exactly one&#xA;security-service coding from the [EU Health Data API Authorization Security Service ValueSet](ValueSet-eu-api-authorization-security-service.html),&#xA;selected for its environment. It SHALL NOT advertise both services unless a future profile defines&#xA;dual conformance.&#xA;&#xA;For SMART Backend Services, the additional scope is `system/DocumentReference.c`. For interactive&#xA;SMART, use the corresponding `patient/DocumentReference.c` or `user/DocumentReference.c` scope when&#xA;that mode and context apply. ITI-105 has no IUA-defined transaction scope; an IUA deployment applies&#xA;the authorization policy defined for its environment without inventing an ITI-105 scope.&#xA;&#xA;The Document Publisher must be authorized to submit documents on behalf of the&#xA;patient's care team. See [Authorization](authorization.html#environment-specific-requirements)."/>
+    </security>
+    <resource>
+      <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+        <valueCode value="SHALL"/>
+      </extension>
+      <type value="DocumentReference"/>
+      <supportedProfile value="https://profiles.ihe.net/ITI/MHD/StructureDefinition/IHE.MHD.SimplifiedPublish.DocumentReference"/>
+      <supportedProfile value="https://profiles.ihe.net/ITI/MHD/StructureDefinition/IHE.MHD.Minimal.DocumentReference"/>
+      <documentation value="DocumentReference resources with embedded document content are accepted via&#xA;ITI-105 Simplified Publish. The server:&#xA;1. Validates the DocumentReference against the MHD Simplified Publish profile&#xA;2. Extracts the embedded document from content.attachment.data&#xA;3. Persists both the DocumentReference and the document&#xA;4. Returns the created DocumentReference with server-assigned IDs"/>
+      <interaction>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHALL"/>
+        </extension>
+        <code value="create"/>
+        <documentation value="Accept DocumentReference with embedded document (ITI-105 Simplified Publish).&#xA;&#xA;The DocumentReference SHALL include:&#xA;- status (required)&#xA;- type (required - LOINC document type)&#xA;- subject (required - Patient reference)&#xA;- content.attachment.contentType (required)&#xA;- content.attachment.data (required - base64-encoded document content)&#xA;&#xA;The server SHALL:&#xA;- Validate against the MHD Simplified Publish DocumentReference profile&#xA;- Extract and persist the document&#xA;- For FHIR Documents, ensure the content is retrievable as a native FHIR Document Bundle (not wrapped in Binary)&#xA;- Assign server-generated IDs&#xA;- Return 201 Created with the persisted DocumentReference"/>
+      </interaction>
+      <operation>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="MAY"/>
+        </extension>
+        <name value="validate"/>
+        <definition value="http://hl7.org/fhir/OperationDefinition/Resource-validate"/>
+        <documentation value="Pre-validation of DocumentReference before submission"/>
+      </operation>
+    </resource>
+  </rest>
+</CapabilityStatement>

@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<CapabilityStatement xmlns="http://hl7.org/fhir">
+  <id value="example-capabilitystatement-document-access-provider"/>
+  <text>
+    <status value="extensions"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: CapabilityStatement example-capabilitystatement-document-access-provider</b></p><a name="example-capabilitystatement-document-access-provider"> </a><a name="hcexample-capabilitystatement-document-access-provider"> </a><h2 id="title">Example: Document Access Provider Supporting EPS and Laboratory</h2><ul><li>Implementation Guide Version: 1.0.0-ballot </li><li>FHIR Version: 4.0.1 </li><li>Supported Formats: <code>json</code>, <code>xml</code></li><li>Published on: 2026-03-10 </li><li>Published by: HL7 Europe </li></ul><blockquote class="impl-note"><p><strong>Note to Implementers: FHIR Capabilities</strong></p><p>Any FHIR capability may be 'allowed' by the system unless explicitly marked as 'SHALL NOT'. A few items are marked as MAY in the Implementation Guide to highlight their potential relevance to the use case.</p></blockquote><p>This CapabilityStatement instantiates the CapabilityStatement <a href="CapabilityStatement-document-access-provider-eu-api.html">EEHRxF Document Access Provider CapabilityStatement</a></p><h3 id="shallIGs">SHALL Support the Following Implementation Guides</h3><ul><li>http://hl7.eu/fhir/eps</li><li>http://hl7.eu/fhir/laboratory</li></ul><h2 id="rest">FHIR RESTful Capabilities</h2><div class="panel panel-default"><div class="panel-heading"><h3 id="mode1" class="panel-title">Mode: <code>server</code></h3></div><div class="panel-body"><div><p>This server provides document exchange for European Patient Summaries and
+Laboratory Reports. It supports MHD ITI-67 (Find Document References),
+ITI-68 (Retrieve Document), and PDQm ITI-78 (Patient Demographics Query).</p>
+</div><div class="lead"><em>Security</em></div><div class="row"><div class="col-lg-6">Enable CORS: no</div><div class="col-lg-6">Security services supported: <code>SMART-on-FHIR</code></div></div><blockquote><div><p>SMART Backend Services authorization required.</p>
+</div></blockquote></div></div><h3 id="resourcesCap1">Capabilities by Resource/Profile</h3><h4 id="resourcesSummary1">Summary</h4><p>The summary table lists the resources that are part of this configuration, and for each resource it lists:</p><ul><li>The relevant profiles (if any)</li><li>The interactions supported by each resource (<b><span class="bg-info">R</span></b>ead, <b><span class="bg-info">S</span></b>earch, <b><span class="bg-info">U</span></b>pdate, and <b><span class="bg-info">C</span></b>reate, are always shown, while <b><span class="bg-info">VR</span></b>ead, <b><span class="bg-info">P</span></b>atch, <b><span class="bg-info">D</span></b>elete, <b><span class="bg-info">H</span></b>istory on <b><span class="bg-info">I</span></b>nstance, or <b><span class="bg-info">H</span></b>istory on <b><span class="bg-info">T</span></b>ype are only present if at least one of the resources has support for them.</li><li><span>The required, recommended, and some optional search parameters (if any). </span></li><li>The linked resources enabled for <code>_include</code></li><li>The other resources enabled for <code>_revinclude</code></li><li>The operations on the resource (if any)</li></ul><div class="table-responsive"><table class="table table-condensed table-hover"><thead><tr><th><b>Resource Type</b></th><th><b>Profile</b></th><th class="text-center"><b title="GET a resource (read interaction)">R</b></th><th class="text-center"><b title="GET all set of resources of the type (search interaction)">S</b></th><th class="text-center"><b title="PUT a new resource version (update interaction)">U</b></th><th class="text-center"><b title="POST a new resource (create interaction)">C</b></th><th><b title="Required and recommended search parameters">Searches</b></th><th><code><b>_include</b></code></th><th><code><b>_revinclude</b></code></th><th><b>Operations</b></th></tr></thead><tbody><tr><td><a href="#DocumentReference1-1">DocumentReference</a></td><td> </td><td class="text-center">y</td><td class="text-center">y</td><td class="text-center"/><td class="text-center"/><td>_id, _lastUpdated, author.given, author.family, category, creation, date, event, facility, format, identifier, patient, patient.identifier, period, related, security-label, setting, status, type</td><td/><td/><td/></tr><tr><td><a href="#Patient1-2">Patient</a></td><td>Supported Profiles<br/>  <a href="http://hl7.eu/fhir/base/2.0.0-ballot/StructureDefinition-patient-eu-core.html">Patient (EU core)</a></td><td class="text-center">y</td><td class="text-center">y</td><td class="text-center"/><td class="text-center"/><td>identifier, _id</td><td/><td/><td/></tr></tbody></table></div><hr/><div class="panel panel-default"><div class="panel-heading"><h4 id="DocumentReference1-1" class="panel-title"><span style="float: right;">Resource Conformance: unspecified </span>DocumentReference</h4></div><div class="panel-body"><div class="container"><div class="row"><div class="col-lg-4"><span class="lead">Core FHIR Resource</span><br/><a href="http://hl7.org/fhir/R4/documentreference.html">DocumentReference</a></div><div class="col-lg-4"><span class="lead">Reference Policy</span><br/></div><div class="col-lg-4"><span class="lead">Interaction summary</span><br/><ul><li>Supports <code>read</code>, <code>search-type</code>.</li></ul></div></div><p/><p/><div class="row"><div class="col-12"><span class="lead">Documentation</span><blockquote><div><p>DocumentReference resources are served via ITI-67. The response uses base FHIR
+DocumentReference resources without a required return profile.</p>
+</div></blockquote></div></div><div class="row"><div class="col-lg-7"><span class="lead">Search Parameters</span><table class="table table-condensed table-hover"><thead><tr><th>Conformance</th><th>Parameter</th><th>Type</th><th>Documentation</th></tr></thead><tbody><tr><td><b>SHALL</b></td><td><a href="http://hl7.org/fhir/R4/resource.html#search">_id</a></td><td><code>token</code></td><td><div><p>Logical id</p>
+</div></td></tr><tr><td><b>SHALL</b></td><td><a href="http://hl7.org/fhir/R4/documentreference.html#search">category</a></td><td><code>token</code></td><td><div><p>Document category</p>
+</div></td></tr><tr><td><b>SHALL</b></td><td><a href="https://profiles.ihe.net/ITI/MHD/4.2.5/SearchParameter-DocumentReference-Creation.html">creation</a></td><td><code>date</code></td><td><div><p>Document creation time</p>
+</div></td></tr><tr><td><b>SHALL</b></td><td><a href="http://hl7.org/fhir/R4/documentreference.html#search">patient</a></td><td><code>reference</code></td><td><div><p>Patient reference</p>
+</div></td></tr><tr><td><b>SHALL</b></td><td>patient.identifier</td><td><code>token</code></td><td><div><p>Chained patient identifier</p>
+</div></td></tr><tr><td><b>SHALL</b></td><td><a href="http://hl7.org/fhir/R4/documentreference.html#search">type</a></td><td><code>token</code></td><td><div><p>Document type</p>
+</div></td></tr><tr><td><b>SHOULD</b></td><td><a href="http://hl7.org/fhir/R4/documentreference.html#search">date</a></td><td><code>date</code></td><td><div><p>Reference creation time</p>
+</div></td></tr><tr><td><b>SHOULD</b></td><td><a href="http://hl7.org/fhir/R4/documentreference.html#search">status</a></td><td><code>token</code></td><td><div><p>Document reference status</p>
+</div></td></tr><tr><td><b>MAY</b></td><td><a href="http://hl7.org/fhir/R4/resource.html#search">_lastUpdated</a></td><td><code>date</code></td><td><div><p>Resource version last updated</p>
+</div></td></tr><tr><td><b>MAY</b></td><td>author.given</td><td><code>string</code></td><td><div><p>Author given name</p>
+</div></td></tr><tr><td><b>MAY</b></td><td>author.family</td><td><code>string</code></td><td><div><p>Author family name</p>
+</div></td></tr><tr><td><b>MAY</b></td><td><a href="http://hl7.org/fhir/R4/documentreference.html#search">event</a></td><td><code>token</code></td><td><div><p>Main clinical acts documented</p>
+</div></td></tr><tr><td><b>MAY</b></td><td><a href="http://hl7.org/fhir/R4/documentreference.html#search">facility</a></td><td><code>token</code></td><td><div><p>Facility kind</p>
+</div></td></tr><tr><td><b>MAY</b></td><td><a href="http://hl7.org/fhir/R4/documentreference.html#search">format</a></td><td><code>token</code></td><td><div><p>Document format</p>
+</div></td></tr><tr><td><b>MAY</b></td><td><a href="http://hl7.org/fhir/R4/documentreference.html#search">identifier</a></td><td><code>token</code></td><td><div><p>Document identifier</p>
+</div></td></tr><tr><td><b>MAY</b></td><td><a href="http://hl7.org/fhir/R4/documentreference.html#search">period</a></td><td><code>date</code></td><td><div><p>Documented service period</p>
+</div></td></tr><tr><td><b>MAY</b></td><td><a href="http://hl7.org/fhir/R4/documentreference.html#search">related</a></td><td><code>reference</code></td><td><div><p>Related identifier or resource</p>
+</div></td></tr><tr><td><b>MAY</b></td><td><a href="http://hl7.org/fhir/R4/documentreference.html#search">security-label</a></td><td><code>token</code></td><td><div><p>Document security label</p>
+</div></td></tr><tr><td><b>MAY</b></td><td><a href="http://hl7.org/fhir/R4/documentreference.html#search">setting</a></td><td><code>token</code></td><td><div><p>Clinical setting</p>
+</div></td></tr></tbody></table></div><div class="col-lg-5"> </div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h4 id="Patient1-2" class="panel-title"><span style="float: right;">Resource Conformance: unspecified </span>Patient</h4></div><div class="panel-body"><div class="container"><div class="row"><div class="col-lg-4"><span class="lead">Core FHIR Resource</span><br/><a href="http://hl7.org/fhir/R4/patient.html">Patient</a></div><div class="col-lg-4"><span class="lead">Reference Policy</span><br/></div><div class="col-lg-4"><span class="lead">Interaction summary</span><br/><ul><li>Supports <code>read</code>, <code>search-type</code>.</li></ul></div></div><p/><div class="row"><div class="col-6"><span class="lead">Supported Profiles</span><p><a href="http://hl7.eu/fhir/base/2.0.0-ballot/StructureDefinition-patient-eu-core.html">Patient (EU core)</a></p></div></div><p/><div class="row"><div class="col-12"><span class="lead">Documentation</span><blockquote><div><p>Patient lookup via PDQm ITI-78.</p>
+</div></blockquote></div></div><div class="row"><div class="col-lg-7"><span class="lead">Search Parameters</span><table class="table table-condensed table-hover"><thead><tr><th>Conformance</th><th>Parameter</th><th>Type</th><th>Documentation</th></tr></thead><tbody><tr><td><b>SHALL</b></td><td>identifier</td><td><code>token</code></td><td><div/></td></tr><tr><td><b>SHALL</b></td><td>_id</td><td><code>token</code></td><td><div/></td></tr></tbody></table></div><div class="col-lg-5"> </div></div></div></div></div></div>
+  </text>
+  <url value="http://hl7.eu/fhir/health-data-api/CapabilityStatement/example-capabilitystatement-document-access-provider"/>
+  <version value="1.0.0-ballot"/>
+  <name value="ExampleDocumentAccessProviderEPSLab"/>
+  <title value="Example: Document Access Provider Supporting EPS and Laboratory"/>
+  <status value="draft"/>
+  <experimental value="true"/>
+  <date value="2026-03-10"/>
+  <publisher value="HL7 Europe"/>
+  <contact>
+    <name value="HL7 Europe"/>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.eu"/>
+    </telecom>
+  </contact>
+  <jurisdiction>
+    <coding>
+      <system value="http://unstats.un.org/unsd/methods/m49/m49.htm"/>
+      <code value="150"/>
+      <display value="Europe"/>
+    </coding>
+  </jurisdiction>
+  <copyright value="Copyright HL7 Europe. Licensed under Creative Commons public domain (CC0 1.0)."/>
+  <kind value="instance"/>
+  <instantiates value="http://hl7.eu/fhir/health-data-api/CapabilityStatement/document-access-provider-eu-api"/>
+  <implementation>
+    <description value="Example hospital document access provider"/>
+    <url value="https://example.org/fhir"/>
+  </implementation>
+  <fhirVersion value="4.0.1"/>
+  <format value="json"/>
+  <format value="xml"/>
+  <implementationGuide value="http://hl7.eu/fhir/eps"/>
+  <implementationGuide value="http://hl7.eu/fhir/laboratory"/>
+  <rest>
+    <mode value="server"/>
+    <documentation value="This server provides document exchange for European Patient Summaries and&#xA;Laboratory Reports. It supports MHD ITI-67 (Find Document References),&#xA;ITI-68 (Retrieve Document), and PDQm ITI-78 (Patient Demographics Query)."/>
+    <security>
+      <service>
+        <coding>
+          <system value="http://hl7.org/fhir/restful-security-service"/>
+          <code value="SMART-on-FHIR"/>
+        </coding>
+      </service>
+      <description value="SMART Backend Services authorization required."/>
+    </security>
+    <resource>
+      <type value="DocumentReference"/>
+      <documentation value="DocumentReference resources are served via ITI-67. The response uses base FHIR&#xA;DocumentReference resources without a required return profile."/>
+      <interaction>
+        <code value="read"/>
+      </interaction>
+      <interaction>
+        <code value="search-type"/>
+      </interaction>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHALL"/>
+        </extension>
+        <name value="_id"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/Resource-id"/>
+        <type value="token"/>
+        <documentation value="Logical id"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="MAY"/>
+        </extension>
+        <name value="_lastUpdated"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/Resource-lastUpdated"/>
+        <type value="date"/>
+        <documentation value="Resource version last updated"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="MAY"/>
+        </extension>
+        <name value="author.given"/>
+        <type value="string"/>
+        <documentation value="Author given name"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="MAY"/>
+        </extension>
+        <name value="author.family"/>
+        <type value="string"/>
+        <documentation value="Author family name"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHALL"/>
+        </extension>
+        <name value="category"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/DocumentReference-category"/>
+        <type value="token"/>
+        <documentation value="Document category"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHALL"/>
+        </extension>
+        <name value="creation"/>
+        <definition value="https://profiles.ihe.net/ITI/MHD/SearchParameter/DocumentReference-Creation"/>
+        <type value="date"/>
+        <documentation value="Document creation time"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHOULD"/>
+        </extension>
+        <name value="date"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/DocumentReference-date"/>
+        <type value="date"/>
+        <documentation value="Reference creation time"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="MAY"/>
+        </extension>
+        <name value="event"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/DocumentReference-event"/>
+        <type value="token"/>
+        <documentation value="Main clinical acts documented"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="MAY"/>
+        </extension>
+        <name value="facility"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/DocumentReference-facility"/>
+        <type value="token"/>
+        <documentation value="Facility kind"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="MAY"/>
+        </extension>
+        <name value="format"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/DocumentReference-format"/>
+        <type value="token"/>
+        <documentation value="Document format"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="MAY"/>
+        </extension>
+        <name value="identifier"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/clinical-identifier"/>
+        <type value="token"/>
+        <documentation value="Document identifier"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHALL"/>
+        </extension>
+        <name value="patient"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/clinical-patient"/>
+        <type value="reference"/>
+        <documentation value="Patient reference"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHALL"/>
+        </extension>
+        <name value="patient.identifier"/>
+        <type value="token"/>
+        <documentation value="Chained patient identifier"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="MAY"/>
+        </extension>
+        <name value="period"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/DocumentReference-period"/>
+        <type value="date"/>
+        <documentation value="Documented service period"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="MAY"/>
+        </extension>
+        <name value="related"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/DocumentReference-related"/>
+        <type value="reference"/>
+        <documentation value="Related identifier or resource"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="MAY"/>
+        </extension>
+        <name value="security-label"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/DocumentReference-security-label"/>
+        <type value="token"/>
+        <documentation value="Document security label"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="MAY"/>
+        </extension>
+        <name value="setting"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/DocumentReference-setting"/>
+        <type value="token"/>
+        <documentation value="Clinical setting"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHOULD"/>
+        </extension>
+        <name value="status"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/DocumentReference-status"/>
+        <type value="token"/>
+        <documentation value="Document reference status"/>
+      </searchParam>
+      <searchParam>
+        <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
+          <valueCode value="SHALL"/>
+        </extension>
+        <name value="type"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/clinical-type"/>
+        <type value="token"/>
+        <documentation value="Document type"/>
+      </searchParam>
+    </resource>
+    <resource>
+      <type value="Patient"/>
+      <supportedProfile value="http://hl7.eu/fhir/base/StructureDefinition/patient-eu-core"/>
+      <documentation value="Patient lookup via PDQm ITI-78."/>
+      <interaction>
+        <code value="read"/>
+      </interaction>
+      <interaction>
+        <code value="search-type"/>
+      </interaction>
+      <searchParam>
+        <name value="identifier"/>
+        <type value="token"/>
+      </searchParam>
+      <searchParam>
+        <name value="_id"/>
+        <type value="token"/>
+      </searchParam>
+    </resource>
+  </rest>
+</CapabilityStatement>

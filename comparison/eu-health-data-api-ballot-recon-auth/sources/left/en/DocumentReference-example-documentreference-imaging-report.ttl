@@ -1,0 +1,70 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <http://loinc.org/rdf#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://hl7.eu/fhir/health-data-api/DocumentReference/example-documentreference-imaging-report> a fhir:DocumentReference ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:Resource.id [ fhir:value "example-documentreference-imaging-report"] ;
+  fhir:Resource.language [ fhir:value "en"] ;
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ] ;
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: DocumentReference example-documentreference-imaging-report</b></p><a name=\"example-documentreference-imaging-report\"> </a><a name=\"hcexample-documentreference-imaging-report\"> </a><p><b>masterIdentifier</b>: <code>urn:oid:2.999.3.4.5.6.7.8.9</code>/urn:uuid:e5f6a7b8-c9d0-1234-ef01-345678901234</p><p><b>status</b>: Current</p><p><b>type</b>: <span title=\"Codes:{http://loinc.org 85430-7}\">Diagnostic imaging report</span></p><p><b>category</b>: <span title=\"Codes:{http://hl7.eu/fhir/health-data-api/CodeSystem/document-priority-category-eu-api Medical-Imaging}\">medical imaging studies and related imaging reports</span></p><p><b>subject</b>: <a href=\"http://example.org/fhir/Patient/example-patient\">Jan Jansen</a></p><p><b>date</b>: 2026-02-20 15:30:00+0100</p><p><b>custodian</b>: <a href=\"http://example.org/fhir/Organization/example-hospital\">Amsterdam University Medical Center</a></p><blockquote><p><b>content</b></p><h3>Attachments</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>ContentType</b></td><td><b>Url</b></td><td><b>Creation</b></td></tr><tr><td style=\"display: none\">*</td><td>application/fhir+json</td><td><a href=\"http://example.org/fhir/Bundle/imaging-report-jan-jansen\">http://example.org/fhir/Bundle/imaging-report-jan-jansen</a></td><td>2026-02-20 15:30:00+0100</td></tr></table><p><b>format</b>: unknown: http://hl7.eu/fhir/imaging-r5/StructureDefinition/BundleReportEuImaging (http://hl7.eu/fhir/imaging-r5/StructureDefinition/BundleReportEuImaging)</p></blockquote></div>"
+  ] ;
+  fhir:DocumentReference.masterIdentifier [
+     fhir:Identifier.system [ fhir:value "urn:oid:2.999.3.4.5.6.7.8.9" ] ;
+     fhir:Identifier.value [ fhir:value "urn:uuid:e5f6a7b8-c9d0-1234-ef01-345678901234" ]
+  ] ;
+  fhir:DocumentReference.status [ fhir:value "current"] ;
+  fhir:DocumentReference.type [
+     fhir:CodeableConcept.coding [
+       fhir:index -1 ;
+       a loinc:85430-7 ;
+       fhir:Coding.system [ fhir:value "http://loinc.org" ] ;
+       fhir:Coding.code [ fhir:value "85430-7" ] ;
+       fhir:Coding.display [ fhir:value "Diagnostic imaging report" ]
+     ]
+  ] ;
+  fhir:DocumentReference.category [
+     fhir:index -1 ;
+     fhir:CodeableConcept.coding [
+       fhir:index -1 ;
+       fhir:Coding.system [ fhir:value "http://hl7.eu/fhir/health-data-api/CodeSystem/document-priority-category-eu-api" ] ;
+       fhir:Coding.code [ fhir:value "Medical-Imaging" ] ;
+       fhir:Coding.display [ fhir:value "medical imaging studies and related imaging reports" ]
+     ]
+  ] ;
+  fhir:DocumentReference.subject [
+     fhir:link <http://example.org/fhir/Patient/example-patient> ;
+     fhir:Reference.reference [ fhir:value "http://example.org/fhir/Patient/example-patient" ] ;
+     fhir:Reference.display [ fhir:value "Jan Jansen" ]
+  ] ;
+  fhir:DocumentReference.date [ fhir:value "2026-02-20T15:30:00+01:00"^^xsd:dateTime] ;
+  fhir:DocumentReference.custodian [
+     fhir:link <http://example.org/fhir/Organization/example-hospital> ;
+     fhir:Reference.reference [ fhir:value "http://example.org/fhir/Organization/example-hospital" ] ;
+     fhir:Reference.display [ fhir:value "Amsterdam University Medical Center" ]
+  ] ;
+  fhir:DocumentReference.content [
+     fhir:index -1 ;
+     fhir:DocumentReference.content.attachment [
+       fhir:Attachment.contentType [ fhir:value "application/fhir+json" ] ;
+       fhir:Attachment.url [ fhir:value "http://example.org/fhir/Bundle/imaging-report-jan-jansen" ] ;
+       fhir:Attachment.creation [ fhir:value "2026-02-20T15:30:00+01:00"^^xsd:dateTime ]
+     ] ;
+     fhir:DocumentReference.content.format [
+       fhir:Coding.system [ fhir:value "urn:ietf:rfc:3986" ] ;
+       fhir:Coding.code [ fhir:value "http://hl7.eu/fhir/imaging-r5/StructureDefinition/BundleReportEuImaging" ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://hl7.eu/fhir/health-data-api/DocumentReference/example-documentreference-imaging-report.ttl> a owl:Ontology ;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

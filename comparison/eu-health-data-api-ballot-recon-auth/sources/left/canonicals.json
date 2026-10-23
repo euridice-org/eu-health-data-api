@@ -1,0 +1,154 @@
+[{
+  "id" : "document-access-provider-actor-eu-api",
+  "type" : "ActorDefinition",
+  "url" : "http://hl7.eu/fhir/health-data-api/ActorDefinition/document-access-provider-actor-eu-api",
+  "version" : "1.0.0-ballot",
+  "name" : "DocumentAccessProviderEuApi"
+},
+{
+  "id" : "document-consumer-actor-eu-api",
+  "type" : "ActorDefinition",
+  "url" : "http://hl7.eu/fhir/health-data-api/ActorDefinition/document-consumer-actor-eu-api",
+  "version" : "1.0.0-ballot",
+  "name" : "DocumentConsumerEuApi"
+},
+{
+  "id" : "document-publisher-access-provider-actor-eu-api",
+  "type" : "ActorDefinition",
+  "url" : "http://hl7.eu/fhir/health-data-api/ActorDefinition/document-publisher-access-provider-actor-eu-api",
+  "version" : "1.0.0-ballot",
+  "name" : "DocumentPublisherAccessProviderEuApi"
+},
+{
+  "id" : "document-publisher-actor-eu-api",
+  "type" : "ActorDefinition",
+  "url" : "http://hl7.eu/fhir/health-data-api/ActorDefinition/document-publisher-actor-eu-api",
+  "version" : "1.0.0-ballot",
+  "name" : "DocumentPublisherEuApi"
+},
+{
+  "id" : "resource-access-provider-actor-eu-api",
+  "type" : "ActorDefinition",
+  "url" : "http://hl7.eu/fhir/health-data-api/ActorDefinition/resource-access-provider-actor-eu-api",
+  "version" : "1.0.0-ballot",
+  "name" : "ResourceAccessProviderEuApi"
+},
+{
+  "id" : "resource-consumer-actor-eu-api",
+  "type" : "ActorDefinition",
+  "url" : "http://hl7.eu/fhir/health-data-api/ActorDefinition/resource-consumer-actor-eu-api",
+  "version" : "1.0.0-ballot",
+  "name" : "ResourceConsumerEuApi"
+},
+{
+  "id" : "document-access-provider-eu-api",
+  "type" : "CapabilityStatement",
+  "url" : "http://hl7.eu/fhir/health-data-api/CapabilityStatement/document-access-provider-eu-api",
+  "version" : "1.0.0-ballot",
+  "name" : "DocumentAccessProviderEuApi"
+},
+{
+  "id" : "document-access-provider-submission-option-eu-api",
+  "type" : "CapabilityStatement",
+  "url" : "http://hl7.eu/fhir/health-data-api/CapabilityStatement/document-access-provider-submission-option-eu-api",
+  "version" : "1.0.0-ballot",
+  "name" : "DocumentAccessProviderSubmissionOptionEuApi"
+},
+{
+  "id" : "document-consumer-eu-api",
+  "type" : "CapabilityStatement",
+  "url" : "http://hl7.eu/fhir/health-data-api/CapabilityStatement/document-consumer-eu-api",
+  "version" : "1.0.0-ballot",
+  "name" : "DocumentConsumerEuApi"
+},
+{
+  "id" : "document-publisher-access-provider-eu-api",
+  "type" : "CapabilityStatement",
+  "url" : "http://hl7.eu/fhir/health-data-api/CapabilityStatement/document-publisher-access-provider-eu-api",
+  "version" : "1.0.0-ballot",
+  "name" : "DocumentPublisherAccessProviderEuApi"
+},
+{
+  "id" : "document-publisher-eu-api",
+  "type" : "CapabilityStatement",
+  "url" : "http://hl7.eu/fhir/health-data-api/CapabilityStatement/document-publisher-eu-api",
+  "version" : "1.0.0-ballot",
+  "name" : "DocumentPublisherEuApi"
+},
+{
+  "id" : "example-capabilitystatement-document-access-provider",
+  "type" : "CapabilityStatement",
+  "url" : "http://hl7.eu/fhir/health-data-api/CapabilityStatement/example-capabilitystatement-document-access-provider",
+  "version" : "1.0.0-ballot",
+  "name" : "ExampleDocumentAccessProviderEPSLab"
+},
+{
+  "id" : "resource-access-provider-eu-api",
+  "type" : "CapabilityStatement",
+  "url" : "http://hl7.eu/fhir/health-data-api/CapabilityStatement/resource-access-provider-eu-api",
+  "version" : "1.0.0-ballot",
+  "name" : "ResourceAccessProviderEuApi"
+},
+{
+  "id" : "resource-consumer-eu-api",
+  "type" : "CapabilityStatement",
+  "url" : "http://hl7.eu/fhir/health-data-api/CapabilityStatement/resource-consumer-eu-api",
+  "version" : "1.0.0-ballot",
+  "name" : "ResourceConsumerEuApi"
+},
+{
+  "id" : "document-priority-category-eu-api",
+  "type" : "CodeSystem",
+  "url" : "http://hl7.eu/fhir/health-data-api/CodeSystem/document-priority-category-eu-api",
+  "version" : "1.0.0-ballot",
+  "name" : "DocumentPriorityCategoryEuApiCS"
+},
+{
+  "id" : "document-reference-category-type-eu-api",
+  "type" : "ConceptMap",
+  "url" : "http://hl7.eu/fhir/health-data-api/ConceptMap/document-reference-category-type-eu-api",
+  "version" : "1.0.0-ballot",
+  "name" : "DocumentReferenceCategoryTypeEuApi"
+},
+{
+  "id" : "hl7.fhir.eu.health-data-api",
+  "type" : "ImplementationGuide",
+  "url" : "http://hl7.eu/fhir/health-data-api/ImplementationGuide/hl7.fhir.eu.health-data-api",
+  "version" : "1.0.0-ballot",
+  "name" : "EuHealthDataApi"
+},
+{
+  "id" : "document-type-discharge-report-eu-api",
+  "type" : "ValueSet",
+  "url" : "http://hl7.eu/fhir/health-data-api/ValueSet/document-type-discharge-report-eu-api",
+  "version" : "1.0.0-ballot",
+  "name" : "DocumentTypeDischargeReportEuApiVS"
+},
+{
+  "id" : "document-type-eu-api",
+  "type" : "ValueSet",
+  "url" : "http://hl7.eu/fhir/health-data-api/ValueSet/document-type-eu-api",
+  "version" : "1.0.0-ballot",
+  "name" : "DocumentTypeEuApiVS"
+},
+{
+  "id" : "document-type-laboratory-report-eu-api",
+  "type" : "ValueSet",
+  "url" : "http://hl7.eu/fhir/health-data-api/ValueSet/document-type-laboratory-report-eu-api",
+  "version" : "1.0.0-ballot",
+  "name" : "DocumentTypeLaboratoryReportEuApiVS"
+},
+{
+  "id" : "document-type-medical-imaging-eu-api",
+  "type" : "ValueSet",
+  "url" : "http://hl7.eu/fhir/health-data-api/ValueSet/document-type-medical-imaging-eu-api",
+  "version" : "1.0.0-ballot",
+  "name" : "DocumentTypeMedicalImagingEuApiVS"
+},
+{
+  "id" : "document-type-patient-summary-eu-api",
+  "type" : "ValueSet",
+  "url" : "http://hl7.eu/fhir/health-data-api/ValueSet/document-type-patient-summary-eu-api",
+  "version" : "1.0.0-ballot",
+  "name" : "DocumentTypePatientSummaryEuApiVS"
+}]

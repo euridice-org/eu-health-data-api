@@ -1,0 +1,1898 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML>
+
+
+
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en" dir="ltr">
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <title>Authorization - EU Health Data API v1.0.0-ballot</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="http://hl7.org/fhir"/>
+
+    <link href="fhir.css" rel="stylesheet"/>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap-fhir.css" rel="stylesheet"/>
+
+    <!-- Project extras -->
+    <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
+    <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
+  	<link href="assets/css/prism.css" rel="stylesheet" />
+    <link href="assets/css/liquid.css" rel="stylesheet" />
+    <link href="assets/css/project.css" rel="stylesheet"/>
+  	<!-- Placeholder for child template CSS declarations -->
+    <link href="assets/css/hl7.css" rel="stylesheet"/>
+    <link href="assets/css/fhir-ig.css" rel="stylesheet"/>
+<!-- <link href="assets/css/hl7.css" rel="stylesheet"/> -->
+<link href="assets/css/hl7eu.css" rel="stylesheet"/>
+
+    <script type="text/javascript" src="fhir-table-scripts.js"> </script>
+    <script type="text/javascript" src="assets/js/direction-management.js"> </script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicons -->
+    <link rel="fhir-logo" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="fhir-logo" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="fhir-logo" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="fhir-logo" href="assets/ico/icon-fhir-57.png"/>
+    <link rel="shortcut icon" href="assets/ico/favicon.png"/>
+  </head>
+  <body onload="document.body.style.opacity='1'">
+
+	  <script type="text/javascript" src="assets/js/prism.js"></script>
+	  <script type="text/javascript" src="assets/js/prism-fhirpath.js"></script>
+	  <script type="text/javascript" src="assets/js/prism-cql.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
+    <style type="text/css">h2{--heading-prefix:"3.2"}
+    h3,h4,h5,h6{--heading-prefix:"3.2.0"}</style>
+    <div id="segment-header" class="segment">  <!-- segment-header -->
+      <div class="container">  <!-- container -->
+
+        <!-- Left logo - typically the publisher's logo - project or affiliate -->
+        <!-- <div id="project-nav">
+          <a id="project-logo" no-external="true" href="http://hl7.it">
+            <img height="61" alt="Project home" src="assets/images/hl7-eu-logo.png"/>
+          </a>
+        </div> -->
+
+
+        <div id="project-nav">
+          <a id="project-logo" no-external="true" href="https://hl7.eu/">
+            <img height="55" alt="HL7 Europe website" src="assets/images/hl7-eu-logo.png"/> 
+          </a>
+          <a id="project-logo" no-external="true" href="https://ihe-europe.net/">
+            <img height="55" alt="IHE Europe website" src="assets/images/ihe-eu-logo.drawio.png" style="vertical-align: bottom;"/> 
+          </a>
+        </div>
+
+        <div id="family-nav">
+          <!-- <table style="float: left;" cellpadding="0" cellspacing="0">
+            <tr><td><a id="dicom-family-logo" no-external="true" href="https://dicom.nema.org/standard.htm"><img width="100" alt="HL7 Europe website" src="assets/images/DICOM.png"/> </a>
+</a></td></tr>
+            <tr><td><a id="fhir-family-logo" no-external="true" href="http://hl7.org/fhir"><img width="100"  alt="HL7 Europe website" src="assets/images/fhir-logo-www.png"/></a></td></tr>
+          </table> -->
+          <a id="project-logo" no-external="true" href="https://euridice.org/"><img height="60" alt="Euridice website" src="assets/images/EURIDICE-logo-full.png"/> </a>
+          <a id="fhir-family-logo" no-external="true" href="http://hl7.org/fhir"><img height="60"  alt="HL7 FHIR website" src="assets/images/hl7-fhir-flame.drawio.png"/></a>
+        </div>
+
+
+
+
+
+        <div id="ig-status" data-fhir="generated">
+          <p><span style="font-size:12pt;font-weight:bold">EU Health Data API</span>
+            <br/>
+            <span style="display:inline-block;">1.0.0-ballot - ballot
+
+
+
+  <span title="">150</span>
+
+
+            </span>
+          </p>
+        </div>
+      </div> <!-- /container -->
+    </div>  <!-- /segment-header -->
+
+    <div id="segment-navbar" class="segment" data-fhir="generated">  <!-- segment-navbar -->
+      <div id="stripe"> </div>
+      <div class="container">  <!-- container -->
+        <!-- HEADER CONTENT -->
+
+        <nav class="navbar navbar-inverse">
+          <!--status-bar-->
+          <div class="container">
+
+            <button data-target=".navbar-inverse-collapse" class="navbar-toggle" data-toggle="collapse" type="button">
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+            </button>
+            <a class="navbar-brand hidden" href="http://hl7.org/fhir/R4/index.html">FHIR</a>
+            <div class="nav-collapse collapse navbar-inverse-collapse">
+              <!-- menu.xml  -->
+
+<ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
+  <li>
+    <a href="index.html">Home</a>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Background
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="regulatoryAnchors.html">Regulatory Anchors</a>
+      </li>
+      <li>
+        <a href="actors.html">Actors and Transactions</a>
+      </li>
+      <li>
+        <a href="member-state-architectures.html">Member State Architectures</a>
+      </li>
+      <li>
+        <a href="background-xds-fhir.html">Relationship to XDS/FHIR</a>
+      </li>
+      <li>
+        <a href="changes.html">Change Log</a>
+      </li>
+      <li>
+        <a href="open-issues.html">Open Issues</a>
+      </li>
+    </ul>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Priority Categories
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="priority-categories.html">Overview</a>
+      </li>
+      <li>
+        <a href="priority-area-eps.html">Patient Summary (EPS)</a>
+      </li>
+      <li>
+        <a href="priority-area-mpd.html">ePrescription / eDispensation</a>
+      </li>
+      <li>
+        <a href="priority-area-laboratory.html">Medical Test Results</a>
+      </li>
+      <li>
+        <a href="priority-area-imaging-report.html">Medical Imaging Report</a>
+      </li>
+      <li>
+        <a href="priority-area-imaging-manifest.html">Medical Imaging Manifest</a>
+      </li>
+      <li>
+        <a href="priority-area-hdr.html">Hospital Discharge Report</a>
+      </li>
+    </ul>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Functional Requirements
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="capability-discovery.html">Capability Discovery</a>
+      </li>
+      <li>
+        <a href="authorization.html">Authorization</a>
+      </li>
+      <li>
+        <a href="patient-match.html">Patient Lookup</a>
+      </li>
+      <li>
+        <a href="document-exchange.html">Document Exchange</a>
+      </li>
+      <li>
+        <a href="resource-access.html">Resource Access</a>
+      </li>
+    </ul>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Implementation
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="implementation.html">Overview</a>
+      </li>
+      <li>
+        <a href="example-patient-summary.html">Retrieve a European Patient Summary</a>
+      </li>
+      <li>
+        <a href="usecase-cross-border-ncp.html">Cross-Border Exchange via NCP</a>
+      </li>
+      <li>
+        <a href="usecase-health-professional-portal.html">Health Professional Access Service</a>
+      </li>
+      <li>
+        <a href="usecase-health-data-portal.html">Health Data Access Service</a>
+      </li>
+      <li>
+        <a href="usecase-wellness-app.html">Wellness Apps</a>
+      </li>
+      <li>
+        <a href="usecase-cross-org.html">Cross-Organization via National Infrastructure</a>
+      </li>
+      <li>
+        <a href="usecase-provider-internal-exchange.html">Provider-Internal Exchange</a>
+      </li>
+      <li>
+        <a href="ehr-system-composition.html">EHR System Composition Patterns</a>
+      </li>
+      <li>
+        <a href="logging-audit-considerations.html">Logging and Audit Considerations (Informative)</a>
+      </li>
+    </ul>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Artifacts
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="artifacts-overview.html">Overview</a>
+      </li>
+      <li>
+        <a href="artifacts.html">All Artifacts</a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a href="about.html">About</a>
+  </li>
+</ul>
+            </div>  <!-- /.nav-collapse -->
+
+              
+
+          </div>  <!-- /.container -->
+        </nav>  <!-- /.navbar -->
+      <!-- /HEADER CONTENT -->
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-navbar -->
+    <!--status-bar-->
+
+    <div id="segment-breadcrumb" class="segment" data-fhir="generated">  <!-- segment-breadcrumb -->
+      <div class="container">  <!-- container -->
+        <ul class="breadcrumb">
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><a href='functional.html'><b>Functional Requirements</b></a></li><li><b>Authorization</b></li>
+
+          <span style="float: var(--ig-right);">
+
+            <a href="capability-discovery.html">&lt; prev</a> | 
+
+            <a href="#bottom">bottom</a>
+
+          | <a href="authorization-ticket-resolutions.html">next &gt;</a>
+
+          </span>
+
+        </ul>
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-breadcrumb -->
+
+    <a name="top"> </a>
+    <div id="segment-content" class="segment">  <!-- segment-content -->
+      <div class="container">  <!-- container -->
+        <div class="row">
+          <div class="inner-wrapper">
+
+<style type="text/css">
+h2:before{color:silver;counter-increment:section;content:var(--heading-prefix) " ";}
+h3:before{color:silver;counter-increment:sub-section;content:var(--heading-prefix) "." counter(sub-section) " ";}
+h4:before{color:silver;counter-increment:composite;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) " ";}
+h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) " ";}
+h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
+</style>
+<div class="col-12">
+  <!--ReleaseHeader--><p id="publish-box">EU Health Data API - Local Development build (v1.0.0-ballot) built by the FHIR (HL7® FHIR® Standard) Build Tools. See the <a href='http://hl7.eu/fhir/health-data-api/history.html'>Directory of published versions</a></p><!--EndReleaseHeader-->
+  <h2>Authorization</h2>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <p><!-- white space is critical inside of capture --></p>
+<div class="markdown-toc">
+<ul id="markdown-toc">
+  <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
+  <li><a href="#ehds-requirements" id="markdown-toc-ehds-requirements">EHDS Requirements</a></li>
+  <li><a href="#ihe-iua-and-smart-app-launch" id="markdown-toc-ihe-iua-and-smart-app-launch">IHE IUA And SMART App Launch</a></li>
+  <li><a href="#using-eidas-for-user-authentication" id="markdown-toc-using-eidas-for-user-authentication">Using eIDAS for User Authentication</a></li>
+  <li><a href="#environment-specific-requirements" id="markdown-toc-environment-specific-requirements">Environment-Specific Requirements</a></li>
+  <li><a href="#smart-app-launch" id="markdown-toc-smart-app-launch">SMART App Launch</a></li>
+  <li><a href="#ihe-iua" id="markdown-toc-ihe-iua">IHE IUA</a></li>
+  <li><a href="#time-synchronization" id="markdown-toc-time-synchronization">Time Synchronization</a></li>
+  <li><a href="#tokens-scopes-enforcement-and-errors" id="markdown-toc-tokens-scopes-enforcement-and-errors">Tokens, Scopes, Enforcement, And Errors</a></li>
+  <li><a href="#potential-future-work" id="markdown-toc-potential-future-work">Potential Future Work</a></li>
+  <li><a href="#authorization-follow-up-to-do" id="markdown-toc-authorization-follow-up-to-do">Authorization Follow-up To Do</a></li>
+</ul>
+
+</div>
+
+<div class="auth-change">
+
+  <h3 id="introduction">Introduction</h3>
+
+  <p>Authentication and authorization are required by the EHDS. This IG applies <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/">SMART App Launch 2.2</a> and <a href="https://profiles.ihe.net/ITI/IUA/index.html">IHE IUA Revision 2.5</a>, as selected for each environment in <a href="implementation.html#the-european-interoperability-landscape">The European Interoperability Landscape</a>. This page summarizes the EHDS evidence, compares the two specifications, selects a conformance target for each environment, and then defines the applicable actors, discovery, token, scope, and enforcement requirements. Potential hybrid rules remain future work.</p>
+
+  <h3 id="ehds-requirements">EHDS Requirements</h3>
+
+  <p>The EHDS requires identification and authentication of natural persons and health professionals, proxy and representation services, security controls, and logging. The applicable enacted provisions are <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_4">Article 4(2)-(3)</a>, <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_12">Articles 12</a>, <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_16">16</a>, <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_30">30</a>, <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_36">36</a>, and <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_73">73</a>; <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#rct_7">Recitals 7</a>, <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#rct_21">21</a>, and <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#rct_112">112</a>; and <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#anx_2">Annex II section 3</a>. This factual summary is not legal advice, and several details remain subject to future implementing acts. A valid API token is not itself evidence of consent, a treatment relationship, patient identity, or entitlement beyond its granted scope and applicable local policy. Technical authentication and API authorization do not determine the applicable lawful basis under GDPR Article 6 or the applicable condition under Article 9(2).</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>EHDS topic</th>
+        <th>Enacted evidence</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Identification and login</td>
+        <td><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_16">Article 16</a> establishes electronic identification for access services and future interoperable cross-border mechanisms. <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_12">Article 12</a> and <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#anx_2">Annex II section 3.1</a> address health-professional identification and authentication.</td>
+      </tr>
+      <tr>
+        <td>European Digital Identity Wallet (EIDAS)</td>
+        <td><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#rct_21">Recital 21</a> states that digital proxy solutions should align with European Digital Identity Wallet technical specifications. The Wallet is an electronic-identification means recognised under <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32014R0910#art_6">Article 6 of eIDAS</a>, on which <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_12">Articles 12</a> and <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_16">16</a> rely; detailed cross-border alignment remains subject to Article 16 implementing acts.</td>
+      </tr>
+      <tr>
+        <td>Proxy and representation</td>
+        <td><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_4">Article 4(2)-(3)</a> and <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#rct_21">Recital 21</a> require transparent proxy services and representation arrangements.</td>
+      </tr>
+      <tr>
+        <td>Security</td>
+        <td><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_30">Article 30</a>, <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_36">Article 36(3)(e)-(f)</a>, <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#rct_112">Recital 112</a>, and <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#anx_2">Annex II section 3</a> address security, confidentiality, integrity, and EHR security controls.</td>
+      </tr>
+      <tr>
+        <td>Logging</td>
+        <td><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#anx_2">Annex II sections 3.2-3.3</a> require identified access-event logging and review tooling; <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_73">Article 73(1)(e)</a> requires identifiable logs for secure secondary-use processing.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Consent, patient matching, audit, identity proofing, client registration, trust establishment, key lifecycle, revocation, federation, and policy administration remain distinct responsibilities. They are established by the applicable deployment and law, not by a token alone.</p>
+
+  <p>See <a href="logging-audit-considerations.html">Logging and Audit Considerations (Informative)</a> for an explanation of API access events and later user access at a receiving system.</p>
+
+  <h3 id="ihe-iua-and-smart-app-launch">IHE IUA And SMART App Launch</h3>
+
+  <p>SMART and IUA both apply OAuth-based authorization to healthcare APIs, but neither is a subset of the other. SMART couples authorization discovery to the FHIR endpoint and supplies application-launch context and FHIR resource scopes. <a href="https://profiles.ihe.net/ITI/IUA/index.html#3442-use-cases">IUA</a> supports direct access and access through intermediaries using OAuth-based authorization. Its <a href="https://profiles.ihe.net/ITI/IUA/index.html#3714221-json-web-token-option">JWT option</a> profiles claims for user identity, clinical context, and consent-related information where applicable; other supported token options do not require JWT format. Cross-community use still requires agreed trust and authorization policy.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Aspect</th>
+        <th>SMART App Launch</th>
+        <th>IHE IUA</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Discovery</td>
+        <td>FHIR server at <code class="language-plaintext highlighter-rouge">{base}/.well-known/smart-configuration</code></td>
+        <td>Authorization Server metadata; locating the server is out of scope</td>
+      </tr>
+      <tr>
+        <td>Scope model</td>
+        <td>FHIR resource scopes such as <code class="language-plaintext highlighter-rouge">patient/Observation.rs</code></td>
+        <td>Core IUA defines no API-specific scope vocabulary; MHD integration defines <code class="language-plaintext highlighter-rouge">ITI-65</code> through <code class="language-plaintext highlighter-rouge">ITI-68</code> when the corresponding MHD actors are grouped with IUA</td>
+      </tr>
+      <tr>
+        <td>Context</td>
+        <td>Launch context and token-response parameters</td>
+        <td>Profiles user identity, clinical context, and consent-related claims under the applicable token option and integration</td>
+      </tr>
+      <tr>
+        <td>Interactive use</td>
+        <td>App launch is a core use case</td>
+        <td>Authorization-code grant is supported, without an app-launch framework</td>
+      </tr>
+      <tr>
+        <td>System-to-system use</td>
+        <td>Backend Services with client credentials, asymmetric authentication, and <code class="language-plaintext highlighter-rouge">system/</code> scopes</td>
+        <td>Client credentials with IUA actors and selected integration requirements</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Same-endpoint dual support is not claimed because the two specifications do not define scope, discovery, or token-context precedence.</p>
+
+  <p>SMART App Launch is best suited to context-aware application launch or authorization-endpoint discovery from a FHIR server URL. IUA is suited to established environments where actor locations, including the Authorization Server, are preconfigured, and the deployment requires IUA transaction integration or its JWT claim profile. This IG selects one profile per concrete endpoint; a deployment may expose distinct endpoints using different profiles, but it does not claim same-endpoint dual conformance. Future versions may define hybrid deployments.</p>
+
+  <p>SMART deployments do not automatically use the IUA JWT claim profile. That is an IUA token
+option, not a protocol-independent overlay. A deployment that needs equivalent claims with SMART
+must separately define their issuance, validation, and semantics; this IG defines no
+cross-protocol claim profile.</p>
+
+  <p>Claims and scopes are orthogonal. Scopes express requested or granted access to interactions;
+claims convey identity or other context that an Authorization Server issues and a Resource Server
+may use with the granted scope and local policy. A scope may itself be represented as a token claim,
+but that does not make the concepts interchangeable. Core IUA defines no API-specific scope
+vocabulary; the <a href="https://profiles.ihe.net/ITI/IUA/index.html#3364-use-with-the-internet-user-authorization-iua-profile">MHD integration</a>
+defines transaction scopes only for the corresponding MHD transactions grouped with IUA. Neither
+contextual claims nor scopes alone establish consent or entitlement to every matching resource.</p>
+
+  <p><a name="authorization-server-deployment"></a></p>
+  <h4 id="authentication-and-api-authorization">Authentication And API Authorization</h4>
+
+  <p>The <a href="ActorDefinition-authentication-service-eu-api.html">Authentication Service</a> authenticates an
+end user, directly or through a Wallet or upstream identity provider. The
+<a href="ActorDefinition-eu-authorization-server-eu-api.html">Health Data API Authorization Server</a> relies on an
+acceptable authentication result when user authentication is required, applies authorization
+policy, and issues API access tokens. The
+<a href="ActorDefinition-eu-authorization-resource-server-eu-api.html">Health Data API Resource Server</a>
+validates or introspects tokens and enforces granted authorization. See
+<a href="actors.html#authentication-and-authorization-groupings">Authentication and Authorization Groupings</a>
+for the logical roles and deployment boundaries.</p>
+
+  <p>The Authentication Service MAY be grouped with the Authorization Server in one implementation,
+or they may be separately deployed. In the latter case, their trust relationship and authentication
+interface are deployment-defined, not an interoperable transaction specified by this IG. The
+deployment must establish trusted authentication sources, intended recipients, freshness and replay
+controls, applicable assurance, and mapping to local users and patients. Authentication alone
+does not grant API access. The Authentication Service is IG-defined; using it does not transfer
+the formal <a href="https://profiles.ihe.net/ITI/IUA/index.html#34112-authorization-server">IUA Authorization Server</a>
+or <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html">SMART Authorization Server</a>
+conformance obligations.</p>
+
+  <p>Authorization Server / Resource Server co-location is a separate optional deployment choice, not
+a required provider grouping. A Resource Server accepts tokens only under its established issuer
+trust, token-validation arrangements, audience or resource binding, granted scopes, and local policy.
+SMART discovery can publish absolute authorization endpoints on a different host; it does not
+require common hosting or a common operator. Each illustrated Authorization Server serves the
+illustrated API trust relationship, not all APIs or all Member States.</p>
+
+  <p>An <a href="https://openid.net/specs/openid-connect-core-1_0.html#IDToken">OIDC ID token</a> describes an
+authentication event for its intended client; it is not an API access token. A Wallet presentation
+is likewise not an API access token. A deployment could separately profile
+<a href="https://www.rfc-editor.org/rfc/rfc8693.html#section-2">OAuth Token Exchange</a>, but neither this actor
+separation nor Wallet support requires an app to exchange identity evidence for an API token.
+Acceptance of such evidence, its audience, trust and authorization semantics would need a separate
+profile; no such exchange is claimed here.</p>
+
+  <p><a href="https://profiles.ihe.net/ITI/IUA/index.html#34411-authorization-grant-types">IUA's grant discussion</a>
+also describes optional SAML and JWT assertion grants for federation. These are distinct from
+RFC 8693 token exchange and from an OIDC ID token; accepting a particular assertion still requires
+the deployment's trust and protocol agreements. This IG does not select one of those interfaces
+for the Authentication Service.</p>
+
+  <h3 id="using-eidas-for-user-authentication">Using eIDAS for User Authentication</h3>
+
+  <p>The <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32014R0910#art_6">European Digital Identity Wallet</a> (under eIDAS) can work alongside a SMART authorization flow. The Authorization Server can use the Wallet as one way to authenticate the user, while SMART handles the application’s authorization to access health data.</p>
+
+  <p>Where the selected environment requires support for eIDAS-recognised electronic identification—for example, electronic health data access services under <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_16">EHDS Article 16(1)</a>—the Authorization Server SHALL support authentication using those means, directly or through an identity provider. This applies to interactive
+SMART or IUA authorization-code flows, not to a pre-authorized SMART Backend Service using
+<code class="language-plaintext highlighter-rouge">client_credentials</code>. The Authorization Server validates the authentication result, establishes
+the user session, applies the applicable authorization policy, and issues a code or token only
+after successful authorization.</p>
+
+  <p>A deployment MAY use
+<a href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID for Verifiable Presentations 1.0</a>
+to obtain and validate a verifiable presentation from a Wallet, but this IG does not select a
+presentation format, credential schema, or Wallet-to-Authorization-Server profile. The
+applicable eIDAS assurance, health-professional status, and local authorization policy remain
+separate from the OAuth grant and access-token scopes. Where an applicable rule or deployment
+specifies an eID assurance level, <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02014R0910-20241018#art_8">eIDAS Article 8</a>
+and <a href="https://eur-lex.europa.eu/eli/reg_impl/2015/1502/oj/eng">Commission Implementing Regulation (EU) 2015/1502</a>
+address assurance levels for electronic-identification schemes and means. The EHDS does not
+select a universal assurance level for health API access, and an eID assurance level does not
+itself authorize access to an API resource.</p>
+
+  <!-- all this Bootstrap html for getting an narrow image to fit nicely in text - 640 pix wide -->
+
+  <div>
+    <figure class="figure" data-section-number="3.2">
+  
+  <?xml version="1.0" encoding="us-ascii" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" preserveAspectRatio="none" version="1.1" viewBox="0 0 1121 1130" zoomAndPan="magnify"><defs /><g><rect fill="#FFFFFF" height="87.118" style="stroke:#181818;stroke-width:1.0;" width="10" x="309.5" y="949.3661" /><rect fill="#FFFFFF" height="31.706" style="stroke:#181818;stroke-width:1.0;" width="10" x="459" y="291.8519" /><rect fill="#FFFFFF" height="356.1782" style="stroke:#181818;stroke-width:1.0;" width="10" x="459" y="427.6578" /><rect fill="#FFFFFF" height="31.706" style="stroke:#181818;stroke-width:1.0;" width="10" x="459" y="833.2481" /><rect fill="#FFFFFF" height="201.9421" style="stroke:#181818;stroke-width:1.0;" width="10" x="748" y="477.0699" /><rect fill="#FFFFFF" height="31.706" style="stroke:#181818;stroke-width:1.0;" width="10" x="1006" y="535.4819" /><rect fill="none" height="642.2203" style="stroke:#000000;stroke-width:1.5;" width="1094" x="10" y="230.7338" /><rect fill="none" height="83.118" style="stroke:#000000;stroke-width:1.5;" width="433.5" x="660.5" y="492.0699" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="40" x2="40" y1="77.2038" y2="1054.4842" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="314" x2="314" y1="77.2038" y2="1054.4842" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="464" x2="464" y1="77.2038" y2="1054.4842" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="752.5" x2="752.5" y1="77.2038" y2="1054.4842" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="1011" x2="1011" y1="77.2038" y2="1054.4842" /><rect fill="#E2E2F0" height="33.0679" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="41" x="20" y="43.1358" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="27" x="27" y="65.1018">App</text><rect fill="#E2E2F0" height="33.0679" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="41" x="20" y="1053.4842" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="27" x="27" y="1075.4501">App</text><rect fill="#E2E2F0" height="71.2038" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="127" x="251" y="5" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="78" x="275.5" y="26.9659">FHIR Server</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="109" x="260" y="46.0339">(Health Data API</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="113" x="258" y="65.1018">Resource Server)</text><rect fill="#E2E2F0" height="71.2038" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="127" x="251" y="1053.4842" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="78" x="275.5" y="1075.4501">FHIR Server</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="109" x="260" y="1094.518">(Health Data API</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="113" x="258" y="1113.586">Resource Server)</text><rect fill="#E2E2F0" height="52.1358" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="152" x="388" y="24.0679" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="105" x="411.5" y="46.0339">Health Data API</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="138" x="395" y="65.1018">Authorization Server</text><rect fill="#E2E2F0" height="52.1358" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="152" x="388" y="1053.4842" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="105" x="411.5" y="1075.4501">Health Data API</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="138" x="395" y="1094.518">Authorization Server</text><rect fill="#E2E2F0" height="33.0679" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="165" x="670.5" y="43.1358" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="151" x="677.5" y="65.1018">Authentication Service</text><rect fill="#E2E2F0" height="33.0679" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="165" x="670.5" y="1053.4842" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="151" x="677.5" y="1075.4501">Authentication Service</text><rect fill="#E2E2F0" height="33.0679" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="146" x="938" y="43.1358" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="132" x="945" y="65.1018">eIDAS / EUDI Wallet</text><rect fill="#E2E2F0" height="33.0679" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="146" x="938" y="1053.4842" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="132" x="945" y="1075.4501">eIDAS / EUDI Wallet</text><rect fill="#FFFFFF" height="87.118" style="stroke:#181818;stroke-width:1.0;" width="10" x="309.5" y="949.3661" /><rect fill="#FFFFFF" height="31.706" style="stroke:#181818;stroke-width:1.0;" width="10" x="459" y="291.8519" /><rect fill="#FFFFFF" height="356.1782" style="stroke:#181818;stroke-width:1.0;" width="10" x="459" y="427.6578" /><rect fill="#FFFFFF" height="31.706" style="stroke:#181818;stroke-width:1.0;" width="10" x="459" y="833.2481" /><rect fill="#FFFFFF" height="201.9421" style="stroke:#181818;stroke-width:1.0;" width="10" x="748" y="477.0699" /><rect fill="#FFFFFF" height="31.706" style="stroke:#181818;stroke-width:1.0;" width="10" x="1006" y="535.4819" /><path d="M387,92.2038 L387,172.2038 L829,172.2038 L829,102.2038 L819,92.2038 L387,92.2038 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;" /><path d="M819,92.2038 L819,102.2038 L829,102.2038 L819,92.2038 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="366" x="411.75" y="111.1008">Distinct logical roles; MAY be grouped in one implementation.</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="384" x="411.75" y="128.8068">Separate-service authentication interface is deployment-defined.</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="298" x="411.75" y="146.5128">AS / FHIR co-location is a separate optional choice.</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="257" x="411.75" y="164.2188">No universal or central EU server is implied.</text><rect fill="#EEEEEE" height="3" style="stroke:#EEEEEE;stroke-width:1.0;" width="1114" x="0" y="199.8808" /><line style="stroke:#000000;stroke-width:1.0;" x1="0" x2="1114" y1="199.8808" y2="199.8808" /><line style="stroke:#000000;stroke-width:1.0;" x1="0" x2="1114" y1="202.8808" y2="202.8808" /><rect fill="#EEEEEE" height="25.706" style="stroke:#000000;stroke-width:2.0;" width="130" x="492" y="188.0278" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="113" x="498" y="205.9248">Get Access Token</text><path d="M10,230.7338 L73,230.7338 L73,240.4398 L63,250.4398 L10,250.4398 L10,230.7338 " fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;" /><rect fill="none" height="642.2203" style="stroke:#000000;stroke-width:1.5;" width="1094" x="10" y="230.7338" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="18" x="25" y="245.6308">alt</text><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="185" x="88" y="244.4927">[Pre-authorized Backend Service]</text><polygon fill="#181818" points="447,287.8519,457,291.8519,447,295.8519,451,291.8519" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;" x1="40.5" x2="453" y1="291.8519" y2="291.8519" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="86" x="47.5" y="268.3369">Token request</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="312" x="47.5" y="286.0429">client_credentials + asymmetric client authentication</text><polygon fill="#181818" points="51.5,319.5579,41.5,323.5579,51.5,327.5579,47.5,323.5579" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="45.5" x2="463" y1="323.5579" y2="323.5579" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="77" x="57.5" y="317.7489">Access token</text><path d="M387,336.5579 L387,363.5579 L829,363.5579 L829,346.5579 L819,336.5579 L387,336.5579 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;" /><path d="M819,336.5579 L819,346.5579 L829,346.5579 L819,336.5579 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="335" x="436.25" y="355.4549">No runtime end-user authentication in Backend Services</text><line style="stroke:#000000;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="10" x2="1104" y1="370.2639" y2="370.2639" /><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="196" x="15" y="382.0228">[Interactive user or patient launch]</text><polygon fill="#181818" points="447,423.6578,457,427.6578,447,431.6578,451,427.6578" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;" x1="40.5" x2="453" y1="427.6578" y2="427.6578" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="131" x="47.5" y="404.1428">Authorization request</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="171" x="47.5" y="421.8488">(selected SMART or IUA flow)</text><polygon fill="#181818" points="736,473.0699,746,477.0699,736,481.0699,740,477.0699" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;" x1="469" x2="742" y1="477.0699" y2="477.0699" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="168" x="476" y="453.5549">Arrange user authentication</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="200" x="476" y="471.2609">(deployment-defined integration)</text><path d="M660.5,492.0699 L727.5,492.0699 L727.5,501.7759 L717.5,511.7759 L660.5,511.7759 L660.5,492.0699 " fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;" /><rect fill="none" height="83.118" style="stroke:#000000;stroke-width:1.5;" width="433.5" x="660.5" y="492.0699" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="22" x="675.5" y="506.9669">opt</text><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="235" x="742.5" y="505.8288">[Wallet selected as authentication means]</text><polygon fill="#181818" points="994,531.4819,1004,535.4819,994,539.4819,998,535.4819" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;" x1="758" x2="1000" y1="535.4819" y2="535.4819" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="220" x="765" y="529.6729">Request user-approved presentation</text><polygon fill="#181818" points="769,563.1879,759,567.1879,769,571.1879,765,567.1879" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="763" x2="1010" y1="567.1879" y2="567.1879" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="224" x="775" y="561.3789">Presentation, not an API access token</text><path d="M763,587.1879 L763,632.1879 L999,632.1879 L999,597.1879 L989,587.1879 L763,587.1879 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;" /><path d="M989,587.1879 L989,597.1879 L999,597.1879 L989,587.1879 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="215" x="769" y="606.0849">Authenticate user; validate evidence</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="158" x="769" y="623.7909">or trusted upstream result</text><polygon fill="#181818" points="480,675.012,470,679.012,480,683.012,476,679.012" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="474" x2="752" y1="679.012" y2="679.012" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="174" x="486" y="655.497">Trusted authentication result</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="255" x="486" y="673.203">(format and interface deployment-defined)</text><path d="M474,692.012 L474,755.012 L651,755.012 L651,702.012 L641,692.012 L474,692.012 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;" /><path d="M641,692.012 L641,702.012 L651,702.012 L641,692.012 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="85" x="480" y="710.909">Validate result</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="129" x="480" y="728.615">Establish user session</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="156" x="480" y="746.321">Apply authorization policy</text><polygon fill="#181818" points="51.5,779.8361,41.5,783.8361,51.5,787.8361,47.5,783.8361" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="45.5" x2="463" y1="783.8361" y2="783.8361" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="194" x="57.5" y="778.027">Redirect with authorization code</text><polygon fill="#181818" points="447,829.2481,457,833.2481,447,837.2481,451,833.2481" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;" x1="40.5" x2="453" y1="833.2481" y2="833.2481" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="86" x="47.5" y="809.7331">Token request</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="294" x="47.5" y="827.4391">(code + PKCE for SMART; client auth as applicable)</text><polygon fill="#181818" points="51.5,860.9541,41.5,864.9541,51.5,868.9541,47.5,864.9541" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="45.5" x2="463" y1="864.9541" y2="864.9541" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="258" x="57.5" y="859.1451">Access token and applicable launch context</text><rect fill="#EEEEEE" height="3" style="stroke:#EEEEEE;stroke-width:1.0;" width="1114" x="0" y="901.8071" /><line style="stroke:#000000;stroke-width:1.0;" x1="0" x2="1114" y1="901.8071" y2="901.8071" /><line style="stroke:#000000;stroke-width:1.0;" x1="0" x2="1114" y1="904.8071" y2="904.8071" /><rect fill="#EEEEEE" height="25.706" style="stroke:#000000;stroke-width:2.0;" width="117" x="498.5" y="889.9541" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="100" x="504.5" y="907.8511">Access Content</text><polygon fill="#181818" points="297.5,945.3661,307.5,949.3661,297.5,953.3661,301.5,949.3661" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;" x1="40.5" x2="303.5" y1="949.3661" y2="949.3661" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="250" x="47.5" y="943.5571">Protected resource request (access token)</text><path d="M324,962.3661 L324,1007.3661 L579,1007.3661 L579,972.3661 L569,962.3661 L324,962.3661 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;" /><path d="M569,962.3661 L569,972.3661 L579,972.3661 L569,962.3661 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="158" x="330" y="981.2631">Validate / introspect token</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="234" x="330" y="998.9692">Enforce granted scopes and local policy</text><polygon fill="#181818" points="51.5,1032.4842,41.5,1036.4842,51.5,1040.4842,47.5,1036.4842" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="45.5" x2="313.5" y1="1036.4842" y2="1036.4842" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="124" x="57.5" y="1030.6752">Authorized response</text><!--SRC=[XLLHRzem47xFhpZj2THcVQVhfAom5Ksj4BIR9Y5DhdE0LSVsR8UE_VhTEGaGg5IUI7pttNVVT-U45sMSyAA2i5sFLOKcA6iMSQSHLa87p38wZaeg9qo4mhdUyuUlTzCvBD1lqI_Du0w5ZXiOYoYWc4sNPex1rbvY6pBy0280v_HHplAAEcwiL_z493PjSiej5lrC3aH3puT89R49fQE7VZHEnyK2hc3oD9x2Jw4rnXIQtcUPiH71KYagSzdc0_t6AaHbP0HjrrH9WxSQmpNS5x_W6M7jRUsm16N06WHLEOqaP4oKFYQ41RB84VFG40JHvwrCHByITA02bEYqtJ52Nk9A6ImRa4Gz2IvjhcsN6a10QF71Edv95EN6KfqcyS52RHJr5UZ0Uf04xUdlv0b2afP1cBRYKcXAO2MoxEO6lY6PBYM608_s1GtSt6GPcGKpZxbeNQBUlmZvmecj0GrVvo3_JBGlBaPjjiS_DOQuD99gcVXRUYnP1feqk20dTbM5qIi9pVc9J7lKJtbEi7a-whX5Ha_7RtWuOW5yJJ0L0f7CQ-hwt87J7aA6DFymPMk4ZAGVf4GIq54EqzEYDd9ptcn_VFTD3m9gb97aMjmNyqT6cZuLiDBsTTWvp1XCEi5uByowBTldIs3dOvB6QErJG0D8uz3EEUnhqxoVz5wXC2759n9SddcahM0UywQ1n2CNpddIjmJdCNHJVfBC_gHijcXs57V9_e0mlEKWJhqZyGyUUhNUHB2hpiEZJMyKkOQjqAhaHzmg6YE9IqEIHby7xhDs8Ngacutgrpfs0gVPOKZczjZ6dWZIP936A-ihmOJBenKz5txu5kt5NfGV7SyZ9loRX2YUjGgRnk50QlIqT4xlGFHcoLcjvAvJgzdJywsOOwaykGslYgxLFeAqvVlhEU0esiZPzzi9a0ZDm5uVhsMQ8s98cZrh7Bwpcqd2GtYxEKI6LFqR-Sv9rqsRSiklgGvVDYrDllUOwCnJoscEVVTjQLd3u7YWXbdV3iuV7PouOZ-z3OvLIWbBCp7KgUJxd3uML218wp0avdpRwaxyhak6J7qUha7YvAoXh-P_]--></g></svg>
+  
+      <figcaption class="figure-caption" data-section-number="3.2"><em>eIDAS authentication in an authorization flow</em></figcaption>
+    </figure>
+    <p></p>
+</div>
+
+  <p>The <a href="https://eudi.dev/3.0.0/">EUDI Wallet Architecture and Reference Framework (ARF) v3.0.0</a>
+is an informative guide to harmonised Wallet implementation, not a replacement
+for binding eIDAS requirements (<a href="https://eudi.dev/3.0.0/main/01-introduction/#13-purpose-scope-and-audience">§1.3</a>).
+Its Annex 2 requirements apply to named actors, not Users
+(<a href="https://eudi.dev/3.0.0/annexes/annex-2/annex-2.02-high-level-requirements-by-topic/#a2211-overview">A.2.1.1</a>,
+<a href="https://eudi.dev/3.0.0/annexes/annex-2/annex-2.02-high-level-requirements-by-topic/#a2212-key-words">A.2.1.2</a>).
+For implementation guidance, see the <a href="https://eudi.dev/3.0.0/main/04-high-level-architecture/#43-reference-architecture">reference architecture</a>,
+<a href="https://eudi.dev/3.0.0/main/04-high-level-architecture/#44-data-presentation-flows">presentation flows</a>,
+<a href="https://eudi.dev/3.0.0/main/05-data-model-and-data-exchange-protocols/#574-remote-attestation-presentation-using-openid4vp-and-haip">OpenID4VP with HAIP</a>,
+and <a href="https://eudi.dev/3.0.0/main/06-trust-model/">trust model</a>.</p>
+
+  <p>Under eIDAS, using the Wallet for user authentication is at the User's
+<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02014R0910-20241018#art_5f">voluntary request and limited to the minimum data necessary</a>;
+this does not remove an applicable environment-conditioned identification
+requirement. A service provider is a Wallet Relying Party when it requests
+Wallet attributes; an Authorization Server is not automatically one. For
+Relying Party registration and Wallet authentication, including request replay
+protection, see <a href="https://eudi.dev/3.0.0/main/06-trust-model/#642-relying-party-registration">ARF §6.4.2</a>
+for registration, and <a href="https://eudi.dev/3.0.0/main/06-trust-model/#6632-wallet-unit-authenticates-the-relying-party-instance">§6.6.3.2</a>
+with <a href="https://eudi.dev/3.0.0/annexes/annex-2/annex-2.02-high-level-requirements-by-topic/#RPA_01">Annex 2 RPA_01</a>
+for Wallet authentication of the Relying Party and replay protection.
+The Wallet authenticates its User and obtains approval before releasing
+attributes (<a href="https://eudi.dev/3.0.0/main/06-trust-model/#6635-wallet-unit-obtains-user-approval-for-presenting-selected-attributes">§6.6.3.5</a>);
+that approval is not a legal basis for processing
+(<a href="https://eudi.dev/3.0.0/main/06-trust-model/#66351-introduction">§6.6.3.5.1</a>). If a Relying Party relies on
+Wallet-side authentication to bind a presenter to a PID or device-bound
+attestation, it verifies device binding; the ARF also describes other
+<a href="https://eudi.dev/3.0.0/main/06-trust-model/#6639-relying-party-instance-verifies-or-trusts-user-binding">user-binding methods</a>.
+LoA High concerns PID authentication, not all attestations
+(<a href="https://eudi.dev/3.0.0/main/02-eudi-wallet-functionalities/#22-identification-and-authentication">§2.2</a>).</p>
+
+  <p>The ARF does not define a Wallet-to-Authorization-Server integration profile
+or how a deployment maps Wallet results to local accounts or patients and makes
+authorization decisions. A validated result may be used as upstream user
+authentication before continuing the selected SMART or IUA authorization-code
+flow with local policy. A Wallet presentation is not an access token or grant
+and does not itself confer API authorization or determine the protocol's scopes
+or claims.</p>
+
+  <p>For example, a patient can sign in to a Wellness Application using a Wallet without yet granting
+that app access to an EHR. The app initiates the selected
+<a href="https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html">SMART authorization-code flow</a>
+for the target EHR API. Its Authorization Server arranges authentication through the Authentication
+Service, which may reuse a trusted existing session or request another Wallet presentation.
+After applying access policy, the Authorization Server returns an authorization code; the app
+redeems it with PKCE and receives an API access token. The app does not send its Wallet presentation
+or an ID token to the FHIR API in place of that access token. Wallet request routing, including
+same-device interaction, is deployment-specific; an EHR-hosted login page is not required.
+Uploading data additionally requires granted write permissions and a supported receiving interaction;
+sign-in does not create either.</p>
+
+  <h3 id="environment-specific-requirements">Environment-Specific Requirements</h3>
+
+  <p>The figure below described the European interoperability landscape.</p>
+
+  <!-- all this Bootstrap html for getting an narrow image to fit nicely in text - 640 pix wide -->
+
+  <div>
+    <figure class="figure" data-section-number="3.2">
+  
+  <svg host="65bd71144e" xmlns="http://www.w3.org/2000/svg" style="background: transparent; background-color: transparent;" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="802px" height="442px" viewBox="0 0 802 442" id="ge-svg-QkU3Z9lwpENdpB6T0quL" content="&lt;mxfile&gt;&lt;diagram id=&quot;Y86ME5r39prPMLShu3kK&quot; name=&quot;Page-1&quot;&gt;7V1bc6O4Ev4t5yFVkwe7QOL6mDiZyVbtnE2d1NTuPsog22yw8Qpy8f76IwECJLCNZeHYmXWmJqYRArq//tRqNeQKTpbv3whaL74nIY6vgBG+X8G7KwA8YNP/mWBTCGwHFoI5icJCZNSCp+gfXAhNLn2JQpyWskKUJUmcRWtRGCSrFQ4yQYYISd7EZrMkDgXBGs1xS/AUoLgt/T0Ks0V5W7ZRyx9wNF/wM5tGuWeJeONSkC5QmLw1RPD+Ck5IkmTFt+X7BMdMd6Jevm7ZW10YwauszwH1JddHlJ2k2Ybf79siyvDTGgVs+42a9AreLrJlTLdM+nUWxfEkiROSt4b3Dvuh8jQjyTPu2vOKSRZRfd7E0XxF92UJ67I47yuKX8rzfsfLKSZU9pShDJe76aH4vXGl5Y19w8kSZ2RDmywaures8g7fakM5HEdlN7xJiUaTGweVMJlXXdeapF9KZW6xhOlr0Gy3nlC5FeNZxtRMD49W81/zrTurS5G/04tb4TSl0pv1WkmRXluP0BD1CKGoSMvVoki3jyK5pn5FUxw/JmmURQnT0TIKQ9ZmiyobuqauuGadLd/njLTGU5RGwXidxJs56+mWfZskCQnzm7Fv6T96exPjyqbnn7Ctse1LAj8XjA2zLXMdWdZs5MIuAT1DQ9YQ0H/FBcbRit2DQTdjSRMB1R51pho+laALhC0IXQEnLtG2ElTv/P3C2Oo2KPz8hu4k8+kXdnn0K/91nfdJqXaVjWZoGcWboukDjl8xM0xjf5oTPttrgvV7c0dxUrZnlZAlihv7XhGJEP1Nbw5lL4QNDzvbBWi9rclbCXu20zKMYk+MM6qtUels7SMTsl6gVdklKGTUv7JRqW4mrjTO90WrMMc022nwW833ZIR2NqP98zMxu94W/pePX43TvFFQihdW9UXvZfoc0e5YnwUfj0oPFtrlEMj76NDvFAXPc5K8rMKRZGRA4Zfbt/nlunEbIQ4SghgCR9kiCp5zEsoPj1YUmPwMctuGoXe2a1yO0G4WJyiTNRdG6TpGG948dxVg/CdarhOSIWaG2xrN9Nuc/f5vfiLEGOkXZrxkjQmaRnGUbXLRjCCq1peAQY67CKW0wkuKLpToFhhtvrU9kW9tT6BbYPvH060NfsKAwJQU6zjHRwQ/Ukx+m/7Fwk9KHoyLRR4No9caIIVoSmQJ7bOjncKhh8GY3Sp1j+fiipe50qlPUpWPEAmY7fOG6Ti3ed6c48cDDROU2NIaAlUDemsYU4KD2eFnpiPBwRXhAJzD4UA3G4jY4ntQv+/5+UeH73FgsSGyTwAAbJsPCfWX606S/b55wCim6reM+x8NABenOoJF/bZxXReKJOqKru5YGkjUOqPYv1BtgJhjG48keaVzZ6LmK67VUieQfUV0FUjD3OPVaev3C8NwnMmkhDOXx+xeRyEiz19okxliPwV06SYO2c91D9cIqtPUQIez/NPGPqVjgkYJmaNV9E/O0jodoGOwc23BYKZviZM24GmwmKPBYi3G+pp/umzJPrvGCq0W+0bHwTcaR24z09ZBWuVk9w//Y+HOJs3wcs8Z5WBBAS48omwOhtIk3/SA6OG2hkk+J2EcthJvbQAlLyTAIjM0QIVX4Q1L8bHIIEYpncPnUEIk4+JyRrCdGxANvoHdhUDna4m0Yg9P/kEqoectE5WAn1De/hoxBeSTc/weZX80vv/Jvo/tcuvuvbHrbsM3KFNs8oPGvmdyQXGkY9tcUB+cbwlHP2ISUeOwcOnOqEBCr22OpTSP4Ct7YVMeRHBMGexVNGFzArMDKvkZqImYY1UN1km0ytImkpbvj0zWwCP0x7aASNeUGKxATHncQV05HOy8q0JVra5yfFfK6Qd57xNTZJ1vPAVH3qzXMb2nnWOnNoq02rD2HIEhLVccUW1DB0P6agzJ47EmQ9IunsrNhGSLZM5mhve1tIkwFaJq06ajSJshShc4LC+FbTwiloVb5RJgVCT4R31VNScaJtTDiUU004ZFJ90dY2RurEsJdHXOASckSdPRbx1xcGdu4+jIGHbM+4EY6lTzOB7qGECDjXf47cXzfp1mOgXvT+gxKM+vlQPyOYTHHCM8VwQ1TKccoEj+1unJfysf7+FifYNGm8CdLbbtTeDd8SLkgzK3tSkN9H0DT2A5UuBJYTP2Gx/XHSoOdXQkHf/lo3PlI9cwZGBp4CMd+c2LjlOmCcmzqKeOUFzRujIDVcm8o6xrK442sD3aXFYyphra/mwMgN3D3DEzkz0jYXv84kn0j0nKtIYrH0ic4imOe64trRZY0gq2xmGuVxXRhQ5zFHsRzg+7CYKizOsJk9coYEs+Xx7ubp6uB15UME1xVcHyJMvy/UcR02dOmT2SZEZNx1fpOw35+PGGrEaHoww5fG2kXBXQNtJpCzA+5lB9a79ee+nXtKRgBA6w9uv+xCmxitYVJy86r4XzUe+AV9skpyMM5nk5zlG+BDxPwxzHNdWi4MtfkhSi4Crw7YyC26GqfV6hKpBKtywocVLvFA2wd3ekL1R1VbN9F73Us222VM2ktsyWekzE2igdKCEIDBEk0KgWlA9ei5bLLFxD7koj4uDHIs48AHE1ToQ59Xhf/cNJFyU7EOfpQNz2+ohuFFmWPA1zd6JObs+XtmtoFVewJR/Og0R+NqgIfsuUB3SJ+DVC37oc6A9AtiNjbNiHOVLnormaT7iX6BMc1af2CTnIhcP5hI5623PNs3zi6k2nI50jP6IpZ1x1VG+6Oqp9/03nnDKdw9eJDnjqRU865zOn4X9uapFXmvVQi6cYnmmqfFGbmZxR5QvUEWK1oxqewa8qX6SFu97TXF7axDuypNSdxqjmgytotUBpbJhnNdHtWUFbRJT68y3S02ZV5HpwcC1zl/zmCn0w9HQsaJzrCNgclL6kWtcqO2qd3Cq7Vg1BghUtuR5PZQTyPnO97gfby2y9MMaVk5xKJlNMZ3Yt3Sgl0A+oI6qYXnqgC5yO5tt07Q1UL3uBUYPXa27L3x2EgoyZo/ONOjvmutMky5Jlp+m2vsVn7wuP9k+dHx6VPBu2545QnArYviMOp9wjj/LqXkUjl2kJGlipmQLuNYVtSqbQUCHqAzWC5Sbctza+l1N3r0oPv3beiM/dg1Yr21zLCxPPZMHcASJegC89edCXo21feqLBH2zB3O/1CMNlMsNgHC3Hyh7QEXrxvGIvZujPAsN79LYg6Gwc05SmqLbqw0andExHbZwwgbZIXCnrIsXipwvF2eX0eB5ZSy1BO5sivQrJksvoetdKScv31nBl/b5iftjtSOpdRpVeHXlAIMLU3ztn7Jmt+9iQROEdINVDbRxw8psQeyPXkDsabGLpK6ajvY7R8/h0tHuqypPSEhyDT/ytpfnOUrvdOzv9kwpL5+guMRmIKh0oFfrZUA1wUKJKe7hKJ9P8iZ/abL4A+/GXA8rYVWLv9lqpL8be0BLzI7Zh6wi+TaBYzMZZTplTFGt3h8xhuka3pY70fFt2WPnlPr3DcBfKL5uyhvN90Kuk6zKnyMrJs6432gt+anu2ZCNtnqr4wjuejj7aUz90inP8YyZ6yqnb4/q+deDeTzbLK9PDrVCYQHEOVAUEl/nAyKCR5DY/cfc5ShuqAy2mVX9ChjMTNNWgavHnjbZ1pAxVuln/JZuief3ngOD9/wE=&lt;/diagram&gt;&lt;/mxfile&gt;">
+    <style type="text/css">
+        @supports (color: light-dark(#000, #fff)) { #ge-svg-QkU3Z9lwpENdpB6T0quL { --ge-adaptive-bg: light-dark(#ffffff, var(--ge-dark-color, #121212)); } }
+    </style>
+    <defs />
+    <g>
+        <g data-cell-id="0">
+            <g data-cell-id="1">
+                <g data-cell-id="50">
+                    <g transform="translate(0.5,0.5)">
+                        <rect x="0.25" y="0.5" width="610" height="440" fill="#e6e6e6" stroke="#e6e6e6" pointer-events="all" style="fill: light-dark(rgb(230, 230, 230), rgb(39, 39, 39)); stroke: light-dark(rgb(230, 230, 230), rgb(39, 39, 39));" />
+                    </g>
+                    <g>
+                        <g>
+                            <switch>
+                                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-start; justify-content: unsafe center; width: 608px; height: 1px; padding-top: 8px; margin-left: 1px;">
+                                        <div style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; ">
+                                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                                Member State
+                                            </div>
+                                        </div>
+                                    </div>
+                                </foreignObject>
+                                <text x="305" y="20" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle" style="fill: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));">
+                                    Member State
+                                </text>
+                            </switch>
+                        </g>
+                    </g>
+                </g>
+                <g data-cell-id="119">
+                    <g transform="translate(0.5,0.5)">
+                        <rect x="290.25" y="350.5" width="300" height="80" fill="#ffffff" stroke="#000000" pointer-events="all" style="fill: var(--ge-adaptive-bg, #ffffff); stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));" />
+                    </g>
+                    <g>
+                        <g>
+                            <switch>
+                                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 294px; height: 1px; padding-top: 358px; margin-left: 296px;">
+                                        <div style="box-sizing: border-box; font-size: 0; text-align: left; color: #000000; ">
+                                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                                Wellness App
+                                            </div>
+                                        </div>
+                                    </div>
+                                </foreignObject>
+                                <text x="296" y="370" fill="#000000" font-family="Helvetica" font-size="12px" style="fill: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));">
+                                    Wellness App
+                                </text>
+                            </switch>
+                        </g>
+                    </g>
+                </g>
+                <g data-cell-id="117">
+                    <g transform="translate(0.5,0.5)">
+                        <path d="M 18.25 139.5 L 360.45 139.5 L 592.45 141.5 L 592.45 291.5 L 592.45 339.5 L 441.65 339.5 L 441.65 241.5 L 18.25 241.5 Z" fill="#ffffff" stroke="#000000" stroke-miterlimit="10" pointer-events="all" style="fill: var(--ge-adaptive-bg, #ffffff); stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));" />
+                    </g>
+                    <g>
+                        <g>
+                            <switch>
+                                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-start; justify-content: unsafe center; width: 578px; height: 1px; padding-top: 147px; margin-left: 19px;">
+                                        <div style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; ">
+                                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                                <span style="color: light-dark(rgb(0, 0, 0), rgb(237, 237, 237)); font-family: Helvetica; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: light-dark(rgb(251, 251, 251), rgb(21, 21, 21)); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;">
+                                                    National Interoperability Infrastructure
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </foreignObject>
+                                <text x="308" y="159" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle" style="fill: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));">
+                                    National Interoperability Infrastructure
+                                </text>
+                            </switch>
+                        </g>
+                    </g>
+                </g>
+                <g data-cell-id="52">
+                    <g transform="translate(0.5,0.5)">
+                        <rect x="620.25" y="0.5" width="180" height="440" fill="#e6e6e6" stroke="#e6e6e6" pointer-events="all" style="fill: light-dark(rgb(230, 230, 230), rgb(39, 39, 39)); stroke: light-dark(rgb(230, 230, 230), rgb(39, 39, 39));" />
+                    </g>
+                    <g>
+                        <g>
+                            <switch>
+                                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-start; justify-content: unsafe center; width: 178px; height: 1px; padding-top: 8px; margin-left: 621px;">
+                                        <div style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; ">
+                                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                                Member State
+                                            </div>
+                                        </div>
+                                    </div>
+                                </foreignObject>
+                                <text x="710" y="20" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle" style="fill: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));">
+                                    Member State
+                                </text>
+                            </switch>
+                        </g>
+                    </g>
+                </g>
+                <g data-cell-id="82">
+                    <a xlink:href="member-state-architectures.html">
+                        <g transform="translate(0.5,0.5)">
+                            <rect x="630.25" y="140.5" width="160" height="100" fill="#ffffff" stroke="#000000" pointer-events="all" style="fill: var(--ge-adaptive-bg, #ffffff); stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));" />
+                        </g>
+                        <g>
+                            <g>
+                                <switch>
+                                    <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                                        <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 158px; height: 1px; padding-top: 191px; margin-left: 631px;">
+                                            <div style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; ">
+                                                <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                                    <div>
+                                                        <br />
+                                                    </div>
+                                                    <div>
+                                                        <br />
+                                                    </div>
+                                                    National Interoperability Infrastructure
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </foreignObject>
+                                    <text x="710" y="180" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle" style="fill: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));">
+                                        <tspan x="710" y="180"></tspan>
+                                        <tspan x="710" y="194">
+                                            National Interoperability
+                                        </tspan>
+                                        <tspan x="710" y="208">
+                                            Infrastructure
+                                        </tspan>
+                                    </text>
+                                </switch>
+                            </g>
+                        </g>
+                    </a>
+                </g>
+                <g data-cell-id="53">
+                    <g transform="translate(0.5,0.5)">
+                        <rect x="17.25" y="44.5" width="773" height="90" fill="#999999" stroke="#e6e6e6" pointer-events="all" style="fill: light-dark(rgb(153, 153, 153), rgb(106, 106, 106)); stroke: light-dark(rgb(230, 230, 230), rgb(39, 39, 39));" />
+                    </g>
+                    <g>
+                        <g>
+                            <switch>
+                                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-start; justify-content: unsafe center; width: 771px; height: 1px; padding-top: 52px; margin-left: 18px;">
+                                        <div style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; ">
+                                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                                <span style="color: light-dark(rgb(255, 255, 255), rgb(18, 18, 18));">
+                                                    MyHealth@EU
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </foreignObject>
+                                <text x="404" y="64" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle" style="fill: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));">
+                                    MyHealth@EU
+                                </text>
+                            </switch>
+                        </g>
+                    </g>
+                </g>
+                <g data-cell-id="54">
+                    <g transform="translate(0.5,0.5)">
+                        <rect x="20.25" y="256.5" width="260" height="174" fill="#ffffff" stroke="#000000" pointer-events="all" style="fill: var(--ge-adaptive-bg, #ffffff); stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));" />
+                    </g>
+                    <g>
+                        <g>
+                            <switch>
+                                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 254px; height: 1px; padding-top: 264px; margin-left: 26px;">
+                                        <div style="box-sizing: border-box; font-size: 0; text-align: left; color: #000000; ">
+                                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                                Healthcare Provider
+                                            </div>
+                                        </div>
+                                    </div>
+                                </foreignObject>
+                                <text x="26" y="276" fill="#000000" font-family="Helvetica" font-size="12px" style="fill: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));">
+                                    Healthcare Provider
+                                </text>
+                            </switch>
+                        </g>
+                    </g>
+                </g>
+                <g data-cell-id="55">
+                    <g transform="translate(0.5,0.5)">
+                        <rect x="154.25" y="308.5" width="75" height="40" fill="#0066cc" stroke="#000000" pointer-events="all" style="fill: light-dark(rgb(0, 102, 204), rgb(86, 174, 255)); stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));" />
+                    </g>
+                    <g>
+                        <g>
+                            <switch>
+                                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 73px; height: 1px; padding-top: 329px; margin-left: 155px;">
+                                        <div style="box-sizing: border-box; font-size: 0; text-align: center; color: #fafafa; ">
+                                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: light-dark(#fafafa, #ededed); line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                                <span style="color: light-dark(rgb(255, 255, 255), rgb(18, 18, 18));">
+                                                    Intra-organization
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </foreignObject>
+                                <text x="192" y="332" fill="#fafafa" font-family="Helvetica" font-size="12px" text-anchor="middle" style="fill: light-dark(rgb(250, 250, 250), rgb(237, 237, 237));">
+                                    Intra-organization
+                                </text>
+                            </switch>
+                        </g>
+                    </g>
+                </g>
+                <g data-cell-id="56">
+                    <g transform="translate(0.5,0.5)">
+                        <rect x="142.25" y="230.5" width="100" height="58" fill="#000000" stroke="#ffffff" pointer-events="all" style="fill: light-dark(rgb(0, 0, 0), rgb(237, 237, 237)); stroke: light-dark(rgb(255, 255, 255), rgb(18, 18, 18));" />
+                    </g>
+                    <g>
+                        <g>
+                            <switch>
+                                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 98px; height: 1px; padding-top: 260px; margin-left: 143px;">
+                                        <div style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; ">
+                                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                                <span style="color: light-dark(rgb(255, 255, 255), rgb(18, 18, 18));">
+                                                    Gateway
+                                                </span>
+                                                <div>
+                                                    <span style="color: light-dark(rgb(255, 255, 255), rgb(18, 18, 18));">
+                                                        EHR System
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </foreignObject>
+                                <text x="192" y="256" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle" style="fill: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));">
+                                    <tspan x="192" y="256">
+                                        Gateway
+                                    </tspan>
+                                    <tspan x="192" y="270">
+                                        EHR System
+                                    </tspan>
+                                </text>
+                            </switch>
+                        </g>
+                    </g>
+                </g>
+                <g data-cell-id="57">
+                    <g transform="translate(0.5,0.5)">
+                        <path d="M 154.25 328.5 L 115.34 328.49" fill="none" stroke="#6f0000" stroke-width="3" stroke-miterlimit="10" pointer-events="stroke" style="stroke: light-dark(rgb(111, 0, 0), rgb(255, 197, 197));" />
+                        <path d="M 111.59 328.49 L 116.59 325.99 L 115.34 328.49 L 116.59 330.99 Z" fill="#6f0000" stroke="#6f0000" stroke-width="3" stroke-miterlimit="10" pointer-events="all" style="fill: light-dark(rgb(111, 0, 0), rgb(255, 197, 197)); stroke: light-dark(rgb(111, 0, 0), rgb(255, 197, 197));" />
+                    </g>
+                </g>
+                <g data-cell-id="58">
+                    <g transform="translate(0.5,0.5)">
+                        <rect x="434.25" y="380.5" width="86" height="41" fill="#000000" stroke="#ffffff" pointer-events="all" style="fill: light-dark(rgb(0, 0, 0), rgb(237, 237, 237)); stroke: light-dark(rgb(255, 255, 255), rgb(18, 18, 18));" />
+                    </g>
+                    <g>
+                        <g>
+                            <switch>
+                                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 84px; height: 1px; padding-top: 401px; margin-left: 435px;">
+                                        <div style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; ">
+                                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                                <span style="color: light-dark(rgb(255, 255, 255), rgb(18, 18, 18));">
+                                                    Wellness
+                                                </span>
+                                                <div>
+                                                    <span style="color: light-dark(rgb(255, 255, 255), rgb(18, 18, 18));">
+                                                        Application
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </foreignObject>
+                                <text x="477" y="398" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle" style="fill: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));">
+                                    <tspan x="477" y="398">
+                                        Wellness
+                                    </tspan>
+                                    <tspan x="477" y="412">
+                                        Application
+                                    </tspan>
+                                </text>
+                            </switch>
+                        </g>
+                    </g>
+                </g>
+                <g data-cell-id="59">
+                    <g transform="translate(0.5,0.5)">
+                        <path d="M 214.25 197.5 L 202.32 197.5 Q 192.32 197.5 192.3 207.5 L 192.26 224.15" fill="none" stroke="#660000" stroke-width="3" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="stroke" style="stroke: light-dark(rgb(102, 0, 0), rgb(255, 200, 200));" />
+                        <path d="M 192.26 227.9 L 189.77 222.9 L 192.26 224.15 L 194.77 222.9 Z" fill="#660000" stroke="#660000" stroke-width="3" stroke-miterlimit="10" pointer-events="all" style="fill: light-dark(rgb(102, 0, 0), rgb(255, 200, 200)); stroke: light-dark(rgb(102, 0, 0), rgb(255, 200, 200));" />
+                    </g>
+                </g>
+                <g data-cell-id="60">
+                    <g transform="translate(0.5,0.5)">
+                        <rect x="214.25" y="182.5" width="120" height="30" fill="#0066cc" stroke="#000000" pointer-events="all" style="fill: light-dark(rgb(0, 102, 204), rgb(86, 174, 255)); stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));" />
+                    </g>
+                    <g>
+                        <g>
+                            <switch>
+                                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 118px; height: 1px; padding-top: 198px; margin-left: 215px;">
+                                        <div style="box-sizing: border-box; font-size: 0; text-align: center; color: #fafafa; ">
+                                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: light-dark(#fafafa, #ededed); line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                                <span style="color: light-dark(rgb(255, 255, 255), rgb(18, 18, 18));">
+                                                    Cross-Organization
+                                                    <br />
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </foreignObject>
+                                <text x="274" y="194" fill="#fafafa" font-family="Helvetica" font-size="12px" text-anchor="middle" style="fill: light-dark(rgb(250, 250, 250), rgb(237, 237, 237));">
+                                    <tspan x="274" y="194">
+                                        Cross-Organization
+                                    </tspan>
+                                    <tspan x="274" y="208"></tspan>
+                                </text>
+                            </switch>
+                        </g>
+                    </g>
+                </g>
+                <g data-cell-id="61">
+                    <g transform="translate(0.5,0.5)">
+                        <rect x="62.25" y="118.5" width="100" height="58" fill="#000000" stroke="#ffffff" pointer-events="all" style="fill: light-dark(rgb(0, 0, 0), rgb(237, 237, 237)); stroke: light-dark(rgb(255, 255, 255), rgb(18, 18, 18));" />
+                    </g>
+                    <g>
+                        <g>
+                            <switch>
+                                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 98px; height: 1px; padding-top: 148px; margin-left: 63px;">
+                                        <div style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; ">
+                                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                                <span style="color: light-dark(rgb(255, 255, 255), rgb(18, 18, 18));">
+                                                    National
+                                                </span>
+                                                <div>
+                                                    <span style="color: light-dark(rgb(255, 255, 255), rgb(18, 18, 18));">
+                                                        Contact Point
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </foreignObject>
+                                <text x="112" y="144" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle" style="fill: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));">
+                                    <tspan x="112" y="144">
+                                        National
+                                    </tspan>
+                                    <tspan x="112" y="158">
+                                        Contact Point
+                                    </tspan>
+                                </text>
+                            </switch>
+                        </g>
+                    </g>
+                </g>
+                <g data-cell-id="62">
+                    <g transform="translate(0.5,0.5)">
+                        <path d="M 319.25 89.5 L 122.32 89.5 Q 112.32 89.5 112.29 99.5 L 112.27 111.4" fill="none" stroke="#660000" stroke-width="3" stroke-miterlimit="10" pointer-events="stroke" style="stroke: light-dark(rgb(102, 0, 0), rgb(255, 200, 200));" />
+                        <path d="M 112.26 115.15 L 109.77 110.14 L 112.27 111.4 L 114.77 110.15 Z" fill="#660000" stroke="#660000" stroke-width="3" stroke-miterlimit="10" pointer-events="all" style="fill: light-dark(rgb(102, 0, 0), rgb(255, 200, 200)); stroke: light-dark(rgb(102, 0, 0), rgb(255, 200, 200));" />
+                    </g>
+                </g>
+                <g data-cell-id="63">
+                    <g transform="translate(0.5,0.5)">
+                        <rect x="660.25" y="118.5" width="100" height="58" fill="#000000" stroke="#ffffff" pointer-events="all" style="fill: light-dark(rgb(0, 0, 0), rgb(237, 237, 237)); stroke: light-dark(rgb(255, 255, 255), rgb(18, 18, 18));" />
+                    </g>
+                    <g>
+                        <g>
+                            <switch>
+                                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 98px; height: 1px; padding-top: 148px; margin-left: 661px;">
+                                        <div style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; ">
+                                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                                <span style="color: light-dark(rgb(255, 255, 255), rgb(18, 18, 18));">
+                                                    National
+                                                </span>
+                                                <div>
+                                                    <span style="color: light-dark(rgb(255, 255, 255), rgb(18, 18, 18));">
+                                                        Contact Point
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </foreignObject>
+                                <text x="710" y="144" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle" style="fill: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));">
+                                    <tspan x="710" y="144">
+                                        National
+                                    </tspan>
+                                    <tspan x="710" y="158">
+                                        Contact Point
+                                    </tspan>
+                                </text>
+                            </switch>
+                        </g>
+                    </g>
+                </g>
+                <g data-cell-id="64">
+                    <g transform="translate(0.5,0.5)">
+                        <rect x="319.25" y="74.5" width="170" height="30" fill="#0066cc" stroke="#000000" pointer-events="all" style="fill: light-dark(rgb(0, 102, 204), rgb(86, 174, 255)); stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));" />
+                    </g>
+                    <g>
+                        <g>
+                            <switch>
+                                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 168px; height: 1px; padding-top: 90px; margin-left: 320px;">
+                                        <div style="box-sizing: border-box; font-size: 0; text-align: center; color: #fafafa; ">
+                                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: light-dark(#fafafa, #ededed); line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                                <span style="color: light-dark(rgb(255, 255, 255), rgb(18, 18, 18));">
+                                                    Cross-border
+                                                    <br />
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </foreignObject>
+                                <text x="404" y="86" fill="#fafafa" font-family="Helvetica" font-size="12px" text-anchor="middle" style="fill: light-dark(rgb(250, 250, 250), rgb(237, 237, 237));">
+                                    <tspan x="404" y="86">
+                                        Cross-border
+                                    </tspan>
+                                    <tspan x="404" y="100"></tspan>
+                                </text>
+                            </switch>
+                        </g>
+                    </g>
+                </g>
+                <g data-cell-id="65">
+                    <g transform="translate(0.5,0.5)">
+                        <path d="M 710.25 176.5 L 710.25 249.4" fill="none" stroke="#6f0000" stroke-width="3" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="stroke" style="stroke: light-dark(rgb(111, 0, 0), rgb(255, 197, 197));" />
+                        <path d="M 710.25 253.15 L 707.75 248.15 L 710.25 249.4 L 712.75 248.15 Z" fill="#6f0000" stroke="#6f0000" stroke-width="3" stroke-miterlimit="10" pointer-events="all" style="fill: light-dark(rgb(111, 0, 0), rgb(255, 197, 197)); stroke: light-dark(rgb(111, 0, 0), rgb(255, 197, 197));" />
+                    </g>
+                </g>
+                <g data-cell-id="67">
+                    <g transform="translate(0.5,0.5)">
+                        <rect x="440.25" y="195.5" width="115" height="40" fill="#000000" stroke="#ffffff" pointer-events="all" style="fill: light-dark(rgb(0, 0, 0), rgb(237, 237, 237)); stroke: light-dark(rgb(255, 255, 255), rgb(18, 18, 18));" />
+                    </g>
+                    <g>
+                        <g>
+                            <switch>
+                                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 113px; height: 1px; padding-top: 216px; margin-left: 441px;">
+                                        <div style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; ">
+                                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                                <span style="color: light-dark(rgb(255, 255, 255), rgb(18, 18, 18));">
+                                                    Patient Access Service (HDAS)
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </foreignObject>
+                                <text x="498" y="212" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle" style="fill: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));">
+                                    <tspan x="498" y="212">
+                                        Patient Access
+                                    </tspan>
+                                    <tspan x="498" y="226">
+                                        Service (HDAS)
+                                    </tspan>
+                                </text>
+                            </switch>
+                        </g>
+                    </g>
+                </g>
+                <g data-cell-id="68">
+                    <g transform="translate(0.5,0.5)">
+                        <rect x="440.25" y="145.5" width="115" height="40" fill="#000000" stroke="#ffffff" pointer-events="all" style="fill: light-dark(rgb(0, 0, 0), rgb(237, 237, 237)); stroke: light-dark(rgb(255, 255, 255), rgb(18, 18, 18));" />
+                    </g>
+                    <g>
+                        <g>
+                            <switch>
+                                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 113px; height: 1px; padding-top: 166px; margin-left: 441px;">
+                                        <div style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; ">
+                                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                                <span style="color: light-dark(rgb(255, 255, 255), rgb(18, 18, 18));">
+                                                    Professional Access Service (HPAS)
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </foreignObject>
+                                <text x="498" y="162" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle" style="fill: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));">
+                                    <tspan x="498" y="162">
+                                        Professional Access
+                                    </tspan>
+                                    <tspan x="498" y="176">
+                                        Service (HPAS)
+                                    </tspan>
+                                </text>
+                            </switch>
+                        </g>
+                    </g>
+                </g>
+                <g data-cell-id="69">
+                    <g transform="translate(0.5,0.5)">
+                        <rect x="290.25" y="256.5" width="140" height="84" fill="#ffffff" stroke="#000000" pointer-events="all" style="fill: var(--ge-adaptive-bg, #ffffff); stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));" />
+                    </g>
+                    <g>
+                        <g>
+                            <switch>
+                                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-start; justify-content: unsafe center; width: 138px; height: 1px; padding-top: 264px; margin-left: 291px;">
+                                        <div style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; ">
+                                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                                <div>
+                                                    <br />
+                                                </div>
+                                                <div>
+                                                    <br />
+                                                </div>
+                                                <div>
+                                                    <br />
+                                                </div>
+                                                <div>
+                                                    <br />
+                                                </div>
+                                                Healthcare Provider
+                                            </div>
+                                        </div>
+                                    </div>
+                                </foreignObject>
+                                <text x="360" y="276" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle" style="fill: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));">
+                                    <tspan x="360" y="276"></tspan>
+                                    <tspan x="360" y="290"></tspan>
+                                    <tspan x="360" y="304"></tspan>
+                                    <tspan x="360" y="318">
+                                        Healthcare Provider
+                                    </tspan>
+                                </text>
+                            </switch>
+                        </g>
+                    </g>
+                </g>
+                <g data-cell-id="70">
+                    <g transform="translate(0.5,0.5)">
+                        <rect x="450.25" y="268.5" width="54" height="30" fill="#0066cc" stroke="#000000" pointer-events="all" style="fill: light-dark(rgb(0, 102, 204), rgb(86, 174, 255)); stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));" />
+                    </g>
+                    <g>
+                        <g>
+                            <switch>
+                                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 52px; height: 1px; padding-top: 284px; margin-left: 451px;">
+                                        <div style="box-sizing: border-box; font-size: 0; text-align: center; color: #fafafa; ">
+                                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: light-dark(#fafafa, #ededed); line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                                <span style="color: light-dark(rgb(255, 255, 255), rgb(18, 18, 18));">
+                                                    Patient
+                                                </span>
+                                                <div>
+                                                    <span style="color: light-dark(rgb(255, 255, 255), rgb(18, 18, 18));">
+                                                        Access
+                                                        <br />
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </foreignObject>
+                                <text x="477" y="273" fill="#fafafa" font-family="Helvetica" font-size="12px" text-anchor="middle" style="fill: light-dark(rgb(250, 250, 250), rgb(237, 237, 237));">
+                                    <tspan x="477" y="273">
+                                        Patient
+                                    </tspan>
+                                    <tspan x="477" y="287">
+                                        Access
+                                    </tspan>
+                                    <tspan x="477" y="301"></tspan>
+                                </text>
+                            </switch>
+                        </g>
+                    </g>
+                </g>
+                <g data-cell-id="71">
+                    <g transform="translate(0.5,0.5)">
+                        <path d="M 191.75 308.5 L 191.88 295.6" fill="none" stroke="#6f0000" stroke-width="3" stroke-miterlimit="10" pointer-events="stroke" style="stroke: light-dark(rgb(111, 0, 0), rgb(255, 197, 197));" />
+                        <path d="M 191.92 291.85 L 194.37 296.88 L 191.88 295.6 L 189.37 296.83 Z" fill="#6f0000" stroke="#6f0000" stroke-width="3" stroke-miterlimit="10" pointer-events="all" style="fill: light-dark(rgb(111, 0, 0), rgb(255, 197, 197)); stroke: light-dark(rgb(111, 0, 0), rgb(255, 197, 197));" />
+                    </g>
+                </g>
+                <g data-cell-id="72">
+                    <g transform="translate(0.5,0.5)">
+                        <path d="M 214.25 197.5 L 122.32 197.5 Q 112.32 197.5 112.29 190.55 L 112.27 183.6" fill="none" stroke="#660000" stroke-width="3" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="stroke" style="stroke: light-dark(rgb(102, 0, 0), rgb(255, 200, 200));" />
+                        <path d="M 112.26 179.85 L 114.78 184.85 L 112.27 183.6 L 109.78 184.86 Z" fill="#660000" stroke="#660000" stroke-width="3" stroke-miterlimit="10" pointer-events="all" style="fill: light-dark(rgb(102, 0, 0), rgb(255, 200, 200)); stroke: light-dark(rgb(102, 0, 0), rgb(255, 200, 200));" />
+                    </g>
+                </g>
+                <g data-cell-id="73">
+                    <g transform="translate(0.5,0.5)">
+                        <path d="M 334.25 197.5 L 390.32 197.5 Q 400.32 197.5 400.32 187.5 L 400.32 176.57 Q 400.32 166.57 410.32 166.57 L 433.21 166.57" fill="none" stroke="#660000" stroke-width="3" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="stroke" style="stroke: light-dark(rgb(102, 0, 0), rgb(255, 200, 200));" />
+                        <path d="M 436.96 166.57 L 431.96 169.07 L 433.21 166.57 L 431.96 164.07 Z" fill="#660000" stroke="#660000" stroke-width="3" stroke-miterlimit="10" pointer-events="all" style="fill: light-dark(rgb(102, 0, 0), rgb(255, 200, 200)); stroke: light-dark(rgb(102, 0, 0), rgb(255, 200, 200));" />
+                    </g>
+                </g>
+                <g data-cell-id="74">
+                    <g transform="translate(0.5,0.5)">
+                        <path d="M 334.25 197.5 L 390.32 197.5 Q 400.32 197.5 400.32 206.5 L 400.32 211 Q 400.32 215.5 410.32 215.5 L 427.4 215.5" fill="none" stroke="#660000" stroke-width="3" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="stroke" style="stroke: light-dark(rgb(102, 0, 0), rgb(255, 200, 200));" />
+                        <path d="M 431.15 215.5 L 426.15 218 L 427.4 215.5 L 426.15 213 Z" fill="#660000" stroke="#660000" stroke-width="3" stroke-miterlimit="10" pointer-events="all" style="fill: light-dark(rgb(102, 0, 0), rgb(255, 200, 200)); stroke: light-dark(rgb(102, 0, 0), rgb(255, 200, 200));" />
+                    </g>
+                </g>
+                <g data-cell-id="75">
+                    <g transform="translate(0.5,0.5)">
+                        <rect x="310.25" y="230.5" width="100" height="60" fill="#000000" stroke="#ffffff" pointer-events="all" style="fill: light-dark(rgb(0, 0, 0), rgb(237, 237, 237)); stroke: light-dark(rgb(255, 255, 255), rgb(18, 18, 18));" />
+                    </g>
+                    <g>
+                        <g>
+                            <switch>
+                                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 98px; height: 1px; padding-top: 261px; margin-left: 311px;">
+                                        <div style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; ">
+                                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                                <span style="color: light-dark(rgb(255, 255, 255), rgb(18, 18, 18));">
+                                                    Gateway
+                                                </span>
+                                                <div>
+                                                    <span style="color: light-dark(rgb(255, 255, 255), rgb(18, 18, 18));">
+                                                        EHR System
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </foreignObject>
+                                <text x="360" y="257" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle" style="fill: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));">
+                                    <tspan x="360" y="257">
+                                        Gateway
+                                    </tspan>
+                                    <tspan x="360" y="271">
+                                        EHR System
+                                    </tspan>
+                                </text>
+                            </switch>
+                        </g>
+                    </g>
+                </g>
+                <g data-cell-id="76">
+                    <g transform="translate(0.5,0.5)">
+                        <rect x="630.25" y="256.5" width="160" height="94" fill="#ffffff" stroke="#000000" pointer-events="all" style="fill: var(--ge-adaptive-bg, #ffffff); stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));" />
+                    </g>
+                    <g>
+                        <g>
+                            <switch>
+                                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-start; justify-content: unsafe center; width: 158px; height: 1px; padding-top: 264px; margin-left: 631px;">
+                                        <div style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; ">
+                                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                                <div>
+                                                    <br />
+                                                </div>
+                                                <div>
+                                                    <br />
+                                                </div>
+                                                <div>
+                                                    <br />
+                                                </div>
+                                                <div>
+                                                    <br />
+                                                </div>
+                                                Healthcare Provider
+                                            </div>
+                                        </div>
+                                    </div>
+                                </foreignObject>
+                                <text x="710" y="276" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle" style="fill: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));">
+                                    <tspan x="710" y="276"></tspan>
+                                    <tspan x="710" y="290"></tspan>
+                                    <tspan x="710" y="304"></tspan>
+                                    <tspan x="710" y="318">
+                                        Healthcare Provider
+                                    </tspan>
+                                </text>
+                            </switch>
+                        </g>
+                    </g>
+                </g>
+                <g data-cell-id="77">
+                    <g transform="translate(0.5,0.5)">
+                        <rect x="660.25" y="230.5" width="100" height="60" fill="#000000" stroke="#ffffff" pointer-events="all" style="fill: light-dark(rgb(0, 0, 0), rgb(237, 237, 237)); stroke: light-dark(rgb(255, 255, 255), rgb(18, 18, 18));" />
+                    </g>
+                    <g>
+                        <g>
+                            <switch>
+                                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 98px; height: 1px; padding-top: 261px; margin-left: 661px;">
+                                        <div style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; ">
+                                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                                <span style="color: light-dark(rgb(255, 255, 255), rgb(18, 18, 18));">
+                                                    Gateway
+                                                </span>
+                                                <div>
+                                                    <span style="color: light-dark(rgb(255, 255, 255), rgb(18, 18, 18));">
+                                                        EHR System
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </foreignObject>
+                                <text x="710" y="257" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle" style="fill: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));">
+                                    <tspan x="710" y="257">
+                                        Gateway
+                                    </tspan>
+                                    <tspan x="710" y="271">
+                                        EHR System
+                                    </tspan>
+                                </text>
+                            </switch>
+                        </g>
+                    </g>
+                </g>
+                <g data-cell-id="78">
+                    <g transform="translate(0.5,0.5)">
+                        <path d="M 489.25 89.5 L 700.32 89.5 Q 710.32 89.5 710.29 99.5 L 710.27 111.4" fill="none" stroke="#660000" stroke-width="3" stroke-miterlimit="10" pointer-events="stroke" style="stroke: light-dark(rgb(102, 0, 0), rgb(255, 200, 200));" />
+                        <path d="M 710.26 115.15 L 707.77 110.14 L 710.27 111.4 L 712.77 110.15 Z" fill="#660000" stroke="#660000" stroke-width="3" stroke-miterlimit="10" pointer-events="all" style="fill: light-dark(rgb(102, 0, 0), rgb(255, 200, 200)); stroke: light-dark(rgb(102, 0, 0), rgb(255, 200, 200));" />
+                    </g>
+                </g>
+                <g data-cell-id="79">
+                    <g transform="translate(0.5,0.5)">
+                        <path d="M 334.25 197.5 L 350.32 197.5 Q 360.32 197.5 360.3 207.5 L 360.26 224.3" fill="none" stroke="#660000" stroke-width="3" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="stroke" style="stroke: light-dark(rgb(102, 0, 0), rgb(255, 200, 200));" />
+                        <path d="M 360.26 228.05 L 357.77 223.04 L 360.26 224.3 L 362.77 223.05 Z" fill="#660000" stroke="#660000" stroke-width="3" stroke-miterlimit="10" pointer-events="all" style="fill: light-dark(rgb(102, 0, 0), rgb(255, 200, 200)); stroke: light-dark(rgb(102, 0, 0), rgb(255, 200, 200));" />
+                    </g>
+                </g>
+                <g data-cell-id="80">
+                    <g transform="translate(0.5,0.5)">
+                        <rect x="30.25" y="290.5" width="79.5" height="58" fill="#000000" stroke="#ffffff" pointer-events="all" style="fill: light-dark(rgb(0, 0, 0), rgb(237, 237, 237)); stroke: light-dark(rgb(255, 255, 255), rgb(18, 18, 18));" />
+                    </g>
+                    <g>
+                        <g>
+                            <switch>
+                                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 78px; height: 1px; padding-top: 320px; margin-left: 31px;">
+                                        <div style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; ">
+                                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                                <span style="color: light-dark(rgb(255, 255, 255), rgb(18, 18, 18));">
+                                                    EHR System(s)
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </foreignObject>
+                                <text x="70" y="316" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle" style="fill: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));">
+                                    <tspan x="70" y="316">
+                                        EHR
+                                    </tspan>
+                                    <tspan x="70" y="330">
+                                        System(s)
+                                    </tspan>
+                                </text>
+                            </switch>
+                        </g>
+                    </g>
+                </g>
+                <g data-cell-id="81">
+                    <g transform="translate(0.5,0.5)">
+                        <rect x="90.25" y="358" width="79.5" height="58" fill="#000000" stroke="#ffffff" pointer-events="all" style="fill: light-dark(rgb(0, 0, 0), rgb(237, 237, 237)); stroke: light-dark(rgb(255, 255, 255), rgb(18, 18, 18));" />
+                    </g>
+                    <g>
+                        <g>
+                            <switch>
+                                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 78px; height: 1px; padding-top: 387px; margin-left: 91px;">
+                                        <div style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; ">
+                                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                                <span style="color: light-dark(rgb(255, 255, 255), rgb(18, 18, 18));">
+                                                    EHR System(s)
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </foreignObject>
+                                <text x="130" y="384" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle" style="fill: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));">
+                                    <tspan x="130" y="384">
+                                        EHR
+                                    </tspan>
+                                    <tspan x="130" y="398">
+                                        System(s)
+                                    </tspan>
+                                </text>
+                            </switch>
+                        </g>
+                    </g>
+                </g>
+                <g data-cell-id="83">
+                    <g transform="translate(0.5,0.5)">
+                        <path d="M 191.75 348.5 L 191.77 362.57 Q 191.78 372.57 184.32 372.54 L 176.85 372.52" fill="none" stroke="#660000" stroke-width="3" stroke-miterlimit="10" pointer-events="stroke" style="stroke: light-dark(rgb(102, 0, 0), rgb(255, 200, 200));" />
+                        <path d="M 173.1 372.51 L 178.11 370.03 L 176.85 372.52 L 178.1 375.03 Z" fill="#660000" stroke="#660000" stroke-width="3" stroke-miterlimit="10" pointer-events="all" style="fill: light-dark(rgb(102, 0, 0), rgb(255, 200, 200)); stroke: light-dark(rgb(102, 0, 0), rgb(255, 200, 200));" />
+                    </g>
+                </g>
+                <g data-cell-id="86">
+                    <g transform="translate(0.5,0.5)">
+                        <path d="M 556.25 297.5 C 556.25 283.9 556.25 277.1 571.25 277.1 C 561.25 277.1 561.25 263.5 571.25 263.5 C 581.25 263.5 581.25 277.1 571.25 277.1 C 586.25 277.1 586.25 283.9 586.25 297.5 Z" fill="#ffffff" stroke="#000000" stroke-width="3" stroke-miterlimit="10" pointer-events="all" style="fill: var(--ge-adaptive-bg, #ffffff); stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));" />
+                    </g>
+                    <g>
+                        <g>
+                            <switch>
+                                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-end; justify-content: unsafe center; width: 28px; height: 1px; padding-top: 295px; margin-left: 557px;">
+                                        <div style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; ">
+                                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                                HP
+                                            </div>
+                                        </div>
+                                    </div>
+                                </foreignObject>
+                                <text x="571" y="295" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle" style="fill: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));">
+                                    HP
+                                </text>
+                            </switch>
+                        </g>
+                    </g>
+                </g>
+                <g data-cell-id="89">
+                    <g transform="translate(0.5,0.5)">
+                        <path d="M 511.25 297.5 C 511.25 284.3 511.25 277.7 526.25 277.7 C 516.25 277.7 516.25 264.5 526.25 264.5 C 536.25 264.5 536.25 277.7 526.25 277.7 C 541.25 277.7 541.25 284.3 541.25 297.5 Z" fill="#ffffff" stroke="#000000" stroke-width="3" stroke-miterlimit="10" pointer-events="all" style="fill: var(--ge-adaptive-bg, #ffffff); stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));" />
+                    </g>
+                    <g>
+                        <g>
+                            <switch>
+                                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-end; justify-content: unsafe center; width: 28px; height: 1px; padding-top: 295px; margin-left: 512px;">
+                                        <div style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; ">
+                                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                                Pat
+                                            </div>
+                                        </div>
+                                    </div>
+                                </foreignObject>
+                                <text x="526" y="295" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle" style="fill: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));">
+                                    Pat
+                                </text>
+                            </switch>
+                        </g>
+                    </g>
+                </g>
+                <g data-cell-id="92">
+                    <g transform="translate(0.5,0.5)">
+                        <path d="M 526.25 264.5 L 526.44 242.6" fill="none" stroke="#6f0000" stroke-width="3" stroke-miterlimit="10" pointer-events="stroke" style="stroke: light-dark(rgb(111, 0, 0), rgb(255, 197, 197));" />
+                        <path d="M 526.47 238.85 L 528.93 243.88 L 526.44 242.6 L 523.93 243.83 Z" fill="#6f0000" stroke="#6f0000" stroke-width="3" stroke-miterlimit="10" pointer-events="all" style="fill: light-dark(rgb(111, 0, 0), rgb(255, 197, 197)); stroke: light-dark(rgb(111, 0, 0), rgb(255, 197, 197));" />
+                    </g>
+                </g>
+                <g data-cell-id="93">
+                    <g transform="translate(0.5,0.5)">
+                        <path d="M 30.25 397 C 30.25 383.4 30.25 376.6 45.25 376.6 C 35.25 376.6 35.25 363 45.25 363 C 55.25 363 55.25 376.6 45.25 376.6 C 60.25 376.6 60.25 383.4 60.25 397 Z" fill="#ffffff" stroke="#000000" stroke-width="3" stroke-miterlimit="10" pointer-events="all" style="fill: var(--ge-adaptive-bg, #ffffff); stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));" />
+                    </g>
+                    <g>
+                        <g>
+                            <switch>
+                                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-end; justify-content: unsafe center; width: 28px; height: 1px; padding-top: 394px; margin-left: 31px;">
+                                        <div style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; ">
+                                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                                HP
+                                            </div>
+                                        </div>
+                                    </div>
+                                </foreignObject>
+                                <text x="45" y="394" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle" style="fill: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));">
+                                    HP
+                                </text>
+                            </switch>
+                        </g>
+                    </g>
+                </g>
+                <g data-cell-id="94">
+                    <g transform="translate(0.5,0.5)">
+                        <path d="M 60.25 390.5 L 83.15 389.35" fill="none" stroke="#6f0000" stroke-width="3" stroke-miterlimit="10" pointer-events="stroke" style="stroke: light-dark(rgb(111, 0, 0), rgb(255, 197, 197));" />
+                        <path d="M 86.9 389.16 L 82.03 391.91 L 83.15 389.35 L 81.78 386.92 Z" fill="#6f0000" stroke="#6f0000" stroke-width="3" stroke-miterlimit="10" pointer-events="all" style="fill: light-dark(rgb(111, 0, 0), rgb(255, 197, 197)); stroke: light-dark(rgb(111, 0, 0), rgb(255, 197, 197));" />
+                    </g>
+                </g>
+                <g data-cell-id="96">
+                    <g transform="translate(0.5,0.5)">
+                        <path d="M 548.75 401 L 527.35 401" fill="none" stroke="#660000" stroke-width="3" stroke-miterlimit="10" pointer-events="stroke" style="stroke: light-dark(rgb(102, 0, 0), rgb(255, 200, 200));" />
+                        <path d="M 523.6 401 L 528.6 398.5 L 527.35 401 L 528.6 403.5 Z" fill="#660000" stroke="#660000" stroke-width="3" stroke-miterlimit="10" pointer-events="all" style="fill: light-dark(rgb(102, 0, 0), rgb(255, 200, 200)); stroke: light-dark(rgb(102, 0, 0), rgb(255, 200, 200));" />
+                    </g>
+                </g>
+                <g data-cell-id="98">
+                    <g transform="translate(0.5,0.5)">
+                        <path d="M 477.19 268.5 L 477.08 239.6" fill="none" stroke="#6f0000" stroke-width="3" stroke-miterlimit="10" pointer-events="stroke" style="stroke: light-dark(rgb(111, 0, 0), rgb(255, 197, 197));" />
+                        <path d="M 477.06 235.85 L 479.58 240.84 L 477.08 239.6 L 474.58 240.86 Z" fill="#6f0000" stroke="#6f0000" stroke-width="3" stroke-miterlimit="10" pointer-events="all" style="fill: light-dark(rgb(111, 0, 0), rgb(255, 197, 197)); stroke: light-dark(rgb(111, 0, 0), rgb(255, 197, 197));" />
+                    </g>
+                </g>
+                <g data-cell-id="99">
+                    <g transform="translate(0.5,0.5)">
+                        <path d="M 169.75 401.5 L 292.05 401.5 Q 302.05 401.5 312.05 401.46 L 425.15 401" fill="none" stroke="#660000" stroke-width="3" stroke-miterlimit="10" pointer-events="stroke" style="stroke: light-dark(rgb(102, 0, 0), rgb(255, 200, 200));" />
+                        <path d="M 428.9 400.98 L 423.91 403.5 L 425.15 401 L 423.89 398.5 Z" fill="#660000" stroke="#660000" stroke-width="3" stroke-miterlimit="10" pointer-events="all" style="fill: light-dark(rgb(102, 0, 0), rgb(255, 200, 200)); stroke: light-dark(rgb(102, 0, 0), rgb(255, 200, 200));" />
+                    </g>
+                </g>
+                <g data-cell-id="114">
+                    <g transform="translate(0.5,0.5)">
+                        <rect x="306.25" y="386" width="90" height="30" fill="#0066cc" stroke="#000000" pointer-events="all" style="fill: light-dark(rgb(0, 102, 204), rgb(86, 174, 255)); stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));" />
+                    </g>
+                    <g>
+                        <g>
+                            <switch>
+                                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 88px; height: 1px; padding-top: 401px; margin-left: 307px;">
+                                        <div style="box-sizing: border-box; font-size: 0; text-align: center; color: #fafafa; ">
+                                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: light-dark(#fafafa, #ededed); line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                                <span style="color: light-dark(rgb(255, 255, 255), rgb(18, 18, 18));">
+                                                    Wellness API
+                                                    <br />
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </foreignObject>
+                                <text x="351" y="398" fill="#fafafa" font-family="Helvetica" font-size="12px" text-anchor="middle" style="fill: light-dark(rgb(250, 250, 250), rgb(237, 237, 237));">
+                                    <tspan x="351" y="398">
+                                        Wellness API
+                                    </tspan>
+                                    <tspan x="351" y="412"></tspan>
+                                </text>
+                            </switch>
+                        </g>
+                    </g>
+                </g>
+                <g data-cell-id="124">
+                    <g transform="translate(0.5,0.5)">
+                        <path d="M 477.25 380.5 L 477.25 305.6" fill="none" stroke="#660000" stroke-width="3" stroke-miterlimit="10" pointer-events="stroke" style="stroke: light-dark(rgb(102, 0, 0), rgb(255, 200, 200));" />
+                        <path d="M 477.25 301.85 L 479.75 306.85 L 477.25 305.6 L 474.75 306.85 Z" fill="#660000" stroke="#660000" stroke-width="3" stroke-miterlimit="10" pointer-events="all" style="fill: light-dark(rgb(102, 0, 0), rgb(255, 200, 200)); stroke: light-dark(rgb(102, 0, 0), rgb(255, 200, 200));" />
+                    </g>
+                </g>
+                <g data-cell-id="125">
+                    <g transform="translate(0.5,0.5)">
+                        <path d="M 545.75 416 C 545.75 404 545.75 398 560.75 398 C 550.75 398 550.75 386 560.75 386 C 570.75 386 570.75 398 560.75 398 C 575.75 398 575.75 404 575.75 416 Z" fill="#ffffff" stroke="#000000" stroke-width="3" stroke-miterlimit="10" pointer-events="all" style="fill: var(--ge-adaptive-bg, #ffffff); stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));" />
+                    </g>
+                    <g>
+                        <g>
+                            <switch>
+                                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-end; justify-content: unsafe center; width: 28px; height: 1px; padding-top: 413px; margin-left: 547px;">
+                                        <div style="box-sizing: border-box; font-size: 0; text-align: center; color: #000000; ">
+                                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                                Pat
+                                            </div>
+                                        </div>
+                                    </div>
+                                </foreignObject>
+                                <text x="561" y="413" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle" style="fill: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));">
+                                    Pat
+                                </text>
+                            </switch>
+                        </g>
+                    </g>
+                </g>
+                <g data-cell-id="127">
+                    <g transform="translate(0.5,0.5)">
+                        <path d="M 571.25 263.5 L 571.25 175.5 Q 571.25 165.5 566.8 165.5 L 562.35 165.5" fill="none" stroke="#660000" stroke-width="3" stroke-miterlimit="10" pointer-events="stroke" style="stroke: light-dark(rgb(102, 0, 0), rgb(255, 200, 200));" />
+                        <path d="M 558.6 165.5 L 563.6 163 L 562.35 165.5 L 563.6 168 Z" fill="#660000" stroke="#660000" stroke-width="3" stroke-miterlimit="10" pointer-events="all" style="fill: light-dark(rgb(102, 0, 0), rgb(255, 200, 200)); stroke: light-dark(rgb(102, 0, 0), rgb(255, 200, 200));" />
+                    </g>
+                </g>
+                <g data-cell-id="128">
+                    <g transform="translate(0.5,0.5)">
+                        <path d="M 306.25 401 L 248.05 400.97 Q 238.05 400.97 228.05 401.04 L 176.85 401.44" fill="none" stroke="#660000" stroke-width="3" stroke-miterlimit="10" pointer-events="stroke" style="stroke: light-dark(rgb(102, 0, 0), rgb(255, 200, 200));" />
+                        <path d="M 173.1 401.47 L 178.08 398.93 L 176.85 401.44 L 178.12 403.93 Z" fill="#660000" stroke="#660000" stroke-width="3" stroke-miterlimit="10" pointer-events="all" style="fill: light-dark(rgb(102, 0, 0), rgb(255, 200, 200)); stroke: light-dark(rgb(102, 0, 0), rgb(255, 200, 200));" />
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+    <switch>
+        <g requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" />
+        <a transform="translate(0,-5)" xlink:href="https://www.drawio.com/doc/faq/svg-export-text-problems" target="_blank">
+            <text text-anchor="middle" font-size="10px" x="50%" y="100%">
+                Text is not SVG - cannot display
+            </text>
+        </a>
+    </switch>
+</svg>
+  
+      <figcaption class="figure-caption" data-section-number="3.2"><em>European Interoperability Landscape</em></figcaption>
+    </figure>
+    <p></p>
+</div>
+
+  <p>Within this box, the white/grey boxes represents different environments. The authorization requirements in this
+specification are environment specific. The different environment used are :</p>
+
+  <ul>
+    <li><strong>MyHealth@EU:</strong> authorization is outside the scope of this IG. Alignment with <a href="https://profiles.ihe.net/ITI/IUA/index.html">IHE IUA</a> is recommended.</li>
+    <li><strong>National Interoperability Infrastructure:</strong> established Member State infrastructure with
+  preconfigured participants. <a href="https://profiles.ihe.net/ITI/IUA/index.html">IHE IUA</a> is recommended where
+  <a href="https://profiles.ihe.net/ITI/IUA/index.html#3714221-json-web-token-option">user or patient claims</a> are needed.</li>
+    <li><strong>Wellness Applications:</strong> patient or clinician applications connecting to health data access
+  services or EHR systems. <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html">SMART App Launch</a>
+  is recommended where interactive third-party FHIR API access is offered; <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/backend-services.html#profile-audience-and-scope">SMART Backend Services</a>
+  is permitted only for the separately defined pre-authorized server-to-server flow.</li>
+    <li><strong>Healthcare Provider:</strong> internal clinical and gateway-facing deployments. <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html">SMART App Launch</a> is recommended where interactive third-party FHIR API access is offered:
+  <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/backend-services.html#use-this-profile-when-the-following-conditions-all-apply">Backend Services</a> applies to system-to-system uploads and interactive <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html">SMART App Launch</a> applies
+  to clinician access.</li>
+  </ul>
+
+  <h4 id="myhealtheu">MyHealth@EU</h4>
+
+  <p>Authorization for MyHealth@EU is outside the scope of this IG. Deployments should align with
+<a href="https://profiles.ihe.net/ITI/IUA/index.html">IHE IUA</a>.</p>
+
+  <h4 id="national-interoperability-infrastructure">National Interoperability Infrastructure</h4>
+
+  <p>For preconfigured system-to-system endpoints in the national infrastructure,
+<a href="https://profiles.ihe.net/ITI/IUA/index.html">IHE IUA</a> is RECOMMENDED where national policy requires
+IUA transaction integration or its <a href="https://profiles.ihe.net/ITI/IUA/index.html#3714221-json-web-token-option">JWT Token Option</a>.
+This recommendation is limited to those endpoints; it does not require every endpoint in the
+National Interoperability Infrastructure to use IUA. A system-to-system endpoint MAY instead use
+<a href="https://hl7.org/fhir/smart-app-launch/STU2.2/backend-services.html#use-this-profile-when-the-following-conditions-all-apply">SMART Backend Services</a>
+when all of its applicability conditions are met. The deployment selects one profile per
+Resource Server endpoint; distinct endpoints may select different profiles, but this IG does not
+define dual conformance on one endpoint.</p>
+
+  <p>Interactive Wellness Application access to an HDAS or HPAS SHALL use
+<a href="https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html">SMART App Launch</a>, including the
+applicable Patient or Clinician Access flow. This interactive selection does not change the
+separate profile choice for preconfigured system-to-system endpoints.</p>
+
+  <p>For endpoints selecting IUA, use the applicable <a href="https://profiles.ihe.net/ITI/IUA/index.html#341-iua-actors-transactions-and-content-modules">IUA actors</a>
+and metadata. Add <a href="https://profiles.ihe.net/ITI/IUA/index.html#3364-use-with-the-internet-user-authorization-iua-profile">IUA MHD transaction scopes</a>
+only for supported ITI-65 through ITI-68 transactions whose MHD actors are grouped with IUA.
+Core IUA defines no API-specific scope vocabulary, and ITI-105 has no IUA-defined transaction
+scope. SMART endpoints use the applicable SMART FHIR resource scopes instead.</p>
+
+  <h4 id="wellness-applications">Wellness Applications</h4>
+
+  <p>Many Wellness Applications will developed to work in different member states or with differnet HDAS deployments in a member state. This requires such applications to discover th authorization infrastruture for this HDAS. Where a system offers third-party applications interactive access to its FHIR API, it SHOULD support <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html">SMART App Launch</a> using the applicable Patient or Clinician Access capability set.</p>
+
+  <p>Where a Health Data Access Service (HDAS) offers third-party applications interactive access to its FHIR API, it SHOULD support <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html">SMART App Launch</a> using the applicable Patient or Clinician Access capability set.</p>
+
+  <p>It is RECOMMENDED that it discovers the authorization endpoint using the
+<a href="https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html#retrieve-well-known-smart-configuration">SMART App Launch discovery mechanism</a>.
+As this app will access confidential information, it is RECOMMENDED to use the
+<a href="https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html#support-for-public-and-confidential-apps">confidential client profile</a>.</p>
+
+  <p>Where interactive third-party app access is offered, a clinician-launched Wellness Application SHOULD use
+<a href="https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html#launch-app-ehr-launch">SMART App Launch EHR Launch</a>.
+For the recommended Wellness-hosted-data pattern, the launch target is an application and the
+FHIR server is hosted by the Wellness Application, allowing data to be retrieved into the EHR. The
+Wellness Application SHALL support <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/scopes-and-launch-context.html#apps-that-launch-from-the-ehr">current-patient launch context</a>
+and use <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/conformance.html#clinician-access-for-ehr-launch">Clinician Access for EHR Launch</a>,
+or <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/conformance.html#clinician-access-for-standalone">Clinician Access for Standalone</a>
+when not launched by an EHR.</p>
+
+  <p>A patient-launched Wellness Application typically will use
+<a href="https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html">SMART App Launch</a>
+with the EHR as FHIR server, use the applicable <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/conformance.html#capability-sets">Patient Access for EHR Launch</a>
+or <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/conformance.html#patient-access-for-standalone-apps">Patient Access for Standalone Apps</a>
+capability set, and follow the applicable Argonaut Write successor for write workflows.</p>
+
+  <p>A Wellness Application connecting to a preconfigured, server-side provider-hosted
+EHR-system SHOULD use <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/backend-services.html#use-this-profile-when-the-following-conditions-all-apply">SMART Backend Services</a>.</p>
+
+  <h4 id="healthcare-provider">Healthcare Provider</h4>
+
+  <p>Where a system offers third-party applications interactive access to its FHIR API, it SHOULD support <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html">SMART App Launch</a> using the applicable Patient or Clinician Access capability set.</p>
+
+  <p>This is this IG's environment-specific choice, not an EHDS requirement to use SMART and not a
+claim that IUA cannot support clinician access. SMART provides FHIR-based endpoint discovery and
+standalone or EHR-launch context; its Backend Services profile separately supports pre-authorized
+system-to-system access. A provider's own user interface does not become a third-party SMART App
+merely because a clinician signs in.</p>
+
+  <p>A system-to-system uploading of EEHRxF data to a gateway in order to provide the information
+to the national infrastructure SHOULD use <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/backend-services.html#use-this-profile-when-the-following-conditions-all-apply">SMART Backend Services</a>.</p>
+
+  <p><a name="authorization-server-discovery"></a>
+<a name="get-access-token"></a>
+<a name="incorporate-access-token"></a></p>
+
+  <h4 id="flow-classification">Flow Classification</h4>
+
+  <p>Environment and flow are separate dimensions. "Application-guided authentication" is not an
+alternative to patient or clinician access: either user type may authenticate through an app-guided
+flow, and <a href="https://profiles.ihe.net/ITI/IUA/index.html#3442-use-cases">IUA supports interactive access</a>
+as well as system-to-system exchange. The existing environment selections above remain applicable.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Flow</th>
+        <th>Client and user</th>
+        <th>Protected FHIR endpoint / data direction</th>
+        <th>Authorization and authentication</th>
+        <th>Endpoint location</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Wellness to HDAS</td>
+        <td>SMART App; patient or clinician</td>
+        <td>HDAS API; supported reads or writes</td>
+        <td>Selected Patient or Clinician Access capability set; API Authorization Server uses Authentication Service for user authentication</td>
+        <td>SMART discovery from the target FHIR base</td>
+      </tr>
+      <tr>
+        <td>Patient Wellness to EHR</td>
+        <td>SMART App; patient, standalone or EHR launch</td>
+        <td>EHR API; access or supported patient-provided submission</td>
+        <td>Applicable Patient Access capability set, authorization code and PKCE; Authentication Service may use Wallet</td>
+        <td>SMART discovery from EHR FHIR base</td>
+      </tr>
+      <tr>
+        <td>Clinician accessing Wellness-hosted data</td>
+        <td>SMART App; clinician, standalone or EHR launch</td>
+        <td>Wellness-hosted API; data retrieved into EHR</td>
+        <td>Applicable Clinician Access capability set and current-patient context where required; launch target is an application, not the FHIR API itself</td>
+        <td>SMART discovery from Wellness FHIR base</td>
+      </tr>
+      <tr>
+        <td>Pre-authorized Wellness backend to EHR</td>
+        <td>SMART Backend Service; no runtime authorizing user</td>
+        <td>Provider-hosted EHR API; supported exchange</td>
+        <td>Client credentials and asymmetric client authentication; no runtime Authentication Service step</td>
+        <td>Preconfigured deployment; required SMART metadata remains applicable</td>
+      </tr>
+      <tr>
+        <td>Provider system to gateway</td>
+        <td>SMART Backend Service; no runtime authorizing user</td>
+        <td>Gateway API; EEHRxF upload</td>
+        <td>Pre-authorized Backend Services; no runtime Authentication Service step</td>
+        <td>Configured gateway FHIR base and SMART metadata</td>
+      </tr>
+      <tr>
+        <td>Interactive provider access</td>
+        <td>SMART App; clinician, standalone or EHR launch</td>
+        <td>Selected EHR API; permitted clinician interactions</td>
+        <td>Applicable Clinician Access capability set; API Authorization Server relies on Authentication Service</td>
+        <td>SMART discovery from target FHIR base</td>
+      </tr>
+      <tr>
+        <td>Established national exchange</td>
+        <td>Selected IUA Authorization Client; user context if applicable</td>
+        <td>Configured protected API; selected transactions</td>
+        <td>IUA recommendation above; Authentication Service only when the selected flow requires user authentication</td>
+        <td>Authorization Server location preconfigured; selected IUA metadata</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>In each row, the API Authorization Server is the server selected for that endpoint and trust
+relationship; it need not be hosted by the FHIR server. See the
+<a href="actors.html#authentication-and-authorization-groupings">optional actor groupings</a>.</p>
+
+  <h3 id="smart-app-launch">SMART App Launch</h3>
+
+  <p>The SMART roles used by this IG are <a href="ActorDefinition-smart-app-eu-api.html">SMART App</a>, <a href="ActorDefinition-smart-backend-service-eu-api.html">SMART Backend Service</a>, <a href="ActorDefinition-smart-fhir-resource-server-eu-api.html">SMART FHIR Resource Server</a>, <a href="ActorDefinition-smart-authorization-server-eu-api.html">SMART Authorization Server</a>, and <a href="ActorDefinition-smart-launching-system-eu-api.html">SMART Launching System</a>. Registration and client-key exchange are out of band.</p>
+
+  <p>Interactive Patient and Clinician Access flows SHALL use the authorization-code grant and PKCE as specified by <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html">SMART App Launch</a>. All SMART Apps SHALL support PKCE; servers SHALL support <code class="language-plaintext highlighter-rouge">S256</code> and SHALL NOT support <code class="language-plaintext highlighter-rouge">plain</code>. Public clients do not authenticate at the token endpoint. Confidential interactive clients use their registered authentication method.</p>
+
+  <p>Patient Access for Standalone Apps requires <code class="language-plaintext highlighter-rouge">launch-standalone</code>, <code class="language-plaintext highlighter-rouge">client-public</code> or <code class="language-plaintext highlighter-rouge">client-confidential-symmetric</code>, <code class="language-plaintext highlighter-rouge">context-standalone-patient</code>, and <code class="language-plaintext highlighter-rouge">permission-patient</code>. Patient Access for EHR Launch requires <code class="language-plaintext highlighter-rouge">launch-ehr</code>, a permitted client capability, <code class="language-plaintext highlighter-rouge">context-ehr-patient</code>, and <code class="language-plaintext highlighter-rouge">permission-patient</code>. Clinician Access for Standalone requires <code class="language-plaintext highlighter-rouge">launch-standalone</code>, a permitted client capability, <code class="language-plaintext highlighter-rouge">permission-user</code>, and <code class="language-plaintext highlighter-rouge">permission-patient</code>. Clinician Access for EHR Launch requires <code class="language-plaintext highlighter-rouge">launch-ehr</code>, a permitted client capability, <code class="language-plaintext highlighter-rouge">context-ehr-patient</code>, <code class="language-plaintext highlighter-rouge">context-ehr-encounter</code>, <code class="language-plaintext highlighter-rouge">permission-user</code>, and <code class="language-plaintext highlighter-rouge">permission-patient</code>. These released capability sets are defined by <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/conformance.html">SMART conformance</a>.</p>
+
+  <p>SMART Backend Services requires pre-authorized access, <code class="language-plaintext highlighter-rouge">client_credentials</code>, <code class="language-plaintext highlighter-rouge">private_key_jwt</code>, and normally <code class="language-plaintext highlighter-rouge">system/</code> scopes, as specified by <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/backend-services.html">SMART Backend Services</a> and <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/client-confidential-asymmetric.html">asymmetric client authentication</a>. Client assertions SHALL use an appropriate <code class="language-plaintext highlighter-rouge">typ</code>, <code class="language-plaintext highlighter-rouge">alg</code>, <code class="language-plaintext highlighter-rouge">kid</code>, <code class="language-plaintext highlighter-rouge">iss</code>, <code class="language-plaintext highlighter-rouge">sub</code>, <code class="language-plaintext highlighter-rouge">aud</code>, <code class="language-plaintext highlighter-rouge">exp</code>, and <code class="language-plaintext highlighter-rouge">jti</code>; the Authorization Server SHALL validate the signature, short expiry, audience, and replay protection. These requirements do not apply to public interactive clients.</p>
+
+  <p><a name="smart-server-time-synchronization"></a></p>
+  <h4 id="smart-server-time-synchronization">SMART Server Time Synchronization</h4>
+
+  <p>For both interactive SMART App Launch and SMART Backend Services, this IG recommends (<code class="language-plaintext highlighter-rouge">SHOULD</code>)
+that SMART Authorization Server and SMART FHIR Resource Server actors be grouped with the
+<a href="https://profiles.ihe.net/ITI/TF/Volume1/ch-7.html">IHE Consistent Time (CT) Time Client</a>. This is
+an additional IG-level recommendation; SMART App Launch does not itself require CT. It applies to
+the two server roles, not to SMART Apps or SMART Backend Services solely by virtue of their client
+roles.</p>
+
+  <p>Consistent time supports evaluation of time-bounded security data. For example, SMART asymmetric
+client authentication defines an <code class="language-plaintext highlighter-rouge">exp</code> claim for client assertions that SHALL be no more than five
+minutes in the future (<a href="https://hl7.org/fhir/smart-app-launch/STU2.2/client-confidential-asymmetric.html#authenticating-to-the-token-endpoint">SMART client authentication</a>).
+See <a href="#time-synchronization">Time Synchronization</a> for shared NTP deployment guidance.</p>
+
+  <h4 id="smart-discovery">SMART Discovery</h4>
+
+  <p>FHIR capabilities are discovered from <code class="language-plaintext highlighter-rouge">[base]/metadata</code>; SMART metadata is discovered from <code class="language-plaintext highlighter-rouge">[base]/.well-known/smart-configuration</code>. SMART discovery SHALL publish absolute endpoint URLs and align its <code class="language-plaintext highlighter-rouge">token_endpoint</code>, grant types, capabilities, token-endpoint authentication methods, signing algorithms, and scopes with the selected flow. Interactive modes additionally publish the authorization endpoint, authorization-code and PKCE support, launch capabilities, and the selected Patient or Clinician capability set. Backend Services publishes <code class="language-plaintext highlighter-rouge">client_credentials</code>, asymmetric authentication, and supported system scopes. <code class="language-plaintext highlighter-rouge">jwks_uri</code> is for server-key discovery only; client keys are registered out of band.</p>
+
+  <h3 id="ihe-iua">IHE IUA</h3>
+
+  <p>The IUA roles used by this IG are <a href="ActorDefinition-iua-authorization-client-eu-api.html">IUA Authorization Client</a>, <a href="ActorDefinition-iua-authorization-server-eu-api.html">IUA Authorization Server</a>, and <a href="ActorDefinition-iua-resource-server-eu-api.html">IUA Resource Server</a>. IUA mode uses the applicable <a href="https://profiles.ihe.net/ITI/IUA/index.html#34111-authorization-client">Authorization Client</a>, <a href="https://profiles.ihe.net/ITI/IUA/index.html#34112-authorization-server">Authorization Server</a>, and <a href="https://profiles.ihe.net/ITI/IUA/index.html#34113-resource-server">Resource Server</a> requirements. Core IUA requirements are separate from this IG's MHD transaction integration and from the additional recommendations here.</p>
+
+  <p>IHE IUA Revision 2.5
+<a href="https://profiles.ihe.net/ITI/IUA/index.html#343-iua-required-actor-groupings">requires</a> its
+Authorization Server and Resource Server actors to be grouped with a CT/Time Client. This IUA
+requirement is distinct from the additional SMART-specific <code class="language-plaintext highlighter-rouge">SHOULD</code> recommendation above.
+See <a href="#time-synchronization">Time Synchronization</a> for shared NTP deployment guidance.</p>
+
+  <p>The Authorization Client authenticates to the Authorization Server, requests least-privilege scopes, and presents its bearer token. The Authorization Server authenticates the client, validates any client assertion, applies issuance policy, limits scopes to authorized scopes, prevents assertion replay, and issues tokens. The Resource Server validates token activity, expiry, issuer/signature or introspection, audience/resource binding where applicable, granted scope, request/claim consistency, and local policy. A Resource Server does not validate a client assertion for an independent Authorization Server.</p>
+
+  <p><a name="time-synchronization"></a></p>
+  <h3 id="time-synchronization">Time Synchronization</h3>
+
+  <p>The <a href="https://profiles.ihe.net/ITI/TF/Volume1/ch-7.html">IHE Consistent Time (CT) profile</a>
+specifies NTP synchronization and references NTPv3. As informative deployment guidance for both
+SMART and IUA server roles, deployments are encouraged to use NTPv4 for time synchronization,
+while satisfying the applicable IHE CT requirements.
+<a href="https://www.rfc-editor.org/rfc/rfc5905#section-1">NTPv4 is backward compatible with NTPv3</a>;
+interoperability with the selected time service should be verified.</p>
+
+  <p>This guidance does not introduce a separate NTPv4 conformance requirement or relax the applicable
+CT grouping obligations described above. NTPv4 use alone does not establish full CT conformance.</p>
+
+  <p><a name="transport-security"></a></p>
+  <h3 id="tokens-scopes-enforcement-and-errors">Tokens, Scopes, Enforcement, And Errors</h3>
+
+  <p>All token and protected-resource exchanges SHALL use TLS 1.2 or later. Access tokens are short-lived bearer tokens; they need not be JWTs unless the selected IUA option requires JWT format. A Resource Server MAY use <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-102.html">IUA ITI-102 token introspection</a> where selected.</p>
+
+  <p>Requested and granted scopes are distinct. Resource Servers SHALL enforce granted scopes and applicable policy. SMART v2 resource scopes use <code class="language-plaintext highlighter-rouge">&lt;patient|user|system&gt;/&lt;ResourceType&gt;.&lt;cruds&gt;</code> as described in <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/scopes-and-launch-context.html">SMART scopes</a>. Interactive flows use the applicable <code class="language-plaintext highlighter-rouge">patient/</code> and <code class="language-plaintext highlighter-rouge">user/</code> scopes; Backend Services uses the applicable <code class="language-plaintext highlighter-rouge">system/</code> scopes. The resource inventory is maintained in <a href="resource-access.html">Resource Access</a>.</p>
+
+  <p>For IUA-protected MHD transactions, the separate transaction scopes are <code class="language-plaintext highlighter-rouge">ITI-65</code>, <code class="language-plaintext highlighter-rouge">ITI-66</code>, <code class="language-plaintext highlighter-rouge">ITI-67</code>, and <code class="language-plaintext highlighter-rouge">ITI-68</code>, only when the corresponding transaction is supported. ITI-105 has no IUA-defined transaction scope and uses the applicable SMART scope or a future explicitly IG-defined extension. No scope family is a substitute for the other.</p>
+
+  <p>Protected-resource error responses follow the selected authorization specification. IUA token verification, scope matching, and access-policy failures return <code class="language-plaintext highlighter-rouge">401 Unauthorized</code> as specified in <a href="https://profiles.ihe.net/ITI/IUA/index.html#37243-expected-actions">ITI-72</a>. SMART requests may return <code class="language-plaintext highlighter-rouge">403 Forbidden</code> when access is denied by underlying permissions, as described in <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/scopes-and-launch-context.html#smarts-scopes-are-used-to-delegate-access">SMART scopes</a>. A deployment MAY use <code class="language-plaintext highlighter-rouge">404 Not Found</code> to conceal resource existence only where permitted by the selected specification and when it documents that policy consistently. Consent and audit remain separate responsibilities.</p>
+
+  <h3 id="potential-future-work">Potential Future Work</h3>
+
+  <p>Future work may define a hybrid IHE IUA/SMART profile, including claim and scope mappings, discovery precedence, token-context precedence, error semantics, audit identity, and same-endpoint dual-conformance rules. These topics are not normative for this release.</p>
+
+</div>
+
+<p><span class="auth-change"></span></p>
+
+<h3 id="authorization-follow-up-to-do">Authorization Follow-up To Do</h3>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Identify the authoritative released MyHealth@EU authorization and security documents, confirm the applicable deployment profile, and add only the references and requirements that apply to this IG's MyHealth@EU environment.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Review the authoritative eIDAS and European Digital Identity Wallet documents, including relevant implementing acts and technical specifications, and add references only where they establish an applicable API authorization or assurance requirement (completed 2026-10-21).</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Reassess the EHDS Article 16 implementing acts when published, including any cross-border identification and authentication requirements for natural persons and health professionals.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Inspect each implementation use-case page and add the applicable authorization participants, prerequisites, and selected SMART or IUA flow where needed, without creating new authorization rules outside <a href="authorization.html">Authorization</a>.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Define any future IHE IUA/SMART hybrid profile only after agreeing scope mappings, discovery precedence, token-context precedence, error semantics, and audit identity (completed in 3.2.0.10).</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Determine whether this IG should define a CapabilityStatement profile or extension that computably identifies SMART Backend Services, Patient Access, and Clinician Access modes or capability sets. FHIR R4 provides only the generic <code class="language-plaintext highlighter-rouge">SMART-on-FHIR</code> security-service code; <code class="language-plaintext highlighter-rouge">.well-known/smart-configuration</code> remains the authoritative runtime source for SMART capabilities.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Reflect the changes in this branch in resolutions for the open authorization-related tickets; see the <a href="authorization-ticket-resolutions.html">proposed ticket resolutions</a> for current coverage and remaining decisions: <a href="https://jira.hl7.org/browse/FHIR-56367">FHIR-56367</a>, <a href="https://jira.hl7.org/browse/FHIR-56368">FHIR-56368</a>, <a href="https://jira.hl7.org/browse/FHIR-56369">FHIR-56369</a>, <a href="https://jira.hl7.org/browse/FHIR-56386">FHIR-56386</a>, <a href="https://jira.hl7.org/browse/FHIR-56388">FHIR-56388</a>, <a href="https://jira.hl7.org/browse/FHIR-56581">FHIR-56581</a>, <a href="https://jira.hl7.org/browse/FHIR-56584">FHIR-56584</a>, <a href="https://jira.hl7.org/browse/FHIR-56615">FHIR-56615</a>, <a href="https://jira.hl7.org/browse/FHIR-56616">FHIR-56616</a>, <a href="https://jira.hl7.org/browse/FHIR-56639">FHIR-56639</a>, <a href="https://jira.hl7.org/browse/FHIR-56650">FHIR-56650</a>, <a href="https://jira.hl7.org/browse/FHIR-56660">FHIR-56660</a>, <a href="https://jira.hl7.org/browse/FHIR-56666">FHIR-56666</a>, <a href="https://jira.hl7.org/browse/FHIR-56698">FHIR-56698</a>, <a href="https://jira.hl7.org/browse/FHIR-56699">FHIR-56699</a>, <a href="https://jira.hl7.org/browse/FHIR-56705">FHIR-56705</a>, <a href="https://jira.hl7.org/browse/FHIR-56713">FHIR-56713</a>, <a href="https://jira.hl7.org/browse/FHIR-56838">FHIR-56838</a>, <a href="https://jira.hl7.org/browse/FHIR-56845">FHIR-56845</a>, <a href="https://jira.hl7.org/browse/FHIR-56848">FHIR-56848</a>, <a href="https://jira.hl7.org/browse/FHIR-56852">FHIR-56852</a>, <a href="https://jira.hl7.org/browse/FHIR-57252">FHIR-57252</a>, and <a href="https://jira.hl7.org/browse/FHIR-57498">FHIR-57498</a>.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Address AndriesHamster's <a href="https://github.com/euridice-org/eu-health-data-api/pull/99#discussion_r4245521795">PR #99 review comment</a> locally: clarify IUA claims and scopes; introduce an IG-defined Authentication Service with optional Authorization Server grouping; reconcile the displayed actor and authentication diagrams; explain Wallet sign-in and API authorization; and add the environment/flow matrix while preserving current protocol selections. The authentication interface remains deployment-defined, not a mandatory identity-token exchange. See <a href="actors.html#authentication-and-authorization-groupings">actor groupings</a> and <a href="authorization.html#authentication-and-api-authorization">authentication and API authorization</a>. Decisions and validation evidence are recorded in the maintained design notes; no central EU server, required co-location, or GitHub thread resolution is implied.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Address regelkraut's <a href="https://github.com/euridice-org/eu-health-data-api/pull/99#issuecomment-6167347393">PR #99 comment</a>: verified "allowing" and "EEHRxF"; aligned the generic actor display names as Health Data API Authorization Client, Health Data API Authorization Server, and Health Data API Resource Server across definitions, narrative, and sequence diagrams. Clarified that these are logical IG roles, not centrally operated EU services; identifiers and protocol-specific actor names are unchanged.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Resolve patrick-werner's <a href="https://github.com/euridice-org/eu-health-data-api/pull/99#discussion_r4272470695">PR #99 review comment</a>: recorded the endpoint-level conformance decision in the maintained <code class="language-plaintext highlighter-rouge">doc/decisions.md</code>, narrowed the IUA recommendation to preconfigured system-to-system endpoints, retained SMART App Launch for interactive HDAS/HPAS access, separated SMART resource scopes from applicable IUA MHD transaction scopes, and clarified that the IUA JWT Token Option is not an automatic cross-protocol profile. See <a href="authorization.html#environment-specific-requirements">Authorization</a> and the maintained <code class="language-plaintext highlighter-rouge">doc/smart-vs-iua.md</code>.
+&lt;/span&gt;</li>
+</ul>
+
+
+
+
+</div>
+        </div>  <!-- /inner-wrapper -->
+      </div>  <!-- /row -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-content -->
+
+  <script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
+  <script type="text/javascript" src="assets/js/jquery-ui.min.js"> </script>
+  <script type="text/javascript" src="assets/js/flags.js"> </script>
+
+  <script type="text/javascript" src="assets/js/window-hash.js"> </script>
+  <script type="text/javascript" src="assets/js/togglechanges.js"> </script>
+  <script type="text/javascript" src="assets/js/requirements-table.js"> </script>
+  <a name="bottom"> </a>
+  <div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->
+    <div class="container" data-fhir="generated">  <!-- container -->
+
+      <div style="background-color:var(--footer-nav-bg-color)">
+        <table style="width:100%">
+          <tbody>
+            <tr>
+              <td style="text-align:var(--ig-left);">&#xA0;
+
+                <a href="capability-discovery.html">&lt; prev</a>
+
+              </td>
+              <td style="text-align:center">
+                <a href="#top">top</a>
+              </td>
+              <td style="text-align:var(--ig-right);">&#xA0;
+
+                <a href="authorization-ticket-resolutions.html">next ></a>
+
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="inner-wrapper">
+        <p>
+
+
+
+          IG © 2025+ <a style="color:var(--footer-hyperlink-text-color)" href="http://hl7.eu">HL7 Europe</a>.  
+          Package hl7.fhir.eu.health-data-api#1.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
+          Generated 
+  <span title="2026-10-23 12:01:00 +0200">
+    2026-10-23
+  </span>
+
+          <br/>
+          <span style="color: var(--footer-highlight-text-color)">
+            <div style="color: #333333">
+
+  Links: <a style="color: #81BEF7" href="toc.html">Table of Contents</a> |
+  <a style="color: #81BEF7" href="../qa.html">QA Report</a>
+  <!--
+                 <a style="color: #81BEF7" target="_blank" href="http://hl7.eu/fhir/health-data-api/history.html">Version History <img alt="external" style="vertical-align: baseline" src="external.png"/></a></a> |
+-->
+  <a style="color: #81BEF7" rel="license" href="http://hl7.org/fhir/R4/license.html"><img style="border-style: none;"
+      alt="CC0" src="cc0.png" /></a>
+  <!--<a style="color: #81BEF7" href="todo.html">Search</a> | -->
+  <a style="color: #81BEF7" target="_blank" href="http://jira.hl7.org">Propose a change<img alt="external"
+      style="vertical-align: baseline" src="external.png" /></a>
+
+  <div>
+  </div>
+
+</div>
+          </span>
+        </p>
+      </div>  <!-- /inner-wrapper -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-footer -->
+  
+  <div id="segment-post-footer" class="segment hidden">  <!-- segment-post-footer -->
+    <div class="container">  <!-- container -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-post-footer -->
+
+  <!-- JS and analytics only. -->
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script type="text/javascript" src="assets/js/bootstrap.min.js"> </script>
+  <script type="text/javascript" src="assets/js/respond.min.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
+  <!-- Analytics Below
+  ================================================== -->
+  </body>
+</html>
+

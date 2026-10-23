@@ -1,0 +1,54 @@
+{
+  "resourceType" : "ValueSet",
+  "id" : "document-type-patient-summary-eu-api",
+  "language" : "en",
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: ValueSet document-type-patient-summary-eu-api</b></p><a name=\"document-type-patient-summary-eu-api\"> </a><a name=\"hcdocument-type-patient-summary-eu-api\"> </a><ul><li>Include these codes as defined in <a href=\"http://loinc.org\"><code>http://loinc.org</code></a><span title=\"Version is not explicitly stated. No matching Code System found\"> version Not Stated (use latest from terminology server)</span><table class=\"none\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td></tr><tr><td><a href=\"https://loinc.org/60591-5/\">60591-5</a></td><td>Patient summary Document</td></tr></table></li></ul></div>"
+  },
+  "url" : "http://hl7.eu/fhir/health-data-api/ValueSet/document-type-patient-summary-eu-api",
+  "version" : "1.0.0-ballot",
+  "name" : "DocumentTypePatientSummaryEuApiVS",
+  "title" : "EEHRxF Document Type ValueSet for Patient Summaries",
+  "status" : "draft",
+  "experimental" : false,
+  "date" : "2026-10-23T12:01:58+02:00",
+  "publisher" : "HL7 Europe",
+  "contact" : [{
+    "name" : "HL7 Europe",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "http://hl7.eu"
+    }]
+  }],
+  "description" : "ValueSet for specific document types within the Patient Summary priority category.",
+  "useContext" : [{
+    "code" : {
+      "system" : "http://terminology.hl7.org/CodeSystem/usage-context-type",
+      "code" : "focus"
+    },
+    "valueCodeableConcept" : {
+      "coding" : [{
+        "system" : "http://hl7.eu/fhir/health-data-api/CodeSystem/document-priority-category-eu-api",
+        "code" : "Patient-Summaries"
+      }]
+    }
+  }],
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "http://unstats.un.org/unsd/methods/m49/m49.htm",
+      "code" : "150",
+      "display" : "Europe"
+    }]
+  }],
+  "copyright" : "This material contains content from LOINC (http://loinc.org). LOINC is copyright © 1995-2020, Regenstrief Institute, Inc. and the Logical Observation Identifiers Names and Codes (LOINC) Committee and is available at no cost under the license at http://loinc.org/license. LOINC® is a registered United States trademark of Regenstrief Institute, Inc",
+  "compose" : {
+    "include" : [{
+      "system" : "http://loinc.org",
+      "concept" : [{
+        "code" : "60591-5",
+        "display" : "Patient summary Document"
+      }]
+    }]
+  }
+}

@@ -1,0 +1,2 @@
+URL,Version,Status,OIDs,Name,Title,Description,Used
+http://hl7.eu/fhir/health-data-api/CodeSystem/document-priority-category-eu-api,1.0.0-ballot,draft,,DocumentPriorityCategoryEuApiCS,EEHRxF Document Priority Category CodeSystem,"CodeSystem for priority document categories in EEHRxF as the document categories as defined in the EHDS regulation.",

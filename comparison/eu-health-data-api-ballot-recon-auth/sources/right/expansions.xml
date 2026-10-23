@@ -1,0 +1,1655 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Bundle xmlns="http://hl7.org/fhir">
+  <id value="7a899a24-2225-4aa9-bdc2-bc388eff1669"/>
+  <meta>
+    <lastUpdated value="2026-10-23T12:01:58.264+02:00"/>
+  </meta>
+  <type value="collection"/>
+  <entry>
+    <fullUrl value="http://hl7.eu/fhir/health-data-api/ValueSet/document-type-discharge-report-eu-api"/>
+    <resource>
+      <ValueSet>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml" data-fhir="generated">
+            <p class="res-header-id"/>
+            <p style="border: black 1px dotted; background-color: #EEEEEE; padding: 8px; margin-bottom: 8px">Expansion from tx.fhir.org based on Loinc v2.82
+              <span class="copy-text-inline">
+                <button data-clipboard-text="http://loinc.org|2.82" title="Click to Copy URL" class="btn-copy"> </button>
+              </span>
+            </p>
+            <p>This value set contains 2 concepts</p>
+            <table class="codes" data-fhir="generated">
+              <tr>
+                <td>
+                  <b>System</b>
+                </td>
+                <td style="white-space:nowrap">
+                  <b>Code</b>
+                </td>
+                <td>
+                  <b>Display (en)</b>
+                </td>
+                <td>
+                  <b>JSON</b>
+                </td>
+                <td>
+                  <b>XML</b>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://loinc.org-18842-5"> </a>
+                  <code>http://loinc.org</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="https://loinc.org/18842-5/">18842-5</a>
+                </td>
+                <td>Discharge summary</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://loinc.org&quot;, &quot;version&quot;: &quot;2.82&quot;, &quot;code&quot;: &quot;18842-5&quot;, &quot;display&quot;: &quot;Discharge summary&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://loinc.org&quot;&gt;&lt;version value=&quot;2.82&quot;&gt;&lt;code value=&quot;18842-5&quot;&gt;&lt;display value=&quot;Discharge summary&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://loinc.org-100719-4"> </a>
+                  <code>http://loinc.org</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="https://loinc.org/100719-4/">100719-4</a>
+                </td>
+                <td>Surgical oncology Discharge summary</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://loinc.org&quot;, &quot;version&quot;: &quot;2.82&quot;, &quot;code&quot;: &quot;100719-4&quot;, &quot;display&quot;: &quot;Surgical oncology Discharge summary&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://loinc.org&quot;&gt;&lt;version value=&quot;2.82&quot;&gt;&lt;code value=&quot;100719-4&quot;&gt;&lt;display value=&quot;Surgical oncology Discharge summary&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </text>
+        <url value="http://hl7.eu/fhir/health-data-api/ValueSet/document-type-discharge-report-eu-api"/>
+        <version value="1.0.0-ballot"/>
+        <name value="DocumentTypeDischargeReportEuApiVS"/>
+        <title value="EEHRxF Document Type ValueSet for Discharge Reports"/>
+        <status value="draft"/>
+        <experimental value="false"/>
+        <date value="2026-10-23T12:01:58+02:00"/>
+        <useContext>
+          <code>
+            <system value="http://terminology.hl7.org/CodeSystem/usage-context-type"/>
+            <code value="focus"/>
+          </code>
+          <valueCodeableConcept>
+            <coding>
+              <system value="http://hl7.eu/fhir/health-data-api/CodeSystem/document-priority-category-eu-api"/>
+              <code value="Discharge-Reports"/>
+            </coding>
+          </valueCodeableConcept>
+        </useContext>
+        <jurisdiction>
+          <coding>
+            <system value="http://unstats.un.org/unsd/methods/m49/m49.htm"/>
+            <code value="150"/>
+            <display value="Europe"/>
+          </coding>
+        </jurisdiction>
+        <expansion>
+          <identifier value="urn:uuid:d28784ad-5590-43bb-872d-f0fc6112ec5e"/>
+          <timestamp value="2026-10-23T12:02:57+02:00"/>
+          <total value="2"/>
+          <offset value="0"/>
+          <parameter>
+            <name value="displayLanguage"/>
+            <valueCode value="en"/>
+          </parameter>
+          <parameter>
+            <name value="count"/>
+            <valueInteger value="1000"/>
+          </parameter>
+          <parameter>
+            <name value="offset"/>
+            <valueInteger value="0"/>
+          </parameter>
+          <parameter>
+            <name value="excludeNested"/>
+            <valueBoolean value="false"/>
+          </parameter>
+          <parameter>
+            <name value="used-valueset"/>
+            <valueUri value="null"/>
+          </parameter>
+          <parameter>
+            <name value="includeDefinition"/>
+            <valueBoolean value="false"/>
+          </parameter>
+          <parameter>
+            <name value="used-codesystem"/>
+            <valueUri value="http://loinc.org|2.82"/>
+          </parameter>
+          <contains>
+            <system value="http://loinc.org"/>
+            <code value="18842-5"/>
+            <display value="Discharge summary"/>
+          </contains>
+          <contains>
+            <system value="http://loinc.org"/>
+            <code value="100719-4"/>
+            <display value="Surgical oncology Discharge summary"/>
+          </contains>
+        </expansion>
+      </ValueSet>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://hl7.eu/fhir/health-data-api/ValueSet/document-type-discharge-report-eu-api"/>
+    <resource>
+      <ValueSet>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml" data-fhir="generated">
+            <p class="res-header-id"/>
+            <p style="border: black 1px dotted; background-color: #EEEEEE; padding: 8px; margin-bottom: 8px">Expansion from tx.fhir.org based on Loinc v2.82
+              <span class="copy-text-inline">
+                <button data-clipboard-text="http://loinc.org|2.82" title="Click to Copy URL" class="btn-copy"> </button>
+              </span>
+            </p>
+            <p>This value set contains 2 concepts</p>
+            <table class="codes" data-fhir="generated">
+              <tr>
+                <td>
+                  <b>System</b>
+                </td>
+                <td style="white-space:nowrap">
+                  <b>Code</b>
+                </td>
+                <td>
+                  <b>Display (en)</b>
+                </td>
+                <td>
+                  <b>JSON</b>
+                </td>
+                <td>
+                  <b>XML</b>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://loinc.org-18842-5"> </a>
+                  <code>http://loinc.org</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="https://loinc.org/18842-5/">18842-5</a>
+                </td>
+                <td>Discharge summary</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://loinc.org&quot;, &quot;version&quot;: &quot;2.82&quot;, &quot;code&quot;: &quot;18842-5&quot;, &quot;display&quot;: &quot;Discharge summary&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://loinc.org&quot;&gt;&lt;version value=&quot;2.82&quot;&gt;&lt;code value=&quot;18842-5&quot;&gt;&lt;display value=&quot;Discharge summary&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://loinc.org-100719-4"> </a>
+                  <code>http://loinc.org</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="https://loinc.org/100719-4/">100719-4</a>
+                </td>
+                <td>Surgical oncology Discharge summary</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://loinc.org&quot;, &quot;version&quot;: &quot;2.82&quot;, &quot;code&quot;: &quot;100719-4&quot;, &quot;display&quot;: &quot;Surgical oncology Discharge summary&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://loinc.org&quot;&gt;&lt;version value=&quot;2.82&quot;&gt;&lt;code value=&quot;100719-4&quot;&gt;&lt;display value=&quot;Surgical oncology Discharge summary&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </text>
+        <url value="http://hl7.eu/fhir/health-data-api/ValueSet/document-type-discharge-report-eu-api"/>
+        <version value="1.0.0-ballot"/>
+        <name value="DocumentTypeDischargeReportEuApiVS"/>
+        <title value="EEHRxF Document Type ValueSet for Discharge Reports"/>
+        <status value="draft"/>
+        <experimental value="false"/>
+        <date value="2026-10-23T12:01:58+02:00"/>
+        <useContext>
+          <code>
+            <system value="http://terminology.hl7.org/CodeSystem/usage-context-type"/>
+            <code value="focus"/>
+          </code>
+          <valueCodeableConcept>
+            <coding>
+              <system value="http://hl7.eu/fhir/health-data-api/CodeSystem/document-priority-category-eu-api"/>
+              <code value="Discharge-Reports"/>
+            </coding>
+          </valueCodeableConcept>
+        </useContext>
+        <jurisdiction>
+          <coding>
+            <system value="http://unstats.un.org/unsd/methods/m49/m49.htm"/>
+            <code value="150"/>
+            <display value="Europe"/>
+          </coding>
+        </jurisdiction>
+        <expansion>
+          <identifier value="urn:uuid:d28784ad-5590-43bb-872d-f0fc6112ec5e"/>
+          <timestamp value="2026-10-23T12:02:57+02:00"/>
+          <total value="2"/>
+          <offset value="0"/>
+          <parameter>
+            <name value="displayLanguage"/>
+            <valueCode value="en"/>
+          </parameter>
+          <parameter>
+            <name value="count"/>
+            <valueInteger value="1000"/>
+          </parameter>
+          <parameter>
+            <name value="offset"/>
+            <valueInteger value="0"/>
+          </parameter>
+          <parameter>
+            <name value="excludeNested"/>
+            <valueBoolean value="false"/>
+          </parameter>
+          <parameter>
+            <name value="used-valueset"/>
+            <valueUri value="null"/>
+          </parameter>
+          <parameter>
+            <name value="includeDefinition"/>
+            <valueBoolean value="false"/>
+          </parameter>
+          <parameter>
+            <name value="used-codesystem"/>
+            <valueUri value="http://loinc.org|2.82"/>
+          </parameter>
+          <contains>
+            <system value="http://loinc.org"/>
+            <code value="18842-5"/>
+            <display value="Discharge summary"/>
+          </contains>
+          <contains>
+            <system value="http://loinc.org"/>
+            <code value="100719-4"/>
+            <display value="Surgical oncology Discharge summary"/>
+          </contains>
+        </expansion>
+      </ValueSet>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://hl7.eu/fhir/health-data-api/ValueSet/document-type-eu-api"/>
+    <resource>
+      <ValueSet>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml" data-fhir="generated">
+            <p class="res-header-id"/>
+            <div style="border: black 1px dotted; background-color: #EEEEEE; padding: 8px; margin-bottom: 8px">
+              <p>Expansion from tx.fhir.org based on:</p>
+              <ul>
+                <li>Loinc v2.82
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="http://loinc.org|2.82" title="Click to Copy URL" class="btn-copy"> </button>
+                  </span>
+                </li>
+                <li>
+                  <a href="ValueSet-document-type-discharge-report-eu-api.html">valueset EEHRxF Document Type ValueSet for Discharge Reports v1.0.0-ballot (ValueSet)</a>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="http://hl7.eu/fhir/health-data-api/ValueSet/document-type-discharge-report-eu-api|1.0.0-ballot" title="Click to Copy URL" class="btn-copy"> </button>
+                  </span>
+                </li>
+                <li>
+                  <a href="ValueSet-document-type-laboratory-report-eu-api.html">valueset EEHRxF Document Type ValueSet for Laboratory Reports v1.0.0-ballot (ValueSet)</a>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="http://hl7.eu/fhir/health-data-api/ValueSet/document-type-laboratory-report-eu-api|1.0.0-ballot" title="Click to Copy URL" class="btn-copy"> </button>
+                  </span>
+                </li>
+                <li>
+                  <a href="ValueSet-document-type-medical-imaging-eu-api.html">valueset EEHRxF Document Type ValueSet for Medical Imaging v1.0.0-ballot (ValueSet)</a>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="http://hl7.eu/fhir/health-data-api/ValueSet/document-type-medical-imaging-eu-api|1.0.0-ballot" title="Click to Copy URL" class="btn-copy"> </button>
+                  </span>
+                </li>
+                <li>
+                  <a href="ValueSet-document-type-patient-summary-eu-api.html">valueset EEHRxF Document Type ValueSet for Patient Summaries v1.0.0-ballot (ValueSet)</a>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="http://hl7.eu/fhir/health-data-api/ValueSet/document-type-patient-summary-eu-api|1.0.0-ballot" title="Click to Copy URL" class="btn-copy"> </button>
+                  </span>
+                </li>
+              </ul>
+            </div>
+            <p>This value set contains 6 concepts</p>
+            <table class="codes" data-fhir="generated">
+              <tr>
+                <td>
+                  <b>System</b>
+                </td>
+                <td style="white-space:nowrap">
+                  <b>Code</b>
+                </td>
+                <td>
+                  <b>Display (en)</b>
+                </td>
+                <td>
+                  <b>JSON</b>
+                </td>
+                <td>
+                  <b>XML</b>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://loinc.org-60591-5"> </a>
+                  <code>http://loinc.org</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="https://loinc.org/60591-5/">60591-5</a>
+                </td>
+                <td>Patient summary Document</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://loinc.org&quot;, &quot;version&quot;: &quot;2.82&quot;, &quot;code&quot;: &quot;60591-5&quot;, &quot;display&quot;: &quot;Patient summary Document&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://loinc.org&quot;&gt;&lt;version value=&quot;2.82&quot;&gt;&lt;code value=&quot;60591-5&quot;&gt;&lt;display value=&quot;Patient summary Document&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://loinc.org-18842-5"> </a>
+                  <code>http://loinc.org</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="https://loinc.org/18842-5/">18842-5</a>
+                </td>
+                <td>Discharge summary</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://loinc.org&quot;, &quot;version&quot;: &quot;2.82&quot;, &quot;code&quot;: &quot;18842-5&quot;, &quot;display&quot;: &quot;Discharge summary&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://loinc.org&quot;&gt;&lt;version value=&quot;2.82&quot;&gt;&lt;code value=&quot;18842-5&quot;&gt;&lt;display value=&quot;Discharge summary&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://loinc.org-100719-4"> </a>
+                  <code>http://loinc.org</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="https://loinc.org/100719-4/">100719-4</a>
+                </td>
+                <td>Surgical oncology Discharge summary</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://loinc.org&quot;, &quot;version&quot;: &quot;2.82&quot;, &quot;code&quot;: &quot;100719-4&quot;, &quot;display&quot;: &quot;Surgical oncology Discharge summary&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://loinc.org&quot;&gt;&lt;version value=&quot;2.82&quot;&gt;&lt;code value=&quot;100719-4&quot;&gt;&lt;display value=&quot;Surgical oncology Discharge summary&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://loinc.org-11502-2"> </a>
+                  <code>http://loinc.org</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="https://loinc.org/11502-2/">11502-2</a>
+                </td>
+                <td>Laboratory report</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://loinc.org&quot;, &quot;version&quot;: &quot;2.82&quot;, &quot;code&quot;: &quot;11502-2&quot;, &quot;display&quot;: &quot;Laboratory report&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://loinc.org&quot;&gt;&lt;version value=&quot;2.82&quot;&gt;&lt;code value=&quot;11502-2&quot;&gt;&lt;display value=&quot;Laboratory report&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://loinc.org-85430-7"> </a>
+                  <code>http://loinc.org</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="https://loinc.org/85430-7/">85430-7</a>
+                </td>
+                <td>Diagnostic imaging report - example sections and entries</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://loinc.org&quot;, &quot;version&quot;: &quot;2.82&quot;, &quot;code&quot;: &quot;85430-7&quot;, &quot;display&quot;: &quot;Diagnostic imaging report - example sections and entries&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://loinc.org&quot;&gt;&lt;version value=&quot;2.82&quot;&gt;&lt;code value=&quot;85430-7&quot;&gt;&lt;display value=&quot;Diagnostic imaging report - example sections and entries&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://loinc.org-18748-4"> </a>
+                  <code>http://loinc.org</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="https://loinc.org/18748-4/">18748-4</a>
+                </td>
+                <td>Diagnostic imaging study</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://loinc.org&quot;, &quot;version&quot;: &quot;2.82&quot;, &quot;code&quot;: &quot;18748-4&quot;, &quot;display&quot;: &quot;Diagnostic imaging study&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://loinc.org&quot;&gt;&lt;version value=&quot;2.82&quot;&gt;&lt;code value=&quot;18748-4&quot;&gt;&lt;display value=&quot;Diagnostic imaging study&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </text>
+        <url value="http://hl7.eu/fhir/health-data-api/ValueSet/document-type-eu-api"/>
+        <version value="1.0.0-ballot"/>
+        <name value="DocumentTypeEuApiVS"/>
+        <title value="EEHRxF Document Type ValueSet"/>
+        <status value="draft"/>
+        <experimental value="false"/>
+        <date value="2026-10-23T12:01:58+02:00"/>
+        <jurisdiction>
+          <coding>
+            <system value="http://unstats.un.org/unsd/methods/m49/m49.htm"/>
+            <code value="150"/>
+            <display value="Europe"/>
+          </coding>
+        </jurisdiction>
+        <expansion>
+          <identifier value="urn:uuid:cba251c8-8cae-411b-a3d4-9175ad48918e"/>
+          <timestamp value="2026-10-23T12:02:57+02:00"/>
+          <total value="6"/>
+          <offset value="0"/>
+          <parameter>
+            <name value="displayLanguage"/>
+            <valueCode value="en"/>
+          </parameter>
+          <parameter>
+            <name value="count"/>
+            <valueInteger value="1000"/>
+          </parameter>
+          <parameter>
+            <name value="offset"/>
+            <valueInteger value="0"/>
+          </parameter>
+          <parameter>
+            <name value="excludeNested"/>
+            <valueBoolean value="false"/>
+          </parameter>
+          <parameter>
+            <name value="used-valueset"/>
+            <valueUri value="http://hl7.eu/fhir/health-data-api/ValueSet/document-type-patient-summary-eu-api|1.0.0-ballot"/>
+          </parameter>
+          <parameter>
+            <name value="used-valueset"/>
+            <valueUri value="null"/>
+          </parameter>
+          <parameter>
+            <name value="includeDefinition"/>
+            <valueBoolean value="false"/>
+          </parameter>
+          <parameter>
+            <name value="used-codesystem"/>
+            <valueUri value="http://loinc.org|2.82"/>
+          </parameter>
+          <parameter>
+            <name value="used-valueset"/>
+            <valueUri value="http://hl7.eu/fhir/health-data-api/ValueSet/document-type-discharge-report-eu-api|1.0.0-ballot"/>
+          </parameter>
+          <parameter>
+            <name value="used-valueset"/>
+            <valueUri value="http://hl7.eu/fhir/health-data-api/ValueSet/document-type-laboratory-report-eu-api|1.0.0-ballot"/>
+          </parameter>
+          <parameter>
+            <name value="used-valueset"/>
+            <valueUri value="http://hl7.eu/fhir/health-data-api/ValueSet/document-type-medical-imaging-eu-api|1.0.0-ballot"/>
+          </parameter>
+          <contains>
+            <system value="http://loinc.org"/>
+            <code value="60591-5"/>
+            <display value="Patient summary Document"/>
+          </contains>
+          <contains>
+            <system value="http://loinc.org"/>
+            <code value="18842-5"/>
+            <display value="Discharge summary"/>
+          </contains>
+          <contains>
+            <system value="http://loinc.org"/>
+            <code value="100719-4"/>
+            <display value="Surgical oncology Discharge summary"/>
+          </contains>
+          <contains>
+            <system value="http://loinc.org"/>
+            <code value="11502-2"/>
+            <display value="Laboratory report"/>
+          </contains>
+          <contains>
+            <system value="http://loinc.org"/>
+            <code value="85430-7"/>
+            <display value="Diagnostic imaging report - example sections and entries"/>
+          </contains>
+          <contains>
+            <system value="http://loinc.org"/>
+            <code value="18748-4"/>
+            <display value="Diagnostic imaging study"/>
+          </contains>
+        </expansion>
+      </ValueSet>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://hl7.eu/fhir/health-data-api/ValueSet/document-type-eu-api"/>
+    <resource>
+      <ValueSet>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml" data-fhir="generated">
+            <p class="res-header-id"/>
+            <div style="border: black 1px dotted; background-color: #EEEEEE; padding: 8px; margin-bottom: 8px">
+              <p>Expansion from tx.fhir.org based on:</p>
+              <ul>
+                <li>Loinc v2.82
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="http://loinc.org|2.82" title="Click to Copy URL" class="btn-copy"> </button>
+                  </span>
+                </li>
+                <li>
+                  <a href="ValueSet-document-type-discharge-report-eu-api.html">valueset EEHRxF Document Type ValueSet for Discharge Reports v1.0.0-ballot (ValueSet)</a>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="http://hl7.eu/fhir/health-data-api/ValueSet/document-type-discharge-report-eu-api|1.0.0-ballot" title="Click to Copy URL" class="btn-copy"> </button>
+                  </span>
+                </li>
+                <li>
+                  <a href="ValueSet-document-type-laboratory-report-eu-api.html">valueset EEHRxF Document Type ValueSet for Laboratory Reports v1.0.0-ballot (ValueSet)</a>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="http://hl7.eu/fhir/health-data-api/ValueSet/document-type-laboratory-report-eu-api|1.0.0-ballot" title="Click to Copy URL" class="btn-copy"> </button>
+                  </span>
+                </li>
+                <li>
+                  <a href="ValueSet-document-type-medical-imaging-eu-api.html">valueset EEHRxF Document Type ValueSet for Medical Imaging v1.0.0-ballot (ValueSet)</a>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="http://hl7.eu/fhir/health-data-api/ValueSet/document-type-medical-imaging-eu-api|1.0.0-ballot" title="Click to Copy URL" class="btn-copy"> </button>
+                  </span>
+                </li>
+                <li>
+                  <a href="ValueSet-document-type-patient-summary-eu-api.html">valueset EEHRxF Document Type ValueSet for Patient Summaries v1.0.0-ballot (ValueSet)</a>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="http://hl7.eu/fhir/health-data-api/ValueSet/document-type-patient-summary-eu-api|1.0.0-ballot" title="Click to Copy URL" class="btn-copy"> </button>
+                  </span>
+                </li>
+              </ul>
+            </div>
+            <p>This value set contains 6 concepts</p>
+            <table class="codes" data-fhir="generated">
+              <tr>
+                <td>
+                  <b>System</b>
+                </td>
+                <td style="white-space:nowrap">
+                  <b>Code</b>
+                </td>
+                <td>
+                  <b>Display (en)</b>
+                </td>
+                <td>
+                  <b>JSON</b>
+                </td>
+                <td>
+                  <b>XML</b>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://loinc.org-60591-5"> </a>
+                  <code>http://loinc.org</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="https://loinc.org/60591-5/">60591-5</a>
+                </td>
+                <td>Patient summary Document</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://loinc.org&quot;, &quot;version&quot;: &quot;2.82&quot;, &quot;code&quot;: &quot;60591-5&quot;, &quot;display&quot;: &quot;Patient summary Document&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://loinc.org&quot;&gt;&lt;version value=&quot;2.82&quot;&gt;&lt;code value=&quot;60591-5&quot;&gt;&lt;display value=&quot;Patient summary Document&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://loinc.org-18842-5"> </a>
+                  <code>http://loinc.org</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="https://loinc.org/18842-5/">18842-5</a>
+                </td>
+                <td>Discharge summary</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://loinc.org&quot;, &quot;version&quot;: &quot;2.82&quot;, &quot;code&quot;: &quot;18842-5&quot;, &quot;display&quot;: &quot;Discharge summary&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://loinc.org&quot;&gt;&lt;version value=&quot;2.82&quot;&gt;&lt;code value=&quot;18842-5&quot;&gt;&lt;display value=&quot;Discharge summary&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://loinc.org-100719-4"> </a>
+                  <code>http://loinc.org</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="https://loinc.org/100719-4/">100719-4</a>
+                </td>
+                <td>Surgical oncology Discharge summary</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://loinc.org&quot;, &quot;version&quot;: &quot;2.82&quot;, &quot;code&quot;: &quot;100719-4&quot;, &quot;display&quot;: &quot;Surgical oncology Discharge summary&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://loinc.org&quot;&gt;&lt;version value=&quot;2.82&quot;&gt;&lt;code value=&quot;100719-4&quot;&gt;&lt;display value=&quot;Surgical oncology Discharge summary&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://loinc.org-11502-2"> </a>
+                  <code>http://loinc.org</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="https://loinc.org/11502-2/">11502-2</a>
+                </td>
+                <td>Laboratory report</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://loinc.org&quot;, &quot;version&quot;: &quot;2.82&quot;, &quot;code&quot;: &quot;11502-2&quot;, &quot;display&quot;: &quot;Laboratory report&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://loinc.org&quot;&gt;&lt;version value=&quot;2.82&quot;&gt;&lt;code value=&quot;11502-2&quot;&gt;&lt;display value=&quot;Laboratory report&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://loinc.org-85430-7"> </a>
+                  <code>http://loinc.org</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="https://loinc.org/85430-7/">85430-7</a>
+                </td>
+                <td>Diagnostic imaging report - example sections and entries</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://loinc.org&quot;, &quot;version&quot;: &quot;2.82&quot;, &quot;code&quot;: &quot;85430-7&quot;, &quot;display&quot;: &quot;Diagnostic imaging report - example sections and entries&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://loinc.org&quot;&gt;&lt;version value=&quot;2.82&quot;&gt;&lt;code value=&quot;85430-7&quot;&gt;&lt;display value=&quot;Diagnostic imaging report - example sections and entries&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://loinc.org-18748-4"> </a>
+                  <code>http://loinc.org</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="https://loinc.org/18748-4/">18748-4</a>
+                </td>
+                <td>Diagnostic imaging study</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://loinc.org&quot;, &quot;version&quot;: &quot;2.82&quot;, &quot;code&quot;: &quot;18748-4&quot;, &quot;display&quot;: &quot;Diagnostic imaging study&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://loinc.org&quot;&gt;&lt;version value=&quot;2.82&quot;&gt;&lt;code value=&quot;18748-4&quot;&gt;&lt;display value=&quot;Diagnostic imaging study&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </text>
+        <url value="http://hl7.eu/fhir/health-data-api/ValueSet/document-type-eu-api"/>
+        <version value="1.0.0-ballot"/>
+        <name value="DocumentTypeEuApiVS"/>
+        <title value="EEHRxF Document Type ValueSet"/>
+        <status value="draft"/>
+        <experimental value="false"/>
+        <date value="2026-10-23T12:01:58+02:00"/>
+        <jurisdiction>
+          <coding>
+            <system value="http://unstats.un.org/unsd/methods/m49/m49.htm"/>
+            <code value="150"/>
+            <display value="Europe"/>
+          </coding>
+        </jurisdiction>
+        <expansion>
+          <identifier value="urn:uuid:cba251c8-8cae-411b-a3d4-9175ad48918e"/>
+          <timestamp value="2026-10-23T12:02:57+02:00"/>
+          <total value="6"/>
+          <offset value="0"/>
+          <parameter>
+            <name value="displayLanguage"/>
+            <valueCode value="en"/>
+          </parameter>
+          <parameter>
+            <name value="count"/>
+            <valueInteger value="1000"/>
+          </parameter>
+          <parameter>
+            <name value="offset"/>
+            <valueInteger value="0"/>
+          </parameter>
+          <parameter>
+            <name value="excludeNested"/>
+            <valueBoolean value="false"/>
+          </parameter>
+          <parameter>
+            <name value="used-valueset"/>
+            <valueUri value="http://hl7.eu/fhir/health-data-api/ValueSet/document-type-patient-summary-eu-api|1.0.0-ballot"/>
+          </parameter>
+          <parameter>
+            <name value="used-valueset"/>
+            <valueUri value="null"/>
+          </parameter>
+          <parameter>
+            <name value="includeDefinition"/>
+            <valueBoolean value="false"/>
+          </parameter>
+          <parameter>
+            <name value="used-codesystem"/>
+            <valueUri value="http://loinc.org|2.82"/>
+          </parameter>
+          <parameter>
+            <name value="used-valueset"/>
+            <valueUri value="http://hl7.eu/fhir/health-data-api/ValueSet/document-type-discharge-report-eu-api|1.0.0-ballot"/>
+          </parameter>
+          <parameter>
+            <name value="used-valueset"/>
+            <valueUri value="http://hl7.eu/fhir/health-data-api/ValueSet/document-type-laboratory-report-eu-api|1.0.0-ballot"/>
+          </parameter>
+          <parameter>
+            <name value="used-valueset"/>
+            <valueUri value="http://hl7.eu/fhir/health-data-api/ValueSet/document-type-medical-imaging-eu-api|1.0.0-ballot"/>
+          </parameter>
+          <contains>
+            <system value="http://loinc.org"/>
+            <code value="60591-5"/>
+            <display value="Patient summary Document"/>
+          </contains>
+          <contains>
+            <system value="http://loinc.org"/>
+            <code value="18842-5"/>
+            <display value="Discharge summary"/>
+          </contains>
+          <contains>
+            <system value="http://loinc.org"/>
+            <code value="100719-4"/>
+            <display value="Surgical oncology Discharge summary"/>
+          </contains>
+          <contains>
+            <system value="http://loinc.org"/>
+            <code value="11502-2"/>
+            <display value="Laboratory report"/>
+          </contains>
+          <contains>
+            <system value="http://loinc.org"/>
+            <code value="85430-7"/>
+            <display value="Diagnostic imaging report - example sections and entries"/>
+          </contains>
+          <contains>
+            <system value="http://loinc.org"/>
+            <code value="18748-4"/>
+            <display value="Diagnostic imaging study"/>
+          </contains>
+        </expansion>
+      </ValueSet>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://hl7.eu/fhir/health-data-api/ValueSet/document-type-laboratory-report-eu-api"/>
+    <resource>
+      <ValueSet>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml" data-fhir="generated">
+            <p class="res-header-id"/>
+            <p style="border: black 1px dotted; background-color: #EEEEEE; padding: 8px; margin-bottom: 8px">Expansion from tx.fhir.org based on Loinc v2.82
+              <span class="copy-text-inline">
+                <button data-clipboard-text="http://loinc.org|2.82" title="Click to Copy URL" class="btn-copy"> </button>
+              </span>
+            </p>
+            <p>This value set contains 1 concepts</p>
+            <table class="codes" data-fhir="generated">
+              <tr>
+                <td>
+                  <b>System</b>
+                </td>
+                <td style="white-space:nowrap">
+                  <b>Code</b>
+                </td>
+                <td>
+                  <b>Display (en)</b>
+                </td>
+                <td>
+                  <b>JSON</b>
+                </td>
+                <td>
+                  <b>XML</b>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://loinc.org-11502-2"> </a>
+                  <code>http://loinc.org</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="https://loinc.org/11502-2/">11502-2</a>
+                </td>
+                <td>Laboratory report</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://loinc.org&quot;, &quot;version&quot;: &quot;2.82&quot;, &quot;code&quot;: &quot;11502-2&quot;, &quot;display&quot;: &quot;Laboratory report&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://loinc.org&quot;&gt;&lt;version value=&quot;2.82&quot;&gt;&lt;code value=&quot;11502-2&quot;&gt;&lt;display value=&quot;Laboratory report&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </text>
+        <url value="http://hl7.eu/fhir/health-data-api/ValueSet/document-type-laboratory-report-eu-api"/>
+        <version value="1.0.0-ballot"/>
+        <name value="DocumentTypeLaboratoryReportEuApiVS"/>
+        <title value="EEHRxF Document Type ValueSet for Laboratory Reports"/>
+        <status value="draft"/>
+        <experimental value="false"/>
+        <date value="2026-10-23T12:01:58+02:00"/>
+        <useContext>
+          <code>
+            <system value="http://terminology.hl7.org/CodeSystem/usage-context-type"/>
+            <code value="focus"/>
+          </code>
+          <valueCodeableConcept>
+            <coding>
+              <system value="http://hl7.eu/fhir/health-data-api/CodeSystem/document-priority-category-eu-api"/>
+              <code value="Laboratory-Reports"/>
+            </coding>
+          </valueCodeableConcept>
+        </useContext>
+        <jurisdiction>
+          <coding>
+            <system value="http://unstats.un.org/unsd/methods/m49/m49.htm"/>
+            <code value="150"/>
+            <display value="Europe"/>
+          </coding>
+        </jurisdiction>
+        <expansion>
+          <identifier value="urn:uuid:65a61427-651b-4f09-9b9b-898da256b4d7"/>
+          <timestamp value="2026-10-23T12:02:57+02:00"/>
+          <total value="1"/>
+          <offset value="0"/>
+          <parameter>
+            <name value="displayLanguage"/>
+            <valueCode value="en"/>
+          </parameter>
+          <parameter>
+            <name value="count"/>
+            <valueInteger value="1000"/>
+          </parameter>
+          <parameter>
+            <name value="offset"/>
+            <valueInteger value="0"/>
+          </parameter>
+          <parameter>
+            <name value="excludeNested"/>
+            <valueBoolean value="false"/>
+          </parameter>
+          <parameter>
+            <name value="used-valueset"/>
+            <valueUri value="null"/>
+          </parameter>
+          <parameter>
+            <name value="includeDefinition"/>
+            <valueBoolean value="false"/>
+          </parameter>
+          <parameter>
+            <name value="used-codesystem"/>
+            <valueUri value="http://loinc.org|2.82"/>
+          </parameter>
+          <contains>
+            <system value="http://loinc.org"/>
+            <code value="11502-2"/>
+            <display value="Laboratory report"/>
+          </contains>
+        </expansion>
+      </ValueSet>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://hl7.eu/fhir/health-data-api/ValueSet/document-type-laboratory-report-eu-api"/>
+    <resource>
+      <ValueSet>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml" data-fhir="generated">
+            <p class="res-header-id"/>
+            <p style="border: black 1px dotted; background-color: #EEEEEE; padding: 8px; margin-bottom: 8px">Expansion from tx.fhir.org based on Loinc v2.82
+              <span class="copy-text-inline">
+                <button data-clipboard-text="http://loinc.org|2.82" title="Click to Copy URL" class="btn-copy"> </button>
+              </span>
+            </p>
+            <p>This value set contains 1 concepts</p>
+            <table class="codes" data-fhir="generated">
+              <tr>
+                <td>
+                  <b>System</b>
+                </td>
+                <td style="white-space:nowrap">
+                  <b>Code</b>
+                </td>
+                <td>
+                  <b>Display (en)</b>
+                </td>
+                <td>
+                  <b>JSON</b>
+                </td>
+                <td>
+                  <b>XML</b>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://loinc.org-11502-2"> </a>
+                  <code>http://loinc.org</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="https://loinc.org/11502-2/">11502-2</a>
+                </td>
+                <td>Laboratory report</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://loinc.org&quot;, &quot;version&quot;: &quot;2.82&quot;, &quot;code&quot;: &quot;11502-2&quot;, &quot;display&quot;: &quot;Laboratory report&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://loinc.org&quot;&gt;&lt;version value=&quot;2.82&quot;&gt;&lt;code value=&quot;11502-2&quot;&gt;&lt;display value=&quot;Laboratory report&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </text>
+        <url value="http://hl7.eu/fhir/health-data-api/ValueSet/document-type-laboratory-report-eu-api"/>
+        <version value="1.0.0-ballot"/>
+        <name value="DocumentTypeLaboratoryReportEuApiVS"/>
+        <title value="EEHRxF Document Type ValueSet for Laboratory Reports"/>
+        <status value="draft"/>
+        <experimental value="false"/>
+        <date value="2026-10-23T12:01:58+02:00"/>
+        <useContext>
+          <code>
+            <system value="http://terminology.hl7.org/CodeSystem/usage-context-type"/>
+            <code value="focus"/>
+          </code>
+          <valueCodeableConcept>
+            <coding>
+              <system value="http://hl7.eu/fhir/health-data-api/CodeSystem/document-priority-category-eu-api"/>
+              <code value="Laboratory-Reports"/>
+            </coding>
+          </valueCodeableConcept>
+        </useContext>
+        <jurisdiction>
+          <coding>
+            <system value="http://unstats.un.org/unsd/methods/m49/m49.htm"/>
+            <code value="150"/>
+            <display value="Europe"/>
+          </coding>
+        </jurisdiction>
+        <expansion>
+          <identifier value="urn:uuid:65a61427-651b-4f09-9b9b-898da256b4d7"/>
+          <timestamp value="2026-10-23T12:02:57+02:00"/>
+          <total value="1"/>
+          <offset value="0"/>
+          <parameter>
+            <name value="displayLanguage"/>
+            <valueCode value="en"/>
+          </parameter>
+          <parameter>
+            <name value="count"/>
+            <valueInteger value="1000"/>
+          </parameter>
+          <parameter>
+            <name value="offset"/>
+            <valueInteger value="0"/>
+          </parameter>
+          <parameter>
+            <name value="excludeNested"/>
+            <valueBoolean value="false"/>
+          </parameter>
+          <parameter>
+            <name value="used-valueset"/>
+            <valueUri value="null"/>
+          </parameter>
+          <parameter>
+            <name value="includeDefinition"/>
+            <valueBoolean value="false"/>
+          </parameter>
+          <parameter>
+            <name value="used-codesystem"/>
+            <valueUri value="http://loinc.org|2.82"/>
+          </parameter>
+          <contains>
+            <system value="http://loinc.org"/>
+            <code value="11502-2"/>
+            <display value="Laboratory report"/>
+          </contains>
+        </expansion>
+      </ValueSet>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://hl7.eu/fhir/health-data-api/ValueSet/document-type-medical-imaging-eu-api"/>
+    <resource>
+      <ValueSet>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml" data-fhir="generated">
+            <p class="res-header-id"/>
+            <p style="border: black 1px dotted; background-color: #EEEEEE; padding: 8px; margin-bottom: 8px">Expansion from tx.fhir.org based on Loinc v2.82
+              <span class="copy-text-inline">
+                <button data-clipboard-text="http://loinc.org|2.82" title="Click to Copy URL" class="btn-copy"> </button>
+              </span>
+            </p>
+            <p>This value set contains 2 concepts</p>
+            <table class="codes" data-fhir="generated">
+              <tr>
+                <td>
+                  <b>System</b>
+                </td>
+                <td style="white-space:nowrap">
+                  <b>Code</b>
+                </td>
+                <td>
+                  <b>Display (en)</b>
+                </td>
+                <td>
+                  <b>JSON</b>
+                </td>
+                <td>
+                  <b>XML</b>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://loinc.org-85430-7"> </a>
+                  <code>http://loinc.org</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="https://loinc.org/85430-7/">85430-7</a>
+                </td>
+                <td>Diagnostic imaging report - example sections and entries</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://loinc.org&quot;, &quot;version&quot;: &quot;2.82&quot;, &quot;code&quot;: &quot;85430-7&quot;, &quot;display&quot;: &quot;Diagnostic imaging report - example sections and entries&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://loinc.org&quot;&gt;&lt;version value=&quot;2.82&quot;&gt;&lt;code value=&quot;85430-7&quot;&gt;&lt;display value=&quot;Diagnostic imaging report - example sections and entries&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://loinc.org-18748-4"> </a>
+                  <code>http://loinc.org</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="https://loinc.org/18748-4/">18748-4</a>
+                </td>
+                <td>Diagnostic imaging study</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://loinc.org&quot;, &quot;version&quot;: &quot;2.82&quot;, &quot;code&quot;: &quot;18748-4&quot;, &quot;display&quot;: &quot;Diagnostic imaging study&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://loinc.org&quot;&gt;&lt;version value=&quot;2.82&quot;&gt;&lt;code value=&quot;18748-4&quot;&gt;&lt;display value=&quot;Diagnostic imaging study&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </text>
+        <url value="http://hl7.eu/fhir/health-data-api/ValueSet/document-type-medical-imaging-eu-api"/>
+        <version value="1.0.0-ballot"/>
+        <name value="DocumentTypeMedicalImagingEuApiVS"/>
+        <title value="EEHRxF Document Type ValueSet for Medical Imaging"/>
+        <status value="draft"/>
+        <experimental value="false"/>
+        <date value="2026-10-23T12:01:58+02:00"/>
+        <useContext>
+          <code>
+            <system value="http://terminology.hl7.org/CodeSystem/usage-context-type"/>
+            <code value="focus"/>
+          </code>
+          <valueCodeableConcept>
+            <coding>
+              <system value="http://hl7.eu/fhir/health-data-api/CodeSystem/document-priority-category-eu-api"/>
+              <code value="Medical-Imaging"/>
+            </coding>
+          </valueCodeableConcept>
+        </useContext>
+        <jurisdiction>
+          <coding>
+            <system value="http://unstats.un.org/unsd/methods/m49/m49.htm"/>
+            <code value="150"/>
+            <display value="Europe"/>
+          </coding>
+        </jurisdiction>
+        <expansion>
+          <identifier value="urn:uuid:20a93077-daf6-42ad-97f4-b8c500d4788c"/>
+          <timestamp value="2026-10-23T12:02:57+02:00"/>
+          <total value="2"/>
+          <offset value="0"/>
+          <parameter>
+            <name value="displayLanguage"/>
+            <valueCode value="en"/>
+          </parameter>
+          <parameter>
+            <name value="count"/>
+            <valueInteger value="1000"/>
+          </parameter>
+          <parameter>
+            <name value="offset"/>
+            <valueInteger value="0"/>
+          </parameter>
+          <parameter>
+            <name value="excludeNested"/>
+            <valueBoolean value="false"/>
+          </parameter>
+          <parameter>
+            <name value="used-valueset"/>
+            <valueUri value="null"/>
+          </parameter>
+          <parameter>
+            <name value="includeDefinition"/>
+            <valueBoolean value="false"/>
+          </parameter>
+          <parameter>
+            <name value="used-codesystem"/>
+            <valueUri value="http://loinc.org|2.82"/>
+          </parameter>
+          <contains>
+            <system value="http://loinc.org"/>
+            <code value="85430-7"/>
+            <display value="Diagnostic imaging report - example sections and entries"/>
+          </contains>
+          <contains>
+            <system value="http://loinc.org"/>
+            <code value="18748-4"/>
+            <display value="Diagnostic imaging study"/>
+          </contains>
+        </expansion>
+      </ValueSet>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://hl7.eu/fhir/health-data-api/ValueSet/document-type-medical-imaging-eu-api"/>
+    <resource>
+      <ValueSet>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml" data-fhir="generated">
+            <p class="res-header-id"/>
+            <p style="border: black 1px dotted; background-color: #EEEEEE; padding: 8px; margin-bottom: 8px">Expansion from tx.fhir.org based on Loinc v2.82
+              <span class="copy-text-inline">
+                <button data-clipboard-text="http://loinc.org|2.82" title="Click to Copy URL" class="btn-copy"> </button>
+              </span>
+            </p>
+            <p>This value set contains 2 concepts</p>
+            <table class="codes" data-fhir="generated">
+              <tr>
+                <td>
+                  <b>System</b>
+                </td>
+                <td style="white-space:nowrap">
+                  <b>Code</b>
+                </td>
+                <td>
+                  <b>Display (en)</b>
+                </td>
+                <td>
+                  <b>JSON</b>
+                </td>
+                <td>
+                  <b>XML</b>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://loinc.org-85430-7"> </a>
+                  <code>http://loinc.org</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="https://loinc.org/85430-7/">85430-7</a>
+                </td>
+                <td>Diagnostic imaging report - example sections and entries</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://loinc.org&quot;, &quot;version&quot;: &quot;2.82&quot;, &quot;code&quot;: &quot;85430-7&quot;, &quot;display&quot;: &quot;Diagnostic imaging report - example sections and entries&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://loinc.org&quot;&gt;&lt;version value=&quot;2.82&quot;&gt;&lt;code value=&quot;85430-7&quot;&gt;&lt;display value=&quot;Diagnostic imaging report - example sections and entries&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://loinc.org-18748-4"> </a>
+                  <code>http://loinc.org</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="https://loinc.org/18748-4/">18748-4</a>
+                </td>
+                <td>Diagnostic imaging study</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://loinc.org&quot;, &quot;version&quot;: &quot;2.82&quot;, &quot;code&quot;: &quot;18748-4&quot;, &quot;display&quot;: &quot;Diagnostic imaging study&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://loinc.org&quot;&gt;&lt;version value=&quot;2.82&quot;&gt;&lt;code value=&quot;18748-4&quot;&gt;&lt;display value=&quot;Diagnostic imaging study&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </text>
+        <url value="http://hl7.eu/fhir/health-data-api/ValueSet/document-type-medical-imaging-eu-api"/>
+        <version value="1.0.0-ballot"/>
+        <name value="DocumentTypeMedicalImagingEuApiVS"/>
+        <title value="EEHRxF Document Type ValueSet for Medical Imaging"/>
+        <status value="draft"/>
+        <experimental value="false"/>
+        <date value="2026-10-23T12:01:58+02:00"/>
+        <useContext>
+          <code>
+            <system value="http://terminology.hl7.org/CodeSystem/usage-context-type"/>
+            <code value="focus"/>
+          </code>
+          <valueCodeableConcept>
+            <coding>
+              <system value="http://hl7.eu/fhir/health-data-api/CodeSystem/document-priority-category-eu-api"/>
+              <code value="Medical-Imaging"/>
+            </coding>
+          </valueCodeableConcept>
+        </useContext>
+        <jurisdiction>
+          <coding>
+            <system value="http://unstats.un.org/unsd/methods/m49/m49.htm"/>
+            <code value="150"/>
+            <display value="Europe"/>
+          </coding>
+        </jurisdiction>
+        <expansion>
+          <identifier value="urn:uuid:20a93077-daf6-42ad-97f4-b8c500d4788c"/>
+          <timestamp value="2026-10-23T12:02:57+02:00"/>
+          <total value="2"/>
+          <offset value="0"/>
+          <parameter>
+            <name value="displayLanguage"/>
+            <valueCode value="en"/>
+          </parameter>
+          <parameter>
+            <name value="count"/>
+            <valueInteger value="1000"/>
+          </parameter>
+          <parameter>
+            <name value="offset"/>
+            <valueInteger value="0"/>
+          </parameter>
+          <parameter>
+            <name value="excludeNested"/>
+            <valueBoolean value="false"/>
+          </parameter>
+          <parameter>
+            <name value="used-valueset"/>
+            <valueUri value="null"/>
+          </parameter>
+          <parameter>
+            <name value="includeDefinition"/>
+            <valueBoolean value="false"/>
+          </parameter>
+          <parameter>
+            <name value="used-codesystem"/>
+            <valueUri value="http://loinc.org|2.82"/>
+          </parameter>
+          <contains>
+            <system value="http://loinc.org"/>
+            <code value="85430-7"/>
+            <display value="Diagnostic imaging report - example sections and entries"/>
+          </contains>
+          <contains>
+            <system value="http://loinc.org"/>
+            <code value="18748-4"/>
+            <display value="Diagnostic imaging study"/>
+          </contains>
+        </expansion>
+      </ValueSet>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://hl7.eu/fhir/health-data-api/ValueSet/document-type-patient-summary-eu-api"/>
+    <resource>
+      <ValueSet>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml" data-fhir="generated">
+            <p class="res-header-id"/>
+            <p style="border: black 1px dotted; background-color: #EEEEEE; padding: 8px; margin-bottom: 8px">Expansion from tx.fhir.org based on Loinc v2.82
+              <span class="copy-text-inline">
+                <button data-clipboard-text="http://loinc.org|2.82" title="Click to Copy URL" class="btn-copy"> </button>
+              </span>
+            </p>
+            <p>This value set contains 1 concepts</p>
+            <table class="codes" data-fhir="generated">
+              <tr>
+                <td>
+                  <b>System</b>
+                </td>
+                <td style="white-space:nowrap">
+                  <b>Code</b>
+                </td>
+                <td>
+                  <b>Display (en)</b>
+                </td>
+                <td>
+                  <b>JSON</b>
+                </td>
+                <td>
+                  <b>XML</b>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://loinc.org-60591-5"> </a>
+                  <code>http://loinc.org</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="https://loinc.org/60591-5/">60591-5</a>
+                </td>
+                <td>Patient summary Document</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://loinc.org&quot;, &quot;version&quot;: &quot;2.82&quot;, &quot;code&quot;: &quot;60591-5&quot;, &quot;display&quot;: &quot;Patient summary Document&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://loinc.org&quot;&gt;&lt;version value=&quot;2.82&quot;&gt;&lt;code value=&quot;60591-5&quot;&gt;&lt;display value=&quot;Patient summary Document&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </text>
+        <url value="http://hl7.eu/fhir/health-data-api/ValueSet/document-type-patient-summary-eu-api"/>
+        <version value="1.0.0-ballot"/>
+        <name value="DocumentTypePatientSummaryEuApiVS"/>
+        <title value="EEHRxF Document Type ValueSet for Patient Summaries"/>
+        <status value="draft"/>
+        <experimental value="false"/>
+        <date value="2026-10-23T12:01:58+02:00"/>
+        <useContext>
+          <code>
+            <system value="http://terminology.hl7.org/CodeSystem/usage-context-type"/>
+            <code value="focus"/>
+          </code>
+          <valueCodeableConcept>
+            <coding>
+              <system value="http://hl7.eu/fhir/health-data-api/CodeSystem/document-priority-category-eu-api"/>
+              <code value="Patient-Summaries"/>
+            </coding>
+          </valueCodeableConcept>
+        </useContext>
+        <jurisdiction>
+          <coding>
+            <system value="http://unstats.un.org/unsd/methods/m49/m49.htm"/>
+            <code value="150"/>
+            <display value="Europe"/>
+          </coding>
+        </jurisdiction>
+        <expansion>
+          <identifier value="urn:uuid:23abcb04-0fd6-43d9-b47d-7dd58629561a"/>
+          <timestamp value="2026-10-23T12:02:57+02:00"/>
+          <total value="1"/>
+          <offset value="0"/>
+          <parameter>
+            <name value="displayLanguage"/>
+            <valueCode value="en"/>
+          </parameter>
+          <parameter>
+            <name value="count"/>
+            <valueInteger value="1000"/>
+          </parameter>
+          <parameter>
+            <name value="offset"/>
+            <valueInteger value="0"/>
+          </parameter>
+          <parameter>
+            <name value="excludeNested"/>
+            <valueBoolean value="false"/>
+          </parameter>
+          <parameter>
+            <name value="used-valueset"/>
+            <valueUri value="null"/>
+          </parameter>
+          <parameter>
+            <name value="includeDefinition"/>
+            <valueBoolean value="false"/>
+          </parameter>
+          <parameter>
+            <name value="used-codesystem"/>
+            <valueUri value="http://loinc.org|2.82"/>
+          </parameter>
+          <contains>
+            <system value="http://loinc.org"/>
+            <code value="60591-5"/>
+            <display value="Patient summary Document"/>
+          </contains>
+        </expansion>
+      </ValueSet>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://hl7.eu/fhir/health-data-api/ValueSet/document-type-patient-summary-eu-api"/>
+    <resource>
+      <ValueSet>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml" data-fhir="generated">
+            <p class="res-header-id"/>
+            <p style="border: black 1px dotted; background-color: #EEEEEE; padding: 8px; margin-bottom: 8px">Expansion from tx.fhir.org based on Loinc v2.82
+              <span class="copy-text-inline">
+                <button data-clipboard-text="http://loinc.org|2.82" title="Click to Copy URL" class="btn-copy"> </button>
+              </span>
+            </p>
+            <p>This value set contains 1 concepts</p>
+            <table class="codes" data-fhir="generated">
+              <tr>
+                <td>
+                  <b>System</b>
+                </td>
+                <td style="white-space:nowrap">
+                  <b>Code</b>
+                </td>
+                <td>
+                  <b>Display (en)</b>
+                </td>
+                <td>
+                  <b>JSON</b>
+                </td>
+                <td>
+                  <b>XML</b>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://loinc.org-60591-5"> </a>
+                  <code>http://loinc.org</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="https://loinc.org/60591-5/">60591-5</a>
+                </td>
+                <td>Patient summary Document</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://loinc.org&quot;, &quot;version&quot;: &quot;2.82&quot;, &quot;code&quot;: &quot;60591-5&quot;, &quot;display&quot;: &quot;Patient summary Document&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://loinc.org&quot;&gt;&lt;version value=&quot;2.82&quot;&gt;&lt;code value=&quot;60591-5&quot;&gt;&lt;display value=&quot;Patient summary Document&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </text>
+        <url value="http://hl7.eu/fhir/health-data-api/ValueSet/document-type-patient-summary-eu-api"/>
+        <version value="1.0.0-ballot"/>
+        <name value="DocumentTypePatientSummaryEuApiVS"/>
+        <title value="EEHRxF Document Type ValueSet for Patient Summaries"/>
+        <status value="draft"/>
+        <experimental value="false"/>
+        <date value="2026-10-23T12:01:58+02:00"/>
+        <useContext>
+          <code>
+            <system value="http://terminology.hl7.org/CodeSystem/usage-context-type"/>
+            <code value="focus"/>
+          </code>
+          <valueCodeableConcept>
+            <coding>
+              <system value="http://hl7.eu/fhir/health-data-api/CodeSystem/document-priority-category-eu-api"/>
+              <code value="Patient-Summaries"/>
+            </coding>
+          </valueCodeableConcept>
+        </useContext>
+        <jurisdiction>
+          <coding>
+            <system value="http://unstats.un.org/unsd/methods/m49/m49.htm"/>
+            <code value="150"/>
+            <display value="Europe"/>
+          </coding>
+        </jurisdiction>
+        <expansion>
+          <identifier value="urn:uuid:23abcb04-0fd6-43d9-b47d-7dd58629561a"/>
+          <timestamp value="2026-10-23T12:02:57+02:00"/>
+          <total value="1"/>
+          <offset value="0"/>
+          <parameter>
+            <name value="displayLanguage"/>
+            <valueCode value="en"/>
+          </parameter>
+          <parameter>
+            <name value="count"/>
+            <valueInteger value="1000"/>
+          </parameter>
+          <parameter>
+            <name value="offset"/>
+            <valueInteger value="0"/>
+          </parameter>
+          <parameter>
+            <name value="excludeNested"/>
+            <valueBoolean value="false"/>
+          </parameter>
+          <parameter>
+            <name value="used-valueset"/>
+            <valueUri value="null"/>
+          </parameter>
+          <parameter>
+            <name value="includeDefinition"/>
+            <valueBoolean value="false"/>
+          </parameter>
+          <parameter>
+            <name value="used-codesystem"/>
+            <valueUri value="http://loinc.org|2.82"/>
+          </parameter>
+          <contains>
+            <system value="http://loinc.org"/>
+            <code value="60591-5"/>
+            <display value="Patient summary Document"/>
+          </contains>
+        </expansion>
+      </ValueSet>
+    </resource>
+  </entry>
+</Bundle>

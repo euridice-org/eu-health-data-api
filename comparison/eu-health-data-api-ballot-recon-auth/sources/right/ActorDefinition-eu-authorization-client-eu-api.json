@@ -1,0 +1,78 @@
+{
+  "resourceType" : "Basic",
+  "id" : "eu-authorization-client-eu-api",
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: ActorDefinition eu-authorization-client-eu-api</b></p><a name=\"eu-authorization-client-eu-api\"> </a><a name=\"hceu-authorization-client-eu-api\"> </a><table class=\"grid\"><tr><td><b>Actor: EuAuthorizationClientEuApi </b></td><td>Health Data API Authorization Client</td><td>Type: system </td></tr><tr><td colspan=\"3\"/></tr></table></div>"
+  },
+  "extension" : [{
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.url",
+    "valueUri" : "http://hl7.eu/fhir/health-data-api/ActorDefinition/eu-authorization-client-eu-api"
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.version",
+    "valueString" : "1.0.0-ballot"
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.name",
+    "valueString" : "EuAuthorizationClientEuApi"
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.title",
+    "valueString" : "Health Data API Authorization Client"
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.status",
+    "valueCode" : "active"
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.experimental",
+    "valueBoolean" : false
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.date",
+    "valueDateTime" : "2026-10-23T12:01:58+02:00"
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.publisher",
+    "valueString" : "HL7 Europe"
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.contact",
+    "valueContactDetail" : {
+      "name" : "HL7 Europe",
+      "telecom" : [{
+        "system" : "url",
+        "value" : "http://hl7.eu"
+      }]
+    }
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.description",
+    "valueMarkdown" : "The Health Data API Authorization Client obtains an access token from the selected Authorization Server\nand presents it to a protected API. Client authentication, grants, scopes, discovery, and\nlaunch context depend on the selected environment and protocol; public SMART interactive\nclients do not authenticate at the token endpoint. This generic role does not by itself\nclaim IHE IUA or SMART conformance. See the applicable [IHE IUA Authorization Client](https://profiles.ihe.net/ITI/IUA/index.html#34111-authorization-client),\n[SMART App](ActorDefinition-smart-app-eu-api.html), or [SMART Backend Service](ActorDefinition-smart-backend-service-eu-api.html)\ndefinition and the relevant [Authorization](authorization.html) requirements."
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.jurisdiction",
+    "valueCodeableConcept" : {
+      "coding" : [{
+        "system" : "http://unstats.un.org/unsd/methods/m49/m49.htm",
+        "code" : "150",
+        "display" : "Europe"
+      }]
+    }
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.copyright",
+    "valueMarkdown" : "Copyright HL7 Europe. Licensed under Creative Commons public domain (CC0 1.0)."
+  },
+  {
+    "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.type",
+    "valueCode" : "system"
+  }],
+  "code" : {
+    "coding" : [{
+      "system" : "http://hl7.org/fhir/fhir-types",
+      "code" : "ActorDefinition"
+    }]
+  }
+}
