@@ -299,6 +299,21 @@ Patient Access for Standalone Apps requires `launch-standalone`, `client-public`
 
 SMART Backend Services requires pre-authorized access, `client_credentials`, `private_key_jwt`, and normally `system/` scopes, as specified by [SMART Backend Services](https://hl7.org/fhir/smart-app-launch/STU2.2/backend-services.html) and [asymmetric client authentication](https://hl7.org/fhir/smart-app-launch/STU2.2/client-confidential-asymmetric.html). Client assertions SHALL use an appropriate `typ`, `alg`, `kid`, `iss`, `sub`, `aud`, `exp`, and `jti`; the Authorization Server SHALL validate the signature, short expiry, audience, and replay protection. These requirements do not apply to public interactive clients.
 
+<a name="smart-server-time-synchronization"></a>
+#### SMART Server Time Synchronization
+
+For both interactive SMART App Launch and SMART Backend Services, this IG recommends (`SHOULD`)
+that SMART Authorization Server and SMART FHIR Resource Server actors be grouped with the
+[IHE Consistent Time (CT) Time Client](https://profiles.ihe.net/ITI/TF/Volume1/ch-7.html). This is
+an additional IG-level recommendation; SMART App Launch does not itself require CT. It applies to
+the two server roles, not to SMART Apps or SMART Backend Services solely by virtue of their client
+roles.
+
+Consistent time supports evaluation of time-bounded security data. For example, SMART asymmetric
+client authentication defines an `exp` claim for client assertions that SHALL be no more than five
+minutes in the future ([SMART client authentication](https://hl7.org/fhir/smart-app-launch/STU2.2/client-confidential-asymmetric.html#authenticating-to-the-token-endpoint)).
+See [Time Synchronization](#time-synchronization) for shared NTP deployment guidance.
+
 #### SMART Discovery
 
 FHIR capabilities are discovered from `[base]/metadata`; SMART metadata is discovered from `[base]/.well-known/smart-configuration`. SMART discovery SHALL publish absolute endpoint URLs and align its `token_endpoint`, grant types, capabilities, token-endpoint authentication methods, signing algorithms, and scopes with the selected flow. Interactive modes additionally publish the authorization endpoint, authorization-code and PKCE support, launch capabilities, and the selected Patient or Clinician capability set. Backend Services publishes `client_credentials`, asymmetric authentication, and supported system scopes. `jwks_uri` is for server-key discovery only; client keys are registered out of band.
@@ -307,7 +322,26 @@ FHIR capabilities are discovered from `[base]/metadata`; SMART metadata is disco
 
 The IUA roles used by this IG are [IUA Authorization Client](ActorDefinition-iua-authorization-client-eu-api.html), [IUA Authorization Server](ActorDefinition-iua-authorization-server-eu-api.html), and [IUA Resource Server](ActorDefinition-iua-resource-server-eu-api.html). IUA mode uses the applicable [Authorization Client](https://profiles.ihe.net/ITI/IUA/index.html#34111-authorization-client), [Authorization Server](https://profiles.ihe.net/ITI/IUA/index.html#34112-authorization-server), and [Resource Server](https://profiles.ihe.net/ITI/IUA/index.html#34113-resource-server) requirements. Core IUA requirements are separate from this IG's MHD transaction integration and from the additional recommendations here.
 
+IHE IUA Revision 2.5
+[requires](https://profiles.ihe.net/ITI/IUA/index.html#343-iua-required-actor-groupings) its
+Authorization Server and Resource Server actors to be grouped with a CT/Time Client. This IUA
+requirement is distinct from the additional SMART-specific `SHOULD` recommendation above.
+See [Time Synchronization](#time-synchronization) for shared NTP deployment guidance.
+
 The Authorization Client authenticates to the Authorization Server, requests least-privilege scopes, and presents its bearer token. The Authorization Server authenticates the client, validates any client assertion, applies issuance policy, limits scopes to authorized scopes, prevents assertion replay, and issues tokens. The Resource Server validates token activity, expiry, issuer/signature or introspection, audience/resource binding where applicable, granted scope, request/claim consistency, and local policy. A Resource Server does not validate a client assertion for an independent Authorization Server.
+
+<a name="time-synchronization"></a>
+### Time Synchronization
+
+The [IHE Consistent Time (CT) profile](https://profiles.ihe.net/ITI/TF/Volume1/ch-7.html)
+specifies NTP synchronization and references NTPv3. As informative deployment guidance for both
+SMART and IUA server roles, deployments are encouraged to use NTPv4 for time synchronization,
+while satisfying the applicable IHE CT requirements.
+[NTPv4 is backward compatible with NTPv3](https://www.rfc-editor.org/rfc/rfc5905#section-1);
+interoperability with the selected time service should be verified.
+
+This guidance does not introduce a separate NTPv4 conformance requirement or relax the applicable
+CT grouping obligations described above. NTPv4 use alone does not establish full CT conformance.
 
 <a name="transport-security"></a>
 ### Tokens, Scopes, Enforcement, And Errors

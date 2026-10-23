@@ -59,6 +59,9 @@ Server and accepts:
 Where an interactive use case applies, the endpoint groups with the SMART FHIR Resource Server and
 enforces the corresponding `patient/` or `user/` forms of the supported resource scopes.
 
+For the IG-level CT grouping recommendation for SMART server roles, see
+[SMART Server Time Synchronization](authorization.html#smart-server-time-synchronization).
+
 All modes use TLS 1.2 or higher. See
 [Authorization](authorization.html#tokens-scopes-enforcement-and-errors).
 """

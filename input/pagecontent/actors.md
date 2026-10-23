@@ -14,7 +14,8 @@ This is similar to the approach taken in the MHDS specification, but with a more
 - Resource Exchange
   - [HL7 International Patient Access (IPA)](https://hl7.org/fhir/uv/ipa/) - Defines how an application can access FHIR information using SMART authorization and resource access. IPA is the primary reference for resource access patterns.
 - Foundational
-  - [IHE Consistent Time](https://profiles.ihe.net/ITI/TF/Volume1/ch-7.html) - Defines the use of Network Time Protocol (NTP) to provide consistent time across systems.
+  - [IHE Consistent Time](https://profiles.ihe.net/ITI/TF/Volume1/ch-7.html) - Defines the use of Network Time Protocol (NTP) to provide consistent time across systems. See
+    [SMART Server Time Synchronization](authorization.html#smart-server-time-synchronization) for this IG's recommendation for SMART server roles.
   - [IHE ATNA](https://profiles.ihe.net/ITI/TF/Volume1/ch-9.html) - Referenced for secure transport requirements (TLS 1.2 Floor using BCP195 Option).
 
 <div class="auth-change" markdown="1">

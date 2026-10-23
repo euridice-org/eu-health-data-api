@@ -257,6 +257,9 @@ this does not remove any applicable IUA Authorization Server conformance obligat
 It does not provide protected-resource enforcement. See the
 [IHE IUA Authorization Server](https://profiles.ihe.net/ITI/IUA/index.html#34112-authorization-server)
 and [Authorization](authorization.html#ihe-iua).
+IUA requires this role to be grouped with a CT Time Client; see
+[required actor groupings](https://profiles.ihe.net/ITI/IUA/index.html#343-iua-required-actor-groupings)
+and the shared [Time Synchronization](authorization.html#time-synchronization) deployment guidance.
 """
 * name = "IuaAuthorizationServerEuApi"
 * title = "IHE IUA Authorization Server"
@@ -274,6 +277,9 @@ authorization and local policy for protected resources. It does not validate cli
 assertions for an independent Authorization Server. See the
 [IHE IUA Resource Server](https://profiles.ihe.net/ITI/IUA/index.html#34113-resource-server)
 and [Authorization](authorization.html#ihe-iua).
+IUA requires this role to be grouped with a CT Time Client; see
+[required actor groupings](https://profiles.ihe.net/ITI/IUA/index.html#343-iua-required-actor-groupings)
+and the shared [Time Synchronization](authorization.html#time-synchronization) deployment guidance.
 """
 * name = "IuaResourceServerEuApi"
 * title = "IHE IUA Resource Server"
@@ -320,7 +326,10 @@ Usage: #definition
 Description: """
 The SMART FHIR Resource Server hosts protected FHIR resources, validates access tokens,
 and enforces granted SMART scopes. See [SMART App Launch](https://hl7.org/fhir/smart-app-launch/STU2.2/)
-and [Authorization](authorization.html#smart-app-launch).
+and [Authorization](authorization.html#smart-app-launch). This IG recommends CT Time Client grouping
+for this server role in both interactive and Backend Services modes; see
+[SMART Server Time Synchronization](authorization.html#smart-server-time-synchronization)
+and the shared [Time Synchronization](authorization.html#time-synchronization) deployment guidance.
 """
 * name = "SmartFhirResourceServerEuApi"
 * title = "SMART FHIR Resource Server"
@@ -339,7 +348,10 @@ For interactive flows it may rely on the IG-defined Authentication Service for u
 authentication without transferring its SMART conformance obligations. Backend Services does
 not require runtime end-user authentication.
 See [SMART App Launch](https://hl7.org/fhir/smart-app-launch/STU2.2/)
-and [Authorization](authorization.html#smart-app-launch).
+and [Authorization](authorization.html#smart-app-launch). This IG recommends CT Time Client grouping
+for this server role in both interactive and Backend Services modes; see
+[SMART Server Time Synchronization](authorization.html#smart-server-time-synchronization)
+and the shared [Time Synchronization](authorization.html#time-synchronization) deployment guidance.
 """
 * name = "SmartAuthorizationServerEuApi"
 * title = "SMART Authorization Server"

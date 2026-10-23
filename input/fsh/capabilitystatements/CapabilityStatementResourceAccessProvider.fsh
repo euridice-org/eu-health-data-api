@@ -59,6 +59,9 @@ Server and accepts `system/` scopes for the resources it supports.
 Where an interactive use case applies, the provider groups with the SMART FHIR Resource Server and
 accepts the corresponding `patient/` or `user/` scopes for the resources it supports.
 
+For the IG-level CT grouping recommendation for SMART server roles, see
+[SMART Server Time Synchronization](authorization.html#smart-server-time-synchronization).
+
 All modes use TLS 1.2 or higher and return errors according to the selected authorization specification.
 
 ### Resource Flexibility
