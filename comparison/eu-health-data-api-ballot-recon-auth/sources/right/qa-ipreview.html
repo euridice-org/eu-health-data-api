@@ -415,7 +415,7 @@ This material derives from the HL7 Terminology (THO). THO is copyright &copy;198
           Package hl7.fhir.eu.health-data-api#1.0.0-ballot based on           <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>
 .
           Generated 
-            <span title="2026-10-23 12:01:00 +0200">
+            <span title="2026-10-23 14:38:00 +0200">
     2026-10-23
   </span>
 
@@ -2249,7 +2249,6 @@ Resolve patrick-werner's           <a href="https://github.com/euridice-org/eu-h
 , narrowed the IUA recommendation to preconfigured system-to-system endpoints, retained SMART App Launch for interactive HDAS/HPAS access, separated SMART resource scopes from applicable IUA MHD transaction scopes, and clarified that the IUA JWT Token Option is not an automatic cross-protocol profile. See           <a href="authorization.html#environment-specific-requirements">Authorization</a>
  and the maintained           <code class="language-plaintext highlighter-rouge">doc/smart-vs-iua.md</code>
 .
-&lt;/span&gt;
         </td>
       </tr>
       <tr>
@@ -3356,6 +3355,82 @@ NCP-to-NCP exchange over MyHealth@EU is governed by the           <a href="https
       </tr>
       <tr>
         <td>
+          <a href="en/usecase-cross-border-ncp.html">web</a>
+        </td>
+        <td>
+          <a href="https://profiles.ihe.net/ITI/IUA/index.html">profiles.ihe.net</a>
+        </td>
+        <td>
+The final infrastructure-to-EHR hop is separate from NCP-to-NCP exchange. For MyHealth@EU, authorization remains outside this IG;           <a href="authorization.html#myhealth-eu">Authorization</a>
+ recommends alignment with           <a href="https://profiles.ihe.net/ITI/IUA/index.html">IHE IUA</a>
+. This use case does not select an authorization flow for MyHealth@EU; applicable MyHealth@EU and deployment requirements govern its participants and prerequisites. For a separate National Interoperability Infrastructure hop,           <a href="https://profiles.ihe.net/ITI/IUA/index.html">IHE IUA</a>
+ is recommended only under the conditions in           <a href="authorization.html#national-interoperability-infrastructure">Authorization</a>
+. If selected, the generic roles are realized by the           <a href="ActorDefinition-iua-authorization-client-eu-api.html">IHE IUA Authorization Client</a>
+,           <a href="ActorDefinition-iua-resource-server-eu-api.html">IHE IUA Resource Server</a>
+, and a distinct           <a href="ActorDefinition-iua-authorization-server-eu-api.html">IHE IUA Authorization Server</a>
+; the client obtains a token with           <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-71.html">ITI-71</a>
+ and presents it with           <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-72.html">ITI-72</a>
+. Any MHD transaction scope depends on the supported interaction and deployment. This use case does not select an IUA transaction or flow for a particular endpoint. The NCPeH API remains the specification for NCP-to-NCP exchange.
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a href="en/usecase-cross-border-ncp.html">web</a>
+        </td>
+        <td>
+          <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-71.html">profiles.ihe.net</a>
+        </td>
+        <td>
+The final infrastructure-to-EHR hop is separate from NCP-to-NCP exchange. For MyHealth@EU, authorization remains outside this IG;           <a href="authorization.html#myhealth-eu">Authorization</a>
+ recommends alignment with           <a href="https://profiles.ihe.net/ITI/IUA/index.html">IHE IUA</a>
+. This use case does not select an authorization flow for MyHealth@EU; applicable MyHealth@EU and deployment requirements govern its participants and prerequisites. For a separate National Interoperability Infrastructure hop,           <a href="https://profiles.ihe.net/ITI/IUA/index.html">IHE IUA</a>
+ is recommended only under the conditions in           <a href="authorization.html#national-interoperability-infrastructure">Authorization</a>
+. If selected, the generic roles are realized by the           <a href="ActorDefinition-iua-authorization-client-eu-api.html">IHE IUA Authorization Client</a>
+,           <a href="ActorDefinition-iua-resource-server-eu-api.html">IHE IUA Resource Server</a>
+, and a distinct           <a href="ActorDefinition-iua-authorization-server-eu-api.html">IHE IUA Authorization Server</a>
+; the client obtains a token with           <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-71.html">ITI-71</a>
+ and presents it with           <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-72.html">ITI-72</a>
+. Any MHD transaction scope depends on the supported interaction and deployment. This use case does not select an IUA transaction or flow for a particular endpoint. The NCPeH API remains the specification for NCP-to-NCP exchange.
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a href="en/usecase-cross-border-ncp.html">web</a>
+        </td>
+        <td>
+          <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-72.html">profiles.ihe.net</a>
+        </td>
+        <td>
+The final infrastructure-to-EHR hop is separate from NCP-to-NCP exchange. For MyHealth@EU, authorization remains outside this IG;           <a href="authorization.html#myhealth-eu">Authorization</a>
+ recommends alignment with           <a href="https://profiles.ihe.net/ITI/IUA/index.html">IHE IUA</a>
+. This use case does not select an authorization flow for MyHealth@EU; applicable MyHealth@EU and deployment requirements govern its participants and prerequisites. For a separate National Interoperability Infrastructure hop,           <a href="https://profiles.ihe.net/ITI/IUA/index.html">IHE IUA</a>
+ is recommended only under the conditions in           <a href="authorization.html#national-interoperability-infrastructure">Authorization</a>
+. If selected, the generic roles are realized by the           <a href="ActorDefinition-iua-authorization-client-eu-api.html">IHE IUA Authorization Client</a>
+,           <a href="ActorDefinition-iua-resource-server-eu-api.html">IHE IUA Resource Server</a>
+, and a distinct           <a href="ActorDefinition-iua-authorization-server-eu-api.html">IHE IUA Authorization Server</a>
+; the client obtains a token with           <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-71.html">ITI-71</a>
+ and presents it with           <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-72.html">ITI-72</a>
+. Any MHD transaction scope depends on the supported interaction and deployment. This use case does not select an IUA transaction or flow for a particular endpoint. The NCPeH API remains the specification for NCP-to-NCP exchange.
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a href="en/usecase-cross-org.html">web</a>
+        </td>
+        <td>
+          <a href="https://profiles.ihe.net/ITI/IUA/index.html">profiles.ihe.net</a>
+        </td>
+        <td>
+For the National Interoperability Infrastructure environment,           <a href="authorization.html#national-interoperability-infrastructure">Authorization</a>
+ recommends           <a href="https://profiles.ihe.net/ITI/IUA/index.html">IHE IUA</a>
+ when participants and the Authorization Server are preconfigured and user or patient claims are needed. The consumer is the           <a href="ActorDefinition-eu-authorization-client-eu-api.html">Health Data API Authorization Client</a>
+, the protected EHR or repository endpoint is the           <a href="ActorDefinition-eu-authorization-resource-server-eu-api.html">Health Data API Resource Server</a>
+, and the           <a href="ActorDefinition-eu-authorization-server-eu-api.html">Health Data API Authorization Server</a>
+ is distinct.
+        </td>
+      </tr>
+      <tr>
+        <td>
           <a href="en/usecase-cross-org.html">web</a>
         </td>
         <td>
@@ -3368,7 +3443,13 @@ When a deployment selects IUA, these roles are realized by the           <a href
 . The client obtains a token with           <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-71.html">ITI-71</a>
  and presents it to the protected endpoint using           <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-72.html">ITI-72</a>
 . Any MHD transaction scope depends on the supported interaction and deployment, as described in           <a href="authorization.html#national-interoperability-infrastructure">Authorization</a>
-. A direct-system SMART Backend Services deployment is a separate profile and does not imply dual conformance.
+. A direct-system endpoint may instead select           <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/backend-services.html">SMART Backend Services</a>
+ only when the client is pre-authorized, uses asymmetric client authentication, and has no runtime end-user authorization. That flow uses a           <a href="ActorDefinition-smart-backend-service-eu-api.html">SMART Backend Service</a>
+, the distinct           <a href="ActorDefinition-smart-authorization-server-eu-api.html">SMART Authorization Server</a>
+, and a           <a href="ActorDefinition-smart-fhir-resource-server-eu-api.html">SMART FHIR Resource Server</a>
+, with applicable           <code class="language-plaintext highlighter-rouge">system/</code>
+ scopes. See           <a href="authorization.html#smart-app-launch">Authorization</a>
+ for the normative profile requirements. It is a separate endpoint profile and does not imply dual conformance.
         </td>
       </tr>
       <tr>
@@ -3385,7 +3466,13 @@ When a deployment selects IUA, these roles are realized by the           <a href
 . The client obtains a token with           <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-71.html">ITI-71</a>
  and presents it to the protected endpoint using           <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-72.html">ITI-72</a>
 . Any MHD transaction scope depends on the supported interaction and deployment, as described in           <a href="authorization.html#national-interoperability-infrastructure">Authorization</a>
-. A direct-system SMART Backend Services deployment is a separate profile and does not imply dual conformance.
+. A direct-system endpoint may instead select           <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/backend-services.html">SMART Backend Services</a>
+ only when the client is pre-authorized, uses asymmetric client authentication, and has no runtime end-user authorization. That flow uses a           <a href="ActorDefinition-smart-backend-service-eu-api.html">SMART Backend Service</a>
+, the distinct           <a href="ActorDefinition-smart-authorization-server-eu-api.html">SMART Authorization Server</a>
+, and a           <a href="ActorDefinition-smart-fhir-resource-server-eu-api.html">SMART FHIR Resource Server</a>
+, with applicable           <code class="language-plaintext highlighter-rouge">system/</code>
+ scopes. See           <a href="authorization.html#smart-app-launch">Authorization</a>
+ for the normative profile requirements. It is a separate endpoint profile and does not imply dual conformance.
         </td>
       </tr>
       <tr>
@@ -3404,6 +3491,102 @@ A           <strong>Health Data Access Service</strong>
       </tr>
       <tr>
         <td>
+          <a href="en/usecase-health-data-portal.html">web</a>
+        </td>
+        <td>
+          <a href="https://profiles.ihe.net/ITI/IUA/index.html">profiles.ihe.net</a>
+        </td>
+        <td>
+For a MyHealth@EU hop, authorization remains outside this IG; deployment guidance recommends
+alignment with           <a href="https://profiles.ihe.net/ITI/IUA/index.html">IHE IUA</a>
+, as described in
+          <a href="authorization.html#myhealth-eu">Authorization</a>
+.
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a href="en/usecase-health-data-portal.html">web</a>
+        </td>
+        <td>
+          <a href="https://profiles.ihe.net/ITI/IUA/index.html">profiles.ihe.net</a>
+        </td>
+        <td>
+For a National Interoperability Infrastructure hop,           <a href="https://profiles.ihe.net/ITI/IUA/index.html">IHE IUA</a>
+ is recommended when participants
+and the Authorization Server are preconfigured and user or patient claims are needed. When
+selected, the generic roles map to the           <a href="ActorDefinition-iua-authorization-client-eu-api.html">IHE IUA Authorization Client</a>
+,
+          <a href="ActorDefinition-iua-resource-server-eu-api.html">IHE IUA Resource Server</a>
+, and
+          <a href="ActorDefinition-iua-authorization-server-eu-api.html">IHE IUA Authorization Server</a>
+; the
+deployment selects applicable transactions and MHD scopes. The client obtains a token with
+          <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-71.html">ITI-71</a>
+ and presents it to the protected
+endpoint with           <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-72.html">ITI-72</a>
+; any MHD transaction
+scope is limited to the supported interaction, as described in
+          <a href="authorization.html#national-interoperability-infrastructure">Authorization</a>
+.
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a href="en/usecase-health-data-portal.html">web</a>
+        </td>
+        <td>
+          <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-71.html">profiles.ihe.net</a>
+        </td>
+        <td>
+For a National Interoperability Infrastructure hop,           <a href="https://profiles.ihe.net/ITI/IUA/index.html">IHE IUA</a>
+ is recommended when participants
+and the Authorization Server are preconfigured and user or patient claims are needed. When
+selected, the generic roles map to the           <a href="ActorDefinition-iua-authorization-client-eu-api.html">IHE IUA Authorization Client</a>
+,
+          <a href="ActorDefinition-iua-resource-server-eu-api.html">IHE IUA Resource Server</a>
+, and
+          <a href="ActorDefinition-iua-authorization-server-eu-api.html">IHE IUA Authorization Server</a>
+; the
+deployment selects applicable transactions and MHD scopes. The client obtains a token with
+          <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-71.html">ITI-71</a>
+ and presents it to the protected
+endpoint with           <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-72.html">ITI-72</a>
+; any MHD transaction
+scope is limited to the supported interaction, as described in
+          <a href="authorization.html#national-interoperability-infrastructure">Authorization</a>
+.
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a href="en/usecase-health-data-portal.html">web</a>
+        </td>
+        <td>
+          <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-72.html">profiles.ihe.net</a>
+        </td>
+        <td>
+For a National Interoperability Infrastructure hop,           <a href="https://profiles.ihe.net/ITI/IUA/index.html">IHE IUA</a>
+ is recommended when participants
+and the Authorization Server are preconfigured and user or patient claims are needed. When
+selected, the generic roles map to the           <a href="ActorDefinition-iua-authorization-client-eu-api.html">IHE IUA Authorization Client</a>
+,
+          <a href="ActorDefinition-iua-resource-server-eu-api.html">IHE IUA Resource Server</a>
+, and
+          <a href="ActorDefinition-iua-authorization-server-eu-api.html">IHE IUA Authorization Server</a>
+; the
+deployment selects applicable transactions and MHD scopes. The client obtains a token with
+          <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-71.html">ITI-71</a>
+ and presents it to the protected
+endpoint with           <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-72.html">ITI-72</a>
+; any MHD transaction
+scope is limited to the supported interaction, as described in
+          <a href="authorization.html#national-interoperability-infrastructure">Authorization</a>
+.
+        </td>
+      </tr>
+      <tr>
+        <td>
           <a href="en/usecase-health-professional-portal.html">web</a>
         </td>
         <td>
@@ -3413,6 +3596,63 @@ A           <strong>Health Data Access Service</strong>
 A           <strong>Health Professional Access Service</strong>
  (          <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_12">Art. 12</a>
 ) is provided by a Member State to health professionals for accessing their patients' health data. The service can be delivered as a web portal, an API, or other means. It authenticates the professional, locates the patient, and accesses data from EHR systems. The infrastructure behind these services is country-specific — see           <a href="member-state-architectures.html">Member State Architectures</a>
+.
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a href="en/usecase-health-professional-portal.html">web</a>
+        </td>
+        <td>
+          <a href="https://profiles.ihe.net/ITI/IUA/index.html">profiles.ihe.net</a>
+        </td>
+        <td>
+The service may reach EHRs directly or through national infrastructure, so its title does not by itself determine the authorization environment. For a Healthcare Provider hop, an interactive clinician request maps to           <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html">SMART App Launch</a>
+: the client is a           <a href="ActorDefinition-smart-app-eu-api.html">SMART App</a>
+, the protected endpoint a           <a href="ActorDefinition-smart-fhir-resource-server-eu-api.html">SMART FHIR Resource Server</a>
+, and the           <a href="ActorDefinition-smart-authorization-server-eu-api.html">SMART Authorization Server</a>
+ is distinct. A           <a href="ActorDefinition-smart-launching-system-eu-api.html">SMART Launching System</a>
+ participates for EHR Launch. Identify the target FHIR base and registered app, then use the endpoint's           <a href="authorization.html#smart-discovery">SMART discovery metadata</a>
+ and how the app is started to select Clinician Access for EHR Launch or Clinician Access for Standalone. Interactive access uses authorization code with PKCE as described in           <a href="authorization.html#smart-app-launch">Authorization</a>
+. A server-side request maps to a           <a href="ActorDefinition-smart-backend-service-eu-api.html">SMART Backend Service</a>
+ only when access is pre-authorized, the client uses asymmetric confidential-client authentication, and no runtime end-user authorization is required. For a National Interoperability Infrastructure hop,           <a href="https://profiles.ihe.net/ITI/IUA/index.html">IHE IUA</a>
+ is recommended only under the conditions in           <a href="authorization.html#national-interoperability-infrastructure">Authorization</a>
+; when selected, the generic roles map to the           <a href="ActorDefinition-iua-authorization-client-eu-api.html">IHE IUA Authorization Client</a>
+,           <a href="ActorDefinition-iua-resource-server-eu-api.html">IHE IUA Resource Server</a>
+, and           <a href="ActorDefinition-iua-authorization-server-eu-api.html">IHE IUA Authorization Server</a>
+. The actual environment and flow remain deployment-dependent. See           <a href="authorization.html#environment-specific-requirements">Authorization</a>
+ for the normative requirements and protocol roles.
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a href="en/usecase-health-professional-portal.html">web</a>
+        </td>
+        <td>
+          <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-71.html">profiles.ihe.net</a>
+        </td>
+        <td>
+For the server-side flow, see the           <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/backend-services.html">SMART Backend Services profile</a>
+ and its requirements in           <a href="authorization.html#smart-app-launch">Authorization</a>
+. When an NII endpoint selects IUA, the client obtains a token with           <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-71.html">ITI-71</a>
+ and presents it with           <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-72.html">ITI-72</a>
+; MHD transaction scopes depend on the supported interaction and are described in           <a href="authorization.html#national-interoperability-infrastructure">Authorization</a>
+.
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a href="en/usecase-health-professional-portal.html">web</a>
+        </td>
+        <td>
+          <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-72.html">profiles.ihe.net</a>
+        </td>
+        <td>
+For the server-side flow, see the           <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/backend-services.html">SMART Backend Services profile</a>
+ and its requirements in           <a href="authorization.html#smart-app-launch">Authorization</a>
+. When an NII endpoint selects IUA, the client obtains a token with           <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-71.html">ITI-71</a>
+ and presents it with           <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-72.html">ITI-72</a>
+; MHD transaction scopes depend on the supported interaction and are described in           <a href="authorization.html#national-interoperability-infrastructure">Authorization</a>
 .
         </td>
       </tr>

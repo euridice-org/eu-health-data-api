@@ -6,7 +6,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en" dir="ltr">
   <head>
 <script src="../../bridge-right.js" defer></script>
-<base href="../../../sources/right/en/usecase-wellness-app.html">
+<base href="https://euridice-org.github.io/eu-health-data-api/comparison/eu-health-data-api-ballot-recon-auth/sources/right/en/usecase-wellness-app.html">
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
     <title>Wellness Apps - EU Health Data API v1.0.0-ballot</title>
 
@@ -337,14 +337,10 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <h3 id="scope">Scope</h3>
 
-<div class="auth-change">
-
-  <p>This page is informative about the exchange workflow. For interactive third-party app access,
+<p>This page is informative about the exchange workflow. For interactive third-party app access,
 see the recommendation in <a href="authorization.html#wellness-applications">Authorization</a>.
 Patient identity, consent management, and eIDAS assurance remain deployment and Member State
 responsibilities; an access token does not replace them.</p>
-
-</div>
 
 <h3 id="participants">Participants</h3>
 
@@ -354,11 +350,9 @@ responsibilities; an access token does not replace them.</p>
   <li><strong>Health data access service</strong> — Patient-facing access service that may authenticate the patient, establish consent, and link the wellness application; outside this IG's scope</li>
 </ul>
 
-<div class="auth-change">
+<p>For each protected API hop, the consuming application has the <a href="ActorDefinition-eu-authorization-client-eu-api.html">Health Data API Authorization Client</a> role, the protected endpoint has the <a href="ActorDefinition-eu-authorization-resource-server-eu-api.html">Health Data API Resource Server</a> role, and the <a href="ActorDefinition-eu-authorization-server-eu-api.html">Health Data API Authorization Server</a> remains distinct. The selected SMART roles and flow depend on the hop described below.</p>
 
-  <p>For each protected API hop, the consuming application has the <a href="ActorDefinition-eu-authorization-client-eu-api.html">Health Data API Authorization Client</a> role, the protected endpoint has the <a href="ActorDefinition-eu-authorization-resource-server-eu-api.html">Health Data API Resource Server</a> role, and the <a href="ActorDefinition-eu-authorization-server-eu-api.html">Health Data API Authorization Server</a> remains distinct. The selected SMART roles and flow depend on the hop described below.</p>
-
-  <p>For interactive access, the <a href="ActorDefinition-authentication-service-eu-api.html">Authentication Service</a>
+<p>For interactive access, the <a href="ActorDefinition-authentication-service-eu-api.html">Authentication Service</a>
 authenticates the user, potentially using a Wallet. It may be grouped with the Authorization Server
 or separately deployed under an agreed trust relationship. Logging into the Wellness Application
 does not authorize it to use an EHR API: the app must complete the selected API authorization flow,
@@ -368,7 +362,12 @@ presentation or an OIDC ID token, accompanies the protected request. See the
 <a href="authorization.html#using-eidas-for-user-authentication">Wallet example</a> and
 <a href="actors.html#authentication-and-authorization-groupings">optional groupings</a>.</p>
 
-</div>
+<p>Before an interactive request, identify the target FHIR base, register the app as described in
+<a href="authorization.html#smart-app-launch">Authorization</a>, and use its <a href="authorization.html#smart-discovery">SMART discovery metadata</a>.
+Select Patient or Clinician Access from the user's role and Standalone or EHR Launch from how the
+app is started; the applicable <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html">SMART App Launch</a>
+authorization-code and PKCE requirements are defined in
+<a href="authorization.html#smart-app-launch">Authorization</a>. Note that future versions of this spec may be extended to cover dynamic app registration.</p>
 
 <p>EHDS does not specify whether the wellness application sends data through the health data access service or directly to an EHR system after linkage and authorization have been established.</p>
 
@@ -381,28 +380,20 @@ presentation or an OIDC ID token, accompanies the protected request. See the
 
 <h4 id="authorizing-patient-data-exchange">Authorizing Patient Data Exchange</h4>
 
-<div class="auth-change">
-
-  <p>The <a href="authorization.html#wellness-applications">Wellness Applications section of Authorization</a>
+<p>The <a href="authorization.html#wellness-applications">Wellness Applications section of Authorization</a>
 owns the authorization requirements. The following mappings identify the flow and participants
 for each hop without adding separate conformance rules:</p>
 
-  <ul>
-    <li><strong>Wellness application to HDAS</strong>: SMART App Launch. The wellness application is the <a href="ActorDefinition-smart-app-eu-api.html">SMART App</a>; the protected HDAS endpoint is a <a href="ActorDefinition-smart-fhir-resource-server-eu-api.html">SMART FHIR Resource Server</a>; and the <a href="ActorDefinition-smart-authorization-server-eu-api.html">SMART Authorization Server</a> is distinct. The applicable Patient or Clinician Access capability set follows the user's role and the launch pattern.</li>
-    <li><strong>Clinician-launched wellness application</strong>: interactive SMART App Launch EHR Launch, with a <a href="ActorDefinition-smart-launching-system-eu-api.html">SMART Launching System</a>, SMART App, SMART Authorization Server, and protected SMART FHIR Resource Server. The applicable profile is Clinician Access for EHR Launch with current-patient context, or Clinician Access for Standalone when the app is not launched by an EHR.</li>
-    <li><strong>Patient-launched wellness application</strong>: interactive SMART App Launch with the EHR as FHIR server. The applicable profile is Patient Access for EHR Launch or Patient Access for Standalone Apps according to how the app is started. Write workflows follow the applicable Argonaut Write successor.</li>
-    <li><strong>Preconfigured server-side access to a provider-hosted EHR</strong>: SMART Backend Services, with the client realized as a <a href="ActorDefinition-smart-backend-service-eu-api.html">SMART Backend Service</a>. This flow requires pre-authorized access, asymmetric confidential-client authentication, and no runtime end-user authorization; the protected endpoint is a SMART FHIR Resource Server and the SMART Authorization Server remains distinct.</li>
-  </ul>
+<ul>
+  <li><strong>Wellness application to HDAS</strong>: <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html">SMART App Launch</a>. The wellness application is the <a href="ActorDefinition-smart-app-eu-api.html">SMART App</a>; the protected HDAS endpoint is a <a href="ActorDefinition-smart-fhir-resource-server-eu-api.html">SMART FHIR Resource Server</a>; and the <a href="ActorDefinition-smart-authorization-server-eu-api.html">SMART Authorization Server</a> is distinct. The applicable Patient or Clinician Access capability set follows the user's role and the launch pattern.</li>
+  <li><strong>Clinician-launched wellness application</strong>: interactive SMART App Launch EHR Launch, with a <a href="ActorDefinition-smart-launching-system-eu-api.html">SMART Launching System</a>, SMART App, SMART Authorization Server, and protected SMART FHIR Resource Server. The applicable profile is Clinician Access for EHR Launch with current-patient context, or Clinician Access for Standalone when the app is not launched by an EHR.</li>
+  <li><strong>Patient-launched wellness application</strong>: interactive SMART App Launch with the EHR as FHIR server. The applicable profile is Patient Access for EHR Launch or Patient Access for Standalone Apps according to how the app is started. Write workflows follow the applicable Argonaut Write successor.</li>
+  <li><strong>Preconfigured server-side access to a provider-hosted EHR</strong>: <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/backend-services.html">SMART Backend Services</a>, with the client realized as a <a href="ActorDefinition-smart-backend-service-eu-api.html">SMART Backend Service</a>. This flow requires pre-authorized access, asymmetric confidential-client authentication, and no runtime end-user authorization; the protected endpoint is a SMART FHIR Resource Server and the SMART Authorization Server remains distinct.</li>
+</ul>
 
-</div>
-
-<div class="auth-change">
-
-  <p>These flows use the generic Health Data API Authorization Client, Health Data API Authorization Server,
+<p>These flows use the generic Health Data API Authorization Client, Health Data API Authorization Server,
 and Health Data API Resource Server roles; the applicable SMART App or SMART Backend Service and SMART server roles
 provide the protocol-specific conformance details.</p>
-
-</div>
 
 <h3 id="accessing-patient-data">Accessing Patient Data</h3>
 
@@ -484,7 +475,7 @@ provide the protocol-specific conformance details.</p>
           IG © 2025+ <a style="color:var(--footer-hyperlink-text-color)" href="http://hl7.eu">HL7 Europe</a>.  
           Package hl7.fhir.eu.health-data-api#1.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
           Generated 
-  <span title="2026-10-23 12:01:00 +0200">
+  <span title="2026-10-23 14:38:00 +0200">
     2026-10-23
   </span>
 

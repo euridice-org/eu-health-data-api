@@ -36,7 +36,7 @@ This Code system is referenced in the definition of the following value sets:
   "title" : "EEHRxF Document Priority Category CodeSystem",
   "status" : "draft",
   "experimental" : false,
-  "date" : "2026-10-23T12:01:58+02:00",
+  "date" : "2026-10-23T14:38:45+02:00",
   "publisher" : "HL7 Europe",
   "contact" : [{
     "name" : "HL7 Europe",

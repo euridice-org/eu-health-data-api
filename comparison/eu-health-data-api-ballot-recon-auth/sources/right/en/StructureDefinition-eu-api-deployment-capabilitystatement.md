@@ -29,7 +29,7 @@ Other representations of profile: [CSV](../StructureDefinition-eu-api-deployment
   "name" : "EuApiDeploymentCapabilityStatement",
   "title" : "EU Health Data API Deployment CapabilityStatement",
   "status" : "draft",
-  "date" : "2026-10-23T12:01:58+02:00",
+  "date" : "2026-10-23T14:38:45+02:00",
   "publisher" : "HL7 Europe",
   "contact" : [{
     "name" : "HL7 Europe",

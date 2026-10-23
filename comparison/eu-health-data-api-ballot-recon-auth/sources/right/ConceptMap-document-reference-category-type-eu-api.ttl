@@ -18,7 +18,7 @@
   fhir:ConceptMap.title [ fhir:value "EEHRxF MHD DocumentReference ConceptMap"] ;
   fhir:ConceptMap.status [ fhir:value "draft"] ;
   fhir:ConceptMap.experimental [ fhir:value "false"^^xsd:boolean] ;
-  fhir:ConceptMap.date [ fhir:value "2026-10-23T12:01:58+02:00"^^xsd:dateTime] ;
+  fhir:ConceptMap.date [ fhir:value "2026-10-23T14:38:45+02:00"^^xsd:dateTime] ;
   fhir:ConceptMap.publisher [ fhir:value "HL7 Europe"] ;
   fhir:ConceptMap.contact [
      fhir:index 0 ;

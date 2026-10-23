@@ -6,7 +6,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en" dir="ltr">
   <head>
 <script src="../../bridge-right.js" defer></script>
-<base href="../../../sources/right/en/usecase-cross-org.html">
+<base href="https://euridice-org.github.io/eu-health-data-api/comparison/eu-health-data-api-ballot-recon-auth/sources/right/en/usecase-cross-org.html">
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
     <title>Cross-Organization via National Infrastructure - EU Health Data API v1.0.0-ballot</title>
 
@@ -395,13 +395,9 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <h3 id="authorization">Authorization</h3>
 
-<div class="auth-change">
+<p>For the National Interoperability Infrastructure environment, <a href="authorization.html#national-interoperability-infrastructure">Authorization</a> recommends <a href="https://profiles.ihe.net/ITI/IUA/index.html">IHE IUA</a> when participants and the Authorization Server are preconfigured and user or patient claims are needed. The consumer is the <a href="ActorDefinition-eu-authorization-client-eu-api.html">Health Data API Authorization Client</a>, the protected EHR or repository endpoint is the <a href="ActorDefinition-eu-authorization-resource-server-eu-api.html">Health Data API Resource Server</a>, and the <a href="ActorDefinition-eu-authorization-server-eu-api.html">Health Data API Authorization Server</a> is distinct.</p>
 
-  <p>For the National Interoperability Infrastructure environment, <a href="authorization.html#national-interoperability-infrastructure">Authorization</a> recommends IHE IUA when participants and the Authorization Server are preconfigured and user or patient claims are needed. The consumer is the <a href="ActorDefinition-eu-authorization-client-eu-api.html">Health Data API Authorization Client</a>, the protected EHR or repository endpoint is the <a href="ActorDefinition-eu-authorization-resource-server-eu-api.html">Health Data API Resource Server</a>, and the <a href="ActorDefinition-eu-authorization-server-eu-api.html">Health Data API Authorization Server</a> is distinct.</p>
-
-  <p>When a deployment selects IUA, these roles are realized by the <a href="ActorDefinition-iua-authorization-client-eu-api.html">IHE IUA Authorization Client</a>, <a href="ActorDefinition-iua-resource-server-eu-api.html">IHE IUA Resource Server</a>, and <a href="ActorDefinition-iua-authorization-server-eu-api.html">IHE IUA Authorization Server</a>. The client obtains a token with <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-71.html">ITI-71</a> and presents it to the protected endpoint using <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-72.html">ITI-72</a>. Any MHD transaction scope depends on the supported interaction and deployment, as described in <a href="authorization.html#national-interoperability-infrastructure">Authorization</a>. A direct-system SMART Backend Services deployment is a separate profile and does not imply dual conformance.</p>
-
-</div>
+<p>When a deployment selects IUA, these roles are realized by the <a href="ActorDefinition-iua-authorization-client-eu-api.html">IHE IUA Authorization Client</a>, <a href="ActorDefinition-iua-resource-server-eu-api.html">IHE IUA Resource Server</a>, and <a href="ActorDefinition-iua-authorization-server-eu-api.html">IHE IUA Authorization Server</a>. The client obtains a token with <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-71.html">ITI-71</a> and presents it to the protected endpoint using <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-72.html">ITI-72</a>. Any MHD transaction scope depends on the supported interaction and deployment, as described in <a href="authorization.html#national-interoperability-infrastructure">Authorization</a>. A direct-system endpoint may instead select <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/backend-services.html">SMART Backend Services</a> only when the client is pre-authorized, uses asymmetric client authentication, and has no runtime end-user authorization. That flow uses a <a href="ActorDefinition-smart-backend-service-eu-api.html">SMART Backend Service</a>, the distinct <a href="ActorDefinition-smart-authorization-server-eu-api.html">SMART Authorization Server</a>, and a <a href="ActorDefinition-smart-fhir-resource-server-eu-api.html">SMART FHIR Resource Server</a>, with applicable <code class="language-plaintext highlighter-rouge">system/</code> scopes. See <a href="authorization.html#smart-app-launch">Authorization</a> for the normative profile requirements. It is a separate endpoint profile and does not imply dual conformance.</p>
 
 
 
@@ -453,7 +449,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
           IG © 2025+ <a style="color:var(--footer-hyperlink-text-color)" href="http://hl7.eu">HL7 Europe</a>.  
           Package hl7.fhir.eu.health-data-api#1.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
           Generated 
-  <span title="2026-10-23 12:01:00 +0200">
+  <span title="2026-10-23 14:38:00 +0200">
     2026-10-23
   </span>
 

@@ -6,8 +6,8 @@
   "status" : "draft",
   "package-id" : "hl7.fhir.eu.health-data-api",
   "ig-ver" : "1.0.0-ballot",
-  "date" : "Fri, 23 Oct, 2026 12:03:51 +0200",
-  "dateISO8601" : "2026-10-23T12:03:51+02:00",
+  "date" : "Fri, 23 Oct, 2026 14:37:38 +0200",
+  "dateISO8601" : "2026-10-23T14:37:38+02:00",
   "errs" : 1,
   "warnings" : 7,
   "hints" : 30,
@@ -15,5 +15,5 @@
   "suppressed-warnings" : 4,
   "version" : "4.0.1",
   "tool" : "5.0.0 (3)",
-  "maxMemory" : 1945902504
+  "maxMemory" : 2088262632
 }

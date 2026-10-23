@@ -6,7 +6,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en" dir="ltr">
   <head>
 <script src="../../bridge-right.js" defer></script>
-<base href="../../../sources/right/en/resource-access.html">
+<base href="https://euridice-org.github.io/eu-health-data-api/comparison/eu-health-data-api-ballot-recon-auth/sources/right/en/resource-access.html">
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
     <title>Resource Access - EU Health Data API v1.0.0-ballot</title>
 
@@ -407,17 +407,13 @@ KAR 2026-09-28 Review follow-ups:
 
 <h4 id="core-resources">Core Resources</h4>
 
-<div class="auth-change">
-
-  <p>Resource Access uses SMART App Launch 2.2 FHIR resource scopes selected for the endpoint's
+<p>Resource Access uses SMART App Launch 2.2 FHIR resource scopes selected for the endpoint's
 authorization flow: interactive Patient or Clinician Access uses the applicable <code class="language-plaintext highlighter-rouge">patient/</code> or
 <code class="language-plaintext highlighter-rouge">user/</code> scopes, and Backend Services uses applicable <code class="language-plaintext highlighter-rouge">system/</code> scopes. These are SMART scopes, not
 generic FHIR scopes or IUA transaction scopes. Core IUA defines no API-specific scope vocabulary;
 the IPA and PDQm interactions on this page are not IUA MHD transactions and have no IUA MHD
 transaction scopes. IUA deployments apply their selected authorization policy to these interactions.
 See <a href="authorization.html#tokens-scopes-enforcement-and-errors">Authorization</a>.</p>
-
-</div>
 
 <p>In the regulatory context of EHDS, the following resources represent individual data entries included in the priority data categories, so should be made available for read/search access if the system claims support for the corresponding priority data category. Data models inherit from <a href="https://build.fhir.org/ig/hl7-eu/base/">HL7 Europe Core</a>. Required search parameters are from <a href="https://hl7.org/fhir/uv/ipa/STU1.1/">HL7 International Patient Access (IPA)</a> version 1.1.0, supplemented by <a href="https://profiles.ihe.net/PCC/QEDm/">IHE-QEDm</a> where IPA does not define them.</p>
 
@@ -638,7 +634,7 @@ GET /MedicationRequest?patient=123
           IG © 2025+ <a style="color:var(--footer-hyperlink-text-color)" href="http://hl7.eu">HL7 Europe</a>.  
           Package hl7.fhir.eu.health-data-api#1.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
           Generated 
-  <span title="2026-10-23 12:01:00 +0200">
+  <span title="2026-10-23 14:38:00 +0200">
     2026-10-23
   </span>
 

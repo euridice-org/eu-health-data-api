@@ -323,9 +323,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 </ul>
 
 </div>
-<div class="auth-change">
-
-  <p>This page is <strong>informative</strong>. This Implementation Guide specifies interoperability
+<p>This page is <strong>informative</strong>. This Implementation Guide specifies interoperability
 for API interactions. It does not define an EHR logging format, a common audit
 service, or an exchange mechanism for audit records between systems.
 <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#anx_2">EHDS Annex II sections 3.2-3.3</a>
@@ -335,31 +333,31 @@ relevant deployment policy. This page is explanatory and does not add conformanc
 requirements to this Implementation Guide. See <a href="regulatoryAnchors.html#scope-of-this-ig">Regulatory Anchors</a>
 for the scope of this guide.</p>
 
-  <h3 id="api-events-and-later-user-access">API Events and Later User Access</h3>
+<h3 id="api-events-and-later-user-access">API Events and Later User Access</h3>
 
-  <p>An API access event and a later user's access to the data are different events
+<p>An API access event and a later user's access to the data are different events
 that may occur in different systems. For example:</p>
 
-  <ol>
-    <li>A professional at a Health Professional Access Service selects a patient,
+<ol>
+  <li>A professional at a Health Professional Access Service selects a patient,
 and that service requests data from a source EHR through the API. The source
 EHR can record the API request and its response or release of data according
 to its local logging requirements.</li>
-    <li>The receiving system stores or otherwise makes the returned data available.
+  <li>The receiving system stores or otherwise makes the returned data available.
 If a user later views that data in the receiving system, that system can
 record the user access according to its own local logging requirements.</li>
-  </ol>
+</ol>
 
-  <p>The source EHR does not necessarily observe the later user access in the
+<p>The source EHR does not necessarily observe the later user access in the
 receiving system. Conversely, a record of the API request at the source does
 not by itself describe every subsequent use of the received data. These records
 therefore describe different points in the access path; this example does not
 define a shared audit record or require the systems to exchange or correlate
 their logs.</p>
 
-  <h3 id="authentication-authorization-and-logging">Authentication, Authorization, and Logging</h3>
+<h3 id="authentication-authorization-and-logging">Authentication, Authorization, and Logging</h3>
 
-  <p>Authentication and API authorization are also distinct from logging. Depending
+<p>Authentication and API authorization are also distinct from logging. Depending
 on the selected environment and authorization flow, a request may carry user or
 clinical context, or may use a pre-authorized system-to-system flow without
 runtime user authentication. Implementations should not assume that every API
@@ -369,22 +367,20 @@ depends on the deployment and applicable policy. See
 <a href="authorization.html#authentication-and-api-authorization">Authorization</a> for the
 authentication and API authorization boundaries.</p>
 
-  <h3 id="logging-infrastructure-and-scope">Logging Infrastructure and Scope</h3>
+<h3 id="logging-infrastructure-and-scope">Logging Infrastructure and Scope</h3>
 
-  <p>Deployments may use <a href="https://www.rfc-editor.org/rfc/rfc5424">syslog</a>,
+<p>Deployments may use <a href="https://www.rfc-editor.org/rfc/rfc5424">syslog</a>,
 <a href="https://profiles.ihe.net/ITI/TF/Volume1/ch-9.html">IHE ATNA</a>, or
 <a href="https://profiles.ihe.net/ITI/BALP/index.html">IHE BALP</a>, as appropriate to their
 logging needs. This informative guidance does not mandate a particular logging
 technology or profile.</p>
 
-  <p>This page does not prescribe audit-event content, identifiers, retention,
+<p>This page does not prescribe audit-event content, identifiers, retention,
 transport, a common log format, cross-system log interoperability, or
 cross-system correlation. It does not determine the legal basis for access,
 consent policy, or the responsibilities assigned to a particular service or
 EHR. Those matters remain governed by applicable law, adopted specifications,
 and deployment policy.</p>
-
-</div>
 
 
 
@@ -436,7 +432,7 @@ and deployment policy.</p>
           IG © 2025+ <a style="color:var(--footer-hyperlink-text-color)" href="http://hl7.eu">HL7 Europe</a>.  
           Package hl7.fhir.eu.health-data-api#1.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
           Generated 
-  <span title="2026-10-23 12:01:00 +0200">
+  <span title="2026-10-23 14:38:00 +0200">
     2026-10-23
   </span>
 

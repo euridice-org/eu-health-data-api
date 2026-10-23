@@ -30,7 +30,7 @@ This value set is not used here; it may be used elsewhere (e.g. specifications a
   "title" : "EEHRxF Document Type ValueSet",
   "status" : "draft",
   "experimental" : false,
-  "date" : "2026-10-23T12:03:51+02:00",
+  "date" : "2026-10-23T14:37:38+02:00",
   "publisher" : "HL7 Europe",
   "contact" : [{
     "name" : "HL7 Europe",

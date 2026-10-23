@@ -352,9 +352,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <h3 id="authorization-discovery">Authorization Discovery</h3>
 
-<div class="auth-change">
-
-  <p>FHIR capability discovery at <code class="language-plaintext highlighter-rouge">[base]/metadata</code> declares the API interactions and security
+<p>FHIR capability discovery at <code class="language-plaintext highlighter-rouge">[base]/metadata</code> declares the API interactions and security
 service coding. It is not OAuth endpoint metadata. Where SMART is selected by
 <a href="authorization.html#environment-specific-requirements">Authorization</a>, the client discovers
 the authorization configuration from <code class="language-plaintext highlighter-rouge">[base]/.well-known/smart-configuration</code>, which publishes
@@ -363,17 +361,15 @@ algorithms, and scopes. Interactive SMART modes additionally publish the authori
 PKCE and launch capabilities; Backend Services publishes <code class="language-plaintext highlighter-rouge">client_credentials</code>, asymmetric
 authentication, and applicable <code class="language-plaintext highlighter-rouge">system/</code> scopes.</p>
 
-  <p>The discovered Authorization Server need not be co-located with the FHIR server. Its
+<p>The discovered Authorization Server need not be co-located with the FHIR server. Its
 <a href="ActorDefinition-authentication-service-eu-api.html">Authentication Service</a> may be grouped with it
 or separately deployed; this does not create an additional SMART discovery endpoint or FHIR
 security-service code. See <a href="authorization.html#authentication-and-api-authorization">authentication and API authorization</a>.</p>
 
-  <p>Where IUA is selected, the established deployment preconfigures the Authorization Server and
+<p>Where IUA is selected, the established deployment preconfigures the Authorization Server and
 the client applies the selected IUA metadata and transaction requirements. A CapabilityStatement
 does not replace either SMART or IUA metadata. See <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/conformance.html">SMART conformance</a>
 and <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-103.html">IHE IUA ITI-103</a>.</p>
-
-</div>
 
 <h3 id="provider-actors">Provider Actors</h3>
 
@@ -521,7 +517,7 @@ and <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-103.html">IHE IUA ITI-1
           IG © 2025+ <a style="color:var(--footer-hyperlink-text-color)" href="http://hl7.eu">HL7 Europe</a>.  
           Package hl7.fhir.eu.health-data-api#1.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
           Generated 
-  <span title="2026-10-23 12:01:00 +0200">
+  <span title="2026-10-23 14:38:00 +0200">
     2026-10-23
   </span>
 

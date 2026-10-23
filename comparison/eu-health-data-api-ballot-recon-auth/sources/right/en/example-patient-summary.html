@@ -335,15 +335,11 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <h3 id="actors">Actors</h3>
 
-<div class="auth-change">
-
-  <ul>
-    <li><strong><a href="actors.html#document-consumer">Document Consumer</a></strong> - The healthcare provider's system acting as the <a href="ActorDefinition-eu-authorization-client-eu-api.html">Health Data API Authorization Client</a>, realized as either a <a href="ActorDefinition-smart-backend-service-eu-api.html">SMART Backend Service</a> or an <a href="ActorDefinition-iua-authorization-client-eu-api.html">IHE IUA Authorization Client</a>, according to the selected deployment flow</li>
-    <li><strong><a href="actors.html#document-access-provider">Document Access Provider</a></strong> - The system holding the patient's health data and acting as the <a href="ActorDefinition-eu-authorization-resource-server-eu-api.html">Health Data API Resource Server</a>, realized as either a <a href="ActorDefinition-smart-fhir-resource-server-eu-api.html">SMART FHIR Resource Server</a> or an <a href="ActorDefinition-iua-resource-server-eu-api.html">IHE IUA Resource Server</a></li>
-    <li><strong><a href="ActorDefinition-eu-authorization-server-eu-api.html">Health Data API Authorization Server</a></strong> - The distinct participant that issues the token, realized as either a <a href="ActorDefinition-smart-authorization-server-eu-api.html">SMART Authorization Server</a> or an <a href="ActorDefinition-iua-authorization-server-eu-api.html">IHE IUA Authorization Server</a>; optional co-location is a deployment choice.</li>
-  </ul>
-
-</div>
+<ul>
+  <li><strong><a href="actors.html#document-consumer">Document Consumer</a></strong> - The healthcare provider's system acting as the <a href="ActorDefinition-eu-authorization-client-eu-api.html">Health Data API Authorization Client</a>, realized as either a <a href="ActorDefinition-smart-backend-service-eu-api.html">SMART Backend Service</a> or an <a href="ActorDefinition-iua-authorization-client-eu-api.html">IHE IUA Authorization Client</a>, according to the selected deployment flow</li>
+  <li><strong><a href="actors.html#document-access-provider">Document Access Provider</a></strong> - The system holding the patient's health data and acting as the <a href="ActorDefinition-eu-authorization-resource-server-eu-api.html">Health Data API Resource Server</a>, realized as either a <a href="ActorDefinition-smart-fhir-resource-server-eu-api.html">SMART FHIR Resource Server</a> or an <a href="ActorDefinition-iua-resource-server-eu-api.html">IHE IUA Resource Server</a></li>
+  <li><strong><a href="ActorDefinition-eu-authorization-server-eu-api.html">Health Data API Authorization Server</a></strong> - The distinct participant that issues the token, realized as either a <a href="ActorDefinition-smart-authorization-server-eu-api.html">SMART Authorization Server</a> or an <a href="ActorDefinition-iua-authorization-server-eu-api.html">IHE IUA Authorization Server</a>; optional co-location is a deployment choice.</li>
+</ul>
 
 <h3 id="prerequisites">Prerequisites</h3>
 
@@ -368,11 +364,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <p></p>
 </div>
 
-<div class="auth-change">
-
-  <p><em>Note: The Authorization Server is a separate participant and MAY be co-located with the Document Access Provider as an optional deployment choice. The diagram shows alternative SMART Backend Services and IHE IUA authorization branches; select one profile for the protected endpoint. The token-request details below illustrate only the SMART Backend Services branch. For IUA, use the <a href="ActorDefinition-iua-authorization-client-eu-api.html">IHE IUA Authorization Client</a>, <a href="ActorDefinition-iua-authorization-server-eu-api.html">IHE IUA Authorization Server</a>, and <a href="ActorDefinition-iua-resource-server-eu-api.html">IHE IUA Resource Server</a> flow described in <a href="authorization.html#national-interoperability-infrastructure">Authorization</a>.</em></p>
-
-</div>
+<p><em>Note: The Authorization Server is a separate participant and MAY be co-located with the Document Access Provider as an optional deployment choice. The diagram shows alternative SMART Backend Services and IHE IUA authorization branches; select one profile for the protected endpoint. The token-request details below illustrate only the SMART Backend Services branch. For IUA, use the <a href="ActorDefinition-iua-authorization-client-eu-api.html">IHE IUA Authorization Client</a>, <a href="ActorDefinition-iua-authorization-server-eu-api.html">IHE IUA Authorization Server</a>, and <a href="ActorDefinition-iua-resource-server-eu-api.html">IHE IUA Resource Server</a> flow described in <a href="authorization.html#national-interoperability-infrastructure">Authorization</a>.</em></p>
 
 <h3 id="step-by-step-flow">Step-by-Step Flow</h3>
 
@@ -387,11 +379,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <h4 id="step-2-obtain-access-token">Step 2: Obtain Access Token</h4>
 
-<div class="auth-change">
-
-  <p>This token-request example uses SMART Backend Services: the Document Consumer's Health Data API Authorization Client role is realized by the SMART Backend Service. Its pre-authorization and client-authentication prerequisites are listed above; the Health Data API Authorization Server and Health Data API Resource Server roles remain distinct. An IUA deployment instead uses its selected IUA actors and flow as described in <a href="authorization.html#national-interoperability-infrastructure">Authorization</a>.</p>
-
-</div>
+<p>This token-request example uses SMART Backend Services: the Document Consumer's Health Data API Authorization Client role is realized by the SMART Backend Service. Its pre-authorization and client-authentication prerequisites are listed above; the Health Data API Authorization Server and Health Data API Resource Server roles remain distinct. An IUA deployment instead uses its selected IUA actors and flow as described in <a href="authorization.html#national-interoperability-infrastructure">Authorization</a>.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>POST https://provider.example.org/auth/token
 Content-Type: application/x-www-form-urlencoded
@@ -540,7 +528,7 @@ Authorization: Bearer [access_token]
           IG © 2025+ <a style="color:var(--footer-hyperlink-text-color)" href="http://hl7.eu">HL7 Europe</a>.  
           Package hl7.fhir.eu.health-data-api#1.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
           Generated 
-  <span title="2026-10-23 12:01:00 +0200">
+  <span title="2026-10-23 14:38:00 +0200">
     2026-10-23
   </span>
 

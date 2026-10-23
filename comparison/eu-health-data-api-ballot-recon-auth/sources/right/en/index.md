@@ -9,7 +9,7 @@ The development of this Implementation Guide version has been supported by the
 
 | | |
 | :--- | :--- |
-| ![](PinClipart.com_work-in-progress-sign_1945030.png) | Work in progress: This build includes authorization-related changes being developed on the eu-health-data-api-ballot-recon-auth branch. They have been merged into this build to show progress and reduce the risk of larger merge conflicts later. Where practicable, authorization changes are marked in purple text with a vertical purple bar to the left. |
+| ![](PinClipart.com_work-in-progress-sign_1945030.png) | Work in progress: This build includes authorization-related changes being developed on the eu-health-data-api-ballot-recon-auth branch. They have been merged into this build to show progress and reduce the risk of larger merge conflicts later. |
 
 ### Regulatory Basis
 

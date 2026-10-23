@@ -6,7 +6,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en" dir="ltr">
   <head>
 <script src="../../bridge-right.js" defer></script>
-<base href="../../../sources/right/en/authorization.html">
+<base href="https://euridice-org.github.io/eu-health-data-api/comparison/eu-health-data-api-ballot-recon-auth/sources/right/en/authorization.html">
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
     <title>Authorization - EU Health Data API v1.0.0-ballot</title>
 
@@ -333,103 +333,100 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 </ul>
 
 </div>
+<h3 id="introduction">Introduction</h3>
 
-<div class="auth-change">
+<p>Authentication and authorization are required by the EHDS. This IG applies <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/">SMART App Launch 2.2</a> and <a href="https://profiles.ihe.net/ITI/IUA/index.html">IHE IUA Revision 2.5</a>, as selected for each environment in <a href="implementation.html#the-european-interoperability-landscape">The European Interoperability Landscape</a>. This page summarizes the EHDS evidence, compares the two specifications, selects a conformance target for each environment, and then defines the applicable actors, discovery, token, scope, and enforcement requirements. Potential hybrid rules remain future work.</p>
 
-  <h3 id="introduction">Introduction</h3>
+<h3 id="ehds-requirements">EHDS Requirements</h3>
 
-  <p>Authentication and authorization are required by the EHDS. This IG applies <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/">SMART App Launch 2.2</a> and <a href="https://profiles.ihe.net/ITI/IUA/index.html">IHE IUA Revision 2.5</a>, as selected for each environment in <a href="implementation.html#the-european-interoperability-landscape">The European Interoperability Landscape</a>. This page summarizes the EHDS evidence, compares the two specifications, selects a conformance target for each environment, and then defines the applicable actors, discovery, token, scope, and enforcement requirements. Potential hybrid rules remain future work.</p>
+<p>The EHDS requires identification and authentication of natural persons and health professionals, proxy and representation services, security controls, and logging. The applicable enacted provisions are <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_4">Article 4(2)-(3)</a>, <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_12">Articles 12</a>, <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_16">16</a>, <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_30">30</a>, <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_36">36</a>, and <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_73">73</a>; <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#rct_7">Recitals 7</a>, <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#rct_21">21</a>, and <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#rct_112">112</a>; and <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#anx_2">Annex II section 3</a>. This factual summary is not legal advice, and several details remain subject to future implementing acts. A valid API token is not itself evidence of consent, a treatment relationship, patient identity, or entitlement beyond its granted scope and applicable local policy. Technical authentication and API authorization do not determine the applicable lawful basis under GDPR Article 6 or the applicable condition under Article 9(2).</p>
 
-  <h3 id="ehds-requirements">EHDS Requirements</h3>
+<table>
+  <thead>
+    <tr>
+      <th>EHDS topic</th>
+      <th>Enacted evidence</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Identification and login</td>
+      <td><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_16">Article 16</a> establishes electronic identification for access services and future interoperable cross-border mechanisms. <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_12">Article 12</a> and <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#anx_2">Annex II section 3.1</a> address health-professional identification and authentication.</td>
+    </tr>
+    <tr>
+      <td>European Digital Identity Wallet (EIDAS)</td>
+      <td><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#rct_21">Recital 21</a> states that digital proxy solutions should align with European Digital Identity Wallet technical specifications. The Wallet is an electronic-identification means recognised under <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32014R0910#art_6">Article 6 of eIDAS</a>, on which <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_12">Articles 12</a> and <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_16">16</a> rely; detailed cross-border alignment remains subject to Article 16 implementing acts.</td>
+    </tr>
+    <tr>
+      <td>Proxy and representation</td>
+      <td><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_4">Article 4(2)-(3)</a> and <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#rct_21">Recital 21</a> require transparent proxy services and representation arrangements.</td>
+    </tr>
+    <tr>
+      <td>Security</td>
+      <td><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_30">Article 30</a>, <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_36">Article 36(3)(e)-(f)</a>, <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#rct_112">Recital 112</a>, and <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#anx_2">Annex II section 3</a> address security, confidentiality, integrity, and EHR security controls.</td>
+    </tr>
+    <tr>
+      <td>Logging</td>
+      <td><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#anx_2">Annex II sections 3.2-3.3</a> require identified access-event logging and review tooling; <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_73">Article 73(1)(e)</a> requires identifiable logs for secure secondary-use processing.</td>
+    </tr>
+  </tbody>
+</table>
 
-  <p>The EHDS requires identification and authentication of natural persons and health professionals, proxy and representation services, security controls, and logging. The applicable enacted provisions are <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_4">Article 4(2)-(3)</a>, <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_12">Articles 12</a>, <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_16">16</a>, <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_30">30</a>, <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_36">36</a>, and <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_73">73</a>; <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#rct_7">Recitals 7</a>, <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#rct_21">21</a>, and <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#rct_112">112</a>; and <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#anx_2">Annex II section 3</a>. This factual summary is not legal advice, and several details remain subject to future implementing acts. A valid API token is not itself evidence of consent, a treatment relationship, patient identity, or entitlement beyond its granted scope and applicable local policy. Technical authentication and API authorization do not determine the applicable lawful basis under GDPR Article 6 or the applicable condition under Article 9(2).</p>
+<p>Consent, patient matching, audit, identity proofing, client registration, trust establishment, key lifecycle, revocation, federation, and policy administration remain distinct responsibilities. They are established by the applicable deployment and law, not by a token alone.</p>
 
-  <table>
-    <thead>
-      <tr>
-        <th>EHDS topic</th>
-        <th>Enacted evidence</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Identification and login</td>
-        <td><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_16">Article 16</a> establishes electronic identification for access services and future interoperable cross-border mechanisms. <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_12">Article 12</a> and <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#anx_2">Annex II section 3.1</a> address health-professional identification and authentication.</td>
-      </tr>
-      <tr>
-        <td>European Digital Identity Wallet (EIDAS)</td>
-        <td><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#rct_21">Recital 21</a> states that digital proxy solutions should align with European Digital Identity Wallet technical specifications. The Wallet is an electronic-identification means recognised under <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32014R0910#art_6">Article 6 of eIDAS</a>, on which <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_12">Articles 12</a> and <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_16">16</a> rely; detailed cross-border alignment remains subject to Article 16 implementing acts.</td>
-      </tr>
-      <tr>
-        <td>Proxy and representation</td>
-        <td><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_4">Article 4(2)-(3)</a> and <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#rct_21">Recital 21</a> require transparent proxy services and representation arrangements.</td>
-      </tr>
-      <tr>
-        <td>Security</td>
-        <td><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_30">Article 30</a>, <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_36">Article 36(3)(e)-(f)</a>, <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#rct_112">Recital 112</a>, and <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#anx_2">Annex II section 3</a> address security, confidentiality, integrity, and EHR security controls.</td>
-      </tr>
-      <tr>
-        <td>Logging</td>
-        <td><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#anx_2">Annex II sections 3.2-3.3</a> require identified access-event logging and review tooling; <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_73">Article 73(1)(e)</a> requires identifiable logs for secure secondary-use processing.</td>
-      </tr>
-    </tbody>
-  </table>
+<p>See <a href="logging-audit-considerations.html">Logging and Audit Considerations (Informative)</a> for an explanation of API access events and later user access at a receiving system.</p>
 
-  <p>Consent, patient matching, audit, identity proofing, client registration, trust establishment, key lifecycle, revocation, federation, and policy administration remain distinct responsibilities. They are established by the applicable deployment and law, not by a token alone.</p>
+<h3 id="ihe-iua-and-smart-app-launch">IHE IUA And SMART App Launch</h3>
 
-  <p>See <a href="logging-audit-considerations.html">Logging and Audit Considerations (Informative)</a> for an explanation of API access events and later user access at a receiving system.</p>
+<p>SMART and IUA both apply OAuth-based authorization to healthcare APIs, but neither is a subset of the other. SMART couples authorization discovery to the FHIR endpoint and supplies application-launch context and FHIR resource scopes. <a href="https://profiles.ihe.net/ITI/IUA/index.html#3442-use-cases">IUA</a> supports direct access and access through intermediaries using OAuth-based authorization. Its <a href="https://profiles.ihe.net/ITI/IUA/index.html#3714221-json-web-token-option">JWT option</a> profiles claims for user identity, clinical context, and consent-related information where applicable; other supported token options do not require JWT format. Cross-community use still requires agreed trust and authorization policy.</p>
 
-  <h3 id="ihe-iua-and-smart-app-launch">IHE IUA And SMART App Launch</h3>
+<table class="grid">
+  <thead>
+    <tr>
+      <th>Aspect</th>
+      <th>SMART App Launch</th>
+      <th>IHE IUA</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Discovery</td>
+      <td>FHIR server at <code class="language-plaintext highlighter-rouge">{base}/.well-known/smart-configuration</code></td>
+      <td>Authorization Server metadata; locating the server is out of scope</td>
+    </tr>
+    <tr>
+      <td>Scope model</td>
+      <td>FHIR resource scopes such as <code class="language-plaintext highlighter-rouge">patient/Observation.rs</code></td>
+      <td>Core IUA defines no API-specific scope vocabulary; MHD integration defines <code class="language-plaintext highlighter-rouge">ITI-65</code> through <code class="language-plaintext highlighter-rouge">ITI-68</code> when the corresponding MHD actors are grouped with IUA</td>
+    </tr>
+    <tr>
+      <td>Context</td>
+      <td>Launch context and token-response parameters</td>
+      <td>Profiles user identity, clinical context, and consent-related claims under the applicable token option and integration</td>
+    </tr>
+    <tr>
+      <td>Interactive use</td>
+      <td>App launch is a core use case</td>
+      <td>Authorization-code grant is supported, without an app-launch framework</td>
+    </tr>
+    <tr>
+      <td>System-to-system use</td>
+      <td>Backend Services with client credentials, asymmetric authentication, and <code class="language-plaintext highlighter-rouge">system/</code> scopes</td>
+      <td>Client credentials with IUA actors and selected integration requirements</td>
+    </tr>
+  </tbody>
+</table>
 
-  <p>SMART and IUA both apply OAuth-based authorization to healthcare APIs, but neither is a subset of the other. SMART couples authorization discovery to the FHIR endpoint and supplies application-launch context and FHIR resource scopes. <a href="https://profiles.ihe.net/ITI/IUA/index.html#3442-use-cases">IUA</a> supports direct access and access through intermediaries using OAuth-based authorization. Its <a href="https://profiles.ihe.net/ITI/IUA/index.html#3714221-json-web-token-option">JWT option</a> profiles claims for user identity, clinical context, and consent-related information where applicable; other supported token options do not require JWT format. Cross-community use still requires agreed trust and authorization policy.</p>
+<p>Same-endpoint dual support is not claimed because the two specifications do not define scope, discovery, or token-context precedence.</p>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Aspect</th>
-        <th>SMART App Launch</th>
-        <th>IHE IUA</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Discovery</td>
-        <td>FHIR server at <code class="language-plaintext highlighter-rouge">{base}/.well-known/smart-configuration</code></td>
-        <td>Authorization Server metadata; locating the server is out of scope</td>
-      </tr>
-      <tr>
-        <td>Scope model</td>
-        <td>FHIR resource scopes such as <code class="language-plaintext highlighter-rouge">patient/Observation.rs</code></td>
-        <td>Core IUA defines no API-specific scope vocabulary; MHD integration defines <code class="language-plaintext highlighter-rouge">ITI-65</code> through <code class="language-plaintext highlighter-rouge">ITI-68</code> when the corresponding MHD actors are grouped with IUA</td>
-      </tr>
-      <tr>
-        <td>Context</td>
-        <td>Launch context and token-response parameters</td>
-        <td>Profiles user identity, clinical context, and consent-related claims under the applicable token option and integration</td>
-      </tr>
-      <tr>
-        <td>Interactive use</td>
-        <td>App launch is a core use case</td>
-        <td>Authorization-code grant is supported, without an app-launch framework</td>
-      </tr>
-      <tr>
-        <td>System-to-system use</td>
-        <td>Backend Services with client credentials, asymmetric authentication, and <code class="language-plaintext highlighter-rouge">system/</code> scopes</td>
-        <td>Client credentials with IUA actors and selected integration requirements</td>
-      </tr>
-    </tbody>
-  </table>
+<p>SMART App Launch is best suited to context-aware application launch or authorization-endpoint discovery from a FHIR server URL. IUA is suited to established environments where actor locations, including the Authorization Server, are preconfigured, and the deployment requires IUA transaction integration or its JWT claim profile. This IG selects one profile per concrete endpoint; a deployment may expose distinct endpoints using different profiles, but it does not claim same-endpoint dual conformance. Future versions may define hybrid deployments.</p>
 
-  <p>Same-endpoint dual support is not claimed because the two specifications do not define scope, discovery, or token-context precedence.</p>
-
-  <p>SMART App Launch is best suited to context-aware application launch or authorization-endpoint discovery from a FHIR server URL. IUA is suited to established environments where actor locations, including the Authorization Server, are preconfigured, and the deployment requires IUA transaction integration or its JWT claim profile. This IG selects one profile per concrete endpoint; a deployment may expose distinct endpoints using different profiles, but it does not claim same-endpoint dual conformance. Future versions may define hybrid deployments.</p>
-
-  <p>SMART deployments do not automatically use the IUA JWT claim profile. That is an IUA token
+<p>SMART deployments do not automatically use the IUA JWT claim profile. That is an IUA token
 option, not a protocol-independent overlay. A deployment that needs equivalent claims with SMART
 must separately define their issuance, validation, and semantics; this IG defines no
 cross-protocol claim profile.</p>
 
-  <p>Claims and scopes are orthogonal. Scopes express requested or granted access to interactions;
+<p>Claims and scopes are orthogonal. Scopes express requested or granted access to interactions;
 claims convey identity or other context that an Authorization Server issues and a Resource Server
 may use with the granted scope and local policy. A scope may itself be represented as a token claim,
 but that does not make the concepts interchangeable. Core IUA defines no API-specific scope
@@ -437,10 +434,10 @@ vocabulary; the <a href="https://profiles.ihe.net/ITI/IUA/index.html#3364-use-wi
 defines transaction scopes only for the corresponding MHD transactions grouped with IUA. Neither
 contextual claims nor scopes alone establish consent or entitlement to every matching resource.</p>
 
-  <p><a name="authorization-server-deployment"></a></p>
-  <h4 id="authentication-and-api-authorization">Authentication And API Authorization</h4>
+<p><a name="authorization-server-deployment"></a></p>
+<h4 id="authentication-and-api-authorization">Authentication And API Authorization</h4>
 
-  <p>The <a href="ActorDefinition-authentication-service-eu-api.html">Authentication Service</a> authenticates an
+<p>The <a href="ActorDefinition-authentication-service-eu-api.html">Authentication Service</a> authenticates an
 end user, directly or through a Wallet or upstream identity provider. The
 <a href="ActorDefinition-eu-authorization-server-eu-api.html">Health Data API Authorization Server</a> relies on an
 acceptable authentication result when user authentication is required, applies authorization
@@ -450,7 +447,7 @@ validates or introspects tokens and enforces granted authorization. See
 <a href="actors.html#authentication-and-authorization-groupings">Authentication and Authorization Groupings</a>
 for the logical roles and deployment boundaries.</p>
 
-  <p>The Authentication Service MAY be grouped with the Authorization Server in one implementation,
+<p>The Authentication Service MAY be grouped with the Authorization Server in one implementation,
 or they may be separately deployed. In the latter case, their trust relationship and authentication
 interface are deployment-defined, not an interoperable transaction specified by this IG. The
 deployment must establish trusted authentication sources, intended recipients, freshness and replay
@@ -460,14 +457,14 @@ the formal <a href="https://profiles.ihe.net/ITI/IUA/index.html#34112-authorizat
 or <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html">SMART Authorization Server</a>
 conformance obligations.</p>
 
-  <p>Authorization Server / Resource Server co-location is a separate optional deployment choice, not
+<p>Authorization Server / Resource Server co-location is a separate optional deployment choice, not
 a required provider grouping. A Resource Server accepts tokens only under its established issuer
 trust, token-validation arrangements, audience or resource binding, granted scopes, and local policy.
 SMART discovery can publish absolute authorization endpoints on a different host; it does not
 require common hosting or a common operator. Each illustrated Authorization Server serves the
 illustrated API trust relationship, not all APIs or all Member States.</p>
 
-  <p>An <a href="https://openid.net/specs/openid-connect-core-1_0.html#IDToken">OIDC ID token</a> describes an
+<p>An <a href="https://openid.net/specs/openid-connect-core-1_0.html#IDToken">OIDC ID token</a> describes an
 authentication event for its intended client; it is not an API access token. A Wallet presentation
 is likewise not an API access token. A deployment could separately profile
 <a href="https://www.rfc-editor.org/rfc/rfc8693.html#section-2">OAuth Token Exchange</a>, but neither this actor
@@ -475,23 +472,23 @@ separation nor Wallet support requires an app to exchange identity evidence for 
 Acceptance of such evidence, its audience, trust and authorization semantics would need a separate
 profile; no such exchange is claimed here.</p>
 
-  <p><a href="https://profiles.ihe.net/ITI/IUA/index.html#34411-authorization-grant-types">IUA's grant discussion</a>
+<p><a href="https://profiles.ihe.net/ITI/IUA/index.html#34411-authorization-grant-types">IUA's grant discussion</a>
 also describes optional SAML and JWT assertion grants for federation. These are distinct from
 RFC 8693 token exchange and from an OIDC ID token; accepting a particular assertion still requires
 the deployment's trust and protocol agreements. This IG does not select one of those interfaces
 for the Authentication Service.</p>
 
-  <h3 id="using-eidas-for-user-authentication">Using eIDAS for User Authentication</h3>
+<h3 id="using-eidas-for-user-authentication">Using eIDAS for User Authentication</h3>
 
-  <p>The <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32014R0910#art_6">European Digital Identity Wallet</a> (under eIDAS) can work alongside a SMART authorization flow. The Authorization Server can use the Wallet as one way to authenticate the user, while SMART handles the application’s authorization to access health data.</p>
+<p>The <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32014R0910#art_6">European Digital Identity Wallet</a> (under eIDAS) can work alongside a SMART authorization flow. The Authorization Server can use the Wallet as one way to authenticate the user, while SMART handles the application’s authorization to access health data.</p>
 
-  <p>Where the selected environment requires support for eIDAS-recognised electronic identification—for example, electronic health data access services under <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_16">EHDS Article 16(1)</a>—the Authorization Server SHALL support authentication using those means, directly or through an identity provider. This applies to interactive
+<p>Where the selected environment requires support for eIDAS-recognised electronic identification—for example, electronic health data access services under <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_16">EHDS Article 16(1)</a>—the Authorization Server SHALL support authentication using those means, directly or through an identity provider. This applies to interactive
 SMART or IUA authorization-code flows, not to a pre-authorized SMART Backend Service using
 <code class="language-plaintext highlighter-rouge">client_credentials</code>. The Authorization Server validates the authentication result, establishes
 the user session, applies the applicable authorization policy, and issues a code or token only
 after successful authorization.</p>
 
-  <p>A deployment MAY use
+<p>A deployment MAY use
 <a href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID for Verifiable Presentations 1.0</a>
 to obtain and validate a verifiable presentation from a Wallet, but this IG does not select a
 presentation format, credential schema, or Wallet-to-Authorization-Server profile. The
@@ -503,9 +500,9 @@ address assurance levels for electronic-identification schemes and means. The EH
 select a universal assurance level for health API access, and an eID assurance level does not
 itself authorize access to an API resource.</p>
 
-  <!-- all this Bootstrap html for getting an narrow image to fit nicely in text - 640 pix wide -->
+<!-- all this Bootstrap html for getting an narrow image to fit nicely in text - 640 pix wide -->
 
-  <div>
+<div>
     <figure class="figure" data-section-number="3.2">
   
   <?xml version="1.0" encoding="us-ascii" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" preserveAspectRatio="none" version="1.1" viewBox="0 0 1121 1130" zoomAndPan="magnify"><defs /><g><rect fill="#FFFFFF" height="87.118" style="stroke:#181818;stroke-width:1.0;" width="10" x="309.5" y="949.3661" /><rect fill="#FFFFFF" height="31.706" style="stroke:#181818;stroke-width:1.0;" width="10" x="459" y="291.8519" /><rect fill="#FFFFFF" height="356.1782" style="stroke:#181818;stroke-width:1.0;" width="10" x="459" y="427.6578" /><rect fill="#FFFFFF" height="31.706" style="stroke:#181818;stroke-width:1.0;" width="10" x="459" y="833.2481" /><rect fill="#FFFFFF" height="201.9421" style="stroke:#181818;stroke-width:1.0;" width="10" x="748" y="477.0699" /><rect fill="#FFFFFF" height="31.706" style="stroke:#181818;stroke-width:1.0;" width="10" x="1006" y="535.4819" /><rect fill="none" height="642.2203" style="stroke:#000000;stroke-width:1.5;" width="1094" x="10" y="230.7338" /><rect fill="none" height="83.118" style="stroke:#000000;stroke-width:1.5;" width="433.5" x="660.5" y="492.0699" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="40" x2="40" y1="77.2038" y2="1054.4842" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="314" x2="314" y1="77.2038" y2="1054.4842" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="464" x2="464" y1="77.2038" y2="1054.4842" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="752.5" x2="752.5" y1="77.2038" y2="1054.4842" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="1011" x2="1011" y1="77.2038" y2="1054.4842" /><rect fill="#E2E2F0" height="33.0679" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="41" x="20" y="43.1358" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="27" x="27" y="65.1018">App</text><rect fill="#E2E2F0" height="33.0679" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="41" x="20" y="1053.4842" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="27" x="27" y="1075.4501">App</text><rect fill="#E2E2F0" height="71.2038" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="127" x="251" y="5" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="78" x="275.5" y="26.9659">FHIR Server</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="109" x="260" y="46.0339">(Health Data API</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="113" x="258" y="65.1018">Resource Server)</text><rect fill="#E2E2F0" height="71.2038" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="127" x="251" y="1053.4842" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="78" x="275.5" y="1075.4501">FHIR Server</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="109" x="260" y="1094.518">(Health Data API</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="113" x="258" y="1113.586">Resource Server)</text><rect fill="#E2E2F0" height="52.1358" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="152" x="388" y="24.0679" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="105" x="411.5" y="46.0339">Health Data API</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="138" x="395" y="65.1018">Authorization Server</text><rect fill="#E2E2F0" height="52.1358" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="152" x="388" y="1053.4842" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="105" x="411.5" y="1075.4501">Health Data API</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="138" x="395" y="1094.518">Authorization Server</text><rect fill="#E2E2F0" height="33.0679" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="165" x="670.5" y="43.1358" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="151" x="677.5" y="65.1018">Authentication Service</text><rect fill="#E2E2F0" height="33.0679" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="165" x="670.5" y="1053.4842" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="151" x="677.5" y="1075.4501">Authentication Service</text><rect fill="#E2E2F0" height="33.0679" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="146" x="938" y="43.1358" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="132" x="945" y="65.1018">eIDAS / EUDI Wallet</text><rect fill="#E2E2F0" height="33.0679" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="146" x="938" y="1053.4842" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="132" x="945" y="1075.4501">eIDAS / EUDI Wallet</text><rect fill="#FFFFFF" height="87.118" style="stroke:#181818;stroke-width:1.0;" width="10" x="309.5" y="949.3661" /><rect fill="#FFFFFF" height="31.706" style="stroke:#181818;stroke-width:1.0;" width="10" x="459" y="291.8519" /><rect fill="#FFFFFF" height="356.1782" style="stroke:#181818;stroke-width:1.0;" width="10" x="459" y="427.6578" /><rect fill="#FFFFFF" height="31.706" style="stroke:#181818;stroke-width:1.0;" width="10" x="459" y="833.2481" /><rect fill="#FFFFFF" height="201.9421" style="stroke:#181818;stroke-width:1.0;" width="10" x="748" y="477.0699" /><rect fill="#FFFFFF" height="31.706" style="stroke:#181818;stroke-width:1.0;" width="10" x="1006" y="535.4819" /><path d="M387,92.2038 L387,172.2038 L829,172.2038 L829,102.2038 L819,92.2038 L387,92.2038 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;" /><path d="M819,92.2038 L819,102.2038 L829,102.2038 L819,92.2038 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="366" x="411.75" y="111.1008">Distinct logical roles; MAY be grouped in one implementation.</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="384" x="411.75" y="128.8068">Separate-service authentication interface is deployment-defined.</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="298" x="411.75" y="146.5128">AS / FHIR co-location is a separate optional choice.</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="257" x="411.75" y="164.2188">No universal or central EU server is implied.</text><rect fill="#EEEEEE" height="3" style="stroke:#EEEEEE;stroke-width:1.0;" width="1114" x="0" y="199.8808" /><line style="stroke:#000000;stroke-width:1.0;" x1="0" x2="1114" y1="199.8808" y2="199.8808" /><line style="stroke:#000000;stroke-width:1.0;" x1="0" x2="1114" y1="202.8808" y2="202.8808" /><rect fill="#EEEEEE" height="25.706" style="stroke:#000000;stroke-width:2.0;" width="130" x="492" y="188.0278" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="113" x="498" y="205.9248">Get Access Token</text><path d="M10,230.7338 L73,230.7338 L73,240.4398 L63,250.4398 L10,250.4398 L10,230.7338 " fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;" /><rect fill="none" height="642.2203" style="stroke:#000000;stroke-width:1.5;" width="1094" x="10" y="230.7338" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="18" x="25" y="245.6308">alt</text><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="185" x="88" y="244.4927">[Pre-authorized Backend Service]</text><polygon fill="#181818" points="447,287.8519,457,291.8519,447,295.8519,451,291.8519" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;" x1="40.5" x2="453" y1="291.8519" y2="291.8519" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="86" x="47.5" y="268.3369">Token request</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="312" x="47.5" y="286.0429">client_credentials + asymmetric client authentication</text><polygon fill="#181818" points="51.5,319.5579,41.5,323.5579,51.5,327.5579,47.5,323.5579" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="45.5" x2="463" y1="323.5579" y2="323.5579" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="77" x="57.5" y="317.7489">Access token</text><path d="M387,336.5579 L387,363.5579 L829,363.5579 L829,346.5579 L819,336.5579 L387,336.5579 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;" /><path d="M819,336.5579 L819,346.5579 L829,346.5579 L819,336.5579 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="335" x="436.25" y="355.4549">No runtime end-user authentication in Backend Services</text><line style="stroke:#000000;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="10" x2="1104" y1="370.2639" y2="370.2639" /><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="196" x="15" y="382.0228">[Interactive user or patient launch]</text><polygon fill="#181818" points="447,423.6578,457,427.6578,447,431.6578,451,427.6578" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;" x1="40.5" x2="453" y1="427.6578" y2="427.6578" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="131" x="47.5" y="404.1428">Authorization request</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="171" x="47.5" y="421.8488">(selected SMART or IUA flow)</text><polygon fill="#181818" points="736,473.0699,746,477.0699,736,481.0699,740,477.0699" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;" x1="469" x2="742" y1="477.0699" y2="477.0699" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="168" x="476" y="453.5549">Arrange user authentication</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="200" x="476" y="471.2609">(deployment-defined integration)</text><path d="M660.5,492.0699 L727.5,492.0699 L727.5,501.7759 L717.5,511.7759 L660.5,511.7759 L660.5,492.0699 " fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;" /><rect fill="none" height="83.118" style="stroke:#000000;stroke-width:1.5;" width="433.5" x="660.5" y="492.0699" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="22" x="675.5" y="506.9669">opt</text><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="235" x="742.5" y="505.8288">[Wallet selected as authentication means]</text><polygon fill="#181818" points="994,531.4819,1004,535.4819,994,539.4819,998,535.4819" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;" x1="758" x2="1000" y1="535.4819" y2="535.4819" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="220" x="765" y="529.6729">Request user-approved presentation</text><polygon fill="#181818" points="769,563.1879,759,567.1879,769,571.1879,765,567.1879" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="763" x2="1010" y1="567.1879" y2="567.1879" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="224" x="775" y="561.3789">Presentation, not an API access token</text><path d="M763,587.1879 L763,632.1879 L999,632.1879 L999,597.1879 L989,587.1879 L763,587.1879 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;" /><path d="M989,587.1879 L989,597.1879 L999,597.1879 L989,587.1879 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="215" x="769" y="606.0849">Authenticate user; validate evidence</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="158" x="769" y="623.7909">or trusted upstream result</text><polygon fill="#181818" points="480,675.012,470,679.012,480,683.012,476,679.012" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="474" x2="752" y1="679.012" y2="679.012" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="174" x="486" y="655.497">Trusted authentication result</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="255" x="486" y="673.203">(format and interface deployment-defined)</text><path d="M474,692.012 L474,755.012 L651,755.012 L651,702.012 L641,692.012 L474,692.012 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;" /><path d="M641,692.012 L641,702.012 L651,702.012 L641,692.012 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="85" x="480" y="710.909">Validate result</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="129" x="480" y="728.615">Establish user session</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="156" x="480" y="746.321">Apply authorization policy</text><polygon fill="#181818" points="51.5,779.8361,41.5,783.8361,51.5,787.8361,47.5,783.8361" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="45.5" x2="463" y1="783.8361" y2="783.8361" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="194" x="57.5" y="778.027">Redirect with authorization code</text><polygon fill="#181818" points="447,829.2481,457,833.2481,447,837.2481,451,833.2481" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;" x1="40.5" x2="453" y1="833.2481" y2="833.2481" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="86" x="47.5" y="809.7331">Token request</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="294" x="47.5" y="827.4391">(code + PKCE for SMART; client auth as applicable)</text><polygon fill="#181818" points="51.5,860.9541,41.5,864.9541,51.5,868.9541,47.5,864.9541" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="45.5" x2="463" y1="864.9541" y2="864.9541" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="258" x="57.5" y="859.1451">Access token and applicable launch context</text><rect fill="#EEEEEE" height="3" style="stroke:#EEEEEE;stroke-width:1.0;" width="1114" x="0" y="901.8071" /><line style="stroke:#000000;stroke-width:1.0;" x1="0" x2="1114" y1="901.8071" y2="901.8071" /><line style="stroke:#000000;stroke-width:1.0;" x1="0" x2="1114" y1="904.8071" y2="904.8071" /><rect fill="#EEEEEE" height="25.706" style="stroke:#000000;stroke-width:2.0;" width="117" x="498.5" y="889.9541" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="100" x="504.5" y="907.8511">Access Content</text><polygon fill="#181818" points="297.5,945.3661,307.5,949.3661,297.5,953.3661,301.5,949.3661" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;" x1="40.5" x2="303.5" y1="949.3661" y2="949.3661" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="250" x="47.5" y="943.5571">Protected resource request (access token)</text><path d="M324,962.3661 L324,1007.3661 L579,1007.3661 L579,972.3661 L569,962.3661 L324,962.3661 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;" /><path d="M569,962.3661 L569,972.3661 L579,972.3661 L569,962.3661 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="158" x="330" y="981.2631">Validate / introspect token</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="234" x="330" y="998.9692">Enforce granted scopes and local policy</text><polygon fill="#181818" points="51.5,1032.4842,41.5,1036.4842,51.5,1040.4842,47.5,1036.4842" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="45.5" x2="313.5" y1="1036.4842" y2="1036.4842" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="124" x="57.5" y="1030.6752">Authorized response</text><!--SRC=[XLLHRzem47xFhpZj2THcVQVhfAom5Ksj4BIR9Y5DhdE0LSVsR8UE_VhTEGaGg5IUI7pttNVVT-U45sMSyAA2i5sFLOKcA6iMSQSHLa87p38wZaeg9qo4mhdUyuUlTzCvBD1lqI_Du0w5ZXiOYoYWc4sNPex1rbvY6pBy0280v_HHplAAEcwiL_z493PjSiej5lrC3aH3puT89R49fQE7VZHEnyK2hc3oD9x2Jw4rnXIQtcUPiH71KYagSzdc0_t6AaHbP0HjrrH9WxSQmpNS5x_W6M7jRUsm16N06WHLEOqaP4oKFYQ41RB84VFG40JHvwrCHByITA02bEYqtJ52Nk9A6ImRa4Gz2IvjhcsN6a10QF71Edv95EN6KfqcyS52RHJr5UZ0Uf04xUdlv0b2afP1cBRYKcXAO2MoxEO6lY6PBYM608_s1GtSt6GPcGKpZxbeNQBUlmZvmecj0GrVvo3_JBGlBaPjjiS_DOQuD99gcVXRUYnP1feqk20dTbM5qIi9pVc9J7lKJtbEi7a-whX5Ha_7RtWuOW5yJJ0L0f7CQ-hwt87J7aA6DFymPMk4ZAGVf4GIq54EqzEYDd9ptcn_VFTD3m9gb97aMjmNyqT6cZuLiDBsTTWvp1XCEi5uByowBTldIs3dOvB6QErJG0D8uz3EEUnhqxoVz5wXC2759n9SddcahM0UywQ1n2CNpddIjmJdCNHJVfBC_gHijcXs57V9_e0mlEKWJhqZyGyUUhNUHB2hpiEZJMyKkOQjqAhaHzmg6YE9IqEIHby7xhDs8Ngacutgrpfs0gVPOKZczjZ6dWZIP936A-ihmOJBenKz5txu5kt5NfGV7SyZ9loRX2YUjGgRnk50QlIqT4xlGFHcoLcjvAvJgzdJywsOOwaykGslYgxLFeAqvVlhEU0esiZPzzi9a0ZDm5uVhsMQ8s98cZrh7Bwpcqd2GtYxEKI6LFqR-Sv9rqsRSiklgGvVDYrDllUOwCnJoscEVVTjQLd3u7YWXbdV3iuV7PouOZ-z3OvLIWbBCp7KgUJxd3uML218wp0avdpRwaxyhak6J7qUha7YvAoXh-P_]--></g></svg>
@@ -515,7 +512,7 @@ itself authorize access to an API resource.</p>
     <p></p>
 </div>
 
-  <p>The <a href="https://eudi.dev/3.0.0/">EUDI Wallet Architecture and Reference Framework (ARF) v3.0.0</a>
+<p>The <a href="https://eudi.dev/3.0.0/">EUDI Wallet Architecture and Reference Framework (ARF) v3.0.0</a>
 is an informative guide to harmonised Wallet implementation, not a replacement
 for binding eIDAS requirements (<a href="https://eudi.dev/3.0.0/main/01-introduction/#13-purpose-scope-and-audience">§1.3</a>).
 Its Annex 2 requirements apply to named actors, not Users
@@ -526,7 +523,7 @@ For implementation guidance, see the <a href="https://eudi.dev/3.0.0/main/04-hig
 <a href="https://eudi.dev/3.0.0/main/05-data-model-and-data-exchange-protocols/#574-remote-attestation-presentation-using-openid4vp-and-haip">OpenID4VP with HAIP</a>,
 and <a href="https://eudi.dev/3.0.0/main/06-trust-model/">trust model</a>.</p>
 
-  <p>Under eIDAS, using the Wallet for user authentication is at the User's
+<p>Under eIDAS, using the Wallet for user authentication is at the User's
 <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02014R0910-20241018#art_5f">voluntary request and limited to the minimum data necessary</a>;
 this does not remove an applicable environment-conditioned identification
 requirement. A service provider is a Wallet Relying Party when it requests
@@ -546,7 +543,7 @@ attestation, it verifies device binding; the ARF also describes other
 LoA High concerns PID authentication, not all attestations
 (<a href="https://eudi.dev/3.0.0/main/02-eudi-wallet-functionalities/#22-identification-and-authentication">§2.2</a>).</p>
 
-  <p>The ARF does not define a Wallet-to-Authorization-Server integration profile
+<p>The ARF does not define a Wallet-to-Authorization-Server integration profile
 or how a deployment maps Wallet results to local accounts or patients and makes
 authorization decisions. A validated result may be used as upstream user
 authentication before continuing the selected SMART or IUA authorization-code
@@ -554,7 +551,7 @@ flow with local policy. A Wallet presentation is not an access token or grant
 and does not itself confer API authorization or determine the protocol's scopes
 or claims.</p>
 
-  <p>For example, a patient can sign in to a Wellness Application using a Wallet without yet granting
+<p>For example, a patient can sign in to a Wellness Application using a Wallet without yet granting
 that app access to an EHR. The app initiates the selected
 <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html">SMART authorization-code flow</a>
 for the target EHR API. Its Authorization Server arranges authentication through the Authentication
@@ -566,13 +563,13 @@ same-device interaction, is deployment-specific; an EHR-hosted login page is not
 Uploading data additionally requires granted write permissions and a supported receiving interaction;
 sign-in does not create either.</p>
 
-  <h3 id="environment-specific-requirements">Environment-Specific Requirements</h3>
+<h3 id="environment-specific-requirements">Environment-Specific Requirements</h3>
 
-  <p>The figure below described the European interoperability landscape.</p>
+<p>The figure below described the European interoperability landscape.</p>
 
-  <!-- all this Bootstrap html for getting an narrow image to fit nicely in text - 640 pix wide -->
+<!-- all this Bootstrap html for getting an narrow image to fit nicely in text - 640 pix wide -->
 
-  <div>
+<div>
     <figure class="figure" data-section-number="3.2">
   
   <svg host="65bd71144e" xmlns="http://www.w3.org/2000/svg" style="background: transparent; background-color: transparent;" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="802px" height="442px" viewBox="0 0 802 442" id="ge-svg-QkU3Z9lwpENdpB6T0quL" content="&lt;mxfile&gt;&lt;diagram id=&quot;Y86ME5r39prPMLShu3kK&quot; name=&quot;Page-1&quot;&gt;7V1bc6O4Ev4t5yFVkwe7QOL6mDiZyVbtnE2d1NTuPsog22yw8Qpy8f76IwECJLCNZeHYmXWmJqYRArq//tRqNeQKTpbv3whaL74nIY6vgBG+X8G7KwA8YNP/mWBTCGwHFoI5icJCZNSCp+gfXAhNLn2JQpyWskKUJUmcRWtRGCSrFQ4yQYYISd7EZrMkDgXBGs1xS/AUoLgt/T0Ks0V5W7ZRyx9wNF/wM5tGuWeJeONSkC5QmLw1RPD+Ck5IkmTFt+X7BMdMd6Jevm7ZW10YwauszwH1JddHlJ2k2Ybf79siyvDTGgVs+42a9AreLrJlTLdM+nUWxfEkiROSt4b3Dvuh8jQjyTPu2vOKSRZRfd7E0XxF92UJ67I47yuKX8rzfsfLKSZU9pShDJe76aH4vXGl5Y19w8kSZ2RDmywaures8g7fakM5HEdlN7xJiUaTGweVMJlXXdeapF9KZW6xhOlr0Gy3nlC5FeNZxtRMD49W81/zrTurS5G/04tb4TSl0pv1WkmRXluP0BD1CKGoSMvVoki3jyK5pn5FUxw/JmmURQnT0TIKQ9ZmiyobuqauuGadLd/njLTGU5RGwXidxJs56+mWfZskCQnzm7Fv6T96exPjyqbnn7Ctse1LAj8XjA2zLXMdWdZs5MIuAT1DQ9YQ0H/FBcbRit2DQTdjSRMB1R51pho+laALhC0IXQEnLtG2ElTv/P3C2Oo2KPz8hu4k8+kXdnn0K/91nfdJqXaVjWZoGcWboukDjl8xM0xjf5oTPttrgvV7c0dxUrZnlZAlihv7XhGJEP1Nbw5lL4QNDzvbBWi9rclbCXu20zKMYk+MM6qtUels7SMTsl6gVdklKGTUv7JRqW4mrjTO90WrMMc022nwW833ZIR2NqP98zMxu94W/pePX43TvFFQihdW9UXvZfoc0e5YnwUfj0oPFtrlEMj76NDvFAXPc5K8rMKRZGRA4Zfbt/nlunEbIQ4SghgCR9kiCp5zEsoPj1YUmPwMctuGoXe2a1yO0G4WJyiTNRdG6TpGG948dxVg/CdarhOSIWaG2xrN9Nuc/f5vfiLEGOkXZrxkjQmaRnGUbXLRjCCq1peAQY67CKW0wkuKLpToFhhtvrU9kW9tT6BbYPvH060NfsKAwJQU6zjHRwQ/Ukx+m/7Fwk9KHoyLRR4No9caIIVoSmQJ7bOjncKhh8GY3Sp1j+fiipe50qlPUpWPEAmY7fOG6Ti3ed6c48cDDROU2NIaAlUDemsYU4KD2eFnpiPBwRXhAJzD4UA3G4jY4ntQv+/5+UeH73FgsSGyTwAAbJsPCfWX606S/b55wCim6reM+x8NABenOoJF/bZxXReKJOqKru5YGkjUOqPYv1BtgJhjG48keaVzZ6LmK67VUieQfUV0FUjD3OPVaev3C8NwnMmkhDOXx+xeRyEiz19okxliPwV06SYO2c91D9cIqtPUQIez/NPGPqVjgkYJmaNV9E/O0jodoGOwc23BYKZviZM24GmwmKPBYi3G+pp/umzJPrvGCq0W+0bHwTcaR24z09ZBWuVk9w//Y+HOJs3wcs8Z5WBBAS48omwOhtIk3/SA6OG2hkk+J2EcthJvbQAlLyTAIjM0QIVX4Q1L8bHIIEYpncPnUEIk4+JyRrCdGxANvoHdhUDna4m0Yg9P/kEqoectE5WAn1De/hoxBeSTc/weZX80vv/Jvo/tcuvuvbHrbsM3KFNs8oPGvmdyQXGkY9tcUB+cbwlHP2ISUeOwcOnOqEBCr22OpTSP4Ct7YVMeRHBMGexVNGFzArMDKvkZqImYY1UN1km0ytImkpbvj0zWwCP0x7aASNeUGKxATHncQV05HOy8q0JVra5yfFfK6Qd57xNTZJ1vPAVH3qzXMb2nnWOnNoq02rD2HIEhLVccUW1DB0P6agzJ47EmQ9IunsrNhGSLZM5mhve1tIkwFaJq06ajSJshShc4LC+FbTwiloVb5RJgVCT4R31VNScaJtTDiUU004ZFJ90dY2RurEsJdHXOASckSdPRbx1xcGdu4+jIGHbM+4EY6lTzOB7qGECDjXf47cXzfp1mOgXvT+gxKM+vlQPyOYTHHCM8VwQ1TKccoEj+1unJfysf7+FifYNGm8CdLbbtTeDd8SLkgzK3tSkN9H0DT2A5UuBJYTP2Gx/XHSoOdXQkHf/lo3PlI9cwZGBp4CMd+c2LjlOmCcmzqKeOUFzRujIDVcm8o6xrK442sD3aXFYyphra/mwMgN3D3DEzkz0jYXv84kn0j0nKtIYrH0ic4imOe64trRZY0gq2xmGuVxXRhQ5zFHsRzg+7CYKizOsJk9coYEs+Xx7ubp6uB15UME1xVcHyJMvy/UcR02dOmT2SZEZNx1fpOw35+PGGrEaHoww5fG2kXBXQNtJpCzA+5lB9a79ee+nXtKRgBA6w9uv+xCmxitYVJy86r4XzUe+AV9skpyMM5nk5zlG+BDxPwxzHNdWi4MtfkhSi4Crw7YyC26GqfV6hKpBKtywocVLvFA2wd3ekL1R1VbN9F73Us222VM2ktsyWekzE2igdKCEIDBEk0KgWlA9ei5bLLFxD7koj4uDHIs48AHE1ToQ59Xhf/cNJFyU7EOfpQNz2+ohuFFmWPA1zd6JObs+XtmtoFVewJR/Og0R+NqgIfsuUB3SJ+DVC37oc6A9AtiNjbNiHOVLnormaT7iX6BMc1af2CTnIhcP5hI5623PNs3zi6k2nI50jP6IpZ1x1VG+6Oqp9/03nnDKdw9eJDnjqRU865zOn4X9uapFXmvVQi6cYnmmqfFGbmZxR5QvUEWK1oxqewa8qX6SFu97TXF7axDuypNSdxqjmgytotUBpbJhnNdHtWUFbRJT68y3S02ZV5HpwcC1zl/zmCn0w9HQsaJzrCNgclL6kWtcqO2qd3Cq7Vg1BghUtuR5PZQTyPnO97gfby2y9MMaVk5xKJlNMZ3Yt3Sgl0A+oI6qYXnqgC5yO5tt07Q1UL3uBUYPXa27L3x2EgoyZo/ONOjvmutMky5Jlp+m2vsVn7wuP9k+dHx6VPBu2545QnArYviMOp9wjj/LqXkUjl2kJGlipmQLuNYVtSqbQUCHqAzWC5Sbctza+l1N3r0oPv3beiM/dg1Yr21zLCxPPZMHcASJegC89edCXo21feqLBH2zB3O/1CMNlMsNgHC3Hyh7QEXrxvGIvZujPAsN79LYg6Gwc05SmqLbqw0andExHbZwwgbZIXCnrIsXipwvF2eX0eB5ZSy1BO5sivQrJksvoetdKScv31nBl/b5iftjtSOpdRpVeHXlAIMLU3ztn7Jmt+9iQROEdINVDbRxw8psQeyPXkDsabGLpK6ajvY7R8/h0tHuqypPSEhyDT/ytpfnOUrvdOzv9kwpL5+guMRmIKh0oFfrZUA1wUKJKe7hKJ9P8iZ/abL4A+/GXA8rYVWLv9lqpL8be0BLzI7Zh6wi+TaBYzMZZTplTFGt3h8xhuka3pY70fFt2WPnlPr3DcBfKL5uyhvN90Kuk6zKnyMrJs6432gt+anu2ZCNtnqr4wjuejj7aUz90inP8YyZ6yqnb4/q+deDeTzbLK9PDrVCYQHEOVAUEl/nAyKCR5DY/cfc5ShuqAy2mVX9ChjMTNNWgavHnjbZ1pAxVuln/JZuief3ngOD9/wE=&lt;/diagram&gt;&lt;/mxfile&gt;">
@@ -1545,31 +1542,31 @@ sign-in does not create either.</p>
     <p></p>
 </div>
 
-  <p>Within this box, the white/grey boxes represents different environments. The authorization requirements in this
+<p>Within this box, the white/grey boxes represents different environments. The authorization requirements in this
 specification are environment specific. The different environment used are :</p>
 
-  <ul>
-    <li><strong>MyHealth@EU:</strong> authorization is outside the scope of this IG. Alignment with <a href="https://profiles.ihe.net/ITI/IUA/index.html">IHE IUA</a> is recommended.</li>
-    <li><strong>National Interoperability Infrastructure:</strong> established Member State infrastructure with
+<ul>
+  <li><strong>MyHealth@EU:</strong> authorization is outside the scope of this IG. Alignment with <a href="https://profiles.ihe.net/ITI/IUA/index.html">IHE IUA</a> is recommended.</li>
+  <li><strong>National Interoperability Infrastructure:</strong> established Member State infrastructure with
   preconfigured participants. <a href="https://profiles.ihe.net/ITI/IUA/index.html">IHE IUA</a> is recommended where
   <a href="https://profiles.ihe.net/ITI/IUA/index.html#3714221-json-web-token-option">user or patient claims</a> are needed.</li>
-    <li><strong>Wellness Applications:</strong> patient or clinician applications connecting to health data access
+  <li><strong>Wellness Applications:</strong> patient or clinician applications connecting to health data access
   services or EHR systems. <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html">SMART App Launch</a>
   is recommended where interactive third-party FHIR API access is offered; <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/backend-services.html#profile-audience-and-scope">SMART Backend Services</a>
   is permitted only for the separately defined pre-authorized server-to-server flow.</li>
-    <li><strong>Healthcare Provider:</strong> internal clinical and gateway-facing deployments. <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html">SMART App Launch</a> is recommended where interactive third-party FHIR API access is offered:
+  <li><strong>Healthcare Provider:</strong> internal clinical and gateway-facing deployments. <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html">SMART App Launch</a> is recommended where interactive third-party FHIR API access is offered:
   <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/backend-services.html#use-this-profile-when-the-following-conditions-all-apply">Backend Services</a> applies to system-to-system uploads and interactive <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html">SMART App Launch</a> applies
   to clinician access.</li>
-  </ul>
+</ul>
 
-  <h4 id="myhealtheu">MyHealth@EU</h4>
+<h4 id="myhealtheu">MyHealth@EU</h4>
 
-  <p>Authorization for MyHealth@EU is outside the scope of this IG. Deployments should align with
+<p>Authorization for MyHealth@EU is outside the scope of this IG. Deployments should align with
 <a href="https://profiles.ihe.net/ITI/IUA/index.html">IHE IUA</a>.</p>
 
-  <h4 id="national-interoperability-infrastructure">National Interoperability Infrastructure</h4>
+<h4 id="national-interoperability-infrastructure">National Interoperability Infrastructure</h4>
 
-  <p>For preconfigured system-to-system endpoints in the national infrastructure,
+<p>For preconfigured system-to-system endpoints in the national infrastructure,
 <a href="https://profiles.ihe.net/ITI/IUA/index.html">IHE IUA</a> is RECOMMENDED where national policy requires
 IUA transaction integration or its <a href="https://profiles.ihe.net/ITI/IUA/index.html#3714221-json-web-token-option">JWT Token Option</a>.
 This recommendation is limited to those endpoints; it does not require every endpoint in the
@@ -1579,29 +1576,29 @@ when all of its applicability conditions are met. The deployment selects one pro
 Resource Server endpoint; distinct endpoints may select different profiles, but this IG does not
 define dual conformance on one endpoint.</p>
 
-  <p>Interactive Wellness Application access to an HDAS or HPAS SHALL use
+<p>Interactive Wellness Application access to an HDAS or HPAS SHALL use
 <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html">SMART App Launch</a>, including the
 applicable Patient or Clinician Access flow. This interactive selection does not change the
 separate profile choice for preconfigured system-to-system endpoints.</p>
 
-  <p>For endpoints selecting IUA, use the applicable <a href="https://profiles.ihe.net/ITI/IUA/index.html#341-iua-actors-transactions-and-content-modules">IUA actors</a>
+<p>For endpoints selecting IUA, use the applicable <a href="https://profiles.ihe.net/ITI/IUA/index.html#341-iua-actors-transactions-and-content-modules">IUA actors</a>
 and metadata. Add <a href="https://profiles.ihe.net/ITI/IUA/index.html#3364-use-with-the-internet-user-authorization-iua-profile">IUA MHD transaction scopes</a>
 only for supported ITI-65 through ITI-68 transactions whose MHD actors are grouped with IUA.
 Core IUA defines no API-specific scope vocabulary, and ITI-105 has no IUA-defined transaction
 scope. SMART endpoints use the applicable SMART FHIR resource scopes instead.</p>
 
-  <h4 id="wellness-applications">Wellness Applications</h4>
+<h4 id="wellness-applications">Wellness Applications</h4>
 
-  <p>Many Wellness Applications will developed to work in different member states or with differnet HDAS deployments in a member state. This requires such applications to discover th authorization infrastruture for this HDAS. Where a system offers third-party applications interactive access to its FHIR API, it SHOULD support <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html">SMART App Launch</a> using the applicable Patient or Clinician Access capability set.</p>
+<p>Many Wellness Applications will developed to work in different member states or with differnet HDAS deployments in a member state. This requires such applications to discover th authorization infrastruture for this HDAS. Where a system offers third-party applications interactive access to its FHIR API, it SHOULD support <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html">SMART App Launch</a> using the applicable Patient or Clinician Access capability set.</p>
 
-  <p>Where a Health Data Access Service (HDAS) offers third-party applications interactive access to its FHIR API, it SHOULD support <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html">SMART App Launch</a> using the applicable Patient or Clinician Access capability set.</p>
+<p>Where a Health Data Access Service (HDAS) offers third-party applications interactive access to its FHIR API, it SHOULD support <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html">SMART App Launch</a> using the applicable Patient or Clinician Access capability set.</p>
 
-  <p>It is RECOMMENDED that it discovers the authorization endpoint using the
+<p>It is RECOMMENDED that it discovers the authorization endpoint using the
 <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html#retrieve-well-known-smart-configuration">SMART App Launch discovery mechanism</a>.
 As this app will access confidential information, it is RECOMMENDED to use the
 <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html#support-for-public-and-confidential-apps">confidential client profile</a>.</p>
 
-  <p>Where interactive third-party app access is offered, a clinician-launched Wellness Application SHOULD use
+<p>Where interactive third-party app access is offered, a clinician-launched Wellness Application SHOULD use
 <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html#launch-app-ehr-launch">SMART App Launch EHR Launch</a>.
 For the recommended Wellness-hosted-data pattern, the launch target is an application and the
 FHIR server is hosted by the Wellness Application, allowing data to be retrieved into the EHR. The
@@ -1610,193 +1607,195 @@ and use <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/conformance.html#c
 or <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/conformance.html#clinician-access-for-standalone">Clinician Access for Standalone</a>
 when not launched by an EHR.</p>
 
-  <p>A patient-launched Wellness Application typically will use
+<p>A patient-launched Wellness Application typically will use
 <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html">SMART App Launch</a>
 with the EHR as FHIR server, use the applicable <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/conformance.html#capability-sets">Patient Access for EHR Launch</a>
 or <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/conformance.html#patient-access-for-standalone-apps">Patient Access for Standalone Apps</a>
 capability set, and follow the applicable Argonaut Write successor for write workflows.</p>
 
-  <p>A Wellness Application connecting to a preconfigured, server-side provider-hosted
+<p>A Wellness Application connecting to a preconfigured, server-side provider-hosted
 EHR-system SHOULD use <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/backend-services.html#use-this-profile-when-the-following-conditions-all-apply">SMART Backend Services</a>.</p>
 
-  <h4 id="healthcare-provider">Healthcare Provider</h4>
+<h4 id="healthcare-provider">Healthcare Provider</h4>
 
-  <p>Where a system offers third-party applications interactive access to its FHIR API, it SHOULD support <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html">SMART App Launch</a> using the applicable Patient or Clinician Access capability set.</p>
+<p>Where a system offers third-party applications interactive access to its FHIR API, it SHOULD support <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html">SMART App Launch</a> using the applicable Patient or Clinician Access capability set.</p>
 
-  <p>This is this IG's environment-specific choice, not an EHDS requirement to use SMART and not a
+<p>This is this IG's environment-specific choice, not an EHDS requirement to use SMART and not a
 claim that IUA cannot support clinician access. SMART provides FHIR-based endpoint discovery and
 standalone or EHR-launch context; its Backend Services profile separately supports pre-authorized
 system-to-system access. A provider's own user interface does not become a third-party SMART App
 merely because a clinician signs in.</p>
 
-  <p>A system-to-system uploading of EEHRxF data to a gateway in order to provide the information
+<p>A system-to-system uploading of EEHRxF data to a gateway in order to provide the information
 to the national infrastructure SHOULD use <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/backend-services.html#use-this-profile-when-the-following-conditions-all-apply">SMART Backend Services</a>.</p>
 
-  <p><a name="authorization-server-discovery"></a>
+<p><a name="authorization-server-discovery"></a>
 <a name="get-access-token"></a>
 <a name="incorporate-access-token"></a></p>
 
-  <h4 id="flow-classification">Flow Classification</h4>
+<h4 id="flow-classification">Flow Classification</h4>
 
-  <p>Environment and flow are separate dimensions. "Application-guided authentication" is not an
+<p>Environment and flow are separate dimensions. "Application-guided authentication" is not an
 alternative to patient or clinician access: either user type may authenticate through an app-guided
 flow, and <a href="https://profiles.ihe.net/ITI/IUA/index.html#3442-use-cases">IUA supports interactive access</a>
 as well as system-to-system exchange. The existing environment selections above remain applicable.</p>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Flow</th>
-        <th>Client and user</th>
-        <th>Protected FHIR endpoint / data direction</th>
-        <th>Authorization and authentication</th>
-        <th>Endpoint location</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Wellness to HDAS</td>
-        <td>SMART App; patient or clinician</td>
-        <td>HDAS API; supported reads or writes</td>
-        <td>Selected Patient or Clinician Access capability set; API Authorization Server uses Authentication Service for user authentication</td>
-        <td>SMART discovery from the target FHIR base</td>
-      </tr>
-      <tr>
-        <td>Patient Wellness to EHR</td>
-        <td>SMART App; patient, standalone or EHR launch</td>
-        <td>EHR API; access or supported patient-provided submission</td>
-        <td>Applicable Patient Access capability set, authorization code and PKCE; Authentication Service may use Wallet</td>
-        <td>SMART discovery from EHR FHIR base</td>
-      </tr>
-      <tr>
-        <td>Clinician accessing Wellness-hosted data</td>
-        <td>SMART App; clinician, standalone or EHR launch</td>
-        <td>Wellness-hosted API; data retrieved into EHR</td>
-        <td>Applicable Clinician Access capability set and current-patient context where required; launch target is an application, not the FHIR API itself</td>
-        <td>SMART discovery from Wellness FHIR base</td>
-      </tr>
-      <tr>
-        <td>Pre-authorized Wellness backend to EHR</td>
-        <td>SMART Backend Service; no runtime authorizing user</td>
-        <td>Provider-hosted EHR API; supported exchange</td>
-        <td>Client credentials and asymmetric client authentication; no runtime Authentication Service step</td>
-        <td>Preconfigured deployment; required SMART metadata remains applicable</td>
-      </tr>
-      <tr>
-        <td>Provider system to gateway</td>
-        <td>SMART Backend Service; no runtime authorizing user</td>
-        <td>Gateway API; EEHRxF upload</td>
-        <td>Pre-authorized Backend Services; no runtime Authentication Service step</td>
-        <td>Configured gateway FHIR base and SMART metadata</td>
-      </tr>
-      <tr>
-        <td>Interactive provider access</td>
-        <td>SMART App; clinician, standalone or EHR launch</td>
-        <td>Selected EHR API; permitted clinician interactions</td>
-        <td>Applicable Clinician Access capability set; API Authorization Server relies on Authentication Service</td>
-        <td>SMART discovery from target FHIR base</td>
-      </tr>
-      <tr>
-        <td>Established national exchange</td>
-        <td>Selected IUA Authorization Client; user context if applicable</td>
-        <td>Configured protected API; selected transactions</td>
-        <td>IUA recommendation above; Authentication Service only when the selected flow requires user authentication</td>
-        <td>Authorization Server location preconfigured; selected IUA metadata</td>
-      </tr>
-    </tbody>
-  </table>
+<table class="grid">
+  <thead>
+    <tr>
+      <th>Flow</th>
+      <th>Client and user</th>
+      <th>Protected FHIR endpoint / data direction</th>
+      <th>Authorization and authentication</th>
+      <th>Endpoint location</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Wellness to HDAS</td>
+      <td>SMART App; patient or clinician</td>
+      <td>HDAS API; supported reads or writes</td>
+      <td>Selected Patient or Clinician Access capability set; API Authorization Server uses Authentication Service for user authentication</td>
+      <td>SMART discovery from the target FHIR base</td>
+    </tr>
+    <tr>
+      <td>Patient Wellness to EHR</td>
+      <td>SMART App; patient, standalone or EHR launch</td>
+      <td>EHR API; access or supported patient-provided submission</td>
+      <td>Applicable Patient Access capability set, authorization code and PKCE; Authentication Service may use Wallet</td>
+      <td>SMART discovery from EHR FHIR base</td>
+    </tr>
+    <tr>
+      <td>Clinician accessing Wellness-hosted data</td>
+      <td>SMART App; clinician, standalone or EHR launch</td>
+      <td>Wellness-hosted API; data retrieved into EHR</td>
+      <td>Applicable Clinician Access capability set and current-patient context where required; launch target is an application, not the FHIR API itself</td>
+      <td>SMART discovery from Wellness FHIR base</td>
+    </tr>
+    <tr>
+      <td>Pre-authorized Wellness backend to EHR</td>
+      <td>SMART Backend Service; no runtime authorizing user</td>
+      <td>Provider-hosted EHR API; supported exchange</td>
+      <td>Client credentials and asymmetric client authentication; no runtime Authentication Service step</td>
+      <td>Preconfigured deployment; required SMART metadata remains applicable</td>
+    </tr>
+    <tr>
+      <td>Provider system to gateway</td>
+      <td>SMART Backend Service; no runtime authorizing user</td>
+      <td>Gateway API; EEHRxF upload</td>
+      <td>Pre-authorized Backend Services; no runtime Authentication Service step</td>
+      <td>Configured gateway FHIR base and SMART metadata</td>
+    </tr>
+    <tr>
+      <td>Interactive provider access</td>
+      <td>SMART App; clinician, standalone or EHR launch</td>
+      <td>Selected EHR API; permitted clinician interactions</td>
+      <td>Applicable Clinician Access capability set; API Authorization Server relies on Authentication Service</td>
+      <td>SMART discovery from target FHIR base</td>
+    </tr>
+    <tr>
+      <td>Established national exchange</td>
+      <td>Selected IUA Authorization Client; user context if applicable</td>
+      <td>Configured protected API; selected transactions</td>
+      <td>IUA recommendation above; Authentication Service only when the selected flow requires user authentication</td>
+      <td>Authorization Server location preconfigured; selected IUA metadata</td>
+    </tr>
+  </tbody>
+</table>
 
-  <p>In each row, the API Authorization Server is the server selected for that endpoint and trust
+<p>In each row, the API Authorization Server is the server selected for that endpoint and trust
 relationship; it need not be hosted by the FHIR server. See the
 <a href="actors.html#authentication-and-authorization-groupings">optional actor groupings</a>.</p>
 
-  <h3 id="smart-app-launch">SMART App Launch</h3>
+<h3 id="smart-app-launch">SMART App Launch</h3>
 
-  <p>The SMART roles used by this IG are <a href="ActorDefinition-smart-app-eu-api.html">SMART App</a>, <a href="ActorDefinition-smart-backend-service-eu-api.html">SMART Backend Service</a>, <a href="ActorDefinition-smart-fhir-resource-server-eu-api.html">SMART FHIR Resource Server</a>, <a href="ActorDefinition-smart-authorization-server-eu-api.html">SMART Authorization Server</a>, and <a href="ActorDefinition-smart-launching-system-eu-api.html">SMART Launching System</a>. Registration and client-key exchange are out of band.</p>
+<p>The SMART roles used by this IG are <a href="ActorDefinition-smart-app-eu-api.html">SMART App</a>, <a href="ActorDefinition-smart-backend-service-eu-api.html">SMART Backend Service</a>, <a href="ActorDefinition-smart-fhir-resource-server-eu-api.html">SMART FHIR Resource Server</a>, <a href="ActorDefinition-smart-authorization-server-eu-api.html">SMART Authorization Server</a>, and <a href="ActorDefinition-smart-launching-system-eu-api.html">SMART Launching System</a>. Registration and client-key exchange are out of band.</p>
 
-  <p>Interactive Patient and Clinician Access flows SHALL use the authorization-code grant and PKCE as specified by <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html">SMART App Launch</a>. All SMART Apps SHALL support PKCE; servers SHALL support <code class="language-plaintext highlighter-rouge">S256</code> and SHALL NOT support <code class="language-plaintext highlighter-rouge">plain</code>. Public clients do not authenticate at the token endpoint. Confidential interactive clients use their registered authentication method.</p>
+<p>Interactive Patient and Clinician Access flows SHALL use the authorization-code grant and PKCE as specified by <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html">SMART App Launch</a>. All SMART Apps SHALL support PKCE; servers SHALL support <code class="language-plaintext highlighter-rouge">S256</code> and SHALL NOT support <code class="language-plaintext highlighter-rouge">plain</code>. Public clients do not authenticate at the token endpoint. Confidential interactive clients use their registered authentication method.</p>
 
-  <p>Patient Access for Standalone Apps requires <code class="language-plaintext highlighter-rouge">launch-standalone</code>, <code class="language-plaintext highlighter-rouge">client-public</code> or <code class="language-plaintext highlighter-rouge">client-confidential-symmetric</code>, <code class="language-plaintext highlighter-rouge">context-standalone-patient</code>, and <code class="language-plaintext highlighter-rouge">permission-patient</code>. Patient Access for EHR Launch requires <code class="language-plaintext highlighter-rouge">launch-ehr</code>, a permitted client capability, <code class="language-plaintext highlighter-rouge">context-ehr-patient</code>, and <code class="language-plaintext highlighter-rouge">permission-patient</code>. Clinician Access for Standalone requires <code class="language-plaintext highlighter-rouge">launch-standalone</code>, a permitted client capability, <code class="language-plaintext highlighter-rouge">permission-user</code>, and <code class="language-plaintext highlighter-rouge">permission-patient</code>. Clinician Access for EHR Launch requires <code class="language-plaintext highlighter-rouge">launch-ehr</code>, a permitted client capability, <code class="language-plaintext highlighter-rouge">context-ehr-patient</code>, <code class="language-plaintext highlighter-rouge">context-ehr-encounter</code>, <code class="language-plaintext highlighter-rouge">permission-user</code>, and <code class="language-plaintext highlighter-rouge">permission-patient</code>. These released capability sets are defined by <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/conformance.html">SMART conformance</a>.</p>
+<p>Patient Access for Standalone Apps requires <code class="language-plaintext highlighter-rouge">launch-standalone</code>, <code class="language-plaintext highlighter-rouge">client-public</code> or <code class="language-plaintext highlighter-rouge">client-confidential-symmetric</code>, <code class="language-plaintext highlighter-rouge">context-standalone-patient</code>, and <code class="language-plaintext highlighter-rouge">permission-patient</code>. Patient Access for EHR Launch requires <code class="language-plaintext highlighter-rouge">launch-ehr</code>, a permitted client capability, <code class="language-plaintext highlighter-rouge">context-ehr-patient</code>, and <code class="language-plaintext highlighter-rouge">permission-patient</code>. Clinician Access for Standalone requires <code class="language-plaintext highlighter-rouge">launch-standalone</code>, a permitted client capability, <code class="language-plaintext highlighter-rouge">permission-user</code>, and <code class="language-plaintext highlighter-rouge">permission-patient</code>. Clinician Access for EHR Launch requires <code class="language-plaintext highlighter-rouge">launch-ehr</code>, a permitted client capability, <code class="language-plaintext highlighter-rouge">context-ehr-patient</code>, <code class="language-plaintext highlighter-rouge">context-ehr-encounter</code>, <code class="language-plaintext highlighter-rouge">permission-user</code>, and <code class="language-plaintext highlighter-rouge">permission-patient</code>. These released capability sets are defined by <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/conformance.html">SMART conformance</a>.</p>
 
-  <p>SMART Backend Services requires pre-authorized access, <code class="language-plaintext highlighter-rouge">client_credentials</code>, <code class="language-plaintext highlighter-rouge">private_key_jwt</code>, and normally <code class="language-plaintext highlighter-rouge">system/</code> scopes, as specified by <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/backend-services.html">SMART Backend Services</a> and <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/client-confidential-asymmetric.html">asymmetric client authentication</a>. Client assertions SHALL use an appropriate <code class="language-plaintext highlighter-rouge">typ</code>, <code class="language-plaintext highlighter-rouge">alg</code>, <code class="language-plaintext highlighter-rouge">kid</code>, <code class="language-plaintext highlighter-rouge">iss</code>, <code class="language-plaintext highlighter-rouge">sub</code>, <code class="language-plaintext highlighter-rouge">aud</code>, <code class="language-plaintext highlighter-rouge">exp</code>, and <code class="language-plaintext highlighter-rouge">jti</code>; the Authorization Server SHALL validate the signature, short expiry, audience, and replay protection. These requirements do not apply to public interactive clients.</p>
+<p>SMART Backend Services requires pre-authorized access, <code class="language-plaintext highlighter-rouge">client_credentials</code>, <code class="language-plaintext highlighter-rouge">private_key_jwt</code>, and normally <code class="language-plaintext highlighter-rouge">system/</code> scopes, as specified by <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/backend-services.html">SMART Backend Services</a> and <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/client-confidential-asymmetric.html">asymmetric client authentication</a>. Client assertions SHALL use an appropriate <code class="language-plaintext highlighter-rouge">typ</code>, <code class="language-plaintext highlighter-rouge">alg</code>, <code class="language-plaintext highlighter-rouge">kid</code>, <code class="language-plaintext highlighter-rouge">iss</code>, <code class="language-plaintext highlighter-rouge">sub</code>, <code class="language-plaintext highlighter-rouge">aud</code>, <code class="language-plaintext highlighter-rouge">exp</code>, and <code class="language-plaintext highlighter-rouge">jti</code>; the Authorization Server SHALL validate the signature, short expiry, audience, and replay protection. These requirements do not apply to public interactive clients.</p>
 
-  <p><a name="smart-server-time-synchronization"></a></p>
-  <h4 id="smart-server-time-synchronization">SMART Server Time Synchronization</h4>
+<p><a name="smart-server-time-synchronization"></a></p>
+<h4 id="smart-server-time-synchronization">SMART Server Time Synchronization</h4>
 
-  <p>For both interactive SMART App Launch and SMART Backend Services, this IG recommends (<code class="language-plaintext highlighter-rouge">SHOULD</code>)
+<p>For both interactive SMART App Launch and SMART Backend Services, this IG recommends (<code class="language-plaintext highlighter-rouge">SHOULD</code>)
 that SMART Authorization Server and SMART FHIR Resource Server actors be grouped with the
 <a href="https://profiles.ihe.net/ITI/TF/Volume1/ch-7.html">IHE Consistent Time (CT) Time Client</a>. This is
 an additional IG-level recommendation; SMART App Launch does not itself require CT. It applies to
 the two server roles, not to SMART Apps or SMART Backend Services solely by virtue of their client
 roles.</p>
 
-  <p>Consistent time supports evaluation of time-bounded security data. For example, SMART asymmetric
+<p>Consistent time supports evaluation of time-bounded security data. For example, SMART asymmetric
 client authentication defines an <code class="language-plaintext highlighter-rouge">exp</code> claim for client assertions that SHALL be no more than five
 minutes in the future (<a href="https://hl7.org/fhir/smart-app-launch/STU2.2/client-confidential-asymmetric.html#authenticating-to-the-token-endpoint">SMART client authentication</a>).
 See <a href="#time-synchronization">Time Synchronization</a> for shared NTP deployment guidance.</p>
 
-  <h4 id="smart-discovery">SMART Discovery</h4>
+<h4 id="smart-discovery">SMART Discovery</h4>
 
-  <p>FHIR capabilities are discovered from <code class="language-plaintext highlighter-rouge">[base]/metadata</code>; SMART metadata is discovered from <code class="language-plaintext highlighter-rouge">[base]/.well-known/smart-configuration</code>. SMART discovery SHALL publish absolute endpoint URLs and align its <code class="language-plaintext highlighter-rouge">token_endpoint</code>, grant types, capabilities, token-endpoint authentication methods, signing algorithms, and scopes with the selected flow. Interactive modes additionally publish the authorization endpoint, authorization-code and PKCE support, launch capabilities, and the selected Patient or Clinician capability set. Backend Services publishes <code class="language-plaintext highlighter-rouge">client_credentials</code>, asymmetric authentication, and supported system scopes. <code class="language-plaintext highlighter-rouge">jwks_uri</code> is for server-key discovery only; client keys are registered out of band.</p>
+<p>FHIR capabilities are discovered from <code class="language-plaintext highlighter-rouge">[base]/metadata</code>; SMART metadata is discovered from <code class="language-plaintext highlighter-rouge">[base]/.well-known/smart-configuration</code>. SMART discovery SHALL publish absolute endpoint URLs and align its <code class="language-plaintext highlighter-rouge">token_endpoint</code>, grant types, capabilities, token-endpoint authentication methods, signing algorithms, and scopes with the selected flow. Interactive modes additionally publish the authorization endpoint, authorization-code and PKCE support, launch capabilities, and the selected Patient or Clinician capability set. Backend Services publishes <code class="language-plaintext highlighter-rouge">client_credentials</code>, asymmetric authentication, and supported system scopes. <code class="language-plaintext highlighter-rouge">jwks_uri</code> is for server-key discovery only; client keys are registered out of band.</p>
 
-  <h3 id="ihe-iua">IHE IUA</h3>
+<h3 id="ihe-iua">IHE IUA</h3>
 
-  <p>The IUA roles used by this IG are <a href="ActorDefinition-iua-authorization-client-eu-api.html">IUA Authorization Client</a>, <a href="ActorDefinition-iua-authorization-server-eu-api.html">IUA Authorization Server</a>, and <a href="ActorDefinition-iua-resource-server-eu-api.html">IUA Resource Server</a>. IUA mode uses the applicable <a href="https://profiles.ihe.net/ITI/IUA/index.html#34111-authorization-client">Authorization Client</a>, <a href="https://profiles.ihe.net/ITI/IUA/index.html#34112-authorization-server">Authorization Server</a>, and <a href="https://profiles.ihe.net/ITI/IUA/index.html#34113-resource-server">Resource Server</a> requirements. Core IUA requirements are separate from this IG's MHD transaction integration and from the additional recommendations here.</p>
+<p>The IUA roles used by this IG are <a href="ActorDefinition-iua-authorization-client-eu-api.html">IUA Authorization Client</a>, <a href="ActorDefinition-iua-authorization-server-eu-api.html">IUA Authorization Server</a>, and <a href="ActorDefinition-iua-resource-server-eu-api.html">IUA Resource Server</a>. IUA mode uses the applicable <a href="https://profiles.ihe.net/ITI/IUA/index.html#34111-authorization-client">Authorization Client</a>, <a href="https://profiles.ihe.net/ITI/IUA/index.html#34112-authorization-server">Authorization Server</a>, and <a href="https://profiles.ihe.net/ITI/IUA/index.html#34113-resource-server">Resource Server</a> requirements. Core IUA requirements are separate from this IG's MHD transaction integration and from the additional recommendations here.</p>
 
-  <p>IHE IUA Revision 2.5
+<p>IHE IUA Revision 2.5
 <a href="https://profiles.ihe.net/ITI/IUA/index.html#343-iua-required-actor-groupings">requires</a> its
 Authorization Server and Resource Server actors to be grouped with a CT/Time Client. This IUA
 requirement is distinct from the additional SMART-specific <code class="language-plaintext highlighter-rouge">SHOULD</code> recommendation above.
 See <a href="#time-synchronization">Time Synchronization</a> for shared NTP deployment guidance.</p>
 
-  <p>The Authorization Client authenticates to the Authorization Server, requests least-privilege scopes, and presents its bearer token. The Authorization Server authenticates the client, validates any client assertion, applies issuance policy, limits scopes to authorized scopes, prevents assertion replay, and issues tokens. The Resource Server validates token activity, expiry, issuer/signature or introspection, audience/resource binding where applicable, granted scope, request/claim consistency, and local policy. A Resource Server does not validate a client assertion for an independent Authorization Server.</p>
+<p>The Authorization Client authenticates to the Authorization Server, requests least-privilege scopes, and presents its bearer token. The Authorization Server authenticates the client, validates any client assertion, applies issuance policy, limits scopes to authorized scopes, prevents assertion replay, and issues tokens. The Resource Server validates token activity, expiry, issuer/signature or introspection, audience/resource binding where applicable, granted scope, request/claim consistency, and local policy. A Resource Server does not validate a client assertion for an independent Authorization Server.</p>
 
-  <p><a name="time-synchronization"></a></p>
-  <h3 id="time-synchronization">Time Synchronization</h3>
+<p><a name="time-synchronization"></a></p>
+<h3 id="time-synchronization">Time Synchronization</h3>
 
-  <p>The <a href="https://profiles.ihe.net/ITI/TF/Volume1/ch-7.html">IHE Consistent Time (CT) profile</a>
+<p>The <a href="https://profiles.ihe.net/ITI/TF/Volume1/ch-7.html">IHE Consistent Time (CT) profile</a>
 specifies NTP synchronization and references NTPv3. As informative deployment guidance for both
 SMART and IUA server roles, deployments are encouraged to use NTPv4 for time synchronization,
 while satisfying the applicable IHE CT requirements.
 <a href="https://www.rfc-editor.org/rfc/rfc5905#section-1">NTPv4 is backward compatible with NTPv3</a>;
 interoperability with the selected time service should be verified.</p>
 
-  <p>This guidance does not introduce a separate NTPv4 conformance requirement or relax the applicable
+<p>This guidance does not introduce a separate NTPv4 conformance requirement or relax the applicable
 CT grouping obligations described above. NTPv4 use alone does not establish full CT conformance.</p>
 
-  <p><a name="transport-security"></a></p>
-  <h3 id="tokens-scopes-enforcement-and-errors">Tokens, Scopes, Enforcement, And Errors</h3>
+<p><a name="transport-security"></a></p>
+<h3 id="tokens-scopes-enforcement-and-errors">Tokens, Scopes, Enforcement, And Errors</h3>
 
-  <p>All token and protected-resource exchanges SHALL use TLS 1.2 or later. Access tokens are short-lived bearer tokens; they need not be JWTs unless the selected IUA option requires JWT format. A Resource Server MAY use <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-102.html">IUA ITI-102 token introspection</a> where selected.</p>
+<p>All token and protected-resource exchanges SHALL use TLS 1.2 or later. Access tokens are short-lived bearer tokens; they need not be JWTs unless the selected IUA option requires JWT format. A Resource Server MAY use <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-102.html">IUA ITI-102 token introspection</a> where selected.</p>
 
-  <p>Requested and granted scopes are distinct. Resource Servers SHALL enforce granted scopes and applicable policy. SMART v2 resource scopes use <code class="language-plaintext highlighter-rouge">&lt;patient|user|system&gt;/&lt;ResourceType&gt;.&lt;cruds&gt;</code> as described in <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/scopes-and-launch-context.html">SMART scopes</a>. Interactive flows use the applicable <code class="language-plaintext highlighter-rouge">patient/</code> and <code class="language-plaintext highlighter-rouge">user/</code> scopes; Backend Services uses the applicable <code class="language-plaintext highlighter-rouge">system/</code> scopes. The resource inventory is maintained in <a href="resource-access.html">Resource Access</a>.</p>
+<p>Requested and granted scopes are distinct. Resource Servers SHALL enforce granted scopes and applicable policy. SMART v2 resource scopes use <code class="language-plaintext highlighter-rouge">&lt;patient|user|system&gt;/&lt;ResourceType&gt;.&lt;cruds&gt;</code> as described in <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/scopes-and-launch-context.html">SMART scopes</a>. Interactive flows use the applicable <code class="language-plaintext highlighter-rouge">patient/</code> and <code class="language-plaintext highlighter-rouge">user/</code> scopes; Backend Services uses the applicable <code class="language-plaintext highlighter-rouge">system/</code> scopes. The resource inventory is maintained in <a href="resource-access.html">Resource Access</a>.</p>
 
-  <p>For IUA-protected MHD transactions, the separate transaction scopes are <code class="language-plaintext highlighter-rouge">ITI-65</code>, <code class="language-plaintext highlighter-rouge">ITI-66</code>, <code class="language-plaintext highlighter-rouge">ITI-67</code>, and <code class="language-plaintext highlighter-rouge">ITI-68</code>, only when the corresponding transaction is supported. ITI-105 has no IUA-defined transaction scope and uses the applicable SMART scope or a future explicitly IG-defined extension. No scope family is a substitute for the other.</p>
+<p>For IUA-protected MHD transactions, the separate transaction scopes are <code class="language-plaintext highlighter-rouge">ITI-65</code>, <code class="language-plaintext highlighter-rouge">ITI-66</code>, <code class="language-plaintext highlighter-rouge">ITI-67</code>, and <code class="language-plaintext highlighter-rouge">ITI-68</code>, only when the corresponding transaction is supported. ITI-105 has no IUA-defined transaction scope and uses the applicable SMART scope or a future explicitly IG-defined extension. No scope family is a substitute for the other.</p>
 
-  <p>Protected-resource error responses follow the selected authorization specification. IUA token verification, scope matching, and access-policy failures return <code class="language-plaintext highlighter-rouge">401 Unauthorized</code> as specified in <a href="https://profiles.ihe.net/ITI/IUA/index.html#37243-expected-actions">ITI-72</a>. SMART requests may return <code class="language-plaintext highlighter-rouge">403 Forbidden</code> when access is denied by underlying permissions, as described in <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/scopes-and-launch-context.html#smarts-scopes-are-used-to-delegate-access">SMART scopes</a>. A deployment MAY use <code class="language-plaintext highlighter-rouge">404 Not Found</code> to conceal resource existence only where permitted by the selected specification and when it documents that policy consistently. Consent and audit remain separate responsibilities.</p>
+<p>Protected-resource error responses follow the selected authorization specification. IUA token verification, scope matching, and access-policy failures return <code class="language-plaintext highlighter-rouge">401 Unauthorized</code> as specified in <a href="https://profiles.ihe.net/ITI/IUA/index.html#37243-expected-actions">ITI-72</a>. SMART requests may return <code class="language-plaintext highlighter-rouge">403 Forbidden</code> when access is denied by underlying permissions, as described in <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/scopes-and-launch-context.html#smarts-scopes-are-used-to-delegate-access">SMART scopes</a>. A deployment MAY use <code class="language-plaintext highlighter-rouge">404 Not Found</code> to conceal resource existence only where permitted by the selected specification and when it documents that policy consistently. Consent and audit remain separate responsibilities.</p>
 
-  <h3 id="potential-future-work">Potential Future Work</h3>
+<h3 id="potential-future-work">Potential Future Work</h3>
 
-  <p>Future work may define a hybrid IHE IUA/SMART profile, including claim and scope mappings, discovery precedence, token-context precedence, error semantics, audit identity, and same-endpoint dual-conformance rules. These topics are not normative for this release.</p>
-
-</div>
-
-<p><span class="auth-change"></span></p>
+<p>Future work may define a hybrid IHE IUA/SMART profile, including claim and scope mappings, discovery precedence, token-context precedence, error semantics, audit identity, and same-endpoint dual-conformance rules. These topics are not normative for this release.</p>
 
 <h3 id="authorization-follow-up-to-do">Authorization Follow-up To Do</h3>
 
+<h4 id="open">Open</h4>
+
 <ul class="task-list">
   <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Identify the authoritative released MyHealth@EU authorization and security documents, confirm the applicable deployment profile, and add only the references and requirements that apply to this IG's MyHealth@EU environment.</li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Review the authoritative eIDAS and European Digital Identity Wallet documents, including relevant implementing acts and technical specifications, and add references only where they establish an applicable API authorization or assurance requirement (completed 2026-10-21).</li>
   <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Reassess the EHDS Article 16 implementing acts when published, including any cross-border identification and authentication requirements for natural persons and health professionals.</li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Inspect each implementation use-case page and add the applicable authorization participants, prerequisites, and selected SMART or IUA flow where needed, without creating new authorization rules outside <a href="authorization.html">Authorization</a>.</li>
+</ul>
+
+<h4 id="closed">Closed</h4>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Review the authoritative eIDAS and European Digital Identity Wallet documents, including relevant implementing acts and technical specifications, and add references only where they establish an applicable API authorization or assurance requirement (completed 2026-10-21).</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Inspect each implementation use-case page and add the applicable authorization participants, prerequisites, and selected SMART or IUA flow where needed, without creating new authorization rules outside <a href="authorization.html">Authorization</a>.</li>
   <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Define any future IHE IUA/SMART hybrid profile only after agreeing scope mappings, discovery precedence, token-context precedence, error semantics, and audit identity (completed in 3.2.0.10).</li>
   <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Determine whether this IG should define a CapabilityStatement profile or extension that computably identifies SMART Backend Services, Patient Access, and Clinician Access modes or capability sets. FHIR R4 provides only the generic <code class="language-plaintext highlighter-rouge">SMART-on-FHIR</code> security-service code; <code class="language-plaintext highlighter-rouge">.well-known/smart-configuration</code> remains the authoritative runtime source for SMART capabilities.</li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Reflect the changes in this branch in resolutions for the open authorization-related tickets; see the <a href="authorization-ticket-resolutions.html">proposed ticket resolutions</a> for current coverage and remaining decisions: <a href="https://jira.hl7.org/browse/FHIR-56367">FHIR-56367</a>, <a href="https://jira.hl7.org/browse/FHIR-56368">FHIR-56368</a>, <a href="https://jira.hl7.org/browse/FHIR-56369">FHIR-56369</a>, <a href="https://jira.hl7.org/browse/FHIR-56386">FHIR-56386</a>, <a href="https://jira.hl7.org/browse/FHIR-56388">FHIR-56388</a>, <a href="https://jira.hl7.org/browse/FHIR-56581">FHIR-56581</a>, <a href="https://jira.hl7.org/browse/FHIR-56584">FHIR-56584</a>, <a href="https://jira.hl7.org/browse/FHIR-56615">FHIR-56615</a>, <a href="https://jira.hl7.org/browse/FHIR-56616">FHIR-56616</a>, <a href="https://jira.hl7.org/browse/FHIR-56639">FHIR-56639</a>, <a href="https://jira.hl7.org/browse/FHIR-56650">FHIR-56650</a>, <a href="https://jira.hl7.org/browse/FHIR-56660">FHIR-56660</a>, <a href="https://jira.hl7.org/browse/FHIR-56666">FHIR-56666</a>, <a href="https://jira.hl7.org/browse/FHIR-56698">FHIR-56698</a>, <a href="https://jira.hl7.org/browse/FHIR-56699">FHIR-56699</a>, <a href="https://jira.hl7.org/browse/FHIR-56705">FHIR-56705</a>, <a href="https://jira.hl7.org/browse/FHIR-56713">FHIR-56713</a>, <a href="https://jira.hl7.org/browse/FHIR-56838">FHIR-56838</a>, <a href="https://jira.hl7.org/browse/FHIR-56845">FHIR-56845</a>, <a href="https://jira.hl7.org/browse/FHIR-56848">FHIR-56848</a>, <a href="https://jira.hl7.org/browse/FHIR-56852">FHIR-56852</a>, <a href="https://jira.hl7.org/browse/FHIR-57252">FHIR-57252</a>, and <a href="https://jira.hl7.org/browse/FHIR-57498">FHIR-57498</a>.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Reflect the changes in this branch in resolutions for the open authorization-related tickets; see the <a href="authorization-ticket-resolutions.html">proposed ticket resolutions</a> for current coverage and remaining decisions: <a href="https://jira.hl7.org/browse/FHIR-56367">FHIR-56367</a>, <a href="https://jira.hl7.org/browse/FHIR-56368">FHIR-56368</a>, <a href="https://jira.hl7.org/browse/FHIR-56369">FHIR-56369</a>, <a href="https://jira.hl7.org/browse/FHIR-56386">FHIR-56386</a>, <a href="https://jira.hl7.org/browse/FHIR-56388">FHIR-56388</a>, <a href="https://jira.hl7.org/browse/FHIR-56581">FHIR-56581</a>, <a href="https://jira.hl7.org/browse/FHIR-56584">FHIR-56584</a>, <a href="https://jira.hl7.org/browse/FHIR-56615">FHIR-56615</a>, <a href="https://jira.hl7.org/browse/FHIR-56616">FHIR-56616</a>, <a href="https://jira.hl7.org/browse/FHIR-56639">FHIR-56639</a>, <a href="https://jira.hl7.org/browse/FHIR-56650">FHIR-56650</a>, <a href="https://jira.hl7.org/browse/FHIR-56660">FHIR-56660</a>, <a href="https://jira.hl7.org/browse/FHIR-56666">FHIR-56666</a>, <a href="https://jira.hl7.org/browse/FHIR-56698">FHIR-56698</a>, <a href="https://jira.hl7.org/browse/FHIR-56699">FHIR-56699</a>, <a href="https://jira.hl7.org/browse/FHIR-56705">FHIR-56705</a>, <a href="https://jira.hl7.org/browse/FHIR-56713">FHIR-56713</a>, <a href="https://jira.hl7.org/browse/FHIR-56838">FHIR-56838</a>, <a href="https://jira.hl7.org/browse/FHIR-56845">FHIR-56845</a>, <a href="https://jira.hl7.org/browse/FHIR-56848">FHIR-56848</a>, <a href="https://jira.hl7.org/browse/FHIR-56852">FHIR-56852</a>, <a href="https://jira.hl7.org/browse/FHIR-57252">FHIR-57252</a>, and <a href="https://jira.hl7.org/browse/FHIR-57498">FHIR-57498</a>.</li>
   <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Address AndriesHamster's <a href="https://github.com/euridice-org/eu-health-data-api/pull/99#discussion_r4245521795">PR #99 review comment</a> locally: clarify IUA claims and scopes; introduce an IG-defined Authentication Service with optional Authorization Server grouping; reconcile the displayed actor and authentication diagrams; explain Wallet sign-in and API authorization; and add the environment/flow matrix while preserving current protocol selections. The authentication interface remains deployment-defined, not a mandatory identity-token exchange. See <a href="actors.html#authentication-and-authorization-groupings">actor groupings</a> and <a href="authorization.html#authentication-and-api-authorization">authentication and API authorization</a>. Decisions and validation evidence are recorded in the maintained design notes; no central EU server, required co-location, or GitHub thread resolution is implied.</li>
   <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Address regelkraut's <a href="https://github.com/euridice-org/eu-health-data-api/pull/99#issuecomment-6167347393">PR #99 comment</a>: verified "allowing" and "EEHRxF"; aligned the generic actor display names as Health Data API Authorization Client, Health Data API Authorization Server, and Health Data API Resource Server across definitions, narrative, and sequence diagrams. Clarified that these are logical IG roles, not centrally operated EU services; identifiers and protocol-specific actor names are unchanged.</li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Resolve patrick-werner's <a href="https://github.com/euridice-org/eu-health-data-api/pull/99#discussion_r4272470695">PR #99 review comment</a>: recorded the endpoint-level conformance decision in the maintained <code class="language-plaintext highlighter-rouge">doc/decisions.md</code>, narrowed the IUA recommendation to preconfigured system-to-system endpoints, retained SMART App Launch for interactive HDAS/HPAS access, separated SMART resource scopes from applicable IUA MHD transaction scopes, and clarified that the IUA JWT Token Option is not an automatic cross-protocol profile. See <a href="authorization.html#environment-specific-requirements">Authorization</a> and the maintained <code class="language-plaintext highlighter-rouge">doc/smart-vs-iua.md</code>.
-&lt;/span&gt;</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Resolve patrick-werner's <a href="https://github.com/euridice-org/eu-health-data-api/pull/99#discussion_r4272470695">PR #99 review comment</a>: recorded the endpoint-level conformance decision in the maintained <code class="language-plaintext highlighter-rouge">doc/decisions.md</code>, narrowed the IUA recommendation to preconfigured system-to-system endpoints, retained SMART App Launch for interactive HDAS/HPAS access, separated SMART resource scopes from applicable IUA MHD transaction scopes, and clarified that the IUA JWT Token Option is not an automatic cross-protocol profile. See <a href="authorization.html#environment-specific-requirements">Authorization</a> and the maintained <code class="language-plaintext highlighter-rouge">doc/smart-vs-iua.md</code>.</li>
 </ul>
 
 
@@ -1849,7 +1848,7 @@ CT grouping obligations described above. NTPv4 use alone does not establish full
           IG © 2025+ <a style="color:var(--footer-hyperlink-text-color)" href="http://hl7.eu">HL7 Europe</a>.  
           Package hl7.fhir.eu.health-data-api#1.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
           Generated 
-  <span title="2026-10-23 12:01:00 +0200">
+  <span title="2026-10-23 14:38:00 +0200">
     2026-10-23
   </span>
 

@@ -18,7 +18,7 @@
   fhir:ImplementationGuide.name [ fhir:value "EuHealthDataApi"] ;
   fhir:ImplementationGuide.title [ fhir:value "EU Health Data API"] ;
   fhir:ImplementationGuide.status [ fhir:value "draft"] ;
-  fhir:ImplementationGuide.date [ fhir:value "2026-10-23T12:01:58+02:00"^^xsd:dateTime] ;
+  fhir:ImplementationGuide.date [ fhir:value "2026-10-23T14:38:45+02:00"^^xsd:dateTime] ;
   fhir:ImplementationGuide.publisher [ fhir:value "HL7 Europe"] ;
   fhir:ImplementationGuide.contact [
      fhir:index -1 ;

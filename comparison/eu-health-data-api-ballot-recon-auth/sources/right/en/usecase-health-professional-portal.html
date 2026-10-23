@@ -353,23 +353,17 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <h3 id="authorization">Authorization</h3>
 
-<div class="auth-change">
+<p>At each EHR-facing API boundary, the access service is the <a href="ActorDefinition-eu-authorization-client-eu-api.html">Health Data API Authorization Client</a>, the protected EHR endpoint is the <a href="ActorDefinition-eu-authorization-resource-server-eu-api.html">Health Data API Resource Server</a>, and the <a href="ActorDefinition-eu-authorization-server-eu-api.html">Health Data API Authorization Server</a> is distinct. The professional's authentication at the access service does not itself authorize the downstream FHIR request or every matching resource.</p>
 
-  <p>At each EHR-facing API boundary, the access service is the <a href="ActorDefinition-eu-authorization-client-eu-api.html">Health Data API Authorization Client</a>, the protected EHR endpoint is the <a href="ActorDefinition-eu-authorization-resource-server-eu-api.html">Health Data API Resource Server</a>, and the <a href="ActorDefinition-eu-authorization-server-eu-api.html">Health Data API Authorization Server</a> is distinct. The professional's authentication at the access service does not itself authorize the downstream FHIR request or every matching resource.</p>
+<p>The service may reach EHRs directly or through national infrastructure, so its title does not by itself determine the authorization environment. For a Healthcare Provider hop, an interactive clinician request maps to <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html">SMART App Launch</a>: the client is a <a href="ActorDefinition-smart-app-eu-api.html">SMART App</a>, the protected endpoint a <a href="ActorDefinition-smart-fhir-resource-server-eu-api.html">SMART FHIR Resource Server</a>, and the <a href="ActorDefinition-smart-authorization-server-eu-api.html">SMART Authorization Server</a> is distinct. A <a href="ActorDefinition-smart-launching-system-eu-api.html">SMART Launching System</a> participates for EHR Launch. Identify the target FHIR base and registered app, then use the endpoint's <a href="authorization.html#smart-discovery">SMART discovery metadata</a> and how the app is started to select Clinician Access for EHR Launch or Clinician Access for Standalone. Interactive access uses authorization code with PKCE as described in <a href="authorization.html#smart-app-launch">Authorization</a>. A server-side request maps to a <a href="ActorDefinition-smart-backend-service-eu-api.html">SMART Backend Service</a> only when access is pre-authorized, the client uses asymmetric confidential-client authentication, and no runtime end-user authorization is required. For a National Interoperability Infrastructure hop, <a href="https://profiles.ihe.net/ITI/IUA/index.html">IHE IUA</a> is recommended only under the conditions in <a href="authorization.html#national-interoperability-infrastructure">Authorization</a>; when selected, the generic roles map to the <a href="ActorDefinition-iua-authorization-client-eu-api.html">IHE IUA Authorization Client</a>, <a href="ActorDefinition-iua-resource-server-eu-api.html">IHE IUA Resource Server</a>, and <a href="ActorDefinition-iua-authorization-server-eu-api.html">IHE IUA Authorization Server</a>. The actual environment and flow remain deployment-dependent. See <a href="authorization.html#environment-specific-requirements">Authorization</a> for the normative requirements and protocol roles.</p>
 
-  <p>The service may reach EHRs directly or through national infrastructure, so its title does not by itself determine the authorization environment. For a Healthcare Provider hop, an interactive clinician request maps to SMART App Launch: the client is a <a href="ActorDefinition-smart-app-eu-api.html">SMART App</a>, the protected endpoint a <a href="ActorDefinition-smart-fhir-resource-server-eu-api.html">SMART FHIR Resource Server</a>, and the <a href="ActorDefinition-smart-authorization-server-eu-api.html">SMART Authorization Server</a> is distinct. A <a href="ActorDefinition-smart-launching-system-eu-api.html">SMART Launching System</a> participates for EHR Launch. Select the applicable Clinician Access for EHR Launch or Clinician Access for Standalone capability set according to how the app is started. A server-side request maps to a <a href="ActorDefinition-smart-backend-service-eu-api.html">SMART Backend Service</a> only when access is pre-authorized, the client uses asymmetric confidential-client authentication, and no runtime end-user authorization is required. For a National Interoperability Infrastructure hop, IHE IUA is recommended only under the conditions in <a href="authorization.html#national-interoperability-infrastructure">Authorization</a>; when selected, the generic roles map to the <a href="ActorDefinition-iua-authorization-client-eu-api.html">IHE IUA Authorization Client</a>, <a href="ActorDefinition-iua-resource-server-eu-api.html">IHE IUA Resource Server</a>, and <a href="ActorDefinition-iua-authorization-server-eu-api.html">IHE IUA Authorization Server</a>. The actual environment and flow remain deployment-dependent. See <a href="authorization.html#environment-specific-requirements">Authorization</a> for the normative requirements and protocol roles.</p>
+<p>For the server-side flow, see the <a href="https://hl7.org/fhir/smart-app-launch/STU2.2/backend-services.html">SMART Backend Services profile</a> and its requirements in <a href="authorization.html#smart-app-launch">Authorization</a>. When an NII endpoint selects IUA, the client obtains a token with <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-71.html">ITI-71</a> and presents it with <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-72.html">ITI-72</a>; MHD transaction scopes depend on the supported interaction and are described in <a href="authorization.html#national-interoperability-infrastructure">Authorization</a>.</p>
 
-</div>
-
-<div class="auth-change">
-
-  <p>For interactive access, the <a href="ActorDefinition-authentication-service-eu-api.html">Authentication Service</a>
+<p>For interactive access, the <a href="ActorDefinition-authentication-service-eu-api.html">Authentication Service</a>
 authenticates the professional, directly or through an upstream identity service, and may be grouped
 with the Authorization Server or separately deployed. This does not grant downstream API access
 or add runtime user authentication to a pre-authorized Backend Service. See
 <a href="authorization.html#authentication-and-api-authorization">authentication and API authorization</a>.</p>
-
-</div>
 
 
 
@@ -421,7 +415,7 @@ or add runtime user authentication to a pre-authorized Backend Service. See
           IG © 2025+ <a style="color:var(--footer-hyperlink-text-color)" href="http://hl7.eu">HL7 Europe</a>.  
           Package hl7.fhir.eu.health-data-api#1.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
           Generated 
-  <span title="2026-10-23 12:01:00 +0200">
+  <span title="2026-10-23 14:38:00 +0200">
     2026-10-23
   </span>
 

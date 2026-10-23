@@ -176,10 +176,10 @@
     "uses" : {
     },
     "ValueSet-document-type-laboratory-report-eu-api.html" : "EEHRxF Document Type ValueSet for Laboratory Reports",
-    "ConceptMap-document-reference-category-type-eu-api.html" : "EEHRxF MHD DocumentReference ConceptMap",
     "ValueSet-document-type-patient-summary-eu-api.html" : "EEHRxF Document Type ValueSet for Patient Summaries",
-    "ValueSet-document-type-medical-imaging-eu-api.html" : "EEHRxF Document Type ValueSet for Medical Imaging",
-    "ValueSet-document-type-discharge-report-eu-api.html" : "EEHRxF Document Type ValueSet for Discharge Reports"
+    "ConceptMap-document-reference-category-type-eu-api.html" : "EEHRxF MHD DocumentReference ConceptMap",
+    "ValueSet-document-type-discharge-report-eu-api.html" : "EEHRxF Document Type ValueSet for Discharge Reports",
+    "ValueSet-document-type-medical-imaging-eu-api.html" : "EEHRxF Document Type ValueSet for Medical Imaging"
   },
   {
     "url" : "http://terminology.hl7.org/CodeSystem/message-transport",

@@ -6,7 +6,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en" dir="ltr">
   <head>
 <script src="../../bridge-right.js" defer></script>
-<base href="../../../sources/right/en/implementation.html">
+<base href="https://euridice-org.github.io/eu-health-data-api/comparison/eu-health-data-api-ballot-recon-auth/sources/right/en/implementation.html">
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
     <title>Implementation - EU Health Data API v1.0.0-ballot</title>
 
@@ -369,17 +369,13 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <p>This Implementation Guide describes the API surface of the EHDS Interoperability Component: document exchange, resource access, patient lookup, authorization, and document publication. The use cases outlined in this section show where the Interoperability Component can be deployed in the European interoperability landscape. Some use cases directly involve data exchange with EHRs; others indirectly make use of data that has previously been consumed via data exchange with EHRs.</p>
 
-<div class="auth-change">
+<p>Authorization in these use cases is described using the generic <a href="ActorDefinition-eu-authorization-client-eu-api.html">Health Data API Authorization Client</a>, <a href="ActorDefinition-eu-authorization-server-eu-api.html">Health Data API Authorization Server</a>, and <a href="ActorDefinition-eu-authorization-resource-server-eu-api.html">Health Data API Resource Server</a> roles. Each flow's selected SMART or IHE IUA roles and detailed requirements are described in <a href="authorization.html">Authorization</a>.</p>
 
-  <p>Authorization in these use cases is described using the generic <a href="ActorDefinition-eu-authorization-client-eu-api.html">Health Data API Authorization Client</a>, <a href="ActorDefinition-eu-authorization-server-eu-api.html">Health Data API Authorization Server</a>, and <a href="ActorDefinition-eu-authorization-resource-server-eu-api.html">Health Data API Resource Server</a> roles. Each flow's selected SMART or IHE IUA roles and detailed requirements are described in <a href="authorization.html">Authorization</a>.</p>
-
-  <p>Where end-user authentication is required, the
+<p>Where end-user authentication is required, the
 <a href="ActorDefinition-authentication-service-eu-api.html">Authentication Service</a> supplies that
 responsibility and may be grouped with the Authorization Server or separately deployed.
 These logical roles do not prescribe central EU-operated services or common hosting; see
 <a href="actors.html#authentication-and-authorization-groupings">actor groupings</a>.</p>
-
-</div>
 
 <p>Each use case and environment might have its own rules and requirements, which are outside the scope of this Implementation Guide; here, we focus on how the Interoperability Component as described in this Implementation Guide can <strong>support</strong> actors across the use cases.</p>
 
@@ -502,7 +498,7 @@ These logical roles do not prescribe central EU-operated services or common host
           IG © 2025+ <a style="color:var(--footer-hyperlink-text-color)" href="http://hl7.eu">HL7 Europe</a>.  
           Package hl7.fhir.eu.health-data-api#1.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
           Generated 
-  <span title="2026-10-23 12:01:00 +0200">
+  <span title="2026-10-23 14:38:00 +0200">
     2026-10-23
   </span>
 

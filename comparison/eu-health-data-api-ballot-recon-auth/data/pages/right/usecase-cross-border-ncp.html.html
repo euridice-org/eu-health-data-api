@@ -6,7 +6,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en" dir="ltr">
   <head>
 <script src="../../bridge-right.js" defer></script>
-<base href="../../../sources/right/en/usecase-cross-border-ncp.html">
+<base href="https://euridice-org.github.io/eu-health-data-api/comparison/eu-health-data-api-ballot-recon-auth/sources/right/en/usecase-cross-border-ncp.html">
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
     <title>Cross-Border Exchange via NCP - EU Health Data API v1.0.0-ballot</title>
 
@@ -374,13 +374,9 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <p>Cross-border patient consent, health-professional authentication in the requesting country, and authorization at the NCP and national-infrastructure layers are governed by MyHealth@EU and Member State infrastructure — not by this IG. At the highlighted API boundaries, the consumer is an authorized EHR system or national-infrastructure component; how that authorization was established is out of scope here.</p>
 
-<div class="auth-change">
+<p>At those API boundaries, the consumer is the <a href="ActorDefinition-eu-authorization-client-eu-api.html">Health Data API Authorization Client</a>, and the protected EHR endpoint is the <a href="ActorDefinition-eu-authorization-resource-server-eu-api.html">Health Data API Resource Server</a>. The <a href="ActorDefinition-eu-authorization-server-eu-api.html">Health Data API Authorization Server</a> is a distinct participant.</p>
 
-  <p>At those API boundaries, the consumer is the <a href="ActorDefinition-eu-authorization-client-eu-api.html">Health Data API Authorization Client</a>, and the protected EHR endpoint is the <a href="ActorDefinition-eu-authorization-resource-server-eu-api.html">Health Data API Resource Server</a>. The <a href="ActorDefinition-eu-authorization-server-eu-api.html">Health Data API Authorization Server</a> is a distinct participant.</p>
-
-  <p>The final infrastructure-to-EHR hop is separate from NCP-to-NCP exchange. For MyHealth@EU, authorization remains outside this IG; <a href="authorization.html#myhealth-eu">Authorization</a> recommends alignment with IHE IUA. If a deployment selects IUA, these generic roles are realized by the <a href="ActorDefinition-iua-authorization-client-eu-api.html">IHE IUA Authorization Client</a>, <a href="ActorDefinition-iua-resource-server-eu-api.html">IHE IUA Resource Server</a>, and a distinct <a href="ActorDefinition-iua-authorization-server-eu-api.html">IHE IUA Authorization Server</a>. This use case does not select an IUA transaction or authorization flow; the applicable MyHealth@EU and deployment requirements govern that choice. The NCPeH API remains the specification for NCP-to-NCP exchange.</p>
-
-</div>
+<p>The final infrastructure-to-EHR hop is separate from NCP-to-NCP exchange. For MyHealth@EU, authorization remains outside this IG; <a href="authorization.html#myhealth-eu">Authorization</a> recommends alignment with <a href="https://profiles.ihe.net/ITI/IUA/index.html">IHE IUA</a>. This use case does not select an authorization flow for MyHealth@EU; applicable MyHealth@EU and deployment requirements govern its participants and prerequisites. For a separate National Interoperability Infrastructure hop, <a href="https://profiles.ihe.net/ITI/IUA/index.html">IHE IUA</a> is recommended only under the conditions in <a href="authorization.html#national-interoperability-infrastructure">Authorization</a>. If selected, the generic roles are realized by the <a href="ActorDefinition-iua-authorization-client-eu-api.html">IHE IUA Authorization Client</a>, <a href="ActorDefinition-iua-resource-server-eu-api.html">IHE IUA Resource Server</a>, and a distinct <a href="ActorDefinition-iua-authorization-server-eu-api.html">IHE IUA Authorization Server</a>; the client obtains a token with <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-71.html">ITI-71</a> and presents it with <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-72.html">ITI-72</a>. Any MHD transaction scope depends on the supported interaction and deployment. This use case does not select an IUA transaction or flow for a particular endpoint. The NCPeH API remains the specification for NCP-to-NCP exchange.</p>
 
 
 
@@ -432,7 +428,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
           IG © 2025+ <a style="color:var(--footer-hyperlink-text-color)" href="http://hl7.eu">HL7 Europe</a>.  
           Package hl7.fhir.eu.health-data-api#1.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
           Generated 
-  <span title="2026-10-23 12:01:00 +0200">
+  <span title="2026-10-23 14:38:00 +0200">
     2026-10-23
   </span>
 

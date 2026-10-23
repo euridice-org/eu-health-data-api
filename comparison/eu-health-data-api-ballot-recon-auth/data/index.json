@@ -1,7 +1,7 @@
 {
-  "left": "sources/left/en/",
-  "right": "sources/right/en/",
-  "generatedAt": "2026-10-23T10:09:36.507Z",
+  "left": "https://euridice-org.github.io/eu-health-data-api/comparison/eu-health-data-api-ballot-recon-auth/sources/left/en/",
+  "right": "https://euridice-org.github.io/eu-health-data-api/comparison/eu-health-data-api-ballot-recon-auth/sources/right/en/",
+  "generatedAt": "2026-10-23T12:42:09.257Z",
   "pages": [
     {
       "path": "/",

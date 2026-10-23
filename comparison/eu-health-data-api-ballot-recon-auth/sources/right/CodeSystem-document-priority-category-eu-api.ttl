@@ -18,7 +18,7 @@
   fhir:CodeSystem.title [ fhir:value "EEHRxF Document Priority Category CodeSystem"] ;
   fhir:CodeSystem.status [ fhir:value "draft"] ;
   fhir:CodeSystem.experimental [ fhir:value "false"^^xsd:boolean] ;
-  fhir:CodeSystem.date [ fhir:value "2026-10-23T12:01:58+02:00"^^xsd:dateTime] ;
+  fhir:CodeSystem.date [ fhir:value "2026-10-23T14:38:45+02:00"^^xsd:dateTime] ;
   fhir:CodeSystem.publisher [ fhir:value "HL7 Europe"] ;
   fhir:CodeSystem.contact [
      fhir:index 0 ;

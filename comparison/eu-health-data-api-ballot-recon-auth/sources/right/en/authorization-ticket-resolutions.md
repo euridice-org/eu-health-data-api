@@ -12,13 +12,13 @@
 | [FHIR-56368](https://jira.hl7.org/browse/FHIR-56368) | Explain SMART alignment with eIDAS, Wallet, and GDPR. | Partially addressed | Retain upstream-authentication guidance; leave assurance mapping, GDPR detail, and Wallet profile selection open. |
 | [FHIR-56369](https://jira.hl7.org/browse/FHIR-56369) | Clarify whether extra IUA client constraints need a distinct actor. | Partially addressed | Retain generic/protocol actor separation; clarify provenance of added constraints. |
 | [FHIR-56386](https://jira.hl7.org/browse/FHIR-56386) | Include applicable IUA roles in the HPAS flow. | Addressed | Accept explicit IUA roles for qualifying national-infrastructure hops, without a universal IUA mandate. |
-| [FHIR-56388](https://jira.hl7.org/browse/FHIR-56388) | Add mTLS/RFC 8705 alongside private_key_jwt. | Not addressed | Review profile compatibility and certificate-bound token requirements before advertising support. |
-| [FHIR-56581](https://jira.hl7.org/browse/FHIR-56581) | Compare all IG-relevant SMART/IUA differences. | Partially addressed | Reconcile the published five-aspect table with the broader maintained comparison. |
-| [FHIR-56584](https://jira.hl7.org/browse/FHIR-56584) | Clarify user-level authorization, token context, and audit. | Partially addressed | Retain authentication/API separation; clarify end-user versus API logging responsibilities. |
+| [FHIR-56388](https://jira.hl7.org/browse/FHIR-56388) | Add mTLS/RFC 8705 alongside private_key_jwt. | Not addressed | Retain private_key_jwt; defer mTLS until token-binding and profile requirements are defined. |
+| [FHIR-56581](https://jira.hl7.org/browse/FHIR-56581) | Compare all IG-relevant SMART/IUA differences. | Addressed | Accept the expanded comparison; optional links can improve navigation without duplicating detail. |
+| [FHIR-56584](https://jira.hl7.org/browse/FHIR-56584) | Clarify user-level authorization, token context, and audit. | Addressed | Accept the modified clarification; keep user context and audit responsibilities deployment-specific. |
 | [FHIR-56615](https://jira.hl7.org/browse/FHIR-56615) | Explain regulatory fit and avoid universal SMART requirements. | Partially addressed | Preserve flow-specific choices; leave assurance mapping and detailed GDPR treatment open. |
 | [FHIR-56616](https://jira.hl7.org/browse/FHIR-56616) | Define a distinct actor if requirements exceed IUA. | Partially addressed | Reconcile the same actor-boundary question as the earlier IUA-client ticket. |
 | [FHIR-56639](https://jira.hl7.org/browse/FHIR-56639) | Explain resource scopes. | Addressed | Accept contextual guidance and linked capability explanations in place of the standalone list. |
-| [FHIR-56650](https://jira.hl7.org/browse/FHIR-56650) | Separate Consumer MAY and Provider SHOULD/MAY parameter obligations. | Partially addressed | Confirm the original parameter list and state client use separately from server support. |
+| [FHIR-56650](https://jira.hl7.org/browse/FHIR-56650) | Separate Consumer MAY and Provider SHOULD/MAY parameter obligations. | Partially addressed | Retain current discovery and scope distinctions; do not add a blanket Consumer-MAY rule without a specific operation and parameter set. |
 | [FHIR-56660](https://jira.hl7.org/browse/FHIR-56660) | Acknowledge direct patient-to-EHR access alongside the broker model. | Partially addressed | Cross-reference direct-EHR guidance on the requested access-service pages and clarify consent implications. |
 | [FHIR-56698](https://jira.hl7.org/browse/FHIR-56698) | Explain Backend Services rationale, IUA relationship, and scope granularity. | Partially addressed | Accept independent profiles; leave national scope mapping and foundational-RFC disposition explicit. |
 | [FHIR-56699](https://jira.hl7.org/browse/FHIR-56699) | Clarify CT recommendation and ATNA/ITI-19/ITI-20 implications. | Partially addressed | Confirm CT strength and ATNA grouping; reconcile diagrams and logging boundaries. |
@@ -28,12 +28,12 @@
 | [FHIR-56845](https://jira.hl7.org/browse/FHIR-56845) | Make actors EU-specific and clarify IHE/SMART positioning. | Partially addressed | Clarify IG conformance beyond base IHE; do not remove applicable IUA groupings without a decision. |
 | [FHIR-56848](https://jira.hl7.org/browse/FHIR-56848) | Avoid mandatory Backend Services in CapabilityStatements. | Addressed | Accept abstract requirements with environment-selected IUA, Backend Services, or interactive SMART modes. |
 | [FHIR-56852](https://jira.hl7.org/browse/FHIR-56852) | Replace the blanket Backend Services SHALL. | Addressed | Accept conditional requirements and the corrected Functional overview. |
-| [FHIR-57252](https://jira.hl7.org/browse/FHIR-57252) | Add FAST Security as an optional framework. | Not addressed | Recommend deferral; the recorded comment is not an adopted disposition. |
+| [FHIR-57252](https://jira.hl7.org/browse/FHIR-57252) | Add FAST Security as an optional framework. | Not addressed | Defer FAST for this release while preserving future consideration; do not add FAST conformance rules. |
 | [FHIR-57498](https://jira.hl7.org/browse/FHIR-57498) | Convey the home Member State in IUA claims. | Not addressed | Agree semantics, identifiers, issuers, validation, and conformance strength before adding a claim or mapping. |
 
 ## Scope and Basis
 
-This report compares 22 tickets from the authorization ballot checklist and local ballot directory with the current `eu-health-data-api-ballot-recon-auth` source snapshot. [FHIR-56666](https://jira.hl7.org/browse/FHIR-56666) is excluded because its local ticket record now marks it Applied as a Technical Correction. The worktree was clean at the start of this refresh. Each ticket received an isolated read-only review, followed by direct verification of the original record and important source claims. No passage is attributed to a particular commit or claimed as newly introduced by this branch.
+This report compares the same 22 listed tickets from the authorization ballot checklist and local ballot directory with the current `eu-health-data-api-ballot-recon-auth` source snapshot. [FHIR-56666](https://jira.hl7.org/browse/FHIR-56666) remains excluded from this report's existing scope. Jira records were refreshed from the live export; the report and worknote already had uncommitted edits at the start of the refresh. Where a synced Jira disposition differs from an older per-ticket analysis artifact, the entries distinguish the Jira record from the proposed direction. Each listed ticket received an isolated read-only review, followed by direct verification of the original record and important source claims. No passage is attributed to a particular commit or claimed as newly introduced by this branch.
 
 Coverage labels describe implementation, not Jira closure: **Addressed**, **Partially addressed**, or **Not addressed**. Local statuses and resolutions in this report are not Jira updates. These are proposed workgroup dispositions, not new conformance requirements.
 
@@ -80,17 +80,17 @@ Evidence links target published IG pages and generated actors or CapabilityState
 
 ### FHIR-56581: IUA & SMART Differences
 
-* **Local status / resolution:** Waiting for Input / Unresolved.
+* **Refreshed Jira status / resolution:** Triaged / Persuasive.
 * **Request:** Compare all IG-relevant SMART/IUA differences, rather than one example under a blanket SMART-precedence rule.
-* **Current content:** **Partially addressed.** [Authorization](authorization.md#ihe-iua-and-smart-app-launch) compares discovery, scopes, context, interactive use, and system-to-system use and replaces blanket precedence with endpoint selection. The maintained comparison additionally distinguishes launch context, user identity, purpose of use/roles, consent data, and unconstrained user-authentication methods; these are not all explicit in the published comparison table.
-* **Proposed resolution / open decision:** Accept the substantial comparison but reconcile its published and maintained versions for IG-relevant completeness. Do not invent differences or copy unresolved hybrid decisions into present conformance rules.
+* **Current content:** **Addressed.** [Authorization](authorization.md#ihe-iua-and-smart-app-launch) compares discovery, scopes, context, interactive use, and system-to-system use and replaces blanket precedence with endpoint selection. The broader maintained comparison is supplementary; its additional distinctions need not all be repeated in the published table.
+* **Proposed resolution / open decision:** Accept the comparison and endpoint-selection model. Add navigation to the maintained comparison if useful, without making completeness depend on duplicating every distinction in the published table or copying unresolved hybrid decisions into conformance rules.
 
 ### FHIR-56584: Authorization & User Level
 
-* **Local status / resolution:** Waiting for Input / Unresolved.
+* **Refreshed Jira status / resolution:** Triaged / Persuasive with Modification.
 * **Request:** Clarify user-level authentication/authorization scope, token user context, and audit-message implications.
-* **Current content:** **Partially addressed.** [Authentication and API authorization](authorization.md#authentication-and-api-authorization) and [actor groupings](actors.md#authentication-and-authorization-groupings) separate end-user authentication, token issuance, and API enforcement. [Regulatory Anchors](regulatoryAnchors.md) bounds logging formats/interoperability but does not describe the API-release versus receiving-system end-user event chain requested in the May comments.
-* **Proposed resolution / open decision:** Clarify those logging responsibilities without defining interoperable log correlation or resolving disputed legal interpretations of access services. Token context does not establish consent or audit completeness, and an API cannot observe every subsequent user access in a receiving system.
+* **Current content:** **Addressed.** [Authentication and API authorization](authorization.md#authentication-and-api-authorization) and [actor groupings](actors.md#authentication-and-authorization-groupings) distinguish end-user authentication, token issuance, and API enforcement. [Regulatory Anchors](regulatoryAnchors.md) bounds logging formats and interoperability; the IG does not claim that API-side records capture every subsequent user access in a receiving system.
+* **Proposed resolution / open decision:** Accept the modified clarification. Keep the division of logging responsibility explicit without prescribing interoperable log correlation or resolving disputed legal interpretations of access services. Token context does not itself establish consent or audit completeness.
 
 ### FHIR-56615: SMART should be preferred not mandatory
 
@@ -108,17 +108,17 @@ Evidence links target published IG pages and generated actors or CapabilityState
 
 ### FHIR-56639: Add explanations to the scopes section
 
-* **Local status / resolution:** Triaged / Unresolved.
+* **Refreshed Jira status / resolution:** Resolved - No Change / Not Persuasive.
 * **Request:** Explain the resource scopes previously listed without context.
 * **Current content:** **Addressed.** [Resource Access](resource-access.md#core-resources) replaces the standalone list with flow-specific `patient/`, `user/`, and `system/` context, distinguishes IUA, and links central scope guidance. Its linked [Provider](CapabilityStatement-resource-access-provider-eu-api.md) and [Consumer](CapabilityStatement-resource-consumer-eu-api.md) statements distinguish supported/needed resources and explain `.rs` as read plus search. Resource-support discovery is explained on the narrative page.
 * **Proposed resolution / open decision:** Accept removal of the ambiguous list plus contextual guidance and linked capability explanations as addressing the request. This does not require every server to support every listed resource or apply Backend Services scopes to interactive access.
 
 ### FHIR-56650: Clarify authorization parameter SHOULDs and consumer MAYs
 
-* **Local status / resolution:** Waiting for Input / Unresolved.
+* **Refreshed Jira status / resolution:** Triaged / Not Persuasive.
 * **Request:** Explicitly separate Provider parameter support from Consumer permission to supply the same parameters.
 * **Current content:** **Partially addressed.** [Authorization](authorization.md#smart-app-launch) separates client-assertion construction from server validation and describes discovery. [Resource Access](resource-access.md) and client/server capabilities distinguish resource support and requests. These do not explicitly settle the original authorization-parameter list's Consumer MAY wording.
-* **Proposed resolution / open decision:** Confirm the exact ballot parameter list before changing normative text; then state client use and server support separately. Do not infer that clients must send every supported parameter or confuse search parameters, OAuth parameters, scopes, and assertion claims.
+* **Proposed resolution / open decision:** Do not add a blanket Consumer-MAY statement without a specific operation and parameter set. Keep client use and server support distinct, and do not confuse search parameters, OAuth parameters, scopes, and assertion claims.
 
 ### FHIR-56660: Reference direct-EHR-auth on the Health Data Access Service page
 
@@ -129,7 +129,7 @@ Evidence links target published IG pages and generated actors or CapabilityState
 
 ### FHIR-56698: SMART Authorization
 
-* **Local status / resolution:** Waiting for Input / Unresolved.
+* **Refreshed Jira status / resolution:** Triaged / Not Persuasive with Modification.
 * **Request:** Explain Backend Services rationale and alleged binding to an IUA Authorization Server; assess resource scopes versus national regulatory groupings and foundational OAuth references.
 * **Current content:** **Partially addressed.** [Authorization](authorization.md#ihe-iua-and-smart-app-launch) explains distinct profiles and endpoint selection, not a required SMART-to-IUA binding. It separates claims, SMART resource scopes, and conditional MHD transaction scopes. It does not define a national-regulatory-grouping crosswalk or adopt the ticket's RFC-only alternative.
 * **Proposed resolution / open decision:** Retain independent profile selection. Leave national grouping/enforcement mappings to an explicit policy decision, without claiming scope equivalence. Decide whether foundational RFC references support a specific requirement; references alone do not define the requested regulatory-scope semantics.
@@ -143,21 +143,21 @@ Evidence links target published IG pages and generated actors or CapabilityState
 
 ### FHIR-56705: Revise the token-obtainment step
 
-* **Local status / resolution:** Waiting for Input / Unresolved.
+* **Refreshed Jira status / resolution:** Triaged / Persuasive (resolved 2026-10-22; Pre Applied: Yes).
 * **Request:** Make Backend Services one possible authorization mechanism in the example, not mandatory in every environment.
 * **Current content:** **Addressed.** [Example Patient Summary](example-patient-summary.md) links SMART or IUA realizations for client, Resource Server, and Authorization Server. Prerequisites, the diagram note, and "Obtain Access Token" explicitly identify the detailed request as a Backend Services illustration and link the selected IUA alternative. Backend Services prerequisites exclude runtime end-user authorization.
 * **Proposed resolution / open decision:** Accept this bounded example as addressing the ambiguity. It does not specify every interactive scenario or authorize frameworks beyond the central [Authorization](authorization.md) choices.
 
 ### FHIR-56713: Revise references to IUA
 
-* **Local status / resolution:** Triaged / Unresolved.
+* **Refreshed Jira status / resolution:** Triaged / Persuasive (resolved 2026-10-22; Pre Applied: Yes).
 * **Request:** Name SMART where it is used, clarify IUA's role, and state that SMART is not mandatory universally.
 * **Current content:** **Addressed.** [Authorization](authorization.md) separates profiles and replaces blanket SMART precedence with endpoint and flow selection. IUA remains an active option for qualifying national-infrastructure endpoints, not merely background. MyHealth@EU authorization remains out of scope with an alignment recommendation.
 * **Proposed resolution / open decision:** Accept the terminology and selected-profile model. Preserve applicable SMART requirements without claiming SMART is universal, and do not remove IUA from its selected environments.
 
 ### FHIR-56838: Revise authorization page
 
-* **Local status / resolution:** Waiting for Input / Unresolved.
+* **Refreshed Jira status / resolution:** Resolved - No Change / Not Persuasive.
 * **Request:** Clarify protocol terminology, recommendations versus obligations, alternative mechanisms, and the regulatory baseline added in the comment.
 * **Current content:** **Partially addressed.** [Authorization](authorization.md) names selected profiles and cites EHDS/eIDAS provisions with service-specific obligations. Flow-specific recommendations and requirements replace a universal Backend Services mandate, but the strength inconsistencies identified above remain. Unspecified alternative frameworks are not permitted by the current conformance scope.
 * **Proposed resolution / open decision:** Retain regulatory anchoring and protocol-specific names. Clarify the regulatory baseline without assigning every EHR vendor a universal Wallet duty, reconcile obligation strength, and obtain scope approval before allowing broader mechanisms.
@@ -185,10 +185,10 @@ Evidence links target published IG pages and generated actors or CapabilityState
 
 ### FHIR-57252: Include FAST Security as an optional Authorization Framework
 
-* **Local status / resolution:** Triaged / Unresolved.
+* **Refreshed Jira status / resolution:** Triaged / Considered for Future Use.
 * **Request:** Add FAST Security to address scalable trust, registration, authentication, and authorization.
 * **Current content:** **Not addressed.** [Authorization](authorization.md) selects SMART and IUA, and the [security-service ValueSet](ValueSet-eu-api-authorization-security-service.md) includes only those services. No FAST conformance model is implemented.
-* **Proposed resolution / open decision:** Recommend deferral for this release, consistent with the May 27 comment, without treating that suggestion as adopted. Future acceptance requires explicit scope approval and appropriate trust/registration, actor, discovery, token, enforcement, and conformance rules.
+* **Proposed resolution / open decision:** Defer FAST conformance for this release while retaining it for future consideration. Future acceptance requires explicit scope approval and appropriate trust/registration, actor, discovery, token, enforcement, and conformance rules.
 
 ### FHIR-57498: IHE IUA lacks claim for home member state
 
@@ -199,10 +199,10 @@ Evidence links target published IG pages and generated actors or CapabilityState
 
 ## Coverage Totals
 
-* **Addressed: 6** - [FHIR-56386](https://jira.hl7.org/browse/FHIR-56386), [FHIR-56639](https://jira.hl7.org/browse/FHIR-56639), [FHIR-56705](https://jira.hl7.org/browse/FHIR-56705), [FHIR-56713](https://jira.hl7.org/browse/FHIR-56713), [FHIR-56848](https://jira.hl7.org/browse/FHIR-56848), [FHIR-56852](https://jira.hl7.org/browse/FHIR-56852).
-* **Partially addressed: 13** - [FHIR-56367](https://jira.hl7.org/browse/FHIR-56367), [FHIR-56368](https://jira.hl7.org/browse/FHIR-56368), [FHIR-56369](https://jira.hl7.org/browse/FHIR-56369), [FHIR-56581](https://jira.hl7.org/browse/FHIR-56581), [FHIR-56584](https://jira.hl7.org/browse/FHIR-56584), [FHIR-56615](https://jira.hl7.org/browse/FHIR-56615), [FHIR-56616](https://jira.hl7.org/browse/FHIR-56616), [FHIR-56650](https://jira.hl7.org/browse/FHIR-56650), [FHIR-56660](https://jira.hl7.org/browse/FHIR-56660), [FHIR-56698](https://jira.hl7.org/browse/FHIR-56698), [FHIR-56699](https://jira.hl7.org/browse/FHIR-56699), [FHIR-56838](https://jira.hl7.org/browse/FHIR-56838), [FHIR-56845](https://jira.hl7.org/browse/FHIR-56845).
+* **Addressed: 8** - [FHIR-56386](https://jira.hl7.org/browse/FHIR-56386), [FHIR-56581](https://jira.hl7.org/browse/FHIR-56581), [FHIR-56584](https://jira.hl7.org/browse/FHIR-56584), [FHIR-56639](https://jira.hl7.org/browse/FHIR-56639), [FHIR-56705](https://jira.hl7.org/browse/FHIR-56705), [FHIR-56713](https://jira.hl7.org/browse/FHIR-56713), [FHIR-56848](https://jira.hl7.org/browse/FHIR-56848), [FHIR-56852](https://jira.hl7.org/browse/FHIR-56852).
+* **Partially addressed: 11** - [FHIR-56367](https://jira.hl7.org/browse/FHIR-56367), [FHIR-56368](https://jira.hl7.org/browse/FHIR-56368), [FHIR-56369](https://jira.hl7.org/browse/FHIR-56369), [FHIR-56615](https://jira.hl7.org/browse/FHIR-56615), [FHIR-56616](https://jira.hl7.org/browse/FHIR-56616), [FHIR-56650](https://jira.hl7.org/browse/FHIR-56650), [FHIR-56660](https://jira.hl7.org/browse/FHIR-56660), [FHIR-56698](https://jira.hl7.org/browse/FHIR-56698), [FHIR-56699](https://jira.hl7.org/browse/FHIR-56699), [FHIR-56838](https://jira.hl7.org/browse/FHIR-56838), [FHIR-56845](https://jira.hl7.org/browse/FHIR-56845).
 * **Not addressed: 3** - [FHIR-56388](https://jira.hl7.org/browse/FHIR-56388), [FHIR-57252](https://jira.hl7.org/browse/FHIR-57252), [FHIR-57498](https://jira.hl7.org/browse/FHIR-57498).
 * **Total: 22 tickets.**
 
-Outstanding decisions include regulatory assurance/Wallet/GDPR detail, IUA actor-constraint provenance, comparison completeness, user/API logging boundaries, parameter obligations, direct-EHR acknowledgement, category framing, national scope mapping, CT/ATNA scope, and authorization obligation strength. mTLS, FAST, and the home-Member-State claim are not implemented. The worknote stays pending because refreshing this analysis does not adopt or apply every resolution.
+Outstanding decisions include regulatory assurance/Wallet/GDPR detail, IUA actor-constraint provenance, user/API logging boundaries, parameter obligations, direct-EHR acknowledgement, category framing, national scope mapping, CT/ATNA scope, and authorization obligation strength. mTLS, FAST, and the home-Member-State claim are not implemented. The worknote stays pending because refreshing this analysis does not adopt or apply every resolution.
 

@@ -326,16 +326,12 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 </div>
 <p>This page describes common patterns for constructing an EHR system boundary that exposes the Interoperability Component API surface defined in this IG. These are implementation patterns, not separate conformance targets.</p>
 
-<div class="auth-change">
+<p>The exposed protected API has the <a href="ActorDefinition-eu-authorization-resource-server-eu-api.html">Health Data API Resource Server</a> role and uses the protocol-specific IUA or SMART Resource Server role selected for its environment. Its clients use the <a href="ActorDefinition-eu-authorization-client-eu-api.html">Health Data API Authorization Client</a> role; the <a href="ActorDefinition-eu-authorization-server-eu-api.html">Health Data API Authorization Server</a> remains distinct and MAY be co-located as a deployment choice. See <a href="authorization.html">Authorization</a> for protocol details.</p>
 
-  <p>The exposed protected API has the <a href="ActorDefinition-eu-authorization-resource-server-eu-api.html">Health Data API Resource Server</a> role and uses the protocol-specific IUA or SMART Resource Server role selected for its environment. Its clients use the <a href="ActorDefinition-eu-authorization-client-eu-api.html">Health Data API Authorization Client</a> role; the <a href="ActorDefinition-eu-authorization-server-eu-api.html">Health Data API Authorization Server</a> remains distinct and MAY be co-located as a deployment choice. See <a href="authorization.html">Authorization</a> for protocol details.</p>
-
-  <p>The <a href="ActorDefinition-authentication-service-eu-api.html">Authentication Service</a> may separately be
+<p>The <a href="ActorDefinition-authentication-service-eu-api.html">Authentication Service</a> may separately be
 grouped with the Authorization Server or independently deployed. That choice does not determine
 the EHR system boundary or require a central identity service; see
 <a href="actors.html#authentication-and-authorization-groupings">authentication and authorization groupings</a>.</p>
-
-</div>
 
 <h3 id="direct-implementation">Direct implementation</h3>
 
@@ -459,7 +455,7 @@ the EHR system boundary or require a central identity service; see
           IG © 2025+ <a style="color:var(--footer-hyperlink-text-color)" href="http://hl7.eu">HL7 Europe</a>.  
           Package hl7.fhir.eu.health-data-api#1.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
           Generated 
-  <span title="2026-10-23 12:01:00 +0200">
+  <span title="2026-10-23 14:38:00 +0200">
     2026-10-23
   </span>
 
