@@ -32,6 +32,7 @@ SMART and IUA both apply OAuth-based authorization to healthcare APIs, but neith
 | Context | Launch context and token-response parameters | Profiles user identity, clinical context, and consent-related claims under the applicable token option and integration |
 | Interactive use | App launch is a core use case | Authorization-code grant is supported, without an app-launch framework |
 | System-to-system use | Backend Services with client credentials, asymmetric authentication, and `system/` scopes | Client credentials with IUA actors and selected integration requirements |
+{: .grid}
 
 Same-endpoint dual support is not claimed because the two specifications do not define scope, discovery, or token-context precedence.
 
@@ -284,6 +285,7 @@ as well as system-to-system exchange. The existing environment selections above 
 | Provider system to gateway | SMART Backend Service; no runtime authorizing user | Gateway API; EEHRxF upload | Pre-authorized Backend Services; no runtime Authentication Service step | Configured gateway FHIR base and SMART metadata |
 | Interactive provider access | SMART App; clinician, standalone or EHR launch | Selected EHR API; permitted clinician interactions | Applicable Clinician Access capability set; API Authorization Server relies on Authentication Service | SMART discovery from target FHIR base |
 | Established national exchange | Selected IUA Authorization Client; user context if applicable | Configured protected API; selected transactions | IUA recommendation above; Authentication Service only when the selected flow requires user authentication | Authorization Server location preconfigured; selected IUA metadata |
+{: .grid}
 
 In each row, the API Authorization Server is the server selected for that endpoint and trust
 relationship; it need not be hosted by the FHIR server. See the

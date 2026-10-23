@@ -14,7 +14,7 @@
   </div>
 </div>
 
-{% include worknote.html text="Work in progress: This build includes authorization-related changes being developed on the eu-health-data-api-ballot-recon-auth branch. They have been merged into this build to show progress and reduce the risk of larger merge conflicts later. Where practicable, authorization changes are marked in purple text with a vertical purple bar to the left." %}
+{% include worknote.html text="Work in progress: This build includes authorization-related changes being developed on the eu-health-data-api-ballot-recon-auth branch. They have been merged into this build to show progress and reduce the risk of larger merge conflicts later." %}
 
 ### Regulatory Basis
 
@@ -118,4 +118,3 @@ EHDS defines priority categories of health data for interoperability. Each pairs
 For medication data, this IG covers reading medication resources (MedicationRequest, MedicationStatement) as [resource access](resource-access.html) — e.g., "what medications is this patient taking?" The ePrescription and eDispensation workflow transactions (prescribing, dispensing) are out of scope and handled by [IHE MPD](https://profiles.ihe.net/PHARM/MPD/index.html).
 
 See the [HL7 Europe Implementation Guides registry](https://confluence.hl7.org/spaces/HEU/pages/358255737/Implementation+Guides) for the canonical list of Content IGs and their current publication URLs.
-

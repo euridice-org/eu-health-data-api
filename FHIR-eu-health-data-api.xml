@@ -71,6 +71,7 @@
 <page key="index" name="Home"/>
 <page key="priority-area-hdr" name="Hospital Discharge Report"/>
 <page key="implementation" name="Implementation"/>
+<page key="logging-audit-considerations" name="Logging and Audit Considerations (Informative)"/>
 <page key="priority-area-imaging-manifest" name="Medical Imaging Manifest"/>
 <page key="priority-area-imaging-report" name="Medical Imaging Report"/>
 <page key="priority-area-laboratory" name="Medical Test Results (Laboratory)"/>

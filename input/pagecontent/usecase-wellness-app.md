@@ -37,6 +37,13 @@ presentation or an OIDC ID token, accompanies the protected request. See the
 [Wallet example](authorization.html#using-eidas-for-user-authentication) and
 [optional groupings](actors.html#authentication-and-authorization-groupings).
 
+Before an interactive request, identify the target FHIR base, register the app as described in
+[Authorization](authorization.html#smart-app-launch), and use its [SMART discovery metadata](authorization.html#smart-discovery).
+Select Patient or Clinician Access from the user's role and Standalone or EHR Launch from how the
+app is started; the applicable [SMART App Launch](https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html)
+authorization-code and PKCE requirements are defined in
+[Authorization](authorization.html#smart-app-launch). Note that future versions of this spec may be extended to cover dynamic app registration.
+
 </div>
 
 EHDS does not specify whether the wellness application sends data through the health data access service or directly to an EHR system after linkage and authorization have been established.
@@ -54,10 +61,10 @@ The [Wellness Applications section of Authorization](authorization.html#wellness
 owns the authorization requirements. The following mappings identify the flow and participants
 for each hop without adding separate conformance rules:
 
-- **Wellness application to HDAS**: SMART App Launch. The wellness application is the [SMART App](ActorDefinition-smart-app-eu-api.html); the protected HDAS endpoint is a [SMART FHIR Resource Server](ActorDefinition-smart-fhir-resource-server-eu-api.html); and the [SMART Authorization Server](ActorDefinition-smart-authorization-server-eu-api.html) is distinct. The applicable Patient or Clinician Access capability set follows the user's role and the launch pattern.
+- **Wellness application to HDAS**: [SMART App Launch](https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html). The wellness application is the [SMART App](ActorDefinition-smart-app-eu-api.html); the protected HDAS endpoint is a [SMART FHIR Resource Server](ActorDefinition-smart-fhir-resource-server-eu-api.html); and the [SMART Authorization Server](ActorDefinition-smart-authorization-server-eu-api.html) is distinct. The applicable Patient or Clinician Access capability set follows the user's role and the launch pattern.
 - **Clinician-launched wellness application**: interactive SMART App Launch EHR Launch, with a [SMART Launching System](ActorDefinition-smart-launching-system-eu-api.html), SMART App, SMART Authorization Server, and protected SMART FHIR Resource Server. The applicable profile is Clinician Access for EHR Launch with current-patient context, or Clinician Access for Standalone when the app is not launched by an EHR.
 - **Patient-launched wellness application**: interactive SMART App Launch with the EHR as FHIR server. The applicable profile is Patient Access for EHR Launch or Patient Access for Standalone Apps according to how the app is started. Write workflows follow the applicable Argonaut Write successor.
-- **Preconfigured server-side access to a provider-hosted EHR**: SMART Backend Services, with the client realized as a [SMART Backend Service](ActorDefinition-smart-backend-service-eu-api.html). This flow requires pre-authorized access, asymmetric confidential-client authentication, and no runtime end-user authorization; the protected endpoint is a SMART FHIR Resource Server and the SMART Authorization Server remains distinct.
+- **Preconfigured server-side access to a provider-hosted EHR**: [SMART Backend Services](https://hl7.org/fhir/smart-app-launch/STU2.2/backend-services.html), with the client realized as a [SMART Backend Service](ActorDefinition-smart-backend-service-eu-api.html). This flow requires pre-authorized access, asymmetric confidential-client authentication, and no runtime end-user authorization; the protected endpoint is a SMART FHIR Resource Server and the SMART Authorization Server remains distinct.
 
 </div>
 
