@@ -1,8 +1,13 @@
 ### Authorization Follow-up To Do
 
+#### Open
+
 - [ ] Identify the authoritative released MyHealth@EU authorization and security documents, confirm the applicable deployment profile, and add only the references and requirements that apply to this IG's MyHealth@EU environment.
-- [x] Review the authoritative eIDAS and European Digital Identity Wallet documents, including relevant implementing acts and technical specifications, and add references only where they establish an applicable API authorization or assurance requirement (completed 2026-10-21).
 - [ ] Reassess the EHDS Article 16 implementing acts when published, including any cross-border identification and authentication requirements for natural persons and health professionals.
+
+#### Closed 
+
+- [x] Review the authoritative eIDAS and European Digital Identity Wallet documents, including relevant implementing acts and technical specifications, and add references only where they establish an applicable API authorization or assurance requirement (completed 2026-10-21).
 - [x] Inspect each implementation use-case page and add the applicable authorization participants, prerequisites, and selected SMART or IUA flow where needed, without creating new authorization rules outside [Authorization](authorization.html).
 - [x] Define any future IHE IUA/SMART hybrid profile only after agreeing scope mappings, discovery precedence, token-context precedence, error semantics, and audit identity (completed in 3.2.0.10).
 - [ ] Determine whether this IG should define a CapabilityStatement profile or extension that computably identifies SMART Backend Services, Patient Access, and Clinician Access modes or capability sets. FHIR R4 provides only the generic `SMART-on-FHIR` security-service code; `.well-known/smart-configuration` remains the authoritative runtime source for SMART capabilities.
