@@ -6,13 +6,13 @@ A patient visits a care provider, but his data is in another system. The current
 
 ### Actors
 
-<div class="auth-change" markdown="1">
+
 
 - **[Document Consumer](actors.html#document-consumer)** - The healthcare provider's system acting as the [Health Data API Authorization Client](ActorDefinition-eu-authorization-client-eu-api.html), realized as either a [SMART Backend Service](ActorDefinition-smart-backend-service-eu-api.html) or an [IHE IUA Authorization Client](ActorDefinition-iua-authorization-client-eu-api.html), according to the selected deployment flow
 - **[Document Access Provider](actors.html#document-access-provider)** - The system holding the patient's health data and acting as the [Health Data API Resource Server](ActorDefinition-eu-authorization-resource-server-eu-api.html), realized as either a [SMART FHIR Resource Server](ActorDefinition-smart-fhir-resource-server-eu-api.html) or an [IHE IUA Resource Server](ActorDefinition-iua-resource-server-eu-api.html)
 - **[Health Data API Authorization Server](ActorDefinition-eu-authorization-server-eu-api.html)** - The distinct participant that issues the token, realized as either a [SMART Authorization Server](ActorDefinition-smart-authorization-server-eu-api.html) or an [IHE IUA Authorization Server](ActorDefinition-iua-authorization-server-eu-api.html); optional co-location is a deployment choice.
 
-</div>
+
 
 ### Prerequisites
 
@@ -26,11 +26,11 @@ A patient visits a care provider, but his data is in another system. The current
 {% include img.html svg="patient-summary-auth-sequence.svg"
   caption="<a href='https://hl7.org/fhir/smart-app-launch/STU2.2/backend-services.html'>SMART Backend Services</a> or <a href='https://profiles.ihe.net/ITI/IUA/index.html'>IHE IUA</a> authorization sequence" %}
 
-<div class="auth-change" markdown="1">
+
 
 *Note: The Authorization Server is a separate participant and MAY be co-located with the Document Access Provider as an optional deployment choice. The diagram shows alternative SMART Backend Services and IHE IUA authorization branches; select one profile for the protected endpoint. The token-request details below illustrate only the SMART Backend Services branch. For IUA, use the [IHE IUA Authorization Client](ActorDefinition-iua-authorization-client-eu-api.html), [IHE IUA Authorization Server](ActorDefinition-iua-authorization-server-eu-api.html), and [IHE IUA Resource Server](ActorDefinition-iua-resource-server-eu-api.html) flow described in [Authorization](authorization.html#national-interoperability-infrastructure).*
 
-</div>
+
 
 ### Step-by-Step Flow
 
@@ -46,11 +46,11 @@ The CapabilityStatement confirms support for IHE MHD document exchange, PDQm pat
 
 #### Step 2: Obtain Access Token
 
-<div class="auth-change" markdown="1">
+
 
 This token-request example uses SMART Backend Services: the Document Consumer's Health Data API Authorization Client role is realized by the SMART Backend Service. Its pre-authorization and client-authentication prerequisites are listed above; the Health Data API Authorization Server and Health Data API Resource Server roles remain distinct. An IUA deployment instead uses its selected IUA actors and flow as described in [Authorization](authorization.html#national-interoperability-infrastructure).
 
-</div>
+
 
 ```
 POST https://provider.example.org/auth/token

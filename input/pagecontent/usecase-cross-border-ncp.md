@@ -32,10 +32,8 @@ All layers exchange EEHRxF-formatted data.
 
 Cross-border patient consent, health-professional authentication in the requesting country, and authorization at the NCP and national-infrastructure layers are governed by MyHealth@EU and Member State infrastructure — not by this IG. At the highlighted API boundaries, the consumer is an authorized EHR system or national-infrastructure component; how that authorization was established is out of scope here.
 
-<div class="auth-change" markdown="1">
+
 
 At those API boundaries, the consumer is the [Health Data API Authorization Client](ActorDefinition-eu-authorization-client-eu-api.html), and the protected EHR endpoint is the [Health Data API Resource Server](ActorDefinition-eu-authorization-resource-server-eu-api.html). The [Health Data API Authorization Server](ActorDefinition-eu-authorization-server-eu-api.html) is a distinct participant.
 
 The final infrastructure-to-EHR hop is separate from NCP-to-NCP exchange. For MyHealth@EU, authorization remains outside this IG; [Authorization](authorization.html#myhealth-eu) recommends alignment with [IHE IUA](https://profiles.ihe.net/ITI/IUA/index.html). This use case does not select an authorization flow for MyHealth@EU; applicable MyHealth@EU and deployment requirements govern its participants and prerequisites. For a separate National Interoperability Infrastructure hop, [IHE IUA](https://profiles.ihe.net/ITI/IUA/index.html) is recommended only under the conditions in [Authorization](authorization.html#national-interoperability-infrastructure). If selected, the generic roles are realized by the [IHE IUA Authorization Client](ActorDefinition-iua-authorization-client-eu-api.html), [IHE IUA Resource Server](ActorDefinition-iua-resource-server-eu-api.html), and a distinct [IHE IUA Authorization Server](ActorDefinition-iua-authorization-server-eu-api.html); the client obtains a token with [ITI-71](https://profiles.ihe.net/ITI/TF/Volume2/ITI-71.html) and presents it with [ITI-72](https://profiles.ihe.net/ITI/TF/Volume2/ITI-72.html). Any MHD transaction scope depends on the supported interaction and deployment. This use case does not select an IUA transaction or flow for a particular endpoint. The NCPeH API remains the specification for NCP-to-NCP exchange.
-
-</div>

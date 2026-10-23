@@ -36,7 +36,7 @@ The figure shows different elements:
 
 This Implementation Guide describes the API surface of the EHDS Interoperability Component: document exchange, resource access, patient lookup, authorization, and document publication. The use cases outlined in this section show where the Interoperability Component can be deployed in the European interoperability landscape. Some use cases directly involve data exchange with EHRs; others indirectly make use of data that has previously been consumed via data exchange with EHRs.
 
-<div class="auth-change" markdown="1">
+
 
 Authorization in these use cases is described using the generic [Health Data API Authorization Client](ActorDefinition-eu-authorization-client-eu-api.html), [Health Data API Authorization Server](ActorDefinition-eu-authorization-server-eu-api.html), and [Health Data API Resource Server](ActorDefinition-eu-authorization-resource-server-eu-api.html) roles. Each flow's selected SMART or IHE IUA roles and detailed requirements are described in [Authorization](authorization.html).
 
@@ -46,7 +46,7 @@ responsibility and may be grouped with the Authorization Server or separately de
 These logical roles do not prescribe central EU-operated services or common hosting; see
 [actor groupings](actors.html#authentication-and-authorization-groupings).
 
-</div>
+
 
 Each use case and environment might have its own rules and requirements, which are outside the scope of this Implementation Guide; here, we focus on how the Interoperability Component as described in this Implementation Guide can **support** actors across the use cases.
 

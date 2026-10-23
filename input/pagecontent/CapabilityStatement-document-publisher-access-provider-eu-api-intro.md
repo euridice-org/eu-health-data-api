@@ -17,11 +17,11 @@ This grouped actor combines:
 - **Document Publisher** (internal): produces and stores documents internally
 - **Document Access Provider** (external-facing): serves documents to Document Consumers
 
-<div class="auth-change" markdown="1">
+
 
 The external-facing protected-server role is the selected [IUA Resource Server](ActorDefinition-iua-resource-server-eu-api.html) or [SMART FHIR Resource Server](ActorDefinition-smart-fhir-resource-server-eu-api.html). The Authorization Server is independent and may be optionally co-located.
 
-</div>
+
 
 - [PDQm Patient Demographics Supplier](https://profiles.ihe.net/ITI/PDQm/volume-1.html)
 - [MHD Document Responder](https://profiles.ihe.net/ITI/MHD/1331_actors_and_transactions.html)
@@ -38,11 +38,11 @@ MHD Document Recipient is not listed because publication is internal.
 
 ### Security
 
-<div class="auth-change" markdown="1">
+
 
 Systems SHALL support the IUA or SMART authorization profile selected for their environment and use case.
 
-</div>
+
 
 ### When to Use This CapabilityStatement
 

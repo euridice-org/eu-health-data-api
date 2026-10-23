@@ -1,5 +1,3 @@
-<div class="auth-change" markdown="1">
-
 This page is **informative**. This Implementation Guide specifies interoperability
 for API interactions. It does not define an EHR logging format, a common audit
 service, or an exchange mechanism for audit records between systems.
@@ -56,5 +54,3 @@ cross-system correlation. It does not determine the legal basis for access,
 consent policy, or the responsibilities assigned to a particular service or
 EHR. Those matters remain governed by applicable law, adopted specifications,
 and deployment policy.
-
-</div>

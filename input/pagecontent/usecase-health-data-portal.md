@@ -20,7 +20,7 @@ This IG defines the Interoperability Component API surface the access service us
 
 ### Authorization
 
-<div class="auth-change" markdown="1">
+
 
 The patient's identity and authorization are established at the access service.
 At the Interoperability Component API surface, the access service acts as the
@@ -74,7 +74,7 @@ are described in [Authorization](authorization.html#smart-app-launch). The speci
 and flow for each downstream hop remain deployment-dependent. Patient consent preferences and
 app-linking rules remain the responsibility of the access service or Member State infrastructure.
 
-</div>
+
 
 ### Art. 5: Insertion of Patient-Provided Data (Informative)
 

@@ -12,11 +12,11 @@ Systems use FHIR CapabilityStatement to discover what priority categories and ex
 
 #### Authorization
 
-<div class="auth-change" markdown="1">
+
 
 Authorization using SMART or IHE IUA, with the applicable flow. Required for all transactions. See [Authorization](authorization.html).
 
-</div>
+
 
 #### Patient Identification
 
@@ -40,4 +40,3 @@ All exchange patterns follow a common flow:
 4. **Access** data via Document Exchange or Resource Access
 
 The specification allows implementations to support document exchange only, resource access only, or both patterns depending on their use case and architecture.
-

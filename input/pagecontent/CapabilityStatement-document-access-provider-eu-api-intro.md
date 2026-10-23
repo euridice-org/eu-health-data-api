@@ -4,7 +4,7 @@ This CapabilityStatement defines the requirements for the EEHRxF Document Access
 
 This composite actor groups the applicable protected-server role:
 
-- <span class="auth-change">[IUA Resource Server](ActorDefinition-iua-resource-server-eu-api.html) or [SMART FHIR Resource Server](ActorDefinition-smart-fhir-resource-server-eu-api.html), selected by environment and use case</span>
+- [IUA Resource Server](ActorDefinition-iua-resource-server-eu-api.html) or [SMART FHIR Resource Server](ActorDefinition-smart-fhir-resource-server-eu-api.html), selected by environment and use case
 - [PDQm Patient Demographics Supplier](https://profiles.ihe.net/ITI/PDQm/volume-1.html)
 - [MHD Document Responder](https://profiles.ihe.net/ITI/MHD/1331_actors_and_transactions.html)
 
@@ -18,11 +18,11 @@ This composite actor groups the applicable protected-server role:
 
 ### Security
 
-<div class="auth-change" markdown="1">
+
 
 Systems SHALL support the IUA or SMART authorization profile selected for their environment and use case.
 
-</div>
+
 
 ### Document Submission Option
 

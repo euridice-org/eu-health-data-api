@@ -23,8 +23,6 @@ Adds to the base Document Access Provider:
 
 ### Security
 
-<div class="auth-change" markdown="1">
+
 
 This option inherits the environment-selected IUA or SMART security profile from the base Document Access Provider. ITI-105 has no IUA-defined transaction scope; see [Authorization](authorization.html#tokens-scopes-enforcement-and-errors).
-
-</div>

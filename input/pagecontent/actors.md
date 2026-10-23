@@ -5,8 +5,8 @@ This is similar to the approach taken in the MHDS specification, but with a more
 ### Relevant Specifications:
 
 - Authorization
-  - <span class="auth-change">[HL7 SMART App Launch 2.2](https://hl7.org/fhir/smart-app-launch/STU2.2/) - Defines Standalone, Launch and Backend Services authorization for FHIR. Whether SMART App Launch is required depends on the environment and use case.</span>
-  - <span class="auth-change">[IHE IUA](https://profiles.ihe.net/ITI/IUA/index.html) - Defines authorization and access control actors and mechanisms. Wether IUA is required depends on the environment and use case.</span>
+  - [HL7 SMART App Launch 2.2](https://hl7.org/fhir/smart-app-launch/STU2.2/) - Defines Standalone, Launch and Backend Services authorization for FHIR. Whether SMART App Launch is required depends on the environment and use case.
+  - [IHE IUA](https://profiles.ihe.net/ITI/IUA/index.html) - Defines authorization and access control actors and mechanisms. Wether IUA is required depends on the environment and use case.
 - Patient Identity Matching
   - [IHE PDQm](https://profiles.ihe.net/ITI/PDQm/index.html) - Defines how a client can perform patient lookup given demographics against a server.
 - Document Exchange
@@ -18,7 +18,7 @@ This is similar to the approach taken in the MHDS specification, but with a more
     [SMART Server Time Synchronization](authorization.html#smart-server-time-synchronization) for this IG's recommendation for SMART server roles.
   - [IHE ATNA](https://profiles.ihe.net/ITI/TF/Volume1/ch-9.html) - Referenced for secure transport requirements (TLS 1.2 Floor using BCP195 Option).
 
-<div class="auth-change" markdown="1">
+
 
 ### Authentication And Authorization Groupings
 
@@ -49,7 +49,7 @@ Server retains its conformance obligations. Pre-authorized Backend Services does
 runtime end-user authentication. See [Authentication and API authorization](authorization.html#authentication-and-api-authorization)
 for the flow and trust boundaries.
 
-</div>
+
 
 ### Document Exchange
 
@@ -63,31 +63,31 @@ Document exchange is defined with 3 actors:
 2. **Document Access Provider (server)**<a name="document-access-provider"></a> - Provides access to EEHRxF FHIR Documents by offering query APIs to Document Consumers. See **Document Submission Option** below for systems that accept document publication from external producers.
 3. **Document Consumer (client)**<a name="document-consumer"></a> - Consumes EEHRxF FHIR documents by querying a Document Access Provider.
 
-<div class="auth-change" markdown="1">
+
 
 These composite actors inherit existing actors from the selected IUA or SMART authorization
 profile and from the PDQm and MHD specifications:
 
-</div>
+
 
 <div style="text-align: center;">
 {% include img.html img="docExchange_2.svg" caption="Document Exchange - Actor Groupings" %}
 </div>
 
-<span class="auth-change">The diagram shows logical roles for one exchange, not a universal shared
+The diagram shows logical roles for one exchange, not a universal shared
 Authorization Server. User authentication may be supplied by a separate Authentication Service or
-the optional grouping described above.</span>
+the optional grouping described above.
 
 **Document Publisher**
 
-- <span class="auth-change">The selected [IUA Authorization Client](ActorDefinition-iua-authorization-client-eu-api.html), [SMART App](ActorDefinition-smart-app-eu-api.html), or [SMART Backend Service](ActorDefinition-smart-backend-service-eu-api.html); see [Authorization](authorization.html#environment-specific-requirements).</span>
+- The selected [IUA Authorization Client](ActorDefinition-iua-authorization-client-eu-api.html), [SMART App](ActorDefinition-smart-app-eu-api.html), or [SMART Backend Service](ActorDefinition-smart-backend-service-eu-api.html); see [Authorization](authorization.html#environment-specific-requirements).
 - [PDQm Patient Demographics Consumer](https://profiles.ihe.net/ITI/PDQm/volume-1.html) ([CapabilityStatement](https://profiles.ihe.net/ITI/PDQm/CapabilityStatement-IHE.PDQm.PatientDemographicsConsumerQuery.html))
 - [MHD Document Source](https://profiles.ihe.net/ITI/MHD/1331_actors_and_transactions.html) with [Simplified Publish Option](https://profiles.ihe.net/ITI/MHD/1332_actor_options.html#13324-simplified-publish-option) ([CapabilityStatement](https://profiles.ihe.net/ITI/MHD/CapabilityStatement-IHE.MHD.DocumentSource.html))
 
 **Document Access Provider**
 
-- <span class="auth-change">The selected [IUA Resource Server](ActorDefinition-iua-resource-server-eu-api.html) or [SMART FHIR Resource Server](ActorDefinition-smart-fhir-resource-server-eu-api.html); see [Authorization](authorization.html#environment-specific-requirements).</span>
-- <span class="auth-change">An IUA or SMART Authorization Server is an independent actor. It MAY be co-located with the provider, but is not a required provider grouping.</span>
+- The selected [IUA Resource Server](ActorDefinition-iua-resource-server-eu-api.html) or [SMART FHIR Resource Server](ActorDefinition-smart-fhir-resource-server-eu-api.html); see [Authorization](authorization.html#environment-specific-requirements).
+- An IUA or SMART Authorization Server is an independent actor. It MAY be co-located with the provider, but is not a required provider grouping.
 - [PDQm Patient Demographics Supplier](https://profiles.ihe.net/ITI/PDQm/volume-1.html) ([CapabilityStatement](https://profiles.ihe.net/ITI/PDQm/CapabilityStatement-IHE.PDQm.PatientDemographicsSupplier.html))
 - [MHD Document Responder](https://profiles.ihe.net/ITI/MHD/1331_actors_and_transactions.html) ([CapabilityStatement](https://profiles.ihe.net/ITI/MHD/CapabilityStatement-IHE.MHD.DocumentResponder.html))
 
@@ -97,7 +97,7 @@ the optional grouping described above.</span>
 
 **Document Consumer**
 
-- <span class="auth-change">The selected [IUA Authorization Client](ActorDefinition-iua-authorization-client-eu-api.html), [SMART App](ActorDefinition-smart-app-eu-api.html), or [SMART Backend Service](ActorDefinition-smart-backend-service-eu-api.html); see [Authorization](authorization.html#environment-specific-requirements).</span>
+- The selected [IUA Authorization Client](ActorDefinition-iua-authorization-client-eu-api.html), [SMART App](ActorDefinition-smart-app-eu-api.html), or [SMART Backend Service](ActorDefinition-smart-backend-service-eu-api.html); see [Authorization](authorization.html#environment-specific-requirements).
 - [PDQm Patient Demographics Consumer](https://profiles.ihe.net/ITI/PDQm/volume-1.html) ([CapabilityStatement](https://profiles.ihe.net/ITI/PDQm/CapabilityStatement-IHE.PDQm.PatientDemographicsConsumerQuery.html))
 - [MHD Document Consumer](https://profiles.ihe.net/ITI/MHD/1331_actors_and_transactions.html) ([CapabilityStatement](https://profiles.ihe.net/ITI/MHD/CapabilityStatement-IHE.MHD.DocumentConsumer.html))
 
@@ -157,33 +157,33 @@ This version of the IG defines resource search and read access. How resources ar
 
 
 
-<div class="auth-change" markdown="1">
+
 
 These composite actors inherit existing actors from the selected IUA or SMART authorization
 profile, PDQm, and [International Patient Access (IPA)](https://hl7.org/fhir/uv/ipa/)
 specifications (with QEDm alignment where compatible):
 
-</div>
+
 
 <div style="text-align: center;">
 {% include img.html img="resExchange_2.svg" caption="Resource Access - Actor Groupings" %}
 </div>
 
-<span class="auth-change">The Authorization Server is independent of the provider grouping.
+The Authorization Server is independent of the provider grouping.
 Authentication Service grouping and Authorization Server / Resource Server co-location are
-separate optional deployment choices.</span>
+separate optional deployment choices.
 
 **Resource Access Provider**
 
-- <span class="auth-change">The selected [IUA Resource Server](ActorDefinition-iua-resource-server-eu-api.html) or [SMART FHIR Resource Server](ActorDefinition-smart-fhir-resource-server-eu-api.html); see [Authorization](authorization.html#environment-specific-requirements).</span>
-- <span class="auth-change">An IUA or SMART Authorization Server is an independent actor. It MAY be co-located with the provider, but is not a required provider grouping.</span>
+- The selected [IUA Resource Server](ActorDefinition-iua-resource-server-eu-api.html) or [SMART FHIR Resource Server](ActorDefinition-smart-fhir-resource-server-eu-api.html); see [Authorization](authorization.html#environment-specific-requirements).
+- An IUA or SMART Authorization Server is an independent actor. It MAY be co-located with the provider, but is not a required provider grouping.
 - [PDQm Patient Demographics Supplier](https://profiles.ihe.net/ITI/PDQm/volume-1.html) ([CapabilityStatement](https://profiles.ihe.net/ITI/PDQm/CapabilityStatement-IHE.PDQm.PatientDemographicsSupplier.html))
 - Resource Access
   - [HL7 International Patient Access Server](https://hl7.org/fhir/uv/ipa/) ([CapabilityStatement](https://hl7.org/fhir/uv/ipa/CapabilityStatement-ipa-server.html))
 
 **Resource Consumer**
 
-- <span class="auth-change">The selected [IUA Authorization Client](ActorDefinition-iua-authorization-client-eu-api.html), [SMART App](ActorDefinition-smart-app-eu-api.html), or [SMART Backend Service](ActorDefinition-smart-backend-service-eu-api.html); see [Authorization](authorization.html#environment-specific-requirements).</span>
+- The selected [IUA Authorization Client](ActorDefinition-iua-authorization-client-eu-api.html), [SMART App](ActorDefinition-smart-app-eu-api.html), or [SMART Backend Service](ActorDefinition-smart-backend-service-eu-api.html); see [Authorization](authorization.html#environment-specific-requirements).
 - [PDQm Patient Demographics Consumer](https://profiles.ihe.net/ITI/PDQm/volume-1.html) ([CapabilityStatement](https://profiles.ihe.net/ITI/PDQm/CapabilityStatement-IHE.PDQm.PatientDemographicsConsumerQuery.html))
 - Resource Access
   - [HL7 International Patient Access Client](https://hl7.org/fhir/uv/ipa/) ([CapabilityStatement](https://hl7.org/fhir/uv/ipa/CapabilityStatement-ipa-client.html))
@@ -206,9 +206,9 @@ sequenceDiagram
 
   {% include figure-caption.html caption="Resource access transactions" %}
 
-> <span class="auth-change">**Note:** The Authorization Server is a separate protocol participant. It MAY be co-located with
+> **Note:** The Authorization Server is a separate protocol participant. It MAY be co-located with
 > a provider as a deployment choice, but co-location does not merge its responsibilities with the
-> Resource Server. See [Authorization Server Deployment](authorization.html#authorization-server-deployment).</span>
+> Resource Server. See [Authorization Server Deployment](authorization.html#authorization-server-deployment).
 
 
 

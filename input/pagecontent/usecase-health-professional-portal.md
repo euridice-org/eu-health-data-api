@@ -22,7 +22,7 @@ The service may query EHR systems directly, through national infrastructure that
 
 ### Authorization
 
-<div class="auth-change" markdown="1">
+
 
 At each EHR-facing API boundary, the access service is the [Health Data API Authorization Client](ActorDefinition-eu-authorization-client-eu-api.html), the protected EHR endpoint is the [Health Data API Resource Server](ActorDefinition-eu-authorization-resource-server-eu-api.html), and the [Health Data API Authorization Server](ActorDefinition-eu-authorization-server-eu-api.html) is distinct. The professional's authentication at the access service does not itself authorize the downstream FHIR request or every matching resource.
 
@@ -30,14 +30,12 @@ The service may reach EHRs directly or through national infrastructure, so its t
 
 For the server-side flow, see the [SMART Backend Services profile](https://hl7.org/fhir/smart-app-launch/STU2.2/backend-services.html) and its requirements in [Authorization](authorization.html#smart-app-launch). When an NII endpoint selects IUA, the client obtains a token with [ITI-71](https://profiles.ihe.net/ITI/TF/Volume2/ITI-71.html) and presents it with [ITI-72](https://profiles.ihe.net/ITI/TF/Volume2/ITI-72.html); MHD transaction scopes depend on the supported interaction and are described in [Authorization](authorization.html#national-interoperability-infrastructure).
 
-</div>
 
-<div class="auth-change" markdown="1">
+
+
 
 For interactive access, the [Authentication Service](ActorDefinition-authentication-service-eu-api.html)
 authenticates the professional, directly or through an upstream identity service, and may be grouped
 with the Authorization Server or separately deployed. This does not grant downstream API access
 or add runtime user authentication to a pre-authorized Backend Service. See
 [authentication and API authorization](authorization.html#authentication-and-api-authorization).
-
-</div>

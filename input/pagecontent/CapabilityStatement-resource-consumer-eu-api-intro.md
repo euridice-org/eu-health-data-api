@@ -18,11 +18,11 @@ Clients should check the server's CapabilityStatement to discover available reso
 
 ### Security
 
-<div class="auth-change" markdown="1">
+
 
 This requirements CapabilityStatement supports the IUA or SMART client role selected by the environment and use case. A deployment instance advertises only its selected protocol; see [Authorization](authorization.html#environment-specific-requirements).
 
-</div>
+
 
 ### Profile Inheritance
 

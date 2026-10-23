@@ -1,6 +1,3 @@
-
-<div class="auth-change" markdown="1">
-
 ### Introduction
 
 Authentication and authorization are required by the EHDS. This IG applies [SMART App Launch 2.2](https://hl7.org/fhir/smart-app-launch/STU2.2/) and [IHE IUA Revision 2.5](https://profiles.ihe.net/ITI/IUA/index.html), as selected for each environment in [The European Interoperability Landscape](implementation.html#the-european-interoperability-landscape). This page summarizes the EHDS evidence, compares the two specifications, selects a conformance target for each environment, and then defines the applicable actors, discovery, token, scope, and enforcement requirements. Potential hybrid rules remain future work.
@@ -360,6 +357,6 @@ Protected-resource error responses follow the selected authorization specificati
 
 Future work may define a hybrid IHE IUA/SMART profile, including claim and scope mappings, discovery precedence, token-context precedence, error semantics, audit identity, and same-endpoint dual-conformance rules. These topics are not normative for this release.
 
-</div>
+
 
 {% include auth-todo.md %}

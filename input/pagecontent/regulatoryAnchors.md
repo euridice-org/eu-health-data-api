@@ -46,7 +46,7 @@ D5.1 defined **26 requirements** across three categories (see Xt-EHR D5.1 Annex 
 - **[Out of Scope] 6 Logging Component Requirements:** This Implementation Guide does not specify the logging component format or the interoperability of logs from EHR systems. EHDS ANNEX II requires the generation of local audit logs for review, but does not specify the data format or require interoperability of those logs. Implementers needing standardized audit logging should consider [IHE ATNA](https://profiles.ihe.net/ITI/TF/Volume1/ch-9.html) and [IHE BALP](https://profiles.ihe.net/ITI/BALP/index.html) (Basic Audit Log Patterns), which define FHIR AuditEvent-based audit log profiles. The IHE profiles used in this IG (MHD, PDQm, IUA) recommend but do not require ATNA grouping.
 - **[Out of Scope] 5 General requirements:** D5.1 also defines general requirements covering software installation, documentation, performance, and safety of EHR systems. These are not testable API specifications and are therefore out of scope for this IG.
 
-<span class="auth-change">See [Logging and Audit Considerations (Informative)](logging-audit-considerations.html) for an explanation of API access events and later user access at a receiving system; this guidance does not add logging conformance requirements.</span>
+See [Logging and Audit Considerations (Informative)](logging-audit-considerations.html) for an explanation of API access events and later user access at a receiving system; this guidance does not add logging conformance requirements.
 
 ---
 ### Xt-EHR Deliverable 5.1

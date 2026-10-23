@@ -64,10 +64,8 @@ In both patterns, a consumer needs to identify which patient data to retrieve. O
 
 ### Authorization
 
-<div class="auth-change" markdown="1">
+
 
 For the National Interoperability Infrastructure environment, [Authorization](authorization.html#national-interoperability-infrastructure) recommends [IHE IUA](https://profiles.ihe.net/ITI/IUA/index.html) when participants and the Authorization Server are preconfigured and user or patient claims are needed. The consumer is the [Health Data API Authorization Client](ActorDefinition-eu-authorization-client-eu-api.html), the protected EHR or repository endpoint is the [Health Data API Resource Server](ActorDefinition-eu-authorization-resource-server-eu-api.html), and the [Health Data API Authorization Server](ActorDefinition-eu-authorization-server-eu-api.html) is distinct.
 
 When a deployment selects IUA, these roles are realized by the [IHE IUA Authorization Client](ActorDefinition-iua-authorization-client-eu-api.html), [IHE IUA Resource Server](ActorDefinition-iua-resource-server-eu-api.html), and [IHE IUA Authorization Server](ActorDefinition-iua-authorization-server-eu-api.html). The client obtains a token with [ITI-71](https://profiles.ihe.net/ITI/TF/Volume2/ITI-71.html) and presents it to the protected endpoint using [ITI-72](https://profiles.ihe.net/ITI/TF/Volume2/ITI-72.html). Any MHD transaction scope depends on the supported interaction and deployment, as described in [Authorization](authorization.html#national-interoperability-infrastructure). A direct-system endpoint may instead select [SMART Backend Services](https://hl7.org/fhir/smart-app-launch/STU2.2/backend-services.html) only when the client is pre-authorized, uses asymmetric client authentication, and has no runtime end-user authorization. That flow uses a [SMART Backend Service](ActorDefinition-smart-backend-service-eu-api.html), the distinct [SMART Authorization Server](ActorDefinition-smart-authorization-server-eu-api.html), and a [SMART FHIR Resource Server](ActorDefinition-smart-fhir-resource-server-eu-api.html), with applicable `system/` scopes. See [Authorization](authorization.html#smart-app-launch) for the normative profile requirements. It is a separate endpoint profile and does not imply dual conformance.
-
-</div>

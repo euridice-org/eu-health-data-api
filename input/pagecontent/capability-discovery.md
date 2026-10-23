@@ -19,7 +19,7 @@ The server returns a CapabilityStatement resource that declares:
 
 ### Authorization Discovery
 
-<div class="auth-change" markdown="1">
+
 
 FHIR capability discovery at `[base]/metadata` declares the API interactions and security
 service coding. It is not OAuth endpoint metadata. Where SMART is selected by
@@ -40,7 +40,7 @@ the client applies the selected IUA metadata and transaction requirements. A Cap
 does not replace either SMART or IUA metadata. See [SMART conformance](https://hl7.org/fhir/smart-app-launch/STU2.2/conformance.html)
 and [IHE IUA ITI-103](https://profiles.ihe.net/ITI/TF/Volume2/ITI-103.html).
 
-</div>
+
 
 ### Provider Actors
 
