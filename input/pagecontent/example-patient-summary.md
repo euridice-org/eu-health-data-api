@@ -158,4 +158,4 @@ Response is the Patient Summary as a FHIR Document (Bundle of type `document`) i
 
 - If patient identifier is not known, use [Patient $match operation](patient-match.html)
 - If Document Access Provider supports [Resource Access](resource-access.html), Consumer could query for individual resources instead of documents
-- Multiple documents may be returned if patient has been seen multiple times
+- A single or multiple Patient Summary documents might be returned depending on the various [use cases or national infrastructures](implementation.html).
