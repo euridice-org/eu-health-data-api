@@ -33,7 +33,7 @@ This IG defines exchange patterns — actors, transactions, and security — tha
 
 This IG does not define clinical data models. Separate Content IGs maintained by HL7 Europe define the structure and content of each priority category: what fields a Patient Summary contains, what codes a Laboratory Report uses (see [Priority Categories](priority-categories.html)). An implementable system combines this IG for transport with a Content IG for the data model.
 
-This IG excludes ePrescription and eDispensation workflow transactions, user-level authorization, audit logging formats, and bulk data export. Patient-provided data is in scope as documents ([Article 5](regulatoryAnchors.html#article-5-insert), specified in [Patient-Provided Data](patient-provided-data.html)); resource-level patient-provided data is deferred. See [Regulatory Anchors](regulatoryAnchors.html) for requirements traceability.
+This IG excludes ePrescription and eDispensation workflow transactions, user-level authorization, audit logging formats, and bulk data export. Informative [Patient-Provided Data](patient-provided-data.html) guidance illustrates existing exchange paths supporting [Article 5](regulatoryAnchors.html#article-5-insert); new clinical content models and resource-level insertion are deferred. See [Regulatory Anchors](regulatoryAnchors.html) for requirements traceability.
 
 ### Audience
 

@@ -106,16 +106,15 @@ Not defined by this IG. Servers MAY support these features. Clients SHOULD check
 
 [GitHub Issues](https://github.com/euridice-org/eu-health-data-api/issues) | **Priority:** High
 
-This IG specifies the document-based path for the EHDS Article 5 patient insertion right: ITI-105 submission marked with `securityLabel` `PATRPT` (a v3-ObservationValue provenance code), actual document authorship retained in `DocumentReference.author`, and `meta.source` identifying the originating system. Existing MHD/XDS relationship semantics apply: a new patient-provided addendum or transformation may link to an existing document without changing its content or status. Replacement (including transformation with replacement), update, and removal require authorization for all affected prior patient-channel submissions for the same subject; `PATRPT` and a matching subject alone are insufficient. Checks include propagated lifecycle effects so professionally inserted documents and related metadata remain unchanged. These requirements originate in this IG — Xt-EHR D5.1 contains no Article 5 requirement. See [Patient-Provided Data](patient-provided-data.html).
+This IG provides informative examples of existing exchange paths for patient-provided data. A shared, machine-readable convention is needed to distinguish information inserted by a natural person or representative across those paths. This version does not select an encoding or introduce Article 5-specific conformance requirements. See [Patient-Provided Data](patient-provided-data.html).
 
-**Current Approach (going to ballot)**
+**Coordination Needed**
 
-Access to write data is governed by the authorization of the submitting service (system-to-system, SMART Backend Services) together with the receiving service. `PATRPT` classifies the Article 5 submission channel and does not identify the underlying document author or impose an access-control obligation. The Access Provider trusts the health data access service or linked application to have authenticated the person and captured consent.
+The convention can be defined through cross-IG content-standardization work or another appropriate specification. Its definition is a dependency for interoperable implementations, wherever that work is owned. It needs to distinguish submission provenance from actual document authorship, support representatives, and preserve the distinction when documents circulate separately from their metadata.
 
 **Seeking Input On**
 
-- Is `PATRPT` the right single classification for all documents submitted through the Article 5 channel, including submissions by representatives and externally authored documents? Should the IG define a formal ValueSet?
-- Should the label also be REQUIRED (not SHOULD) inside the document (`Bundle.meta.security`), given documents circulate detached from their DocumentReference?
-- Should a constrained DocumentReference profile (on MHD SimplifiedPublish) be published for testability, or do narrative requirements suffice given this IG defines no EU DocumentReference profile?
-- Representative (Art. 4(2)) handling: is optional `Provenance` attribution sufficient when the representative is not the document author, while user-level/proxy authorization remains out of scope, or is a token-level mechanism needed in a future edition?
-- Is the trust delegation (Access Provider trusts the access service/app for person authentication and consent) acceptable to Member State deployments, or is a token-level patient-context binding needed sooner?
+- Which specification or cross-IG activity will define the shared convention, and how will this IG reference it?
+- How will the convention identify patient and representative submissions, including externally authored documents, without conflating authorship and submission?
+- How will the marking remain available with both document metadata and retrieved document content, and across other exchange paths?
+- How will submission attribution relate to trusted authentication, consent, and representative-authority arrangements without treating a provenance marking as authorization?
