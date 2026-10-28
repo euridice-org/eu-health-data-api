@@ -27,6 +27,7 @@ support EU Core for certain resource types.
 - Practitioner, Organization: Reference resolution
 - Condition, AllergyIntolerance: Patient safety data
 - Observation, DiagnosticReport: Clinical results
+- ImagingStudy: Imaging results
 - MedicationRequest, MedicationDispense, MedicationStatement: Medication data
 - Immunization: Vaccination records
 - Encounter: Visit context
@@ -38,13 +39,18 @@ Systems SHALL support SMART Backend Services authorization for all transactions.
 
 ### Profile Inheritance
 Resources SHOULD conform to EU Core profiles where available.
+
+### Search Parameter Combinations
+Where a resource declares search parameter combinations, the SHALL combinations follow IPA,
+with additions from IHE QEDm where the IPA has no requirement (DiagnosticReport, Encounter).
+Data type-specific implementation guides MAY extend these requirements.
 """
 
 * name = "ResourceAccessProviderEuApi"
 * title = "EEHRxF Resource Access Provider CapabilityStatement"
 * status = #active
 * experimental = false
-* date = "2026-02-02"
+* date = "2026-09-28"
 * publisher = "HL7 Europe"
 * kind = #requirements
 * fhirVersion = #4.0.1
@@ -89,6 +95,7 @@ Servers SHALL accept scopes for the resources they support:
 - system/AllergyIntolerance.rs (if AllergyIntolerance supported)
 - system/Observation.rs (if Observation supported)
 - system/DiagnosticReport.rs (if DiagnosticReport supported)
+- system/ImagingStudy.rs (if ImagingStudy supported)
 - system/MedicationRequest.rs (if MedicationRequest supported)
 - system/MedicationDispense.rs (if MedicationDispense supported)
 - system/Immunization.rs (if Immunization supported)
@@ -103,7 +110,7 @@ Servers SHALL accept scopes for the resources they support:
 // ============================================================================
 * rest[=].resource[+].type = #Patient
 * rest[=].resource[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
-* rest[=].resource[=].extension[=].valueCode = #SHOULD
+* rest[=].resource[=].extension[=].valueCode = #SHALL
 * rest[=].resource[=].supportedProfile = "http://hl7.eu/fhir/base/StructureDefinition/patient-eu-core"
 * rest[=].resource[=].documentation = """
 Patient resources support patient lookup per PDQm [ITI-78] with identifier as a
@@ -341,8 +348,13 @@ Servers MAY omit this resource based on their capabilities.
 * rest[=].resource[=].documentation = """
 Observation resources represent clinical observations including vital signs,
 laboratory results, and other measurements. If supported, servers SHALL support
-search by patient and category. Servers MAY omit this resource based on their capabilities.
+search by patient+category, patient+code, patient+category+date, and
+patient+category+code. Servers MAY omit this resource based on their capabilities.
 """
+* insert SearchCombination2(SHALL, patient, category)
+* insert SearchCombination2(SHALL, patient, code)
+* insert SearchCombination3(SHALL, patient, category, date)
+* insert SearchCombination3(SHALL, patient, category, code)
 
 * rest[=].resource[=].interaction[+].code = #read
 * rest[=].resource[=].interaction[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
@@ -372,14 +384,14 @@ search by patient and category. Servers MAY omit this resource based on their ca
 * rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/clinical-code"
 * rest[=].resource[=].searchParam[=].type = #token
 * rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
-* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHOULD
+* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHALL
 * rest[=].resource[=].searchParam[=].documentation = "The code of the observation type"
 
 * rest[=].resource[=].searchParam[+].name = "date"
 * rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/clinical-date"
 * rest[=].resource[=].searchParam[=].type = #date
 * rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
-* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHOULD
+* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHALL
 * rest[=].resource[=].searchParam[=].documentation = "Obtained date/time. Date modifiers ge, le, gt, lt SHOULD be supported."
 
 * rest[=].resource[=].searchParam[+].name = "status"
@@ -397,9 +409,14 @@ search by patient and category. Servers MAY omit this resource based on their ca
 * rest[=].resource[=].extension[=].valueCode = #SHOULD
 * rest[=].resource[=].documentation = """
 DiagnosticReport resources represent laboratory results and imaging reports.
-If supported, servers SHALL support search by patient and category.
+If supported, servers SHALL support search by patient+category, patient+category+code,
+and patient+category+date (IHE QEDm; not defined by IPA). For imaging reports, the
+HL7 Europe Imaging and MADO implementation guides MAY define additional search requirements.
 Servers MAY omit this resource based on their capabilities.
 """
+* insert SearchCombination2(SHALL, patient, category)
+* insert SearchCombination3(SHALL, patient, category, code)
+* insert SearchCombination3(SHALL, patient, category, date)
 
 * rest[=].resource[=].interaction[+].code = #read
 * rest[=].resource[=].interaction[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
@@ -429,14 +446,14 @@ Servers MAY omit this resource based on their capabilities.
 * rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/clinical-code"
 * rest[=].resource[=].searchParam[=].type = #token
 * rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
-* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHOULD
+* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHALL
 * rest[=].resource[=].searchParam[=].documentation = "The code for the report type"
 
 * rest[=].resource[=].searchParam[+].name = "date"
 * rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/clinical-date"
 * rest[=].resource[=].searchParam[=].type = #date
 * rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
-* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHOULD
+* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHALL
 * rest[=].resource[=].searchParam[=].documentation = "The clinically relevant time of the report"
 
 * rest[=].resource[=].searchParam[+].name = "status"
@@ -445,6 +462,37 @@ Servers MAY omit this resource based on their capabilities.
 * rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
 * rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHOULD
 * rest[=].resource[=].searchParam[=].documentation = "The status of the report"
+
+// ============================================================================
+// ImagingStudy Resource - Imaging Results (Optional)
+// ============================================================================
+* rest[=].resource[+].type = #ImagingStudy
+* rest[=].resource[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].extension[=].valueCode = #SHOULD
+* rest[=].resource[=].documentation = """
+ImagingStudy resources represent imaging studies available for a patient. ImagingStudy is
+not profiled in EU Core; resources SHOULD conform to the HL7 Europe Imaging ImagingStudy
+profile (http://hl7.eu/fhir/imaging/StructureDefinition/ImagingStudyEuImaging).
+If supported, servers SHALL support search by patient. The MADO implementation guide MAY
+define additional search requirements. Servers MAY omit this resource based on their capabilities.
+"""
+
+* rest[=].resource[=].interaction[+].code = #read
+* rest[=].resource[=].interaction[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].interaction[=].extension[=].valueCode = #SHALL
+* rest[=].resource[=].interaction[=].documentation = "Read ImagingStudy by logical ID"
+
+* rest[=].resource[=].interaction[+].code = #search-type
+* rest[=].resource[=].interaction[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].interaction[=].extension[=].valueCode = #SHALL
+* rest[=].resource[=].interaction[=].documentation = "Search for ImagingStudy resources"
+
+* rest[=].resource[=].searchParam[+].name = "patient"
+* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/clinical-patient"
+* rest[=].resource[=].searchParam[=].type = #reference
+* rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHALL
+* rest[=].resource[=].searchParam[=].documentation = "The patient the imaging study is about (SHALL support)"
 
 // ============================================================================
 // MedicationRequest Resource - Medication Orders and Prescriptions (Optional)
@@ -633,9 +681,10 @@ Servers MAY omit this resource based on their capabilities.
 * rest[=].resource[=].extension[=].valueCode = #SHOULD
 * rest[=].resource[=].documentation = """
 Encounter resources represent patient encounters (visits, admissions, etc.).
-If supported, servers SHALL support search by patient.
+If supported, servers SHALL support search by patient and by patient+date (IHE QEDm).
 Servers MAY omit this resource based on their capabilities.
 """
+* insert SearchCombination2(SHALL, patient, date)
 
 * rest[=].resource[=].interaction[+].code = #read
 * rest[=].resource[=].interaction[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
@@ -658,7 +707,7 @@ Servers MAY omit this resource based on their capabilities.
 * rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/clinical-date"
 * rest[=].resource[=].searchParam[=].type = #date
 * rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
-* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHOULD
+* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHALL
 * rest[=].resource[=].searchParam[=].documentation = "A date within the encounter period"
 
 * rest[=].resource[=].searchParam[+].name = "status"

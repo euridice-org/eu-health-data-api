@@ -48,6 +48,26 @@ RuleSet: AddDocumentReferenceSearchParameter(name, definition, type, expectation
 * rest[=].resource[=].searchParam[=].extension[=].valueCode = #{expectation}
 * rest[=].resource[=].searchParam[=].documentation = "{documentation}"
 
+RuleSet: SearchCombination2(expectation, param1, param2)
+* rest[=].resource[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-search-parameter-combination"
+* rest[=].resource[=].extension[=].extension[+].url = "required"
+* rest[=].resource[=].extension[=].extension[=].valueString = "{param1}"
+* rest[=].resource[=].extension[=].extension[+].url = "required"
+* rest[=].resource[=].extension[=].extension[=].valueString = "{param2}"
+* rest[=].resource[=].extension[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].extension[=].extension[=].valueCode = #{expectation}
+
+RuleSet: SearchCombination3(expectation, param1, param2, param3)
+* rest[=].resource[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-search-parameter-combination"
+* rest[=].resource[=].extension[=].extension[+].url = "required"
+* rest[=].resource[=].extension[=].extension[=].valueString = "{param1}"
+* rest[=].resource[=].extension[=].extension[+].url = "required"
+* rest[=].resource[=].extension[=].extension[=].valueString = "{param2}"
+* rest[=].resource[=].extension[=].extension[+].url = "required"
+* rest[=].resource[=].extension[=].extension[=].valueString = "{param3}"
+* rest[=].resource[=].extension[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].extension[=].extension[=].valueCode = #{expectation}
+
 RuleSet: AddDocumentReferenceSearchParameterWithoutDefinition(name, type, expectation, documentation)
 * rest[=].resource[=].searchParam[+].name = "{name}"
 * rest[=].resource[=].searchParam[=].type = #{type}
