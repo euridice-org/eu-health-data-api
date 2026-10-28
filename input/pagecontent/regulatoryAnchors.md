@@ -7,6 +7,10 @@ The regulatory basis is primarily found in EHDS ANNEX II - Essential Requirement
 - [EHDS Annex II §2.1](https://eur-lex.europa.eu/eli/reg/2025/327/oj/eng#anx_II): "SHALL provide an **interface enabling access** to the personal electronic health data [formatted in EEHRxF]"
 - [EHDS Annex II §2.2](https://eur-lex.europa.eu/eli/reg/2025/327/oj/eng#anx_II): "SHALL **be able to receive** personal electronic health data [formatted in EEHRxF]"
 
+In addition, this IG addresses the patient insertion right of the regulation body text:
+
+- [EHDS Article 5](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_5): natural persons, or their representatives ([Art. 4(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_4)), "shall have the right to **insert information** in the EHR", clearly distinguishable as inserted by them, without altering data inserted by health professionals — see [Article 5: Insert Information](#article-5-insert)
+
 Note that this IG does NOT create legal obligations on EHR Systems unless adopted by the European Commission.
 
 ### Xt-EHR Joint Action
@@ -96,6 +100,25 @@ Systems that need to accept documents pushed from Publishers (e.g., national inf
 
 ---
 
+### EHDS Article 5: Insert Information {#article-5-insert}
+
+[Article 5](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_5) gives natural persons, or their representatives referred to in [Article 4(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_4), the right to insert information in their own EHR through electronic health data access services or applications linked to those services. Inserted information must be clearly distinguishable as inserted by the person or representative, and natural persons must not be able to directly alter electronic health data inserted by health professionals.
+
+This IG provides [informative guidance](patient-provided-data.html) on how existing actors and transactions can support this use case. It does not introduce new Article 5 API conformance requirements or prescribe a single transport. Xt-EHR D5.1 defines no Article 5 requirement.
+
+| Article 5 element | Informative implementation guidance |
+|---|---|
+| Insertion channel via access service or linked application | A service can act as a Document Publisher using ITI-105, or expose patient-provided data using existing document or resource query capabilities; see [Example Exchange Paths](patient-provided-data.html#example-exchange-paths) |
+| "Clearly distinguishable" | A shared, machine-readable convention is needed across exchange paths. Its encoding is left to coordinated content-standardization work; see [Distinguishing Patient-Provided Documents](patient-provided-data.html#distinguishing-patient-provided-documents) |
+| No direct alteration of professional data | Implementations need to enforce this protection, including document-lifecycle effects. The enforcement mechanism is an implementation detail; see [Non-Alteration](patient-provided-data.html#non-alteration-of-professional-data) |
+| Representatives (Art. 4(2)) | Verify representative authority through the applicable authorization arrangements; precise submission attribution is left to the shared convention; see [Representatives](patient-provided-data.html#representatives) |
+| Wellness applications (Art. 48(2)) | Consent and category-level sharing choices are established in the application / access-service layer before using the existing exchange paths; see [Wellness Applications](patient-provided-data.html#wellness-applications) |
+{: .grid}
+
+Resource-level insertion (individual observations, medications) is deferred; see [Resource Exchange](resourceExchange.html).
+
+---
+
 ### Requirements Table
 
 The following table maps each D5.1 interoperability requirement to its implementation in this IG:
@@ -182,4 +205,3 @@ For medication data, this IG covers reading MedicationRequest and MedicationStat
 D8.1 specifies that when a Priority Interoperability Profile references another profile (e.g., a Patient Summary references the EHDS Patient profile), the referenced profile's data obligations also apply. This is a data model requirement: the Patient resource inside a Patient Summary must conform to the EHDS Patient profile. It does not by itself mandate independent resource-level exchange for that resource. Data model conformance is the Content IGs' domain; exchange is this IG's domain, based on the system's declared conformance path.
 
 ---
-

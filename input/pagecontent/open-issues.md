@@ -99,3 +99,22 @@ Not defined by this IG. Servers MAY support these features. Clients SHOULD check
 - Should `_include` be required for resolving referenced resources (e.g. `MedicationRequest?patient=123&_include=MedicationRequest:requester`), or `_revinclude` for Provenance (e.g. `_revinclude=Provenance:target`)?
 - Should chained search be required (e.g. `Condition?patient.identifier=http://example.org/nid|123`)? The German ISiK Basismodul implementation guide <!-- TODO: add link to ISiK Basis Module IG --> is one example of an IG that defines chaining requirements.
 - Which of these features do your existing systems support today?
+
+---
+
+### Issue XX: Article 5 Patient-Provided Data Marking
+
+[GitHub Issues](https://github.com/euridice-org/eu-health-data-api/issues) | **Priority:** High
+
+This IG provides informative examples of existing exchange paths for patient-provided data. A shared, machine-readable convention is needed to distinguish information inserted by a natural person or representative across those paths. This version does not select an encoding or introduce Article 5-specific conformance requirements. See [Patient-Provided Data](patient-provided-data.html).
+
+**Coordination Needed**
+
+The convention can be defined through cross-IG content-standardization work or another appropriate specification. Its definition is a dependency for interoperable implementations, wherever that work is owned. It needs to distinguish submission provenance from actual document authorship, support representatives, and preserve the distinction when documents circulate separately from their metadata.
+
+**Seeking Input On**
+
+- Which specification or cross-IG activity will define the shared convention, and how will this IG reference it?
+- How will the convention identify patient and representative submissions, including externally authored documents, without conflating authorship and submission?
+- How will the marking remain available with both document metadata and retrieved document content, and across other exchange paths?
+- How will submission attribution relate to trusted authentication, consent, and representative-authority arrangements without treating a provenance marking as authorization?

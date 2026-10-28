@@ -20,6 +20,10 @@ Systems implementing this option:
 This option is REQUIRED when acting as a delegated access provider for external
 Document Publishers (e.g., integration engines, national infrastructure).
 
+This option can receive patient-provided documents using the existing ITI-105 transaction.
+See [Patient-Provided Data](patient-provided-data.html) for informative guidance; it adds
+no Article 5-specific conformance requirements to this CapabilityStatement.
+
 ### Actor Grouping
 
 Adds to base Document Access Provider:
@@ -100,6 +104,10 @@ The server SHALL:
 - For FHIR Documents, ensure the content is retrievable as a native FHIR Document Bundle (not wrapped in Binary)
 - Assign server-generated IDs
 - Return 201 Created with the persisted DocumentReference
+
+See [Patient-Provided Data](patient-provided-data.html) for informative guidance on
+patient submissions, preservation of original data, and enforcement of protection for
+professionally inserted data using the established document lifecycle.
 """
 
 // Supported profiles - MHD SimplifiedPublish (requires .data) and MHD Minimal

@@ -26,7 +26,7 @@ Document exchange is defined with 3 actors:
 </div>
 
 <a name="document-publisher"></a>
-1. **Document Publisher (client)** - Produces EEHRxF FHIR Documents, publishes those documents to a Document Access Provider. Can be grouped with Access Provider, in which case the publishing transactions are internalized.
+1. **Document Publisher (client)** - Produces EEHRxF FHIR Documents, publishes those documents to a Document Access Provider. Can be grouped with Access Provider, in which case the publishing transactions are internalized. Health data access services and linked applications can also use this role to publish patient-provided documents, as illustrated in the informative EHDS Article 5 guidance — see [Patient-Provided Data](patient-provided-data.html).
 
 <a name="document-access-provider"></a>
 2. **Document Access Provider (server)** - Provides access to EEHRxF FHIR Documents by offering query APIs to Document Consumers. See **Document Submission Option** below for systems that accept document publication from external producers.
@@ -56,6 +56,8 @@ These composite actors inherit existing actors from the IUA, PDQm, and MHD speci
 <a name="document-submission-option"></a>
 **Document Submission Option** (when accepting external publication):
 - [MHD Document Recipient](https://profiles.ihe.net/ITI/MHD/1331_actors_and_transactions.html) with [Simplified Publish Option](https://profiles.ihe.net/ITI/MHD/1332_actor_options.html#13324-simplified-publish-option) ([CapabilityStatement](https://profiles.ihe.net/ITI/MHD/CapabilityStatement-IHE.MHD.DocumentRecipient.html))
+
+The Document Submission Option can also receive patient-provided documents in the informative EHDS Article 5 publish example — see [Patient-Provided Data](patient-provided-data.html).
 
 **Document Consumer**
 

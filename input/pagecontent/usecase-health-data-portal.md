@@ -24,15 +24,11 @@ The patient's identity and authorization are established at the access service. 
 
 ### Art. 5: Insertion of Patient-Provided Data (Informative)
 
-Article 5 gives patients the right to insert information into their own EHR through health data access services or applications linked to those services.
+The [Patient-Provided Data](patient-provided-data.html) page illustrates how existing actors and transactions can support [EHDS Article 5](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_5). For example, the Health Data Access Service can act as a [Document Publisher](actors.html#document-publisher) using ITI-105, with a receiving system implementing the [Document Submission Option](actors.html#document-submission-option). A service holding patient-provided data can also expose it through existing document query/retrieval or resource query capabilities. These are informative examples, not a mandatory transport path.
 
-EHDS has not fully specified the expected data, service-linking model, review workflow, or transport path for Article 5 insertion.
+A shared, machine-readable convention is needed to distinguish patient- or representative-inserted data; its encoding remains open. Implementations need to enforce protection of professionally inserted data using their authorization arrangements and the established document lifecycle. Original submissions and provenance remain intact, and appropriately marked data can be made available to authorized consumers without prior clinical review. See [Regulatory Anchors — Article 5](regulatoryAnchors.html#article-5-insert) for the regulatory context.
 
-#### Submitting Patient-Provided Documents
-
-A Health Data Access Service may submit patient-provided priority-category data in EEHRxF format to an EHR system using the [Document Publisher](actors.html#document-publisher) interactions defined in this IG (ITI-105), where the receiving EHR system supports the [Document Submission Option](actors.html#document-submission-option).
-
-To distinguish patient-provided data from clinician-authored data, resources may carry `.meta.security` tags and/or [Provenance](https://hl7.org/fhir/provenance.html) resources indicating the patient as the source.
+Consent, representative authority, and application linking are established through the applicable access-service and Member State arrangements before exchange.
 
 #### Future Work: Resource-Level Patient-Provided Data
 
