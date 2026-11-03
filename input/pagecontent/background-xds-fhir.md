@@ -19,7 +19,7 @@ Any of these can be deployed directly, behind a facade, or as part of a national
 
 FHIR servers tend toward on-demand documents, but could also store persistent documents. XDS-based document sharing systems typically hold persistent documents but can also build documents on demand as well. 
 
-A consumer does not have to know in advance which kind it is getting. MHD marks an on-demand document by omitting `attachment.hash` and `attachment.size`; a persistent document carries both. See [On-Demand Documents](document-exchange.html#on-demand-documents) for the details.
+A consumer does not have to know in advance which kind it is getting. This IG relies on MHD for the distinction: an on-demand document has no `attachment.hash` or `attachment.size` (see [MHD ITI-67](https://profiles.ihe.net/ITI/MHD/ITI-67.html#236742212-support-for-on-demand-documents)), and a persistent document carries both, as MHD requires of publishers (see [ITI-105](https://profiles.ihe.net/ITI/MHD/ITI-105.html#231054121-documentreference-resources) and [ITI-65](https://profiles.ihe.net/ITI/MHD/ITI-65.html#23654121-bundle-resources)). Consumers can rely on this. See [On-Demand Documents](document-exchange.html#on-demand-documents) for the details.
 
 ---
 
