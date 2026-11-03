@@ -1,13 +1,13 @@
 ### Overview
 
-[Article 5](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_5) of the EHDS Regulation gives natural persons, or their representatives referred to in [Article 4(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_4), the right to insert information in their own EHR through electronic health data access services or applications linked to those services. The regulation attaches two conditions to that right:
+[Article 5](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_5) of the EHDS Regulation gives natural persons, or their representatives referred to in [Article 4(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_4), the right to insert information in their own EHR through electronic health data access services or applications linked to those services. This page provides **informative guidance** on how existing actors and transactions defined in this IG can support this right. Patient-provided data is not restricted to a single transport method, such as [Document Publication](document-exchange.html#document-publication); it can use any transaction in this IG, such as [Document Consumption](document-exchange.html#document-consumption).
+
+The regulation attaches two conditions:
 
 1. **Distinguishability** — inserted information "shall be clearly distinguishable as having been inserted by the natural person or by his or her representative".
-2. **Non-alteration** — natural persons and their representatives "shall not be able to directly alter the electronic health data and related information inserted by health professionals".
+2. **Non-alteration** — natural persons and their representatives "shall not be able to directly alter the electronic health data and related information inserted by health professionals". Because this requirement applies to how natural persons interact with data, it is not implemented here.
 
-This page provides **informative guidance** on how existing actors and transactions can support patient-provided data exchange. It introduces no new API conformance requirements and does not prescribe a single transport path. Existing requirements for the actors, transactions, and content profiles used still apply.
-
-See [Regulatory Anchors — EHDS Article 5](regulatoryAnchors.html#article-5-insert) for the relationship between this guidance and the regulation.
+See [Regulatory Anchors — EHDS Article 5](regulatoryAnchors.html#article-5-insert) for more details about the regulatory source.
 
 ### Scope
 
