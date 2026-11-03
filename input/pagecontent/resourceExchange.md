@@ -1,31 +1,29 @@
-Resource exchange between a Resource Producer and a Resource Access Provider is more complex than document publishing.
-
-Resources are not self-contained like documents. They are atomic pieces of data with cross-references to other resources. A naive POST of a resource to a FHIR server is not sufficient—additional steps are required (for example, resolving the Medication being prescribed before submitting a MedicationRequest).
-
-Semantics also vary by resource type and workflow. Exchange patterns are often different per resource. For examples of this complexity, see [IHE MPD](https://profiles.ihe.net/PHARM/MPD/index.html) for a prescription workflow.
+Resource publication means submitting individual clinical FHIR resources to another system for incorporation into its data. It differs from [document publication](document-exchange.html#document-publication), where a Document Publisher submits a document using ITI-105.
 
 ### Current Scope
 
-For this version of the implementation guide, instead of supporting a generic resource PUSH, we take as a precondition that a system acting as a Resource Access Provider already has access to resources. It may have gained access to these resources by:
+This version of the IG specifies resource search and read access, not a resource-publication interface. A Resource Access Provider is assumed to have access to the resources it serves. It may obtain them by:
 
-1. Creating resources from user-entered data, effectively grouping with an implied *Resource Producer* actor
-2. Consuming external resources by grouping with a *Resource Consumer* actor and querying another Resource Access Provider
-3. Extracting resources from documents received when grouped with an MHD Document Responder (part of the *Document Access Provider* actor)
-4. Receiving data via another exchange method and translating it to FHIR resources
+1. Creating resources from user-entered data
+2. Querying another Resource Access Provider as a Resource Consumer
+3. Extracting resources from documents received as a Document Access Provider
+4. Receiving data through another exchange method and translating it to FHIR resources
 
-This allows us to focus on specifying resource query interactions, which can be more easily generalized across resource types.
+These approaches do not require a separate resource-publication transaction in this IG.
 
-### Challenges with Resource PUSH
+### Considerations for Resource Publication
 
-- **Resolving References** - How to handle pointers that are not contained within the payload
-- **Unsolicited Data** - For a server to accept an unsolicited PUSH resource from an external source, it needs to expect this data
-- **Reconciliation** - The receiving server needs validation rules to avoid accepting invalid or incomplete data, potentially including user review before allowing it into the patient chart
+Accepting resources for incorporation may require more than a FHIR create or update interaction:
+
+- **References:** Referenced resources must be available or resolved, and source identifiers may need to be mapped to local identifiers.
+- **Workflow:** The recipient must know how to handle the submitted resource. The required behavior varies by resource type and use case.
+- **Reconciliation:** The recipient may need to validate and reconcile incoming data with existing records, potentially including clinical review.
+
+Use-case-specific guides, such as [IHE MPD](https://profiles.ihe.net/PHARM/MPD/index.html) for medication workflows, address these concerns for particular resource sets.
 
 ### Possible Future Approaches
 
-We acknowledge that the community would benefit from resource-based exchange methods other than queries. The following patterns could address these needs in future versions:
+- **Resource publication:** Use-case-specific implementation guides could define how resources are submitted and incorporated.
+- **FHIR Subscriptions:** A provider can notify a consumer that data has changed, after which the consumer retrieves the data using search or read interactions. The [Subscriptions R5 Backport](https://hl7.org/fhir/uv/subscriptions-backport/STU1.1/) supports topic-based subscriptions on FHIR R4. Notification followed by retrieval is distinct from submitting resources for incorporation; it does not by itself define a resource-publication interface.
 
-- **FHIR Subscriptions / Notified-Pull** - Used in the Netherlands; shares the same query interaction pattern
-- **Use-Case Specific IGs** - Like IHE MPD, developed for specific resource sets
-
-Other ideas for potential approaches are welcome.
+These are informative directions for future work, not additional conformance requirements in this version.

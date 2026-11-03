@@ -60,7 +60,7 @@ GET https://provider.example.org/fhir/metadata
 
 The CapabilityStatement confirms support for IHE MHD document exchange, PDQm patient search, and European Patient Summary priority category.
 
-#### Step 2: Obtain Authorization Token
+#### Step 2: Obtain Access Token
 
 Document Consumer requests an access token using SMART Backend Services ([Authorization](authorization.html)).
 
