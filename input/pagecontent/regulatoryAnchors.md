@@ -104,14 +104,13 @@ Systems that need to accept documents pushed from Publishers (e.g., national inf
 
 [Article 5](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_5) gives natural persons, or their representatives referred to in [Article 4(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_4), the right to insert information in their own EHR through electronic health data access services or applications linked to those services. Inserted information must be clearly distinguishable as inserted by the person or representative, and natural persons must not be able to directly alter electronic health data inserted by health professionals.
 
-This IG provides [informative guidance](patient-provided-data.html) on how existing actors and transactions can support this use case. It does not introduce new Article 5 API conformance requirements or prescribe a single transport. Xt-EHR D5.1 defines no Article 5 requirement.
+Article 5 does not specify which system gives effect to this right or what it requires of EHR systems. "Their own EHR" could be a national or regional EHR or a specific healthcare provider's EHR, and Member States decide how the right is met, including how the person and any representative are authenticated and authorized. This IG provides [informative guidance](patient-provided-data.html) on how existing actors and transactions can support this use case.
 
 | Article 5 element | Informative implementation guidance |
 |---|---|
 | Insertion channel via access service or linked application | A service can act as a Document Publisher using ITI-105, or expose patient-provided data using existing document or resource query capabilities; see [Example Exchange Paths](patient-provided-data.html#example-exchange-paths) |
-| "Clearly distinguishable" | A shared, machine-readable convention is needed across exchange paths. Its encoding is left to coordinated content-standardization work; see [Distinguishing Patient-Provided Documents](patient-provided-data.html#distinguishing-patient-provided-documents) |
-| No direct alteration of professional data | Implementations need to enforce this protection, including document-lifecycle effects. The enforcement mechanism is an implementation detail; see [Non-Alteration](patient-provided-data.html#non-alteration-of-professional-data) |
-| Representatives (Art. 4(2)) | Verify representative authority through the applicable authorization arrangements; precise submission attribution is left to the shared convention; see [Representatives](patient-provided-data.html#representatives) |
+| "Clearly distinguishable" | A content-standardization question. This IG informatively recommends `PATRPT` / `SDMRPT` security labels; see [Distinguishing Patient-Provided Documents](patient-provided-data.html#distinguishing-patient-provided-documents) |
+| No direct alteration of professional data | Applies to how natural persons interact with data; not implemented by this IG |
 | Wellness applications (Art. 48(2)) | Consent and category-level sharing choices are established in the application / access-service layer before using the existing exchange paths; see [Wellness Applications](patient-provided-data.html#wellness-applications) |
 {: .grid}
 

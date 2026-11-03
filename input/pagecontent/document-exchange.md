@@ -246,8 +246,6 @@ The server validates, extracts, and persists the document, returning the created
 
 The [Patient-Provided Data](patient-provided-data.html) page gives informative examples of how existing actors and transactions can support the [EHDS Article 5](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_5) use case. ITI-105 publication through a Document Publisher and the [Document Submission Option](#document-submission-option) is one path; existing query and retrieval capabilities can also expose patient-provided data.
 
-The guidance identifies the need for a shared machine-readable submission convention, explains implementation-enforced protection of professionally inserted data, and reuses established document-lifecycle semantics. It adds no Article 5-specific API conformance requirements.
-
 #### Other Publication Transactions
 
 This IG specifies ITI-105 as the publication mechanism for Document Publishers that submit to external Access Providers. ITI-105 gives publishers a single publication pattern for content conforming to EHDS priority category content profiles. The Document Access Provider handles persistence on ingest, so consumers retrieve documents in their native format via ITI-67/ITI-68.

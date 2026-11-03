@@ -80,8 +80,7 @@ document content in the attachment to publish documents to the Document Access P
 The SimplifiedPublish profile requires content.attachment.data to be populated.
 
 For an informative example of using this transaction for patient-provided documents,
-see [Patient-Provided Data](patient-provided-data.html). That guidance adds no
-Article 5-specific conformance requirements to this CapabilityStatement.
+see [Patient-Provided Data](patient-provided-data.html).
 """
 * rest[=].resource[=].interaction[+].code = #create
 * rest[=].resource[=].interaction[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"

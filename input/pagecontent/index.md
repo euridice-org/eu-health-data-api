@@ -19,7 +19,6 @@
 The European Health Data Space (EHDS) regulation describes an obligation for EHR systems to include an Interoperability Component that does the following:
 - [EHDS Annex II §2.1](https://eur-lex.europa.eu/eli/reg/2025/327/oj/eng#anx_II): "SHALL provide an **interface enabling access** to the personal electronic health data [formatted in EEHRxF]"
 - [EHDS Annex II §2.2](https://eur-lex.europa.eu/eli/reg/2025/327/oj/eng#anx_II): "SHALL **be able to receive** personal electronic health data [formatted in EEHRxF]"
-- [EHDS Article 5](https://eur-lex.europa.eu/eli/reg/2025/327/oj/eng#art_5): natural persons, or their representatives, "shall have the right to **insert information** in the EHR", clearly distinguishable as inserted by them, without altering data inserted by health professionals
 
 This Implementation Guide:
 1. **Defines a set of EHR functionalities that meet the Interoperability Component requirements:** describes how existing IHE profiles and other specifications can be used to provide secure access and enable secure exchange of EEHRxF data between systems.

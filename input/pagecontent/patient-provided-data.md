@@ -32,39 +32,12 @@ Implementing Article 5 requires a shared, machine-readable convention to identif
 - **Patient Transport of Provider-Created Data**, such as priority category formatted documents the person downloaded through a health data access service under [Article 3(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_3). These already use the content models in [Priority Categories](priority-categories.html), and the original author remains the author.
 - **Patient-Authored Data**, such as the person's own notes or wellness device measurements. Defining models for this content is outside the scope of this IG.
 
-How to label information provided by a patient is a content-standardization question and an [open issue](open-issues.html). For priority category documents, this IG makes an informative recommendation to use these [v3 ObservationValue](http://terminology.hl7.org/CodeSystem/v3-ObservationValue) security labels:
+How to label information provided by a patient is a content-standardization question. For priority category documents, this IG makes an informative recommendation to use these [v3 ObservationValue](http://terminology.hl7.org/CodeSystem/v3-ObservationValue) security labels:
 
 - `PATRPT` (patient reported): inserted by the natural person.
 - `SDMRPT` (substitute decision maker reported): inserted by their representative.
 
 The label belongs primarily on the document content itself, in `meta.security` of the FHIR document `Bundle` and its `Composition`. It can also be carried in `DocumentReference.securityLabel`.
-
-### Non-Alteration of Professional Data {#non-alteration-of-professional-data}
-
-Implementations need to enforce the protection in [EHDS Article 5](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_5) against patients or representatives directly altering professionally inserted data and related information. This responsibility cannot be met by a user-interface restriction alone when submissions can arrive through an API. The enforcement mechanism is an implementation detail; this guidance does not define a new authorization protocol or patient-specific conformance requirement.
-
-For document-handling parts of the API, use the established [MHD document relationships](https://profiles.ihe.net/ITI/MHD/ITI-105.html#231054123-replace-transform-signs-and-append-associations) and applicable [XDS lifecycle semantics](https://profiles.ihe.net/ITI/TF/Volume3/ch-4.2.html#4.2.2.2.3). Patient submissions do not need a separate document lifecycle. For example:
-
-- An `appends` relationship links a new addendum to an existing document; it does not rewrite the original document.
-- A `transforms` relationship links a separate alternative representation to its source. It does not authorize changing the source content. Additional commentary is an addendum rather than a transformation.
-- Replacement uses the existing lifecycle to supersede a prior document. A patient or representative needs authority over the affected prior submission; a matching patient identifier or patient-provided marking alone cannot establish that authority. Replacement cannot be used to supersede professionally inserted data through the patient submission path.
-- Implementations need to consider every affected document and metadata change, including propagated lifecycle effects in an XDS-backed deployment. The same protection applies to any update or removal mechanisms they offer. Requests that would violate it need to be rejected before changes are applied.
-
-The applicable MHD/XDS specifications define the relationships and their lifecycle effects. This guidance explains the protection implementations need to enforce when applying them to patient submissions.
-
-### Preservation and Availability of Submitted Data {#preservation-and-availability}
-
-The original submitted document and its submission provenance need to remain intact. Receiving data is not permission to rewrite its clinical content. Appropriately marked patient-provided data can be made available to authorized consumers without prior clinical review: making it available through the API does not imply clinical endorsement.
-
-Clinical review and reconciliation into a clinician-validated record are separate activities. If reconciliation or conversion produces another representation, keep it as a separate, traceable derivative linked to the original, rather than overwriting the submitted document. Established document relationships support that traceability. Signing a document can likewise use the established signing relationship while preserving the submitted information.
-
-An authorized correction can use the established replacement lifecycle, retaining the original content and provenance as historical material. Superseding a document's lifecycle status is distinct from rewriting its content. Access remains subject to the applicable authorization and consent arrangements.
-
-### Representatives (Article 4(2)) {#representatives}
-
-The workflow can also support a representative under [Article 4(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_4) acting on behalf of the natural person. Implementations need to establish and verify the representative's authority through the applicable proxy-service and user-level authorization arrangements; see [Authorization — User-Level Authorization](authorization.html#user-level-authorization).
-
-The shared convention needs to support attribution of representative submissions without conflating representation with document authorship. The precise representation is left to that work. This page does not prescribe a RelatedPerson, Provenance, or token-level model for representatives.
 
 ### Wellness Applications (Article 48(2)) {#wellness-applications}
 
@@ -72,21 +45,18 @@ Under [Article 48(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=O
 
 ### Security Model (Informative) {#security-model}
 
-The following describes responsibilities in an example deployment. The existing [Authorization](authorization.html) requirements apply to system-to-system transactions; this section adds no Article 5-specific requirements.
+The following describes responsibilities in an example deployment. The existing [Authorization](authorization.html) requirements apply to system-to-system transactions.
 
 1. **Person authentication and representative authority.** The access service authenticates the person and verifies any representative authority using the applicable Member State arrangements.
 2. **Application linking and consent.** The service establishes which application can act for the person and which data may be shared, under the applicable consent arrangements.
-3. **System-to-system trust.** In the publish example, the submitting service obtains a token through SMART Backend Services / IHE IUA and presents it on the ITI-105 request. Existing scopes, such as `system/DocumentReference.c`, govern transaction access. The receiving service needs a trust arrangement with the submitting service for person authentication, representative authority, and consent; transaction access alone does not establish authority over an existing document.
-4. **Submission provenance.** The shared machine-readable convention enables consumers to recognize patient- and representative-inserted data. It supports decisions about clinical use independently of API availability.
-5. **Protection of professional data.** The receiving implementation checks authorization and document-lifecycle effects before applying changes, as described [above](#non-alteration-of-professional-data).
-6. **Audit.** Implementers can use existing audit mechanisms for submission and lifecycle events. Audit log formats are outside this IG's scope; see [Regulatory Anchors](regulatoryAnchors.html).
+3. **System-to-system trust.** In the publish example, the submitting service obtains a token through SMART Backend Services / IHE IUA and presents it on the ITI-105 request. Existing scopes, such as `system/DocumentReference.c`, govern transaction access. The receiving service relies on a trust arrangement with the submitting service for person authentication, representative authority, and consent.
+4. **Labeling.** Patient- or representative-inserted information can be labeled as described in [Distinguishing Patient-Provided Documents](#distinguishing-patient-provided-documents).
+5. **Audit.** Implementers can use existing audit mechanisms. Audit log formats are outside this IG's scope; see [Regulatory Anchors](regulatoryAnchors.html).
 
 ### Examples
 
-These informative examples illustrate document metadata, actual authorship, and existing document relationships. They show persisted DocumentReferences, not complete ITI-105 requests or clinical document payloads. The examples retain `meta.source` for the submitting system and `securityLabel` `PATRPT` as illustrative submission metadata. These choices do not establish a required encoding; a shared patient/representative-submission convention remains to be agreed as described above. Clinical content remains governed by the applicable content IG.
+These informative examples show a patient-inserted, practitioner-authored document submitted with [ITI-105](document-exchange.html#iti-105-simplified-publish) and then returned to a Document Consumer by an [ITI-67](document-exchange.html#document-consumption) query. The original author remains the author; the `PATRPT` label marks the patient insertion.
 
-- [Patient-Authored DocumentReference](DocumentReference-example-documentreference-patient-provided.html) — authored and submitted by the natural person
-- [Practitioner-Authored, Patient-Submitted DocumentReference](DocumentReference-example-documentreference-patient-submitted.html) — authored by a practitioner and submitted unchanged by the patient
-- [Representative-Provided DocumentReference](DocumentReference-example-documentreference-representative-provided.html) — illustrates actual authorship by a representative, without defining how representative authority or submission attribution is encoded
-- [Patient-Appended Notes DocumentReference](DocumentReference-example-documentreference-patient-appended-notes.html) — illustrates the existing `appends` relationship; it does not define a content model for patient notes
-- [Patient-Submitted Transformation DocumentReference](DocumentReference-example-documentreference-patient-transformed.html) — illustrates a separate alternative representation linked to its source, preserving the original document
+- [Patient-Inserted Document](Bundle-example-patient-inserted-document.html) — a practitioner-authored FHIR document labeled `PATRPT` in `Bundle.meta.security` and `Composition.meta.security`
+- [ITI-105 Simplified Publish Request](DocumentReference-example-patient-inserted-iti105.html) — the DocumentReference submitted by the health data access service, with the document embedded and `securityLabel` mirroring `PATRPT`
+- [ITI-67 Query Result](Bundle-example-patient-inserted-searchset.html) — a search result containing the patient-inserted document alongside a clinician-published one
