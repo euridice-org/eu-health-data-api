@@ -27,13 +27,17 @@ ITI-105 is one concrete submission example, not a mandatory route for all patien
 
 ### Distinguishing Patient-Provided Documents {#distinguishing-patient-provided-documents}
 
-A shared, machine-readable convention is needed to identify information inserted by a natural person or their representative. Receiving systems and downstream consumers need to recognize and preserve this distinction, including when a document is retrieved separately from its metadata. Display text alone cannot support that interoperability. See [EHDS Article 5](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_5) and [EHDS Recital 12](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#rct_12) for the legal context of this distinction.
+Implementing Article 5 requires a shared, machine-readable convention to identify information inserted by a natural person or their representative. "Inserted" is interpreted as the person or representative providing information into their health record, by any channel (health data access service, other user interface, wellness application, API, etc.). It is important to differentiate whether the person authored the information or only transported it:
 
-This IG identifies that dependency but leaves the specific encoding and representative attribution to coordinated content-standardization work, which may be defined across IGs or in another appropriate specification. It does not select a security-label code, introduce an authorship constraint, or prescribe a Provenance transport. See [Open Issues](open-issues.html) for the outstanding convention questions.
+- **Patient Transport of Provider-Created Data**, such as priority category formatted documents the person downloaded through a health data access service under [Article 3(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_3). These already use the content models in [Priority Categories](priority-categories.html), and the original author remains the author.
+- **Patient-Authored Data**, such as the person's own notes or wellness device measurements. Defining models for this content is outside the scope of this IG.
 
-The convention needs to distinguish **submission provenance** from **authorship**: a person may submit a document authored by a practitioner, device, or another person. Submission does not make that person the document's author. Likewise, identifying the patient whose record is concerned does not identify who submitted the information.
+How to label information provided by a patient is a content-standardization question and an [open issue](open-issues.html). For priority category documents, this IG makes an informative recommendation to use these [v3 ObservationValue](http://terminology.hl7.org/CodeSystem/v3-ObservationValue) security labels:
 
-Marking information as patient-provided records its origin; that classification alone neither establishes permission to modify it nor implies clinical endorsement. Implementations need to relate submission provenance to the trusted submission context, while using their authorization arrangements to decide what actions are allowed.
+- `PATRPT` (patient reported): inserted by the natural person.
+- `SDMRPT` (substitute decision maker reported): inserted by their representative.
+
+The label belongs primarily on the document content itself, in `meta.security` of the FHIR document `Bundle` and its `Composition`. It can also be carried in `DocumentReference.securityLabel`.
 
 ### Non-Alteration of Professional Data {#non-alteration-of-professional-data}
 
