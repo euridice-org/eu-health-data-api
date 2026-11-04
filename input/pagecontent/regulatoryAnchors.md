@@ -108,16 +108,6 @@ The article says data is inserted "through electronic health data access service
 
 This IG provides informative guidance on how existing actors and transactions can support this use case: [Patient-Provided Data (Article 5)](patient-provided-data.html).
 
-| Article 5 element | Informative implementation guidance |
-|---|---|
-| Insertion channel via access service or linked application | A service can act as a Document Publisher using ITI-105, or expose patient-provided data using existing document or resource query capabilities; see [Example Exchange Paths](patient-provided-data.html#example-exchange-paths) |
-| "Clearly distinguishable" | A content-standardization question. This IG informatively recommends `PATRPT` / `SDMRPT` security labels; see [Distinguishing Patient-Provided Documents](patient-provided-data.html#distinguishing-patient-provided-documents) |
-| No direct alteration of professional data | Applies to how natural persons interact with data; not implemented by this IG |
-| Wellness applications (Art. 48(2)) | Consent and category-level sharing choices are established in the application / access-service layer before using the existing exchange paths; see [Wellness Applications](patient-provided-data.html#wellness-applications) |
-{: .grid}
-
-Resource-level insertion (individual observations, medications) is deferred; see [Resource Exchange](resourceExchange.html).
-
 ---
 
 ### Requirements Table
