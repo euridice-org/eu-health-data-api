@@ -4,7 +4,7 @@
 
 An initiative by HL7 Europe and IHE Europe.
 
-This specification is discussed weekly. We welcome your collaboration via [issues](https://github.com/euridice-org/eu-health-data-api/issues) and pull requests, or by joining our [weekly meetings](https://confluence.hl7.org/spaces/HEU/pages/345086021/EU+Health+Data+API+Edition+1).
+This specification is discussed weekly. We welcome your collaboration via [HL7 Jira](https://jira.hl7.org/projects/FHIR) (specification: FHIR-eu-health-data-api) and pull requests, or by joining our [weekly meetings](https://confluence.hl7.org/spaces/HEU/pages/345086021/EU+Health+Data+API+Edition+1).
 
 ## Build
 
