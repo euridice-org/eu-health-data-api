@@ -74,6 +74,7 @@ See [Regulatory Anchors](https://build.fhir.org/ig/euridice-org/eu-health-data-a
 │   ├── Authorization
 │   ├── Patient Matching
 │   ├── Document Exchange
+│   ├── Patient-Provided Data (Article 5)
 │   ├── Resource Access
 │   └── Resource Exchange Patterns
 │

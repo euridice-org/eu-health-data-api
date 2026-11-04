@@ -20,6 +20,9 @@ Systems implementing this option:
 This option is REQUIRED when acting as a delegated access provider for external
 Document Publishers (e.g., integration engines, national infrastructure).
 
+This option can receive patient-provided documents using the existing ITI-105 transaction.
+See [Patient-Provided Data](patient-provided-data.html) for informative guidance.
+
 ### Actor Grouping
 
 Adds to base Document Access Provider:

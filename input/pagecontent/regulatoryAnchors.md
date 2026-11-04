@@ -7,6 +7,10 @@ The regulatory basis is primarily found in EHDS ANNEX II - Essential Requirement
 - [EHDS Annex II §2.1](https://eur-lex.europa.eu/eli/reg/2025/327/oj/eng#anx_II): "SHALL provide an **interface enabling access** to the personal electronic health data [formatted in EEHRxF]"
 - [EHDS Annex II §2.2](https://eur-lex.europa.eu/eli/reg/2025/327/oj/eng#anx_II): "SHALL **be able to receive** personal electronic health data [formatted in EEHRxF]"
 
+In addition, this IG addresses the patient insertion right of the regulation body text:
+
+- [EHDS Article 5](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_5): natural persons, or their representatives ([Art. 4(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_4)), "shall have the right to **insert information** in the EHR", clearly distinguishable as inserted by them, without altering data inserted by health professionals — see [Article 5: Insert Information](#article-5-insert)
+
 Note that this IG does NOT create legal obligations on EHR Systems unless adopted by the European Commission.
 
 ### Xt-EHR Joint Action
@@ -96,6 +100,16 @@ Systems that need to accept documents pushed from Publishers (e.g., national inf
 
 ---
 
+### EHDS Article 5: Insert Information {#article-5-insert}
+
+[Article 5](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_5) gives natural persons, or their representatives referred to in [Article 4(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_4), the right to insert information in their own EHR. Inserted information must be clearly distinguishable as inserted by the person or representative, and natural persons must not be able to directly alter electronic health data inserted by health professionals.
+
+The article says data is inserted "through electronic health data access services or applications linked to those services"; see [Health Data Access Service](usecase-health-data-portal.html) and [Wellness Application](usecase-wellness-app.html) pages. The regulation is unclear about which system "the EHR of those natural persons" refers to: a national or regional EHR, a healthcare provider's EHR, or another system. It also does not define information models for the inserted information. This IG's guidance assumes priority category documents, such as those the person downloaded under [Article 3(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_3), and leaves models for patient-authored content out of scope. Member States are responsible for deciding how the right is met, including how the person and any representative are authenticated and authorized.
+
+This IG provides informative guidance on how existing actors and transactions can support this use case: [Patient-Provided Data (Article 5)](patient-provided-data.html).
+
+---
+
 ### Requirements Table
 
 The following table maps each D5.1 interoperability requirement to its implementation in this IG:
@@ -182,4 +196,3 @@ For medication data, this IG covers reading MedicationRequest and MedicationStat
 D8.1 specifies that when a Priority Interoperability Profile references another profile (e.g., a Patient Summary references the EHDS Patient profile), the referenced profile's data obligations also apply. This is a data model requirement: the Patient resource inside a Patient Summary must conform to the EHDS Patient profile. It does not by itself mandate independent resource-level exchange for that resource. Data model conformance is the Content IGs' domain; exchange is this IG's domain, based on the system's declared conformance path.
 
 ---
-

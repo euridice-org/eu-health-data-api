@@ -106,6 +106,8 @@ pages:
       title: Patient Lookup
     document-exchange.md:
       title: Document Exchange
+    patient-provided-data.md:
+      title: Patient-Provided Data (Article 5)
     resource-access.md:
       title: Resource Access
     resourceExchange.md:
@@ -189,6 +191,7 @@ menu:
     Authorization: authorization.html
     Patient Lookup: patient-match.html
     Document Exchange: document-exchange.html
+    Patient-Provided Data (Article 5): patient-provided-data.html
     Resource Access: resource-access.html
   Implementation:
     Overview: implementation.html
