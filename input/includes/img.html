@@ -1,9 +1,17 @@
 <!-- all this Bootstrap html for getting an narrow image to fit nicely in text - 640 pix wide -->
 
+{% assign figure_page = page.path | split: "/" | last %}
+{% assign figure_section = site.data.pages[figure_page].label | split: ".0" | first %}
 <div>
-    <figure class="figure">
-      <img src="{{include.img}}" class="figure-img img-responsive img-rounded center-block" alt="{{include.alt | default: include.caption | default: include.img}}">
-      <figcaption class="figure-caption"><em>{{include.caption | default: ""}}</em></figcaption>
+    <figure class="figure" data-section-number="{{figure_section}}">
+  {% if include.content %}
+  {{include.content}}
+  {% elsif include.svg %}
+  {% include {{include.svg}} %}
+  {% else %}
+      <img src="{{include.img}}" class="figure-img img-responsive img-rounded center-block" alt="{{include.alt | default: include.caption | default: include.img}}"{% if include.width %} style="width:{{include.width}}"{% endif %}>
+  {% endif %}
+      <figcaption class="figure-caption" data-section-number="{{figure_section}}"><em>{{include.caption | default: ""}}</em></figcaption>
     </figure>
     <p></p>
 </div>

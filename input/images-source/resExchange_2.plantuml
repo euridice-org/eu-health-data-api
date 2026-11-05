@@ -1,0 +1,32 @@
+@startuml resExchange_2
+skinparam svgDimensionStyle false
+skinparam shadowing false
+skinparam defaultFontName Arial
+left to right direction
+
+rectangle "Resource Access Provider" {
+    rectangle "Selected Resource\nServer role" as Resource #F3BFD0
+    rectangle "PDQm Patient\nDemographics Supplier" as RP #E7C2EB
+    rectangle "IPA Server" as IPA #ADD7F2
+    Resource -[hidden]down- RP
+    RP -[hidden]down- IPA
+}
+rectangle "Resource Consumer" {
+    rectangle "Selected authorization\nclient role" as Consumer #F3BFD0
+    rectangle "PDQm Patient\nDemographics Consumer" as CP #E7C2EB
+    rectangle "IPA Client" as IC #ADD7F2
+    Consumer -[hidden]down- CP
+    CP -[hidden]down- IC
+}
+rectangle "Independent IUA or SMART\nAuthorization Server" as AS #F3BFD0
+rectangle "Authentication Service\n(when user authentication is required)" as AuthN #F3BFD0
+Consumer --> AS : obtains access token
+Consumer --> Resource : protected resource access
+AS .. AuthN : deployment-defined\nuser authentication
+note bottom of AS
+  Authentication Service + Authorization Server:
+  optional grouping in one implementation.
+  AS / Resource Server co-location is independently optional.
+  No universal shared Authorization Server is implied.
+end note
+@enduml

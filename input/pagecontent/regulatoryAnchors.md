@@ -46,6 +46,8 @@ D5.1 defined **26 requirements** across three categories (see Xt-EHR D5.1 Annex 
 - **[Out of Scope] 6 Logging Component Requirements:** This Implementation Guide does not specify the logging component format or the interoperability of logs from EHR systems. EHDS ANNEX II requires the generation of local audit logs for review, but does not specify the data format or require interoperability of those logs. Implementers needing standardized audit logging should consider [IHE ATNA](https://profiles.ihe.net/ITI/TF/Volume1/ch-9.html) and [IHE BALP](https://profiles.ihe.net/ITI/BALP/index.html) (Basic Audit Log Patterns), which define FHIR AuditEvent-based audit log profiles. The IHE profiles used in this IG (MHD, PDQm, IUA) recommend but do not require ATNA grouping.
 - **[Out of Scope] 5 General requirements:** D5.1 also defines general requirements covering software installation, documentation, performance, and safety of EHR systems. These are not testable API specifications and are therefore out of scope for this IG.
 
+See [Logging and Audit Considerations (Informative)](logging-audit-considerations.html) for an explanation of API access events and later user access at a receiving system; this guidance does not add logging conformance requirements.
+
 ---
 ### Xt-EHR Deliverable 5.1
 
@@ -57,7 +59,7 @@ Xt-EHR Deliverable 5.1 interpreted 2.1 and 2.2 as two sides of a query-based arc
 | EHDS Annex II §2.2 "be able to receive" | Consumer: Initiate queries and receive responses | **Consumer** |
 
 <div style="max-width: 70%; margin: 0 auto;">
-{% include img.html img="5-1_exchange.png" caption="Figure 2: Query-Based Exchange Model" %}
+{% include img.html img="5-1_exchange.png" caption="Query-Based Exchange Model" %}
 </div>
 
 This interpretation is grounded in the following rationale:
@@ -154,7 +156,7 @@ D8.1 defines what conformant health data looks like: the fields a Patient Summar
 > Note: [D8.1](https://www.xt-ehr.eu/deliverables/) is published on the Xt-EHR deliverables page. This section summarizes the concepts this IG builds upon.
 
 <div style="max-width: 70%; margin: 0 auto;">
-{% include img.html img="ContentExchangeXtEhr.png" caption="Figure 3: Relationship between Xt-EHR deliverables and this IG. D5.1 exchange requirements are implemented by MHD (document exchange) and IPA (resource exchange). D8.1 data content profiles are implemented by HL7 EU Priority Category IGs and HL7 EU Core Resources." %}
+{% include img.html img="ContentExchangeXtEhr.png" caption="Relationship between Xt-EHR deliverables and this IG. D5.1 exchange requirements are implemented by MHD (document exchange) and IPA (resource exchange). D8.1 data content profiles are implemented by HL7 EU Priority Category IGs and HL7 EU Core Resources." %}
 </div>
 
 #### D8.1 Conformance Paths
@@ -182,4 +184,3 @@ For medication data, this IG covers reading MedicationRequest and MedicationStat
 D8.1 specifies that when a Priority Interoperability Profile references another profile (e.g., a Patient Summary references the EHDS Patient profile), the referenced profile's data obligations also apply. This is a data model requirement: the Patient resource inside a Patient Summary must conform to the EHDS Patient profile. It does not by itself mandate independent resource-level exchange for that resource. Data model conformance is the Content IGs' domain; exchange is this IG's domain, based on the system's declared conformance path.
 
 ---
-
