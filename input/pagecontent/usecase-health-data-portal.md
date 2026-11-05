@@ -6,6 +6,8 @@ A **Health Data Access Service** ([Art. 4](https://eur-lex.europa.eu/legal-conte
 
 This IG defines the Interoperability Component API surface the access service uses when querying EHR systems. The access service itself — patient authentication (national eID, EU Digital Identity Wallet), consent management, and how queries are routed across EHR systems — is governed by Member State requirements and is out of scope here.
 
+An alternative is for a patient to authenticate directly with a provider's EHR, for example using an existing portal account, and retrieve existing clinical data without an access service brokering the EHR queries. Where this involves interactive access to a FHIR API, the applicable SMART Patient Access flow is described in [Authorization](authorization.html). The provider or Member State determines how patient consent preferences and access policy are applied; direct authentication or an API token alone does not establish consent or guarantee that preferences were enforced. This is an alternative deployment architecture, not a replacement for or preference over the access-service workflow above.
+
 ### Participants
 
 - **Health Data Access Service** — [Document Consumer](actors.html#document-consumer) and/or [Resource Consumer](actors.html#resource-consumer). [Document Publisher](actors.html#document-publisher) for Patient-provided data.
