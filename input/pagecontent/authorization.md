@@ -354,9 +354,3 @@ For IUA-protected MHD transactions, the separate transaction scopes are `ITI-65`
 Protected-resource error responses follow the selected authorization specification. IUA token verification, scope matching, and access-policy failures return `401 Unauthorized` as specified in [ITI-72](https://profiles.ihe.net/ITI/IUA/index.html#37243-expected-actions). SMART requests may return `403 Forbidden` when access is denied by underlying permissions, as described in [SMART scopes](https://hl7.org/fhir/smart-app-launch/STU2.2/scopes-and-launch-context.html#smarts-scopes-are-used-to-delegate-access). A deployment MAY use `404 Not Found` to conceal resource existence only where permitted by the selected specification and when it documents that policy consistently. Consent and audit remain separate responsibilities.
 
 ### Potential Future Work
-
-Future work may define a hybrid IHE IUA/SMART profile, including claim and scope mappings, discovery precedence, token-context precedence, error semantics, audit identity, and same-endpoint dual-conformance rules. These topics are not normative for this release.
-
-
-
-{% include auth-todo.md %}
