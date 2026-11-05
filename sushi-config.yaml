@@ -102,8 +102,6 @@ pages:
       title: Capability Discovery
     authorization.md:
       title: Authorization
-      authorization-ticket-resolutions.md:
-        title: Proposed Authorization Ticket Resolutions
     patient-match.md:
       title: Patient Lookup
     document-exchange.md:

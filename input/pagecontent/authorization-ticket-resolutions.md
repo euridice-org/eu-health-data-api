@@ -1,1 +1,0 @@
-{% include proposed-ticket-resolutions.md %}
