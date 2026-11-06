@@ -2,7 +2,7 @@
 
 Document exchange using IHE MHD (Mobile Health Documents) transactions. This IG inherits MHD transactions as-is, with constraints specific to EEHRxF content.
 
-For how different server backends (FHIR-native on-demand vs persisted/XDS-bridge) implement these transactions, see [Relationship to XDS/FHIR Document Sharing](background-xds-fhir.html).
+For how EHR FHIR servers and document sharing infrastructure (XDS/XCA or FHIR-native) implement these transactions, see [Relationship to XDS/FHIR Document Sharing](background-xds-fhir.html).
 
 {% include img.html img="docExchange_1.png" caption="Document Exchange Overview" width="50%" %}
 
@@ -158,9 +158,9 @@ Implementers: Does your system use or plan to use `category` for document classi
 
 #### On-Demand Documents
 
-Some servers assemble documents on demand from operational data rather than serving pre-stored Bundles. MHD supports this: an on-demand DocumentReference has no `content.attachment.hash` or `content.attachment.size`. The `content.attachment.url` may invoke any endpoint that returns a valid Document Bundle, including FHIR operations (e.g., `Patient/[id]/$summary`).
+A document is either persistent or assembled on demand. A persistent document (also called stored or persisted; MHD: stable document) is authored at a point in time and served as written; its DocumentReference carries `content.attachment.hash` and `content.attachment.size`, as MHD requires of publishers in [ITI-105](https://profiles.ihe.net/ITI/MHD/ITI-105.html#231054121-documentreference-resources) and [ITI-65](https://profiles.ihe.net/ITI/MHD/ITI-65.html#23654121-bundle-resources). An on-demand document is assembled from current data each time it is retrieved. Per [MHD ITI-67](https://profiles.ihe.net/ITI/MHD/ITI-67.html#236742212-support-for-on-demand-documents), on-demand documents are indicated by the absence of both `content.attachment.hash` and `content.attachment.size`. This IG inherits these MHD rules, and consumers can rely on them to tell the two kinds apart. The `content.attachment.url` may invoke any endpoint that returns a valid Document Bundle, including FHIR operations (e.g., `Patient/[id]/$summary`).
 
-Consumers treat on-demand and persisted DocumentReferences identically — both are retrieved via ITI-68. Servers assembling on demand are not required to version or persist past renderings.
+Consumers treat on-demand and persistent DocumentReferences identically; both are retrieved via ITI-68. Servers assembling on demand are not required to version, history, or persist past renderings. One server can serve both kinds, and a document's kind does not depend on whether the server is a FHIR server or an XDS-backed system; see [Relationship to XDS/FHIR Document Sharing](background-xds-fhir.html).
 
 #### Search Examples
 
