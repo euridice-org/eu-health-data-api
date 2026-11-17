@@ -2,6 +2,8 @@
 
 [Article 5](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_5) of the EHDS Regulation gives natural persons, or their representatives referred to in [Article 4(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_4), the right to insert information in their own EHR through electronic health data access services or applications linked to those services. This page provides **informative guidance** on how existing actors and transactions defined in this IG can support this right. Patient-provided data is not restricted to a single transport method, such as [Document Publication](document-exchange.html#document-publication); it can use any transaction in this IG, such as [Document Consumption](document-exchange.html#document-consumption).
 
+Article 5 places the means of insertion with the [Health Data Access Service](usecase-health-data-portal.html) (HDAS) and applications linked to it, which Member States provide under [Article 4(1)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_4). Whether inserted information must then reach a particular EHR system depends on how each Member State interprets "the EHR of those natural persons". EHR systems can support this right through the Interoperability Component, using the existing transactions described on this page. This IG adds no Article 5 requirements on EHR systems.
+
 The regulation attaches two conditions:
 
 1. **Distinguishability** — inserted information "shall be clearly distinguishable as having been inserted by the natural person or by his or her representative".
@@ -32,7 +34,7 @@ Implementing Article 5 requires a shared, machine-readable convention to identif
 - **Patient Transport of Provider-Created Data**, such as priority category formatted documents the person downloaded through a health data access service under [Article 3(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_3). These already use the content models in [Priority Categories](priority-categories.html), and the original author remains the author.
 - **Patient-Authored Data**, such as the person's own notes or wellness device measurements. Defining models for this content is outside the scope of this IG.
 
-How to label information provided by a patient is a content-standardization question. For priority category documents, this IG makes an informative recommendation to use these [v3 ObservationValue](http://terminology.hl7.org/CodeSystem/v3-ObservationValue) security labels:
+How to label information provided by a patient is a content-standardization question. For priority category documents, inserted information SHOULD be labeled with these [v3 ObservationValue](http://terminology.hl7.org/CodeSystem/v3-ObservationValue) security labels:
 
 - `PATRPT` (patient reported): inserted by the natural person.
 - `SDMRPT` (substitute decision maker reported): inserted by their representative.
