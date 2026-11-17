@@ -31,6 +31,8 @@
 <artifact id="StructureDefinition/eu-api-deployment-capabilitystatement" key="StructureDefinition-eu-api-deployment-capabilitystatement" name="EU Health Data API Deployment CapabilityStatement"/>
 <artifact id="DocumentReference/example-documentreference-eps" key="DocumentReference-ExampleDocumentReferenceEPS" name="Example - European Patient Summary DocumentReference"/>
 <artifact id="DocumentReference/example-documentreference-hdr" key="DocumentReference-ExampleDocumentReferenceHDR" name="Example - Hospital Discharge Report DocumentReference"/>
+<artifact id="DocumentReference/example-patient-inserted-iti105" key="DocumentReference-example-patient-inserted-iti105" name="Example - ITI-105 Simplified Publish of a Patient-Inserted Document (Article 5)"/>
+<artifact id="Bundle/example-patient-inserted-searchset" key="Bundle-example-patient-inserted-searchset" name="Example - ITI-67 Query Result with a Patient-Inserted Document (Article 5)"/>
 <artifact id="DocumentReference/example-documentreference-imaging-report" key="DocumentReference-ExampleDocumentReferenceImagingReport" name="Example - Imaging Report DocumentReference"/>
 <artifact id="DocumentReference/example-documentreference-imaging-manifest-kos" key="DocumentReference-ExampleDocumentReferenceImagingManifestKOS" name="Example - Imaging Study Manifest (DICOM KOS)"/>
 <artifact id="DocumentReference/example-documentreference-imaging-manifest-fhir" key="DocumentReference-ExampleDocumentReferenceImagingManifestFHIR" name="Example - Imaging Study Manifest (FHIR)"/>
@@ -47,6 +49,8 @@
 <artifact id="ActorDefinition/smart-backend-service-eu-api" key="ActorDefinition-smart-backend-service-eu-api" name="SMART Backend Service"/>
 <artifact id="ActorDefinition/smart-fhir-resource-server-eu-api" key="ActorDefinition-smart-fhir-resource-server-eu-api" name="SMART FHIR Resource Server"/>
 <artifact id="ActorDefinition/smart-launching-system-eu-api" key="ActorDefinition-smart-launching-system-eu-api" name="SMART Launching System"/>
+<artifact id="Bundle/example-patient-inserted-document" key="Bundle-example-patient-inserted-document" name="Example - Patient-Inserted Document (Article 5)"/>
+<artifact id="DocumentReference/example-patient-inserted-persisted" key="DocumentReference-example-patient-inserted-persisted" name="Example - Persisted Patient-Inserted DocumentReference (Article 5)"/>
 <page key="NA" name="(NA)"/>
 <page key="many" name="(many)"/>
 <page key="about" name="About"/>
@@ -79,6 +83,7 @@
 <page key="open-issues" name="Open Issues"/>
 <page key="patient-match" name="Patient Lookup"/>
 <page key="priority-area-eps" name="Patient Summary (EPS)"/>
+<page key="patient-provided-data" name="Patient-Provided Data (Article 5)"/>
 <page key="priority-categories" name="Priority Categories"/>
 <page key="usecase-provider-internal-exchange" name="Provider-Internal Exchange"/>
 <page deprecated="true" key="references" name="References"/>

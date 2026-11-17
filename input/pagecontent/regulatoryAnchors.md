@@ -7,7 +7,7 @@ The regulatory basis is primarily found in EHDS ANNEX II - Essential Requirement
 - [EHDS Annex II §2.1](https://eur-lex.europa.eu/eli/reg/2025/327/oj/eng#anx_II): "SHALL provide an **interface enabling access** to the personal electronic health data [formatted in EEHRxF]"
 - [EHDS Annex II §2.2](https://eur-lex.europa.eu/eli/reg/2025/327/oj/eng#anx_II): "SHALL **be able to receive** personal electronic health data [formatted in EEHRxF]"
 
-Other EHDS articles mostly place obligations on Member States, healthcare providers, or access services. See [Other EHDS Articles](#other-ehds-articles).
+Other EHDS articles mostly place obligations on Member States, healthcare providers, or access services. See [Other EHDS Articles](#other-ehds-articles), and [Article 5: Insert Information](#article-5-insert) for the patient insertion right.
 
 Note that this IG does NOT create legal obligations on EHR Systems unless adopted by the European Commission.
 
@@ -100,6 +100,16 @@ Systems that need to accept documents pushed from Publishers (e.g., national inf
 
 ---
 
+### EHDS Article 5: Insert Information {#article-5-insert}
+
+[Article 5](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_5) gives natural persons, or their representatives referred to in [Article 4(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_4), the right to insert information in their own EHR. Inserted information must be clearly distinguishable as inserted by the person or representative, and natural persons must not be able to directly alter electronic health data inserted by health professionals.
+
+The article says data is inserted "through electronic health data access services or applications linked to those services"; see [Health Data Access Service](usecase-health-data-portal.html) and [Wellness Application](usecase-wellness-app.html) pages. The regulation is unclear about which system "the EHR of those natural persons" refers to: a national or regional EHR, a healthcare provider's EHR, or another system. It also does not define information models for the inserted information. This IG's guidance assumes priority category documents, such as those the person downloaded under [Article 3(2)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_3), and leaves models for patient-authored content out of scope. Member States are responsible for deciding how the right is met, including how the person and any representative are authenticated and authorized.
+
+This IG provides informative guidance on how existing actors and transactions can support this use case: [Patient-Provided Data (Article 5)](patient-provided-data.html).
+
+---
+
 ### Other EHDS Articles {#other-ehds-articles}
 
 Annex II is the primary source of requirements on EHR systems. Most other EHDS articles oblige Member States, healthcare providers, or access services; EHR systems support those obligations through the interfaces in this IG. [Annex II §1.3](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#anx_II) links the two: an EHR system's interoperability features "uphold the rights of natural persons, in line with the intended purpose of the EHR system, as set out in Chapter II."
@@ -108,7 +118,7 @@ Annex II is the primary source of requirements on EHR systems. Most other EHDS a
 | --- | --- | --- | --- |
 | [Art. 3](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_3) Access | "… the right to access … through the electronic health data access services referred to in Article 4." | Natural persons, via access services | [Health Data Access Service](usecase-health-data-portal.html) |
 | [Art. 4](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_4) Health data access services | "Member States shall ensure that one or more electronic health data access services … are established …" | Member States | [Health Data Access Service](usecase-health-data-portal.html), [Implementation](implementation.html) |
-| [Art. 5](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_5) Insert information | "… the right to insert information in the EHR of those natural persons through electronic health data access services or applications linked to those services …" | Natural persons, via access services | Not addressed |
+| [Art. 5](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_5) Insert information | "… the right to insert information in the EHR of those natural persons through electronic health data access services or applications linked to those services …" | Natural persons, via access services | [Article 5](#article-5-insert) above; [Patient-Provided Data](patient-provided-data.html) |
 | [Art. 6](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_6) Rectification | "Electronic health data access services … shall enable natural persons to easily request online the rectification …" | Access services | Not addressed |
 | [Art. 7](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_7) Portability | "… to request a healthcare provider to transmit … to another healthcare provider of their choice …" | Healthcare providers | [Document Exchange](document-exchange.html), [Resource Access](resource-access.html) |
 | [Art. 8](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_8) Restrict access | "… the right to restrict the access of health professionals and healthcare providers …" | Natural persons; Member States | Not addressed |

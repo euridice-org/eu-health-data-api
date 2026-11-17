@@ -122,6 +122,8 @@ pages:
       title: Health Data Access Service
     usecase-wellness-app.md:
       title: Wellness Apps
+    patient-provided-data.md:
+      title: Patient-Provided Data (Article 5)
     usecase-cross-org.md:
       title: Cross-Organization via National Infrastructure
     usecase-provider-internal-exchange.md:
@@ -201,6 +203,7 @@ menu:
     Health Professional Access Service: usecase-health-professional-portal.html
     Health Data Access Service: usecase-health-data-portal.html
     Wellness Apps: usecase-wellness-app.html
+    Patient-Provided Data (Article 5): patient-provided-data.html
     Cross-Organization via National Infrastructure: usecase-cross-org.html
     Provider-Internal Exchange: usecase-provider-internal-exchange.html
     EHR System Composition Patterns: ehr-system-composition.html

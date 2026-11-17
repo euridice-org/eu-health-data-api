@@ -7,6 +7,9 @@ Title: "EEHRxF Document Access Provider - Document Submission Option"
 Usage: #definition
 Description: """
 Requirements for the Document Submission Option on an EEHRxF Document Access Provider.
+
+This option can receive patient-provided documents using the existing ITI-105 transaction.
+See [Patient-Provided Data](patient-provided-data.html) for informative guidance.
 """
 
 * name = "DocumentAccessProviderSubmissionOptionEuApi"
