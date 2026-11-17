@@ -4,15 +4,7 @@ Provider-internal exchange describes how a healthcare provider can use the same 
 
 This page is informative. EHDS does not dictate how a provider exchanges data internally. Healthcare providers already use many interoperability standards and local integration patterns that are not covered here. This page does not model all provider-internal exchange; it focuses on where the Interoperability Component capabilities defined in this IG can be used within a healthcare provider environment to **support** internal exchange.
 
-<div>
-  <figure class="figure">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 816 442" class="figure-img img-responsive img-rounded center-block" style="max-width:80%; height:auto;" role="img" >
-      <image href="usecase-provider-internal-exchange.drawio.svg" width="816" height="442" preserveAspectRatio="xMidYMid meet" />
-    </svg>
-    <figcaption class="figure-caption"><em>Figure: Provider-Internal Exchange</em></figcaption>
-  </figure>
-  <p></p>
-</div>
+{% include img.html img="usecase-provider-internal-exchange.drawio.svg" caption="Provider-Internal Exchange" width="30%" %}
 
 A healthcare provider commonly deploys multiple EHR systems. Those systems may expose document or resource access directly, or the provider may use a gateway, facade, aggregator, or registry-style deployment to present a single EHR system boundary. See [EHR System Composition Patterns](ehr-system-composition.html).
 
@@ -41,8 +33,9 @@ Considerations related to this environment include:
   * Registry or repository deployments define which component retains published EEHRxF document versions and makes them available for later access.
 
 * Authorization
-  * EHR systems acting as Document/Resource Access providers may contain their own authorization server, or use an organization-level authorization server to control API access.
-  * EHR systems are **not** required to use eIDAS wallet-based authorization for provider-internal exchange.
+  * The Healthcare Provider environment's authorization mapping is defined in [Authorization](authorization.html#healthcare-provider). For a gateway's pre-authorized system-to-system upload, the consuming system is the [Health Data API Authorization Client](ActorDefinition-eu-authorization-client-eu-api.html), realized as a [SMART Backend Service](ActorDefinition-smart-backend-service-eu-api.html); the protected endpoint is the [Health Data API Resource Server](ActorDefinition-eu-authorization-resource-server-eu-api.html), realized as a [SMART FHIR Resource Server](ActorDefinition-smart-fhir-resource-server-eu-api.html); and the token issuer is the distinct [SMART Authorization Server](ActorDefinition-smart-authorization-server-eu-api.html). This flow applies only when its pre-authorization, asymmetric confidential-client authentication, and no-runtime-user-authorization prerequisites are met. See [SMART Backend Services](https://hl7.org/fhir/smart-app-launch/STU2.2/backend-services.html) and [Authorization](authorization.html#smart-app-launch) for the profile requirements and scopes.
+  * For interactive clinician access using [SMART App Launch](https://hl7.org/fhir/smart-app-launch/STU2.2/app-launch.html), the client is a [SMART App](ActorDefinition-smart-app-eu-api.html), the protected endpoint is a SMART FHIR Resource Server, and the [Health Data API Authorization Server](ActorDefinition-eu-authorization-server-eu-api.html) remains a distinct participant. The [Authentication Service](ActorDefinition-authentication-service-eu-api.html) authenticates the professional; a [SMART Launching System](ActorDefinition-smart-launching-system-eu-api.html) also participates for EHR Launch. Identify the target FHIR base and registered app, then use the endpoint's [SMART discovery metadata](authorization.html#smart-discovery) and how the app is started to select Clinician Access for EHR Launch or Clinician Access for Standalone; the [Authorization](authorization.html#smart-app-launch) page owns the flow requirements.
+  * Applicable user-identification requirements are described in [Authorization](authorization.html#using-eidas-for-user-authentication); this provider-internal scenario does not define a separate Wallet authorization flow.
 
 * Patient Identity
   * Healthcare providers may have an Enterprise Master Patient Index (EMPI) that identifies patients known to the organization and shares this patient identity with other EHR systems in the organization.

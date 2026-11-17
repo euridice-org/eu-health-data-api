@@ -18,7 +18,7 @@ Usage: #example
 * masterIdentifier.value = "urn:uuid:e5f6a7b8-c9d0-1234-ef01-345678901234"
 * status = #current
 * category = DocumentPriorityCategoryEuApiCS#Medical-Imaging "medical imaging studies and related imaging reports"
-* type = $loinc#85430-7 "Diagnostic imaging report"
+* type = $loinc#85430-7 "Diagnostic imaging report - example sections and entries"
 * subject.reference = "http://example.org/fhir/Patient/example-patient"
 * subject.display = "Jan Jansen"
 * date = "2026-02-20T15:30:00+01:00"

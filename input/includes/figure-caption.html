@@ -1,0 +1,6 @@
+{% assign figure_page = page.path | split: "/" | last %}
+{% assign figure_section = site.data.pages[figure_page].label | split: ".0" | first %}
+<p class="figure-caption figure-caption-standalone"
+   data-section-number="{{figure_section}}">
+  <em>{{include.caption | default: "" | escape}}</em>
+</p>

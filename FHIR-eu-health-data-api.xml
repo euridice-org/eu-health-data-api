@@ -5,6 +5,7 @@
 <artifactPageExtension value="-definitions"/>
 <artifactPageExtension value="-examples"/>
 <artifactPageExtension value="-mappings"/>
+<artifact id="ActorDefinition/authentication-service-eu-api" key="ActorDefinition-authentication-service-eu-api" name="Authentication Service"/>
 <artifact id="ActorDefinition/document-access-provider-actor-eu-api" key="ActorDefinition-EEHRxF-DocumentAccessProvider-Actor" name="EEHRxF Document Access Provider"/>
 <artifact id="CapabilityStatement/document-access-provider-submission-option-eu-api" key="CapabilityStatement-EEHRxF-DocumentAccessProvider-SubmissionOption" name="EEHRxF Document Access Provider - Document Submission Option"/>
 <artifact id="CapabilityStatement/document-access-provider-eu-api" key="CapabilityStatement-EEHRxF-DocumentAccessProvider" name="EEHRxF Document Access Provider CapabilityStatement"/>
@@ -26,6 +27,8 @@
 <artifact id="CapabilityStatement/resource-access-provider-eu-api" key="CapabilityStatement-EEHRxF-ResourceAccessProvider" name="EEHRxF Resource Access Provider CapabilityStatement"/>
 <artifact id="ActorDefinition/resource-consumer-actor-eu-api" key="ActorDefinition-EEHRxF-ResourceConsumer-Actor" name="EEHRxF Resource Consumer"/>
 <artifact id="CapabilityStatement/resource-consumer-eu-api" key="CapabilityStatement-EEHRxF-ResourceConsumer" name="EEHRxF Resource Consumer CapabilityStatement"/>
+<artifact id="ValueSet/eu-api-authorization-security-service" key="ValueSet-eu-api-authorization-security-service" name="EU Health Data API Authorization Security Service ValueSet"/>
+<artifact id="StructureDefinition/eu-api-deployment-capabilitystatement" key="StructureDefinition-eu-api-deployment-capabilitystatement" name="EU Health Data API Deployment CapabilityStatement"/>
 <artifact id="DocumentReference/example-documentreference-eps" key="DocumentReference-ExampleDocumentReferenceEPS" name="Example - European Patient Summary DocumentReference"/>
 <artifact id="DocumentReference/example-documentreference-hdr" key="DocumentReference-ExampleDocumentReferenceHDR" name="Example - Hospital Discharge Report DocumentReference"/>
 <artifact id="DocumentReference/example-patient-inserted-iti105" key="DocumentReference-example-patient-inserted-iti105" name="Example - ITI-105 Simplified Publish of a Patient-Inserted Document (Article 5)"/>
@@ -34,13 +37,25 @@
 <artifact id="DocumentReference/example-documentreference-imaging-manifest-kos" key="DocumentReference-ExampleDocumentReferenceImagingManifestKOS" name="Example - Imaging Study Manifest (DICOM KOS)"/>
 <artifact id="DocumentReference/example-documentreference-imaging-manifest-fhir" key="DocumentReference-ExampleDocumentReferenceImagingManifestFHIR" name="Example - Imaging Study Manifest (FHIR)"/>
 <artifact id="DocumentReference/example-documentreference-laboratory" key="DocumentReference-ExampleDocumentReferenceLaboratory" name="Example - Laboratory Report DocumentReference"/>
+<artifact id="CapabilityStatement/example-capabilitystatement-document-access-provider" key="CapabilityStatement-EEHRxF-DocumentAccessProvider-Example" name="Example: Document Access Provider Supporting EPS and Laboratory"/>
+<artifact id="ActorDefinition/eu-authorization-client-eu-api" key="ActorDefinition-eu-authorization-client-eu-api" name="Health Data API Authorization Client"/>
+<artifact id="ActorDefinition/eu-authorization-server-eu-api" key="ActorDefinition-eu-authorization-server-eu-api" name="Health Data API Authorization Server"/>
+<artifact id="ActorDefinition/eu-authorization-resource-server-eu-api" key="ActorDefinition-eu-authorization-resource-server-eu-api" name="Health Data API Resource Server"/>
+<artifact id="ActorDefinition/iua-authorization-client-eu-api" key="ActorDefinition-iua-authorization-client-eu-api" name="IHE IUA Authorization Client"/>
+<artifact id="ActorDefinition/iua-authorization-server-eu-api" key="ActorDefinition-iua-authorization-server-eu-api" name="IHE IUA Authorization Server"/>
+<artifact id="ActorDefinition/iua-resource-server-eu-api" key="ActorDefinition-iua-resource-server-eu-api" name="IHE IUA Resource Server"/>
+<artifact id="ActorDefinition/smart-app-eu-api" key="ActorDefinition-smart-app-eu-api" name="SMART App"/>
+<artifact id="ActorDefinition/smart-authorization-server-eu-api" key="ActorDefinition-smart-authorization-server-eu-api" name="SMART Authorization Server"/>
+<artifact id="ActorDefinition/smart-backend-service-eu-api" key="ActorDefinition-smart-backend-service-eu-api" name="SMART Backend Service"/>
+<artifact id="ActorDefinition/smart-fhir-resource-server-eu-api" key="ActorDefinition-smart-fhir-resource-server-eu-api" name="SMART FHIR Resource Server"/>
+<artifact id="ActorDefinition/smart-launching-system-eu-api" key="ActorDefinition-smart-launching-system-eu-api" name="SMART Launching System"/>
 <artifact id="Bundle/example-patient-inserted-document" key="Bundle-example-patient-inserted-document" name="Example - Patient-Inserted Document (Article 5)"/>
 <artifact id="DocumentReference/example-patient-inserted-persisted" key="DocumentReference-example-patient-inserted-persisted" name="Example - Persisted Patient-Inserted DocumentReference (Article 5)"/>
-<artifact id="CapabilityStatement/example-capabilitystatement-document-access-provider" key="CapabilityStatement-EEHRxF-DocumentAccessProvider-Example" name="Example: Document Access Provider Supporting EPS and Laboratory"/>
 <page key="NA" name="(NA)"/>
 <page key="many" name="(many)"/>
 <page key="about" name="About"/>
 <page key="actors" name="Actors and Transactions"/>
+<page key="artifacts-overview" name="Artifacts Overview"/>
 <page key="artifacts" name="Artifacts Summary"/>
 <page key="authorization" name="Authorization"/>
 <page key="contributors" name="Authors and contributors"/>
@@ -60,6 +75,7 @@
 <page key="index" name="Home"/>
 <page key="priority-area-hdr" name="Hospital Discharge Report"/>
 <page key="implementation" name="Implementation"/>
+<page key="logging-audit-considerations" name="Logging and Audit Considerations (Informative)"/>
 <page key="priority-area-imaging-manifest" name="Medical Imaging Manifest"/>
 <page key="priority-area-imaging-report" name="Medical Imaging Report"/>
 <page key="priority-area-laboratory" name="Medical Test Results (Laboratory)"/>
