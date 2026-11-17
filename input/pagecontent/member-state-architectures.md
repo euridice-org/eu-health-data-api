@@ -16,11 +16,21 @@ The two patterns below are **informative examples** of how national infrastructu
 
 EHR systems publish documents to a national (or regional) repository. Consumers query the repository rather than individual EHR systems.
 
+```mermaid
+flowchart LR
+    A["EHR System A"]
+    B["EHR System B"]
+    C["EHR System C"]
+    Repository["National Repository"]
+    Consumer["HPAS / NCP"]
+
+    A -->|ITI-105 publish| Repository
+    B -->|ITI-105 publish| Repository
+    C -->|ITI-105 publish| Repository
+    Repository -->|ITI-67/68 query| Consumer
 ```
-EHR System A ──[ITI-105 publish]──▶ National Repository ──[ITI-67/68 query]──▶ HPAS / NCP
-EHR System B ──[ITI-105 publish]──▶         ▲
-EHR System C ──[ITI-105 publish]─────────────┘
-```
+
+{% include figure-caption.html caption="Centralized repository architecture" %}
 
 **EHR system role:** [Document Publisher](actors.html#document-publisher), submitting documents via ITI-105. The national repository acts as the [Document Access Provider](actors.html#document-access-provider); EHR systems do not need to host a query API.
 
@@ -32,11 +42,21 @@ EHR System C ──[ITI-105 publish]─────────────┘
 
 Data stays at the EHR system. A national record locator routes queries to the relevant EHR systems; responses may be aggregated by the national layer.
 
+```mermaid
+flowchart LR
+    Consumer["HPAS / NCP"]
+    Locator["Record Locator"]
+    A["EHR System A (this IG)"]
+    B["EHR System B (this IG)"]
+    C["EHR System C (this IG)"]
+
+    Consumer --> Locator
+    Locator -->|ITI-67/68| A
+    Locator -->|ITI-67/68| B
+    Locator -->|ITI-67/68| C
 ```
-HPAS / NCP ──▶ Record Locator ──[ITI-67/68]──▶ EHR System A  (this IG)
-                               ──[ITI-67/68]──▶ EHR System B  (this IG)
-                               ──[ITI-67/68]──▶ EHR System C  (this IG)
-```
+
+{% include figure-caption.html caption="Federated query architecture" %}
 
 **EHR system role:** [Document Access Provider](actors.html#document-access-provider), hosting a query and retrieval endpoint. The national record locator is a [Document Consumer](actors.html#document-consumer) of each EHR system's API surface.
 

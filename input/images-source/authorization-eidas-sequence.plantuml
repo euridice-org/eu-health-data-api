@@ -1,0 +1,48 @@
+@startuml authorization-eidas-sequence
+skinparam svgDimensionStyle false
+
+participant App
+participant "FHIR Server\n(Health Data API\nResource Server)" as FHIR
+participant "Health Data API\nAuthorization Server" as AS
+participant "Authentication Service" as AuthN
+participant "eIDAS / EUDI Wallet" as eIDAS
+
+note over AS, AuthN
+    Distinct logical roles; MAY be grouped in one implementation.
+    Separate-service authentication interface is deployment-defined.
+    AS / FHIR co-location is a separate optional choice.
+    No universal or central EU server is implied.
+end note
+
+== Get Access Token ==
+
+alt Pre-authorized Backend Service
+    App -> AS++: Token request\nclient_credentials + asymmetric client authentication
+    App <-- AS--: Access token
+    note over AS, AuthN: No runtime end-user authentication in Backend Services
+else Interactive user or patient launch
+    App -> AS++: Authorization request\n(selected SMART or IUA flow)
+    AS -> AuthN++: Arrange user authentication\n(deployment-defined integration)
+    opt Wallet selected as authentication means
+        AuthN -> eIDAS++: Request user-approved presentation
+        AuthN <-- eIDAS--: Presentation, not an API access token
+    end
+    note right of AuthN: Authenticate user; validate evidence\nor trusted upstream result
+    AS <-- AuthN--: Trusted authentication result\n(format and interface deployment-defined)
+    note right of AS
+        Validate result
+        Establish user session
+        Apply authorization policy
+    end note
+    App <-- AS--: Redirect with authorization code
+    App -> AS++: Token request\n(code + PKCE for SMART; client auth as applicable)
+    App <-- AS--: Access token and applicable launch context
+end
+
+== Access Content ==
+
+App -> FHIR++: Protected resource request (access token)
+note right of FHIR: Validate / introspect token\nEnforce granted scopes and local policy
+App <-- FHIR--: Authorized response
+
+@enduml

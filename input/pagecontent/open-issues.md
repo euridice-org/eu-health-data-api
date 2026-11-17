@@ -1,6 +1,6 @@
-Open issues under discussion in this IG. Each has a corresponding [GitHub Issue](https://github.com/euridice-org/eu-health-data-api/issues) where you can add input to existing issues, or create your own. 
+Open issues under discussion in this IG. Some link to earlier GitHub discussion. To comment on an issue or raise a new one, file it in [HL7 Jira](https://jira.hl7.org/projects/FHIR) against the FHIR-eu-health-data-api specification. 
 
-We welcome your input via Github Issues, or by attending the weekly [HL7 Europe API Workgroup Meetings](https://confluence.hl7.org/spaces/HEU/pages/345086021/EU+Health+Data+API+Edition+1).
+We welcome your input via HL7 Jira, or by attending the weekly [HL7 Europe API Workgroup Meetings](https://confluence.hl7.org/spaces/HEU/pages/345086021/EU+Health+Data+API+Edition+1).
 
 ---
 
